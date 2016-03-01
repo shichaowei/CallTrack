@@ -5,9 +5,9 @@ This project will use call graph api  to generate call peers, an algorthm to cre
 
 The main idea of this project, is tracking change comportamental <b>atomic</b> on some <b>software artefacts</b>(like Use Case, Test Case, etc).
 
-The steps to track are:
-  1 - Generate call relations using CallGraph lib
-  2 - Generate a graph data structure based on edges generated from CallGraph(from step 1)
-  3 - Use some visual lib to show graph
+The steps to track are:</br>
+  1 - Generate call relations using CallGraph lib</br>
+  2 - Generate a graph data structure based on edges generated from CallGraph(from step 1)</br>
+  3 - Use some visual lib to show graph</br></br>
 
 We will have two type of call hierarchy: base on method call and based on class "call"(dependency, on really).
