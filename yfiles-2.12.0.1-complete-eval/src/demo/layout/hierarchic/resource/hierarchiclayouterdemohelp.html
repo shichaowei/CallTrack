@@ -1,0 +1,176 @@
+<html>
+<head>
+	<style type="text/css">
+	<!--
+body {
+    font-family:Verdana, sans-serif;
+		margin-left:3px;
+		margin-right:3px;
+		margin-top:0px;
+		margin-bottom:0px;
+	}
+
+h1 {
+    padding-left:0px;
+    padding-top:8px;
+    padding-bottom:8px;
+    color:#4079ea;
+    font-size:16px;
+    margin-bottom:5px;
+}
+
+p {
+	padding-bottom:0px;
+	padding-top:0px;
+	margin-top:3px;
+	margin-bottom:0px;
+	margin-left:0px;
+	font-size:10px;
+	color:#000000;
+	}
+
+h2 {
+  font-size:12px;
+	color:#4079ea;
+  margin-top:10px;
+  margin-bottom:0px;
+}
+
+h3 {
+  font-size:11px;
+/*	margin-left:10px; */
+	margin-left:0px;
+  margin-top:8px;
+  margin-bottom:2px;
+}
+
+h4 {
+  font-size:10px;
+  margin-left:0px;
+  margin-top:6px;
+  margin-bottom:2px;
+}
+
+
+dl {
+	font-size:10px;
+	margin-top:2px;
+	margin-bottom:2px;
+	margin-left:0px;
+}
+
+dt {
+	font-weight:bold;
+	margin-top:4px;
+	color:#333366;
+}
+
+dt.inner {
+  font-weight:bold;
+  margin-top:4px;
+  color:#000000;
+}
+
+  dd {
+	margin-left:5px;
+}
+
+.copyright {
+    font-size: 10px;
+    font-style:italic;
+    text-align:right;
+    margin-top:20px;
+}
+
+code, tt {
+	font-family:monospace;
+	font-size:10px;
+	color:#0000C0;
+}
+
+.keyword {
+  font-weight:bold;
+}
+
+-->
+	</style>
+</head>
+<body>
+ <h2>Description</h2>
+ <p>
+   This demo shows how to use the capabilities of the HierarchicLayouter
+   on port constraints, grouped nodes and edge label positioning.
+ </p>
+ 
+ <p>
+   For an edge, port constraints specify on which side the edge connects
+   to an incident node. There are independent port constraints for both,
+   the source and the target node. Thus, it is possible to affect only one side,
+   either the source or the target node.<br>
+   If a port constraint is marked as <code>strong</code>, the exact position of
+   the port will be retained.<br>
+   Edges incident to a common node can be unified at this common node
+   by being assigned to the same (edge) group.
+ </p>
+ 
+ <p>
+   For nodes, node groups result in nodes being placed horizontally next to
+   each other if the nodes are on the same layer, i.e. on a shared vertical
+   position. 
+ </p>
+ 
+ <h3>Usage</h3>
+ <dl>
+   <dt>Parse Ports</dt>
+   <dd>
+     Source and target port constraints will be set for each edge in the graph. 
+     This option is also known as <i>create port constraints from sketch</i>.
+   </dd>
+
+   <dt>Label Edges</dt>
+   <dd>
+     Displays edge labels that show the current source and target port
+     constraints.<br>
+     Additionally, the edge labels demonstrate how to specify the preferred
+     label placement automatic label placement.<br>
+     Click <code>Layout</code> while edge labels are shown to re-arrange
+     the graph with port constraints corresponding to the shown labels.
+   </dd>
+   
+   <dt>Source-/Target Port</dt>
+   <dd>
+     Select one edge via <code>left-click</code> to see or set its source and
+     target port constraints.<br>
+     Re-arrange the graph by clicking <code>Layout</code> to apply any changed
+     constraints.
+   </dd>
+
+   <dt>Edge Groups</dt>
+   <dd>
+     Assigns the selected edges to source and/or target edge group.
+     All edges incident to a node share the same edge path when assigned to
+     a common edge group.<br>
+     Re-arrange the graph by clicking <code>Layout</code> the see any effects.
+   </dd>
+
+   <dt>Node Groups</dt>
+   <dd>
+     Assigns selected nodes to a common group. Nodes of a common group and a
+     common layer will be placed horizontally next to each other.<br>
+     Re-arrange the graph by clicking <code>Layout</code> the see any effects.
+   </dd>
+   
+   <dt>Layout</dt>
+   <dd>
+     Arranges the graph with the Hierarchical Layout algorithm
+     respecting given constraint and group settings.
+   </dd>
+     
+   <dt>Settings</dt>
+   <dd>
+     Further options for the Hierarchic Layout algorithm.
+   </dd>
+
+ </dl>
+</body>
+</html>

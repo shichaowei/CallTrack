@@ -1,0 +1,195 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Using the yExport Extension Package</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="yexport_extension_package.html" title="Chapter&nbsp;12.&nbsp;yExport Extension Package">
+      <link rel="previous" href="yexport_extension_package.html" title="Chapter&nbsp;12.&nbsp;yExport Extension Package">
+      <link rel="next" href="obfuscation.html" title="Appendix&nbsp;A.&nbsp;Obfuscation">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Using the yExport Extension Package</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="yexport_extension_package.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;12.&nbsp;yExport Extension Package</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="obfuscation.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="export_usage"></a>Using the yExport Extension Package
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            Class 
+            <a href="http://docs.yworks.com/yexport/doc/api/yext/export/io/OutputHandler.html" title="Link to API documentation" target="_top">OutputHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> from the 
+            extension package is the base class for all vector graphics file formats. 
+            It provides a common basis for the yExport output handlers that enhance the 
+            yFiles library. 
+            OutputHandler is a direct subclass of abstract class 
+            <a href="../api/y/io/IOHandler.html" title="Link to API documentation" target="_top">IOHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> from package 
+            <a href="../api/y/io/package-summary.html" title="Link to API documentation" target="_top">y.io<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> of the yFiles 
+            library. 
+            <a href="export_usage.html#fig_export_classes" title="Figure&nbsp;12.1.&nbsp;Output handler hierarchy in yExport">Figure&nbsp;12.1, &#8220;Output handler hierarchy in yExport&#8221;</a> illustrates the yExport output handler 
+            hierarchy.
+            
+         </p>
+         <div class="figure"><a name="fig_export_classes"></a><p class="title"><b>Figure&nbsp;12.1.&nbsp;Output handler hierarchy in yExport</b></p>
+            <div class="informaltable">
+               <center>
+                  <table border="0">
+                     <colgroup>
+                        <col width="100%">
+                     </colgroup>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/export_outputhandler.jpg" align="middle" alt="Output handler hierarchy in yExport."></div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <p>
+            The code fragment in <a href="export_usage.html#ex_PDFOutputHandler" title="Example&nbsp;12.1.&nbsp;Instantiating a PDFOutputHandler">Example&nbsp;12.1, &#8220;Instantiating a PDFOutputHandler&#8221;</a> shows how to 
+            instantiate and use a PDFOutputHandler to export the content of a given 
+            <a href="../api/y/view/Graph2DView.html" title="Link to API documentation" target="_top">Graph2DView<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to a PDF-encoded file.
+            
+         </p>
+         <div class="example"><a name="ex_PDFOutputHandler"></a><p class="title"><b>Example&nbsp;12.1.&nbsp;Instantiating a PDFOutputHandler</b></p><pre class="programlisting java">
+public void exportPDF(Graph2DView view) {
+  // Instantiate a PDF output handler and export the view's content.
+  try {
+    IOHandler ioh = new PDFOutputHandler();
+    ioh.write(view.getGraph2D(), "MyPDF.pdf");
+  }
+  catch (IOException ioEx) {
+    // Something went wrong. Complain.
+  }
+}
+</pre></div>
+         <p>
+            <a href="http://docs.yworks.com/yexport/demo/yext/export/PDFExportDemo.java.html" title="Link to demo code" target="_top">PDFExportDemo.java</a> presents an 
+            extensive tutorial demo application that shows how to export a view's contents 
+            to PDF.
+            
+         </p>
+         <p>
+            Class OutputHandler supports passing rendering hints to the underlying 
+            rendering system. 
+            Rendering hints can be used to control the quality of text rendering, for 
+            example. 
+            The following method allows to specify the hints:
+            
+         </p>
+         <div class="techn_templ">
+            <center>
+               <table width="100%" border="1">
+                  <colgroup>
+                     <col width="16%" align="left">
+                     <col width="84%" align="left">
+                  </colgroup>
+                  <tbody valign="top">
+                     <tr class="techn_api">
+                        <td colspan="2" align="left"><pre class="programlisting ignore"><a href="http://docs.yworks.com/yexport/doc/api/yext/export/io/OutputHandler.html#addRenderingHint(java.awt.RenderingHints.Key, java.lang.Object)" title="Link to API documentation" target="_top">void addRenderingHint(RenderingHints.Key key, Object value)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                     </tr>
+                     <tr class="spacing">
+                        <td align="left">Description</td>
+                        <td align="left">Sets rendering hints for the rendering system.</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </center>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="export_clipboard"></a>Using the System Clipboard
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class 
+               <a href="http://docs.yworks.com/yexport/doc/api/yext/export/datatransfer/VisualTransferable.html" title="Link to API documentation" target="_top">VisualTransferable<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               makes available support for the system clipboard. 
+               It allows to transfer the contents of a Graph2DView to the clipboard using the 
+               EMF file format. 
+               In addition to this so-called "data flavor," optional image file formats can 
+               also be part of the transfer data in order to support EMF-unaware applications.
+               
+               
+               
+               
+               The additional image file formats that are used as fallback data flavors depend 
+               on the actual platform as well as the version of the Java Runtime Environment. 
+               
+               The 
+               <a href="http://docs.yworks.com/yexport/doc/api/yext/export/datatransfer/VisualTransferable.html#VisualTransferable(y.view.Graph2DView, boolean)" title="Link to API documentation" target="_top">VisualTransferable(Graph2DView, boolean)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               constructor can be used to enable fallback data flavors as part of the 
+               transferred data.
+               
+            </p>
+            <p>
+               Tutorial demo application 
+               <a href="http://docs.yworks.com/yexport/demo/yext/export/SystemClipboardDemo.java.html" title="Link to demo code" target="_top">SystemClipboardDemo.java</a> shows 
+               how to copy the contents of a Graph2DView encoded in EMF format to the system 
+               clipboard.
+               
+            </p>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="yexport_extension_package.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="yexport_extension_package.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="obfuscation.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Chapter&nbsp;12.&nbsp;yExport Extension Package&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Appendix&nbsp;A.&nbsp;Obfuscation</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

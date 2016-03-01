@@ -1,0 +1,2170 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Tree Layout</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="layout.html" title="Chapter&nbsp;5.&nbsp;Automatic Graph Layout">
+      <link rel="previous" href="compact_orthogonal_layouter.html" title="Compact Orthogonal Layout">
+      <link rel="next" href="cls_GenericTreeLayouter.html" title="Generic Tree Layout">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Tree Layout</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="compact_orthogonal_layouter.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;5.&nbsp;Automatic Graph Layout</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="cls_GenericTreeLayouter.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="tree_layouter"></a>Tree Layout
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            The yFiles tree layouter family specializes in the layout of tree-structured 
+            graphs. 
+            The need to visualize directed or undirected trees arises in many application 
+            areas, e.g., 
+            
+         </p>
+         <div class="itemizedlist">
+            <ul type="disc">
+               <li>
+                  Dataflow analysis
+                  
+               </li>
+               <li>
+                  Software engineering
+                  
+               </li>
+               <li>
+                  Network management
+                  
+               </li>
+               <li>
+                  Bioinformatics
+                  
+               </li>
+            </ul>
+         </div>
+         <p>
+            
+            
+         </p>
+         <p>
+            Tree layout is provided in a number of different styles: 
+            
+         </p>
+         <div class="itemizedlist">
+            <ul type="disc">
+               <li><a href="tree_layouter.html#cls_TreeLayouter" title="Directed">Directed</a></li>
+               <li><a href="tree_layouter.html#cls_BalloonLayouter" title="Balloon">Balloon</a></li>
+               <li><a href="tree_layouter.html#cls_HVTreeLayouter" title="Horizontal/Vertical">Horizontal/Vertical</a></li>
+               <li><a href="tree_layouter.html#cls_ARTreeLayouter" title="Compact">Compact</a></li>
+            </ul>
+         </div>
+         <p>
+            
+            In addition, the 
+            <a href="cls_GenericTreeLayouter.html" title="Generic Tree Layout">generic tree layout algorithm</a> 
+            provides the basis for a multitude of tree layout schemes. 
+            
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_layouter_advanced"></a>Advanced Layout Concepts
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="tree_layouter_sorting"></a>Sorting Child Nodes
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The tree layout algorithms support sorting the child nodes in a subtree using 
+                  a <a href="../api/y/layout/tree/NodeOrderComparator.html" title="Link to API documentation" target="_top">NodeOrderComparator<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> in 
+                  conjunction with a data provider that is registered with the graph using the 
+                  look-up key 
+                  <a href="../api/y/layout/tree/NodeOrderComparator.html#NODE_ORDER_DPKEY" title="Link to API documentation" target="_top">NODE_ORDER_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                  
+                  The following setter method registers custom comparators with a tree layouter.
+                  
+                  Except GenericTreeLayouter, this method is available in all tree layouters.
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/TreeLayouter.html#setComparator(java.util.Comparator)" title="Link to API documentation" target="_top">void setComparator(Comparator sortingComparator)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Comparator registration.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  Class NodeOrderComparator, when given the outgoing edges of a (sub)tree's root 
+                  node, uses the target nodes of the edges for querying the data provider. 
+                  The <tt class="classname">java.lang.Comparable</tt> objects, which the comparator 
+                  expects in return, are then used to determine the order of the child nodes.
+                  
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_layouter_stages"></a>Enhancing the Layout Process
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               <a href="tree_layouter.html#tab_tree_layouter_stages" title="Table&nbsp;5.54.&nbsp;Layout Stages">Table&nbsp;5.54, &#8220;Layout Stages&#8221;</a> lists the layout stages that can be 
+               used with all tree layout algorithms to enhance the layout process. 
+               
+               Layout module <a href="../../src/demo/layout/module/TreeLayoutModule.java" title="Link to demo code" target="_top">TreeLayoutModule.java</a> presents 
+               the setup of the tree layout algorithms in an application context. 
+               It also demonstrates how to set up and use the tree reduction layout stage. 
+               
+            </p>
+            <div class="table"><a name="tab_tree_layouter_stages"></a><p class="title"><b>Table&nbsp;5.54.&nbsp;Layout Stages</b></p>
+               <table summary="Layout Stages" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="80%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Classname</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/tree/TreeReductionStage.html" title="Link to API documentation" target="_top">TreeReductionStage<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Adds support for tree-like graphs.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               Class TreeReductionStage is a layout stage that transforms graphs into proper 
+               trees. 
+               It automatically removes all non-tree edges prior to an algorithm's run and 
+               re-inserts them thereafter. 
+               When the edges are re-inserted, different routing styles can be applied. 
+               
+            </p>
+         </div>
+         <div class="figure"><a name="d0e13668"></a><p class="title"><b>Figure&nbsp;5.69.&nbsp;Sample layouts produced with the tree layouters defined in package
+                  <a href="../api/y/layout/tree/package-summary.html" title="Link to API documentation" target="_top">y.layout.tree<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></b></p>
+            <div class="informaltable">
+               <center>
+                  <table border="0">
+                     <colgroup>
+                        <col width="33%">
+                        <col width="33%">
+                        <col width="34%">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/tree-layout-1b-thumb.gif" align="middle" alt="Sample layouts produced with the tree layouters defined in package"></div>
+                           </td>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/tree-layout-1c-thumb.gif" align="middle" alt="Sample layouts produced with the tree layouters defined in package"></div>
+                           </td>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/tree-layout-1d-thumb.gif" align="middle" alt="Sample layouts produced with the tree layouters defined in package"></div>
+                           </td>
+                        </tr>
+                        <tr align="center">
+                           <td align="center">
+                                Using <a href="../api/y/layout/tree/TreeLayouter.html" title="Link to API documentation" target="_top">TreeLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                              
+                           </td>
+                           <td align="center">
+                                Using <a href="../api/y/layout/tree/BalloonLayouter.html" title="Link to API documentation" target="_top">BalloonLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                              
+                           </td>
+                           <td align="center">
+                                Using <a href="../api/y/layout/tree/HVTreeLayouter.html" title="Link to API documentation" target="_top">HVTreeLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="cls_TreeLayouter"></a>Directed
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class <a href="../api/y/layout/tree/TreeLayouter.html" title="Link to API documentation" target="_top">TreeLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is a layouter 
+               mainly used for directed trees that have a unique root element. 
+               Starting with the root node the nodes are arranged either from top to bottom, 
+               left to right, right to left, or bottom to top. 
+               The edges of a graph can either be routed as straight lines or in an orthogonal 
+               bus-like fashion. 
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_directed_dataprovider"></a>Supplemental Layout Data
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               TreeLayouter knows a number of data provider keys which are used to retrieve 
+               supplemental layout data for a graph's elements. 
+               
+               The data is bound to the graph by means of a data provider, which is registered 
+               using a given look-up key. 
+               <a href="tree_layouter.html#tab_tree_directed_keys" title="Table&nbsp;5.55.&nbsp;Data provider look-up keys">Table&nbsp;5.55, &#8220;Data provider look-up keys&#8221;</a> lists all look-up keys for 
+               TreeLayouter. 
+               
+            </p>
+            <p>
+               Binding supplemental layout data to a graph is described in 
+               <a href="layout_concepts.html#supplemental_information" title="Providing Supplemental Layout Data">the section called &#8220;Providing Supplemental Layout Data&#8221;</a>. 
+               
+            </p>
+            <div class="table"><a name="tab_tree_directed_keys"></a><p class="title"><b>Table&nbsp;5.55.&nbsp;Data provider look-up keys</b></p>
+               <table summary="Data provider look-up keys" width="100%" border="1">
+                  <colgroup>
+                     <col width="25%" align="left">
+                     <col width="10%" align="left">
+                     <col width="10%" align="left">
+                     <col width="55%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Key</th>
+                        <th align="left">Element Type</th>
+                        <th align="left">Value Type</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/LabelLayoutKeys.html#EDGE_LABEL_LAYOUT_KEY" title="Link to API documentation" target="_top">EDGE_LABEL_LAYOUT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">LabelLayoutData[]</td>
+                        <td align="left">
+                             For each edge an array of LabelLayoutData objects that encode size and preferred
+                             placement for all labels of the edge.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/LabelLayoutKeys.html#NODE_LABEL_LAYOUT_KEY" title="Link to API documentation" target="_top">NODE_LABEL_LAYOUT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">LabelLayoutData[]</td>
+                        <td align="left">
+                             For each node an array of LabelLayoutData objects that encode size and preferred
+                             placement for all labels of the node.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/NodeHalo.html#NODE_HALO_DPKEY" title="Link to API documentation" target="_top">NODE_HALO_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">NodeHalo</td>
+                        <td align="left">
+                             A <a href="../api/y/layout/NodeHalo.html" title="Link to API documentation" target="_top">NodeHalo<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> object that specifies the halo 
+                             sizes at each side of a node.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_directed_options"></a>Layout Options
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               These options configure class TreeLayouter in detail. 
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Minimal Layer Distance</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/TreeLayouter.html#setMinimalLayerDistance(double)" title="Link to API documentation" target="_top">void setMinimalLayerDistance(double minimalDistance)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Determines the minimal distance between parent and child nodes.
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Minimal Node Distance</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/TreeLayouter.html#setMinimalNodeDistance(double)" title="Link to API documentation" target="_top">void setMinimalNodeDistance(double minimalDistance)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Determines the minimal distance between the siblings of a node.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Layout Orientation</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/CanonicMultiStageLayouter.html#setLayoutOrientation(byte)" title="Link to API documentation" target="_top">void setLayoutOrientation(byte orientation)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 Determines the main layout orientation, i.e., the overall orientation for the edges
+                                 in a layout.
+                                 This method is inherited from CanonicMultiStageLayouter, the direct superclass of
+                                 TreeLayouter.
+                                 The layout algorithm tries to arrange nodes in such a way that all edges point in
+                                 the main layout direction.
+                                 
+                              </p>
+                              <p>
+                                 By default, the overall orientation for the edges will be from top to bottom.
+                                 The other three layout directions can be set using the constants defined in interface
+                                 <a href="../api/y/layout/LayoutOrientation.html" title="Link to API documentation" target="_top">LayoutOrientation<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                                 <a href="tree_layouter.html#ex_tl_layout_orientation" title="Example&nbsp;5.37.&nbsp;Setting the layout orientation">Example&nbsp;5.37, &#8220;Setting the layout orientation&#8221;</a> shows how to set the layout direction.
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  The documentation for the other layout options assumes that this default orientation
+                  is being used.
+                  
+               </p>
+            </div>
+            <div class="example"><a name="ex_tl_layout_orientation"></a><p class="title"><b>Example&nbsp;5.37.&nbsp;Setting the layout orientation</b></p><pre class="programlisting java">
+TreeLayouter tl = new TreeLayouter();
+// Use left-to-right main layout direction.
+tl.setLayoutOrientation(LayoutOrientation.LEFT_TO_RIGHT);
+</pre></div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Port Style</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/TreeLayouter.html#setPortStyle(int)" title="Link to API documentation" target="_top">void setPortStyle(int portStyle)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 Determines the port assignment policy to be used.
+                                 Ports can be placed
+                                 
+                              </p>
+                              <div class="itemizedlist">
+                                 <ul type="disc">
+                                    <li>at the center of the corresponding nodes,</li>
+                                    <li>in the middle of the border, or</li>
+                                    <li>distributed along the border of the corresponding nodes.</li>
+                                 </ul>
+                              </div>
+                              <p>
+                                 
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Edge Routing Style</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/TreeLayouter.html#setLayoutStyle(int)" title="Link to API documentation" target="_top">void setLayoutStyle(int style)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              If set, all edges will be routed orthogonally in a bus-like fashion.
+                              If not set, the edges will be routed as straight-line segments.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Bus Alignment</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/TreeLayouter.html#setBusAlignment(double)" title="Link to API documentation" target="_top">void setBusAlignment(double busAlignment)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Determines vertical bus alignment within the space between two layers for edges from
+                              a given (root) node to its children that are routed in an orthogonal bus-like fashion.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="techn_templ"><a name="meths_tl_vertical_alignment"></a><center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Vertical Alignment</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/TreeLayouter.html#setVerticalAlignment(double)" title="Link to API documentation" target="_top">void setVerticalAlignment(double verticalAlignment)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 Specifies vertical alignment of nodes that are in the same layer.
+                                 The value for the vertical alignment is interpreted relative to a layer's height,
+                                 which is determined by the maximum of the node heights.
+                                 
+                              </p>
+                              <p>
+                                 A value of <tt class="code">0.0</tt> means top alignment, <tt class="code">1.0</tt> means bottom alignment.
+                                 The default value is <tt class="code">0.5</tt>, which means center alignment of all nodes
+                                 in the same layer.
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Child Placement Policy</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/TreeLayouter.html#setChildPlacementPolicy(byte)" title="Link to API documentation" target="_top">void setChildPlacementPolicy(byte childPlacementPolicy)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 Determines the placement of child nodes in a given tree. 
+                                 Depending on the actual child placement policy, an optimal area utilization can
+                                 be achieved.
+                                 The following policies are supported:
+                                 
+                              </p>
+                              <div class="itemizedlist">
+                                 <ul type="disc">
+                                    <li><a href="../api/y/layout/tree/TreeLayouter.html#CHILD_PLACEMENT_POLICY_SIBLINGS_ON_SAME_LAYER" title="Link to API documentation" target="_top">CHILD_PLACEMENT_POLICY_SIBLINGS_ON_SAME_LAYER<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                                        
+                                       
+                                       Configures the algorithm to place leaf nodes that have the same parent node in the
+                                       same layer.
+                                       This option is useful in order to make a graph vertically more compact.
+                                       
+                                    </li>
+                                    <li><a href="../api/y/layout/tree/TreeLayouter.html#CHILD_PLACEMENT_POLICY_ALL_LEAVES_ON_SAME_LAYER" title="Link to API documentation" target="_top">CHILD_PLACEMENT_POLICY_ALL_LEAVES_ON_SAME_LAYER<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       This setting results in a Dendrogram-like style and places all leaf nodes of the
+                                       tree in the bottommost layer of the layout.
+                                       
+                                       
+                                    </li>
+                                    <li><a href="../api/y/layout/tree/TreeLayouter.html#CHILD_PLACEMENT_POLICY_LEAVES_STACKED_LEFT" title="Link to API documentation" target="_top">CHILD_PLACEMENT_POLICY_LEAVES_STACKED_LEFT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       Configures the algorithm for a stacked style of leaf nodes consisting of a single 
+                                       "stack."
+                                       
+                                    </li>
+                                    <li><a href="../api/y/layout/tree/TreeLayouter.html#CHILD_PLACEMENT_POLICY_LEAVES_STACKED_RIGHT" title="Link to API documentation" target="_top">CHILD_PLACEMENT_POLICY_LEAVES_STACKED_RIGHT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       Configures the algorithm for a stacked style of leaf nodes consisting of a single
+                                       "stack."
+                                       
+                                    </li>
+                                    <li><a href="../api/y/layout/tree/TreeLayouter.html#CHILD_PLACEMENT_POLICY_LEAVES_STACKED_LEFT_AND_RIGHT" title="Link to API documentation" target="_top">CHILD_PLACEMENT_POLICY_LEAVES_STACKED_LEFT_AND_RIGHT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       Configures the algorithm for a stacked style of leaf nodes consisting of two "stacks."
+                                       
+                                    </li>
+                                    <li><a href="../api/y/layout/tree/TreeLayouter.html#CHILD_PLACEMENT_POLICY_LEAVES_STACKED" title="Link to API documentation" target="_top">CHILD_PLACEMENT_POLICY_LEAVES_STACKED<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       Configures the algorithm for a stacked style of leaf nodes that aims to balance
+                                       "stack" heights.
+                                       For each subtree, the algorithm decides about the actual policy depending on the
+                                       number of leaf nodes: either child placement policy 
+                                       
+                                       <a href="../api/y/layout/tree/TreeLayouter.html#CHILD_PLACEMENT_POLICY_LEAVES_STACKED_RIGHT" title="Link to API documentation" target="_top">CHILD_PLACEMENT_POLICY_LEAVES_STACKED_RIGHT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       or 
+                                       
+                                       <a href="../api/y/layout/tree/TreeLayouter.html#CHILD_PLACEMENT_POLICY_LEAVES_STACKED_LEFT_AND_RIGHT" title="Link to API documentation" target="_top">CHILD_PLACEMENT_POLICY_LEAVES_STACKED_LEFT_AND_RIGHT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       is used.
+                                       
+                                    </li>
+                                 </ul>
+                              </div>
+                              <p>
+                                 
+                                 In the above context, "stacked" means that leaf nodes at the same parent node are
+                                 placed non-overlapping below their parent node in a row that extends downwards.
+                                 This allows to make a graph horizontally more compact.
+                                 "Left" and "right" indicate where, relative to the center of the parent node, the
+                                 row is placed.
+                                 
+                              </p>
+                              <p>
+                                 Note that the "stacked" policies only have an effect on subtrees where all children 
+                                 are leaf nodes.
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Global Layering</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/TreeLayouter.html#setEnforceGlobalLayering(boolean)" title="Link to API documentation" target="_top">setEnforceGlobalLayering(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              If set, the algorithm ensures that large nodes never span more than their layer.
+                              Otherwise, a more compact layout can be achieved when large nodes span two or more
+                              layers.
+                              This setting is useful, if the hierarchical structure of the tree should be more
+                              emphasized.
+                              
+                              Note that when disabled, the value set for the <a href="tree_layouter.html#meths_tl_vertical_alignment">Vertical Alignment</a>
+                              of nodes within their layer is ignored.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_directed_advanced"></a>Advanced Layout Concepts
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="tree_directed_node_halos"></a>Node Halos
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  TreeLayouter by default supports node halos as soon as they are declared using the 
+                  data provider key <a href="../api/y/layout/NodeHalo.html#NODE_HALO_DPKEY" title="Link to API documentation" target="_top">NODE_HALO_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+                  During layout calculation, it takes any specified additional paddings around nodes 
+                  into consideration and keeps the areas clear of other graph elements. 
+                  The labels of a node and its adjacent edge segments are not affected and can still 
+                  be placed inside or cross the node's halo.
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="tree_directed_integrated_labeling"></a>Integrated Labeling
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Besides the generic labeling support as described in 
+                  <a href="labeling.html#general_labeling" title="Generic Labeling">the section called &#8220;Generic Labeling&#8221;</a>, which is available with all yFiles layout 
+                  algorithms, TreeLayouter additionally features integrated labeling. 
+                  
+               </p>
+               <p>
+                  Integrated labeling is available for both node labels and edge labels. 
+                  They are taken into consideration when determining the positions for the nodes 
+                  of the tree. 
+                  With this strategy it is guaranteed that no label will overlap other objects in 
+                  the diagram. 
+                  
+                  Integrated labeling can be enabled or disabled using the following setter methods:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/TreeLayouter.html#setIntegratedEdgeLabelingEnabled(boolean)" title="Link to API documentation" target="_top">void setIntegratedEdgeLabelingEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/tree/TreeLayouter.html#setIntegratedNodeLabelingEnabled(boolean)" title="Link to API documentation" target="_top">void setIntegratedNodeLabelingEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Determines whether integrated labeling is enabled.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  See also <a href="labeling.html#integrated_labeling" title="Integrated Labeling">the section called &#8220;Integrated Labeling&#8221;</a>.
+                  
+               </p>
+               <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Tip</h3>
+                  <p>
+                     Optimal label placement with integrated labeling can be achieved using <a href="../api/y/layout/FreeEdgeLabelModel.html" title="Link to API documentation" target="_top">FreeEdgeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                     as the label model for the edges. 
+                     As explained in <a href="labeling.html#label_models" title="Label Models">the section called &#8220;Label Models&#8221;</a>, this edge label model is ideally 
+                     suited in combination with integrated labeling and yields the best match for a label 
+                     location that is computed by TreeLayouter.
+                     
+                  </p>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="tree_directed_incremental"></a>Incremental Layout
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Class TreeLayouter supports incremental layout by means of a 
+                  <tt class="classname">java.util.Comparator</tt> implementation that provides 
+                  dynamic rearrangement of all child nodes in a given subtree according to their 
+                  relative coordinates. 
+                  Based on this scheme, the default comparator is able to incrementally insert 
+                  new child nodes at optimal positions with respect to already arranged child 
+                  nodes.
+                  
+               </p>
+               <p>
+                  The following setter method registers custom comparator implementations that act
+                  globally on the entire tree:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/TreeLayouter.html#setComparator(java.util.Comparator)" title="Link to API documentation" target="_top">void setComparator(Comparator childComparator)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Comparator registration.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  Alternatively, class 
+                  <a href="../api/y/layout/tree/NodeOrderComparator.html" title="Link to API documentation" target="_top">NodeOrderComparator<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> can be used to 
+                  sort the child nodes of a subtree, too. 
+                  See also <a href="tree_layouter.html#tree_layouter_sorting" title="Sorting Child Nodes">the section called &#8220;Sorting Child Nodes&#8221;</a>.
+                  
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="cls_BalloonLayouter"></a>Balloon
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class <a href="../api/y/layout/tree/BalloonLayouter.html" title="Link to API documentation" target="_top">BalloonLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is a tree 
+               layouter that positions the subtrees rooted at a node in a radial fashion 
+               around that node. 
+               
+               It is ideally suited for huge trees (say, 10,000 nodes) since it computes fast 
+               layouts that are quite compact. 
+               
+            </p>
+            <div class="figure"><a name="d0e14119"></a><p class="title"><b>Figure&nbsp;5.70.&nbsp;Sample layout of a tree that contains 10,000 nodes</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/tree-layout-2a.gif" align="middle" alt="Sample layout of a tree that contains 10,000 nodes"></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="tree_balloon_dataprovider"></a>Supplemental Layout Data
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Class BalloonLayouter knows a number of data provider keys which are used to 
+                  retrieve supplemental layout data for a graph's elements. 
+                  
+                  The data is bound to the graph by means of a data provider, which is registered 
+                  using a given look-up key. 
+                  <a href="tree_layouter.html#tab_tree_balloon_keys" title="Table&nbsp;5.56.&nbsp;Data provider look-up keys">Table&nbsp;5.56, &#8220;Data provider look-up keys&#8221;</a> lists all look-up keys for 
+                  BalloonLayouter. 
+                  
+               </p>
+               <p>
+                  Binding supplemental layout data to a graph is described in 
+                  <a href="layout_concepts.html#supplemental_information" title="Providing Supplemental Layout Data">the section called &#8220;Providing Supplemental Layout Data&#8221;</a>. 
+                  
+               </p>
+               <div class="table"><a name="tab_tree_balloon_keys"></a><p class="title"><b>Table&nbsp;5.56.&nbsp;Data provider look-up keys</b></p>
+                  <table summary="Data provider look-up keys" width="100%" border="1">
+                     <colgroup>
+                        <col width="25%" align="left">
+                        <col width="10%" align="left">
+                        <col width="10%" align="left">
+                        <col width="55%" align="left">
+                     </colgroup>
+                     <thead valign="top">
+                        <tr>
+                           <th align="left">Key</th>
+                           <th align="left">Element Type</th>
+                           <th align="left">Value Type</th>
+                           <th align="left">Description</th>
+                        </tr>
+                     </thead>
+                     <tbody valign="top">
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/tree/BalloonLayouter.html#INTERLEAVED_NODES_DPKEY" title="Link to API documentation" target="_top">INTERLEAVED_NODES_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">Node</td>
+                           <td align="left">boolean</td>
+                           <td align="left">
+                                For each node a boolean value indicating whether interleaved child node placement 
+                                should be enabled.
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/NodeHalo.html#NODE_HALO_DPKEY" title="Link to API documentation" target="_top">NODE_HALO_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">Node</td>
+                           <td align="left">NodeHalo</td>
+                           <td align="left">
+                                A <a href="../api/y/layout/NodeHalo.html" title="Link to API documentation" target="_top">NodeHalo<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> object that specifies the halo 
+                                sizes at each side of a node.
+                                
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_balloon_options"></a>Layout Options
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               These options configure class BalloonLayouter in detail. 
+               
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Root Node Policy</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setRootNodePolicy(byte)" title="Link to API documentation" target="_top">void setRootNodePolicy(byte policy)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 Determines which node should be used as root of the tree.
+                                 Available options are:
+                                 
+                              </p>
+                              <div class="itemizedlist">
+                                 <ul type="disc">
+                                    <li><a href="../api/y/layout/tree/BalloonLayouter.html#DIRECTED_ROOT" title="Link to API documentation" target="_top">DIRECTED_ROOT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       Chooses a node with indegree zero, if present.
+                                       A good choice for directed rooted trees.
+                                       
+                                    </li>
+                                    <li><a href="../api/y/layout/tree/BalloonLayouter.html#CENTER_ROOT" title="Link to API documentation" target="_top">CENTER_ROOT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       Chooses the root such that the depth of the resulting tree gets minimized.
+                                       
+                                    </li>
+                                    <li><a href="../api/y/layout/tree/BalloonLayouter.html#WEIGHTED_CENTER_ROOT" title="Link to API documentation" target="_top">WEIGHTED_CENTER_ROOT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       Chooses the root such that the number of paths between any two nodes that
+                                       traverse the root is maximal.
+                                       
+                                       This seems to be a natural root for undirected trees.
+                                       
+                                    </li>
+                                 </ul>
+                              </div>
+                              <p>
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Preferred Root Wedge</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setPreferredRootWedge(int)" title="Link to API documentation" target="_top">void setPreferredRootWedge(int wedgeAngle)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              This setting determines the angular range of the sector that will be reserved
+                              around the root node of the graph to accommodate the attached subtrees.
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Preferred Child Wedge</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setPreferredChildWedge(int)" title="Link to API documentation" target="_top">void setPreferredChildWedge(int wedgeAngle)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 This setting determines the angular range of the sector that will be reserved
+                                 for the children of a root node.
+                                 The possible angular range lies between 1 and 359.
+                                 The remaining angular range (360 minus x) will be automatically used to
+                                 accommodate the edge that connects to the root node.
+                                 
+                              </p>
+                              <p>
+                                 The smaller the chosen value, the more the impression that the nodes drive away
+                                 from their root nodes and the center of the graph.
+                                 
+                              </p>
+                              <p>
+                                 Generally speaking, the compactness of the layout will decrease with smaller
+                                 values.
+                                 Very small values will lead to layouts that consume a lot of space.
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Minimal Edge Length</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setMinimalEdgeLength(int)" title="Link to API documentation" target="_top">void setMinimalEdgeLength(int minimalLength)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Determines the minimal length of an edge.
+                              The smaller the chosen value the more compact the resulting layout.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Compactness Factor</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setCompactnessFactor(double)" title="Link to API documentation" target="_top">void setCompactnessFactor(double factor)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              This parameter influences the length of the tree edges as it is computed by the
+                              layout algorithm.
+                              The smaller the compactness factor, the shorter the tree-edges and the more
+                              compact the overall layout.
+                              The bigger the compactness factor, the more difficult, and hence slower, the
+                              layout computation.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Interleaved Child Node Placement</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setInterleavedMode(byte)" title="Link to API documentation" target="_top">void setInterleavedMode(byte policy)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 Child nodes at the same parent tree node can be placed in an interleaving fashion. 
+                                 Especially if some tree node has many child nodes and if they have similar sizes, 
+                                 the diagram can become more compact.
+                                 
+                              </p>
+                              <p>
+                                 Available options are: 
+                                 
+                              </p>
+                              <div class="itemizedlist">
+                                 <ul type="disc">
+                                    <li><a href="../api/y/layout/tree/BalloonLayouter.html#INTERLEAVED_MODE_OFF" title="Link to API documentation" target="_top">INTERLEAVED_MODE_OFF<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       Disables interleaved child node placement for all tree nodes. 
+                                       This is the default setting.
+                                       
+                                    </li>
+                                    <li><a href="../api/y/layout/tree/BalloonLayouter.html#INTERLEAVED_MODE_ALL_NODES" title="Link to API documentation" target="_top">INTERLEAVED_MODE_ALL_NODES<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       At each tree node child nodes will be placed interleaved.
+                                       
+                                    </li>
+                                    <li><a href="../api/y/layout/tree/BalloonLayouter.html#INTERLEAVED_MODE_SELECTED_NODES" title="Link to API documentation" target="_top">INTERLEAVED_MODE_SELECTED_NODES<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       Enables interleaved child node placement for a custom selection of tree nodes that 
+                                       is given by the user. 
+                                       To specify the nodes, a data provider holding such supplemental layout data must 
+                                       be bound to the graph. 
+                                       The data provider is expected to be registered with the graph using key 
+                                       <a href="../api/y/layout/tree/BalloonLayouter.html#INTERLEAVED_NODES_DPKEY" title="Link to API documentation" target="_top">INTERLEAVED_NODES_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                                       
+                                       If no data provider is registered, a simple heuristic is used to decide for which 
+                                       tree node the child nodes should be placed interleaved.
+                                       
+                                    </li>
+                                 </ul>
+                              </div>
+                              <p>
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="figure"><a name="fig_balloon_interleaved"></a><p class="title"><b>Figure&nbsp;5.71.&nbsp;Effects of interleaved child node placement</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="50%">
+                           <col width="50%">
+                        </colgroup>
+                        <tbody valign="middle">
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/balloon_interleaved_off.jpg" align="middle" alt="Effects of interleaved child node placement"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/balloon_interleaved_all.jpg" align="middle" alt="Effects of interleaved child node placement"></div>
+                              </td>
+                           </tr>
+                           <tr align="center">
+                              <td align="center">Tree layout by BalloonLayouter...</td>
+                              <td align="center">... with interleaved child node placement enabled.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  If there is enough space to place the child nodes of a tree node without interleaving, 
+                  they will be placed normally, even when "Interleaved Child Node Placement" is enabled.
+                  
+               </p>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Child Node Alignment</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setChildAlignmentPolicy(byte)" title="Link to API documentation" target="_top">void setChildAlignmentPolicy(byte policy)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 Determines the policy for aligning the child nodes at a tree node. 
+                                 Available options are: 
+                                 
+                              </p>
+                              <div class="itemizedlist">
+                                 <ul type="disc">
+                                    <li><a href="../api/y/layout/tree/BalloonLayouter.html#CHILD_ALIGNMENT_PLAIN" title="Link to API documentation" target="_top">CHILD_ALIGNMENT_PLAIN<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       Child nodes at the same parent tree node are aligned such that each child node has 
+                                       the same border-to-border distance to the parent node. 
+                                       When interleaved child node placement is active, two different distances will be 
+                                       realized.
+                                       
+                                    </li>
+                                    <li><a href="../api/y/layout/tree/BalloonLayouter.html#CHILD_ALIGNMENT_SAME_CENTER" title="Link to API documentation" target="_top">CHILD_ALIGNMENT_SAME_CENTER<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       Child nodes at the same parent tree node are aligned such that each child node has 
+                                       the same center-to-center distance to the parent node. 
+                                       Therefore all nodes will be placed on one common radius around their root. 
+                                       When interleaved child node placement is active, two different radii will be realized.
+                                       
+                                    </li>
+                                    <li><a href="../api/y/layout/tree/BalloonLayouter.html#CHILD_ALIGNMENT_COMPACT" title="Link to API documentation" target="_top">CHILD_ALIGNMENT_COMPACT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       Child nodes at the same parent tree node are aligned such that the resulting drawing 
+                                       will be as compact as possible, not considering any symmetric constraints. 
+                                       This is the default setting.
+                                       
+                                    </li>
+                                    <li><a href="../api/y/layout/tree/BalloonLayouter.html#CHILD_ALIGNMENT_SMART" title="Link to API documentation" target="_top">CHILD_ALIGNMENT_SMART<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       
+                                       
+                                       Child nodes at the same parent tree node are aligned using a heuristic for a well-balanced 
+                                       and symmetric layout. 
+                                       When interleaved child node placement is active, plain alignment will be used instead 
+                                       of the heuristic. 
+                                       
+                                    </li>
+                                 </ul>
+                              </div>
+                              <p>
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="figure"><a name="fig_balloon_child_alignment"></a><p class="title"><b>Figure&nbsp;5.72.&nbsp;Child node alignment policies</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="37%">
+                           <col width="33%">
+                           <col width="30%">
+                        </colgroup>
+                        <tbody valign="middle">
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/balloon_child_alignment_plain.jpg" align="middle" alt="Child node alignment policies"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/balloon_child_alignment_radius.jpg" align="middle" alt="Child node alignment policies"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/balloon_child_alignment_compact.jpg" align="middle" alt="Child node alignment policies"></div>
+                              </td>
+                           </tr>
+                           <tr align="center">
+                              <td align="center">Child node aligment plain...</td>
+                              <td align="center">... same center...</td>
+                              <td align="center">... compact.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Straighten Chains</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setChainStraighteningModeEnabled(boolean)" title="Link to API documentation" target="_top">void setChainStraighteningModeEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              If activated, all nodes in a chain will be placed on a straight line. 
+                              This may lead to smoother and more symmetric layouts. 
+                              By default, this feature is turned off.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Allow Overlaps</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setAllowOverlaps(boolean)" title="Link to API documentation" target="_top">void setAllowOverlaps(boolean allowOverlaps)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              If activated, this option further increases compactness of the resulting
+                              layout, but potentially introduces slight node overlaps.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Consider Node Labels</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setConsiderNodeLabelsEnabled(boolean)" title="Link to API documentation" target="_top">void setConsiderNodeLabelsEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Enables node label-aware layout calculation.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_balloon_advanced"></a>Advanced Layout Concepts
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="balloon_node_halos"></a>Node Halos
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  BalloonLayouter by default supports node halos as soon as they are declared using 
+                  the data provider key <a href="../api/y/layout/NodeHalo.html#NODE_HALO_DPKEY" title="Link to API documentation" target="_top">NODE_HALO_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                  
+                  It considers any specified additional paddings around nodes, however, due to the 
+                  straight-line routing of the edges, they can cross through these areas in the resulting 
+                  diagram. 
+                  Also, node halo overlaps may occur if option "Allow Overlaps" is activated.
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="balloon_integrated_labeling"></a>Integrated Labeling
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Besides the generic labeling support as described in 
+                  <a href="labeling.html#general_labeling" title="Generic Labeling">the section called &#8220;Generic Labeling&#8221;</a>, which is available with all yFiles layout 
+                  algorithms, BalloonLayouter additionally features integrated labeling.
+                  
+               </p>
+               <p>
+                  Integrated labeling is available for both node labels and edge labels. 
+                  They are taken into consideration when determining the positions for the nodes 
+                  of the tree. 
+                  With this strategy it is guaranteed that no label will overlap other objects in 
+                  the diagram. 
+                  
+                  Integrated labeling can be enabled or disabled using the following setter methods:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setIntegratedEdgeLabelingEnabled(boolean)" title="Link to API documentation" target="_top">void setIntegratedEdgeLabelingEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/tree/BalloonLayouter.html#setIntegratedNodeLabelingEnabled(boolean)" title="Link to API documentation" target="_top">void setIntegratedNodeLabelingEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Determines whether integrated labeling is enabled.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  See also <a href="labeling.html#integrated_labeling" title="Integrated Labeling">the section called &#8220;Integrated Labeling&#8221;</a>.
+                  
+               </p>
+               <p>
+                  Enabling the integrated node labeling support of class BalloonLayouter means that 
+                  each node label will be placed and arranged by BalloonLayouter such that there are 
+                  no overlaps of node labels with each other or with graph elements (other than their 
+                  respective node).
+                  
+               </p>
+               <p>
+                  BalloonLayouter supports different node labeling policies that can be configured 
+                  using the 
+                  <a href="../api/y/layout/tree/BalloonLayouter.html#setNodeLabelingPolicy(byte)" title="Link to API documentation" target="_top">setNodeLabelingPolicy(byte)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  method. 
+                  The following policies are available:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#NODE_LABELING_HORIZONTAL" title="Link to API documentation" target="_top">NODE_LABELING_HORIZONTAL<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Each node label will be placed at the center of its node, with horizontal orientation. 
+                                 Multiple node labels will be placed center aligned and stacked.
+                                 
+                              </td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#NODE_LABELING_RAYLIKE" title="Link to API documentation" target="_top">NODE_LABELING_RAYLIKE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Node labels of leaf nodes and node labels of nodes having exactly one successor 
+                                 (thus possibly forming a chain) will be oriented ray-like, i.e. with the same orientation 
+                                 as their node's incoming edge. 
+                                 Additionally, the node labels of leaf nodes will be placed outside of their node. 
+                                 Multiple, ray-like oriented node labels will be left aligned. 
+                                 
+                                 Node labels of nodes having more than one successor will be placed at the center 
+                                 of their node, with horizontal orientation. 
+                                 Also, node labels that do not use a "free" label model, will be placed this way. 
+                                 See also <a href="tree_layouter.html#p_raylike">below</a>. 
+                                 
+                                 This is the default setting.
+                                 
+                              </td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#NODE_LABELING_MIXED" title="Link to API documentation" target="_top">NODE_LABELING_MIXED<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Node labels of leaf nodes will be oriented ray-like, i.e. with the same orientation 
+                                 as their node's incoming edge. 
+                                 Additionally, these node labels will be placed outside of their node. 
+                                 
+                                 Other node labels will be placed at the center of their node, with horizontal orientation. 
+                                 Also, node labels that do not use a "free" label model, will be placed this way. 
+                                 See also <a href="tree_layouter.html#p_raylike">below</a>.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p><a name="p_raylike"></a>
+                  Note that ray-like oriented node labels are only supported by integrated labeling 
+                  for node labels that use a "free" label model, e.g., 
+                  
+                  <a href="../api/y/layout/FreeNodeLabelModel.html" title="Link to API documentation" target="_top">FreeNodeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+                  
+               </p>
+               <div class="figure"><a name="fig_balloon_node_labeling"></a><p class="title"><b>Figure&nbsp;5.73.&nbsp;Results with different Node Labeling policies</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="50%">
+                              <col width="50%">
+                           </colgroup>
+                           <tbody valign="middle">
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/balloon_nodelabels_raylike.jpg" align="middle" alt="Results with different Node Labeling policies"></div>
+                                 </td>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/balloon_nodelabels_horizontal.jpg" align="middle" alt="Results with different Node Labeling policies"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">NODE_LABELING_RAYLIKE</td>
+                                 <td align="center">NODE_LABELING_HORIZONTAL</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  Enabling the integrated edge labeling support of class BalloonLayouter instructs 
+                  the algorithm to find optimal placements for edge labels such that there are no 
+                  overlaps of edge labels with each other or with graph elements. 
+                  In addition, the edge labels are also oriented and arranged by BalloonLayouter.
+                  
+               </p>
+               <div class="figure"><a name="fig_balloon_edge_labeling"></a><p class="title"><b>Figure&nbsp;5.74.&nbsp;Edge labeling</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody valign="top">
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/balloon_edge_labeling.jpg" align="middle" alt="Edge labeling"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">
+                                    Edge label placement where labels are configured with preferred placement at the 
+                                    target node and on the right side of the edge.
+                                    
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  Note that edge label placement configurations by means of the <a href="labeling.html#label_preferred_placement" title="Preferred Placement of Edge Labels">PreferredPlacementDescriptor</a> 
+                  are currently only partially supported by the integrated edge labeling of BalloonLayouter. 
+                  
+                  Placement of the edge label at a specified preferred side of the edge can be guaranteed. 
+                  
+                  Preferred placement of the edge label at the source node or target node, however, 
+                  cannot be guaranteed entirely.
+                  
+               </p>
+               <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Tip</h3>
+                  <p>
+                     Optimal label placement with integrated edge labeling can be achieved using 
+                     <a href="../api/y/layout/FreeEdgeLabelModel.html" title="Link to API documentation" target="_top">FreeEdgeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                     
+                     
+                     as the label model for the edge labels. 
+                     As explained in <a href="labeling.html#label_models" title="Label Models">the section called &#8220;Label Models&#8221;</a>, this edge label model is ideally 
+                     suited in combination with integrated edge labeling and yields the best match for 
+                     a label location that is computed by BalloonLayouter.
+                     
+                  </p>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="balloon_incremental"></a>Incremental Layout
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  BalloonLayouter can be set to "layout from sketch" mode to provide support for 
+                  incremental layout. 
+                  In this mode, a diagram's current drawing is taken into account when 
+                  calculating a new layout. 
+                  
+                  The following setter method enables "layout from sketch" mode:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setFromSketchModeEnabled(boolean)" title="Link to API documentation" target="_top">void setFromSketchModeEnabled(boolean fromSketchModeEnabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Enables "layout from sketch" mode.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="cls_HVTreeLayouter"></a>Horizontal/Vertical
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class <a href="../api/y/layout/tree/HVTreeLayouter.html" title="Link to API documentation" target="_top">HVTreeLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> allows to 
+               layout a tree such that each subtree rooted at a node can either have a 
+               horizontal or vertical layout. 
+               
+               For each node the layout orientation of its child nodes can be specified using 
+               the data provider look-up key 
+               <a href="../api/y/layout/tree/HVTreeLayouter.html#SUBTREE_ORIENTATION" title="Link to API documentation" target="_top">SUBTREE_ORIENTATION<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_hv_dataprovider"></a>Supplemental Layout Data
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class HVTreeLayouter knows a number of data provider keys which are used to 
+               retrieve supplemental layout data for a graph's elements. 
+               
+               The data is bound to the graph by means of a data provider, which is registered 
+               using a given look-up key. 
+               <a href="tree_layouter.html#tab_tree_hv_keys" title="Table&nbsp;5.57.&nbsp;Data provider look-up keys">Table&nbsp;5.57, &#8220;Data provider look-up keys&#8221;</a> lists all look-up keys for 
+               HVTreeLayouter. 
+               
+            </p>
+            <p>
+               Binding supplemental layout data to a graph is described in 
+               <a href="layout_concepts.html#supplemental_information" title="Providing Supplemental Layout Data">the section called &#8220;Providing Supplemental Layout Data&#8221;</a>. 
+               
+            </p>
+            <div class="table"><a name="tab_tree_hv_keys"></a><p class="title"><b>Table&nbsp;5.57.&nbsp;Data provider look-up keys</b></p>
+               <table summary="Data provider look-up keys" width="100%" border="1">
+                  <colgroup>
+                     <col width="25%" align="left">
+                     <col width="10%" align="left">
+                     <col width="10%" align="left">
+                     <col width="55%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Key</th>
+                        <th align="left">Element Type</th>
+                        <th align="left">Value Type</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/tree/HVTreeLayouter.html#SUBTREE_ORIENTATION" title="Link to API documentation" target="_top">SUBTREE_ORIENTATION<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">Object</td>
+                        <td align="left">
+                             For each root node either 
+                             <a href="../api/y/layout/tree/HVTreeLayouter.html#HORIZONTAL_SUBTREE" title="Link to API documentation" target="_top">HORIZONTAL_SUBTREE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                             or 
+                             <a href="../api/y/layout/tree/HVTreeLayouter.html#VERTICAL_SUBTREE" title="Link to API documentation" target="_top">VERTICAL_SUBTREE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                             to indicate horizontal or vertical subtree placement. 
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_hv_options"></a>Layout Options
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               These options configure class HVTreeLayouter in detail. 
+               
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Horizontal Space</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/HVTreeLayouter.html#setHorizontalSpace(double)" title="Link to API documentation" target="_top">void setHorizontalSpace(double space)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              The minimal horizontal distance between adjacent nodes.
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Vertical Space</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/HVTreeLayouter.html#setVerticalSpace(double)" title="Link to API documentation" target="_top">void setVerticalSpace(double space)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              The minimal vertical distance between adjacent nodes.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               Class HVTreeLayouter allows to arrange subtrees either horizontally or 
+               vertically. 
+               To specify the desired placement, a data provider holding such supplemental 
+               layout data can be bound to the graph. 
+               
+               The data provider is expected to be registered with the graph using key 
+               <a href="../api/y/layout/tree/HVTreeLayouter.html#SUBTREE_ORIENTATION" title="Link to API documentation" target="_top">SUBTREE_ORIENTATION<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               
+               Note that in the absence of the data provider horizontal placement is chosen. 
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="cls_ARTreeLayouter"></a>Compact
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class <a href="../api/y/layout/tree/ARTreeLayouter.html" title="Link to API documentation" target="_top">ARTreeLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> generates 
+               compact orthogonal tree drawings. 
+               As a layout constraint a preferred aspect ratio (relation of width to height) 
+               can be given. 
+               This is especially useful when the graph should fit perfectly on a page of 
+               given size. 
+               
+            </p>
+            <div class="figure"><a name="d0e14783"></a><p class="title"><b>Figure&nbsp;5.75.&nbsp;Sample layouts of the same tree using different preferred aspect ratio settings</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="47%">
+                           <col width="31%">
+                           <col width="22%">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/tree-layout-3a-thumb.gif" align="middle" alt="Sample layouts of the same tree using different preferred aspect ratio settings"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/tree-layout-3b-thumb.gif" align="middle" alt="Sample layouts of the same tree using different preferred aspect ratio settings"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/tree-layout-3c-thumb.gif" align="middle" alt="Sample layouts of the same tree using different preferred aspect ratio settings"></div>
+                              </td>
+                           </tr>
+                           <tr align="center">
+                              <td align="center">
+                                   Using aspect ratio 2.0 
+                                 
+                              </td>
+                              <td align="center">
+                                   Using aspect ratio 1.0 
+                                 
+                              </td>
+                              <td align="center">
+                                   Using aspect ratio 0.5 
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_ar_dataprovider"></a>Supplemental Layout Data
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class ARTreeLayouter knows a number of data provider keys which are used to 
+               retrieve supplemental layout data for a graph's elements. 
+               
+               The data is bound to the graph by means of a data provider, which is registered 
+               using a given look-up key. 
+               <a href="tree_layouter.html#tab_tree_ar_keys" title="Table&nbsp;5.58.&nbsp;Data provider look-up keys">Table&nbsp;5.58, &#8220;Data provider look-up keys&#8221;</a> lists all look-up keys for 
+               ARTreeLayouter. 
+               
+            </p>
+            <p>
+               Binding supplemental layout data to a graph is described in 
+               <a href="layout_concepts.html#supplemental_information" title="Providing Supplemental Layout Data">the section called &#8220;Providing Supplemental Layout Data&#8221;</a>. 
+               
+            </p>
+            <div class="table"><a name="tab_tree_ar_keys"></a><p class="title"><b>Table&nbsp;5.58.&nbsp;Data provider look-up keys</b></p>
+               <table summary="Data provider look-up keys" width="100%" border="1">
+                  <colgroup>
+                     <col width="25%" align="left">
+                     <col width="10%" align="left">
+                     <col width="10%" align="left">
+                     <col width="55%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Key</th>
+                        <th align="left">Element Type</th>
+                        <th align="left">Value Type</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/tree/ARTreeLayouter.html#RATIO" title="Link to API documentation" target="_top">RATIO<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">Number</td>
+                        <td align="left">
+                             For each root node a Number object encapsulating a double value that 
+                             indicates the subtree's aspect ratio.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/tree/ARTreeLayouter.html#ROOT_PLACEMENT" title="Link to API documentation" target="_top">ROOT_PLACEMENT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">Object</td>
+                        <td align="left">
+                             For each root node one of 
+                             <a href="../api/y/layout/tree/ARTreeLayouter.html#PLACEMENT_TOP" title="Link to API documentation" target="_top">PLACEMENT_TOP<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             <a href="../api/y/layout/tree/ARTreeLayouter.html#PLACEMENT_CORNER" title="Link to API documentation" target="_top">PLACEMENT_CORNER<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             <a href="../api/y/layout/tree/ARTreeLayouter.html#PLACEMENT_CORNER_SIDE" title="Link to API documentation" target="_top">PLACEMENT_CORNER_SIDE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             or 
+                             <a href="../api/y/layout/tree/ARTreeLayouter.html#PLACEMENT_CORNER_TOP" title="Link to API documentation" target="_top">PLACEMENT_CORNER_TOP<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                             to indicate the root node's placement.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/tree/ARTreeLayouter.html#ROUTING_POLICY" title="Link to API documentation" target="_top">ROUTING_POLICY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">Object</td>
+                        <td align="left">
+                             For each root node either 
+                             <a href="../api/y/layout/tree/ARTreeLayouter.html#ROUTING_HORIZONTAL" title="Link to API documentation" target="_top">ROUTING_HORIZONTAL<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                             or 
+                             <a href="../api/y/layout/tree/ARTreeLayouter.html#ROUTING_VERTICAL" title="Link to API documentation" target="_top">ROUTING_VERTICAL<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                             to indicate horizontal or vertical edge routing. 
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_ar_options"></a>Layout Options
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               These options configure class ARTreeLayouter in detail. 
+               
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Horizontal Space</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/ARTreeLayouter.html#setHorizontalSpace(double)" title="Link to API documentation" target="_top">void setHorizontalSpace(double space)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              The minimal horizontal distance between adjacent nodes.
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Vertical Space</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/ARTreeLayouter.html#setVerticalSpace(double)" title="Link to API documentation" target="_top">void setVerticalSpace(double space)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              The minimal vertical distance between adjacent nodes.
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Bend Distance</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/ARTreeLayouter.html#setBendDistance(double)" title="Link to API documentation" target="_top">void setBendDistance(double distance)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Determines the preferred minimal distance between each two bends of an edge and
+                              between the first and last edges and the corresponding ports.
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Preferred Aspect Ratio</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/ARTreeLayouter.html#setAspectRatio(double)" title="Link to API documentation" target="_top">void setAspectRatio(double aspectRatio)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Determines the preferred aspect ratio (width by height) of the resulting
+                              layout.
+                              This option allows for creating layouts which, e.g., fit perfectly onto the
+                              page of a book.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="compact_orthogonal_layouter.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="layout.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="cls_GenericTreeLayouter.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Compact Orthogonal Layout&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Generic Tree Layout</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

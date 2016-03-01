@@ -1,0 +1,258 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Chapter&nbsp;1.&nbsp;Preface</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="previous" href="changes.html" title="Changes From Previous Edition">
+      <link rel="next" href="tasks.html" title="Graph-related Problems">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Chapter&nbsp;1.&nbsp;Preface</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="changes.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">&nbsp;</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="tasks.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="chapter" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title"><a name="preface"></a>Chapter&nbsp;1.&nbsp;Preface
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <div class="toc">
+            <p><b>Table of Contents</b></p>
+            <dl>
+               <dt><span class="section"><a href="preface.html#Diagrams">Diagrams</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="preface.html#Benefits and Problems">Benefits and Problems</a></span></dt>
+                     <dt><span class="section"><a href="preface.html#From Diagrams to Graphs">From Diagrams to Graphs</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="tasks.html">Graph-related Problems</a></span></dt>
+               <dt><span class="section"><a href="about_yFiles.html">About yFiles</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="about_yFiles.html#yFiles_YES">What it is</a></span></dt>
+                     <dt><span class="section"><a href="about_yFiles.html#yFiles_NO">What it's not</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="application_domains.html">Application Domains</a></span></dt>
+            </dl>
+         </div>
+         <p>
+            yFiles is an extensive class library that provides algorithms and 
+            components for analyzing, viewing, and drawing graphs, diagrams, and networks. 
+            
+            It is entirely written in the <span class="trademark">Java</span>&#8482; programming language 
+            and can be used to develop sophisticated applications to be deployed on every 
+            platform with a working Java Runtime Environment installation. 
+            
+         </p>
+         <p>
+            This chapter gives an overview what kind of purposes the yFiles library serves, 
+            and what kind of applications and application domains are possible. 
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both"><a name="Diagrams"></a>Diagrams
+                     </h2>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Diagrams of any kind naturally arise in a wide variety of application domains. 
+               The diagrams encountered commonly comprise entities together with their 
+               relationships. 
+               
+               Entities are usually represented by some kind of object, e.g., a colored 
+               rectangle, and the relationships are usually represented by a connecting line 
+               with or without some kind of decoration at its ends. 
+               
+               <a href="preface.html#fig_diagram" title="Figure&nbsp;1.1.&nbsp;Different kinds of diagrams">Figure&nbsp;1.1, &#8220;Different kinds of diagrams&#8221;</a> shows some examples of diagrams. 
+               
+            </p>
+            <div class="figure"><a name="fig_diagram"></a><p class="title"><b>Figure&nbsp;1.1.&nbsp;Different kinds of diagrams</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="57%">
+                           <col width="2%">
+                           <col width="41%">
+                        </colgroup>
+                        <tbody>
+                           <tr valign="middle">
+                              <td valign="middle">
+                                 <div class="mediaobject" align="center"><img src="figures/familytree.png" align="middle" alt="A family tree."></div>
+                              </td>
+                              <td valign="middle">&nbsp;</td>
+                              <td valign="middle">
+                                 <div class="mediaobject" align="center"><img src="figures/semantic.png" align="middle" alt="A semantic network."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/collaboration.png" align="middle" alt="Sample process."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="Benefits and Problems"></a>Benefits and Problems
+                        </h3>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  "A diagram is worth a thousand words." is a popular proverb which best 
+                  expresses the benefits of using diagrams:
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li> 
+                        Subjects of arbitrary complexity can be arranged to get a clear picture of 
+                        hidden structures and dependencies. 
+                        
+                     </li>
+                     <li>
+                        Gordian relationships can be clarified in a matter of seconds. 
+                        
+                     </li>
+                     <li>
+                        Information is communicated to a broad audience easily. 
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  However, these properties strongly depend on the quality of a diagram. 
+                  And the task of making legible diagrams is often tedious and moreover 
+                  error-prone when done by hand. 
+                  Sketching even small data sets can become awkward enough to forsake entirely.
+                  
+               </p>
+               <p>
+                  With large data sets the problem of making high-quality, easy-to-understand 
+                  diagrams aggravates. 
+                  Doing it by hand is no longer an alternative, so the need for an automatic 
+                  generation grows. 
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="From Diagrams to Graphs"></a>From Diagrams to Graphs
+                        </h3>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Diagrams in the common sense, i.e., some sort of entities together with 
+                  connecting lines as described above, are closely related to the mathematical 
+                  notion of a "graph." 
+                  
+                  Basically, this means that diagrams and graphs serve the same purpose, the two 
+                  concepts are interchangeable. 
+                  
+                  Hence, a question that arises in the context of a diagram is equally a question 
+                  concerning a graph. 
+                  
+                  
+               </p>
+               <p>
+                  Formally, a graph is defined as a tuple of two sets, a node set and an edge 
+                  set. 
+                  A "node" in this definition is the equivalent of an entity, while an "edge" 
+                  represents a connecting line, i.e., a relationship between entities. 
+                  
+               </p>
+               <p>
+                  There is a variety of terms used to refer to the mathematically coined "node" 
+                  and "edge," however in the course of this document we will stick to the 
+                  original names as often as possible. 
+                  
+                  See the <a href="glossary.html" title="Glossary">glossary</a> for more graph structure 
+                  terminology widely used in this documentation. 
+                  
+               </p>
+            </div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="changes.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="index.html" target="_top">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="tasks.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Changes From Previous Edition&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Graph-related Problems</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

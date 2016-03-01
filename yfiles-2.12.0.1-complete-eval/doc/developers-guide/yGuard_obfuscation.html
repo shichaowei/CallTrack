@@ -1,0 +1,265 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Name Obfuscation Using yGuard</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="obfuscation.html" title="Appendix&nbsp;A.&nbsp;Obfuscation">
+      <link rel="previous" href="obfuscation.html" title="Appendix&nbsp;A.&nbsp;Obfuscation">
+      <link rel="next" href="glossary.html" title="Glossary">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Name Obfuscation Using yGuard</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="obfuscation.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Appendix&nbsp;A.&nbsp;Obfuscation</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="glossary.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="yGuard_obfuscation"></a>Name Obfuscation Using yGuard
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            yGuard is a Java byte code obfuscator that can be used for effective name 
+            obfuscation of Java byte code. 
+            It is bundled with every yFiles distribution (see the 
+            <a href="../../src/demo/obfuscation/yguard/README.html" title="Link to demo code" target="_top">yGuard README file</a>), 
+            and is also 
+            <a href="http://www.yworks.com/products/yguard" target="_blank">freely available</a>. 
+            
+         </p>
+         <p>
+            Since yGuard fulfills the obfuscation requirements of the yFiles license terms, 
+            it is a perfectly suited tool to protect the yFiles part of any yFiles-based 
+            application. 
+            (Of course, it is also the perfect tool to protect the entire application.) 
+            
+         </p>
+         <p>
+            yGuard is available as an Apache Ant task for easy integration into any 
+            Ant-based build process. 
+            <a href="yGuard_obfuscation.html#ex_ant" title="Example&nbsp;A.2.&nbsp;Using the yGuard Ant task">Example&nbsp;A.2, &#8220;Using the yGuard Ant task&#8221;</a> shows an Ant build file's target that obfuscates the 
+            yFiles part of an application. 
+            
+         </p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               The example uses yGuard 2.0 syntax. 
+               
+            </p>
+         </div>
+         <div class="example"><a name="ex_ant"></a><p class="title"><b>Example&nbsp;A.2.&nbsp;Using the yGuard Ant task</b></p><pre class="programlisting xml">
+&lt;!-- Obfuscates the yFiles part of an application (i.e., y.jar) and adjusts --&gt;
+&lt;!-- the non-yFiles part given by the application's Jar file accordingly. --&gt;
+&lt;target name="obfuscate" depends="jar"&gt;
+  &lt;!-- yGuard Ant task. --&gt;
+  &lt;taskdef name="yguard" 
+           classname="com.yworks.yguard.YGuardTask" 
+           classpath="${yGuardJar}"/&gt;
+  &lt;!-- Integrated obfuscation and name adjustment... --&gt;
+  &lt;yguard&gt;
+    &lt;!-- Obfuscate the yFiles Jar. --&gt;
+    &lt;inoutpair in="${yJar}" out="${yJarObf}"/&gt;
+    &lt;!-- While obfuscating, adjust the names of yFiles features in the --&gt;
+    &lt;!-- application's Jar file. --&gt;
+    &lt;inoutpair in="${myAppJar}" out="${myAppJarObf}"/&gt;
+    
+    &lt;!-- ...using the yGuard 'rename' task. --&gt;
+    &lt;rename logfile="${obfuscationLog}" replaceClassNameStrings="true"&gt;
+    
+      &lt;property name="obfuscation-prefix" value="myprefix"/&gt;
+      &lt;keep&gt;
+        &lt;class classes="private" methods="private" fields="private"&gt;
+          &lt;patternset&gt;
+            &lt;include name="com.mycompany.myApp.**"/&gt;
+          &lt;/patternset&gt;
+        &lt;/class&gt;
+      &lt;/keep&gt;
+      
+      &lt;!-- Adjust all occurences of now obfuscated names in plain-text --&gt;
+      &lt;!-- files, too. --&gt;
+      &lt;!-- For example, the names of property resource bundle files for --&gt;
+      &lt;!-- yFiles classes must be adjusted to reflect the yFiles class's --&gt;
+      &lt;!-- obfuscated name. --&gt;
+      &lt;adjust replaceName="true"&gt;
+        &lt;include name="y/**/*.properties"/&gt;
+        &lt;include name="y/view/**/resource/*"/&gt;
+      &lt;/adjust&gt;
+      &lt;!-- Adjust the names and contents of service declaration files in the --&gt;
+      &lt;!-- 'META-INF' directory of the Jar file. --&gt;
+      &lt;!-- In particular, this means files related to the multi-threading --&gt;
+      &lt;!-- support that need to reflect the yFiles class's obfuscated names. --&gt;
+      &lt;adjust replaceName="true" replaceContent="true"&gt;
+       &nbsp;&lt;include name="META-INF/services/*"/&gt;
+      &lt;/adjust&gt;
+      
+    &lt;/rename&gt;
+  &lt;/yguard&gt;
+&lt;/target&gt;
+</pre></div>
+         <p>
+            For detailed explanations of yGuard's Ant syntax, please see the 
+            <a href="http://www.yworks.com/en/products_yguard_docs.html" target="_blank">yGuard manual</a>. 
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="obfuscation_adjusting"></a>Adjusting Names
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Any code that makes use of yFiles features, or more specifically uses names of 
+               yFiles features, needs to be adjusted to their new names. 
+               This adjustment is automatically performed for all Jar files given to the 
+               yGuard obfuscation machinery using the &lt;inoutpair&gt; element. 
+               
+            </p>
+            <p>
+               Using yGuard's &lt;adjust&gt; element (inside the &lt;obfuscate&gt; element), any 
+               additional plain-text files that are not processed by the obfuscation itself, 
+               e.g., resource files, can be adjusted in several ways, too. 
+               For example, a file's path, its name, and also its content are subject to 
+               possible modifications. 
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="obf_checking"></a>Checking Obfuscation Success
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               During the obfuscation process, yGuard optionally generates a log file that 
+               contains all original names, their new obfuscated names, and also additional 
+               statistical information in XML-based syntax. 
+               
+               The log file is an important document, since it shows the mapping of original 
+               to obfuscated names. 
+               To display the information nicely, yGuard offers a convenient reverse name 
+               look-up feature. 
+               
+            </p>
+            <p>
+               <a href="yGuard_obfuscation.html#ex_lookup" title="Example&nbsp;A.3.&nbsp;yGuard's command line syntax">Example&nbsp;A.3, &#8220;yGuard's command line syntax&#8221;</a> shows the command line syntax to invoke yGuard's 
+               reverse name look-up. 
+               Given a generated log file (or its GZip compressed variant), both the original 
+               class, method, and field names and their obfuscated counterparts are 
+               conveniently presented in a tree view, as depicted in 
+               <a href="yGuard_obfuscation.html#fig_lookup" title="Figure&nbsp;A.1.&nbsp;yGuard's reverse name look-up view">Figure&nbsp;A.1, &#8220;yGuard's reverse name look-up view&#8221;</a>.  
+               
+            </p>
+            <div class="example"><a name="ex_lookup"></a><p class="title"><b>Example&nbsp;A.3.&nbsp;yGuard's command line syntax</b></p><pre class="programlisting java">
+java -jar yguard.jar [yGuard_obfuscation_log_file.xml[.gz]]
+</pre></div>
+            <div class="figure"><a name="fig_lookup"></a><p class="title"><b>Figure&nbsp;A.1.&nbsp;yGuard's reverse name look-up view</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/yguard.gif" align="middle" alt="yGuard's reverse name look-up view."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               To ensure that the yFiles API has been properly obfuscated, all 
+               <span class="emphasis"><em>public</em></span> and <span class="emphasis"><em>protected</em></span> class, method, 
+               and field names must be present in the tree view presented by yGuard's reverse 
+               name look-up feature. 
+               
+               In other words, all names of such features must have been replaced by new 
+               names that are distinctly different from their originals. 
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="obfuscation_tutorial"></a>Tutorial Demo Code
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               For an example on how to obfuscate the yFiles part of a yFiles-based 
+               application using yGuard, see the obfuscation demo's 
+               <a href="../../src/demo/obfuscation/build.xml" title="Link to demo code" target="_top">Ant build file</a> (included 
+               with the yFiles Complete distribution). 
+               
+               The build file also shows how to adjust the occurences of obfuscated names of 
+               any yFiles features in properties files. 
+               
+            </p>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="obfuscation.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="obfuscation.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="glossary.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Appendix&nbsp;A.&nbsp;Obfuscation&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Glossary</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

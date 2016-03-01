@@ -1,0 +1,197 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Chapter&nbsp;2.&nbsp;Introducing the yFiles Library</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="previous" href="application_domains.html" title="Application Domains">
+      <link rel="next" href="developers_guide_overview.html" title="How to Read this Developer's Guide">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Chapter&nbsp;2.&nbsp;Introducing the yFiles Library</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="application_domains.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">&nbsp;</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="developers_guide_overview.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="chapter" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title"><a name="introduction"></a>Chapter&nbsp;2.&nbsp;Introducing the yFiles Library
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <div class="toc">
+            <p><b>Table of Contents</b></p>
+            <dl>
+               <dt><span class="section"><a href="introduction.html#yFiles_components">yFiles Library Components</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="introduction.html#yFiles_Basic">yFiles Basic</a></span></dt>
+                     <dt><span class="section"><a href="introduction.html#yFiles_Viewer">yFiles Viewer</a></span></dt>
+                     <dt><span class="section"><a href="introduction.html#yFiles_Layout">yFiles Layout</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="developers_guide_overview.html">How to Read this Developer's Guide</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="developers_guide_overview.html#first_time">First-Time Users</a></span></dt>
+                     <dt><span class="section"><a href="developers_guide_overview.html#experienced">Experienced Users</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="signpost.html">Where to Find Things in yFiles</a></span></dt>
+               <dt><span class="section"><a href="yEd_Lite.html">Putting it all Together: yEd Lite</a></span></dt>
+            </dl>
+         </div>
+         <p>
+            This chapter presents the different yFiles components, briefly discusses 
+            possible ways of reading the Developer's Guide depending on a reader's 
+            knowledge, and lastly gives an overview of the packages and their provided 
+            functionality.
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both"><a name="yFiles_components"></a>yFiles Library Components
+                     </h2>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               The functionality that the yFiles library provides is divided into three parts: 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li><a href="introduction.html#yFiles_Basic" title="yFiles Basic">Basic</a>, which serves as the "backbone" for 
+                     the main part of the library 
+                     
+                  </li>
+                  <li><a href="introduction.html#yFiles_Viewer" title="yFiles Viewer">Viewer</a> for everything relating to user 
+                     interaction 
+                     
+                  </li>
+                  <li><a href="introduction.html#yFiles_Layout" title="yFiles Layout">Layout</a>, which provides highly evolved 
+                     automatic layout algorithms 
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="yFiles_Basic"></a>yFiles Basic
+                        </h3>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  yFiles Basic contains essential classes and data types for graph analysis 
+                  tasks. 
+                  It provides efficient implementations of advanced data types like graph or 
+                  priority queue. 
+                  It furthermore makes a wide variety of graph and network algorithms available 
+                  which form an indispensable toolkit for any network analysis tasks. 
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="yFiles_Viewer"></a>yFiles Viewer
+                        </h3>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  yFiles Viewer builds upon yFiles Basic. 
+                  It provides a powerful graph viewer component and other Swing-based GUI 
+                  elements. 
+                  The viewer component is showcased in the yEd graph editor application. 
+                  Other notable features of yFiles Viewer are its support for diverse graph 
+                  formats (e.g. GML, YGF, JPG, GIF, etc.), and its printing capabilities. 
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="yFiles_Layout"></a>yFiles Layout
+                        </h3>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  yFiles Layout builds upon yFiles Basic. 
+                  It provides a perfect suite of graph layout algorithms which offer unequaled 
+                  opportunities. 
+                  A multitude of layout styles like hierarchical, orthogonal, or circular are 
+                  provided as easy-to-integrate components which can be configured 
+                  programmatically to suit most layout demands. 
+                  Additionally, yFiles provides edge routing algorithms that make it possible to 
+                  route edges into existing diagrams easily. 
+                  
+               </p>
+            </div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="application_domains.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="index.html" target="_top">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="developers_guide_overview.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Application Domains&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;How to Read this Developer's Guide</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

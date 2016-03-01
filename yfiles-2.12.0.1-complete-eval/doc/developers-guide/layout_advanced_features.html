@@ -1,0 +1,1913 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Advanced Layout Concepts</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="layout.html" title="Chapter&nbsp;5.&nbsp;Automatic Graph Layout">
+      <link rel="previous" href="layout_concepts.html" title="Concepts">
+      <link rel="next" href="incremental_layout.html" title="Incremental Layout">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Advanced Layout Concepts</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="layout_concepts.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;5.&nbsp;Automatic Graph Layout</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="incremental_layout.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="layout_advanced_features"></a>Advanced Layout Concepts
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            The layout algorithms that come with the yFiles library support a number of 
+            sophisticated and powerful concepts for layout generation, including: 
+            
+         </p>
+         <div class="itemizedlist">
+            <ul type="disc">
+               <li><a href="layout_advanced_features.html#adv_ho_graphs" title="Grouped Graphs">Grouped graphs</a>.
+                  Layout of grouped graph structures. 
+                  
+               </li>
+               <li><a href="layout_advanced_features.html#adv_port_constraints" title="Port Constraints">Port constraints</a>. 
+                  Restricting edge ports to a specific side of a node and/or a fixed location 
+                  relative to the node's center. 
+                  
+               </li>
+               <li><a href="layout_advanced_features.html#adv_port_candidates" title="Port Candidates">Port candidates</a>. 
+                  Enhanced port constraint definitions as well as sophisticated matching of edge 
+                  ports to multiple possible locations at a node.
+                  
+               </li>
+               <li><a href="layout_advanced_features.html#adv_edge_groups" title="Edge/Port Grouping (Bus-Style Edge Routing)">Edge/Port grouping</a>. 
+                  Multiple edge ports sharing a common location, and/or having a common edge 
+                  segment. 
+                  
+               </li>
+               <li><a href="layout_advanced_features.html#adv_partition_grid" title="Partition Grid">Partition grid</a>. 
+                  Placing nodes within the cells of a grid structure.
+                  
+               </li>
+               <li><a href="layout_advanced_features.html#adv_node_halos" title="Node Halos">Node halos</a>. 
+                  
+                  Additional padding at the sides of a node.
+                  
+               </li>
+            </ul>
+         </div>
+         <p>
+            
+            Furthermore, many of the yFiles layout algorithms provide support for advanced 
+            inremental layout and the closely related concept of "layout from sketch."
+            An introduction to both these concepts is presented in 
+            <a href="incremental_layout.html" title="Incremental Layout">the section called &#8220;Incremental Layout&#8221;</a>.
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="adv_ho_graphs"></a>Grouped Graphs
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e3665"></a><a class="indexterm" name="d0e3670"></a><a class="indexterm" name="d0e3675"></a><p>
+               The term "grouped graph" denotes a graph structure where,
+               conceptually, nodes can be declared "children" of a common other node, their 
+               "parent." 
+               This can be exercised recursively, i.e., parents can be declared children of 
+               other parents, resulting in a hierarchy of nodes of possibly arbitrary depth. 
+               
+            </p>
+            <p>
+               The visual presentation of such a hierarchy is normally done by placing the 
+               children near each other and have their parent enclosing them. 
+               The parent is called a "group node," and the children are its content, they are 
+               "grouped nodes." 
+               Declaring some nodes to be children of another node is called "grouping." 
+               
+            </p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  Especially in the context of the yFiles Viewer distribution there is another 
+                  term used for grouped graphs, they are also called "graph hierarchies."
+                  
+                  See the description of <a href="view_hierarchy.html" title="Chapter&nbsp;7.&nbsp;Graph Hierarchies">graph hierarchies</a>. 
+                  
+               </p>
+            </div>
+            <p>
+               Layout support for grouped graphs primarily means proper
+               handling of grouped nodes and their enclosing group node. 
+               There are three different group node policies available: 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>
+                     Include group nodes and their contents for layout calculation. 
+                     Group nodes as well as their contents are processed by the layout algorithm. 
+                     
+                  </li>
+                  <li>
+                     Leave group node content fixed. 
+                     The relative positions of the nodes inside a group node are left unaltered. 
+                     However, the group node itself can change its position. 
+                     
+                  </li>
+                  <li>
+                     Ignore group nodes entirely. 
+                     Group node content is processed in a normal way by the layout algorithm, the 
+                     group nodes are not processed, but only placed afterwards to again enclose all 
+                     their children. 
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+               
+            </p>
+            <p>
+               <a href="layout_advanced_features.html#tab_ho_graphs" title="Table&nbsp;5.4.&nbsp;Layout support for grouped graphs">Table&nbsp;5.4, &#8220;Layout support for grouped graphs&#8221;</a> lists the layout algorithms that provide 
+               support for group nodes and their content.
+               
+            </p>
+            <div class="table"><a name="tab_ho_graphs"></a><p class="title"><b>Table&nbsp;5.4.&nbsp;Layout support for grouped graphs</b></p>
+               <table summary="Layout support for grouped graphs" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="20%" align="left">
+                     <col width="60%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Layout Style</th>
+                        <th align="left">Classname</th>
+                        <th align="left">Note</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left">Hierarchical</td>
+                        <td align="left"><a href="../api/y/layout/hierarchic/IncrementalHierarchicLayouter.html" title="Link to API documentation" target="_top">IncrementalHierarchicLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             IncrementalHierarchicLayouter provides direct support for grouped graphs for both
+                             incremental as well as non-incremental layout mode.
+                             See the 
+                             <a href="incremental_hierarchical_layouter.html#incremental_hierarchical_advanced" title="Advanced Layout Concepts">description of IncrementalHierarchicLayouter's advanced concepts</a> 
+                             for more information.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">Organic</td>
+                        <td align="left"><a href="../api/y/layout/organic/SmartOrganicLayouter.html" title="Link to API documentation" target="_top">SmartOrganicLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                           
+                             Class SmartOrganicLayouter provides support for all three group node policies. 
+                             See the description of <a href="smart_organic_layouter.html#sol_grouped_graphs" title="Layout of Grouped Graphs">SmartOrganicLayouter's support for layout of grouped graphs</a> 
+                             for more information.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">Orthogonal</td>
+                        <td align="left"><a href="../api/y/layout/orthogonal/OrthogonalGroupLayouter.html" title="Link to API documentation" target="_top">OrthogonalGroupLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Support for group node policies is partly handled by prepended layout stages. 
+                             See the 
+                             <a href="orthogonal_group_layouter.html" title="Orthogonal Layout of Grouped Graphs">description of orthogonal group layout</a> 
+                             for more information. 
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               <a href="layout_advanced_features.html#tab_ho_graphs_router" title="Table&nbsp;5.5.&nbsp;Routing support for grouped graphs">Table&nbsp;5.5, &#8220;Routing support for grouped graphs&#8221;</a> lists the routing algorithms that 
+               provide support for grouped graphs.
+               
+            </p>
+            <div class="table"><a name="tab_ho_graphs_router"></a><p class="title"><b>Table&nbsp;5.5.&nbsp;Routing support for grouped graphs</b></p>
+               <table summary="Routing support for grouped graphs" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="20%" align="left">
+                     <col width="60%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Routing Style</th>
+                        <th align="left">Classname</th>
+                        <th align="left">Note</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left">Orthogonal</td>
+                        <td align="left"><a href="../api/y/layout/router/OrthogonalEdgeRouter.html" title="Link to API documentation" target="_top">OrthogonalEdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             <a href="../api/y/layout/router/ChannelEdgeRouter.html" title="Link to API documentation" target="_top">ChannelEdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, and 
+                             <a href="../api/y/layout/router/polyline/EdgeRouter.html" title="Link to API documentation" target="_top">EdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             OrthogonalEdgeRouter's support for routing with group nodes is partly handled 
+                             by prepended layout stages. 
+                             See the description of 
+                             <a href="orthogonal_edge_router.html#orthogonal_router_stages" title="Enhancing the Routing Process">OrthogonalEdgeRouter</a> for more 
+                             information. 
+                             Classes <a href="channel_edge_router.html" title="Channel Edge Routing">ChannelEdgeRouter</a> and <a href="polyline_edge_router.html#polyline_router_advanced" title="Advanced Routing Concepts">EdgeRouter</a> 
+                             provide inherent support for routing with group nodes.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p><a name="ho_graphs_sizeconstraints"></a>
+               Further support for grouped graphs also includes minimum size constraints
+               for group nodes. 
+               These are supported by the following layout algorithms: 
+               SmartOrganicLayouter and IncrementalHierarchicLayouter.
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="ho_graphs_setup"></a>Setup for Layout
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  In the presence of package 
+                  <a href="../api/y/view/package-summary.html" title="Link to API documentation" target="_top">y.view<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  (i.e., with the yFiles Viewer distribution), the setup for layout calculation 
+                  of a <a href="../api/y/view/Graph2D.html" title="Link to API documentation" target="_top">Graph2D<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> that has associated a 
+                  <a href="../api/y/view/hierarchy/HierarchyManager.html" title="Link to API documentation" target="_top">HierarchyManager<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> object is a 
+                  matter of using the convenience methods of class 
+                  <a href="../api/y/view/hierarchy/GroupLayoutConfigurator.html" title="Link to API documentation" target="_top">GroupLayoutConfigurator<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> as 
+                  shown in <a href="layout_advanced_features.html#ex_setup_with_y_view" title="Example&nbsp;5.7.&nbsp;Layout preparation with classes from package y.view">Example&nbsp;5.7, &#8220;Layout preparation with classes from package y.view&#8221;</a>. 
+                  
+               </p>
+               <div class="example"><a name="ex_setup_with_y_view"></a><p class="title"><b>Example&nbsp;5.7.&nbsp;Layout preparation with classes from package y.view</b></p><pre class="programlisting java">
+// 'graph' is of type y.view.Graph2D. 
+
+GroupLayoutConfigurator glc = new GroupLayoutConfigurator(graph);
+// Prepare all relevant information for a layout algorithm. 
+glc.prepareAll();
+
+// Invoke buffered layout. 
+invokeBufferedLayout(graph, new IncrementalHierarchicLayouter(), false);
+
+// Restore all group node specific sizes and insets after a layout algorithm 
+// has been run. 
+glc.restoreAll();
+</pre></div>
+               <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Tip</h3>
+                  <p>
+                     Setup code can be reduced to a minimum by using convenience <a href="viewer_layout.html" title="Automatic Layout">class Graph2DLayoutExecutor</a>,
+                     which also takes care of all necessary configuration steps related to grouped graphs.
+                     
+                  </p>
+               </div>
+               <p>
+                  <a href="layout_advanced_features.html#ex_setup_with_y_layout" title="Example&nbsp;5.8.&nbsp;Layout preparation without classes from package y.view">Example&nbsp;5.8, &#8220;Layout preparation without classes from package y.view&#8221;</a> demonstrates how to set up a 
+                  grouped graph without the convenience functionality from
+                  package y.view. 
+                  
+                  Basically, the data providers that hold the necessary information about the 
+                  grouped graph's hierarchy of nodes have to be filled manually, and be registered
+                  with the graph using the data provider look-up keys defined in interface 
+                  <a href="../api/y/layout/grouping/GroupingKeys.html" title="Link to API documentation" target="_top">GroupingKeys<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                  
+               </p>
+               <div class="example"><a name="ex_setup_with_y_layout"></a><p class="title"><b>Example&nbsp;5.8.&nbsp;Layout preparation without classes from package y.view</b></p><pre class="programlisting java">
+// 'graph' is of type y.layout.LayoutGraph. 
+
+// Create the node maps that are to be used as data providers later on. 
+NodeMap groupKey = graph.createNodeMap();
+NodeMap nodeID = graph.createNodeMap();
+NodeMap parentNodeID = graph.createNodeMap();
+
+// Register the node maps as data providers with the graph. 
+// Use the "well-known" look-up keys defined in interface GroupingKeys. 
+graph.addDataProvider(Grouping.GROUP_DPKEY, groupKey);
+graph.addDataProvider(Grouping.NODE_ID_DPKEY, nodeID);
+graph.addDataProvider(Grouping.PARENT_NODE_ID_DPKEY, parentNodeID);
+
+// Now, set up the hierarchy of nodes of the grouped graph, i.e., define some
+// of the nodes to be group nodes and others to be their content. 
+mySetupNodeHierarchy(graph, groupKey, nodeID, parentNodeID);
+
+// Invoke buffered layout. 
+invokeBufferedLayout(graph, new IncrementalHierarchicLayouter(), false);
+</pre></div>
+               <p>
+                  The information for the node IDs and the parent node IDs is of symbolic nature 
+                  that is used in the process of layout calculation to identify the proper parent 
+                  for a given child, but also to find all children that belong to the same 
+                  parent. 
+                  
+                  Hence, it is important for the symbolic IDs to properly match between these two 
+                  data providers, so that the grouped graph's hierarchy of nodes is correctly
+                  expressed. 
+                  
+               </p>
+               <p>
+                  <a href="layout_advanced_features.html#ex_setup_composition" title="Example&nbsp;5.9.&nbsp;Encoding a grouped graph's hierarchy of nodes in data providers">Example&nbsp;5.9, &#8220;Encoding a grouped graph's hierarchy of nodes in data providers&#8221;</a> demonstrates possible content for the 
+                  data providers. 
+                  
+                  Here, the nodes themselves are used to denote symbolic IDs for both "ordinary" 
+                  nodes and group nodes. 
+                  
+                  Carefully observe the usage of the indirection scheme in this example for 
+                  setting up the parent-child relation. 
+                  
+               </p>
+               <div class="example"><a name="ex_setup_composition"></a><p class="title"><b>Example&nbsp;5.9.&nbsp;Encoding a grouped graph's hierarchy of nodes in data providers</b></p><pre class="programlisting java">
+// Now, set up the hierarchy of nodes of the grouped graph, i.e., define some
+// of the nodes to be group nodes and others to be their content. 
+for (int i = 0; i &lt; 10; i++) {
+  // Nodes 1, 5, and 9 are defined to be group nodes. 
+  if (i % 4 == 1) {
+    groupKey.setBool(n[i], true);
+    // Set a symbolic ID for the group node that is used for look-up purposes. 
+    nodeID.set(n[i], n[i]);
+    continue;
+  }
+
+  // Set a symbolic ID for the node that is used for look-up purposes. 
+  nodeID.set(n[i], n[i]);
+
+  // Node 2 is defined child of node 1; 
+  // node 6 is defined child of node 5. 
+  if (i % 4 == 2) {
+    // Establish the relation to the parent. 
+    parentNodeID.set(n[i], nodeID.get(n[i - 1]));
+    continue;
+  }
+
+  // Node 3 is defined child of node 1; 
+  // node 7 is defined child of node 5. 
+  if (i % 4 == 3) {
+    // Establish the relation to the parent. 
+    parentNodeID.set(n[i], nodeID.get(n[i - 2]));
+  }
+
+  // Nodes 0, 4, and 8 remain "ordinary" nodes... 
+}
+</pre></div>
+               <p>
+                  A group node's size is determined by the bounding box that encloses its children 
+                  and additional insets that are added to each of the box's side. 
+                  
+                  To specify insets individually, a data provider can be used to hold a <a href="../api/y/geom/YInsets.html" title="Link to API documentation" target="_top">YInsets<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  object for each group node. 
+                  This data provider is then registered with the graph using the look-up key 
+                  <a href="../api/y/layout/grouping/GroupingKeys.html#GROUP_NODE_INSETS_DPKEY" title="Link to API documentation" target="_top">GROUP_NODE_INSETS_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  defined in interface GroupingKeys.
+                  
+               </p>
+               <p>
+                  <a href="layout_advanced_features.html#ex_group_bounds" title="Example&nbsp;5.10.&nbsp;Defining a group node's insets">Example&nbsp;5.10, &#8220;Defining a group node's insets&#8221;</a> shows how to add individual YInsets objects for 
+                  group nodes to a node map, and how the node map is registered as a data provider 
+                  with the graph.
+                  
+               </p>
+               <div class="example"><a name="ex_group_bounds"></a><p class="title"><b>Example&nbsp;5.10.&nbsp;Defining a group node's insets</b></p><pre class="programlisting java">
+// 'graph' is of type y.layout.LayoutGraph. 
+
+// Create the node map that is to be used as a data provider later on. 
+NodeMap groupNodeInsets = graph.createNodeMap();
+
+// Predefine some YInsets objects. 
+YInsets in[] = new YInsets[3];
+in[0] = new YInsets(10, 20, 30, 40);
+in[1] = new YInsets(20, 20, 20, 20);
+in[2] = new YInsets(40, 30, 20, 10);
+
+NodeList gnl = getListOfAllGroupNodes(graph);
+for (NodeCursor nc = gnl.nodes(); nc.ok(); nc.next()) {
+  Node n = nc.node();
+  groupNodeInsets.set(n, in[getGroupType(n)]);
+}
+
+// Register the node map as a data provider with the graph. 
+// Use the "well-known" look-up keys defined in interface GroupingKeys. 
+graph.addDataProvider(GroupingKeys.GROUP_NODE_INSETS_DPKEY, groupNodeInsets);
+
+// Invoke buffered layout. 
+invokeBufferedLayout(graph, new IncrementalHierarchicLayouter(), false);
+</pre></div>
+               <p>
+                  Class <a href="../api/y/layout/grouping/FixedGroupLayoutStage.html" title="Link to API documentation" target="_top">FixedGroupLayoutStage<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  adds support for the fixed group node policy to both hierarchical layout and 
+                  orthogonal layout. 
+                  <a href="layout_advanced_features.html#ex_fixed_groups" title="Example&nbsp;5.11.&nbsp;Setup for fixed group node content">Example&nbsp;5.11, &#8220;Setup for fixed group node content&#8221;</a> shows how the fixed group node policy is 
+                  realized as a layout stage that is prepended to the actual layout algorithm's 
+                  invocation. 
+                  
+               </p>
+               <div class="example"><a name="ex_fixed_groups"></a><p class="title"><b>Example&nbsp;5.11.&nbsp;Setup for fixed group node content</b></p><pre class="programlisting java">
+void invokeBufferedLayout(LayoutGraph graph, Layouter layouter, 
+                          boolean orthogonal)
+{
+  // Create a specialized layout stage that fixes the contents of the group 
+  // nodes. 
+  FixedGroupLayoutStage fixedGroupLayoutStage = new FixedGroupLayoutStage();
+  if (orthogonal) {
+    fixedGroupLayoutStage.setInterEdgeRoutingStyle(
+      FixedGroupLayoutStage.ROUTING_STYLE_ORTHOGONAL);
+  }
+  
+  // Prepend the stage to the given layout algorithm. 
+  layouter.prependStage(fixedGroupLayoutStage);
+  
+  // Invoke buffered layout for the given layout algorithm. 
+  new BufferedLayouter(layouter).doLayout(graph);
+  
+  // Remove the prepended layout stage. 
+  layouter.removeStage(fixedGroupLayoutStage);
+}
+</pre></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="tutorial_ho_graphs"></a>Tutorial Demo Code
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The tutorial demo application 
+                  <a href="../../src/demo/layout/withoutview/GroupingLayoutWithoutAView.java" title="Link to demo code" target="_top">GroupingLayoutWithoutAView.java</a> gives a 
+                  detailed demonstration on how to set up a grouped graph
+                  without the functionality present in package y.view. 
+                  
+                  Also, the modules that are used to set up the layout algorithms in an 
+                  application context give deep insights in an algorithm's configuration: 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li><a href="../../src/demo/layout/module/IncrementalHierarchicLayoutModule.java" title="Link to demo code" target="_top">IncrementalHierarchicLayoutModule.java</a></li>
+                     <li><a href="../../src/demo/layout/module/SmartOrganicLayoutModule.java" title="Link to demo code" target="_top">SmartOrganicLayoutModule.java</a></li>
+                     <li><a href="../../src/demo/layout/module/OrthogonalLayoutModule.java" title="Link to demo code" target="_top">OrthogonalLayoutModule.java</a></li>
+                  </ul>
+               </div>
+               <p>
+                  
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="adv_port_constraints"></a>Port Constraints
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e3883"></a><a class="indexterm" name="d0e3888"></a><p>
+               The two ends of an edge path are also called source port and target port, 
+               respectively. 
+               A port constraint serves to pinpoint an edge's end at its source node or target 
+               node. 
+               
+               
+               There are two kinds of port constraints available: 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>
+                     Weak constraint. 
+                     Determines the node's side at which an edge path's end should connect. 
+                     
+                  </li>
+                  <li>
+                     Strong constraint. 
+                     Determines the exact coordinates where the edge path's end should be located. 
+                     The coordinates are interpreted relative to the node's center. 
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+               Both kinds of port constraints can easily be combined to express, for example, 
+               that an edge's source port should connect to the middle of the source node's 
+               upper border. 
+               
+            </p>
+            <p>
+               <a href="layout_advanced_features.html#tab_port_constraints" title="Table&nbsp;5.6.&nbsp;Layout support for port constraints">Table&nbsp;5.6, &#8220;Layout support for port constraints&#8221;</a> lists the layout algorithms that 
+               provide support for port constraints. 
+               
+            </p>
+            <div class="table"><a name="tab_port_constraints"></a><p class="title"><b>Table&nbsp;5.6.&nbsp;Layout support for port constraints</b></p>
+               <table summary="Layout support for port constraints" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="20%" align="left">
+                     <col width="60%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Layout Style</th>
+                        <th align="left">Classname</th>
+                        <th align="left">Note</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left">Hierarchical</td>
+                        <td align="left"><a href="../api/y/layout/hierarchic/IncrementalHierarchicLayouter.html" title="Link to API documentation" target="_top">IncrementalHierarchicLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             IncrementalHierarchicLayouter by default obeys weak and strong port 
+                             constraints as soon as they are set. 
+                             See the description of the 
+                             <a href="incremental_hierarchical_layouter.html" title="Hierarchical Layout Style">hierarchical layout style</a> 
+                             for more information.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">Tree</td>
+                        <td align="left"><a href="../api/y/layout/tree/GenericTreeLayouter.html" title="Link to API documentation" target="_top">GenericTreeLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Nearly all of the predefined node placer implementations that can be used 
+                             with the generic tree layout algorithm by default obey strong and weak port 
+                             constraints as soon as they are set. 
+                             See the 
+                             <a href="cls_GenericTreeLayouter.html" title="Generic Tree Layout">description of generic tree layout</a> 
+                             for more information.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               <a href="layout_advanced_features.html#tab_port_constraints_router" title="Table&nbsp;5.7.&nbsp;Routing support for port constraints">Table&nbsp;5.7, &#8220;Routing support for port constraints&#8221;</a> lists the routing algorithms that 
+               provide support for port constraints. 
+               
+            </p>
+            <div class="table"><a name="tab_port_constraints_router"></a><p class="title"><b>Table&nbsp;5.7.&nbsp;Routing support for port constraints</b></p>
+               <table summary="Routing support for port constraints" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="20%" align="left">
+                     <col width="60%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Routing Style</th>
+                        <th align="left">Classname</th>
+                        <th align="left">Note</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left">Orthogonal</td>
+                        <td align="left"><a href="../api/y/layout/router/OrthogonalEdgeRouter.html" title="Link to API documentation" target="_top">OrthogonalEdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             <a href="../api/y/layout/router/ChannelEdgeRouter.html" title="Link to API documentation" target="_top">ChannelEdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             <a href="../api/y/layout/router/BusRouter.html" title="Link to API documentation" target="_top">BusRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, and 
+                             <a href="../api/y/layout/router/polyline/EdgeRouter.html" title="Link to API documentation" target="_top">EdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             All classes by default obey weak and strong port constraints as soon as they are 
+                             set. 
+                             See the descriptions of 
+                             <a href="orthogonal_edge_router.html#orthogonal_router_advanced" title="Advanced Routing Features">OrthogonalEdgeRouter</a>, 
+                             <a href="channel_edge_router.html#channel_router_advanced" title="Advanced Routing Features">ChannelEdgeRouter</a>, 
+                             <a href="orthogonal_bus_router.html#busrouter_advanced" title="Advanced Routing Features">BusRouter</a>, and 
+                             <a href="polyline_edge_router.html#polyline_router_advanced" title="Advanced Routing Concepts">EdgeRouter</a> for more information.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="pc_setup"></a>Setup for Layout
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  <a href="layout_advanced_features.html#ex_setup_pc" title="Example&nbsp;5.12.&nbsp;Adding source port constraints to some edges">Example&nbsp;5.12, &#8220;Adding source port constraints to some edges&#8221;</a> demonstrates the creation of 
+                  <a href="../api/y/layout/PortConstraint.html" title="Link to API documentation" target="_top">PortConstraint<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> objects, and how they 
+                  are stored in an edge map. 
+                  
+                  The edge map is then registered as a data provider with the graph using the 
+                  look-up key 
+                  <a href="../api/y/layout/PortConstraintKeys.html#SOURCE_PORT_CONSTRAINT_KEY" title="Link to API documentation" target="_top">SOURCE_PORT_CONSTRAINT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                  
+                  During layout calculation, an algorithm first retrieves the data provider using 
+                  the look-up key, and afterwards retrieves the contained information. 
+                  
+                  
+               </p>
+               <p>
+                  The actual coordinates of an edge end point that has a strong port constraint 
+                  associated are determined at the time a layout algorithm (or a routing 
+                  algorithm) processes the edge. 
+                  In other words, the <span class="emphasis"><em>strong</em></span> characteristic of a strong port 
+                  constraint is determined by its "normal" coordinates at the time of processing. 
+                  
+                  Note that the specified coordinates of such edge end points are always 
+                  interpreted relative to the respective node's center. 
+                  
+               </p>
+               <div class="example"><a name="ex_setup_pc"></a><p class="title"><b>Example&nbsp;5.12.&nbsp;Adding source port constraints to some edges</b></p><pre class="programlisting java">
+// 'graph' is of type y.layout.LayoutGraph. 
+
+// Create edge map that is used as a data provider later on. 
+EdgeMap pcMap = graph.createEdgeMap();
+
+// Set the coordinates for the edge's source port. (Actually, this could also 
+// be done anywhere prior to invoking the layout algorithm.) 
+graph.setSourcePointRel(edge3, new YPoint(-10, 20));
+
+// Create PortConstraint objects: 
+// 1) Port constraint that allows an edge end to connect to any side of its 
+//    respective node. 
+PortConstraint pc1 = PortConstraint.create(PortConstraint.ANY_SIDE);
+// 2) Port constraint that determines an edge end to connect *anywhere* to the 
+//    upper (NORTH) side of its respective node. 
+PortConstraint pc2 = PortConstraint.create(PortConstraint.NORTH);
+// 3) Strong port constraint that determines an edge end to connect to the 
+//    lower (SOUTH) side of its respective node. The actual end point is at a 
+//    fixed coordinate. 
+PortConstraint pc3 = PortConstraint.create(PortConstraint.SOUTH, true);
+
+// Establish a mapping from edges to port constraints. 
+pcMap.set(edge1, pc1);
+pcMap.set(edge2, pc2);
+pcMap.set(edge3, pc3);
+
+// Register the edge map as a data provider with the graph. 
+// Use the "well-known" look-up key defined in interface PortConstraintKeys. 
+// Note that the above defined port constraints are set so that they apply to 
+// the source ends of their respective edges only. 
+graph.addDataProvider(PortConstraint.SOURCE_PORT_CONSTRAINT_KEY, pcMap);
+
+// Invoke buffered layout. 
+invokeBufferedLayout(graph, new IncrementalHierarchicLayouter());
+</pre></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="tutorial_pc"></a>Tutorial Demo Code
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The tutorial demo application 
+                  <a href="../../src/demo/layout/withoutview/LayoutWithoutAView.java" title="Link to demo code" target="_top">LayoutWithoutAView.java</a> demonstrates how to 
+                  set up port constraints (both weak and strong) for edge end points without the 
+                  functionality present in package y.view. 
+                  
+               </p>
+            </div>
+         </div><a class="indexterm" name="d0e4014"></a><a class="indexterm" name="d0e4019"></a><a class="indexterm" name="d0e4024"></a><a class="indexterm" name="d0e4029"></a><a class="indexterm" name="d0e4034"></a><div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="adv_port_candidates"></a>Port Candidates
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               The concept of port candidates is an extension to that of classic port 
+               constraints <a href="layout_advanced_features.html#adv_port_constraints" title="Port Constraints">as described above</a>. 
+               Unlike port constraints, port candidates can be used in conjunction with both 
+               nodes and edges. 
+               
+               When used in conjunction with nodes, port candidates provide a means to: 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>
+                     restrict anchor locations at nodes, i.e., to define a set of locations where 
+                     edges are allowed to connect to 
+                     
+                  </li>
+                  <li>
+                     associate costs with a given anchor location, which effectively allows to 
+                     establish an order of precedence among the set of anchor locations 
+                     
+                  </li>
+                  <li>
+                     limit the number of connecting edges at a given anchor location 
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+               
+               
+               
+               
+            </p>
+            <p>
+               A typical example for the use of port candidates is a flow diagram as shown in
+               <a href="layout_advanced_features.html#fig_port_candidate_flow_chart" title="Figure&nbsp;5.8.&nbsp;Using port candidates to control connection points">Figure&nbsp;5.8, &#8220;Using port candidates to control connection points&#8221;</a>:
+               The diamond shape, which is the visualization of a switch, should have its incoming
+               edge connecting at the top. The first outgoing edge should connect at the bottom (left image),
+               the second at the right, the third at the left (middle image). If there are more outgoing edges, these
+               edges should connect at the bottom as well as more than one incoming edge should connect
+               at the top (right image).
+               
+            </p>
+            <div class="figure"><a name="fig_port_candidate_flow_chart"></a><p class="title"><b>Figure&nbsp;5.8.&nbsp;Using port candidates to control connection points</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="33%">
+                           <col width="33%">
+                           <col width="34%">
+                        </colgroup>
+                        <tbody valign="middle">
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/port_constraints_1in_1out.png" align="middle" alt="Using port candidates to control connection points"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/port_constraints_1in_2out.png" align="middle" alt="Using port candidates to control connection points"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/port_constraints_2in_4out.png" align="middle" alt="Using port candidates to control connection points"></div>
+                              </td>
+                           </tr>
+                           <tr align="center">
+                              <td align="center">Incoming edges connect at the top, the first outgoing edge at the bottom...</td>
+                              <td align="center">... more outgoing edges occupy the right and left corners...</td>
+                              <td align="center">... when all corners are occupied, the additional edges connect at the bottom.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               Class <a href="../api/y/layout/PortCandidate.html" title="Link to API documentation" target="_top">PortCandidate<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> enables definition 
+               of port candidates that conceptually correspond to either weak port 
+               constraints, i.e., effectively describe side constraints, or strong port 
+               constraints, which encode specific anchor locations at a node. 
+               
+               Note that port candidates that correspond to strong port constraints directly 
+               include the coordinates for the actual anchor locations. 
+               
+            </p>
+            <p>
+               PortCandidate additionally allows to associate costs with a given port 
+               candidate, which can be used to establish an order of precedence among multiple 
+               port candidates. 
+               When a given edge port is being assigned to any of the available port 
+               candidates at a node, those with low costs are favored compared to other port 
+               candidates with higher costs associated. 
+               
+            </p>
+            <p>
+               To define the set of side constraints and anchor locations at a node, multiple 
+               port candidates can easily be combined using the services of class 
+               <a href="../api/y/layout/PortCandidateSet.html" title="Link to API documentation" target="_top">PortCandidateSet<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               
+               When a PortCandidate object is added to an instance of PortCandidateSet, the 
+               capacity of the port candidate can optionally be configured. 
+               
+               The capacity of a given port candidate (sometimes also referred to as 
+               "cardinality") specifies the allowed number of connecting edges at that side or 
+               anchor location. 
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="matching_port_candidates"></a>Matching Port Candidates
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Matching port candidates means the process of distributing a node's edges to 
+                  the available port candidates. 
+                  All edges connecting to a node that has a set of port candidates associated 
+                  with it via a PortCandidateSet object are distributed among the available port 
+                  candidates with respect to: 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        the costs of a given port candidate 
+                        
+                     </li>
+                     <li>
+                        the number of edges that are allowed to connect to a given port candidate 
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  For example, when the limit of allowed edges for a given port candidate with 
+                  costs <tt class="literal">k</tt> is reached, i.e., the given port candidate is said 
+                  to be "saturated," then the next least expensive port candidate among the 
+                  remaining ones is chosen to connect edges to. 
+                  
+               </p>
+               <p>
+                  <a href="layout_advanced_features.html#ex_port_candidate_flow_chart" title="Example&nbsp;5.13.&nbsp;Defining a port candidate set">Example&nbsp;5.13, &#8220;Defining a port candidate set&#8221;</a> demonstrates how to create a candidate
+                  set for the diamond node shown in <a href="layout_advanced_features.html#fig_port_candidate_flow_chart" title="Figure&nbsp;5.8.&nbsp;Using port candidates to control connection points">Figure&nbsp;5.8, &#8220;Using port candidates to control connection points&#8221;</a>:
+                  First, port candidates for the four corners of the diamond are defined.
+                  The number of connecting edges for these candidates is limited to 1.
+                  
+                  Further port candidates, which can take an unlimited number (<tt class="code">Integer.MAX_VALUE</tt>)
+                  of edges, are defined to handle any additional edges.
+                  To let the edges first connect to the corners before the additional candidates are
+                  occupied, a higher cost is associated with these latter candidates.
+                  
+               </p>
+               <div class="example"><a name="ex_port_candidate_flow_chart"></a><p class="title"><b>Example&nbsp;5.13.&nbsp;Defining a port candidate set</b></p><pre class="programlisting java">
+// define a PortCandidateSet
+PortCandidateSet candidateSet = new PortCandidateSet();
+
+// the node has the size (30, 30) with the point (0, 0) at the center
+// so the coordinates for the top corner are (0, -15)
+
+// create a candidate at the top corner with direction NORTH and cost 0
+PortCandidate candidate =
+    PortCandidate.createCandidate(0, -15, PortCandidate.NORTH, 0);
+// add it to the set and allow only one edge to connect to it
+candidateSet.add(candidate, 1);
+// do the same for the other three corners
+candidateSet.add(
+    PortCandidate.createCandidate(0, 15, PortCandidate.SOUTH, 0), 1);
+candidateSet.add(
+    PortCandidate.createCandidate(15, 0, PortCandidate.EAST, 0), 1);
+candidateSet.add(
+    PortCandidate.createCandidate(-15, 0, PortCandidate.WEST, 0), 1);
+
+// to allow more edges to connect at the top and bottom
+// create extra candidates and allow Integer.MAX_VALUE edges to connect
+
+// to avoid that these candidates are occupied before the others
+// associate a cost of 1 with them
+candidateSet.add(
+    PortCandidate.createCandidate(0, -15, PortCandidate.NORTH, 1),
+    Integer.MAX_VALUE);
+candidateSet.add(
+    PortCandidate.createCandidate(0, 15, PortCandidate.SOUTH, 1),
+    Integer.MAX_VALUE);
+</pre></div>
+               <p>
+                  A similar port candidates setup can be observed in the tutorial demo application 
+                  <a href="../../src/demo/layout/hierarchic/PortCandidateDemo.java" title="Link to demo code" target="_top">PortCandidateDemo.java</a>.
+                  
+               </p>
+               <p>
+                  To influence the matching process, a subset of the PortCandidate objects used 
+                  for a node can additionally be associated with the respective ports of its 
+                  connecting edges. 
+                  The subset then defines a restricted set of desired port candidates an edge 
+                  prefers to connect to. 
+                  
+                  The PortCandidate objects can be combined using 
+                  <tt class="classname">java.util.Collection</tt> objects which are stored by means 
+                  of data providers. 
+                  The data providers are registered with the graph using the look-up keys 
+                  <a href="../api/y/layout/PortCandidate.html#SOURCE_PCLIST_DPKEY" title="Link to API documentation" target="_top">SOURCE_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and 
+                  <a href="../api/y/layout/PortCandidate.html#TARGET_PCLIST_DPKEY" title="Link to API documentation" target="_top">TARGET_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                  
+               </p>
+            </div>
+            <p>
+               <a href="layout_advanced_features.html#tab_port_candidates" title="Table&nbsp;5.8.&nbsp;Layout support for port candidates">Table&nbsp;5.8, &#8220;Layout support for port candidates&#8221;</a> lists the layout algorithms that provide 
+               support for port candidates.
+               
+            </p>
+            <div class="table"><a name="tab_port_candidates"></a><p class="title"><b>Table&nbsp;5.8.&nbsp;Layout support for port candidates</b></p>
+               <table summary="Layout support for port candidates" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="20%" align="left">
+                     <col width="60%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Layout Style</th>
+                        <th align="left">Classname</th>
+                        <th align="left">Note</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left">Hierarchical</td>
+                        <td align="left"><a href="../api/y/layout/hierarchic/IncrementalHierarchicLayouter.html" title="Link to API documentation" target="_top">IncrementalHierarchicLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             IncrementalHierarchicalLayouter supports port candidates as soon as they are 
+                             set. 
+                             See the description of 
+                             <a href="incremental_hierarchical_layouter.html#ihl_port_candidates" title="Port Candidates">incremental hierarchical layout</a> 
+                             for more information.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="port_candidates_setup"></a>Setup for Layout
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The PortCandidateSet objects for the node set of a graph can be registered by
+                  means of a data provider using the look-up key
+                  <a href="../api/y/layout/PortCandidateSet.html#NODE_DP_KEY" title="Link to API documentation" target="_top">NODE_DP_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+               </p>
+               <div class="example"><a name="ex_port_candidate_dp"></a><p class="title"><b>Example&nbsp;5.14.&nbsp;Registering candidates</b></p><pre class="programlisting java">
+// 'candidateSet' is of type y.layout.PortCandidateSet.
+// 'node' is of type y.base.Node and is the node which should be associated with
+//   the candidate set.
+// 'graph' is of type y.layout.LayoutGraph.
+
+// Create a data provider to associate the candidates with the node.
+NodeMap pcMap = graph.createNodeMap();
+// Associate the candidate set with the node.
+pcMap.set(node, candidateSet);
+// Register the data provider.
+graph.addDataProvider(PortCandidateSet.NODE_DP_KEY, pcMap);
+</pre></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="tutorial_pc_set"></a>Tutorial Demo Code
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The tutorial demo application <a href="../../src/demo/layout/hierarchic/PortCandidateDemo.java" title="Link to demo code" target="_top">PortCandidateDemo.java</a> 
+                  demonstrates how to configure port candidates for nodes.
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="port_candidates_enhanced_port_constraints"></a>Modeling Enhanced Port Constraints Using Port Candidates
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The same scheme of combining PortCandidate objects using Collection objects as 
+                  used for the matching functionality also enables creating enhanced port 
+                  constraint definitions for edges. The layouters which support this feature are listed
+                  in <a href="layout_advanced_features.html#tab_enhanced_port_candidates" title="Table&nbsp;5.9.&nbsp;Layout support for enhanced port candidates">Table&nbsp;5.9, &#8220;Layout support for enhanced port candidates&#8221;</a>.
+                  
+               </p>
+               <div class="table"><a name="tab_enhanced_port_candidates"></a><p class="title"><b>Table&nbsp;5.9.&nbsp;Layout support for enhanced port candidates</b></p>
+                  <table summary="Layout support for enhanced port candidates" width="100%" border="1">
+                     <colgroup>
+                        <col width="20%" align="left">
+                        <col width="20%" align="left">
+                        <col width="60%" align="left">
+                     </colgroup>
+                     <thead valign="top">
+                        <tr>
+                           <th align="left">Layout Style</th>
+                           <th align="left">Classname</th>
+                           <th align="left">Note</th>
+                        </tr>
+                     </thead>
+                     <tbody valign="top">
+                        <tr>
+                           <td align="left">Hierarchical</td>
+                           <td align="left"><a href="../api/y/layout/hierarchic/IncrementalHierarchicLayouter.html" title="Link to API documentation" target="_top">IncrementalHierarchicLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                IncrementalHierarchicalLayouter supports port candidates as soon as they are
+                                set.
+                                See the description of
+                                <a href="incremental_hierarchical_layouter.html#ihl_port_candidates" title="Port Candidates">incremental hierarchical layout</a>
+                                for more information.
+                                
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <p>
+                  In particular, this scheme is supported by yFiles routing algorithms, and it 
+                  allows to conveniently specify side constraints comprising two or three sides, 
+                  for example. 
+                  
+                  <a href="layout_advanced_features.html#tab_port_candidates_router" title="Table&nbsp;5.10.&nbsp;Routing support for port candidates">Table&nbsp;5.10, &#8220;Routing support for port candidates&#8221;</a> lists the routing algorithms that 
+                  provide support for port candidates modeling enhanced port constraints.
+                  
+               </p>
+               <div class="table"><a name="tab_port_candidates_router"></a><p class="title"><b>Table&nbsp;5.10.&nbsp;Routing support for port candidates</b></p>
+                  <table summary="Routing support for port candidates" width="100%" border="1">
+                     <colgroup>
+                        <col width="20%" align="left">
+                        <col width="20%" align="left">
+                        <col width="60%" align="left">
+                     </colgroup>
+                     <thead valign="top">
+                        <tr>
+                           <th align="left">Routing Style</th>
+                           <th align="left">Classname</th>
+                           <th align="left">Note</th>
+                        </tr>
+                     </thead>
+                     <tbody valign="top">
+                        <tr>
+                           <td align="left">Orthogonal</td>
+                           <td align="left"><a href="../api/y/layout/router/OrthogonalEdgeRouter.html" title="Link to API documentation" target="_top">OrthogonalEdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                                <a href="../api/y/layout/router/ChannelEdgeRouter.html" title="Link to API documentation" target="_top">ChannelEdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                                <a href="../api/y/layout/router/BusRouter.html" title="Link to API documentation" target="_top">BusRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, and 
+                                <a href="../api/y/layout/router/polyline/EdgeRouter.html" title="Link to API documentation" target="_top">EdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                All classes by default support port candidates as soon as they are set. 
+                                See the descriptions of 
+                                <a href="orthogonal_edge_router.html#orthogonal_router_advanced" title="Advanced Routing Features">OrthogonalEdgeRouter</a>, 
+                                <a href="channel_edge_router.html#channel_router_advanced" title="Advanced Routing Features">ChannelEdgeRouter</a>, 
+                                <a href="orthogonal_bus_router.html#busrouter_advanced" title="Advanced Routing Features">BusRouter</a>, and 
+                                <a href="polyline_edge_router.html#polyline_router_advanced" title="Advanced Routing Concepts">EdgeRouter</a> for more information.
+                                
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="port_candidates_setup_routing"></a>Setup for Routing
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  <a href="layout_advanced_features.html#ex_setup_port_candidates_routing" title="Example&nbsp;5.15.&nbsp;Creating enhanced port constraints using port candidates">Example&nbsp;5.15, &#8220;Creating enhanced port constraints using port candidates&#8221;</a> shows how port candidates 
+                  can be used to model enhanced port constraints that allow the source port of 
+                  edges to connect to two sides of the start nodes.
+                  
+               </p>
+               <div class="example"><a name="ex_setup_port_candidates_routing"></a><p class="title"><b>Example&nbsp;5.15.&nbsp;Creating enhanced port constraints using port candidates</b></p><pre class="programlisting java">
+// 'graph' is of type y.layout.LayoutGraph. 
+
+// Define a collection of port candidates for the source ports of all edges.
+final Collection pcc = new ArrayList();
+// Create port candidates that conceptually correspond to classic side 
+// constraints (weak constraints) and add them to the collection.
+// East side.
+pcc.add(PortCandidate.createCandidate(PortCandidate.EAST));
+// South side.
+pcc.add(PortCandidate.createCandidate(PortCandidate.SOUTH));
+
+// Create a data provider (adapter) that returns the collection of port 
+// candidates for each edge.
+DataProvider dp = new DataProviderAdapter() {
+  public Object get(Object dataHolder) {
+    return ((dataHolder instanceof Edge) ? pcc : null);
+  }
+};
+// Register the data provider (adapter) with the graph.
+// Use the "well-known" look-up key defined in class PortCandidate.
+graph.addDataProvider(PortCandidate.SOURCE_PCLIST_DPKEY, dp);
+
+// Invoke an edge routing algorithm.
+invokeBufferedLayout(graph, new OrthogonalEdgeRouter());
+</pre></div>
+            </div>
+         </div><a class="indexterm" name="d0e4278"></a><a class="indexterm" name="d0e4283"></a><a class="indexterm" name="d0e4288"></a><div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="adv_edge_groups"></a>Edge/Port Grouping (Bus-Style Edge Routing)
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Edge grouping means bundling of a set of edges to be treated in a common manner 
+               regarding some aspects of edge path generation. 
+               
+               Specifically, if edges at a common source node, for example, are declared an 
+               edge group at their source ends, then their source ports will be anchored at 
+               the same location. 
+               
+            </p>
+            <p>
+               Additionally, all grouped edges will also be routed in bus-style, i.e., their 
+               paths will share a common edge segment. 
+               
+               If edges at different source (target) nodes are declared an edge group at their 
+               source (target) ends, then they will be routed in bus-style only. 
+               
+            </p>
+            <div class="figure"><a name="fig_edge_groups"></a><p class="title"><b>Figure&nbsp;5.9.&nbsp;Edge groups</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="33%">
+                           <col width="33%">
+                           <col width="34%">
+                        </colgroup>
+                        <tbody valign="middle">
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/edge_grps_initial_ihl_lay.jpg" align="middle" alt="Edge groups"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/edge_grps_ihl_lay_1grp_srcs_A.jpg" align="middle" alt="Edge groups"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/edge_grps_ihl_lay_1grp_srcs_abc.jpg" align="middle" alt="Edge groups"></div>
+                              </td>
+                           </tr>
+                           <tr align="center">
+                              <td align="center">Hierarchical layout without any edge groups, ...</td>
+                              <td align="center">
+                                 ... with an edge group at the source ends of outgoing edges at node A.
+                                 The source ports are anchored at the same location.
+                                 Also, the edges are routed in bus-style, i.e., their paths share a common edge segment.
+                                 
+                              </td>
+                              <td align="center">
+                                 ... with an edge group at the source ends of outgoing edges at node a, b, and c.
+                                 The edges are routed in bus-style, i.e., their paths share a common edge segment.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               Declaring an edge group at either source or target ends of a set of edges is done
+               by associating a common object with the edges via a data provider.
+               Depending on which end the edge group is declared for, the data provider is registered
+               with a graph using either the
+               <a href="../api/y/layout/PortConstraintKeys.html#SOURCE_GROUPID_KEY" title="Link to API documentation" target="_top">SOURCE_GROUPID_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+               or
+               <a href="../api/y/layout/PortConstraintKeys.html#TARGET_GROUPID_KEY" title="Link to API documentation" target="_top">TARGET_GROUPID_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+               look-up key.
+               
+            </p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  Edge grouping is also referred to as port grouping sometimes. 
+                  If edges from an edge group have associated inconsistent, or even contradicting 
+                  port constraints, then the location of the common port is not guaranteed to 
+                  obey any of them. 
+                  
+               </p>
+            </div>
+            <p>
+               <a href="layout_advanced_features.html#tab_edge_groups" title="Table&nbsp;5.11.&nbsp;Layout support for edge groups">Table&nbsp;5.11, &#8220;Layout support for edge groups&#8221;</a> lists the layout algorithms that provide 
+               support for edge groups. 
+               
+            </p>
+            <div class="table"><a name="tab_edge_groups"></a><p class="title"><b>Table&nbsp;5.11.&nbsp;Layout support for edge groups</b></p>
+               <table summary="Layout support for edge groups" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="20%" align="left">
+                     <col width="60%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Layout Style</th>
+                        <th align="left">Classname</th>
+                        <th align="left">Note</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left">Hierarchical</td>
+                        <td align="left"><a href="../api/y/layout/hierarchic/IncrementalHierarchicLayouter.html" title="Link to API documentation" target="_top">IncrementalHierarchicLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             IncrementalHierarchicLayouter by default generates edge/port groups as soon as
+                             they are declared.
+                             See the description of the 
+                             <a href="incremental_hierarchical_layouter.html" title="Hierarchical Layout Style">hierarchical layout style</a> 
+                             for more information.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">Orthogonal</td>
+                        <td align="left"><a href="../api/y/layout/orthogonal/DirectedOrthogonalLayouter.html" title="Link to API documentation" target="_top">DirectedOrthogonalLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             The directed orthogonal layout algorithm by default generates edge/port 
+                             groups as soon as they are declared. 
+                             See the description of 
+                             <a href="directed_orthogonal_layouter.html" title="Directed Orthogonal Layout">directed orthogonal layout</a> 
+                             for more information. 
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">Series-parallel</td>
+                        <td align="left"><a href="../api/y/layout/seriesparallel/SeriesParallelLayouter.html" title="Link to API documentation" target="_top">SeriesParallelLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             The series-parallel layout algorithm by default generates edge/port groups as 
+                             soon as they are declared. 
+                             See the description of 
+                             <a href="seriesparallel_layout.html" title="Series-parallel Layout Style">series-parallel layout</a> for more information.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               <a href="layout_advanced_features.html#tab_edge_groups_router" title="Table&nbsp;5.12.&nbsp;Routing support for edge groups">Table&nbsp;5.12, &#8220;Routing support for edge groups&#8221;</a> lists the routing algorithms that 
+               provide support for edge groups. 
+               
+            </p>
+            <div class="table"><a name="tab_edge_groups_router"></a><p class="title"><b>Table&nbsp;5.12.&nbsp;Routing support for edge groups</b></p>
+               <table summary="Routing support for edge groups" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="20%" align="left">
+                     <col width="60%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Routing Style</th>
+                        <th align="left">Classname</th>
+                        <th align="left">Note</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left">Orthogonal</td>
+                        <td align="left"><a href="../api/y/layout/router/OrthogonalEdgeRouter.html" title="Link to API documentation" target="_top">OrthogonalEdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             <a href="../api/y/layout/router/polyline/EdgeRouter.html" title="Link to API documentation" target="_top">EdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             OrthogonalEdgeRouter's support for edge/port groups is partly handled by prepended 
+                             layout stages. 
+                             See the description of 
+                             <a href="orthogonal_edge_router.html#orthogonal_router_stages" title="Enhancing the Routing Process">OrthogonalEdgeRouter</a> for more 
+                             information. 
+                             Class <a href="polyline_edge_router.html#polyline_router_advanced" title="Advanced Routing Concepts">EdgeRouter</a> provides inherent 
+                             support for edge/port groups.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="edge_groups_setup"></a>Setup for Layout
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  <a href="layout_advanced_features.html#ex_setup_edge_groups" title="Example&nbsp;5.16.&nbsp;Creating an edge group at a common target node">Example&nbsp;5.16, &#8220;Creating an edge group at a common target node&#8221;</a> demonstrates how edge groups are 
+                  declared, and how an edge map is registered as a data provider with the graph 
+                  using the look-up key 
+                  <a href="../api/y/layout/PortConstraintKeys.html#TARGET_GROUPID_KEY" title="Link to API documentation" target="_top">TARGET_GROUPID_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                  
+                  During layout calculation, an algorithm first retrieves the data provider using 
+                  the look-up key, and afterwards retrieves the contained information. 
+                  
+               </p>
+               <div class="figure"><a name="d0e4438"></a><p class="title"><b>Figure&nbsp;5.10.&nbsp;Edge group at a common target node</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="50%">
+                              <col width="50%">
+                           </colgroup>
+                           <tbody valign="middle">
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/edge_grps_initial_ihl_lay_trgts.jpg" align="middle" alt="Edge group at a common target node"></div>
+                                 </td>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/edge_grps_ihl_lay_1grp_trgts.jpg" align="middle" alt="Edge group at a common target node"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">Hierarchical layout without any edge groups...</td>
+                                 <td align="center">
+                                    ... and with an edge group at the target ends of the edges. 
+                                    All target ports are anchored at the same location at the common node.
+                                    Also, the edges are routed in bus-style, i.e., their paths share a common edge segment.
+                                    
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <div class="example"><a name="ex_setup_edge_groups"></a><p class="title"><b>Example&nbsp;5.16.&nbsp;Creating an edge group at a common target node</b></p><pre class="programlisting java">
+// 'graph' is of type y.layout.LayoutGraph. 
+// 'specificNode' is of type y.base.Node.
+
+// Create an edge map that is used as a data provider later on. 
+EdgeMap egMap = graph.createEdgeMap();
+
+// Declare an edge group for the target end of all incoming edges at a specific 
+// node. 
+String targetEdgeGroupID = "All my grouped edges.";
+for (EdgeCursor ec = specificNode.inEdges(); ec.ok(); ec.next()) {
+  egMap.set(ec.edge(), targetEdgeGroupID);
+}
+
+// Register the edge map as a data provider with the graph. 
+// Use the "well-known" look-up key defined in interface PortConstraintKeys. 
+graph.addDataProvider(PortConstraintKeys.TARGET_GROUPID_KEY, egMap);
+
+// Invoke buffered layout. 
+invokeBufferedLayout(graph, new IncrementalHierarchicLayouter());
+</pre></div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="adv_partition_grid"></a>Partition Grid
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e4472"></a><a class="indexterm" name="d0e4479"></a><p>
+               For the calculation of partitioned layouts, i.e., in particular the special case 
+               of swimlane layouts, the so-called partition grid provides the necessary support.
+               
+            </p>
+            <p>
+               Class <a href="../api/y/layout/grid/PartitionGrid.html" title="Link to API documentation" target="_top">PartitionGrid<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               encapsulates a simple grid-like structure consisting of rows and columns. 
+               In addition to the structure itself, the partition grid also holds geometric information 
+               related to both rows and columns, like, e.g. minimum heights/widths or insets.
+               
+            </p>
+            <p>
+               <a href="layout_advanced_features.html#fig_partition_grid" title="Figure&nbsp;5.11.&nbsp;Partition grid">Figure&nbsp;5.11, &#8220;Partition grid&#8221;</a> shows a partitioned layout. 
+               Note the two-dimensional partition which results from the rows and columns.
+               
+            </p>
+            <div class="figure"><a name="fig_partition_grid"></a><p class="title"><b>Figure&nbsp;5.11.&nbsp;Partition grid</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/partition-grid-example-smaller.png" align="middle" alt="Partitioned layout."></div>
+                              </td>
+                           </tr>
+                           <tr align="center">
+                              <td align="center">Left-to-right partitioned layout.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               The geometric information specific to a row or column is available through its descriptor 
+               object, which is an instance of <a href="../api/y/layout/grid/RowDescriptor.html" title="Link to API documentation" target="_top">RowDescriptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               or <a href="../api/y/layout/grid/ColumnDescriptor.html" title="Link to API documentation" target="_top">ColumnDescriptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+               respectively.
+               
+            </p>
+            <p>
+               <a href="layout_advanced_features.html#tab_partition_grid" title="Table&nbsp;5.13.&nbsp;Layout support for swimlane/partitioned layout">Table&nbsp;5.13, &#8220;Layout support for swimlane/partitioned layout&#8221;</a> lists the layout algorithms that provide support 
+               for swimlane/partitioned layout.
+               
+            </p>
+            <div class="table"><a name="tab_partition_grid"></a><p class="title"><b>Table&nbsp;5.13.&nbsp;Layout support for swimlane/partitioned layout</b></p>
+               <table summary="Layout support for swimlane/partitioned layout" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="20%" align="left">
+                     <col width="60%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Layout Style</th>
+                        <th align="left">Classname</th>
+                        <th align="left">Note</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left">Hierarchical</td>
+                        <td align="left"><a href="../api/y/layout/hierarchic/IncrementalHierarchicLayouter.html" title="Link to API documentation" target="_top">IncrementalHierarchicLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             IncrementalHierarchicLayouter provides direct support for swimlane/partitioned 
+                             layout. 
+                           
+                             See the description of IncrementalHierarchicLayouter's support for 
+                             <a href="incremental_hierarchical_layouter.html#ihl_swimlanes" title="Swimlane Layout">Swimlane Layout</a> for more information.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">Organic</td>
+                        <td align="left"><a href="../api/y/layout/organic/SmartOrganicLayouter.html" title="Link to API documentation" target="_top">SmartOrganicLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             SmartOrganicLayouter provides direct support for swimlane/partitioned layout. 
+                             See the description of 
+                             <a href="smart_organic_layouter.html#sol_partitioned_layout" title="Partitioned Layout">Partitioned Layout</a> 
+                             for more information.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="partition_grid_setup"></a>Setup for Layout
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  In the presence of package <a href="../api/y/view/package-summary.html" title="Link to API documentation" target="_top">y.view<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  (i.e., with the yFiles Viewer distribution), the setup for swimlane/partitioned 
+                  layout calculation of a <a href="../api/y/view/Graph2D.html" title="Link to API documentation" target="_top">Graph2D<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> that uses 
+                  a <a href="tabular_presentation.html" title="Chapter&nbsp;8.&nbsp;Tabular Data Presentation">TableGroupNodeRealizer</a> for the presentation 
+                  of a diagram with swimlanes is a matter of using the convenience methods of class 
+                  <a href="../api/y/view/tabular/TableLayoutConfigurator.html" title="Link to API documentation" target="_top">TableLayoutConfigurator<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> as shown in 
+                  <a href="layout_advanced_features.html#ex_partition_grid_setup_with_y_view" title="Example&nbsp;5.17.&nbsp;Swimlane/partitioned layout preparation with classes from package y.view">Example&nbsp;5.17, &#8220;Swimlane/partitioned layout preparation with classes from package y.view&#8221;</a>.
+                  
+               </p>
+               <div class="example"><a name="ex_partition_grid_setup_with_y_view"></a><p class="title"><b>Example&nbsp;5.17.&nbsp;Swimlane/partitioned layout preparation with classes from package y.view</b></p><pre class="programlisting java">
+// 'graph' is of type y.view.Graph2D.
+
+IncrementalHierarchicLayouter ihl = new IncrementalHierarchicLayouter();
+ihl.setLayoutOrientation(LayoutOrientation.LEFT_TO_RIGHT);
+
+TableLayoutConfigurator tlc = new TableLayoutConfigurator(graph);
+tlc.setVerticalLayoutConfiguration(false);
+
+// Prepare all relevant information for a layout algorithm. 
+tlc.prepareAll();
+try {
+  // Invoke buffered layout. 
+  (new BufferedLayouter(ihl)).doLayout(graph);
+}
+finally {
+  tlc.restoreAll();
+}
+</pre></div>
+               <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Tip</h3>
+                  <p>
+                     Setup code can be reduced to a minimum by using convenience <a href="viewer_layout.html" title="Automatic Layout">class Graph2DLayoutExecutor</a>,
+                     which also takes care of all necessary configuration steps related to swimlane/partitioned
+                     layout.
+                     
+                  </p>
+               </div>
+               <p>
+                  <a href="layout_advanced_features.html#ex_partition_grid_setup_with_y_layout" title="Example&nbsp;5.18.&nbsp;Swimlane/partitioned layout preparation without classes from package y.view">Example&nbsp;5.18, &#8220;Swimlane/partitioned layout preparation without classes from package y.view&#8221;</a> demonstrates how to set 
+                  up a swimlane/partitioned layout without the convenience functionality from package 
+                  y.view.
+                  
+               </p>
+               <p>
+                  The services of the <a href="../api/y/layout/grid/PartitionGrid.html" title="Link to API documentation" target="_top">PartitionGrid<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> class 
+                  can be used to 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        define a grid-like structure consisting of rows and columns that represents a partition,
+                        
+                     </li>
+                     <li>
+                        create IDs for the cells of a partition (single cells and ranges of cells), which 
+                        result from the rows and columns setup, and
+                        
+                     </li>
+                     <li>
+                        assign the nodes of a diagram to these partition cells by means of the cell IDs.
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  
+               </p>
+               <p>
+                  Partitioned layout calculation needs a PartitionGrid object registered via a data 
+                  provider with the graph using look-up key <a href="../api/y/layout/grid/PartitionGrid.html#PARTITION_GRID_DPKEY" title="Link to API documentation" target="_top">PARTITION_GRID_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  and the mapping of the nodes to partition cells registered via data provider with 
+                  the graph using look-up key <a href="../api/y/layout/grid/PartitionGrid.html#PARTITION_CELL_DPKEY" title="Link to API documentation" target="_top">PARTITION_CELL_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                  
+                  During layout calculation, an algorithm first retrieves the data providers using 
+                  the look-up keys, and afterwards retrieves the contained information.
+                  
+               </p>
+               <p>
+                  Basically, the partition grid needs to be created, and the data providers that hold 
+                  the necessary information about the partition grid and the mapping of nodes to cells 
+                  have to be filled manually, and be registered with the graph using the data provider 
+                  look-up keys defined in class PartitionGrid.
+                  
+               </p>
+               <div class="example"><a name="ex_partition_grid_setup_with_y_layout"></a><p class="title"><b>Example&nbsp;5.18.&nbsp;Swimlane/partitioned layout preparation without classes from package y.view</b></p><pre class="programlisting java">
+// 'graph' is of type y.layout.LayoutGraph.
+// 'n1' to 'n6' are of type y.base.Node.
+
+// Create a grid having three rows and four columns.
+PartitionGrid grid = new PartitionGrid(3, 4);
+
+// Create a node map that is to be used as data provider later on. The map 
+// stores the mapping of nodes to swimlanes, resp. partition grid cells.
+NodeMap cellMap = graph.createNodeMap();
+
+// Assign the nodes to the cells.
+cellMap.set(n1, grid.createCellId(1, 0));
+cellMap.set(n2, grid.createCellId(0, 1));
+cellMap.set(n3, grid.createCellId(2, 2));
+cellMap.set(n4, grid.createCellId(1, 3));
+cellMap.set(n5, grid.createCellId(0, 3));
+cellMap.set(n6, grid.createCellId(0, 3));
+
+// Register the PartitionGrid object and the node map as data providers with the
+// graph. Use the "well-known" look-up keys defined in class PartitionGrid.
+graph.addDataProvider(PartitionGrid.PARTITION_GRID_DPKEY, 
+                      DataProviders.createConstantDataProvider(grid));
+graph.addDataProvider(PartitionGrid.PARTITION_CELL_DPKEY, cellMap);
+
+// Create the layout algorithm...
+IncrementalHierarchicLayouter ihl = new IncrementalHierarchicLayouter();
+ihl.setLayoutOrientation(LayoutOrientation.LEFT_TO_RIGHT);
+// ... and start layout calculation.
+new BufferedLayouter(ihl).doLayout(graph);
+</pre></div>
+               <p>
+                  Note that <a href="layout_advanced_features.html#ex_partition_grid_setup_with_y_layout" title="Example&nbsp;5.18.&nbsp;Swimlane/partitioned layout preparation without classes from package y.view">Example&nbsp;5.18, &#8220;Swimlane/partitioned layout preparation without classes from package y.view&#8221;</a> shows the basic 
+                  setup of the partition grid seen in <a href="layout_advanced_features.html#fig_partition_grid" title="Figure&nbsp;5.11.&nbsp;Partition grid">Figure&nbsp;5.11, &#8220;Partition grid&#8221;</a>. 
+                  Observe how the layout algorithm respects the specified organization of the nodes 
+                  within the partition cells.
+                  
+               </p>
+            </div>
+            <p>
+               To create IDs for the cells of a partition (single cells and ranges of cells), class 
+               PartitionGrid provides the methods below. 
+               
+               The IDs can be used to assign the nodes of a diagram to partition cells. 
+               Nodes that do not have an ID associated, can be placed in any partition cell by 
+               a layout algorithm.
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/grid/PartitionGrid.html#createCellId(int, int)" title="Link to API documentation" target="_top">PartitionCellId createCellId(int rowIndex, int colIndex)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Creates partition IDs for single cells.</td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/grid/PartitionGrid.html#createCellSpanId(int, int, int, int)" title="Link to API documentation" target="_top">PartitionCellId createCellSpanId(int fromRowIndex, int fromColIndex,
+                                 int toRowIndex, int toColIndex)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Creates partition IDs that represent a (two-dimensional) range of cells stretching 
+                              the specified rows and columns.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Important</h3>
+               <p>
+                  In the set of all specified cells of a partition (single cells and ranges of cells), 
+                  no two ranges of cells are allowed to overlap with each other, or overlap with a 
+                  single cell, i.e., the set needs to be disjoint. 
+                  In particular, this also means that no partition cell can have more than one partition 
+                  ID associated with it.
+                  
+               </p>
+            </div>
+            <p>
+               Class PartitionGrid enables further optimization of the layout outcome when there 
+               are no cell spans specified in a partition grid. 
+               The following setter methods can be used to control whether the order of rows and 
+               columns in a swimlane/partitioned layout shall be automatically determined.
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/grid/PartitionGrid.html#setRowOrderOptimizationEnabled(boolean)" title="Link to API documentation" target="_top">void setRowOrderOptimizationEnabled(boolean optimizeRowOrder)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Optimize the order of rows to minimize the diagram's overall edge lengths.</td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/grid/PartitionGrid.html#setColumnOrderOptimizationEnabled(boolean)" title="Link to API documentation" target="_top">void setColumnOrderOptimizationEnabled(boolean optimizeColumnOrder)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Optimize the order of columns to minimize the diagram's overall edge lengths.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="adv_node_halos"></a>Node Halos
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e4685"></a><p>
+               A node halo basically specifies additional paddings around a node. 
+               A layout algorithm that supports node halos, keeps this area clear of graph elements, 
+               except the labels of this specific node and the adjacent segments of its edges. 
+               
+            </p>
+            <p>
+               Class <a href="../api/y/layout/NodeHalo.html" title="Link to API documentation" target="_top">NodeHalo<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> can be used to denote a node's 
+               additional size requirements. 
+               The NodeHalo objects for the node set of a graph can be registered by means of a 
+               data provider using the look-up key <a href="../api/y/layout/NodeHalo.html#NODE_HALO_DPKEY" title="Link to API documentation" target="_top">NODE_HALO_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+               
+            </p>
+            <p>
+               The following layout algorithms provide support for node halos:
+               
+            </p>
+            <div class="table"><a name="tab_node_halos"></a><p class="title"><b>Table&nbsp;5.14.&nbsp;Layout support for node halos</b></p>
+               <table summary="Layout support for node halos" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="20%" align="left">
+                     <col width="60%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Layout Style</th>
+                        <th align="left">Classname</th>
+                        <th align="left">Note</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left">Hierarchical</td>
+                        <td align="left"><a href="../api/y/layout/hierarchic/IncrementalHierarchicLayouter.html" title="Link to API documentation" target="_top">IncrementalHierarchicLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             IncrementalHierarchicLayouter by default obeys node halos as soon as they are 
+                             declared. 
+                             See the description of the 
+                             <a href="incremental_hierarchical_layouter.html#incremental_hierarchical_advanced" title="Advanced Layout Concepts">hierarchical layout style</a> 
+                             for more information.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">Orthogonal</td>
+                        <td align="left"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html" title="Link to API documentation" target="_top">OrthogonalLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             <a href="../api/y/layout/orthogonal/OrthogonalGroupLayouter.html" title="Link to API documentation" target="_top">OrthogonalGroupLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             <a href="../api/y/layout/orthogonal/DirectedOrthogonalLayouter.html" title="Link to API documentation" target="_top">DirectedOrthogonalLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             and <a href="../api/y/layout/orthogonal/CompactOrthogonalLayouter.html" title="Link to API documentation" target="_top">CompactOrthogonalLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             All classes by default support node halos as soon as they are declared. 
+                             See the descriptions of 
+                             <a href="orthogonal_layouter.html#orthogonal_options" title="Layout Options">OrthogonalLayouter</a>, 
+                             <a href="orthogonal_group_layouter.html#orthogonal_group_options" title="Layout Options">OrthogonalGroupLayouter</a>, and 
+                             <a href="directed_orthogonal_layouter.html#directed_orthogonal_advanced" title="Advanced Layout Concepts">DirectedOrthogonalLayouter</a> 
+                             for more information. 
+                             
+                             Note that <a href="../api/y/layout/orthogonal/CompactOrthogonalLayouter.html" title="Link to API documentation" target="_top">CompactOrthogonalLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                             supports node halos via the <a href="orthogonal_layouter.html" title="Orthogonal Layout">OrthogonalLayouter</a> 
+                             that it uses internally.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">Tree</td>
+                        <td align="left"><a href="../api/y/layout/tree/TreeLayouter.html" title="Link to API documentation" target="_top">TreeLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             <a href="../api/y/layout/tree/BalloonLayouter.html" title="Link to API documentation" target="_top">BalloonLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, and 
+                             <a href="../api/y/layout/tree/GenericTreeLayouter.html" title="Link to API documentation" target="_top">GenericTreeLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             All classes by default support node halos as soon as they are declared. 
+                             See the descriptions of 
+                             <a href="tree_layouter.html#tree_directed_advanced" title="Advanced Layout Concepts">TreeLayouter</a>, 
+                             <a href="tree_layouter.html#tree_balloon_advanced" title="Advanced Layout Concepts">BalloonLayouter</a>, and 
+                             <a href="cls_GenericTreeLayouter.html#tree_generic_advanced" title="Advanced Layout Concepts">GenericTreeLayouter</a> for more information.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">Circular</td>
+                        <td align="left"><a href="../api/y/layout/circular/CircularLayouter.html" title="Link to API documentation" target="_top">CircularLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             CircularLayouter by default obeys node halos as soon as they are declared. 
+                             See the description of the 
+                             <a href="circular_layouter.html" title="Circular Layout">circular layout algorithm</a> for more information.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">Organic</td>
+                        <td align="left"><a href="../api/y/layout/organic/SmartOrganicLayouter.html" title="Link to API documentation" target="_top">SmartOrganicLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             SmartOrganicLayouter by default obeys node halos as soon as they are declared. 
+                             See the description of the 
+                             <a href="smart_organic_layouter.html#cls_SmartOrganicLayouter" title="Class SmartOrganicLayouter">organic layout algorithm</a> for more 
+                             information.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">Radial</td>
+                        <td align="left"><a href="../api/y/layout/radial/RadialLayouter.html" title="Link to API documentation" target="_top">RadialLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             RadialLayouter by default obeys node halos as soon as they are declared. 
+                             See the description of the 
+                             <a href="radial_layouter.html#radial_advanced" title="Advanced Layout Concepts">radial layout algorithm</a> for more information.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               The following routing algorithms provide support for node halos:
+               
+            </p>
+            <div class="table"><a name="tab_node_halos_router"></a><p class="title"><b>Table&nbsp;5.15.&nbsp;Routing support for node halos</b></p>
+               <table summary="Routing support for node halos" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="20%" align="left">
+                     <col width="60%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Routing Style</th>
+                        <th align="left">Classname</th>
+                        <th align="left">Note</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left">Orthogonal</td>
+                        <td align="left"><a href="../api/y/layout/router/polyline/EdgeRouter.html" title="Link to API documentation" target="_top">EdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Class <a href="polyline_edge_router.html#polyline_router_advanced" title="Advanced Routing Concepts">EdgeRouter</a> provides inherent 
+                             support for node halos.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="layout_concepts.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="layout.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="incremental_layout.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Concepts&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Incremental Layout</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

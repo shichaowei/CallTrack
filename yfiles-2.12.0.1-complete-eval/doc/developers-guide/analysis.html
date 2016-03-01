@@ -1,0 +1,1149 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Analyzing Graphs</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="base.html" title="Chapter&nbsp;4.&nbsp;Working with the Graph Structure">
+      <link rel="previous" href="data_accessors.html" title="Binding Data to Graph Elements">
+      <link rel="next" href="layout.html" title="Chapter&nbsp;5.&nbsp;Automatic Graph Layout">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Analyzing Graphs</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="data_accessors.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;4.&nbsp;Working with the Graph Structure</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="layout.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="analysis"></a>Analyzing Graphs
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div><a class="indexterm" name="d0e2107"></a><a class="indexterm" name="d0e2110"></a><a class="indexterm" name="d0e2113"></a><a class="indexterm" name="d0e2116"></a><a class="indexterm" name="d0e2119"></a><a class="indexterm" name="d0e2122"></a><a class="indexterm" name="d0e2125"></a><a class="indexterm" name="d0e2128"></a><a class="indexterm" name="d0e2133"></a><p>
+            One of the key aspects of the yFiles library is its emphasis on sophisticated 
+            algorithms for analyzing graph structures. 
+            Package y.algo provides a variety of services ranging from simple graph 
+            attribute queries to advanced graph characteristic computations. 
+            <a href="analysis.html#Services for analyzing graphs" title="Table&nbsp;4.3.&nbsp;Services for analyzing graphs">Table&nbsp;4.3, &#8220;Services for analyzing graphs&#8221;</a> gives an overview of the 
+            classes and their services. 
+            
+            
+            
+         </p>
+         <p>
+            In general, most of the services from package y.algo are offered by means of 
+            static methods, i.e., there is no need to create an instance of the respective 
+            specialized classes. 
+            Class Dfs, however, is an exception to this rule. 
+            It provides a framework to build customized depth-first search behavior, and 
+            has to be extended appropriately. 
+            
+         </p>
+         <div class="table"><a name="Services for analyzing graphs"></a><p class="title"><b>Table&nbsp;4.3.&nbsp;Services for analyzing graphs</b></p>
+            <table summary="Services for analyzing graphs" width="100%" border="1">
+               <colgroup>
+                  <col width="25%" align="left">
+                  <col width="75%" align="left">
+               </colgroup>
+               <thead>
+                  <tr>
+                     <th align="left">Class Name</th>
+                     <th align="left">Description</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td align="left"><a href="analysis.html#BFS" title="Breadth-First Search">Bfs</a></td>
+                     <td align="left">
+                        This class provides services that center around breadth-first search (BFS). 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left">Bipartitions</td>
+                     <td align="left">
+                        Responsible for graph bipartition problems. 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="analysis.html#Centrality" title="Centrality Measures">Centrality</a></td>
+                     <td align="left">
+                        Provides several so-called "centrality" measures to denote importance of graph 
+                        elements within their graph. 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left">Cycles</td>
+                     <td align="left">
+                        Responsible for finding cycles within a graph that have certain properties. 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="analysis.html#DFS" title="Depth-First Search">Dfs</a></td>
+                     <td align="left">
+                        Framework class for depth-first search (DFS) based algorithms. 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left">GraphChecker</td>
+                     <td align="left">
+                        Provides methods that check structural properties of a given graph. 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="analysis.html#Graph Connectivity" title="Graph Connectivity">GraphConnectivity</a></td>
+                     <td align="left">
+                        Provides algorithms for determining certain connectivity components within a 
+                        graph. 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left">Groups</td>
+                     <td align="left">
+                        Provides support for automatic graph clustering. 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left">NetworkFlows</td>
+                     <td align="left">
+                        Provides sophisticated algorithms for solving classical network flow problems 
+                        like MinCostFlow or MaxFlow. 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left">Paths</td>
+                     <td align="left">
+                        Responsible for finding paths within a graph that have certain properties. 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left">RankAssignments</td>
+                     <td align="left">
+                        Provides algorithms for solving the rank assignment problem. 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="analysis.html#shortest_paths" title="Shortest Paths">ShortestPaths</a></td>
+                     <td align="left">
+                        Provides diverse algorithms and helper methods for solving the Shortest Path 
+                        problem on weighted graphs, i.e., graphs with a cost function on the edges. 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="analysis.html#spanning_trees" title="Spanning Trees">SpanningTrees</a></td>
+                     <td align="left">
+                        Provides (minimum) spanning tree algorithms for graphs. 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="analysis.html#Transitivity" title="Transitivity">Transitivity</a></td>
+                     <td align="left">
+                        Provides algorithms to compute reachability information for directed, acyclic 
+                        graphs: transitive closure, transitive reduction. 
+                        
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="analysis.html#Trees" title="Trees">Trees</a></td>
+                     <td align="left">
+                        Provides diverse algorithms and services for tree-structured graphs or 
+                        subgraphs. 
+                        
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="Quickly Checking for Graph Characteristics"></a>Quickly Checking for Graph Characteristics
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               To conveniently check for the most common elementary graph characteristics 
+               class <a href="../api/y/algo/GraphChecker.html" title="Link to API documentation" target="_top">GraphChecker<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> offers a set of static 
+               methods. 
+               These cover for example whether a graph is cyclic/acyclic or contains multiple 
+               components. 
+               For the more advanced, in-depth questions there are specialized classes, like, 
+               e.g., class <a href="../api/y/algo/Cycles.html" title="Link to API documentation" target="_top">Cycles<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, or 
+               <a href="../api/y/algo/GraphConnectivity.html" title="Link to API documentation" target="_top">GraphConnectivity<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               (Class GraphChecker provides only "meta"-services, it asks in turn these 
+               specialized classes.) 
+               
+               
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="Advanced Graph Characteristics"></a>Advanced Graph Characteristics
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="BFS"></a>Breadth-First Search
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Beginning at a starting node (which is thought of as having distance 0 to 
+                  itself) breadth-first search visits all of its direct neighbors (these having 
+                  distance 1) before it in turn uses these already visited nodes as new starting 
+                  nodes to continue with their direct neighbors. 
+                  
+                  That way, it visits all reachable nodes at distance <tt class="literal">k</tt> to the 
+                  original starting node before those at distance <tt class="literal">k+1</tt>. 
+                  
+               </p>
+               <p>
+                  Look at the example graph in <a href="analysis.html#bfs" title="Figure&nbsp;4.8.&nbsp;Breadth-first search distances">Figure&nbsp;4.8, &#8220;Breadth-first search distances&#8221;</a>. 
+                  The numbers at the upper-right corners of the nodes denote the distance the 
+                  respective node has to the starting node. 
+                  
+                  
+               </p>
+               <div class="figure"><a name="bfs"></a><p class="title"><b>Figure&nbsp;4.8.&nbsp;Breadth-first search distances</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/bfs_2.jpg" align="middle" alt="Breadth-first search distances."></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  Class <a href="../api/y/algo/Bfs.html" title="Link to API documentation" target="_top">Bfs<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> returns all nodes with equal 
+                  distance in a so-called "layer." 
+                  The methods it provides all allow for multiple start nodes which are called 
+                  "core" nodes. 
+                  By definition, all core nodes are returned in the first layer. 
+                  
+               </p>
+               <p>
+                  As an option, the BFS run can either be directed or undirected. 
+                  By default, class Bfs ignores edge directions, i.e., it interprets the edges 
+                  undirected. 
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="DFS"></a>Depth-First Search
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Beginning at a starting node depth-first search (DFS) recursively visits the 
+                  first yet undiscovered direct neighbor of every reached node before continuing 
+                  in the same manner with the remaining neighbors at this node. 
+                  
+               </p>
+               <p>
+                  Look at the example graph in <a href="analysis.html#dfs" title="Figure&nbsp;4.9.&nbsp;Depth-first search graph traversal">Figure&nbsp;4.9, &#8220;Depth-first search graph traversal&#8221;</a>. 
+                  The numbers at the upper-right corners of the nodes denote the visiting 
+                  sequence with directed DFS. 
+                  Additionally, the emphasized edges show the path of the DFS run. 
+                  Observe that the "Start" node is visited first and accordingly is assigned the 
+                  first index (not shown). 
+                  
+               </p>
+               <div class="figure"><a name="dfs"></a><p class="title"><b>Figure&nbsp;4.9.&nbsp;Depth-first search graph traversal</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/dfs_1c.jpg" align="middle" alt="Depth-first search graph traversal."></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  Class <a href="../api/y/algo/Dfs.html" title="Link to API documentation" target="_top">Dfs<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is used as a framework to build 
+                  customized depth-first search services. 
+                  It offers a collection of callback methods for all important events during a 
+                  DFS run. 
+                  These callbacks are empty by default, and have to be extended appropriately by 
+                  an inheriting class. 
+                  <a href="analysis.html#dfs_ex" title="Example&nbsp;4.17.&nbsp;Using class Dfs">Example&nbsp;4.17, &#8220;Using class Dfs&#8221;</a> demonstrates how to use the callback methods provided 
+                  by class Dfs. 
+                  
+               </p>
+               <p>
+                  Events during a DFS run are pre- and post-visit events with nodes and pre- 
+                  and post-traversal events with edges. 
+                  Another callback is provided to handle unconnected graphs when all nodes that 
+                  are reachable from the starting node have been visited and there are still 
+                  undiscovered nodes in the graph. 
+                  Note that the invocation of this callback can optionally be disabled. 
+                  
+               </p>
+               <p>
+                  Class Dfs either ignores or respects edge directions, i.e., it interprets the 
+                  graph structure either undirected or directed. 
+                  
+               </p>
+               <div class="example"><a name="dfs_ex"></a><p class="title"><b>Example&nbsp;4.17.&nbsp;Using class Dfs</b></p><pre class="programlisting java">
+// Extend class Dfs. 
+public class MyDFS extends Dfs {
+  // Print the so-called "DFS number." 
+  // This number denotes when a node is visited. 
+  public void preVisit(Node node, int dfsNumber) {
+    System.out.println("Node: " + node + 
+                       " has DFS number: " + dfsNumber);
+  }
+  
+  // Print the so-called "completion number." 
+  // This number denotes when a node has been completed. 
+  public void postVisit(Node node, int dfsNumber, int compNumber) {
+    System.out.println("Node: " + node + 
+                       " has completion numbers: " + compNumber);
+  }
+  
+  // The graph is unconnected, i.e., it has multiple components. 
+  public void lookFurther(Node v) {
+    System.out.println("New starting node: " + v);
+  }
+}
+
+// Instantiate the customized class. 
+public void runDFS(Graph graph) {
+  MyDFS myDFS = new MyDFS();
+  // Set directed interpretation of the graph structure. 
+  myDFS.setDirectedMode(true);
+
+  // Run the depth-first search algorithm on the given graph. 
+  myDFS.start(graph);
+}
+</pre></div>
+               <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Tip</h3>
+                  <p>
+                     To simply compute the DFS completion numbers for the node set of a graph there 
+                     are convenience methods provided in class 
+                     <a href="../api/y/algo/NodeOrders.html" title="Link to API documentation" target="_top">NodeOrders<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                     
+                  </p>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="Graph Connectivity"></a>Graph Connectivity
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  To answer the question which parts of a graph are reachable from a given node 
+                  by following the edges irrespective of their direction, class 
+                  <a href="../api/y/algo/GraphConnectivity.html" title="Link to API documentation" target="_top">GraphConnectivity<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is of good help. 
+                  
+                  It offers services to check if a graph is connected or even biconnected, it has 
+                  methods to find all connected/biconnected components of a graph, and methods to 
+                  insert additional edges into the graph thus making it connected/biconnected. 
+                  
+               </p>
+               <p>
+                  <a href="analysis.html#connect_fig" title="Figure&nbsp;4.10.&nbsp;A graph with two components">Figure&nbsp;4.10, &#8220;A graph with two components&#8221;</a>, for instance, shows a graph with two connected 
+                  components. 
+                  In fact, the left one is even biconnected, i.e., removing any one of {a, b, c, 
+                  d} leaves the remaining nodes still connected. 
+                  
+               </p>
+               <div class="figure"><a name="connect_fig"></a><p class="title"><b>Figure&nbsp;4.10.&nbsp;A graph with two components</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/connect_2a.jpg" align="middle" alt="A graph with two components. "></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  <a href="analysis.html#connect_ex" title="Example&nbsp;4.18.&nbsp;Making a graph connected">Example&nbsp;4.18, &#8220;Making a graph connected&#8221;</a> shows code to make a graph a connected compilation 
+                  of biconnected components. 
+                  Using the graph from <a href="analysis.html#connect_fig" title="Figure&nbsp;4.10.&nbsp;A graph with two components">Figure&nbsp;4.10, &#8220;A graph with two components&#8221;</a> as input would lead to 
+                  <a href="analysis.html#connect_fig2" title="Figure&nbsp;4.11.&nbsp;A connected graph">Figure&nbsp;4.11, &#8220;A connected graph&#8221;</a> where the dotted edges represent the 
+                  additionally inserted. 
+                  
+               </p>
+               <div class="example"><a name="connect_ex"></a><p class="title"><b>Example&nbsp;4.18.&nbsp;Making a graph connected</b></p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+
+// Check if the graph is connected. 
+if (!GraphConnectivity.isConnected(graph)) {
+  // Create a node map that will be used with class GraphPartitionManager. 
+  NodeMap components = graph.createNodeMap();
+  
+  // Get all connected components of the graph. 
+  NodeList[] nl = GraphConnectivity.connectedComponents(graph);
+  
+  for (int i = 0; i &lt; nl.length; i++) {
+    // Create each component's marker object.
+    Integer id = new Integer(i);
+    
+    // Fill the node map with the respective marker object of each component. 
+    for (NodeCursor nc = nl[i].nodes(); nc.ok(); nc.next()) {
+      components.set(nc.node(), id);
+    }
+  }
+  
+  // Create a PartitionManager to manage the components of the graph. 
+  GraphPartitionManager gpm = new GraphPartitionManager(graph, components);
+  
+  // Make the PartitionManager hide all connected components of the graph.
+  gpm.hideAll();
+  for (int i = 0; i &lt; nl.length; i++) {
+    // Create each component's marker object.
+    Integer id = new Integer(i);
+    
+    // Make the PartitionManager unhide all nodes and edges from a specific 
+    // component. 
+    gpm.unhidePartition(id);
+    
+    // Check if this connected component from the graph is biconnected. 
+    if (!GraphConnectivity.isBiconnected(graph)) {
+      // Make the connected component biconnected, i.e., add some edges. 
+      EdgeList el = GraphConnectivity.makeBiconnected(graph);
+    }
+    // Make the PartitionManager hide the biconnected component. 
+    gpm.hidePartition(id);
+  }
+  // Make the PartitionManager unhide all nodes and edges from the graph. 
+  gpm.unhideAll();
+  
+  // Make the entire graph connected. 
+  EdgeList el2 = GraphConnectivity.makeConnected(graph);
+  
+  // Release the resources previously allocated by the createNodeMap() method. 
+  graph.disposeNodeMap(components);
+}
+</pre></div>
+               <div class="figure"><a name="connect_fig2"></a><p class="title"><b>Figure&nbsp;4.11.&nbsp;A connected graph</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/connect_3a.jpg" align="middle" alt="A connected graph. "></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="shortest_paths"></a>Shortest Paths
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Solving the problem of shortest paths is a commonly encountered question with 
+                  graphs. 
+                  Consider <a href="analysis.html#path_fig" title="Figure&nbsp;4.12.&nbsp;Finding the shortest path">Figure&nbsp;4.12, &#8220;Finding the shortest path&#8221;</a>, for instance. 
+                  The numbers at the edges denote "costs" that are associated with the traversal 
+                  of an edge. 
+                  To get from "Start" to "Destination" with minimum costs results in the path of 
+                  emphasized edges. 
+                  These edges define the shortest path between the two nodes with an accumulated 
+                  cost of 8 [units]. 
+                  
+               </p>
+               <div class="figure"><a name="path_fig"></a><p class="title"><b>Figure&nbsp;4.12.&nbsp;Finding the shortest path</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/shortest_path_3sel.jpg" align="middle" alt="Shortest path between start node and destination node."></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  <a href="analysis.html#path_ex" title="Example&nbsp;4.19.&nbsp;Running single-source single-sink Shortest Path">Example&nbsp;4.19, &#8220;Running single-source single-sink Shortest Path&#8221;</a> shows the code to prepare and run a single-source 
+                  single-sink Shortest Path algorithm on the graph depicted in 
+                  <a href="analysis.html#path_fig" title="Figure&nbsp;4.12.&nbsp;Finding the shortest path">Figure&nbsp;4.12, &#8220;Finding the shortest path&#8221;</a>. 
+                  
+               </p>
+               <div class="example"><a name="path_ex"></a><p class="title"><b>Example&nbsp;4.19.&nbsp;Running single-source single-sink Shortest Path</b></p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+
+// Create an array the size of the edge set with costs for each edge. 
+double cost[] = {1, 3, 2, 3, 7, 1, 1, 4, 1, 1, 2, 2, 2, 3, 2, 2, 1};
+// Create a data provider from the array. 
+// This data provider will be used as input to the Shortest Path algorithm. 
+DataProvider dp = (DataProvider)Maps.createIndexEdgeMap(cost);
+
+// Create a node map to be filled by the algorithm. 
+NodeMap pred = graph.createNodeMap();
+
+// Suppose the first node from the graph is the node named "Start." 
+Node startNode = graph.firstNode();
+// Suppose the last node from the graph is the node named "Destination." 
+Node destinationNode = graph.lastNode();
+
+// Run the single-source single-sink algorithm on the graph. 
+double result = ShortestPaths.singleSourceSingleSink(graph, startNode, 
+                    destinationNode, true, dp, pred);
+
+// Release the resources previously allocated by the createNodeMap() method. 
+graph.disposeNodeMap(pred);
+</pre></div>
+               <p>
+                  <a href="analysis.html#more_paths_fig" title="Figure&nbsp;4.13.&nbsp;Finding the shortest paths from a starting node">Figure&nbsp;4.13, &#8220;Finding the shortest paths from a starting node&#8221;</a> shows the shortest paths from "Start" to 
+                  all other nodes from the graph. 
+                  Beginning at the destination node of each of these paths, "Start" can be 
+                  reached unambiguously by following the emphasized edges. 
+                  
+               </p>
+               <div class="figure"><a name="more_paths_fig"></a><p class="title"><b>Figure&nbsp;4.13.&nbsp;Finding the shortest paths from a starting node</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/more_paths_1sel.jpg" align="middle" alt="Shortest paths from a starting node."></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  The class <a href="../api/y/algo/ShortestPaths.html" title="Link to API documentation" target="_top">ShortestPaths<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> offers a 
+                  multitude of methods using several well-known algorithms to solve shortest path 
+                  problems in most of its variants. 
+                  Paths can be computed between two nodes (single-source single-sink), 
+                  originating from one node (single-source), or between all pairs of nodes (all 
+                  pairs). 
+                  Included are:
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        Methods for acyclic graphs with arbitrary costs on the edges, i.e., negative 
+                        values are allowed. 
+                        
+                     </li>
+                     <li>
+                        Dijkstra algorithm for arbitrary graphs, i.e., even cyclic graphs, with 
+                        non-negative costs on the edges. 
+                        
+                     </li>
+                     <li>
+                        Bellman-Ford algorithm for arbitrary graphs and arbitrary cost values on the 
+                        edges. 
+                        (Graphs that contain cycles with negative costs, though, yield no reasonable 
+                        result, but instead give a boolean return value <tt class="code">false</tt>.) 
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  
+               </p>
+               <p>
+                  In addition to customized costs on the edges, it is possible to compute 
+                  shortest paths with uniform costs, too. 
+                  There are several convenience methods defined to this end. 
+                  
+               </p>
+               <p>
+                  Note that many of the methods from ShortestPaths use maps and/or data 
+                  providers to store either its result or to receive its parameters. 
+                  Furthermore, all appropriate methods offer the option of interpreting the graph 
+                  structure either directed or undirected. 
+                  
+               </p>
+               <p>
+                  Class ShortestPaths also has a set of convenience methods for result 
+                  conversion, i.e., constructing a node or an edge path from either a given data 
+                  provider or an array. 
+                  <a href="analysis.html#more_paths_ex" title="Example&nbsp;4.20.&nbsp;Running single-source Shortest Path">Example&nbsp;4.20, &#8220;Running single-source Shortest Path&#8221;</a> demonstrates how to construct one specific path 
+                  from the returned array after a single-source Shortest Path algorithm is run on 
+                  the already prepared graph from <a href="analysis.html#path_fig" title="Figure&nbsp;4.12.&nbsp;Finding the shortest path">Figure&nbsp;4.12, &#8220;Finding the shortest path&#8221;</a>. 
+                  
+                  
+               </p>
+               <div class="example"><a name="more_paths_ex"></a><p class="title"><b>Example&nbsp;4.20.&nbsp;Running single-source Shortest Path</b></p><pre class="programlisting java">
+// Run the single-source Dijkstra algorithm on the graph. 
+ShortestPaths.dijkstra(graph, startNode, true, cost, new double[graph.N()], 
+    pred);
+
+// Suppose 'iNode' of type y.base.Node holds a reference to the node named "i." 
+// Construct the proper path from "Start" to "i" as a list of nodes. 
+NodeList nl = ShortestPaths.constructNodePath(startNode, iNode, pred);
+</pre></div>
+               <p>
+                  
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="Centrality"></a>Centrality Measures
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  For the elements of a graph the notion of importance of a single node or edge 
+                  within the graph structure can be expressed using so-called "centrality" 
+                  measures. 
+                  A centrality measure is a function that yields a double value for each node or 
+                  each edge. 
+                  This value directly denotes the graph element's importance, i.e., the higher 
+                  the value, the more important the element. 
+                  
+               </p>
+               <p>
+                  Class <a href="../api/y/algo/Centrality.html" title="Link to API documentation" target="_top">Centrality<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> provides a variety of 
+                  such centrality measures for both node set and edge set. 
+                  Most of these measures also take edge costs into account. 
+                  
+                  <a href="analysis.html#fig_centrality" title="Figure&nbsp;4.14.&nbsp;Node betweenness centrality">Figure&nbsp;4.14, &#8220;Node betweenness centrality&#8221;</a> depicts a graph with node centrality values at 
+                  the upper-right corner of the nodes. 
+                  The numbers at the edges denote "costs" that are associated with an edge. 
+                  
+               </p>
+               <div class="figure"><a name="fig_centrality"></a><p class="title"><b>Figure&nbsp;4.14.&nbsp;Node betweenness centrality</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/centrality.jpg" align="middle" alt="Node betweenness centrality."></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  The methods from class Centrality optionally either ignore or respect edge 
+                  direction when computing centrality indices. 
+                  Also, the class offers convenience methods to normalize all values computed for 
+                  either node set or edge set to lie in the interval [0..1]. 
+                  
+               </p>
+               <p>
+                  <a href="analysis.html#ex_centrality" title="Example&nbsp;4.21.&nbsp;Computing centrality indices for nodes">Example&nbsp;4.21, &#8220;Computing centrality indices for nodes&#8221;</a> shows the code to prepare and run the node 
+                  betweenness centrality algorithm on the graph depicted in 
+                  <a href="analysis.html#fig_centrality" title="Figure&nbsp;4.14.&nbsp;Node betweenness centrality">Figure&nbsp;4.14, &#8220;Node betweenness centrality&#8221;</a> ignoring edge directions. 
+                  Subsequent to the computation, the resulting double values are also normalized. 
+                  
+               </p>
+               <div class="example"><a name="ex_centrality"></a><p class="title"><b>Example&nbsp;4.21.&nbsp;Computing centrality indices for nodes</b></p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+
+// Create an array with the costs for each edge. 
+double[] cost = {1, 3, 2, 3, 7, 1, 1, 4, 1, 1, 2, 2, 2, 3, 2, 2, 1};
+// Create the data provider to be used as parameter from this array. 
+DataProvider dp = (DataProvider)Maps.createIndexEdgeMap(cost);
+
+// Create the node map to hold the centrality indices for all nodes. 
+NodeMap myCentrality = graph.createNodeMap();
+// Compute node betweenness centrality. 
+Centrality.nodeBetweenness(graph, myCentrality, false, dp);
+// Normalize the double values so that they lie in the interval [0..1]. 
+Centrality.normalize(graph, myCentrality);
+</pre></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="spanning_trees"></a>Spanning Trees
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  A spanning tree of a connected graph is the smallest set of edges such that all 
+                  nodes of the graph are connected. 
+                  Finding these and also finding the <span class="emphasis"><em>minimum</em></span> spanning tree 
+                  of a graph is the duty of class 
+                  <a href="../api/y/algo/SpanningTrees.html" title="Link to API documentation" target="_top">SpanningTrees<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                  
+               </p>
+               <p>
+                  Consider <a href="analysis.html#span_fig" title="Figure&nbsp;4.15.&nbsp;Finding the minimum spanning tree">Figure&nbsp;4.15, &#8220;Finding the minimum spanning tree&#8221;</a>, for instance. 
+                  The numbers at the edges denote "costs" that are associated with an edge. 
+                  The smallest set of edges such that all nodes from the graph are connected and 
+                  the accumulated costs of the set is at a minimum results in the emphasized 
+                  edges. 
+                  These edges define the minimum spanning tree of the graph with an overall cost 
+                  of 17 [units]. 
+                  
+               </p>
+               <div class="figure"><a name="span_fig"></a><p class="title"><b>Figure&nbsp;4.15.&nbsp;Finding the minimum spanning tree</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/span_1sel.jpg" align="middle" alt="Finding the minimum spanning tree. "></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  Class SpanningTrees provides different algorithms to find a minimum spanning 
+                  tree of a given graph. 
+                  Furthermore, it also offers convenience methods to get the overall costs of a 
+                  spanning tree, and to compute a spanning tree with uniform costs at the edges. 
+                  
+               </p>
+               <p>
+                  <a href="analysis.html#span_ex" title="Example&nbsp;4.22.&nbsp;Running the Spanning Tree algorithm">Example&nbsp;4.22, &#8220;Running the Spanning Tree algorithm&#8221;</a> shows the code to prepare and run a Spanning Tree 
+                  algorithm on the graph depicted in <a href="analysis.html#span_fig" title="Figure&nbsp;4.15.&nbsp;Finding the minimum spanning tree">Figure&nbsp;4.15, &#8220;Finding the minimum spanning tree&#8221;</a>. 
+                  
+               </p>
+               <div class="example"><a name="span_ex"></a><p class="title"><b>Example&nbsp;4.22.&nbsp;Running the Spanning Tree algorithm</b></p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+
+// Create an array with the costs for each edge. 
+double[] cost = {1, 3, 2, 3, 7, 1, 1, 4, 1, 1, 2, 2, 2, 3, 2, 2, 1};
+// Create the data provider to be used as parameter from this array. 
+DataProvider dp = (DataProvider)Maps.createIndexEdgeMap(cost);
+
+// Compute the minimum spanning tree of the graph. 
+EdgeList el = SpanningTrees.kruskal(graph, dp);
+// Get the overall costs of the minimum spanning tree. 
+double treeCosts = SpanningTrees.cost(el, dp);
+</pre></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="Transitivity"></a>Transitivity
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Class <a href="../api/y/algo/Transitivity.html" title="Link to API documentation" target="_top">Transitivity<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> offers sophisticated 
+                  computational services relating to reachability questions in directed acyclic 
+                  graphs. 
+                  
+                  The two operations provided are transitive closure and transitive reduction. 
+                  
+               </p>
+               <p>
+                  Transitive closure means the augmentation of a graph's edge set such that an 
+                  existing path between any two nodes, which are not direct neighbors to each 
+                  other, leads to an additional edge connecting these nodes. 
+                  
+                  In effect, this means that any two nodes that are reachable by a path of 
+                  arbitrary length before the augmentation, are instantly reachable thereafter, 
+                  i.e., they are direct neighbors. 
+                  
+               </p>
+               <p>
+                  In <a href="analysis.html#Transitive closure..." title="Figure&nbsp;4.16.&nbsp;Transitive closure of a graph">Figure&nbsp;4.16, &#8220;Transitive closure of a graph&#8221;</a> a simple graph together with its 
+                  transitive closure is depicted. 
+                  The additionally inserted edges are dotted. 
+                  For example, the dotted edge between "Start" and "e" has been inserted to 
+                  reflect even multiple possible paths from "Start" to "e": 
+                  [a, b, e], [a, d, e], or [c, d, e] are all existing paths. 
+                  
+               </p>
+               <p>
+                  Note that class Transitivity computes only the transitive, but not the 
+                  reflexive, transitive closure. 
+                  However, the latter one can easily be achieved by adding self-loops to each 
+                  node. 
+                  
+               </p>
+               <div class="figure"><a name="Transitive closure..."></a><p class="title"><b>Figure&nbsp;4.16.&nbsp;Transitive closure of a graph</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="42%">
+                              <col width="7%">
+                              <col width="51%">
+                           </colgroup>
+                           <tbody valign="bottom">
+                              <tr valign="bottom">
+                                 <td valign="bottom">
+                                    <div class="mediaobject" align="center"><img src="figures/trans_clos_2.jpg" align="middle" alt="Example graph..."></div>
+                                 </td>
+                                 <td valign="bottom">&nbsp;</td>
+                                 <td valign="bottom">
+                                    <div class="mediaobject" align="center"><img src="figures/trans_clos_2clos.jpg" align="middle" alt="... and its transitive closure."></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">
+                                    (a) Example graph... 
+                                    
+                                 </td>
+                                 <td align="center">&nbsp;</td>
+                                 <td align="center">
+                                    (b) ... and its transitive closure. 
+                                    
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  Transitive reduction is the reverse operation to transitive closure. 
+                  It means the removal of all directly connecting edges from a graph as long as 
+                  there remains another path of at least two edges length between the two 
+                  considered nodes. 
+                  
+                  <a href="analysis.html#Transitive reduction..." title="Figure&nbsp;4.17.&nbsp;Transitive reduction of a graph">Figure&nbsp;4.17, &#8220;Transitive reduction of a graph&#8221;</a> shows a simple graph and its 
+                  transitive reduction. 
+                  
+                  
+               </p>
+               <div class="figure"><a name="Transitive reduction..."></a><p class="title"><b>Figure&nbsp;4.17.&nbsp;Transitive reduction of a graph</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/trans_red_2.jpg" align="middle" alt="Example graph..."></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">
+                                    (a) Example graph...
+                                    
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/trans_red_1red.jpg" align="middle" alt="... and its transitive reduction."></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">
+                                    (b) ... and its transitive reduction. 
+                                    
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="Trees"></a>Trees
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Class <a href="../api/y/algo/Trees.html" title="Link to API documentation" target="_top">Trees<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> provides a variety of 
+                  services centering around tree structures. 
+                  It offers methods to modify existing trees and methods to check if a graph 
+                  fulfills certain tree characteristics. 
+                  Moreover, it has methods to "extract" tree structures contained in arbitrary 
+                  graphs. 
+                  
+                  Note that there is a division in the methods of class Trees. 
+                  On the one hand there are methods to deal with general graphs, and on the other 
+                  hand there are methods that expect the given parameter of type Graph to be a 
+                  proper tree. 
+                  
+                  
+               </p>
+               <p>
+                  To properly use the methods from class Trees, it is necessary to understand the 
+                  notion of a rooted tree and what directed tree means. 
+                  Directed means that all edges uniformly point towards the leaf nodes. 
+                  A rooted tree, as it is usually defined, meets the following conditions: 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        It is a directed tree, i.e., every node has at most one incoming edge and all 
+                        edges point towards the leaves of the tree. 
+                        
+                     </li>
+                     <li>
+                        There is exactly one node that has no incoming edge, but only outgoing edges. 
+                        This is the root node. 
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  A reversed rooted tree means that all edges point towards the root node, 
+                  instead of the leaf nodes. 
+                  In particular, this means that the root node has only incoming, but no outgoing 
+                  edges. 
+                  
+               </p>
+               <p>
+                  Querying the tree depicted in <a href="analysis.html#Simple" title="Figure&nbsp;4.18.&nbsp;A simple tree">Figure&nbsp;4.18, &#8220;A simple tree&#8221;</a> for its root node, e.g., 
+                  would lead to node "ROOT", and the list of all leaf nodes would be {a, f, i, j, 
+                  k}. 
+                  
+               </p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+
+// Test if the graph is a tree. 
+if (Trees.isTree(graph)) {
+  // Explicitly set the first node from the node set as the root node of the 
+  // tree. 
+  // Direct the tree; i.e., revert those edges that point towards the root 
+  // node. 
+  EdgeList el = Trees.directTree(graph, graph.firstNode());
+  
+  // Get the leaf nodes of the tree. 
+  NodeList nl = Trees.getLeafNodes(graph, true);
+}
+</pre><div class="figure"><a name="Simple"></a><p class="title"><b>Figure&nbsp;4.18.&nbsp;A simple tree</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/tree_4leaves.jpg" align="middle" alt="A simple tree. "></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  Finding the common ancestor of nodes from a tree is another query supported by 
+                  class Trees. 
+                  For instance, the common ancestor of nodes {f, j, k} from 
+                  <a href="analysis.html#Simple" title="Figure&nbsp;4.18.&nbsp;A simple tree">Figure&nbsp;4.18, &#8220;A simple tree&#8221;</a> would be node "c." 
+                  
+                  
+               </p>
+               <div class="example"><a name="Finding..."></a><p class="title"><b>Example&nbsp;4.23.&nbsp;Finding the common ancestor of a set of nodes</b></p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+
+// Get the root node of the tree. 
+Node root = Trees.getRoot(graph);
+
+// Get the leaf nodes of the tree. 
+NodeList nl = Trees.getLeafNodes(graph, true);
+
+// Remove the first and last leaf node from the list. 
+nl.pop();
+nl.popLast();
+
+// Find the nearest common ancestor for all remaining leaves. 
+Node ancestor = Trees.getNearestCommonAncestor(graph, root, true, nl);
+</pre></div>
+            </div>
+         </div>
+         <div class="highlights">
+            <p>
+               The following topics have been discussed in this chapter: 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>
+                     How to create graphs and graph elements, and how to use the functionality 
+                     provided by the basic graph structure classes to work with a graph.
+                     
+                  </li>
+                  <li>
+                     What different kind of cursors and lists are provided and how they are used. 
+                     
+                  </li>
+                  <li>
+                     What maps and data providers are and how to get default map implementations 
+                     from a graph. 
+                     
+                  </li>
+                  <li>
+                     How to implement customized maps and data providers using appropriate 
+                     convenience and utility classes. 
+                     
+                  </li>
+                  <li>
+                     Sophisticated graph algorithms to analyze graphs, or to compute various graph 
+                     characteristics. 
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+            </p>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="data_accessors.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="base.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="layout.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Binding Data to Graph Elements&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;5.&nbsp;Automatic Graph Layout</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

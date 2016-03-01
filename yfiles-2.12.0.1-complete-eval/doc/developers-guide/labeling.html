@@ -1,0 +1,1221 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Automatic Label Placement</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="layout.html" title="Chapter&nbsp;5.&nbsp;Automatic Graph Layout">
+      <link rel="previous" href="orthogonal_bus_router.html" title="Orthogonal Bus-style Edge Routing">
+      <link rel="next" href="view.html" title="Chapter&nbsp;6.&nbsp;Displaying and Editing Graphs">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Automatic Label Placement</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="orthogonal_bus_router.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;5.&nbsp;Automatic Graph Layout</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="view.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="labeling"></a>Automatic Label Placement
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div><a class="indexterm" name="d0e21796"></a><p>
+            Both types of graph elements, i.e., nodes and edges, can have one or more labels
+            that can be used to show descriptive text for the element.
+            
+            The label's purpose is served best when it is both readable and also near its 
+            element, where readability most importantly results from the label being placed 
+            so that it does not overlap with other graph elements. 
+            
+            
+         </p>
+         <p>
+            The yFiles library offers advanced labeling algorithms that automatically 
+            generate label arrangements that, whenever feasible, completely eliminate all 
+            overlaps, or minimize the number thereof otherwise. 
+            
+            Labeling algorithms can be applied in two different scenarios: generic labeling 
+            and integrated labeling. 
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="labeling_scenarios"></a>Labeling Scenarios
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e21808"></a><p>
+               <a href="labeling.html#general_labeling" title="Generic Labeling">Generic labeling</a> is independent of any layout
+               algorithms and can be applied to any kind of diagram.
+               It generates label placements without altering node positions, node sizes, or 
+               edge paths. 
+               
+            </p>
+            <p>
+               <a href="labeling.html#integrated_labeling" title="Integrated Labeling">Integrated labeling</a>, in contrast, is 
+               directly provided by some layout algorithms as an integrated part of the layout
+               calculation. 
+               It allows to consider labels as part of the overall layout.
+               
+            </p>
+            <p>
+               Integrated labeling's advantage is that, by design, it can prevent label overlaps
+               completely. 
+               Generic labeling cannot always achieve this, since it has to deal with the existing
+               node positions, node sizes, and edge paths.
+               However, the graph's dimensions will remain constant or grow only minimally 
+               with generic labeling. 
+               
+               
+               
+               
+            </p>
+            <p>
+               Additionally, generic labeling also supports placement of rotated labels, which
+               covers both maintaining a preset rotation angle as well as finding edge label positions
+               where the rotation is determined by the labeling algorithm, too.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="labeling_concepts"></a>Concepts
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               In essence, labels are nothing more than boxes with given width and height that 
+               should be placed in such a manner that conflicts with other graph elements or 
+               labels are avoided. 
+               
+               Interface <a href="../api/y/layout/LabelLayout.html" title="Link to API documentation" target="_top">LabelLayout<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> defines the basis 
+               of all label implementations accordingly, see 
+               <a href="labeling.html#fig_labellayout" title="Figure&nbsp;5.118.&nbsp;Basic interface for label implementations">Figure&nbsp;5.118, &#8220;Basic interface for label implementations&#8221;</a>. 
+               
+            </p>
+            <div class="figure"><a name="fig_labellayout"></a><p class="title"><b>Figure&nbsp;5.118.&nbsp;Basic interface for label implementations</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/labellayout_min.jpg" align="middle" alt="Basic interface for label implementations."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               With the means provided by the yFiles Layout distribution, label boxes are 
+               set up explicitly using NodeLabelLayout and EdgeLabelLayout implementations. 
+               
+               <a href="labeling.html#ex_labels_y_layout" title="Example&nbsp;5.49.&nbsp;Creating label boxes">Example&nbsp;5.49, &#8220;Creating label boxes&#8221;</a> demonstrates the usage of class 
+               <a href="../api/y/layout/EdgeLabelLayoutImpl.html" title="Link to API documentation" target="_top">EdgeLabelLayoutImpl<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to define label 
+               boxes for an edge. 
+               
+            </p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  Users of the yFiles Viewer distribution use the functionality provided by class 
+                  <a href="../api/y/view/YLabel.html" title="Link to API documentation" target="_top">YLabel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and its descendants to set up node 
+                  labels and edge labels.
+                  
+               </p>
+            </div>
+            <div class="example"><a name="ex_labels_y_layout"></a><p class="title"><b>Example&nbsp;5.49.&nbsp;Creating label boxes</b></p><pre class="programlisting java">
+// Set up two boxes that represent edge labels for an edge 'e'. 
+// Usually, the size of a label will be determined by calculating the bounding 
+// box of its text, which would also account for the text's font (size, etc.). 
+EdgeLabelLayoutImpl ell1 = new EdgeLabelLayoutImpl();
+ell1.setBox(new YRectangle(0, 0, 80, 20));
+
+EdgeLabelLayoutImpl ell2 = new EdgeLabelLayoutImpl();
+ell2.setBox(new YRectangle(0, 0, 40, 20));
+
+// Set up an oriented box that represents a rotated edge label (of 45 degrees
+// counterclockwise).
+EdgeLabelLayoutImpl ell3 = new EdgeLabelLayoutImpl();
+OrientedRectangle or = new OrientedRectangle(0, 0, 80, 20);
+or.setAngle(Math.PI / 4.0);
+ell3.setOrientedBox(or);
+
+// Associate the label boxes with the edge. 
+EdgeLabelLayout[] ells = new EdgeLabelLayout[]{ ell1, ell2, ell3 };
+graph.setLabelLayout(e, ells);
+</pre></div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="label_models"></a>Label Models
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e21872"></a><a class="indexterm" name="d0e21877"></a><a class="indexterm" name="d0e21884"></a><p>
+               Both node label and edge label have associated a so-called "label model," that 
+               defines a set of valid positions where the label can be placed relative to its 
+               respective graph element. 
+               
+               In the context of automatic label placement, all valid positions are at the 
+               same time "candidates" among which a labeling algorithm can choose the best 
+               match to ultimately place the label. 
+               
+               
+               
+               
+               
+               
+               
+            </p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  In terms of minimization of overlaps, more candidates mean better prospects for 
+                  the outcome of a generic labeling algorithm. 
+                  
+               </p>
+            </div>
+            <p>
+               <a href="labeling.html#table_nodelabel_models" title="Table&nbsp;5.87.&nbsp;Predefined node label models">Table&nbsp;5.87, &#8220;Predefined node label models&#8221;</a> lists the available node label models, 
+               their class hierarchy is presented in <a href="labeling.html#fig_nodelabelmodel" title="Figure&nbsp;5.119.&nbsp;Predefined node label models">Figure&nbsp;5.119, &#8220;Predefined node label models&#8221;</a>. 
+               
+            </p>
+            <div class="table"><a name="table_nodelabel_models"></a><p class="title"><b>Table&nbsp;5.87.&nbsp;Predefined node label models</b></p>
+               <table summary="Predefined node label models" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="80%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Class Name</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/DiscreteNodeLabelModel.html" title="Link to API documentation" target="_top">DiscreteNodeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Defines a maximum of eight positions outside the node's bounding box, and 
+                             also a maximum of nine positions inside. 
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/FreeNodeLabelModel.html" title="Link to API documentation" target="_top">FreeNodeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Supports label placement outside the node at any given offset relative to its 
+                             upper left corner. 
+                             In effect, "free" defines a large number of nearly continuous label positions 
+                             around a node. 
+                           
+                             Note that this model supports rotated labels.
+                             When placing rotated labels, any preset rotation angle is maintained.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="figure"><a name="fig_nodelabelmodel"></a><p class="title"><b>Figure&nbsp;5.119.&nbsp;Predefined node label models</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/nodelabelmodel_1.jpg" align="middle" alt="Predefined node label models."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  Class SmartNodeLabelModel from package <a href="../api/y/view/package-summary.html" title="Link to API documentation" target="_top">y.view<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  is a <a href="realizer_related.html#labels_label_model" title="Label Models">node label model</a> that provides support
+                  for sophisticated "free" label positioning in an interactive scenario where a node
+                  label is being moved.
+                  
+               </p>
+            </div>
+            <p>
+               For generic labeling around a node, FreeNodeLabelModel is a much better choice 
+               for a node label model than DiscreteNodeLabelModel. 
+               
+               
+               However, FreeNodeLabelModel allows for unspecified label positions only, while 
+               the positions of DiscreteNodeLabelModel are all predefined.
+               
+            </p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  For automatic label placement, SmartNodeLabelModel is treated like a free label
+                  model.
+                  Generic labeling can use an <a href="labeling.html#generic_labeling_alternate_model" title="Using an Alternate Label Model">alternate label model</a>
+                  for a label via the data provider key <a href="../api/y/layout/labeling/AbstractLabelingAlgorithm.html#LABEL_MODEL_DPKEY" title="Link to API documentation" target="_top">LABEL_MODEL_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+               </p>
+            </div>
+            <p>
+               <a href="labeling.html#table_edgelabel_models" title="Table&nbsp;5.88.&nbsp;Predefined edge label models">Table&nbsp;5.88, &#8220;Predefined edge label models&#8221;</a> lists the available edge label models, 
+               their class hierarchy is presented in <a href="labeling.html#fig_edgelabelmodel" title="Figure&nbsp;5.120.&nbsp;Predefined edge label models">Figure&nbsp;5.120, &#8220;Predefined edge label models&#8221;</a>. 
+               
+            </p>
+            <div class="table"><a name="table_edgelabel_models"></a><p class="title"><b>Table&nbsp;5.88.&nbsp;Predefined edge label models</b></p>
+               <table summary="Predefined edge label models" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="80%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Class Name</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/DiscreteEdgeLabelModel.html" title="Link to API documentation" target="_top">DiscreteEdgeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Defines a maximum of six positions along the edge's path, and also a maximum 
+                             of three positions directly on the edge.
+                           
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/FreeEdgeLabelModel.html" title="Link to API documentation" target="_top">FreeEdgeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Supports label placement at any given offset relative to the edge's 
+                             intersection point with its source node. 
+                             In effect, "free" defines a large number of nearly continuous label positions 
+                             along the edge's path, in some distance to the edge's path, and also directly 
+                             on it. 
+                           
+                             Note that this model supports rotated labels.
+                             When placing rotated labels, any preset rotation angle is maintained.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/SliderEdgeLabelModel.html" title="Link to API documentation" target="_top">SliderEdgeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Supports nearly continuous label positions along the edge's path as well as 
+                             directly on it. 
+                           
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/RotatedDiscreteEdgeLabelModel.html" title="Link to API documentation" target="_top">RotatedDiscreteEdgeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Similar to DiscreteEdgeLabelModel, but supports rotated labels.
+                             When placing rotated labels, any preset rotation angle can be maintained.
+                             Optionally, the rotation of the edge label can be determined by the labeling algorithm,
+                             too.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/RotatedSliderEdgeLabelModel.html" title="Link to API documentation" target="_top">RotatedSliderEdgeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Similar to SliderEdgeLabelModel, but supports rotated labels.
+                             When placing rotated labels, any preset rotation angle can be maintained.
+                             Optionally, the rotation of the edge label can be determined by the labeling algorithm,
+                             too.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="figure"><a name="fig_edgelabelmodel"></a><p class="title"><b>Figure&nbsp;5.120.&nbsp;Predefined edge label models</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/edgelabelmodel_1.jpg" align="middle" alt="Predefined edge label models."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  Class SmartEdgeLabelModel from package <a href="../api/y/view/package-summary.html" title="Link to API documentation" target="_top">y.view<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  is an <a href="realizer_related.html#labels_label_model" title="Label Models">edge label model</a> that provides support
+                  for sophisticated "free" label positioning in an interactive scenario where an edge
+                  label is being moved.
+                  
+               </p>
+            </div>
+            <p>
+               For generic labeling of edge labels that shall retain their preset rotation angle,
+               FreeEdgeLabelModel with its large number of nearly continuous positions is the best
+               choice as an edge label model, followed by RotatedSliderEdgeLabelModel and then
+               RotatedDiscreteEdgeLabelModel.
+               
+               For generic labeling of edge labels that shall adjust to the slope of their corresponding 
+               edge segment, RotatedSliderEdgeLabelModel can generate more candidate positions
+               than RotatedDiscreteEdgeLabelModel.
+               
+            </p>
+            <p>
+               Integrated labeling favors FreeEdgeLabelModel, followed by SliderEdgeLabelModel,
+               since it does not work with the candidates initially. 
+               Instead, it first computes an optimal location for the label, and then tries to 
+               find the best matching label position for that location in the given label 
+               model.
+               
+            </p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  For automatic label placement, SmartEdgeLabelModel is treated like a free label
+                  model.
+                  Generic labeling can use an <a href="labeling.html#generic_labeling_alternate_model" title="Using an Alternate Label Model">alternate label model</a>
+                  for a label via the data provider key <a href="../api/y/layout/labeling/AbstractLabelingAlgorithm.html#LABEL_MODEL_DPKEY" title="Link to API documentation" target="_top">LABEL_MODEL_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+               </p>
+            </div>
+            <p>
+               Associating an edge label with one of the predefined edge label models is shown 
+               in <a href="labeling.html#ex_label_model" title="Example&nbsp;5.50.&nbsp;Setting edge label models">Example&nbsp;5.50, &#8220;Setting edge label models&#8221;</a>. 
+               
+            </p>
+            <div class="example"><a name="ex_label_model"></a><p class="title"><b>Example&nbsp;5.50.&nbsp;Setting edge label models</b></p><pre class="programlisting java">
+// Set a side slider edge label model that can determine the rotation of edge
+// labels with respect to the slope of their respective edge segments.
+ell1.setEdgeLabelModel(
+  new RotatedSliderEdgeLabelModel(RotatedSliderEdgeLabelModel.SIDE_SLIDER));
+
+// Set center slider edge label model, where the label is placed directly on 
+// the edge's path. 
+ell2.setEdgeLabelModel(
+  new SliderEdgeLabelModel(SliderEdgeLabelModel.CENTER_SLIDER));
+
+// Set side slider edge label model, where the label is placed along the edge's 
+// path. 
+ell3.setEdgeLabelModel(
+  new SliderEdgeLabelModel(SliderEdgeLabelModel.SIDE_SLIDER));
+</pre></div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="label_preferred_placement"></a>Preferred Placement of Edge Labels
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e22055"></a><p>
+               Class <a href="../api/y/layout/PreferredPlacementDescriptor.html" title="Link to API documentation" target="_top">PreferredPlacementDescriptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> can be 
+               used to configure preferred placement options and preferred rotation behavior for 
+               edge labels. 
+               
+               When calculating edge label positions, the specified settings will be adhered to 
+               as good as possible by both the generic labeling algorithms as well as the layout 
+               algorithms that support integrated labeling.
+               
+            </p>
+            <p>
+               Preferred placement options include, for example, whether an edge label shall be 
+               positioned 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>on or to the side of the path of its edge</li>
+                  <li>
+                     near the source node, at the center of the edge path, or near the target node
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+               
+            </p>
+            <p>
+               Preferred rotation behavior includes, for example, whether 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>
+                     the edge label's rotation angle shall be interpreted absolute or relative to the 
+                     slope of its corresponding edge segment
+                     
+                  </li>
+                  <li>
+                     the rotation angle of an edge label on the right side of its edge shall be additionally 
+                     modified to achieve a mirrored orientation compared to an otherwise identically 
+                     configured edge label on the left
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+               
+            </p>
+            <p>
+               The edge label configurations supported by class PreferredPlacementDescriptor only 
+               make sense when the edge label is associated with a label model that supports label 
+               rotation and that does not restrict edge label placement to discrete positions. 
+               
+               In particular, this applies to the "free" label model <a href="../api/y/layout/FreeEdgeLabelModel.html" title="Link to API documentation" target="_top">FreeEdgeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               (and <a href="../api/y/view/SmartEdgeLabelModel.html" title="Link to API documentation" target="_top">SmartEdgeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> from yFiles Viewer), 
+               but also to label model <a href="../api/y/layout/RotatedSliderEdgeLabelModel.html" title="Link to API documentation" target="_top">RotatedSliderEdgeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+               
+            </p>
+            <p>
+               The following method defined in interface <a href="../api/y/layout/EdgeLabelLayout.html" title="Link to API documentation" target="_top">EdgeLabelLayout<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               returns the PreferredPlacementDescriptor instance that is associated with an edge 
+               label:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/EdgeLabelLayout.html#getPreferredPlacementDescriptor()" title="Link to API documentation" target="_top">PreferredPlacementDescriptor getPreferredPlacementDescriptor()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p><a name="default_immutable_PreferredPlacementDescriptor"></a>
+               By default, the PreferredPlacementDescriptor instance that is associated with actual 
+               implementations of interface EdgeLabelLayout, like, e.g., instances of class EdgeLabelLayoutImpl 
+               or class y.view.EdgeLabel, is immutable. 
+               The immutability is a direct consequence of the descriptor instance being shared 
+               among newly created edge labels.
+               
+            </p>
+            <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Important</h3>
+               <p>
+                  Every call to a setter method of such an immutable PreferredPlacementDescriptor 
+                  instance will yield a <tt class="classname">java.lang.IllegalStateException</tt>.
+                  
+               </p>
+            </div>
+            <p>
+               To properly configure individual preferred placement options for an edge label, 
+               a dedicated descriptor instance needs to be associated with the label. 
+               The following code snippet shows how this can be achieved:
+               
+            </p>
+            <div class="example"><a name="ex_individual_preferred_placement"></a><p class="title"><b>Example&nbsp;5.51.&nbsp;Creating and associating a new PreferredPlacementDescriptor to configure individual preferred placement options
+                     for an edge label</b></p><pre class="programlisting java">
+// 'ell' is of type y.layout.EdgeLabelLayoutImpl.
+
+// Create a copy of the edge label's current descriptor using the copy 
+// constructor of the class.
+PreferredPlacementDescriptor prefPDesc = 
+    new PreferredPlacementDescriptor(ell.getPreferredPlacementDescriptor());
+// Now configure individual preferred placement options on the copy.
+...
+
+// Make it immutable (optional).
+prefPDesc.freeze();
+
+// Set the copy as the descriptor for the new edge label.
+ell.setPreferredPlacementDescriptor(prefPDesc);
+</pre></div>
+            <p>
+               The methods of class PreferredPlacementDescriptor to configure preferred placement 
+               options are:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/PreferredPlacementDescriptor.html#setSideOfEdge(byte)" title="Link to API documentation" target="_top">void setSideOfEdge(byte sideOfEdge)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/PreferredPlacementDescriptor.html#setSideReference(byte)" title="Link to API documentation" target="_top">void setSideReference(byte sideReference)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/PreferredPlacementDescriptor.html#setDistanceToEdge(double)" title="Link to API documentation" target="_top">void setDistanceToEdge(double distance)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/PreferredPlacementDescriptor.html#setPlaceAlongEdge(byte)" title="Link to API documentation" target="_top">void setPlaceAlongEdge(byte placeAlongEdge)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Preferred placement options.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               An edge label can be placed at the side of the path of its edge. 
+               The actual side can be specified both absolute and relative:
+               
+            </p>
+            <div class="figure"><a name="fig_edge_label_pref_placement_side"></a><p class="title"><b>Figure&nbsp;5.121.&nbsp;Absolute and relative edge label placement</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="50%">
+                           <col width="50%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/elabel_prefplace_side_absolute.png" align="middle" alt="Absolute and relative edge label placement"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/elabel_prefplace_side_relative_flow.png" align="middle" alt="Absolute and relative edge label placement"></div>
+                              </td>
+                           </tr>
+                           <tr align="center" valign="top">
+                              <td align="center" valign="top">Absolute placement: left of the edge path when looking at the diagram.</td>
+                              <td align="center" valign="top">
+                                 Relative placement: left of the edge path when looking from source to target along 
+                                 the edge path.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               Note that the <a href="../api/y/layout/PreferredPlacementDescriptor.html#setSideReference(byte)" title="Link to API documentation" target="_top">setSideReference(byte)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               method provides the means to resolve the special case when the edge label's side 
+               is specified as an absolute placement and its corresponding edge segment happens 
+               to be horizontal, i.e., when there is no actual left or right "side."
+               
+            </p>
+            <p>
+               The methods to configure preferred rotation behavior:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/PreferredPlacementDescriptor.html#setAngle(double)" title="Link to API documentation" target="_top">void setAngle(double angle)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/PreferredPlacementDescriptor.html#setAngleReference(byte)" title="Link to API documentation" target="_top">void setAngleReference(byte angleReference)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/PreferredPlacementDescriptor.html#setAngleRotationOnRightSide(byte)" title="Link to API documentation" target="_top">void setAngleRotationOnRightSide(byte angleRotation)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Preferred rotation behavior.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               The arrow-shaped gradient in the background of the label denotes the orientation 
+               of its box. 
+               Note that in the right figure below the text of the left label is flipped: according 
+               to its box's orientation, the text would actually be upside-down, but to be readable 
+               it is automatically rendered correctly.
+               
+            </p>
+            <div class="figure"><a name="fig_edge_label_pref_placement_angle"></a><p class="title"><b>Figure&nbsp;5.122.&nbsp;Absolute and relative edge label rotation</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="50%">
+                           <col width="50%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/elabel_prefplace_angle_absolute.png" align="middle" alt="Absolute and relative edge label rotation"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/elabel_prefplace_angle_relative_segment.png" align="middle" alt="Absolute and relative edge label rotation"></div>
+                              </td>
+                           </tr>
+                           <tr align="center" valign="top">
+                              <td align="center" valign="top">Absolute rotation: 0 degree when looking at the diagram.</td>
+                              <td align="center" valign="top">
+                                 Relative rotation: 0 degree added to the slope of the edge segment that is nearest 
+                                 to the edge label.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               In tutorial demo application <a href="../../src/demo/layout/labeling/PreferredLabelPlacementDemo.java" title="Link to demo code" target="_top">PreferredLabelPlacementDemo.java</a> 
+               the effects of the edge label configuration supported by class PreferredPlacementDescriptor 
+               can be tested in conjunction with both <a href="labeling.html#general_labeling" title="Generic Labeling">generic edge labeling</a> 
+               and <a href="labeling.html#integrated_labeling" title="Integrated Labeling">integrated edge labeling</a>.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="general_labeling"></a>Generic Labeling
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e22234"></a><p>
+               A generic labeling algorithm computes label positions for the labels from a 
+               given graph so that they, ideally, do not overlap with each other or with graph 
+               elements. 
+               It does so without altering nodes or edges in any way.
+               
+               <a href="labeling.html#fig_labeling" title="Figure&nbsp;5.123.&nbsp;Class hierarchy for labeling algorithms">Figure&nbsp;5.123, &#8220;Class hierarchy for labeling algorithms&#8221;</a> shows the class hierarchy of the generic 
+               labeling algorithms that are provided in package 
+               <a href="../api/y/layout/labeling/package-summary.html" title="Link to API documentation" target="_top">y.layout.labeling<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               
+            </p>
+            <div class="figure"><a name="fig_labeling"></a><p class="title"><b>Figure&nbsp;5.123.&nbsp;Class hierarchy for labeling algorithms</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/labeling_min.jpg" align="middle" alt="Class hierarchy for labeling algorithms."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               The set of labels that a generic labeling algorithm processes can be restricted 
+               to node labels only or to edge labels only:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/labeling/AbstractLabelingAlgorithm.html#setPlaceNodeLabels(boolean)" title="Link to API documentation" target="_top">void setPlaceNodeLabels(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/labeling/AbstractLabelingAlgorithm.html#setPlaceEdgeLabels(boolean)" title="Link to API documentation" target="_top">void setPlaceEdgeLabels(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Methods to restrict the set of labels.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               The available generic labeling algorithms can deal with label models that support
+               rotated labels.
+               They support placing rotated labels using edge label positions that retain a preset
+               rotation angle as well as using edge label positions where the rotation is adjusted
+               to the slope of a corresponding edge segment. 
+               
+            </p>
+            <p>
+               Optionally, they can also be configured to auto-flip edge labels to avoid that their 
+               text is upside-down:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/labeling/AbstractLabelingAlgorithm.html#setAutoFlippingEnabled(boolean)" title="Link to API documentation" target="_top">void setAutoFlippingEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Configures auto-flipping for upside-down edge labels.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               The labeling algorithm uses the model that is associated with a label to get the
+               available candidate positions. 
+               From this set of candidates it then chooses one that best matches the label position
+               it has calculated.
+               The label model's model parameter is then used to encode this position. 
+               
+            </p>
+            <p>
+               It is important to understand that the result of a labeling algorithm is one model
+               parameter per processed label, which is directly stored with the label after calculation.
+               
+               This model parameter expresses the calculated label position with respect to the
+               corresponding label model, and it is only valid in the context of this label model.
+               
+               To get the actual location of a label after the labeling algorithm has finished,
+               both model parameter and corresponding label model are necessary.
+               
+            </p>
+            <p>
+               <a href="labeling.html#ex_model_parameter" title="Example&nbsp;5.52.&nbsp;Getting a label's position from its model parameter">Example&nbsp;5.52, &#8220;Getting a label's position from its model parameter&#8221;</a> shows how to use the corresponding label model
+               to turn the information from a label's model parameter into a proper location for
+               it.
+               
+            </p>
+            <div class="example"><a name="ex_model_parameter"></a><p class="title"><b>Example&nbsp;5.52.&nbsp;Getting a label's position from its model parameter</b></p><pre class="programlisting java">
+/*
+ * Returns the calculated location of the edge label. 
+ * Note that the labeling machinery returns the edge label's position as a 
+ * parameter of the model that belongs to the label. This model parameter can 
+ * be used to retrieve the actual location of the label as shown in this 
+ * method. 
+ */
+OrientedRectangle getEdgeLabelLocation(LayoutGraph graph,
+                                       Edge e, EdgeLabelLayout ell) {
+  OrientedRectangle or = ell.getLabelModel().getLabelPlacement(
+    ell.getOrientedBox(),
+    graph.getEdgeLayout(e), 
+    graph.getNodeLayout(e.source()), 
+    graph.getNodeLayout(e.target()), 
+    ell.getModelParameter());
+  
+  return or;
+}
+</pre></div>
+            <p>
+               The base class for all major layout algorithms, class 
+               <a href="../api/y/layout/CanonicMultiStageLayouter.html" title="Link to API documentation" target="_top">CanonicMultiStageLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, allows to 
+               conveniently enable/disable generic labeling for each layout run. 
+               
+               The labeling algorithm is then invoked after the actual layout algorithm has 
+               finished. 
+               
+               
+               
+               Additionally, the labeling algorithm itself can also be set. 
+               
+               Class CanonicMultiStageLayouter provides the following labeling-related methods:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/CanonicMultiStageLayouter.html#isLabelLayouterEnabled()" title="Link to API documentation" target="_top">boolean isLabelLayouterEnabled()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/CanonicMultiStageLayouter.html#setLabelLayouterEnabled(boolean)" title="Link to API documentation" target="_top">void setLabelLayouterEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Getter/setter for enabling/disabling generic as well as integrated labeling.
+                              
+                           </td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/CanonicMultiStageLayouter.html#getLabelLayouter()" title="Link to API documentation" target="_top">LayoutStage getLabelLayouter()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/CanonicMultiStageLayouter.html#setLabelLayouter(y.layout.LayoutStage)" title="Link to API documentation" target="_top">void setLabelLayouter(LayoutStage labeler)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Getter/setter for the actual labeling algorithm to be used.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="generic_labeling_alternate_model"></a>Using an Alternate Label Model
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Instead of a label's actual label model, the generic labeling algorithms can also
+                  use an alternate label model when calculating valid positions for it.
+                  
+                  This can be useful, if the original label model is a free model, but the set of
+                  valid positions should be temporarily restricted, for example, to guarantee that
+                  an edge label is placed onto its associated edge.
+                  
+               </p>
+               <p>
+                  To specify the alternate label models, a data provider holding such supplemental
+                  layout data must be bound to the graph.
+                  The data provider is expected to be registered with the graph using key <a href="../api/y/layout/labeling/AbstractLabelingAlgorithm.html#LABEL_MODEL_DPKEY" title="Link to API documentation" target="_top">LABEL_MODEL_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+               </p>
+               <p>
+                  The following code shows how a data provider that returns an alternate label model
+                  for edge labels can be registered with a graph:
+                  
+               </p>
+               <div class="example"><a name="ex_generic_alternate_model"></a><p class="title"><b>Example&nbsp;5.53.&nbsp;Using alternate edge label models for labeling</b></p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph.
+
+// Register the data provider that stores for each node label the label model
+// that shall be used by the labeling algorithm.
+graph.addDataProvider(AbstractLabelingAlgorithm.LABEL_MODEL_DPKEY,
+                      new DataProviderAdapter() {
+    EdgeLabelModel elm =
+      new RotatedSliderEdgeLabelModel(RotatedSliderEdgeLabelModel.CENTER_SLIDER);
+
+    public Object get(Object dataHolder) {
+      if (dataHolder instanceof EdgeLabelLayout) {
+        EdgeLabelModel currELM = ((EdgeLabelLayout)dataHolder).getLabelModel();
+        if (currELM instanceof y.view.SmartEdgeLabelModel) {
+          return elm;
+        }
+      }
+      // Means that the label's actual label model is used.
+      return null;
+    }
+});
+</pre></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="generic_labeling_dataprovider"></a>Supplemental Layout Data
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The generic labeling algorithms know a number of data provider keys which are used
+                  to retrieve supplemental layout data for the labels in a graph.
+                  The data is bound to the graph by means of a data provider which is registered using
+                  a given look-up key.
+                  <a href="labeling.html#tab_generic_labeling_keys" title="Table&nbsp;5.89.&nbsp;Data provider look-up keys">Table&nbsp;5.89, &#8220;Data provider look-up keys&#8221;</a> lists all look-up keys that a generic
+                  labeling algorithm tests during the layout process in order to query supplemental
+                  data.
+                  
+               </p>
+               <p>
+                  Binding supplemental layout data to a graph is described in
+                  <a href="layout_concepts.html#supplemental_information" title="Providing Supplemental Layout Data">the section called &#8220;Providing Supplemental Layout Data&#8221;</a>.
+                  
+               </p>
+               <div class="table"><a name="tab_generic_labeling_keys"></a><p class="title"><b>Table&nbsp;5.89.&nbsp;Data provider look-up keys</b></p>
+                  <table summary="Data provider look-up keys" width="100%" border="1">
+                     <colgroup>
+                        <col width="25%" align="left">
+                        <col width="10%" align="left">
+                        <col width="10%" align="left">
+                        <col width="55%" align="left">
+                     </colgroup>
+                     <thead valign="top">
+                        <tr>
+                           <th align="left">Key</th>
+                           <th align="left">Element Type</th>
+                           <th align="left">Value Type</th>
+                           <th align="left">Description</th>
+                        </tr>
+                     </thead>
+                     <tbody valign="top">
+                        <tr>
+                           <td rowspan="2" align="left"><a href="../api/y/layout/labeling/AbstractLabelingAlgorithm.html#LABEL_MODEL_DPKEY" title="Link to API documentation" target="_top">LABEL_MODEL_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">NodeLabelLayout</td>
+                           <td align="left">NodeLabelModel</td>
+                           <td align="left">
+                                For each NodeLabelLayout instance a NodeLabelModel instance that is used to determine
+                                valid label positions.
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left">EdgeLabelLayout</td>
+                           <td align="left">EdgeLabelModel</td>
+                           <td align="left">
+                                For each EdgeLabelLayout instance a EdgeLabelModel instance that is used to determine
+                                valid label positions.
+                                
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="integrated_labeling"></a>Integrated Labeling
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e22419"></a><p>
+               Integrated labeling denotes automatic edge label placement as an integrated 
+               part of a layout algorithm. 
+               All edge labels of a graph are arranged in such a manner that there are no 
+               overlaps of edge labels with each other or with graph elements. 
+               
+            </p>
+            <p>
+               <a href="labeling.html#tab_integrated_labeling" title="Table&nbsp;5.90.&nbsp;Layout support for integrated labeling">Table&nbsp;5.90, &#8220;Layout support for integrated labeling&#8221;</a> lists the major layout algorithms 
+               that provide support for integrated labeling. 
+               
+            </p>
+            <div class="table"><a name="tab_integrated_labeling"></a><p class="title"><b>Table&nbsp;5.90.&nbsp;Layout support for integrated labeling</b></p>
+               <table summary="Layout support for integrated labeling" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="20%" align="left">
+                     <col width="60%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Layout Style</th>
+                        <th align="left">Classname</th>
+                        <th align="left">Note</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left">Hierarchical</td>
+                        <td align="left"><a href="../api/y/layout/hierarchic/IncrementalHierarchicLayouter.html" title="Link to API documentation" target="_top">IncrementalHierarchicLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             With class IncrementalHierarchicLayouter, integrated labeling can be conveniently 
+                             enabled using appropriate configuration methods. 
+                             See the description of the <a href="incremental_hierarchical_layouter.html#ihl_integrated_labeling" title="Integrated Labeling">hierarchical layout style</a> 
+                             for more information.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">Orthogonal</td>
+                        <td align="left"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html" title="Link to API documentation" target="_top">OrthogonalLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             <a href="../api/y/layout/orthogonal/DirectedOrthogonalLayouter.html" title="Link to API documentation" target="_top">DirectedOrthogonalLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             and <a href="../api/y/layout/orthogonal/OrthogonalGroupLayouter.html" title="Link to API documentation" target="_top">OrthogonalGroupLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             See the descriptions of 
+                             <a href="orthogonal_layouter.html#orthogonal_integrated_labeling" title="Integrated Labeling">orthogonal layout</a>, 
+                             <a href="directed_orthogonal_layouter.html#dol_integrated_labeling" title="Integrated Labeling">directed orthogonal layout</a>, and 
+                             <a href="orthogonal_group_layouter.html#orthogonal_group_integrated_labeling" title="Integrated Labeling">orthogonal layout of grouped graphs</a> 
+                             for more information.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">Tree</td>
+                        <td align="left"><a href="../api/y/layout/tree/TreeLayouter.html" title="Link to API documentation" target="_top">TreeLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                             <a href="../api/y/layout/tree/GenericTreeLayouter.html" title="Link to API documentation" target="_top">GenericTreeLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, and
+                             <a href="../api/y/layout/tree/BalloonLayouter.html" title="Link to API documentation" target="_top">BalloonLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Integrated labeling can conveniently be enabled using appropriate 
+                             configuration methods. 
+                             See the descriptions of 
+                             <a href="tree_layouter.html#tree_directed_integrated_labeling" title="Integrated Labeling">directed tree layout</a>, 
+                             <a href="cls_GenericTreeLayouter.html#gtl_integrated_labeling" title="Integrated Labeling">generic tree layout</a>, and 
+                             <a href="tree_layouter.html#balloon_integrated_labeling" title="Integrated Labeling">balloon layout</a> for more information.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               
+               Integrated labeling relies on the services of class 
+               <a href="../api/y/layout/LabelLayoutTranslator.html" title="Link to API documentation" target="_top">LabelLayoutTranslator<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> which converts 
+               label layout information so that it is understood by a layout algorithm. 
+               
+               <a href="labeling.html#ex_label_translator" title="Example&nbsp;5.54.&nbsp;Using class LabelLayoutTranslator">Example&nbsp;5.54, &#8220;Using class LabelLayoutTranslator&#8221;</a> shows how to configure integrated 
+               labeling in the absence of an appropriate configuration method. 
+               Layout algorithms that provide such a configuration method automatically ensure 
+               proper use of LabelLayoutTranslator. 
+               
+               
+               
+               
+               
+            </p>
+            <div class="example"><a name="ex_label_translator"></a><p class="title"><b>Example&nbsp;5.54.&nbsp;Using class LabelLayoutTranslator</b></p><pre class="programlisting java">
+void useIntegratedLabeling(CanonicMultiStageLayouter layouter) {
+  // Use integrated labeling support, and let class LabelLayoutTranslator do 
+  // the conversion of information held by an edge label's EdgeLabelLayout 
+  // object to data provider-based information that is understood by the 
+  // algorithm. 
+  layouter.setLabelLayouter(new LabelLayoutTranslator());
+  layouter.setLabelLayouterEnabled(true);
+}
+</pre></div>
+            <p>
+               Through the following method LabelLayoutTranslator supports configuration of edge 
+               label auto-flip behavior:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/LabelLayoutTranslator.html#setAutoFlippingEnabled(boolean)" title="Link to API documentation" target="_top">void setAutoFlippingEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Configures auto-flipping for upside-down edge labels.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tutorial_labeling"></a>Tutorial Demo Code
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Tutorial demo application <a href="../../src/demo/layout/withoutview/LayoutWithoutAView.java" title="Link to demo code" target="_top">LayoutWithoutAView.java</a>
+               shows the setup for running a labeling algorithm without the presence of the yFiles
+               library package <a href="../api/y/view/package-summary.html" title="Link to API documentation" target="_top">y.view<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               
+               <a href="../../src/demo/layout/labeling/NodeLabelingDemo.java" title="Link to demo code" target="_top">NodeLabelingDemo.java</a> and <a href="../../src/demo/layout/labeling/EdgeLabelingDemo.java" title="Link to demo code" target="_top">EdgeLabelingDemo.java</a>
+               show how to configure node labels/edge labels) and the corresponding node label
+               models/edge label models) as well as how to apply generic labeling.
+               
+            </p>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="orthogonal_bus_router.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="layout.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="view.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Orthogonal Bus-style Edge Routing&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;6.&nbsp;Displaying and Editing Graphs</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

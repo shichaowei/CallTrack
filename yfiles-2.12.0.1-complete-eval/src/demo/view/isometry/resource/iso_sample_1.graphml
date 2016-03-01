@@ -1,0 +1,1271 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
+  <!--Created by yFiles for Java 2.10-->
+  <key for="graphml" id="d0" yfiles.type="resources"/>
+  <key for="port" id="d1" yfiles.type="portgraphics"/>
+  <key for="port" id="d2" yfiles.type="portgeometry"/>
+  <key for="port" id="d3" yfiles.type="portuserdata"/>
+  <key for="node" id="d4" yfiles.type="nodegraphics"/>
+  <key for="edge" id="d5" yfiles.type="edgegraphics"/>
+  <graph edgedefault="directed" id="G">
+    <node id="n0" yfiles.foldertype="group">
+      <data key="d4">
+        <y:ProxyAutoBoundsNode>
+          <y:Realizers active="0">
+            <y:GenericGroupNode configuration="com.yworks.isometry.group">
+              <y:Geometry height="452.377140687004" width="783.5401918526248" x="554.3040272835988" y="-538.0458333333333"/>
+              <y:Fill color="#CAECFF80" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#99CCFF" borderDistance="0.0" configuration="com.yworks.isometry.group_label" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="100.7236328125" x="341.4082795200625" y="0.0">Developement<y:UserData>
+                  <y:IsometryData depth="22.37646484375" height="0.0" horizontal="false" width="381.033203125"/>
+                </y:UserData>
+              </y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="508.7177734375" height="0.0" horizontal="true" width="396.036507936508"/>
+              </y:UserData>
+              <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
+              <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+            </y:GenericGroupNode>
+            <y:GenericGroupNode configuration="com.yworks.isometry.group">
+              <y:Geometry height="122.94228634059948" width="212.94228634059948" x="246.52885682970026" y="175.52885682970026"/>
+              <y:Fill color="#CAECFF80" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#99CCFF" borderDistance="0.0" configuration="com.yworks.isometry.group_label" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="100.7236328125" x="56.10932676404974" y="0.0">Developement<y:UserData>
+                  <y:IsometryData depth="22.37646484375" height="0.0" horizontal="false" width="100.7236328125"/>
+                </y:UserData>
+              </y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="90.0" height="0.0" horizontal="true" width="155.88457268119896"/>
+              </y:UserData>
+              <y:State autoResize="true" closed="true" closedHeight="122.94228634059948" closedWidth="212.94228634059948"/>
+              <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+            </y:GenericGroupNode>
+          </y:Realizers>
+        </y:ProxyAutoBoundsNode>
+      </data>
+      <graph edgedefault="directed" id="n0:">
+        <node id="n0::n0">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="68.0" width="65.81793068761733" x="866.821666030696" y="-544.9597222222222"/>
+              <y:Fill color="#9933FF" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="30.90896534380863" y="32.0">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="39.34375" x="13.237090343808632" y="68.0">Server</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="29.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n0::n1">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="38.0" width="53.693575034635195" x="916.4943927243714" y="-379.43711247519843"/>
+              <y:Fill color="#C0C0C0" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="17.0">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="26.013671875" x="13.83995157981758" y="38.0">Hub</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="24.0" height="7.0" horizontal="false" width="38.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n0::n2">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="61.0" width="53.693575034635195" x="820.9161337343794" y="-511.4561507936508"/>
+              <y:Fill color="#99CC00" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="28.5">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="20.669921875" x="16.51182657981758" y="61.0">PC</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="15.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n0::n3">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="61.0" width="53.693575034635195" x="777.0344203280971" y="-486.12103174603175"/>
+              <y:Fill color="#99CC00" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="28.5">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="20.669921875" x="16.51182657981758" y="61.0">PC</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="15.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n0::n4">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="61.0" width="53.693575034635195" x="1147.817748054148" y="-319.55274910094244"/>
+              <y:Fill color="#99CC00" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="28.5">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="20.669921875" x="16.51182657981758" y="61.0">PC</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="15.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n0::n5">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="61.0" width="53.693575034635195" x="1103.9360346478659" y="-294.21763005332343"/>
+              <y:Fill color="#99CC00" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="28.5">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="20.669921875" x="16.51182657981758" y="61.0">PC</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="15.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n0::n6">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="43.5" width="58.023702053557386" x="721.3184010469257" y="-436.453373015873"/>
+              <y:Fill color="#00CCFF" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="27.011851026778686" y="19.75">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="40.703125" x="8.660288526778686" y="43.5">Laptop</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="24.0" height="10.0" horizontal="false" width="43.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n0::n7">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="43.5" width="58.023702053557386" x="658.0985465706616" y="-399.953373015873"/>
+              <y:Fill color="#00CCFF" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="27.011851026778686" y="19.75">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="40.703125" x="8.660288526778686" y="43.5">Laptop</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="24.0" height="10.0" horizontal="false" width="43.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n0::n8">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="31.5" width="45.89934640057524" x="603.3867043648307" y="-356.3654761904762"/>
+              <y:Fill color="#FF9900" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="20.949673200287634" y="13.75">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="37.3515625" x="4.273891950287634" y="31.5">Tablet</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="30.0" height="5.0" horizontal="false" width="23.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+      </graph>
+    </node>
+    <node id="n1" yfiles.foldertype="group">
+      <data key="d4">
+        <y:ProxyAutoBoundsNode>
+          <y:Realizers active="0">
+            <y:GenericGroupNode configuration="com.yworks.isometry.group">
+              <y:Geometry height="222.39495985243056" width="385.1993698116504" x="262.1486390125457" y="-253.3571428571429"/>
+              <y:Fill color="#CAECFF80" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#99CCFF" borderDistance="0.0" configuration="com.yworks.isometry.group_label" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="91.5537109375" x="146.8228294370752" y="0.0">Management<y:UserData>
+                  <y:IsometryData depth="22.37646484375" height="0.0" horizontal="false" width="216.8486328125"/>
+                </y:UserData>
+              </y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="280.77880859375" height="0.0" horizontal="true" width="164.01111111111112"/>
+              </y:UserData>
+              <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
+              <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+            </y:GenericGroupNode>
+            <y:GenericGroupNode configuration="com.yworks.isometry.group">
+              <y:Geometry height="122.94228634059948" width="212.94228634059948" x="246.52885682970026" y="330.02885682970026"/>
+              <y:Fill color="#CAECFF80" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#99CCFF" borderDistance="0.0" configuration="com.yworks.isometry.group_label" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="91.5537109375" x="60.69428770154974" y="0.0">Management<y:UserData>
+                  <y:IsometryData depth="22.37646484375" height="0.0" horizontal="false" width="100.0"/>
+                </y:UserData>
+              </y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="90.0" height="0.0" horizontal="true" width="155.88457268119896"/>
+              </y:UserData>
+              <y:State autoResize="true" closed="true" closedHeight="122.94228634059948" closedWidth="212.94228634059948"/>
+              <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+            </y:GenericGroupNode>
+          </y:Realizers>
+        </y:ProxyAutoBoundsNode>
+      </data>
+      <graph edgedefault="directed" id="n1:">
+        <node id="n1::n0">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="38.0" width="53.693575034635195" x="486.19523709734335" y="-131.00377914186507"/>
+              <y:Fill color="#C0C0C0" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="17.0">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="26.013671875" x="13.83995157981758" y="38.0">Hub</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="24.0" height="7.0" horizontal="false" width="38.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n1::n1">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="61.0" width="53.693575034635195" x="387.8745643287006" y="-261.4394841269841"/>
+              <y:Fill color="#99CC00" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="28.5">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="20.669921875" x="16.51182657981758" y="61.0">PC</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="15.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n1::n2">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="61.0" width="53.693575034635195" x="343.9928509224184" y="-236.10436507936507"/>
+              <y:Fill color="#99CC00" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="28.5">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="20.669921875" x="16.51182657981758" y="61.0">PC</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="15.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n1::n3">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="61.0" width="53.693575034635195" x="300.11113751613624" y="-210.76924603174604"/>
+              <y:Fill color="#99CC00" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="28.5">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="20.669921875" x="16.51182657981758" y="61.0">PC</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="15.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+      </graph>
+    </node>
+    <node id="n2" yfiles.foldertype="group">
+      <data key="d4">
+        <y:ProxyAutoBoundsNode>
+          <y:Realizers active="0">
+            <y:GenericGroupNode configuration="com.yworks.isometry.group">
+              <y:Geometry height="415.87733909970234" width="720.3206810372352" x="923.2624660962249" y="-714.5642857142857"/>
+              <y:Fill color="#CAECFF80" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#99CCFF" borderDistance="0.0" configuration="com.yworks.isometry.group_label" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="17.330078125" x="351.49530145611766" y="0.0">IT<y:UserData>
+                  <y:IsometryData depth="22.37646484375" height="0.0" horizontal="false" width="398.5419921875"/>
+                </y:UserData>
+              </y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="508.7177734375" height="0.0" horizontal="true" width="323.0369047619047"/>
+              </y:UserData>
+              <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
+              <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+            </y:GenericGroupNode>
+            <y:GenericGroupNode configuration="com.yworks.isometry.group">
+              <y:Geometry height="122.94228634059948" width="212.94228634059948" x="246.52885682970026" y="484.52885682970026"/>
+              <y:Fill color="#CAECFF80" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#99CCFF" borderDistance="0.0" configuration="com.yworks.isometry.group_label" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="17.330078125" x="97.80610410779974" y="0.0">IT<y:UserData>
+                  <y:IsometryData depth="22.37646484375" height="0.0" horizontal="false" width="100.0"/>
+                </y:UserData>
+              </y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="90.0" height="0.0" horizontal="true" width="155.88457268119896"/>
+              </y:UserData>
+              <y:State autoResize="true" closed="true" closedHeight="122.94228634059948" closedWidth="212.94228634059948"/>
+              <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+            </y:GenericGroupNode>
+          </y:Realizers>
+        </y:ProxyAutoBoundsNode>
+      </data>
+      <graph edgedefault="directed" id="n2:">
+        <node id="n2::n0">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="50.0" width="34.64101615137754" x="1196.235048012578" y="-717.146626984127"/>
+              <y:Fill color="#9933FF" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="15.32050807568885" y="23.0">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="20.669921875" x="6.985547138188849" y="50.0">DB</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="20.0" height="30.0" horizontal="false" width="20.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n2::n1">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="68.0" width="65.81793068761733" x="1128.6788806216507" y="-696.1430555555555"/>
+              <y:Fill color="#9933FF" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="30.90896534380863" y="32.0">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="39.34375" x="13.237090343808632" y="68.0">Server</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="29.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n2::n2">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="61.0" width="53.693575034635195" x="961.2249645998155" y="-592.463492063492"/>
+              <y:Fill color="#99CC00" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="28.5">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="20.669921875" x="16.51182657981758" y="61.0">PC</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="15.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n2::n3">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="61.0" width="53.693575034635195" x="1352.6471898058974" y="-437.8110824342758"/>
+              <y:Fill color="#99CC00" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="28.5">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="20.669921875" x="16.51182657981758" y="61.0">PC</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="15.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n2::n4">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="43.5" width="58.023702053557386" x="1012.610856862065" y="-604.6311507936508"/>
+              <y:Fill color="#00CCFF" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="27.011851026778686" y="19.75">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="40.703125" x="8.660288526778686" y="43.5">Laptop</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="24.0" height="10.0" horizontal="false" width="43.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n2::n5">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="31.5" width="45.89934640057524" x="1079.447054720878" y="-631.2190476190476"/>
+              <y:Fill color="#FF9900" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="20.949673200287634" y="13.75">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="37.3515625" x="4.273891950287634" y="31.5">Tablet</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="30.0" height="5.0" horizontal="false" width="23.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n2::n6">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="38.0" width="53.693575034635195" x="1156.978306546451" y="-518.2805648561508"/>
+              <y:Fill color="#C0C0C0" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="17.0">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="26.013671875" x="13.83995157981758" y="38.0">Hub</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="24.0" height="7.0" horizontal="false" width="38.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+      </graph>
+    </node>
+    <node id="n3" yfiles.foldertype="group">
+      <data key="d4">
+        <y:ProxyAutoBoundsNode>
+          <y:Realizers active="0">
+            <y:GenericGroupNode configuration="com.yworks.isometry.group">
+              <y:Geometry height="197.05984080481153" width="341.3176564053682" x="430.1671898512132" y="-325.02757936507936"/>
+              <y:Fill color="#CAECFF80" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#99CCFF" borderDistance="0.0" configuration="com.yworks.isometry.group_label" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="75.71142578125" x="132.8031153120591" y="0.0">Production<y:UserData>
+                  <y:IsometryData depth="22.37646484375" height="0.0" horizontal="false" width="75.71142578125"/>
+                </y:UserData>
+              </y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="280.77880859375" height="0.0" horizontal="true" width="113.34087301587306"/>
+              </y:UserData>
+              <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
+              <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+            </y:GenericGroupNode>
+            <y:GenericGroupNode configuration="com.yworks.isometry.group">
+              <y:Geometry height="122.94228634059948" width="212.94228634059948" x="-101.97114317029974" y="69.73004730589074"/>
+              <y:Fill color="#CAECFF80" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#99CCFF" borderDistance="0.0" configuration="com.yworks.isometry.group_label" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="75.71142578125" x="68.61543027967474" y="0.0">Production<y:UserData>
+                  <y:IsometryData depth="22.37646484375" height="0.0" horizontal="false" width="100.0"/>
+                </y:UserData>
+              </y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="90.0" height="0.0" horizontal="true" width="155.88457268119896"/>
+              </y:UserData>
+              <y:State autoResize="true" closed="true" closedHeight="122.94228634059948" closedWidth="212.94228634059948"/>
+              <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+            </y:GenericGroupNode>
+          </y:Realizers>
+        </y:ProxyAutoBoundsNode>
+      </data>
+      <graph edgedefault="directed" id="n3:">
+        <node id="n3::n0">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="38.0" width="53.693575034635195" x="645.9865466000588" y="-223.25933469742063"/>
+              <y:Fill color="#C0C0C0" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="17.0">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="26.013671875" x="13.83995157981758" y="38.0">Hub</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="24.0" height="7.0" horizontal="false" width="38.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n3::n1">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="61.0" width="53.693575034635195" x="512.011401761086" y="-333.1099206349206"/>
+              <y:Fill color="#99CC00" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="28.5">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="20.669921875" x="16.51182657981758" y="61.0">PC</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="15.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n3::n2">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="61.0" width="53.693575034635195" x="468.12968835480376" y="-307.77480158730157"/>
+              <y:Fill color="#99CC00" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="28.5">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="20.669921875" x="16.51182657981758" y="61.0">PC</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="15.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+      </graph>
+    </node>
+    <node id="n4" yfiles.foldertype="group">
+      <data key="d4">
+        <y:ProxyAutoBoundsNode>
+          <y:Realizers active="0">
+            <y:GenericGroupNode configuration="com.yworks.isometry.group">
+              <y:Geometry height="282.4909915984623" width="489.2887501290495" x="-9.959292143521026" y="-152.1015873015873"/>
+              <y:Fill color="#CAECFF80" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#99CCFF" borderDistance="0.0" configuration="com.yworks.isometry.group_label" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="41.52197265625" x="223.88338873639975" y="0.0">Sales<y:UserData>
+                  <y:IsometryData depth="22.37646484375" height="0.0" horizontal="false" width="78.0"/>
+                </y:UserData>
+              </y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="272.27880859375" height="0.0" horizontal="true" width="292.7031746031746"/>
+              </y:UserData>
+              <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
+              <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+            </y:GenericGroupNode>
+            <y:GenericGroupNode configuration="com.yworks.isometry.group">
+              <y:Geometry height="122.94228634059948" width="212.94228634059948" x="-129.47114317029974" y="368.2102060360495"/>
+              <y:Fill color="#CAECFF80" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#99CCFF" borderDistance="0.0" configuration="com.yworks.isometry.group_label" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="41.52197265625" x="85.71015684217474" y="0.0">Sales<y:UserData>
+                  <y:IsometryData depth="22.37646484375" height="0.0" horizontal="false" width="100.0"/>
+                </y:UserData>
+              </y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="90.0" height="0.0" horizontal="true" width="155.88457268119896"/>
+              </y:UserData>
+              <y:State autoResize="true" closed="true" closedHeight="122.94228634059948" closedWidth="212.94228634059948"/>
+              <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+            </y:GenericGroupNode>
+          </y:Realizers>
+        </y:ProxyAutoBoundsNode>
+      </data>
+      <graph edgedefault="directed" id="n4:">
+        <node id="n4::n0">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="38.0" width="53.693575034635195" x="285.05602581616415" y="-14.876001364087301"/>
+              <y:Fill color="#C0C0C0" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="24.84678751731758" y="17.0">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="26.013671875" x="13.83995157981758" y="38.0">Hub</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="24.0" height="7.0" horizontal="false" width="38.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n4::n1">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="43.5" width="58.023702053557386" x="208.02205127601832" y="-140.1015873015873"/>
+              <y:Fill color="#00CCFF" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="27.011851026778686" y="19.75">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="40.703125" x="8.660288526778686" y="43.5">Laptop</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="24.0" height="10.0" horizontal="false" width="43.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n4::n2">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="43.5" width="58.023702053557386" x="144.80219679975428" y="-103.6015873015873"/>
+              <y:Fill color="#00CCFF" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="27.011851026778686" y="19.75">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="40.703125" x="8.660288526778686" y="43.5">Laptop</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="24.0" height="10.0" horizontal="false" width="43.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n4::n3">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="31.5" width="45.89934640057524" x="90.09035459392334" y="-60.013690476190476"/>
+              <y:Fill color="#FF9900" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="20.94967320028762" y="13.75">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="37.3515625" x="4.27389195028762" y="31.5">Tablet</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="30.0" height="5.0" horizontal="false" width="23.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+        <node id="n4::n4">
+          <data key="d4">
+            <y:GenericNode configuration="com.yworks.isometry.node">
+              <y:Geometry height="31.5" width="45.89934640057524" x="31.762169005543328" y="-26.337896825396825"/>
+              <y:Fill color="#FF9900" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="20.94967320028762" y="13.75">
+                <y:LabelModel>
+                  <y:SmartNodeLabelModel distance="0.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="37.3515625" x="4.27389195028762" y="31.5">Tablet</y:NodeLabel>
+              <y:UserData>
+                <y:IsometryData depth="30.0" height="5.0" horizontal="false" width="23.0"/>
+              </y:UserData>
+            </y:GenericNode>
+          </data>
+        </node>
+      </graph>
+    </node>
+    <node id="n5">
+      <data key="d4">
+        <y:GenericNode configuration="com.yworks.isometry.node">
+          <y:Geometry height="68.0" width="65.81793068761733" x="1372.5258087495988" y="-78.8119342137897"/>
+          <y:Fill color="#9933FF" transparent="false"/>
+          <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="30.90896534380863" y="32.0">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="0.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="51.35546875" x="7.231230968808632" y="68.0">Gateway</y:NodeLabel>
+          <y:UserData>
+            <y:IsometryData depth="47.0" height="30.0" horizontal="false" width="29.0"/>
+          </y:UserData>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n6">
+      <data key="d4">
+        <y:GenericNode configuration="com.yworks.isometry.node">
+          <y:Geometry height="63.5" width="58.023702053557386" x="1451.9413531501518" y="-32.9613482762897"/>
+          <y:Fill color="#FF0000" transparent="false"/>
+          <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="27.011851026778686" y="29.75">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="0.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="45.337890625" x="6.342905714278686" y="63.5">Firewall</y:NodeLabel>
+          <y:UserData>
+            <y:IsometryData depth="10.0" height="30.0" horizontal="false" width="57.0"/>
+          </y:UserData>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n7">
+      <data key="d4">
+        <y:GenericNode configuration="com.yworks.isometry.node">
+          <y:Geometry height="61.5" width="80.54036255195278" x="1185.1192645353397" y="-172.0111529637897"/>
+          <y:Fill color="#FF6600" transparent="false"/>
+          <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="38.27018127597648" y="28.75">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="0.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" borderDistance="0.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="eight_pos" modelPosition="s" textColor="#000000" visible="true" width="39.34375" x="20.598306275976483" y="61.5">Switch</y:NodeLabel>
+          <y:UserData>
+            <y:IsometryData depth="30.0" height="15.0" horizontal="false" width="63.0"/>
+          </y:UserData>
+        </y:GenericNode>
+      </data>
+    </node>
+    <edge id="e0" source="n7" target="n5">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="12.99038105676641" sy="15.0" tx="-20.35159698893426" ty="3.25"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFF99" configuration="com.yworks.isometry.edge_label" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="63.400390625" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center_left" ratio="0.5" textColor="#000000" visible="true" width="77.42131793363541" x="34.64112398284601" y="10.64932071746341">100 MByte/s<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="left" sideReference="absolute_right_in_north"/>
+            <y:UserData>
+              <y:IsometryData depth="70.697265625" height="18.701171875" horizontal="false" width="18.701171875"/>
+            </y:UserData>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e1" source="n5" target="n6">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="20.35159698893426" sy="26.75" tx="-4.330127018922212" ty="12.5"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n2::e0" source="n2::n6" target="n2::n3">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="18.619546181365195" sy="4.75" tx="-20.35159698893426" ty="3.25"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n2::e1" source="n2::n2" target="n2::n6">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="20.351596988934375" sy="26.75" tx="-21.361959960016293" ty="3.8333333333333712">
+            <y:Point x="1067.9203092195785" y="-500.862906125992"/>
+            <y:Point x="1110.501609876686" y="-525.4472315228174"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e0" source="n1::n3" target="n1::n0">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="20.35159698893432" sy="26.75" tx="-21.361959960016236" ty="3.833333333333343">
+            <y:Point x="406.8064821358991" y="-119.16866009424604"/>
+            <y:Point x="439.7185404275784" y="-138.17044580853172"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e1" source="n1::n1" target="n1::n0">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="20.35159698893432" sy="26.74999999999997" tx="0.5773502691895374" ty="-8.833333333333343">
+            <y:Point x="494.5699089484635" y="-169.83889818948413"/>
+            <y:Point x="461.65785065678415" y="-150.8371124751984"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e2" source="n1::n2" target="n1::n0">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="20.35159698893432" sy="26.75" tx="-10.392304845413321" ty="-2.5"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e2" source="n1::n0" target="n7">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="10.392304845413264" sy="9.5" tx="-28.578838324886647" ty="9.0">
+            <y:Point x="791.0507203802188" y="52.004427083333326"/>
+            <y:Point x="1153.5093372972076" y="-157.2611529637897"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFF99" configuration="com.yworks.isometry.edge_label" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="56.3955078125" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center_left" ratio="0.5" textColor="#000000" visible="true" width="65.28850500131944" x="136.27475287076788" y="69.32747853597004">1 GByte/s<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="left" sideReference="absolute_right_in_north"/>
+            <y:UserData>
+              <y:IsometryData depth="56.6875" height="18.701171875" horizontal="false" width="18.701171875"/>
+            </y:UserData>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e3" source="n3::n0" target="n7">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="10.392304845413264" sy="9.5" tx="-20.784609690826755" ty="4.5">
+            <y:Point x="942.1817758450898" y="-45.251128472222206"/>
+            <y:Point x="1152.6433118934233" y="-166.7611529637897"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFF99" configuration="com.yworks.isometry.edge_label" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="56.3955078125" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center_left" ratio="0.5" textColor="#000000" visible="true" width="65.28850500131944" x="136.2757791703583" y="69.3280951605903">1 GByte/s<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="left" sideReference="absolute_right_in_north"/>
+            <y:UserData>
+              <y:IsometryData depth="56.6875" height="18.701171875" horizontal="false" width="18.701171875"/>
+            </y:UserData>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::e0" source="n0::n1" target="n0::n5">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="10.392304845413264" sy="9.5" tx="-20.35159698893426" ty="3.25"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::e1" source="n0::n1" target="n0::n4">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="21.361959960016065" sy="3.1666666666666856" tx="-20.35159698893426" ty="3.25">
+            <y:Point x="989.5590841638386" y="-342.91985987103175"/>
+            <y:Point x="1022.4711424555178" y="-361.92164558531744"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::e2" source="n0::n0" target="n0::n1">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="20.351596988934375" sy="26.75" tx="3.3197640478404082" ty="-10.416666666666686">
+            <y:Point x="988.2394425147943" y="-444.85913628472224"/>
+            <y:Point x="903.3596741003074" y="-395.8537791418651"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::e3" source="n0::n7" target="n0::n1">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="10.392304845413264" sy="11.0" tx="-18.619546181365422" ty="2.25">
+            <y:Point x="775.61920873773" y="-322.102787078373"/>
+            <y:Point x="881.4203638711016" y="-383.18711247519843"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::e4" source="n0::n6" target="n0::n1">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="10.392304845413264" sy="11.0" tx="-13.134718624063908" ty="-0.9166666666666856">
+            <y:Point x="830.1788091761498" y="-363.602787078373"/>
+            <y:Point x="878.2449373905588" y="-391.3537791418651"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::e5" source="n0::n2" target="n0::n1">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="20.351596988934375" sy="26.75" tx="-2.165063509461106" ty="-7.25">
+            <y:Point x="927.6114783541423" y="-419.8555648561508"/>
+            <y:Point x="889.2145925051616" y="-397.68711247519843"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::e6" source="n0::n3" target="n0::n1">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="20.351596988934375" sy="26.75" tx="-7.6498910667626205" ty="-4.083333333333314"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::e7" source="n0::n8" target="n0::n1">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="12.990381056766637" sy="10.0" tx="-24.104373738666936" ty="5.416666666666686">
+            <y:Point x="723.5054427432525" y="-282.0148902529762"/>
+            <y:Point x="884.5957903516445" y="-375.02044580853175"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e4" source="n4::n0" target="n7">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="10.392304845413264" sy="9.5" tx="-36.37306695894654" ty="13.5">
+            <y:Point x="598.571763136884" y="173.13220486111112"/>
+            <y:Point x="1154.3753627009921" y="-147.7611529637897"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFF99" configuration="com.yworks.isometry.edge_label" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="56.3955078125" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center_left" ratio="0.5" textColor="#000000" visible="true" width="65.28850500131944" x="136.27366414818255" y="69.32686981625028">1 GByte/s<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="left" sideReference="absolute_right_in_north"/>
+            <y:UserData>
+              <y:IsometryData depth="56.6875" height="18.701171875" horizontal="false" width="18.701171875"/>
+            </y:UserData>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e5" source="n0::n1" target="n7">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="-0.5773502691895374" sy="15.833333333333314" tx="-12.990381056766637" ty="0.0">
+            <y:Point x="967.6197739346328" y="-330.2531932043651"/>
+            <y:Point x="926.3375113832019" y="-306.4188678075397"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFF99" configuration="com.yworks.isometry.edge_label" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="59.732421875" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center_left" ratio="0.5" textColor="#000000" visible="true" width="71.06820969806049" x="92.11103252636053" y="91.49818241179935">10 GByte/s<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="left" sideReference="absolute_right_in_north"/>
+            <y:UserData>
+              <y:IsometryData depth="63.361328125" height="18.701171875" horizontal="false" width="18.701171875"/>
+            </y:UserData>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n2::e2" source="n2::n5" target="n2::n6">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="12.990381056766637" sy="10.0" tx="0.5773502691895374" ty="-8.833333333333371">
+            <y:Point x="1182.245285023611" y="-566.8684616815476"/>
+            <y:Point x="1132.4409201058918" y="-538.1138981894842"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n2::e3" source="n2::n4" target="n2::n6">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="10.392304845413264" sy="11.0" tx="-10.392304845413264" ty="-2.5"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e6" source="n2::n6" target="n7">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="2.165063509461106" sy="14.25" tx="-5.196152422706746" ty="-4.5">
+            <y:Point x="1210.846101535363" y="-470.6799789186508"/>
+            <y:Point x="1175.0486665412336" y="-450.012320188492"/>
+            <y:Point x="1409.1488594614002" y="-314.85469990079366"/>
+            <y:Point x="1168.231769161543" y="-175.7611529637897"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFF99" configuration="com.yworks.isometry.edge_label" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="56.3955078125" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center_left" ratio="0.5" textColor="#000000" visible="true" width="65.28850500131944" x="100.51001366557512" y="90.01401347811259">1 GByte/s<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="left" sideReference="absolute_right_in_north"/>
+            <y:UserData>
+              <y:IsometryData depth="56.6875" height="18.701171875" horizontal="false" width="18.701171875"/>
+            </y:UserData>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e7" source="n2::n1" target="n7">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="20.35159698893426" sy="26.75" tx="2.598076211353373" ty="-9.0">
+            <y:Point x="1581.7987641300565" y="-404.5341688368055"/>
+            <y:Point x="1184.6862518334474" y="-175.2611529637897"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFF99" configuration="com.yworks.isometry.edge_label" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="59.732421875" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center_left" ratio="0.5" textColor="#000000" visible="true" width="71.06820969806049" x="176.14709897844045" y="92.34781668526784">10 GByte/s<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="left" sideReference="absolute_right_in_north"/>
+            <y:UserData>
+              <y:IsometryData depth="63.361328125" height="18.701171875" horizontal="false" width="18.701171875"/>
+            </y:UserData>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e8" source="n2::n0" target="n7">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="8.660254037844425" sy="20.0" tx="10.392304845413264" ty="-13.5">
+            <y:Point x="1642.4267282907085" y="-429.537740265377"/>
+            <y:Point x="1201.1407345053517" y="-174.7611529637897"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFF99" configuration="com.yworks.isometry.edge_label" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" height="59.732421875" lineColor="#000000" modelName="free" modelPosition="anywhere" preferredPlacement="center_left" ratio="0.5" textColor="#000000" visible="true" width="71.06820969806049" x="187.81280714812306" y="99.08301478794647">10 GByte/s<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="relative_to_edge_flow" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="left" sideReference="absolute_right_in_north"/>
+            <y:UserData>
+              <y:IsometryData depth="63.361328125" height="18.701171875" horizontal="false" width="18.701171875"/>
+            </y:UserData>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n3::e0" source="n3::n1" target="n3::n0">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="20.351596988934375" sy="26.75" tx="-2.165063509461106" ty="-7.25"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n3::e1" source="n3::n2" target="n3::n0">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="20.35159698893426" sy="26.75" tx="-18.619546181365536" ty="2.25">
+            <y:Point x="574.8250329745666" y="-216.17421564980157"/>
+            <y:Point x="602.2522637089445" y="-232.00933469742063"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n4::e0" source="n4::n1" target="n4::n0">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="10.392304845413264" sy="11.0" tx="1.9485571585150296" ty="-9.625">
+            <y:Point x="316.8824594052423" y="-67.2510013640873"/>
+            <y:Point x="261.88984626493044" y="-35.5010013640873"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n4::e1" source="n4::n2" target="n4::n0">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="10.392304845413264" sy="11.0" tx="-6.278684177437185" ty="-4.875"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n4::e2" source="n4::n3" target="n4::n0">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="12.99038105676658" sy="10.0" tx="-14.505925513389343" ty="-0.125">
+            <y:Point x="192.88858489665625" y="4.336895461309524"/>
+            <y:Point x="245.4353635930261" y="-26.0010013640873"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n4::e3" source="n4::n4" target="n4::n0">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="12.99038105676658" sy="10.0" tx="-22.7331668493415" ty="4.625">
+            <y:Point x="143.22065334612063" y="43.012689112103175"/>
+            <y:Point x="245.86837629491833" y="-16.2510013640873"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+  </graph>
+  <data key="d0">
+    <y:Resources/>
+  </data>
+</graphml>

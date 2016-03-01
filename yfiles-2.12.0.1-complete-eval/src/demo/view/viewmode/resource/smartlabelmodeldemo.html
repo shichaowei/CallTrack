@@ -1,0 +1,159 @@
+<html>
+<head>
+  <style type="text/css">
+  <!--
+body {
+    font-family:Verdana, sans-serif;
+    margin-left:3px;
+    margin-right:3px;
+    margin-top:0px;
+    margin-bottom:0px;
+  }
+
+h1 {
+    padding-left:0px;
+    padding-top:8px;
+    padding-bottom:8px;
+    color:#4079ea;
+    font-size:16px;
+    margin-bottom:5px;
+}
+
+p {
+  padding-bottom:0px;
+  padding-top:0px;
+  margin-top:3px;
+  margin-bottom:0px;
+  margin-left:0px;
+  font-size:10px;
+  color:#000000;
+  }
+
+h2 {
+  font-size:12px;
+  color:#4079ea;
+  margin-top:10px;
+  margin-bottom:0px;
+}
+
+h3 {
+  font-size:11px;
+/*	margin-left:10px; */
+  margin-left:0px;
+  margin-top:8px;
+  margin-bottom:2px;
+}
+
+h4 {
+  font-size:10px;
+  margin-left:0px;
+  margin-top:6px;
+  margin-bottom:2px;
+}
+
+
+dl {
+  font-size:10px;
+  margin-top:2px;
+  margin-bottom:2px;
+  margin-left:0px;
+}
+
+dt {
+  font-weight:bold;
+  margin-top:4px;
+  color:#333366;
+}
+
+dt.inner {
+  font-weight:bold;
+  margin-top:4px;
+  color:#000000;
+}
+
+  dd {
+  margin-left:5px;
+}
+
+.copyright {
+    font-size: 10px;
+    font-style:italic;
+    text-align:right;
+    margin-top:20px;
+}
+
+code, tt {
+  font-family:monospace;
+  font-size:10px;
+  color:#0000C0;
+}
+
+.keyword {
+  font-weight:bold;
+}
+
+-->
+  </style>
+</head>
+<body>
+<h1>Description</h1>
+<p>
+  Shows how to use <code>y.view.SmartNodeLabelModel</code> and
+  <code>y.view.SmartEdgeLabelModel</code>.
+  Additionally, configuration options as well as the dynamic behavior
+  of these two label models are demonstrated.
+</p>
+
+<h2>Usage</h2>
+<p>
+  Aside from the default graph editing capabilities such as adding nodes and/or
+  edges, labels may be edited and moved around.
+</p>
+
+<h3>Node Labels</h3>
+<dl>
+  <dt>Changing Label Position</dt>
+  <dd>
+    The labels can be moved to every position and will snap to the borders and the center of the node.
+    <br>
+    It is also possible to disable snapping by pressing <code>Ctrl</code> when the label is dragged.
+  </dd>
+  <dt>Changing Label Options</dt>
+  <dd>
+    To change label options, use <code>Edit Label</code> from the label's context menu. The label can get a new text,
+    it can be rotated and the font size is adjustable. Note how the label behaves.
+    It keeps aligned to the node and grows/shrinks in a pleasant way.
+  </dd>
+  <dt>Resizing Nodes</dt>
+  <dd>
+    It is possible to change the size of the node where the label belongs. The label will adjust its position relative
+    to the node and keep its alignment.
+  </dd>
+</dl>
+
+<h3>Edge Labels</h3>
+<dl>
+  <dt>Changing Label Position</dt>
+  <dd>
+    The labels can be moved freely to every position and will snap to three traces: on the edge and left or right of the
+    edge. It will snap also to the positions where the edge starts and ends and in the center of every segment.
+    <br>
+    It is also possible to disable snapping by pressing <code>Ctrl</code> when the label is dragged.
+  </dd>
+  <dt>Changing Label Options</dt>
+  <dd>
+    To change label options, use <code>Edit Label</code> from the label's context menu. The label can get a new text,
+    it can be rotated and the font size is adjustable.
+  </dd>
+</dl>
+
+<h3>Adding New Graph Elements</h3>
+<p>
+  Nodes and edges are added as usual.
+</p>
+<p>
+  To add labels to nodes and/or edges use <code>Add Label</code> from the
+  element's context menu.
+</p>
+</body>
+</html>

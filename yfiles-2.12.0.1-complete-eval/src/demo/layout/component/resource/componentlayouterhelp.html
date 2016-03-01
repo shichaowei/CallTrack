@@ -1,0 +1,193 @@
+<html>
+<head>
+    <style type="text/css">
+        <!--
+    body {
+        font-family:Verdana, sans-serif;
+            margin-left:3px;
+            margin-right:3px;
+            margin-top:0px;
+            margin-bottom:0px;
+        }
+
+    h1 {
+        padding-left:0px;
+        padding-top:8px;
+        padding-bottom:8px;
+        color:#4079ea;
+        font-size:16px;
+        margin-bottom:5px;
+    }
+
+    p {
+        padding-bottom:0px;
+        padding-top:0px;
+        margin-top:3px;
+        margin-bottom:0px;
+        margin-left:0px;
+        font-size:10px;
+        color:#000000;
+        }
+
+    h2 {
+      font-size:12px;
+        color:#4079ea;
+      margin-top:10px;
+      margin-bottom:0px;
+    }
+
+    h3 {
+      font-size:11px;
+    /*	margin-left:10px; */
+        margin-left:0px;
+      margin-top:8px;
+      margin-bottom:2px;
+    }
+
+    h4 {
+      font-size:10px;
+      margin-left:0px;
+      margin-top:6px;
+      margin-bottom:2px;
+    }
+
+
+    dl {
+        font-size:10px;
+        margin-top:2px;
+        margin-bottom:2px;
+        margin-left:0px;
+    }
+
+    dt {
+        font-weight:bold;
+        margin-top:4px;
+        color:#333366;
+    }
+
+    dt.inner {
+      font-weight:bold;
+      margin-top:4px;
+      color:#000000;
+    }
+
+      dd {
+        margin-left:5px;
+    }
+
+    .copyright {
+        font-size: 10px;
+        font-style:italic;
+        text-align:right;
+        margin-top:20px;
+    }
+
+    code, tt {
+        font-family:monospace;
+        font-size:10px;
+        color:#0000C0;
+    }
+
+    .keyword {
+      font-weight:bold;
+    }
+
+    -->
+    </style>
+</head>
+<body>
+<h2>Help</h2>
+
+<h3>Description</h3>
+<p>
+    The ComponentLayouter arranges the connected components of a graph. This demo shows how the components can be
+    arranged using different arrangement styles. The demo uses the size of the view as the preferred layout size.
+</p>
+
+<h3>Usage</h3>
+<p>
+    Create a graph with different components or load one of the sample graphs. Choose an arrangement style and specify
+    the spacing between the components. Change the graph by adding or removing nodes and edges and press "Layout" to
+    rearrange the components.
+</p>
+
+<h3>Available Styles</h3>
+
+<dl>
+    <dt>Multiple Rows</dt>
+    <dd>
+        Tries to place components in multiple rows so that the overall aspect ratio of all components gets as close to
+        the aspect ratio of the preferred layout size as possible.
+    </dd>
+
+    <dt>Single Row</dt>
+    <dd>
+        Places components next to each other in a single row.
+    </dd>
+
+    <dt>Single Column</dt>
+    <dd>
+        Places components above each other in a single column.
+    </dd>
+
+    <dt>Packed Rectangle</dt>
+    <dd>
+        Tries to place components like in a rectangular cloud around the biggest component.
+    </dd>
+
+    <dt>Compact Rectangle</dt>
+    <dd>
+        Similar to <i>Packed Rectangle</i> but components might even be placed in empty spaces inside other components.
+    </dd>
+
+    <dt>Packed Circle</dt>
+    <dd>
+        Tries to place components like in a cloud around the biggest component.
+    </dd>
+
+    <dt>Compact Circle</dt>
+    <dd>
+        Similar to <i>Packed Circle</i> but components might even be placed in empty spaces inside other components.
+    </dd>
+
+    <dt>Nested Rows</dt>
+    <dd>
+        Places components in multiple rows. In contrast to <i>Multiple Rows</i>, each row may also be divided into
+        further sub-rows. Thus especially being advantageous, if there are few very large components and many
+        significantly smaller ones. The strategy tries to arrange the components such that the aspect ratio of the final
+        component placement gets as close as possible to the aspect ratio of the preferred layout size.
+    </dd>
+
+    <dt>Compact Nested Rows</dt>
+    <dd>
+        Similar to <i>Nested Rows</i> but this strategy tries not always to come as close to the preferred view ratio,
+        if not necessary, i.e. if a ratio close to the preferred ratio only induces a lot of unused view space. This
+        unused space will be minimized.
+    </dd>
+
+    <dt>Width Constrained Nested Rows</dt>
+    <dd>
+        It uses the same core strategy as <i>Nested Rows</i>, but under the restriction that the resulting width does
+        not exceed the preferred width.
+    </dd>
+
+    <dt>Height Constrained Nested Rows</dt>
+    <dd>
+        It uses the same core strategy as <i>Nested Rows</i>, but under the restriction that the resulting height does
+        not exceed the preferred width.
+    </dd>
+
+    <dt>Width Constrained Compact Nested Rows</dt>
+    <dd>
+        Similar to <i>Width Constrained Nested Rows</i> but the result will be compacted, in order to minimize unused
+        view space induced by components that are large in height.
+    </dd>
+
+    <dt>Height Constrained Compact Nested Rows</dt>
+    <dd>
+        Similar to <i>Height Constrained Nested Rows</i> but the result will be compacted, in order to minimize unused
+        view space induced by components that are large in width.
+    </dd>
+</dl>
+</body>
+</html>

@@ -1,0 +1,533 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Channel Edge Routing</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="layout.html" title="Chapter&nbsp;5.&nbsp;Automatic Graph Layout">
+      <link rel="previous" href="orthogonal_edge_router.html" title="Orthogonal Edge Routing">
+      <link rel="next" href="orthogonal_bus_router.html" title="Orthogonal Bus-style Edge Routing">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Channel Edge Routing</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="orthogonal_edge_router.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;5.&nbsp;Automatic Graph Layout</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="orthogonal_bus_router.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="channel_edge_router"></a>Channel Edge Routing
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            <a href="../api/y/layout/router/ChannelEdgeRouter.html" title="Link to API documentation" target="_top">ChannelEdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is an 
+            orthogonal edge routing algorithm that uses a two step approach for finding 
+            edge routes. 
+            First, a path finding phase assigns preliminary paths for all edges. 
+            In a second step, the distribution phase, these edge paths are then distributed 
+            so that edge segments take up the space between the nodes. 
+            The available space that an edge segment can use is also referred to as its 
+            "channel."
+            
+         </p>
+         <p>
+            ChannelEdgeRouter is particularly well suited for routing bus-like structures, 
+            i.e., sets of parallel edges between common nodes. 
+            
+            Compared to <a href="orthogonal_edge_router.html" title="Orthogonal Edge Routing">OrthogonalEdgeRouter</a>, 
+            edge segments can be very close to each other, and edges may also overlap with nodes 
+            when using the default pattern routing scheme for the path finding phase (see below). 
+            However, there are many situations where this algorithm will be faster.
+            
+         </p>
+         <div class="figure"><a name="d0e20561"></a><p class="title"><b>Figure&nbsp;5.112.&nbsp;Sample edge routing produced by ChannelEdgeRouter</b></p>
+            <div class="informaltable">
+               <center>
+                  <table border="0">
+                     <colgroup>
+                        <col width="100%">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/cer_grid.jpg" align="middle" alt="Sample edge routing produced by ChannelEdgeRouter"></div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <p>
+            By default, ChannelEdgeRouter delegates the path finding and distribution steps 
+            to specialized layout providers, namely classes 
+            <a href="../api/y/layout/router/OrthogonalPatternEdgeRouter.html" title="Link to API documentation" target="_top">OrthogonalPatternEdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and 
+            <a href="../api/y/layout/router/OrthogonalSegmentDistributionStage.html" title="Link to API documentation" target="_top">OrthogonalSegmentDistributionStage<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+            respectively. 
+            The strategies for both path finding and distribution can be easily customized.
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="channel_router_dataprovider"></a>Supplemental Layout Data
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Both the default path finding as well as the default distribution strategy of 
+               class ChannelEdgeRouter know a number of data provider keys which are used to 
+               retrieve supplemental layout data for a graph's elements. 
+               
+               The data is bound to the graph by means of a data provider, which is registered 
+               using a given look-up key. 
+               <a href="channel_edge_router.html#tab_channel_router_generic_keys" title="Table&nbsp;5.81.&nbsp;Data provider look-up keys">Table&nbsp;5.81, &#8220;Data provider look-up keys&#8221;</a> lists all look-up keys for 
+               ChannelEdgeRouter's default path finding and distribution strategies.
+               
+            </p>
+            <p>
+               Binding supplemental layout data to a graph is described in 
+               <a href="layout_concepts.html#supplemental_information" title="Providing Supplemental Layout Data">the section called &#8220;Providing Supplemental Layout Data&#8221;</a>. 
+               
+            </p>
+            <div class="table"><a name="tab_channel_router_generic_keys"></a><p class="title"><b>Table&nbsp;5.81.&nbsp;Data provider look-up keys</b></p>
+               <table summary="Data provider look-up keys" width="100%" border="1">
+                  <colgroup>
+                     <col width="25%" align="left">
+                     <col width="10%" align="left">
+                     <col width="10%" align="left">
+                     <col width="55%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Key</th>
+                        <th align="left">Element Type</th>
+                        <th align="left">Value Type</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/router/ChannelEdgeRouter.html#AFFECTED_EDGES" title="Link to API documentation" target="_top">AFFECTED_EDGES<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">boolean</td>
+                        <td align="left">
+                             For each edge a boolean value indicating whether it should be routed or not.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/PortConstraintKeys.html#SOURCE_PORT_CONSTRAINT_KEY" title="Link to API documentation" target="_top">SOURCE_PORT_CONSTRAINT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">
+                             PortConstraint
+                             
+                        </td>
+                        <td align="left">
+                             For each edge a PortConstraint object encoding its source end's port 
+                             constraint. 
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/PortConstraintKeys.html#TARGET_PORT_CONSTRAINT_KEY" title="Link to API documentation" target="_top">TARGET_PORT_CONSTRAINT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">
+                             PortConstraint
+                             
+                        </td>
+                        <td align="left">
+                             For each edge a PortConstraint object encoding its target end's port 
+                             constraint. 
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/PortCandidate.html#SOURCE_PCLIST_DPKEY" title="Link to API documentation" target="_top">SOURCE_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">Collection</td>
+                        <td align="left">
+                             For each edge a <tt class="classname">java.util.Collection</tt> of PortCandidate 
+                             objects that encode the subset of desired anchor locations where the source 
+                             port likes to connect to.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/PortCandidate.html#TARGET_PCLIST_DPKEY" title="Link to API documentation" target="_top">TARGET_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">Collection</td>
+                        <td align="left">
+                             For each edge a <tt class="classname">java.util.Collection</tt> of PortCandidate 
+                             objects that encode the subset of desired anchor locations where the target 
+                             port likes to connect to.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="channel_router_options"></a>Routing Options
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class ChannelEdgeRouter itself has no special routing options beyond the setter 
+               methods which allow to customize the strategies used for the two routing phases:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/ChannelEdgeRouter.html#setPathFinderStrategy(y.layout.Layouter)" title="Link to API documentation" target="_top">void setPathFinderStrategy(Layouter pathFinderStrategy)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/router/ChannelEdgeRouter.html#setEdgeDistributionStrategy(y.layout.Layouter)" title="Link to API documentation" target="_top">void setEdgeDistributionStrategy(Layouter edgeDistributionStrategy)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Enable setting the ChannelEdgeRouter strategies for the routing phases.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="d0e20686"></a>Affected Edges
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Determines the set of edges from the graph that should be processed. 
+                  When only a subset should be routed, a data provider holding the selection 
+                  state for each edge is looked up. 
+                  The data provider is expected to be registered with the graph using key 
+                  <a href="../api/y/layout/router/ChannelEdgeRouter.html#AFFECTED_EDGES" title="Link to API documentation" target="_top">AFFECTED_EDGES<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+               </p>
+               <p>
+                  OrthogonalPatternEdgeRouter and OrthogonalSegmentDistributionStage, which are 
+                  used as the default path finding and distribution strategy, respectively, both 
+                  support this routing option. 
+                  Also, they provide convenience methods that allow to map other already 
+                  registered data providers to the AFFECTED_EDGES key:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/OrthogonalPatternEdgeRouter.html#setAffectedEdgesDPKey(java.lang.Object)" title="Link to API documentation" target="_top">void setAffectedEdgesDPKey(Object key)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Enables mapping of data providers.
+                                 The same method is available in classes OrthogonalPatternEdgeRouter and OrthogonalSegmentDistributionStage.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="channel_router_advanced"></a>Advanced Routing Features
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="cer_port_constraints"></a>Port Constraints
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Both the default path finding as well as the default distribution strategy of 
+                  class ChannelEdgeRouter obey both types of port constraints, weak and strong. 
+                  The port constraints are retrieved from data providers that are bound to the 
+                  graph using the look-up keys 
+                  <a href="../api/y/layout/PortConstraintKeys.html#SOURCE_PORT_CONSTRAINT_KEY" title="Link to API documentation" target="_top">SOURCE_PORT_CONSTRAINT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  and 
+                  <a href="../api/y/layout/PortConstraintKeys.html#TARGET_PORT_CONSTRAINT_KEY" title="Link to API documentation" target="_top">TARGET_PORT_CONSTRAINT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                  respectively.
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="cer_port_candidates"></a>Port Candidates
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  In addition to the support provided for port constraints, ChannelEdgeRouter's 
+                  default path finding and distribution strategies also supports port candidates 
+                  that model enhanced port constraints, comprising, for example, multiple sides 
+                  of a node at once. 
+                  The set of possible port candidates for the edges of a graph are retrieved from 
+                  data providers that are bound to the graph using the look-up keys 
+                  <a href="../api/y/layout/PortCandidate.html#SOURCE_PCLIST_DPKEY" title="Link to API documentation" target="_top">SOURCE_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  and 
+                  <a href="../api/y/layout/PortCandidate.html#TARGET_PCLIST_DPKEY" title="Link to API documentation" target="_top">TARGET_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                  respectively.
+                  
+               </p>
+               <p>
+                  See <a href="layout_advanced_features.html#port_candidates_enhanced_port_constraints" title="Modeling Enhanced Port Constraints Using Port Candidates">the section called &#8220;Modeling Enhanced Port Constraints Using Port Candidates&#8221;</a> for a detailed 
+                  description of this port candidates use case.
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="cer_incremental"></a>Incremental Routing
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  ChannelEdgeRouter supports incremental routing through the "Affected Edges" 
+                  feature. 
+                  See the <a href="channel_edge_router.html#channel_router_options" title="Routing Options">above description</a>.
+                  
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="channel_router_related"></a>Related Classes
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               By default, 
+               <a href="../api/y/layout/router/OrthogonalPatternEdgeRouter.html" title="Link to API documentation" target="_top">OrthogonalPatternEdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is 
+               set as the path finding stategy for ChannelEdgeRouter. 
+               It supports two different policies for finding edge paths, "free" routing, 
+               which is the default, and grid routing. 
+               
+               Common to both routing policies is the general technique for finding an edge 
+               path: depending on the relative location of source and target node, an edge 
+               path is chosen from a set of possible routing "patterns." 
+               The paths from this set are associated with costs, and 
+               OrthogonalPatternEdgeRouter chooses the routing pattern that causes the least 
+               costs. 
+               
+            </p>
+            <p>
+               The methods listed below can be used to specify the costs for specific situations,
+               for example, edge segments that overlap.
+               
+               Note that, despite the different cost factors, the actual routing chosen by 
+               OrthogonalPatternEdgeRouter may overlap with nodes, for example, when an edge's 
+               channels offer not enough space for a proper non-overlapping route.
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/OrthogonalPatternEdgeRouter.html#setNodeCrossingCost(double)" title="Link to API documentation" target="_top">void setNodeCrossingCost(double nodeCrossingCost)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/router/OrthogonalPatternEdgeRouter.html#setEdgeCrossingCost(double)" title="Link to API documentation" target="_top">void setEdgeCrossingCost(double edgeCrossingCost)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/router/OrthogonalPatternEdgeRouter.html#setEdgeOverlapCost(double)" title="Link to API documentation" target="_top">void setEdgeOverlapCost(double edgeOverlapCost)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Allow to specify the costs for specific situations during the routing process.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               As an alternative to OrthogonalPatternEdgeRouter, static inner class 
+               <a href="../api/y/layout/router/ChannelEdgeRouter.OrthogonalShortestPathPathFinder.html" title="Link to API documentation" target="_top">ChannelEdgeRouter.OrthogonalShortestPathPathFinder<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+               a specialized variant of 
+               <a href="orthogonal_edge_router.html" title="Orthogonal Edge Routing">class OrthogonalEdgeRouter</a>, can 
+               be used as the path finding strategy for ChannelEdgeRouter.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="channel_router_stages"></a>Applicable Layout Stages
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               <a href="channel_edge_router.html#tab_channel_router_stages" title="Table&nbsp;5.82.&nbsp;Layout Stages">Table&nbsp;5.82, &#8220;Layout Stages&#8221;</a> lists layout stages that can be used 
+               to enhance the routing process of class ChannelEdgeRouter. 
+               
+            </p>
+            <div class="table"><a name="tab_channel_router_stages"></a><p class="title"><b>Table&nbsp;5.82.&nbsp;Layout Stages</b></p>
+               <table summary="Layout Stages" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="80%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Classname</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/router/polyline/PolylineLayoutStage.html" title="Link to API documentation" target="_top">PolylineLayoutStage<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             With class ChannelEdgeRouter as the core layouter, this stage adds octilinear 
+                             edge routing to the diagram that results from the channel edge router calculation.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="channel_router_tutorial"></a>Tutorial Demo Code
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Usage of class ChannelEdgeRouter can be observed in the following yFiles source 
+               code demo programs: 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li><a href="../../src/demo/layout/router/EdgeRouterDemo.java" title="Link to demo code" target="_top">EdgeRouterDemo.java</a></li>
+                  <li><a href="../../src/demo/layout/router/MazeRouterDemo.java" title="Link to demo code" target="_top">MazeRouterDemo.java</a></li>
+               </ul>
+            </div>
+            <p>
+               
+               Configuration of the channel edge routing algorithm can also be observed in 
+               <a href="../../src/demo/layout/module/ChannelEdgeRouterModule.java" title="Link to demo code" target="_top">ChannelEdgeRouterModule.java</a>.
+               
+            </p>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="orthogonal_edge_router.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="layout.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="orthogonal_bus_router.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Orthogonal Edge Routing&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Orthogonal Bus-style Edge Routing</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

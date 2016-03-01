@@ -1,0 +1,902 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Orthogonal Layout</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="layout.html" title="Chapter&nbsp;5.&nbsp;Automatic Graph Layout">
+      <link rel="previous" href="interactive_organic_layouter.html" title="Interactive Organic Layout">
+      <link rel="next" href="orthogonal_group_layouter.html" title="Orthogonal Layout of Grouped Graphs">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Orthogonal Layout</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="interactive_organic_layouter.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;5.&nbsp;Automatic Graph Layout</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="orthogonal_group_layouter.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="orthogonal_layouter"></a>Orthogonal Layout
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            Class <a href="../api/y/layout/orthogonal/OrthogonalLayouter.html" title="Link to API documentation" target="_top">OrthogonalLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is 
+            a multi-purpose layout provider for undirected graphs. 
+            It produces clear representations of complex networks and is especially fit for 
+            application areas such as 
+            
+         </p>
+         <div class="itemizedlist">
+            <ul type="disc">
+               <li>
+                  Software engineering
+                  
+               </li>
+               <li>
+                  Database schema
+                  
+               </li>
+               <li>
+                  System management
+                  
+               </li>
+               <li>
+                  Knowledge representation
+                  
+               </li>
+            </ul>
+         </div>
+         <p>
+            
+         </p>
+         <p>
+            The orthogonal layout algorithm is based on the topology-shape-metrics approach 
+            and consists of three phases. 
+            In the first phase the edge crossings in the drawing are calculated. 
+            The second phase computes the bends in the drawing, in the third phase the 
+            final coordinates are determined. 
+            
+         </p>
+         <p>
+            The layout algorithm is well suited for medium-sized sparse graphs. 
+            It produces compact drawings with no overlaps, few crossings, and few bends. 
+            
+         </p>
+         <div class="figure"><a name="d0e11965"></a><p class="title"><b>Figure&nbsp;5.64.&nbsp;Sample layouts produced by class OrthogonalLayouter</b></p>
+            <div class="informaltable">
+               <center>
+                  <table border="0">
+                     <colgroup>
+                        <col width="50%">
+                        <col width="50%">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/orthogonal-layout-1-thumb.gif" align="middle" alt="Sample layouts produced by class OrthogonalLayouter"></div>
+                           </td>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/orthogonal-layout-2-thumb.gif" align="middle" alt="Sample layouts produced by class OrthogonalLayouter"></div>
+                           </td>
+                        </tr>
+                        <tr align="center">
+                           <td align="center">
+                                UML class diagram representing a part of the layout interface of yFiles. 
+                              
+                           </td>
+                           <td align="center">
+                                This diagram shows finite state automaton from an industrial application. 
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="orthogonal_dataprovider"></a>Supplemental Layout Data
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class OrthogonalLayouter knows a number of data provider keys which are used to 
+               retrieve supplemental layout data for a graph's elements. 
+               
+               The data is bound to the graph by means of a data provider, which is registered 
+               using a given look-up key. 
+               <a href="orthogonal_layouter.html#tab_orthogonal_keys" title="Table&nbsp;5.43.&nbsp;Data provider look-up keys">Table&nbsp;5.43, &#8220;Data provider look-up keys&#8221;</a> lists all look-up keys for 
+               OrthogonalLayouter. 
+               
+            </p>
+            <p>
+               Binding supplemental layout data to a graph is described in 
+               <a href="layout_concepts.html#supplemental_information" title="Providing Supplemental Layout Data">the section called &#8220;Providing Supplemental Layout Data&#8221;</a>. 
+               
+            </p>
+            <div class="table"><a name="tab_orthogonal_keys"></a><p class="title"><b>Table&nbsp;5.43.&nbsp;Data provider look-up keys</b></p>
+               <table summary="Data provider look-up keys" width="100%" border="1">
+                  <colgroup>
+                     <col width="25%" align="left">
+                     <col width="10%" align="left">
+                     <col width="10%" align="left">
+                     <col width="55%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Key</th>
+                        <th align="left">Element Type</th>
+                        <th align="left">Value Type</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/LabelLayoutKeys.html#EDGE_LABEL_LAYOUT_KEY" title="Link to API documentation" target="_top">EDGE_LABEL_LAYOUT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">LabelLayoutData[]</td>
+                        <td align="left">
+                             For each edge an array of LabelLayoutData objects that encode size and 
+                             preferred placement for all labels of the edge. 
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#EDGE_LAYOUT_DESCRIPTOR_DPKEY" title="Link to API documentation" target="_top">EDGE_LAYOUT_DESCRIPTOR_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">EdgeLayoutDescriptor</td>
+                        <td align="left">
+                             For each edge an <a href="../api/y/layout/orthogonal/EdgeLayoutDescriptor.html" title="Link to API documentation" target="_top">EdgeLayoutDescriptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                             object that configures edge-related options.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/NodeHalo.html#NODE_HALO_DPKEY" title="Link to API documentation" target="_top">NODE_HALO_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">NodeHalo</td>
+                        <td align="left">
+                             A <a href="../api/y/layout/NodeHalo.html" title="Link to API documentation" target="_top">NodeHalo<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> object that specifies the halo 
+                             sizes at each side of a node.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/algo/AbortHandler.html#ABORT_HANDLER_DPKEY" title="Link to API documentation" target="_top">ABORT_HANDLER_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Graph</td>
+                        <td align="left">AbortHandler</td>
+                        <td align="left">
+                             An <a href="../api/y/algo/AbortHandler.html" title="Link to API documentation" target="_top">AbortHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> instance that will be queried 
+                             by the layout algorithm to determine whether layout calculation shall be terminated.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="orthogonal_options"></a>Layout Options
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               The global layout style of OrthogonalLayouter is set using the
+               <a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#setLayoutStyle(int)" title="Link to API documentation" target="_top">setLayoutStyle(int)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+               method.
+               Available options are:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#NORMAL_STYLE" title="Link to API documentation" target="_top">NORMAL_STYLE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Node sizes will not be changed by this layouter.
+                              The drawing will contain very few bends only.
+                              
+                           </td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#NORMAL_TREE_STYLE" title="Link to API documentation" target="_top">NORMAL_TREE_STYLE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Same as "Normal," but larger subtrees are processed using a specialized tree
+                              layout algorithm, which is better suited for tree-like structures than the
+                              original orthogonal layout style.
+                              
+                           </td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#UNIFORM_STYLE" title="Link to API documentation" target="_top">UNIFORM_STYLE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">All node sizes will be changed to equal size before the graph is processed.</td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#BOX_STYLE" title="Link to API documentation" target="_top">BOX_STYLE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Nodes are resized according to the number and position of their neighbors to
+                              reduce the overall number of bends.
+                              
+                           </td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#MIXED_STYLE" title="Link to API documentation" target="_top">MIXED_STYLE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Resembles "Box," but resizes all nodes to equal size.
+                              Introduces additional bends and routes the last edge segment of these edges
+                              non-orthogonally to their adjacent nodes.
+                              
+                           </td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#FIXED_MIXED_STYLE" title="Link to API documentation" target="_top">FIXED_MIXED_STYLE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Proceeds similar to layout style "Mixed," but maintains original node sizes.
+                              
+                           </td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#FIXED_BOX_STYLE" title="Link to API documentation" target="_top">FIXED_BOX_STYLE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Proceeds similar to layout style "Box," but maintains original node
+                              sizes.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="figure"><a name="d0e12145"></a><p class="title"><b>Figure&nbsp;5.65.&nbsp;Sample layouts for the available orthogonal layout styles</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="33%">
+                           <col width="33%">
+                           <col width="34%">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/ortho_normal.jpg" align="middle" alt="Sample layouts for the available orthogonal layout styles"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/ortho_normal_tree.jpg" align="middle" alt="Sample layouts for the available orthogonal layout styles"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/ortho_uniform.jpg" align="middle" alt="Sample layouts for the available orthogonal layout styles"></div>
+                              </td>
+                           </tr>
+                           <tr align="center">
+                              <td align="center"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#NORMAL_STYLE" title="Link to API documentation" target="_top">NORMAL_STYLE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                              <td align="center"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#NORMAL_TREE_STYLE" title="Link to API documentation" target="_top">NORMAL_TREE_STYLE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                              <td align="center"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#UNIFORM_STYLE" title="Link to API documentation" target="_top">UNIFORM_STYLE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="50%">
+                           <col width="50%">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/ortho_node_boxes.jpg" align="middle" alt="Sample layouts for the available orthogonal layout styles"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/ortho_mixed.jpg" align="middle" alt="Sample layouts for the available orthogonal layout styles"></div>
+                              </td>
+                           </tr>
+                           <tr align="center">
+                              <td align="center"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#BOX_STYLE" title="Link to API documentation" target="_top">BOX_STYLE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                              <td align="center"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#MIXED_STYLE" title="Link to API documentation" target="_top">MIXED_STYLE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Grid</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#setGrid(int)" title="Link to API documentation" target="_top">void setGrid(int gridSpacing)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Defines the virtual grid spacing used by the layout algorithm.
+                              Each node will be placed in such a way that its center point lies on a grid
+                              point.
+                              Edges will be routed in such a way that their segments lie on grid lines, if
+                              the terminal nodes of the edges allow to place the ports accordingly.
+                              Note that this option is only guaranteed to be obeyed for "Normal Layout
+                              Style," for all other styles it is used as a hint only.
+                              
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Length Reduction</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#setUseLengthReduction(boolean)" title="Link to API documentation" target="_top">void setUseLengthReduction(boolean reduceLength)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              If enabled, the overall edge lengths will be reduced.
+                              The cost for the reduction is an increased execution time of the layout
+                              algorithm.
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Optimize Perceived Bends</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#setPerceivedBendsOptimizationEnabled(boolean)" title="Link to API documentation" target="_top">void setPerceivedBendsOptimizationEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              If enabled, avoids helical arrangement of chains of nodes.
+                              
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Use Existing Drawing as Sketch</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#setUseSketchDrawing(boolean)" title="Link to API documentation" target="_top">void setUseSketchDrawing(boolean useSketch)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              If enabled, the layout algorithm will interpret the initial graph layout as a
+                              sketch of the resulting orthogonal layout.
+                              The layout algorithm tries to "orthogonalize" the given sketch without making
+                              too much modifications in respect to the original drawing.
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Crossing Postprocessing</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#setUseCrossingPostprocessing(boolean)" title="Link to API documentation" target="_top">void setUseCrossingPostprocessing(boolean crossingPostprocessing)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              If enabled, the overall number of edge crossings will be reduced.
+                              The cost for the reduction is increased execution time of the layouter.
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Use Randomization</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#setUseRandomization(boolean)" title="Link to API documentation" target="_top">void setUseRandomization(boolean useRandomization)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              If enabled, the overall layout quality will increase with high probability.
+                              The cost for this layout optimization is increased execution time and
+                              non-deterministic results for subsequent layout invocations.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               Class <a href="../api/y/layout/orthogonal/EdgeLayoutDescriptor.html" title="Link to API documentation" target="_top">EdgeLayoutDescriptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> can
+               be used to specify further edge-related layout options.
+               An instance of this class is held by OrthogonalLayouter to store and retrieve default
+               values for edges.
+               
+            </p>
+            <p>
+               OrthogonalLayouter provides access to the default EdgeLayoutDescriptor instance
+               through:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Edge Layout Descriptor</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#getEdgeLayoutDescriptor()" title="Link to API documentation" target="_top">EdgeLayoutDescriptor getEdgeLayoutDescriptor()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#setEdgeLayoutDescriptor(y.layout.orthogonal.EdgeLayoutDescriptor)" title="Link to API documentation" target="_top">void setEdgeLayoutDescriptor(EdgeLayoutDescriptor edgeLayoutDescriptor)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Edge-related layout options.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               In addition to the instance held directly by OrthogonalLayouter, layout descriptors
+               can also be associated with single edges in order to specify individual settings
+               for them.
+               Setting individual descriptors for edges is done through a data provider that is
+               bound to the graph.
+               See <a href="orthogonal_layouter.html#orthogonal_related" title="Related Classes">Related Classes</a>.
+               
+            </p>
+            <p>
+               In addition to these options, OrthogonalLayouter by default also supports node halos 
+               as soon as they are declared using the data provider key <a href="../api/y/layout/NodeHalo.html#NODE_HALO_DPKEY" title="Link to API documentation" target="_top">NODE_HALO_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="d0e12349"></a>Orthogonal Layout of Grouped Graphs
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               See <a href="orthogonal_group_layouter.html" title="Orthogonal Layout of Grouped Graphs">the section called &#8220;Orthogonal Layout of Grouped Graphs&#8221;</a> on how to calculate an orthogonal 
+               style layout of a grouped graph.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="orthogonal_label_handling"></a>Label Handling
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Besides the generic labeling support as described in <a href="labeling.html#general_labeling" title="Generic Labeling">the section called &#8220;Generic Labeling&#8221;</a>, 
+               which is available with all yFiles layout algorithms, the orthogonal layout algorithm 
+               additionally supports integrated labeling. 
+               Furthermore, it can also be set up to take node labels into account during layout.
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="orthogonal_integrated_labeling"></a>Integrated Labeling
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Integrated labeling is available for edge labels and can be used in conjunction 
+                  with layout style "Normal." 
+                  They are taken into consideration when determining both node placement and edge 
+                  path generation. 
+                  With this strategy it is guaranteed that no edge label will overlap other objects 
+                  in the diagram.
+                  
+               </p>
+               <p>
+                  Integrated labeling can be enabled or disabled using the following setter method:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#isIntegratedEdgeLabelingEnabled()" title="Link to API documentation" target="_top">boolean isIntegratedEdgeLabelingEnabled()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#setIntegratedEdgeLabelingEnabled(boolean)" title="Link to API documentation" target="_top">void setIntegratedEdgeLabelingEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Determines whether integrated labeling is enabled.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  See also <a href="labeling.html#integrated_labeling" title="Integrated Labeling">the section called &#8220;Integrated Labeling&#8221;</a>.
+                  
+               </p>
+               <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Tip</h3>
+                  <p>
+                     Optimal label placement with integrated labeling can be achieved using <a href="../api/y/layout/FreeEdgeLabelModel.html" title="Link to API documentation" target="_top">FreeEdgeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                     as the label model for the edges. 
+                     As explained in <a href="labeling.html#label_models" title="Label Models">the section called &#8220;Label Models&#8221;</a>, this edge label model is ideally 
+                     suited in combination with integrated labeling and yields the best match for a label 
+                     location that is computed by OrthogonalLayouter.
+                     
+                  </p>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="orthogonal_node_label_aware"></a>Node Label Awareness
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  OrthogonalLayouter provides support for node label-aware orthogonal layout. 
+                  Node labels do not need to be placed, but instead their size needs to be considered 
+                  for the placement of adjacent graph elements. 
+                  Taking node labels into consideration during layout calculation guarantees that 
+                  they will not overlap nodes in the diagram.
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Consider Node Labels</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#setConsiderNodeLabelsEnabled(boolean)" title="Link to API documentation" target="_top">void setConsiderNodeLabelsEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Enables node label-aware layout calculation.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="orthogonal_related"></a>Related Classes
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class <a href="../api/y/layout/orthogonal/EdgeLayoutDescriptor.html" title="Link to API documentation" target="_top">EdgeLayoutDescriptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> can
+               be used to configure edge-related layout options.
+               The following options can be set for edges:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Minimum Length of First and Last Segment</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/orthogonal/EdgeLayoutDescriptor.html#setMinimumFirstSegmentLength(double)" title="Link to API documentation" target="_top">void setMinimumFirstSegmentLength(double length)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/orthogonal/EdgeLayoutDescriptor.html#setMinimumLastSegmentLength(double)" title="Link to API documentation" target="_top">void setMinimumLastSegmentLength(double length)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Determine the minimum length of the first (at the source) and last (at the target)
+                              edge segment.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               An EdgeLayoutDescriptor instance can be specified individually for single edges
+               by means of a data provider that is bound to the graph.
+               The data provider is expected to be registered with the graph using key
+               <a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#EDGE_LAYOUT_DESCRIPTOR_DPKEY" title="Link to API documentation" target="_top">EDGE_LAYOUT_DESCRIPTOR_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+               
+               In the absence of an individual descriptor for an edge, the default EdgeLayoutDescriptor
+               instance that is registered with OrthogonalLayouter will be used.
+               
+            </p>
+            <p>
+               The following table lists the data provider look-up keys that are recognized by
+               OrthogonalLayouter in conjunction with individual layout settings for edges.
+               
+            </p>
+            <div class="table"><a name="d0e12465"></a><p class="title"><b>Table&nbsp;5.44.&nbsp;Data provider look-up keys</b></p>
+               <table summary="Data provider look-up keys" width="100%" border="1">
+                  <colgroup>
+                     <col width="25%" align="left">
+                     <col width="10%" align="left">
+                     <col width="10%" align="left">
+                     <col width="55%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Key</th>
+                        <th align="left">Element Type</th>
+                        <th align="left">Value Type</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/orthogonal/OrthogonalLayouter.html#EDGE_LAYOUT_DESCRIPTOR_DPKEY" title="Link to API documentation" target="_top">EDGE_LAYOUT_DESCRIPTOR_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">EdgeLayoutDescriptor</td>
+                        <td align="left">
+                             For each edge an <a href="../api/y/layout/orthogonal/EdgeLayoutDescriptor.html" title="Link to API documentation" target="_top">EdgeLayoutDescriptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                             object that configures edge-related options.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               In tutorial demo application <a href="../../src/demo/view/entityrelationship/EntityRelationshipDemo.java" title="Link to demo code" target="_top">EntityRelationshipDemo.java</a>
+               individual EdgeLayoutDescriptor instances are used to specify the minimum length
+               of the first/last edge segment in relation to the length of the arrowhead at that
+               end.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="orthogonal_stages"></a>Applicable Layout Stages
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               <a href="orthogonal_layouter.html#tab_orthogonal_stages" title="Table&nbsp;5.45.&nbsp;Layout Stages">Table&nbsp;5.45, &#8220;Layout Stages&#8221;</a> lists layout stages that can be used to 
+               enhance the layout process of class OrthogonalLayouter. 
+               
+            </p>
+            <div class="table"><a name="tab_orthogonal_stages"></a><p class="title"><b>Table&nbsp;5.45.&nbsp;Layout Stages</b></p>
+               <table summary="Layout Stages" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="80%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Classname</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/router/polyline/PolylineLayoutStage.html" title="Link to API documentation" target="_top">PolylineLayoutStage<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             With class OrthogonalLayouter as the core layouter, this stage adds octilinear 
+                             edge routing to the diagram that results from the orthogonal layout calculation.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="orthogonal_tutorial"></a>Tutorial Demo Code
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Layout module 
+               <a href="../../src/demo/layout/module/OrthogonalLayoutModule.java" title="Link to demo code" target="_top">OrthogonalLayoutModule.java</a> presents the 
+               setup of class OrthogonalLayouter in an application context. 
+               
+            </p>
+            <p>
+               In tutorial demo application <a href="../../src/demo/view/entityrelationship/EntityRelationshipDemo.java" title="Link to demo code" target="_top">EntityRelationshipDemo.java</a>
+               individual EdgeLayoutDescriptor instances are used to specify the minimum length
+               of the first/last edge segment in relation to the length of the arrowhead at that
+               end.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="orthogonal_config"></a>Configuration Hints
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="orthogonal_hands_on_quality"></a>Quality Versus Time
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The running time of orthogonal layout can be reduced by disabling some of the 
+                  optimization settings.
+                  
+               </p>
+               <p>
+                  For example, turning off the "Crossing Postprocessing" option can have a 
+                  substantial effect on the run-time, especially when the graph has many edge 
+                  crossings. 
+                  Disabling further settings, like, e.g., "Optimize Perceived Bends," or 
+                  "Length Reduction" also reduces execution time.
+                  
+               </p>
+            </div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="interactive_organic_layouter.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="layout.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="orthogonal_group_layouter.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Interactive Organic Layout&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Orthogonal Layout of Grouped Graphs</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

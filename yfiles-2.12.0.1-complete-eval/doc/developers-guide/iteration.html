@@ -1,0 +1,340 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Iteration Mechanisms</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="base.html" title="Chapter&nbsp;4.&nbsp;Working with the Graph Structure">
+      <link rel="previous" href="events_and_listeners.html" title="Events and Listeners">
+      <link rel="next" href="containers.html" title="Containers">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Iteration Mechanisms</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="events_and_listeners.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;4.&nbsp;Working with the Graph Structure</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="containers.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="iteration"></a>Iteration Mechanisms
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            The yFiles cursor hierarchy with interface 
+            <a href="../api/y/base/YCursor.html" title="Link to API documentation" target="_top">YCursor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and its typed sub-interfaces 
+            <a href="../api/y/base/NodeCursor.html" title="Link to API documentation" target="_top">NodeCursor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and 
+            <a href="../api/y/base/EdgeCursor.html" title="Link to API documentation" target="_top">EdgeCursor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> provides bidirectional 
+            iteration over a sequence of objects in a uniform fashion. 
+            
+            <a class="indexterm" name="d0e1611"></a>
+            <a class="indexterm" name="d0e1617"></a>
+            
+            <a href="iteration.html#Cursor hierarchy" title="Figure&nbsp;4.4.&nbsp;The yFiles cursor hierarchy">Figure&nbsp;4.4, &#8220;The yFiles cursor hierarchy&#8221;</a> depicts the inheritance relationship along 
+            with all relevant methods. 
+            
+         </p>
+         <div class="figure"><a name="Cursor hierarchy"></a><p class="title"><b>Figure&nbsp;4.4.&nbsp;The yFiles cursor hierarchy</b></p>
+            <div class="informaltable">
+               <center>
+                  <table border="0">
+                     <colgroup>
+                        <col width="100%">
+                     </colgroup>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/cursor_hierarchy.jpg" align="middle" alt="The yFiles cursor hierarchy."></div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <p>
+            A cursor offers access to the object it currently points to, it tells whether 
+            the current position is valid or "out of range," and finally a cursor gives the 
+            size of the sequence it iterates over. 
+            Upon creation, a cursor by default points to the first object of the underlying 
+            sequence. 
+            Moving the cursor position is possible both absolutely, i.e., to the first or 
+            last object of the sequence and relatively, i.e., to the next or the previous 
+            object. 
+            Note that the typing of the sub-interfaces takes place at the access methods, 
+            i.e., these return references of type Node and Edge, respectively. 
+            
+            
+            
+         </p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+
+// Get a cursor to iterate over all edges from the edge set of the graph. 
+EdgeCursor ec = graph.edges();
+
+// Ask for the size of the underlying sequence of edges. 
+int size = ec.size();
+
+// Move the cursor to the last position. 
+ec.toLast();
+</pre><p>
+            
+            
+            
+            
+            
+            
+         </p>
+         <p>
+            A cursor cannot change the sequence it iterates over, particularly, it cannot 
+            remove elements from the underlying container. 
+            So effectively, a cursor constitutes a read-only view on the sequence it 
+            iterates over. 
+            To actually remove an element from the underlying container, the container 
+            itself must be accessible. 
+            
+            See <a href="iteration.html#Iteration and Element Removal" title="Iteration and Element Removal">the section called &#8220;Iteration and Element Removal&#8221;</a> for more details. 
+            
+         </p>
+         <p>
+            <a href="iteration.html#Classes that provide cursors" title="Figure&nbsp;4.5.&nbsp;Classes that provide cursors">Figure&nbsp;4.5, &#8220;Classes that provide cursors&#8221;</a> shows the most prominent yFiles 
+            classes that provide cursors to iterate over object, node, or edge sequences, 
+            respectively. 
+            These classes are <a href="../api/y/base/YList.html" title="Link to API documentation" target="_top">YList<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+            <a href="../api/y/base/NodeList.html" title="Link to API documentation" target="_top">NodeList<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+            <a href="../api/y/base/EdgeList.html" title="Link to API documentation" target="_top">EdgeList<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+            <a href="../api/y/base/GraphInterface.html" title="Link to API documentation" target="_top">GraphInterface<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+            <a href="../api/y/base/Graph.html" title="Link to API documentation" target="_top">Graph<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, and 
+            <a href="../api/y/base/Node.html" title="Link to API documentation" target="_top">Node<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+            
+         </p>
+         <div class="figure"><a name="Classes that provide cursors"></a><p class="title"><b>Figure&nbsp;4.5.&nbsp;Classes that provide cursors</b></p>
+            <div class="informaltable">
+               <center>
+                  <table border="0">
+                     <colgroup>
+                        <col width="100%">
+                     </colgroup>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/cursor_provider.jpg" align="middle" alt="Classes that provide cursors."></div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <p>
+            <a href="iteration.html#Forward..." title="Example&nbsp;4.3.&nbsp;Forward iteration with various cursor types">Example&nbsp;4.3, &#8220;Forward iteration with various cursor types&#8221;</a> and <a href="iteration.html#Backward..." title="Example&nbsp;4.4.&nbsp;Backward iteration">Example&nbsp;4.4, &#8220;Backward iteration&#8221;</a> show the usage 
+            of cursors in conjunction with loops to iterate over a sequence of either typed 
+            or untyped objects. 
+            Note the additional cursor movement to the last position of the sequence with 
+            backward iteration. 
+            
+         </p><a class="indexterm" name="d0e1688"></a><div class="example"><a name="Forward..."></a><p class="title"><b>Example&nbsp;4.3.&nbsp;Forward iteration with various cursor types</b></p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+// 'list' is of type y.base.YList. 
+
+// Forward iterate over all objects from the list. 
+for (YCursor c = list.cursor(); c.ok(); c.next()) {
+  Object obj = c.current();
+}
+
+// Forward iterate over all nodes of the node set from the graph. 
+for (NodeCursor nc = graph.nodes(); nc.ok(); nc.next()) {
+  Node n = nc.node();
+}
+
+// Forward iterate over all edges from the edge set of the graph. 
+for (EdgeCursor ec = graph.edges(); ec.ok(); ec.next()) {
+  Edge e = ec.edge();
+}
+</pre></div>
+         <div class="example"><a name="Backward..."></a><p class="title"><b>Example&nbsp;4.4.&nbsp;Backward iteration</b></p><pre class="programlisting java">
+// Get a cursor to iterate over the list. 
+YCursor c = list.cursor();
+
+// Move the cursor to the last position of the sequence. 
+// Backward iterate over all objects. 
+for (c.toLast(); c.ok(); c.prev()) {
+  Object obj = c.current();
+}
+</pre></div>
+         <p>
+            For further code examples see also 
+            <a href="../../src/demo/base/ListDemo.java" title="Link to demo code" target="_top">ListDemo.java</a> from the tutorial demo 
+            applications. 
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="Iteration and Element Removal"></a>Iteration and Element Removal
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Interface <a href="../api/y/base/YCursor.html" title="Link to API documentation" target="_top">YCursor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> does not provide a 
+               method to remove an element from an underlying container. 
+               Instead, any elements must be removed from the container itself. 
+               
+               
+               
+            </p>
+            <div class="example"><a name="Removing..."></a><p class="title"><b>Example&nbsp;4.5.&nbsp;Removing elements from an underlying container</b></p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+
+// Remove unwanted nodes from the node set of the graph. 
+for (NodeCursor nc = graph.nodes(); nc.ok(); nc.next())
+{
+  if (isUnwanted(nc.node()))
+    // The graph is asked to remove the specified node. 
+    graph.removeNode(nc.node());
+}
+</pre></div>
+            <p>
+               
+               
+            </p><a class="indexterm" name="d0e1720"></a><p>
+               However, when an element that is pointed to by a cursor gets removed from the 
+               underlying container, the cursor does not change state, i.e., it still points 
+               to the same, now removed, element. 
+               Moving the cursor thereafter either forward or backward has the same effect as 
+               if the element was in the container, i.e., the cursor subsequently points to 
+               the next, respectively previous element from the foregoing sequence. 
+               
+            </p>
+            <p>
+               Once the cursor has been moved away from the removed element's position, 
+               though, there is no way to return to that position again. 
+               
+               
+               
+               In conclusion, a simple call sequence as in 
+               <a href="iteration.html#Call Sequence" title="Example&nbsp;4.6.&nbsp;Call sequence to move a cursor">Example&nbsp;4.6, &#8220;Call sequence to move a cursor&#8221;</a> does not necessarily return the cursor to the 
+               originating position in the sequence. 
+               
+            </p>
+            <div class="example"><a name="Call Sequence"></a><p class="title"><b>Example&nbsp;4.6.&nbsp;Call sequence to move a cursor</b></p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+
+// Get a cursor to iterate over all nodes of the node set from the graph. 
+NodeCursor nc = graph.nodes();
+
+// The cursor points to the first position of the sequence, i.e., to the first 
+// node of the node set. 
+Node firstN = nc.node();
+nc.next();                           // Cursor now points to the second node. 
+Node nextN = nc.node();
+// The simple call sequence: move forward and immediately backward. 
+nc.next();                           // Cursor now points to the third node. 
+nc.prev();                           // Cursor now points to the second node. 
+// Test for consistency. 
+if (nextN != nc.node())
+  throw new RuntimeException("Inconsistent cursor.");
+
+// Move the cursor back to the first node. 
+nc.toFirst();
+
+Node firstN = nc.node();
+nc.next();                           // Cursor now points to the second node. 
+Node nextN = nc.node();
+// Now, remove the second node from the node set. 
+graph.removeNode(nc.node());
+// The simple call sequence: move forward and immediately backward. 
+nc.next();                           // Cursor now points to the third node. 
+nc.prev();                           // Cursor now points to the first node. 
+// Test for consistency. 
+if (nextN != nc.node())
+  throw new RuntimeException("Inconsistent cursor.");
+// This time an exception will be thrown that the cursor has become 
+// inconsistent. 
+</pre></div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="alternative_iteration"></a>Alternative Iteration Techniques
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e1741"></a><p>
+               Additionally to iteration using cursors, there is another possibility to 
+               specifically iterate over the edges adjacent to a node. 
+               
+               <a href="iteration.html#alternative_edge_iteration" title="Example&nbsp;4.7.&nbsp;Non-cursor iteration over a node's edges">Example&nbsp;4.7, &#8220;Non-cursor iteration over a node's edges&#8221;</a> demonstrates this technique. 
+               
+            </p>
+            <div class="example"><a name="alternative_edge_iteration"></a><p class="title"><b>Example&nbsp;4.7.&nbsp;Non-cursor iteration over a node's edges</b></p><pre class="programlisting java">
+// 'node' is of type y.base.Node. 
+
+// Retrieve the initial incoming edge from the node. 
+Edge e = node.firstInEdge();
+while (e != null)
+  // Successively retrieve the next incoming edge. 
+  e = e.nextInEdge();
+
+// Retrieve the initial outgoing edge from the node. 
+e = node.firstOutEdge();
+while (e != null)
+  // Successively retrieve the next outgoing edge. 
+  e = e.nextOutEdge();
+</pre></div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="events_and_listeners.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="base.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="containers.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Events and Listeners&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Containers</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

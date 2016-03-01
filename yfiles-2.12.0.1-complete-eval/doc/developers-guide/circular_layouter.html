@@ -1,0 +1,1138 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Circular Layout</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="layout.html" title="Chapter&nbsp;5.&nbsp;Automatic Graph Layout">
+      <link rel="previous" href="domain_specific_layouter.html" title="Domain-Specific Layout Algorithms">
+      <link rel="next" href="incremental_hierarchical_layouter.html" title="Hierarchical Layout Style">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Circular Layout</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="domain_specific_layouter.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;5.&nbsp;Automatic Graph Layout</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="incremental_hierarchical_layouter.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="circular_layouter"></a>Circular Layout
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            Class <a href="../api/y/layout/circular/CircularLayouter.html" title="Link to API documentation" target="_top">CircularLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is a 
+            layout algorithm that portraits interconnected ring and star topologies and is 
+            excellent for applications in: 
+            
+         </p>
+         <div class="itemizedlist">
+            <ul type="disc">
+               <li>
+                  Social networking (criminology, economics, etc.)
+                  
+               </li>
+               <li>
+                  Network management
+                  
+               </li>
+               <li>
+                  WWW visualization
+                  
+               </li>
+               <li>
+                  eCommerce
+                  
+               </li>
+            </ul>
+         </div>
+         <p>
+            
+         </p>
+         <p>
+            CircularLayouter produces layouts that emphasize group and tree structures 
+            within a network. 
+            
+            It creates node partitions by analyzing the connectivity structure of the 
+            network, and arranges the partitions as separate circles. 
+            
+            The circles themselves are arranged in a radial tree layout fashion. 
+            CircularLayouter delegates these two major layout tasks to other, more 
+            specialized layout providers, namely classes 
+            <a href="../api/y/layout/circular/SingleCycleLayouter.html" title="Link to API documentation" target="_top">SingleCycleLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and 
+            <a href="../api/y/layout/tree/BalloonLayouter.html" title="Link to API documentation" target="_top">BalloonLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+            
+         </p>
+         <div class="figure"><a name="d0e6195"></a><p class="title"><b>Figure&nbsp;5.23.&nbsp;Sample layouts produced by class CircularLayouter</b></p>
+            <div class="informaltable">
+               <center>
+                  <table border="0">
+                     <colgroup>
+                        <col width="33%">
+                        <col width="33%">
+                        <col width="34%">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/circular-layout-2-thumb.gif" align="middle" alt="Sample layouts produced by class CircularLayouter"></div>
+                           </td>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/circular-layout-1-thumb.gif" align="middle" alt="Sample layouts produced by class CircularLayouter"></div>
+                           </td>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/circular-layout-3-thumb.gif" align="middle" alt="Sample layouts produced by class CircularLayouter"></div>
+                           </td>
+                        </tr>
+                        <tr align="center">
+                           <td align="center">
+                                This diagram shows finite state automaton from an industrial application. 
+                              
+                           </td>
+                           <td align="center">
+                                This diagram represents a host hierarchy defined within a NIS (Network 
+                                Information Service) system. 
+                              
+                           </td>
+                           <td align="center">
+                                This diagram demonstrates the attainable compactness, while keeping the 
+                                number of object overlaps at a minimum. 
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="circular_dataprovider"></a>Supplemental Layout Data
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class CircularLayouter knows a number of data provider keys which are used to 
+               retrieve supplemental layout data for a graph's elements. 
+               
+               The data is bound to the graph by means of a data provider, which is registered 
+               using a given look-up key. 
+               <a href="circular_layouter.html#tab_circular_keys" title="Table&nbsp;5.22.&nbsp;Data provider look-up keys">Table&nbsp;5.22, &#8220;Data provider look-up keys&#8221;</a> lists all look-up keys for 
+               CircularLayouter. 
+               
+            </p>
+            <p>
+               Binding supplemental layout data to a graph is described in 
+               <a href="layout_concepts.html#supplemental_information" title="Providing Supplemental Layout Data">the section called &#8220;Providing Supplemental Layout Data&#8221;</a>. 
+               
+            </p>
+            <div class="table"><a name="tab_circular_keys"></a><p class="title"><b>Table&nbsp;5.22.&nbsp;Data provider look-up keys</b></p>
+               <table summary="Data provider look-up keys" width="100%" border="1">
+                  <colgroup>
+                     <col width="25%" align="left">
+                     <col width="10%" align="left">
+                     <col width="10%" align="left">
+                     <col width="55%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Key</th>
+                        <th align="left">Element Type</th>
+                        <th align="left">Value Type</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/circular/CircularLayouter.html#CIRCULAR_CUSTOM_GROUPS_DPKEY" title="Link to API documentation" target="_top">CIRCULAR_CUSTOM_GROUPS_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">Object</td>
+                        <td align="left">
+                             For each node an arbitrary Object indicating the group it is affiliated with.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/circular/CircularLayouter.html#CIRCLE_ID_HOLDER_DPKEY" title="Link to API documentation" target="_top">CIRCLE_ID_HOLDER_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">IntValueSettable</td>
+                        <td align="left">
+                             For each node an <a href="../api/y/util/IntValueSettable.html" title="Link to API documentation" target="_top">IntValueSettable<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> implementation
+                             that is used by the layout algorithm to store the index of the actual circle a
+                             node is part of.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/NodeHalo.html#NODE_HALO_DPKEY" title="Link to API documentation" target="_top">NODE_HALO_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">NodeHalo</td>
+                        <td align="left">
+                             A <a href="../api/y/layout/NodeHalo.html" title="Link to API documentation" target="_top">NodeHalo<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> object that specifies the halo 
+                             sizes at each side of a node.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/algo/AbortHandler.html#ABORT_HANDLER_DPKEY" title="Link to API documentation" target="_top">ABORT_HANDLER_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Graph</td>
+                        <td align="left">AbortHandler</td>
+                        <td align="left">
+                             An <a href="../api/y/algo/AbortHandler.html" title="Link to API documentation" target="_top">AbortHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> instance that will be queried 
+                             by the layout algorithm to determine whether layout calculation shall be terminated.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="circular_options"></a>Layout Options
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class CircularLayouter provides a set of options that affect its layout 
+               behavior. 
+               These options can be set using the setter methods of class CircularLayouter. 
+               The options are documented within the API documentation of class 
+               <a href="../api/y/layout/circular/CircularLayouter.html" title="Link to API documentation" target="_top">CircularLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               
+            </p>
+            <p>
+               Additionally, there are getter methods that grant access to the layout 
+               delegates <a href="../api/y/layout/circular/SingleCycleLayouter.html" title="Link to API documentation" target="_top">SingleCycleLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               and <a href="../api/y/layout/tree/BalloonLayouter.html" title="Link to API documentation" target="_top">BalloonLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               These layouters are responsible for arranging the circle and the tree 
+               components of the diagram, respectively. 
+               Modifying the options of these layout algorithms does also affect the overall 
+               layout behavior of CircularLayouter. 
+               
+            </p>
+            <p>
+               The options for CircularLayouter affect the general layout strategy and the 
+               interplay between SingleCycleLayouter and BalloonTreeLayouter.
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="circular_styles"></a>Layout Style
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The global layout style is set using the
+                  <a href="../api/y/layout/circular/CircularLayouter.html#setLayoutStyle(byte)" title="Link to API documentation" target="_top">setLayoutStyle(byte)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  method.
+                  It controls which policy is used to partition the nodes of the graph.
+                  Each node partition will be arranged either on a separate circle or as a 
+                  separate "disk" (see also 
+                  <a href="circular_layouter.html#circular_node_partition">node partition layout style</a> 
+                  below). 
+                  Available options are
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/circular/CircularLayouter.html#BCC_COMPACT" title="Link to API documentation" target="_top">BCC_COMPACT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Each partition will represent a so-called biconnected component of the graph.
+                                 A biconnected component consists of nodes that are reachable by two
+                                 edge-disjoint paths.
+                                 Nodes that belong to more than one biconnected component will be assigned
+                                 exclusively to one partition.
+                                 
+                              </td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/circular/CircularLayouter.html#BCC_ISOLATED" title="Link to API documentation" target="_top">BCC_ISOLATED<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Node partitions will be formed as with "BCC Compact" with the difference that
+                                 all nodes belonging to more than one biconnected component will be assigned an
+                                 isolated partition.
+                                 
+                              </td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/circular/CircularLayouter.html#SINGLE_CYCLE" title="Link to API documentation" target="_top">SINGLE_CYCLE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 All nodes will be arranged on a single circle.
+                                 
+                              </td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/circular/CircularLayouter.html#CIRCULAR_CUSTOM_GROUPS" title="Link to API documentation" target="_top">CIRCULAR_CUSTOM_GROUPS<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 The node partitions that form circles will be given by the user.
+                                 To specify the partitions, a data provider holding such supplemental layout
+                                 data must be bound to the graph.
+                                 The data provider is expected to be registered with the graph using key
+                                 <a href="../api/y/layout/circular/CircularLayouter.html#CIRCULAR_CUSTOM_GROUPS_DPKEY" title="Link to API documentation" target="_top">CIRCULAR_CUSTOM_GROUPS_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               <a href="circular_layouter.html#effect" title="Figure&nbsp;5.24.&nbsp;Effect of option Layout Style">Figure&nbsp;5.24, &#8220;Effect of option Layout Style&#8221;</a> shows the effect of different layout styles applied to 
+               CircularLayouter. 
+               
+               The BCC styles partition the nodes by examing the two-connectivity property of 
+               the input graph. 
+               SINGLE_CYCLE places all nodes one a single cycle. 
+               
+            </p>
+            <div class="figure"><a name="effect"></a><p class="title"><b>Figure&nbsp;5.24.&nbsp;Effect of option Layout Style</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="33%">
+                           <col width="33%">
+                           <col width="34%">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/circular-layout-4a-thumb.gif" align="middle" alt="Effect of option Layout Style"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/circular-layout-4b-thumb.gif" align="middle" alt="Effect of option Layout Style"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/circular-layout-4c-thumb.gif" align="middle" alt="Effect of option Layout Style"></div>
+                              </td>
+                           </tr>
+                           <tr align="center" valign="top">
+                              <td align="center" valign="top">BCC_COMPACT</td>
+                              <td align="center" valign="top">BCC_ISOLATED</td>
+                              <td align="center" valign="top">SINGLE_CYCLE</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Use Existing Drawing as Sketch</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/circular/CircularLayouter.html#setFromSketchModeEnabled(boolean)" title="Link to API documentation" target="_top">void setFromSketchModeEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              If enabled, the layout algorithm interprets the initial graph layout as a 
+                              sketch for the desired outcome of the layout process. 
+                              The algorithm tries to identify the nodes that should lie on a node partition's 
+                              circle/disk boundary and maintain their cyclic order around the center of the 
+                              node partition. 
+                              (See also <a href="circular_layouter.html#circular_cycle_arrangement" title="Partition Arrangement Options">the section called &#8220;Partition Arrangement Options&#8221;</a> below.) 
+                              
+                              Additionally, when layout style BCC Compact is used, the layout algorithm also 
+                              tries to maintain the cyclic order of entire node partitions that connect to a 
+                              common node.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="circular_circle_indices"></a>Returning Circle Indices
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  As an option, CircularLayouter can return the circle index for every node when the
+                  graph has a data provider registered with it that can be looked up using the key
+                  <a href="../api/y/layout/circular/CircularLayouter.html#CIRCLE_ID_HOLDER_DPKEY" title="Link to API documentation" target="_top">CIRCLE_ID_HOLDER_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+                  The data provider is expected to hold IntValueSettable implementations, which are
+                  retrieved and used to store the circle indices after layout calculation.
+                  
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="circular_cycle_arrangement"></a>Partition Arrangement Options
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p><a name="circular_node_partition"></a>
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Node Partition Layout Style</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/circular/CircularLayouter.html#setPartitionLayoutStyle(byte)" title="Link to API documentation" target="_top">void setPartitionLayoutStyle(byte partitionLayoutStyle)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 Determines the layout style for the node partitions of a graph.
+                                 The nodes from a partition can be arranged either as a circle
+                                 or using one of the available "disk" flavors:
+                                 
+                              </p>
+                              <div class="itemizedlist">
+                                 <ul type="disc">
+                                    <li>
+                                       Arranging as a
+                                       <a href="../api/y/layout/circular/CircularLayouter.html#PARTITION_LAYOUTSTYLE_CYCLIC" title="Link to API documentation" target="_top">circle<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       means that all nodes from a given partition are placed on a circle.
+                                       
+                                    </li>
+                                    <li>
+                                       Arranging as a
+                                       <a href="../api/y/layout/circular/CircularLayouter.html#PARTITION_LAYOUTSTYLE_DISK" title="Link to API documentation" target="_top">disk<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       means that those nodes from a given partition which connect
+                                       to nodes from other partitions are placed on the disk's boundary while all
+                                       other nodes are placed on the inside.
+                                       
+                                    </li>
+                                    <li>
+                                       Arranging as an
+                                       <a href="../api/y/layout/circular/CircularLayouter.html#PARTITION_LAYOUTSTYLE_ORGANIC" title="Link to API documentation" target="_top">organic disk<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                                       means that the organic layout paradigm is used to arrange the nodes from a partition. 
+                                       Nodes which connect to nodes from other partitions can be placed both on the
+                                       inside or on the boundary of the disk.
+                                       
+                                    </li>
+                                 </ul>
+                              </div>
+                              <p>
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               Both disk arrangement styles result in graph layouts that are smaller in size, 
+               i.e., consume less space than circle arrangement style. 
+               
+               <a href="circular_layouter.html#fig_partition_style" title="Figure&nbsp;5.25.&nbsp;Node partition layout styles">Figure&nbsp;5.25, &#8220;Node partition layout styles&#8221;</a> presents the available node partition 
+               layout styles and their effects for a given graph. 
+               
+            </p>
+            <div class="figure"><a name="fig_partition_style"></a><p class="title"><b>Figure&nbsp;5.25.&nbsp;Node partition layout styles</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="33%">
+                           <col width="33%">
+                           <col width="34%">
+                        </colgroup>
+                        <tbody>
+                           <tr valign="middle">
+                              <td valign="middle">
+                                 <div class="mediaobject" align="center"><img src="figures/circular_netgroup_circle.jpg" align="middle" alt="Node partition layout styles"></div>
+                              </td>
+                              <td valign="middle">
+                                 <div class="mediaobject" align="center"><img src="figures/circular_netgroup_disk.jpg" align="middle" alt="Node partition layout styles"></div>
+                              </td>
+                              <td valign="middle">
+                                 <div class="mediaobject" align="center"><img src="figures/circular_netgroup_organic_disk.jpg" align="middle" alt="Node partition layout styles"></div>
+                              </td>
+                           </tr>
+                           <tr align="center" valign="top">
+                              <td align="center" valign="top">Circle</td>
+                              <td align="center" valign="top">Disk</td>
+                              <td align="center" valign="top">Organic disk</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               The options for the 
+               <a href="../api/y/layout/circular/CircularLayouter.html#getSingleCycleLayouter()" title="Link to API documentation" target="_top">internally used SingleCycleLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               influence the size and compactness of the circles/disks formed by this 
+               layouter. 
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Minimal Node Distance</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/circular/SingleCycleLayouter.html#setMinimalNodeDistance(int)" title="Link to API documentation" target="_top">void setMinimalNodeDistance(int distance)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Determines the minimal distance between the borders of two adjacent nodes on 
+                              the circle/the disk's boundary. 
+                              The smaller the distance, the more compact the resulting layout.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Automatic Radius</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/circular/SingleCycleLayouter.html#setAutomaticRadius(boolean)" title="Link to API documentation" target="_top">void setAutomaticRadius(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Whether or not to determine the radius of each circle/disk in the layout 
+                              automatically. 
+                              An automatically chosen radius is usually the smallest possible radius that 
+                              obeys "Minimal Node Distance." 
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Fixed Radius</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/circular/SingleCycleLayouter.html#setFixedRadius(double)" title="Link to API documentation" target="_top">void setFixedRadius(double radius)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              If "Automatic Radius" is not set, then this option determines the fixed radius 
+                              for all circles/disks in the resulting layout. 
+                              "Minimal Node Distance" will be ignored in this case. 
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="circular_tree_arrangement"></a>Tree Arrangement Options
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               The options for the 
+               <a href="../api/y/layout/circular/CircularLayouter.html#getBalloonLayouter()" title="Link to API documentation" target="_top">internally used BalloonLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               influence the compactness of the tree-like components that this layouter 
+               produces. 
+               The tree-like structures are the parts of the layout that are not part of the 
+               circular arranged node groups. 
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Preferred Child Wedge</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setPreferredChildWedge(int)" title="Link to API documentation" target="_top">void setPreferredChildWedge(int wedgeAngle)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 This setting determines the angular range of the sector that will be reserved
+                                 for the children of a root node.
+                                 The possible angular range lies between 1 and 359.
+                                 The remaining angular range (360 minus x) will be automatically used to
+                                 accommodate the edge that connects to the root node.
+                                 
+                              </p>
+                              <p>
+                                 The smaller the chosen value, the greater the impression that the nodes drive
+                                 away from their root nodes and the center of the graph.
+                                 
+                              </p>
+                              <p>
+                                 Generally speaking, the compactness of the layout will decrease with smaller
+                                 values.
+                                 Very small values will lead to layouts that consume a lot of space.
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Minimal Edge Length</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setMinimalEdgeLength(int)" title="Link to API documentation" target="_top">void setMinimalEdgeLength(int length)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Determines the minimal length of an edge that connects two nodes that lie on
+                              separate circles (tree-edges).
+                              The smaller the chosen value, the more compact the resulting layout.
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Compactness Factor</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setCompactnessFactor(double)" title="Link to API documentation" target="_top">void setCompactnessFactor(double factor)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              This parameter influences the length of the tree-edges as it is computed by the layouter.
+                              The smaller the compactness factor, the shorter the tree-edges and the more compact the overall layout.
+                              The bigger the compactness factor the more difficult, and hence slower, the layout computation.
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Allow Overlaps</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/BalloonLayouter.html#setAllowOverlaps(boolean)" title="Link to API documentation" target="_top">void setAllowOverlaps(boolean allow)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              If activated, this option further increases compactness of the resulting
+                              layout, but potentially introduces slight node overlaps.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               The following tree arrangement options which also influence the compactness are set directly on the CircularLayouter. 
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Maximal Deviation Angle</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/circular/CircularLayouter.html#setMaximalDeviationAngle(int)" title="Link to API documentation" target="_top">void setMaximalDeviationAngle(int deviationAngle)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 Whenever tree edges connect to a node that lies on a circle together with other
+                                 nodes, the layouter tries to direct that edge in such a way that its
+                                 prolongation crosses through the center of the circle.
+                                 This is not always possible though, for example, if more than one tree-edge
+                                 connect to the same circle node.
+                                 
+                              </p>
+                              <p>
+                                 This parameter determines the allowed angular deviation from the optimal edge
+                                 direction as described above.
+                                 The bigger the chosen value, the more compact the resulting layout.
+                                 If a value smaller than 90 degrees is chosen, then the tree-edges might cross
+                                 through the circular arranged components.
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Place Children on Common Radius</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/circular/CircularLayouter.html#setPlaceChildrenOnCommonRadiusEnabled(boolean)" title="Link to API documentation" target="_top">void setPlaceChildrenOnCommonRadiusEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>Enables tighter drawings by using adapted radii for child nodes.</p>
+                              <p>
+                                 By default, the nodes in tree-like structures connecting to a circle are always
+                                 placed on a common radius according to their distance from the root node.
+                                 Tighter drawings can be achieved by abandoning the common radius and instead placing
+                                 these child nodes using radii adapted to the size of an actual child node and the
+                                 sizes of nodes in its vicinity.
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               <a href="circular_layouter.html#fig_circular_common_radius" title="Figure&nbsp;5.26.&nbsp;Child node placement in tree structures">Figure&nbsp;5.26, &#8220;Child node placement in tree structures&#8221;</a> shows a circular layout using the default 
+               setting and the result of using adapted radii for the nodes in tree-like structures 
+               connecting to a circle. 
+               Note that the circle(s) themselves are left unaltered.
+               
+            </p>
+            <div class="figure"><a name="fig_circular_common_radius"></a><p class="title"><b>Figure&nbsp;5.26.&nbsp;Child node placement in tree structures</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="50%">
+                           <col width="50%">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/circ-excerpt.jpg" align="middle" alt="Child node placement in tree structures"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/circ-comp-excerpt.jpg" align="middle" alt="Child node placement in tree structures"></div>
+                              </td>
+                           </tr>
+                           <tr align="center">
+                              <td align="center">
+                                   Circular layout with default setting, i.e., where children are placed on a common 
+                                   radius.
+                                   
+                              </td>
+                              <td align="center">Tighter drawing through adapted radii.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="circular_label_handling"></a>Label Handling
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Edge labels can be placed automatically using the generic labeling support as described 
+               in <a href="labeling.html#general_labeling" title="Generic Labeling">the section called &#8220;Generic Labeling&#8221;</a>, which is available with all yFiles layout 
+               algorithms. 
+               Additionally, CircularLayouter can be set up to take node labels into account during 
+               layout.
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="circular_node_label_aware"></a>Node Label Awareness
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  CircularLayouter provides support for node label-aware circular layout. 
+                  Node labels do not need to be placed, but instead their size needs to be considered 
+                  for the placement of adjacent graph elements. 
+                  Taking node labels into consideration during layout calculation guarantees that 
+                  they will not overlap nodes in the diagram.
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/circular/CircularLayouter.html#setConsiderNodeLabelsEnabled(boolean)" title="Link to API documentation" target="_top">void setConsiderNodeLabelsEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Enables node label-aware layout calculation.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  <a href="circular_layouter.html#fig_circular_integrated_node_labels" title="Figure&nbsp;5.27.&nbsp;Node label-aware circular layout">Figure&nbsp;5.27, &#8220;Node label-aware circular layout&#8221;</a> shows a circular layout where 
+                  node labels were not considered at all, and the result with node label-aware layout. 
+                  The circles grow to accommodate the sizes of the node labels.
+                  
+               </p>
+               <div class="figure"><a name="fig_circular_integrated_node_labels"></a><p class="title"><b>Figure&nbsp;5.27.&nbsp;Node label-aware circular layout</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="37%">
+                              <col width="63%">
+                           </colgroup>
+                           <tbody valign="top">
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/circ-nola-excerpt.jpg" align="middle" alt="Node label-aware circular layout"></div>
+                                 </td>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/circ-nola-cons-excerpt.jpg" align="middle" alt="Node label-aware circular layout"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">Circular layout where node labels are not considered.</td>
+                                 <td align="center">Considering node labels grows the circles.</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="circular_node_halos"></a>Node Halos
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               CircularLayouter by default supports node halos as soon as they are declared using 
+               the data provider key <a href="../api/y/layout/NodeHalo.html#NODE_HALO_DPKEY" title="Link to API documentation" target="_top">NODE_HALO_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               
+               It considers any specified additional paddings around nodes, however, due to the 
+               straight-line routing of the edges, they can cross through these areas in the resulting 
+               diagram. 
+               Also, node halo overlaps may occur if the internally used BalloonLayouter allows 
+               overlapping nodes.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="circular_tutorial"></a>Tutorial Demo Code
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Layout module 
+               <a href="../../src/demo/layout/module/CircularLayoutModule.java" title="Link to demo code" target="_top">CircularLayoutModule.java</a> presents the setup 
+               of class CircularLayouter in an application context.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="circular_config"></a>Configuration Hints
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="circular_hands_on_compactness"></a>Compact Layout
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  There are several options that have impact on the compactness of the circular 
+                  layout. 
+                  Optimizing for compactness, e.g., is achieved by 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        choosing "Disk" or "Organic Disk" as the "Node Partition Layout Style" 
+                        
+                     </li>
+                     <li>
+                        reducing "Compactness Factor" of BalloonLayouter (say, to 0.1) 
+                        
+                     </li>
+                     <li>
+                        setting "Allow Overlaps" of BalloonLayouter to <tt class="code">true</tt> 
+                        (note that this may introduce node overlaps) 
+                        
+                     </li>
+                     <li>
+                        reducing "Minimal Edge Length" of BalloonLayouter 
+                        
+                     </li>
+                     <li>
+                        reducing "Minimal Node Distance" of SingleCycleLayouter 
+                        
+                     </li>
+                     <li>
+                        increasing "Maximum Deviation Angle"
+                        
+                     </li>
+                     <li>
+                        setting "Place Children on Common Radius" to <tt class="code">false</tt></li>
+                     <li>
+                        removing any node halo data provider that is registered with the graph
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+               </p>
+               <p>
+                  <a href="circular_layouter.html#compactness" title="Figure&nbsp;5.28.&nbsp;Increasing layout compactness">Figure&nbsp;5.28, &#8220;Increasing layout compactness&#8221;</a> shows the cumulative effect on layout compactness 
+                  when changing the settings of the layouter. 
+                  
+               </p>
+               <div class="figure"><a name="compactness"></a><p class="title"><b>Figure&nbsp;5.28.&nbsp;Increasing layout compactness</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="50%">
+                              <col width="50%">
+                           </colgroup>
+                           <tbody valign="top">
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/circular-layout-5a-thumb.gif" align="middle" alt="Increasing layout compactness"></div>
+                                 </td>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/circular-layout-5b-thumb.gif" align="middle" alt="Increasing layout compactness"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">
+                                      (a) Default settings
+                                    
+                                 </td>
+                                 <td align="center">
+                                      (b) "Minimal Node Distance" = 10.0
+                                    
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/circular-layout-5c-thumb.gif" align="middle" alt="Increasing layout compactness"></div>
+                                 </td>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/circular-layout-5d-thumb.gif" align="middle" alt="Increasing layout compactness"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">
+                                      (c) "Allow Overlaps" = true
+                                    
+                                 </td>
+                                 <td align="center">
+                                      (d) "Minimal Edge Length" = 10
+                                    
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="domain_specific_layouter.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="layout.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="incremental_hierarchical_layouter.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Domain-Specific Layout Algorithms&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Hierarchical Layout Style</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

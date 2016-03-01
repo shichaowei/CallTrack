@@ -1,0 +1,1412 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Generic Tree Layout</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="layout.html" title="Chapter&nbsp;5.&nbsp;Automatic Graph Layout">
+      <link rel="previous" href="tree_layouter.html" title="Tree Layout">
+      <link rel="next" href="radial_layouter.html" title="Radial Layout Style">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Generic Tree Layout</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="tree_layouter.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;5.&nbsp;Automatic Graph Layout</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="radial_layouter.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="cls_GenericTreeLayouter"></a>Generic Tree Layout
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            Class <a href="../api/y/layout/tree/GenericTreeLayouter.html" title="Link to API documentation" target="_top">GenericTreeLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> defines 
+            a generic basis for tree layout that supports a multitude of different styles 
+            and arrangements. 
+            
+            
+            Major aspects of layout calculation can be customized for an invocation both 
+            globally for the entire tree, but also individually per subtree. 
+            
+            This powerful scheme allows entirely different layout styles to be applied to 
+            the subtrees of a given tree. 
+            
+            
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_generic_dataprovider"></a>Supplemental Layout Data
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class GenericTreeLayouter knows a number of data provider keys which are used 
+               to retrieve supplemental layout data for a graph's elements. 
+               
+               The data is bound to the graph by means of a data provider, which is registered 
+               using a given look-up key. 
+               <a href="cls_GenericTreeLayouter.html#tab_tree_generic_keys" title="Table&nbsp;5.59.&nbsp;Data provider look-up keys">Table&nbsp;5.59, &#8220;Data provider look-up keys&#8221;</a> lists all look-up keys for 
+               GenericTreeLayouter. 
+               
+            </p>
+            <p>
+               Binding supplemental layout data to a graph is described in 
+               <a href="layout_concepts.html#supplemental_information" title="Providing Supplemental Layout Data">the section called &#8220;Providing Supplemental Layout Data&#8221;</a>. 
+               
+            </p>
+            <div class="table"><a name="tab_tree_generic_keys"></a><p class="title"><b>Table&nbsp;5.59.&nbsp;Data provider look-up keys</b></p>
+               <table summary="Data provider look-up keys" width="100%" border="1">
+                  <colgroup>
+                     <col width="25%" align="left">
+                     <col width="10%" align="left">
+                     <col width="10%" align="left">
+                     <col width="55%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Key</th>
+                        <th align="left">Element Type</th>
+                        <th align="left">Value Type</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/tree/GenericTreeLayouter.html#CHILD_COMPARATOR_DPKEY" title="Link to API documentation" target="_top">CHILD_COMPARATOR_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">Comparator</td>
+                        <td align="left">
+                             For each node a Comparator object that is used to sort the outgoing edges.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/LabelLayoutKeys.html#EDGE_LABEL_LAYOUT_KEY" title="Link to API documentation" target="_top">EDGE_LABEL_LAYOUT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">LabelLayoutData[]</td>
+                        <td align="left">
+                             For each edge an array of LabelLayoutData objects that encode size and preferred
+                             placement for all labels of the edge.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/LabelLayoutKeys.html#NODE_LABEL_LAYOUT_KEY" title="Link to API documentation" target="_top">NODE_LABEL_LAYOUT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">LabelLayoutData[]</td>
+                        <td align="left">
+                             For each node an array of LabelLayoutData objects that encode size and preferred
+                             placement for all labels of the node.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/tree/GenericTreeLayouter.html#NODE_PLACER_DPKEY" title="Link to API documentation" target="_top">NODE_PLACER_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">NodePlacer</td>
+                        <td align="left">
+                             For each node a <a href="../api/y/layout/tree/NodePlacer.html" title="Link to API documentation" target="_top">NodePlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                             implementation that places the node itself and its subtree. 
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/tree/GenericTreeLayouter.html#PORT_ASSIGNMENT_DPKEY" title="Link to API documentation" target="_top">PORT_ASSIGNMENT_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">PortAssignment</td>
+                        <td align="left">
+                             For each node a 
+                             <a href="../api/y/layout/tree/PortAssignment.html" title="Link to API documentation" target="_top">PortAssignment<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> implementation 
+                             that assigns ports to the edges of a node. 
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/PortConstraintKeys.html#SOURCE_PORT_CONSTRAINT_KEY" title="Link to API documentation" target="_top">SOURCE_PORT_CONSTRAINT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">
+                             PortConstraint
+                             
+                        </td>
+                        <td align="left">
+                             For each edge a PortConstraint object encoding its source end's port 
+                             constraint. 
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/PortConstraintKeys.html#TARGET_PORT_CONSTRAINT_KEY" title="Link to API documentation" target="_top">TARGET_PORT_CONSTRAINT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">
+                             PortConstraint
+                             
+                        </td>
+                        <td align="left">
+                             For each edge a PortConstraint object encoding its target end's port 
+                             constraint. 
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/grouping/GroupingKeys.html#GROUP_DPKEY" title="Link to API documentation" target="_top">GROUP_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">boolean</td>
+                        <td align="left">
+                             For each node a boolean value indicating whether it is a group node or not.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/grouping/GroupingKeys.html#GROUP_NODE_INSETS_DPKEY" title="Link to API documentation" target="_top">GROUP_NODE_INSETS_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">
+                             Insets
+                             
+                        </td>
+                        <td align="left">
+                             For each group node a <a href="../api/y/geom/YInsets.html" title="Link to API documentation" target="_top">YInsets<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> object that 
+                             encodes the group node's insets.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/NodeHalo.html#NODE_HALO_DPKEY" title="Link to API documentation" target="_top">NODE_HALO_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">NodeHalo</td>
+                        <td align="left">
+                             A <a href="../api/y/layout/NodeHalo.html" title="Link to API documentation" target="_top">NodeHalo<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> object that specifies the halo 
+                             sizes at each side of a node.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/tree/GenericTreeLayouter.html#MULTI_PARENT_DESCRIPTOR_DPKEY" title="Link to API documentation" target="_top">MULTI_PARENT_DESCRIPTOR_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">MultiParentDescriptor</td>
+                        <td align="left">
+                             For each node of a multi-parent structure a <a href="../api/y/layout/tree/MultiParentDescriptor.html" title="Link to API documentation" target="_top">MultiParentDescriptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                             object that configures a number of options.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_generic_options"></a>Layout Options
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               
+               GenericTreeLayouter delegates major aspects of layout calculation to 
+               implementations for interfaces 
+               <a href="../api/y/layout/tree/NodePlacer.html" title="Link to API documentation" target="_top">NodePlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and 
+               <a href="../api/y/layout/tree/PortAssignment.html" title="Link to API documentation" target="_top">PortAssignment<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>: 
+               
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>
+                     NodePlacer is responsible for recursively arranging a subtree's root node 
+                     together with its children (starting at the leaf nodes of a tree), 
+                     
+                     
+                  </li>
+                  <li>
+                     PortAssignment encapsulates edge port assignment for a node's edges. 
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+               Classes <a href="../api/y/layout/tree/DefaultNodePlacer.html" title="Link to API documentation" target="_top">DefaultNodePlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and 
+               <a href="../api/y/layout/tree/DefaultPortAssignment.html" title="Link to API documentation" target="_top">DefaultPortAssignment<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> are used as 
+               the default implementations for NodePlacer and PortAssignment, respectively. 
+               
+            </p>
+            <p>
+               Both NodePlacer as well as PortAssignment implementations can be registered 
+               with GenericTreeLayouter to handle all nodes, i.e., act globally on the entire 
+               tree, or to handle only a specific root node, i.e., act locally on a subtree. 
+               
+               To specify the node placer or port assignment for each subtree individually, 
+               data providers holding such supplemental layout data must be bound to the 
+               graph. 
+               The data providers are expected to be registered with the graph using keys 
+               <a href="../api/y/layout/tree/GenericTreeLayouter.html#NODE_PLACER_DPKEY" title="Link to API documentation" target="_top">NODE_PLACER_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               and 
+               <a href="../api/y/layout/tree/GenericTreeLayouter.html#PORT_ASSIGNMENT_DPKEY" title="Link to API documentation" target="_top">PORT_ASSIGNMENT_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+               respectively. 
+               
+            </p>
+            <p>
+               Note that in the absence of an individual node placer or port assignment 
+               implementation the respective default implementation will be used for a given 
+               node. 
+               
+               The following methods can be used to register default node placer and port assignment
+               implementations:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/GenericTreeLayouter.html#setDefaultNodePlacer(y.layout.tree.NodePlacer)" title="Link to API documentation" target="_top">void setDefaultNodePlacer(NodePlacer defaultNodePlacer)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Determines the globally used node placer implementation.
+                              
+                           </td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/GenericTreeLayouter.html#setDefaultPortAssignment(y.layout.tree.PortAssignment)" title="Link to API documentation" target="_top">void setDefaultPortAssignment(PortAssignment defaultPortAssignment)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Determines the globally used port assignment implementation.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="tree_generic_node_placer"></a>Node Placer Implementations
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  In addition to class DefaultNodePlacer, package 
+                  <a href="../api/y/layout/tree/package-summary.html" title="Link to API documentation" target="_top">y.layout.tree<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  contains further predefined node placer implementations that provide a variety 
+                  of subtree arrangement schemes. 
+                  
+                  Their common superclass, abstract class 
+                  <a href="../api/y/layout/tree/AbstractRotatableNodePlacer.html" title="Link to API documentation" target="_top">AbstractRotatableNodePlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                  enables these node placers to transparently deal with child nodes that are 
+                  actually rotated subtrees. 
+                  
+                  <a href="cls_GenericTreeLayouter.html#fig_node_placer" title="Figure&nbsp;5.76.&nbsp;Node placer hierarchy">Figure&nbsp;5.76, &#8220;Node placer hierarchy&#8221;</a> depicts the node placer class hierarchy. 
+                  
+               </p>
+               <div class="figure"><a name="fig_node_placer"></a><p class="title"><b>Figure&nbsp;5.76.&nbsp;Node placer hierarchy</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/tree_node_placer_all.jpg" align="middle" alt="Node placer hierarchy."></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  <a href="cls_GenericTreeLayouter.html#tab_gtl_node_placer" title="Table&nbsp;5.60.&nbsp;Node placer implementations">Table&nbsp;5.60, &#8220;Node placer implementations&#8221;</a> lists the predefined node placer 
+                  implementations that extend abstract class AbstractNodePlacer. 
+                  
+               </p>
+               <div class="table"><a name="tab_gtl_node_placer"></a><p class="title"><b>Table&nbsp;5.60.&nbsp;Node placer implementations</b></p>
+                  <table summary="Node placer implementations" width="100%" border="1">
+                     <colgroup>
+                        <col width="25%" align="left">
+                        <col width="75%" align="left">
+                     </colgroup>
+                     <thead valign="top">
+                        <tr>
+                           <th align="left">Classname</th>
+                           <th align="left">Description</th>
+                        </tr>
+                     </thead>
+                     <tbody valign="top">
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/tree/ARNodePlacer.html" title="Link to API documentation" target="_top">ARNodePlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                All subtrees are placed such that a given aspect ratio for the entire tree is 
+                                obeyed. 
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/tree/DefaultNodePlacer.html" title="Link to API documentation" target="_top">DefaultNodePlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Child nodes are placed horizontally aligned below their root node. 
+                                The bus-like routing for all edges to the child nodes extends horizontally. 
+                              
+                                
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <p>
+                  <a href="cls_GenericTreeLayouter.html#tab_gtl_node_placer_rotated" title="Table&nbsp;5.61.&nbsp;Node placer implementations that support rotation">Table&nbsp;5.61, &#8220;Node placer implementations that support rotation&#8221;</a> lists predefined node placer 
+                  implementations that support rotated subtrees. 
+                  Note that the given descriptions assume a "canonic subtree orientation," where 
+                  child nodes are placed (more or less) below their root node. 
+                  
+               </p>
+               <div class="table"><a name="tab_gtl_node_placer_rotated"></a><p class="title"><b>Table&nbsp;5.61.&nbsp;Node placer implementations that support rotation</b></p>
+                  <table summary="Node placer implementations that support rotation" width="100%" border="1">
+                     <colgroup>
+                        <col width="25%" align="left">
+                        <col width="75%" align="left">
+                     </colgroup>
+                     <thead valign="top">
+                        <tr>
+                           <th align="left">Classname</th>
+                           <th align="left">Description</th>
+                        </tr>
+                     </thead>
+                     <tbody valign="top">
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/tree/AssistantPlacer.html" title="Link to API documentation" target="_top">AssistantPlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Applies a composite placement scheme where two kinds of nodes are 
+                                differentiated; <a href="cls_GenericTreeLayouter.html#gtl_assistant">see below</a> for a more 
+                                detailed description. 
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/tree/BusPlacer.html" title="Link to API documentation" target="_top">BusPlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Child nodes are placed evenly distributed to the left and right of their root 
+                                node and also in a second line below the root node. 
+                                The nodes within each line are horizontally aligned. 
+                                The bus-like routing for all edges to the child nodes extends horizontally. 
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/tree/DelegatingNodePlacer.html" title="Link to API documentation" target="_top">DelegatingNodePlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Applies a composite placement scheme where two node placers are used to each 
+                                arrange one half of the child nodes. 
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/tree/DoubleLinePlacer.html" title="Link to API documentation" target="_top">DoubleLinePlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Child nodes are placed staggered in two lines below their root node, each 
+                                line containing one half of the nodes. 
+                                The nodes within each line are horizontally aligned. 
+                                The bus-like routing for all edges to the child nodes extends horizontally. 
+                              
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/tree/FreePlacer.html" title="Link to API documentation" target="_top">FreePlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Child nodes can be placed anywhere, their coordinates are not modified. 
+                              
+                                The bus-like routing for all edges to the child nodes extends horizontally. 
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/tree/LayeredNodePlacer.html" title="Link to API documentation" target="_top">LayeredNodePlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Subtrees can be placed such that child nodes from the same layer (i.e., nodes 
+                                having the same BFS distance to the tree's root node) are aligned. 
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/tree/LeftRightPlacer.html" title="Link to API documentation" target="_top">LeftRightPlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Child nodes are placed below their root node to the left and right of the 
+                                downward extending bus-like routing for all edges to the child nodes. 
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/tree/SimpleNodePlacer.html" title="Link to API documentation" target="_top">SimpleNodePlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Child nodes are placed horizontally aligned below their root node. 
+                                The bus-like routing for all edges to the child nodes extends horizontally. 
+                              
+                                
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <p>
+                  AbstractRotatableNodePlacer provides support for eight different subtree 
+                  orientation schemes which are expressed using suitable modification matrices of 
+                  type 
+                  <a href="../api/y/layout/tree/AbstractRotatableNodePlacer.Matrix.html" title="Link to API documentation" target="_top">AbstractRotatableNodePlacer.Matrix<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                  <a href="cls_GenericTreeLayouter.html#fig_gtl_rotation" title="Figure&nbsp;5.77.&nbsp;Supported subtree orientations">Figure&nbsp;5.77, &#8220;Supported subtree orientations&#8221;</a> shows all orientations beginning with the 
+                  so-called "canonic subtree orientation." 
+                  
+                  Note that the rotations provided by static inner class 
+                  AbstractRotatableNodePlacer.Matrix are using mathematical rotation sense, i.e., 
+                  they are counter-clockwise. 
+                  
+                  
+                  
+               </p>
+               <div class="figure"><a name="fig_gtl_rotation"></a><p class="title"><b>Figure&nbsp;5.77.&nbsp;Supported subtree orientations</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="25%">
+                              <col width="25%">
+                              <col width="25%">
+                              <col width="25%">
+                           </colgroup>
+                           <tbody>
+                              <tr valign="bottom">
+                                 <td valign="bottom">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_dir_default.jpg" align="middle" alt="Supported subtree orientations"></div>
+                                 </td>
+                                 <td valign="bottom">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_dir_90.jpg" align="middle" alt="Supported subtree orientations"></div>
+                                 </td>
+                                 <td valign="bottom">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_dir_90_vert.jpg" align="middle" alt="Supported subtree orientations"></div>
+                                 </td>
+                                 <td valign="bottom">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_dir_vert.jpg" align="middle" alt="Supported subtree orientations"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center" valign="top">
+                                 <td align="center" valign="top">
+                                      Default orientation (a.k.a. canonic subtree orientation): 
+                                      <a href="../api/y/layout/tree/AbstractRotatableNodePlacer.Matrix.html#DEFAULT" title="Link to API documentation" target="_top">DEFAULT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                                 <td align="center" valign="top">
+                                      90 degree: 
+                                      <a href="../api/y/layout/tree/AbstractRotatableNodePlacer.Matrix.html#ROT90" title="Link to API documentation" target="_top">ROT90<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                                 <td align="center" valign="top">
+                                      90 degree, mirrored vertically: 
+                                      <a href="../api/y/layout/tree/AbstractRotatableNodePlacer.Matrix.html#MIR_VERT_ROT90" title="Link to API documentation" target="_top">MIR_VERT_ROT90<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                                 <td align="center" valign="top">
+                                      Mirrored vertically: 
+                                      <a href="../api/y/layout/tree/AbstractRotatableNodePlacer.Matrix.html#MIR_VERT" title="Link to API documentation" target="_top">MIR_VERT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="25%">
+                              <col width="25%">
+                              <col width="25%">
+                              <col width="25%">
+                           </colgroup>
+                           <tbody>
+                              <tr valign="top">
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_dir_hor.jpg" align="middle" alt="Supported subtree orientations"></div>
+                                 </td>
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_dir_90_hor.jpg" align="middle" alt="Supported subtree orientations"></div>
+                                 </td>
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_dir_270.jpg" align="middle" alt="Supported subtree orientations"></div>
+                                 </td>
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_dir_180.jpg" align="middle" alt="Supported subtree orientations"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center" valign="top">
+                                 <td align="center" valign="top">
+                                      Mirrored horizontally: 
+                                      <a href="../api/y/layout/tree/AbstractRotatableNodePlacer.Matrix.html#MIR_HOR" title="Link to API documentation" target="_top">MIR_HOR<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                                 <td align="center" valign="top">
+                                      90 degree, mirrored horizontally: 
+                                      <a href="../api/y/layout/tree/AbstractRotatableNodePlacer.Matrix.html#MIR_HOR_ROT90" title="Link to API documentation" target="_top">MIR_HOR_ROT90<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                                 <td align="center" valign="top">
+                                      270 degree: 
+                                      <a href="../api/y/layout/tree/AbstractRotatableNodePlacer.Matrix.html#ROT270" title="Link to API documentation" target="_top">ROT270<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                                 <td align="center" valign="top">
+                                      180 degree: 
+                                      <a href="../api/y/layout/tree/AbstractRotatableNodePlacer.Matrix.html#ROT180" title="Link to API documentation" target="_top">ROT180<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  A concrete subclass of AbstractRotatableNodePlacer is given the modification 
+                  matrix that describes the desired subtree orientation at initialization time.
+                  The following methods/constructors provide matrix-related configuration support:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/AbstractRotatableNodePlacer.html#AbstractRotatableNodePlacer(y.layout.tree.AbstractRotatableNodePlacer.Matrix)" title="Link to API documentation" target="_top">protected AbstractRotatableNodePlacer(
+    AbstractRotatableNodePlacer.Matrix modificationMatrix)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Constructor of AbstractRotatableNodePlacer. (To be overridden in concrete subclasses.)
+                                 
+                              </td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/AbstractRotatableNodePlacer.html#getModificationMatrix()" title="Link to API documentation" target="_top">AbstractRotatableNodePlacer.Matrix getModificationMatrix()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Getter for the current modification matrix.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  <a href="cls_GenericTreeLayouter.html#fig_gtl_all_placers" title="Figure&nbsp;5.78.&nbsp;Subtree arrangement with NodePlacer implementations">Figure&nbsp;5.78, &#8220;Subtree arrangement with NodePlacer implementations&#8221;</a> shows arrangements of an example 
+                  (sub)tree (in canonic subtree orientation) using different node placer 
+                  implementations. 
+                  Note the (sub)tree's emphasized root node. 
+                  
+               </p>
+               <div class="figure"><a name="fig_gtl_all_placers"></a><p class="title"><b>Figure&nbsp;5.78.&nbsp;Subtree arrangement with NodePlacer implementations</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="34%">
+                              <col width="24%">
+                              <col width="42%">
+                           </colgroup>
+                           <tbody>
+                              <tr valign="top">
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_simple_node.jpg" align="middle" alt="Subtree arrangement with NodePlacer implementations"></div>
+                                 </td>
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_left_right.jpg" align="middle" alt="Subtree arrangement with NodePlacer implementations"></div>
+                                 </td>
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_free.jpg" align="middle" alt="Subtree arrangement with NodePlacer implementations"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center" valign="top">
+                                 <td align="center" valign="top">
+                                      SimpleNodePlacer
+                                    
+                                 </td>
+                                 <td align="center" valign="top">
+                                      LeftRightPlacer
+                                    
+                                 </td>
+                                 <td align="center" valign="top">
+                                      FreePlacer
+                                    
+                                 </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td valign="top">&nbsp;</td>
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_double_line.jpg" align="middle" alt="Subtree arrangement with NodePlacer implementations"></div>
+                                 </td>
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_bus.jpg" align="middle" alt="Subtree arrangement with NodePlacer implementations"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center" valign="top">
+                                 <td align="center" valign="top">&nbsp;</td>
+                                 <td align="center" valign="top">
+                                      DoubleLinePlacer
+                                    
+                                 </td>
+                                 <td align="center" valign="top">
+                                      BusPlacer
+                                    
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p><a name="gtl_assistant"></a>
+                  Class AssistantPlacer uses a data provider that holds boolean values which 
+                  denote whether a node is a so-called "assistant" or not. 
+                  The data provider is bound to the tree using the look-up key 
+                  <a href="../api/y/layout/tree/AssistantPlacer.html#ASSISTANT_DPKEY" title="Link to API documentation" target="_top">ASSISTANT_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                  
+                  
+                  Assistants are placed using LeftRightPlacer, non-assistants are placed using 
+                  another node placer which can be configured using a setter method. 
+                  
+                  <a href="cls_GenericTreeLayouter.html#fig_gtl_assistant" title="Figure&nbsp;5.79.&nbsp;Subtree arrangement provided by AssistentPlacer">Figure&nbsp;5.79, &#8220;Subtree arrangement provided by AssistentPlacer&#8221;</a> depicts the supported arrangements for the 
+                  so-called non-assistant nodes. 
+                  
+               </p>
+               <div class="figure"><a name="fig_gtl_assistant"></a><p class="title"><b>Figure&nbsp;5.79.&nbsp;Subtree arrangement provided by AssistentPlacer</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="50%">
+                              <col width="50%">
+                           </colgroup>
+                           <tbody valign="top">
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_assistant_simple.jpg" align="middle" alt="Subtree arrangement provided by AssistentPlacer"></div>
+                                 </td>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_assistant_double_line.jpg" align="middle" alt="Subtree arrangement provided by AssistentPlacer"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">
+                                      Using SimpleNodePlacer for non-assistants. 
+                                    
+                                 </td>
+                                 <td align="center">
+                                      Using DoubleLinePlacer for non-assistants. 
+                                    
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_generic_advanced"></a>Advanced Layout Concepts
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="gtl_integrated_labeling"></a>Integrated Labeling
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Besides the generic labeling support as described in 
+                  <a href="labeling.html#general_labeling" title="Generic Labeling">the section called &#8220;Generic Labeling&#8221;</a>, which is available with all yFiles layout 
+                  algorithms, generic tree layout additionally features integrated labeling. 
+                  
+               </p>
+               <p>
+                  Integrated labeling is available for both node labels and edge labels. 
+                  They are taken into consideration when determining the shape of a subtree. 
+                  With this strategy it is guaranteed that no label will overlap other objects in 
+                  the diagram. 
+                  The following methods can be used to enable integrated labeling:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/GenericTreeLayouter.html#setIntegratedEdgeLabeling(boolean)" title="Link to API documentation" target="_top">void setIntegratedEdgeLabeling(boolean integratedEdgeLabeling)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/tree/GenericTreeLayouter.html#setIntegratedNodeLabeling(boolean)" title="Link to API documentation" target="_top">void setIntegratedNodeLabeling(boolean integratedNodeLabeling)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Enables/disables integrated edge labeling and node labeling, respectively.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  See also <a href="labeling.html#integrated_labeling" title="Integrated Labeling">the section called &#8220;Integrated Labeling&#8221;</a>.
+                  
+               </p>
+               <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Tip</h3>
+                  <p>
+                     Optimal label placement with integrated labeling can be achieved using <a href="../api/y/layout/FreeEdgeLabelModel.html" title="Link to API documentation" target="_top">FreeEdgeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                     as the label model for the edges. 
+                     As explained in <a href="labeling.html#label_models" title="Label Models">the section called &#8220;Label Models&#8221;</a>, this edge label model is ideally 
+                     suited in combination with integrated labeling and yields the best match for a label 
+                     location that is computed by GenericTreeLayouter.
+                     
+                  </p>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="gtl_port_constraints"></a>Port Constraints
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Obeying port constraints for edges is part of the responsibilities of a node 
+                  placer implementation. 
+                  A node placer determines: 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        the source ports of all edges that connect a subtree's root node to its child 
+                        nodes 
+                        
+                     </li>
+                     <li>
+                        the target port of the edge that connects to the subtree's root node 
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  
+               </p>
+               <p>
+                  The predefined node placer implementations from package y.layout.tree obey both 
+                  types of port constraints, weak and strong. 
+                  The port constraints are retrieved from data providers that are bound to the 
+                  graph using the look-up keys 
+                  <a href="../api/y/layout/PortConstraintKeys.html#SOURCE_PORT_CONSTRAINT_KEY" title="Link to API documentation" target="_top">SOURCE_PORT_CONSTRAINT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  and 
+                  <a href="../api/y/layout/PortConstraintKeys.html#TARGET_PORT_CONSTRAINT_KEY" title="Link to API documentation" target="_top">TARGET_PORT_CONSTRAINT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                  respectively. 
+                  
+               </p>
+               <p>
+                  By means of interface PortAssignment the ports of all edges adjacent to a given 
+                  tree node can be assigned. 
+                  
+                  To this end, method 
+                  <a href="../api/y/layout/tree/PortAssignment.html#assignPorts(y.layout.LayoutGraph, y.base.Node)" title="Link to API documentation" target="_top">assignPorts<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  is called immediately before a subtree's node placer is invoked. 
+                  
+                  
+                  Obviously, assigning edge ports at a tree node is confined to the target port 
+                  of the incoming edge from the parent node, and the source ports of all outgoing 
+                  edges to child nodes. 
+                  
+                  
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="gtl_node_halos"></a>Node Halos
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  GenericTreeLayouter by default supports node halos as soon as they are declared 
+                  using the data provider key <a href="../api/y/layout/NodeHalo.html#NODE_HALO_DPKEY" title="Link to API documentation" target="_top">NODE_HALO_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+                  During layout calculation, it takes any specified additional paddings around nodes 
+                  into consideration and keeps the areas clear of other graph elements. 
+                  The labels of a node and its adjacent edge segments are not affected and can still 
+                  be placed inside or cross the node's halo.
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="gtl_incremental"></a>Incremental Layout
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  GenericTreeLayouter can be used in combination with a 
+                  <tt class="classname">java.util.Comparator</tt> implementation that allows to 
+                  dynamically determine the sequence of child nodes in a subtree. 
+                  
+                  Supplied with a root node's outgoing tree edges, the comparator decides on 
+                  their precedence. 
+                  
+                  
+                  
+                  Based on this scheme, the comparator that is conveniently returned by class 
+                  DefaultNodePlacer provides support for incrementally inserting new child nodes 
+                  at optimal positions with respect to already arranged child nodes. 
+                  
+                  
+                  
+               </p>
+               <p>
+                  Comparators can be registered both to handle all nodes, i.e., act globally on 
+                  the entire tree, or to handle only a specific root node, i.e., act locally on a 
+                  subtree. 
+                  
+                  
+                  The following method can be used to configure the default comparator for an entire
+                  tree:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/GenericTreeLayouter.html#setDefaultChildComparator(java.util.Comparator)" title="Link to API documentation" target="_top">void setDefaultChildComparator(Comparator defaultChildComparator)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Sets the default Comparator implementation for a tree.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  To specify comparators individually for each subtree, a data provider holding 
+                  such supplemental layout data must be bound to the graph. 
+                  The data provider is expected to be registered with the graph using key 
+                  <a href="../api/y/layout/tree/GenericTreeLayouter.html#CHILD_COMPARATOR_DPKEY" title="Link to API documentation" target="_top">CHILD_COMPARATOR_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                  
+               </p>
+               <p>
+                  
+                  Class DefaultNodePlacer provides a suitable default comparator that can 
+                  conveniently be used to support incremental tree layout scenarios with 
+                  subtrees. 
+                  The comparator enables dynamic rearrangement of all child nodes in a given 
+                  subtree according to their relative coordinates. 
+                  
+                  <a href="cls_GenericTreeLayouter.html#ex_gtl_incremental" title="Example&nbsp;5.38.&nbsp;Setup for incremental layout with GenericTreeLayouter">Example&nbsp;5.38, &#8220;Setup for incremental layout with GenericTreeLayouter&#8221;</a> demonstrates the setup of 
+                  GenericTreeLayouter using the default node placer and port assignment 
+                  implementations, and additionally registering the default comparator from class 
+                  DefaultNodePlacer.
+                  
+               </p>
+               <div class="example"><a name="ex_gtl_incremental"></a><p class="title"><b>Example&nbsp;5.38.&nbsp;Setup for incremental layout with GenericTreeLayouter</b></p><pre class="programlisting java">
+// Create a GenericTreeLayouter object that uses default node placer and 
+// port assignment implementations, i.e., classes DefaultNodePlacer and 
+// DefaultPortAssignment, respectively. 
+GenericTreeLayouter gtl = new GenericTreeLayouter();
+// Register the comparator returned by class DefaultNodePlacer to take care of 
+// the sequences of child nodes in each subtree. 
+gtl.setDefaultChildComparator(
+    ((DefaultNodePlacer)gtl.getDefaultNodePlacer()).createComparator());
+</pre></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="gtl_grouping"></a>Grouping Support
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  By default, GenericTreeLayouter supports layout of tree structures where entire 
+                  subtrees are contained in group nodes. 
+                  Both position and dimension of group nodes will be calculated by the algorithm. 
+                  The 
+                  <a href="../api/y/layout/tree/GenericTreeLayouter.html#setGroupingSupported(boolean)" title="Link to API documentation" target="_top">setGroupingSupported<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  method can be used to control this functionality.
+                  
+               </p>
+               <p>
+                  Additional size requirements of group nodes (e.g., special insets or space for custom 
+                  labels) can be specified for each group node separately by means of a data provider 
+                  that provides <a href="../api/y/geom/YInsets.html" title="Link to API documentation" target="_top">YInsets<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> objects. 
+                  The data provider must be registered with the input graph using the key 
+                  <a href="../api/y/layout/grouping/GroupingKeys.html#GROUP_NODE_INSETS_DPKEY" title="Link to API documentation" target="_top">GROUP_NODE_INSETS_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="gtl_multiparent"></a>Support for Multi-parent Structures
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  GenericTreeLayouter provides special support for so-called multi-parent structures, 
+                  where multiple nodes share both the same direct predecessor node(s) as well as the 
+                  same direct successor node(s).
+                  
+                  Multi-parent structures that are contained in group nodes are also supported. 
+                  It is important, however, that all nodes belonging to the same multi-parent structure 
+                  are contained in the same group node.
+                  
+               </p>
+               <p>
+                  Technically, such a structure does not fit the very definition of a tree graph. 
+                  Nevertheless, it can be handled within the context of tree graphs very well. 
+                  However, to properly detect and handle these structures, the special support needs 
+                  to be explicitly enabled using the following method:
+                  
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/GenericTreeLayouter.html#setMultiParentAllowed(boolean)" title="Link to API documentation" target="_top">void setMultiParentAllowed(boolean multiParentAllowed)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Enables GenericTreeLayouter's special support for multi-parent structures.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  The following figure shows a graph containing multi-parent structures (note the 
+                  emphasis on the nodes). 
+                  All nodes belonging to such a structure are placed side by side. 
+                  By default, the edges incident to these nodes are routed using bus-style edge routing.
+                  
+               </p>
+               <p>
+                  Note that the two nodes at the root of the graph also constitute a multi-parent 
+                  structure: they share an "imaginary" direct predecessor.
+                  
+               </p>
+               <div class="figure"><a name="fig_gtl_multiparent"></a><p class="title"><b>Figure&nbsp;5.80.&nbsp;Graph with multi-parent structures</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_multiparent.jpg" align="middle" alt="Graph with multi-parent structures."></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  To configure layout and drawing options of a multi-parent structure, class <a href="../api/y/layout/tree/MultiParentDescriptor.html" title="Link to API documentation" target="_top">MultiParentDescriptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  can be used. 
+                  For example, the following options can be set: 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>relative alignment of nodes within their layer</li>
+                     <li>preferred minimum distances</li>
+                     <li>different routing styles for edges</li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  
+               </p>
+               <p>
+                  A MultiParentDescriptor instance can be specified for the nodes of a multi-parent 
+                  structure by means of a data provider that is bound to the graph. 
+                  The data provider is expected to be registered with the graph using key <a href="../api/y/layout/tree/GenericTreeLayouter.html#MULTI_PARENT_DESCRIPTOR_DPKEY" title="Link to API documentation" target="_top">MULTI_PARENT_DESCRIPTOR_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+                  It is important that all nodes belonging to the same multi-parent structure yield 
+                  the same descriptor instance.
+                  
+               </p>
+               <p>
+                  These options are available:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Minimum Node Distance</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/MultiParentDescriptor.html#setMinimumNodeDistance(double)" title="Link to API documentation" target="_top">void setMinimumNodeDistance(double alignment)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Determines the minimum distance between the nodes of a multi-parent structure. 
+                                 
+                              </td>
+                           </tr>
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Minimum Bus Distance</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/MultiParentDescriptor.html#setMinimumBusDistance(double)" title="Link to API documentation" target="_top">void setMinimumBusDistance(double alignment)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Determines the minimum distance between the nodes of a multi-parent structure and 
+                                 their incident edges that are routed bus-style.
+                                 
+                              </td>
+                           </tr>
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Vertical Alignment</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/MultiParentDescriptor.html#setVerticalAlignment(double)" title="Link to API documentation" target="_top">void setVerticalAlignment(double alignment)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Determines the vertical alignment of the nodes of a multi-parent structure within 
+                                 their layer. 
+                                 Values can be set from 0.0 (top) to 1.0 (bottom). 
+                                 See also <a href="cls_GenericTreeLayouter.html#fig_multiparent_vertical_alignment" title="Figure&nbsp;5.81.&nbsp;Vertical alignment of the nodes of a multi-parent structure">Figure&nbsp;5.81, &#8220;Vertical alignment of the nodes of a multi-parent structure&#8221;</a>.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <div class="figure"><a name="fig_multiparent_vertical_alignment"></a><p class="title"><b>Figure&nbsp;5.81.&nbsp;Vertical alignment of the nodes of a multi-parent structure</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="33%">
+                              <col width="33%">
+                              <col width="34%">
+                           </colgroup>
+                           <tbody>
+                              <tr valign="top">
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_mp_valign_top.jpg" align="middle" alt="Vertical alignment of the nodes of a multi-parent structure"></div>
+                                 </td>
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_mp_valign_middle.jpg" align="middle" alt="Vertical alignment of the nodes of a multi-parent structure"></div>
+                                 </td>
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_mp_valign_bottom.jpg" align="middle" alt="Vertical alignment of the nodes of a multi-parent structure"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">Aligned at the top with Vertical Alignment = <tt class="code">0.0</tt></td>
+                                 <td align="center">... in the middle with Vertical Alignment = <tt class="code">0.5</tt></td>
+                                 <td align="center">... at the bottom with Vertical Alignment = <tt class="code">1.0</tt></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  The routing style of the edges incident to nodes of the multi-parent structure can 
+                  be configured through the following method:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/tree/MultiParentDescriptor.html#setEdgeStyle(byte)" title="Link to API documentation" target="_top">void setEdgeStyle(byte style)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Configures the routing style for edges incident to the nodes of a multi-parent structure.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  The following figure shows the different edge routing styles side by side:
+                  
+               </p>
+               <div class="figure"><a name="fig_multiparent_edge_routing"></a><p class="title"><b>Figure&nbsp;5.82.&nbsp;Edge routing styles determined by the MultiParentDescriptor</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="33%">
+                              <col width="33%">
+                              <col width="34%">
+                           </colgroup>
+                           <tbody>
+                              <tr valign="top">
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_mp_orthogonal.jpg" align="middle" alt="Edge routing styles determined by the MultiParentDescriptor"></div>
+                                 </td>
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_mp_polyline.jpg" align="middle" alt="Edge routing styles determined by the MultiParentDescriptor"></div>
+                                 </td>
+                                 <td valign="top">
+                                    <div class="mediaobject" align="center"><img src="figures/gtl_mp_straightline.jpg" align="middle" alt="Edge routing styles determined by the MultiParentDescriptor"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">Orthogonal edge routing (with rounded bends).</td>
+                                 <td align="center">Polyline edge routing.</td>
+                                 <td align="center">Straight-line edge routing.</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  It is important to note that the routes of edges incident to the nodes of multi-parent 
+                  structures are only half-way determined by the routing style configured in the MultiParentDescriptor. 
+                  The other half is under the control of the actual NodePlacer implementation that 
+                  is used by GenericTreeLayouter.
+                  
+               </p>
+               <p>
+                  With regard to edge routing, NodePlacer implementation <a href="../api/y/layout/tree/DefaultNodePlacer.html" title="Link to API documentation" target="_top">DefaultNodePlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  yields the best results in conjunction with multi-parent structures. 
+                  Multi-parent support also harmonizes well with <a href="../api/y/layout/tree/BusPlacer.html" title="Link to API documentation" target="_top">BusPlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                  <a href="../api/y/layout/tree/LeftRightPlacer.html" title="Link to API documentation" target="_top">LeftRightPlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, and <a href="../api/y/layout/tree/DendrogramPlacer.html" title="Link to API documentation" target="_top">DendrogramPlacer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                  However, the following options of DefaultNodePlacer are not supported in conjunction 
+                  with multi-parent structures: 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        routing style option ROUTING_FORK_AT_ROOT
+                        
+                     </li>
+                     <li>
+                        root alignment options ALIGNMENT_LEADING_ON_BUS and ALIGNMENT_TRAILING_ON_BUS
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  
+               </p>
+               <p>
+                  Also with regard to edge routing, if port assignment implementations are registered 
+                  for the nodes of a multi-parent structure, certain aspects of <a href="layout_advanced_features.html#adv_port_constraints" title="Port Constraints">port constraint configuration</a> 
+                  of the incident edges will be ignored in order to prevent situations where this 
+                  would lead to confusing (or even conflicting) edge routes in the resulting layout. 
+                  
+                  In particular, this applies to the direction specified by a port constraint of an 
+                  incident edge: the edge is instead always routed in flow direction. 
+                  
+                  Note that all nodes of a multi-parent structure should yield the same port assignment, 
+                  if any.
+                  
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tree_generic_tutorial"></a>Tutorial Demo Code
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               The tutorial demo application 
+               <a href="../../src/demo/layout/tree/IncrementalTreeLayouterDemo.java" title="Link to demo code" target="_top">IncrementalTreeLayouterDemo.java</a> 
+               provides an extensive presentation of the powerful features that are offered by 
+               GenericTreeLayouter using the default node placer and port assignment 
+               implementations. 
+               It also demonstrates the incremental tree layout capabilities of 
+               GenericTreeLayouter. 
+               
+               Setup and usage of GenericTreeLayouter with other node placer implementations 
+               is demonstrated in the following tutorial demo applications: 
+               
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li><a href="../../src/demo/layout/tree/RotatableNodePlacersDemo.java" title="Link to demo code" target="_top">RotatableNodePlacersDemo.java</a></li>
+                  <li><a href="../../src/demo/layout/tree/AssistantPlacerDemo.java" title="Link to demo code" target="_top">AssistantPlacerDemo.java</a></li>
+               </ul>
+            </div>
+            <p>
+               
+               Also, 
+               <a href="../../src/demo/layout/tree/TreeLayoutConfigurationDemo.java" title="Link to demo code" target="_top">TreeLayoutConfigurationDemo.java</a> 
+               and <a href="../../src/demo/layout/tree/TreeLayoutConfiguration.java" title="Link to demo code" target="_top">TreeLayoutConfiguration.java</a> 
+               present further advanced generic tree layout configurations. 
+               
+            </p>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="tree_layouter.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="layout.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="radial_layouter.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Tree Layout&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Radial Layout Style</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,533 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Binding Data to Graph Elements</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="base.html" title="Chapter&nbsp;4.&nbsp;Working with the Graph Structure">
+      <link rel="previous" href="containers.html" title="Containers">
+      <link rel="next" href="analysis.html" title="Analyzing Graphs">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Binding Data to Graph Elements</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="containers.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;4.&nbsp;Working with the Graph Structure</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="analysis.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="data_accessors"></a>Binding Data to Graph Elements
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            The concept of data accessors comprises two aspects which are commonly used in 
+            different scenarios. 
+            To bind supplemental data to graph elements that should be read-only, an 
+            implementation of interface 
+            <a href="../api/y/base/DataProvider.html" title="Link to API documentation" target="_top">DataProvider<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> suffices. 
+            We will call these implementations "data providers" subsequently. 
+            
+            A data accessor with full read/write behavior, though, additionally implements 
+            interface <a href="../api/y/base/DataAcceptor.html" title="Link to API documentation" target="_top">DataAcceptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+            The yFiles library knows these implementations as "maps," and has two dedicated 
+            interfaces already defined, 
+            <a href="../api/y/base/NodeMap.html" title="Link to API documentation" target="_top">NodeMap<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and 
+            <a href="../api/y/base/EdgeMap.html" title="Link to API documentation" target="_top">EdgeMap<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+            
+            Both extend interface <a href="../api/y/base/DataMap.html" title="Link to API documentation" target="_top">DataMap<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> which is a 
+            combination of interfaces DataProvider and DataAcceptor. 
+            
+            
+            
+         </p><a class="indexterm" name="d0e1862"></a><a class="indexterm" name="d0e1867"></a><a class="indexterm" name="d0e1870"></a><a class="indexterm" name="d0e1873"></a><p>
+            Applying the two semantics it is, e.g., possible to restrict certain callees to 
+            "immutable" data, while others are allowed to make changes. 
+            
+         </p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               Observe that both interface NodeMap and EdgeMap show identical signatures on 
+               their respective methods, using <tt class="classname">java.lang.Object</tt> instead 
+               of either y.base.Node or y.base.Edge as the parameter type for their key. 
+               Actual implementations should nevertheless ensure that the keys provided have 
+               correct type. 
+               
+            </p>
+         </div>
+         <p>
+            <a href="data_accessors.html#fig_data_accessors" title="Figure&nbsp;4.7.&nbsp;The concept of data accessors">Figure&nbsp;4.7, &#8220;The concept of data accessors&#8221;</a> gives a brief overview of the classes 
+            involved in the basic concepts of maps and data providers. 
+            
+         </p>
+         <div class="figure"><a name="fig_data_accessors"></a><p class="title"><b>Figure&nbsp;4.7.&nbsp;The concept of data accessors</b></p>
+            <div class="informaltable">
+               <center>
+                  <table border="0">
+                     <colgroup>
+                        <col width="100%">
+                     </colgroup>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/data_accessors.jpg" align="middle" alt="The concept of data accessors."></div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="Maps and Data Providers"></a>Maps and Data Providers
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Common to all data accessor implementations which are offered by the yFiles 
+               library is that they cover all elements of a set, i.e., a node map provides 
+               values for all nodes from a graph (however, these may all be default values 
+               when there hasn't been anything stored yet). 
+               
+               <a href="data_accessors.html#Storing and retrieving..." title="Example&nbsp;4.12.&nbsp;Storing and retrieving data associated with a node">Example&nbsp;4.12, &#8220;Storing and retrieving data associated with a node&#8221;</a> shows how node maps are used to 
+               store and retrieve arbitrary data. 
+               
+               
+               
+            </p><a class="indexterm" name="d0e1914"></a><a class="indexterm" name="d0e1917"></a><div class="example"><a name="Storing and retrieving..."></a><p class="title"><b>Example&nbsp;4.12.&nbsp;Storing and retrieving data associated with a node</b></p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+// 'labelNodeMap' is of type y.base.NodeMap. 
+// 'counterNodeMap' is of type y.base.NodeMap. 
+
+// Bind a label to the first node of the node set. 
+// The bound data actually is of type java.lang.String. 
+labelNodeMap.set(graph.firstNode(), "I am the first node!");
+
+// Increase the value stored in 'counterNodeMap' for the last node. 
+// The bound data is an int. 
+counterNodeMap.setInt(graph.lastNode(), 
+                      counterNodeMap.getInt(graph.lastNode()) + 1);
+
+// Print out the label of the first node. 
+System.out.print("The name of the first node is: ");
+System.out.println(labelNodeMap.get(graph.firstNode()));
+</pre></div>
+            <p>
+               <a href="data_accessors.html#Comparing..." title="Table&nbsp;4.2.&nbsp;Comparing map implementations">Table&nbsp;4.2, &#8220;Comparing map implementations&#8221;</a> lists the differences of some data accessor 
+               implementations. 
+               
+            </p>
+            <div class="striped"><a name="Comparing..."></a><p class="title"><b>Table&nbsp;4.2.&nbsp;Comparing map implementations</b></p>
+               <table summary="Comparing map implementations" width="100%" border="0">
+                  <colgroup>
+                     <col width="28%" align="left">
+                     <col width="14%" align="left">
+                     <col width="15%" align="left">
+                     <col width="14%" align="left">
+                     <col width="29%" align="left">
+                  </colgroup>
+                  <thead>
+                     <tr>
+                        <th align="left">&nbsp;</th>
+                        <th align="left">Domain</th>
+                        <th align="left">Memory</th>
+                        <th align="left">Performance</th>
+                        <th align="left">Note</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left">Default maps</td>
+                        <td align="left">Multi-purpose</td>
+                        <td align="left">o</td>
+                        <td align="left">+</td>
+                        <td align="left">Need cleanup. </td>
+                     </tr>
+                     <tr class="evenrow">
+                        <td align="left">Index-based maps</td>
+                        <td align="left">Single-purpose</td>
+                        <td align="left">++</td>
+                        <td align="left">++</td>
+                        <td align="left">Require the underlying container to remain unaltered. </td>
+                     </tr>
+                     <tr>
+                        <td align="left">HashMap backed maps</td>
+                        <td align="left">Multi-purpose</td>
+                        <td align="left">+</td>
+                        <td align="left">o</td>
+                        <td align="left">Work well for sparse data. </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               For a code example comparing the different map implementations see also 
+               <a href="../../src/demo/base/NodeMapTest.java" title="Link to demo code" target="_top">NodeMapTest.java</a> from the tutorial demo 
+               applications. 
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="Default Map..."></a>Default Map Implementations
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Although writing customized implementations for interfaces NodeMap or EdgeMap 
+                  is easy, the most frequently used way to get these is conveniently provided by 
+                  class Graph. 
+                  
+                  <a href="data_accessors.html#Creating default..." title="Example&nbsp;4.13.&nbsp;Creating default node maps">Example&nbsp;4.13, &#8220;Creating default node maps&#8221;</a> shows one of the two methods that both 
+                  return default implementations of these interfaces which can be used for most 
+                  purposes and data types. 
+                  
+               </p><a class="indexterm" name="d0e1994"></a><p>
+                  The maps returned by these methods hold exactly one value for a given key, 
+                  i.e., no matter how many calls to any of the setter methods are issued for a 
+                  given key, only the last value set will be held. 
+                  Also, the type of the key given with a setter method is restricted to the 
+                  respective type of graph elements, i.e., restricted to Node or Edge. 
+                  
+                  The type of the value though, is not restricted to be same over the range of 
+                  all nodes, for example. 
+                  In fact, it would be perfectly legal to set a double value with one node, and 
+                  boolean values with every other. 
+                  This, however, is strongly discouraged, since it definitely leads to problems 
+                  when the values will be retrieved.
+                  
+               </p>
+               <p>
+                  Default map implementations can be created at any time, even when the graph is 
+                  empty. 
+                  From the moment of creation on, they will cover all graph elements from the 
+                  respective set, as well as all respective elements created by the graph 
+                  thereafter. 
+                  However, these maps cannot cover elements that are hidden at the time of 
+                  creation. 
+                  
+               </p>
+               <p>
+                  Note that these default implementations have to be properly disposed of after 
+                  usage to release the allocated resources. 
+                  To this end, class Graph has appropriate methods for either kind of default 
+                  implementations. 
+                  
+                  
+               </p>
+               <div class="example"><a name="Creating default..."></a><p class="title"><b>Example&nbsp;4.13.&nbsp;Creating default node maps</b></p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+
+// Obtain a new y.base.NodeMap default implementation from the graph. 
+NodeMap nodeMap = graph.createNodeMap();
+
+// Set values for some of the nodes. 
+nodeMap.setDouble(graph.firstNode(), 3.14);
+nodeMap.setDouble(graph.lastNode(), 42.0);
+
+// Print the values stored in the node map. 
+for (NodeCursor nc = graph.nodes(); nc.ok(); nc.next())
+{
+  System.out.print("Node " + nc.node() + ": ");
+  System.out.println(nodeMap.getDouble(nc.node()));
+}
+
+// Finally release the resources previously allocated by the createNodeMap() 
+// method. 
+graph.disposeNodeMap(nodeMap);
+</pre></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="Creating Customized..."></a>Creating Customized Data Accessors
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  In addition to using the default map implementations provided by class Graph, 
+                  there are further ways to create either maps or data providers. 
+                  
+                  For example, data providers can be implemented so that the actual data is only 
+                  implicitly defined, i.e., it is calculated on the fly when the value is asked 
+                  for. 
+                  
+                  This way, it is possible to "store" large amounts of data without having any 
+                  memory be allocated. 
+                  <a href="data_accessors.html#Using DataProviderAdapter..." title="Example&nbsp;4.14.&nbsp;Using class DataProviderAdapter to create customized data providers">Example&nbsp;4.14, &#8220;Using class DataProviderAdapter to create customized data providers&#8221;</a> demonstrates how to use class 
+                  <a href="../api/y/util/DataProviderAdapter.html" title="Link to API documentation" target="_top">DataProviderAdapter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to elegantly define a 
+                  custom DataProvider implementation. 
+                  
+                  <a class="indexterm" name="d0e2019"></a>
+                  
+                  
+               </p>
+               <div class="example"><a name="Using DataProviderAdapter..."></a><p class="title"><b>Example&nbsp;4.14.&nbsp;Using class DataProviderAdapter to create customized data providers</b></p><pre class="programlisting java">
+// Define a DataProvider implementation that for each node in the graph returns 
+// an int that is the square of the node's index. 
+final DataProvider implicitDataProvider = new DataProviderAdapter() {
+  // This implementation provides only ints. 
+  public int getInt(Object dataHolder) {
+    if (!dataHolder instanceof Node) {
+      throw new UnsupportedOperationException("Key has wrong type.");
+    }
+    final Node node = (Node)dataHolder;
+    return (node.index() * node.index());
+  }
+};
+
+// Define a DataProvider implementation that for each edge in the graph returns 
+// a distance value that is the difference of the values returned by 
+// implicitDataProvider for the source and target node. 
+final DataProvider edgeLengthProvider = new DataProviderAdapter() {
+  // This implementation provides only ints. 
+  public int getInt(Object dataHolder) {
+    if (!dataHolder instanceof Edge) {
+      throw new UnsupportedOperationException("Key has wrong type.");
+    }
+    final Edge edge = (Edge)dataHolder;
+    return (implicitDataProvider.getInt(edge.target()) -
+            implicitDataProvider.getInt(edge.source()));
+  }
+};
+
+// Display the values "stored" (i.e., calculated on the fly) for each edge. 
+for (EdgeCursor ec = graph.edges(); ec.ok(); ec.next()) {
+  System.out.print("Edge " + ec.edge() + ": ");
+  System.out.println(edgeLengthProvider.getInt(ec.edge()));
+}
+</pre></div>
+               <p>
+                  Class <a href="../api/y/util/DataProviders.html" title="Link to API documentation" target="_top">DataProviders<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> from package y.util 
+                  offers a set of static methods to conveniently create several specialized data 
+                  provider implementations for either nodes or edges. 
+                  For instance, there are methods to create data providers from constant values, 
+                  from given arrays, or from existing data providers. 
+                  
+               </p>
+               <p>
+                  Class <a href="../api/y/util/Maps.html" title="Link to API documentation" target="_top">Maps<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> from package y.util provides a 
+                  set of static methods to conveniently create several specialized map 
+                  implementations: 
+                  
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        <p>
+                           The 
+                           <a href="../api/y/util/Maps.html#createNodeMap(java.util.Map)" title="Link to API documentation" target="_top">createNodeMap<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                           and 
+                           <a href="../api/y/util/Maps.html#createEdgeMap(java.util.Map)" title="Link to API documentation" target="_top">createEdgeMap<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                           methods that take <tt class="classname">java.util.Map</tt> implementations and 
+                           return either a NodeMap or an EdgeMap view of the given instances. 
+                           Basically, this allows for any valid java.util.Map implementation, e.g., 
+                           <tt class="classname">java.util.HashMap</tt> or 
+                           <tt class="classname">java.util.TreeMap</tt>, to be used in conjunction with the 
+                           yFiles graph implementation. 
+                           
+                        </p>
+                     </li>
+                     <li>
+                        <p>
+                           The various 
+                           <a href="../api/y/util/Maps.html#createIndexNodeMap(boolean[])" title="Link to API documentation" target="_top">createIndexNodeMap<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                           and 
+                           <a href="../api/y/util/Maps.html#createIndexEdgeMap(boolean[])" title="Link to API documentation" target="_top">createIndexEdgeMap<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                           methods return map implementations that are fast and at the same time use 
+                           little memory. 
+                           
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  
+               </p>
+               <div class="section" lang="en">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title"><a name="HashMap-Backed..."></a>HashMap-Backed Map Implementations
+                           </h5>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+                  <p>
+                     HashMap implementations are true multi-purpose data holders, there is no 
+                     restriction to the type of the keys nor the type of the values. 
+                     Particularly, the keys are not restricted to graph elements. 
+                     Compared to the default implementations of interface NodeMap and EdgeMap 
+                     provided by class Graph they are generally a bit slower. 
+                     However, their memory usage is proportional to the amount of the data that is 
+                     actually associated with the entities. 
+                     
+                  </p>
+                  <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Tip</h3>
+                     <p>
+                        Map implementations backed by an instance of type java.util.HashMap are 
+                        especially suited for sparsely distributed data, i.e., only few entities of a 
+                        domain have non-null data associated with them. 
+                        
+                        
+                        
+                        
+                     </p>
+                  </div>
+               </div>
+               <div class="section" lang="en">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title"><a name="Index-Based..."></a>Index-Based Map Implementations
+                           </h5>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+                  <p>
+                     Index-based map implementations are very fast and use only little memory, their 
+                     drawback, however, is that once instantiated their values are restricted to the 
+                     type given at creation time. 
+                     More important though, all index-based containers require the respective set of 
+                     graph elements to remain unaltered, i.e., there are no operations allowed that 
+                     change the sequence of the graph elements in any way. 
+                     
+                  </p><a class="indexterm" name="d0e2080"></a></div>
+               <div class="example"><a name="d0e2085"></a><p class="title"><b>Example&nbsp;4.15.&nbsp;Using yFiles convenience classes to create edge maps</b></p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+
+// Create an edge map that holds a boolean value for each edge from 
+// the edge set of the graph. 
+EdgeMap map = Maps.createIndexEdgeMap(new boolean[graph.E()]);
+
+// Store some data into the edge map. 
+// (For each edge the map will contain the boolean value indicating whether 
+// the edge points from a node with a lower index to a node with 
+// a higher index.) 
+for (NodeCursor nc = graph.nodes(); nc.ok(); nc.next()) {
+  for (EdgeCursor ec = nc.node().edges(); ec.ok(); ec.next()) {
+    Edge e = ec.edge();
+    map.setBool(e, e.source().index() &lt; e.target().index());
+  }
+}
+</pre></div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="data_accessor_notes"></a>Notes
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Successfully using a data accessor requires a kind of "agreement" on the type 
+               the data accessor holds. 
+               More precisely, storing the value for a key and retrieving the value thereafter 
+               has to be done using setter and getter methods of matching type. 
+               
+               The result when using setter/getter methods with non-matching types highly 
+               depends on the specific data accessor implementation. 
+               
+               <a href="data_accessors.html#Successfully..." title="Example&nbsp;4.16.&nbsp;Successfully using data accessors">Example&nbsp;4.16, &#8220;Successfully using data accessors&#8221;</a> demonstrates the proper usage of a data 
+               accessor. 
+               
+            </p>
+            <p>
+               This rule furthermore implies that a self-made data accessor has to provide the 
+               proper getter (and/or setter) methods when it is used as a parameter to an 
+               algorithm. 
+               
+            </p>
+            <div class="example"><a name="Successfully..."></a><p class="title"><b>Example&nbsp;4.16.&nbsp;Successfully using data accessors</b></p><pre class="programlisting java">
+// 'graph' is of type y.base.Graph. 
+
+// Get a default NodeMap implementation from the graph. 
+NodeMap nm = graph.createNodeMap();
+
+// Store values for some chosen nodes. 
+nm.setBool(graph.firstNode(), true);
+nm.setBool(graph.lastNode(), true);
+
+// Retrieve the stored values. 
+// WRONG. WRONG. WRONG. 
+// Boolean values cannot be retrieved as ints. 
+int firstValue = nm.getInt(graph.firstNode());
+int lastValue = nm.getInt(graph.lastNode());
+
+// Retrieve the stored values. 
+// RIGHT. 
+boolean first = nm.getBool(graph.firstNode());
+boolean last = nm.getBool(graph.lastNode());
+</pre></div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="containers.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="base.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="analysis.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Containers&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Analyzing Graphs</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

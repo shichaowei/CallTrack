@@ -1,0 +1,149 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Events and Listeners</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="view_hierarchy.html" title="Chapter&nbsp;7.&nbsp;Graph Hierarchies">
+      <link rel="previous" href="hier_mvc_controller.html" title="User Interaction">
+      <link rel="next" href="hier_layout.html" title="Automatic Layout">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Events and Listeners</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="hier_mvc_controller.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;7.&nbsp;Graph Hierarchies</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="hier_layout.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="hier_events_and_listeners"></a>Events and Listeners
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div><a class="indexterm" name="d0e33032"></a><p>
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="hier_evts_hierarchy"></a>Hierarchy Changes
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Interface <a href="../api/y/view/hierarchy/HierarchyListener.html" title="Link to API documentation" target="_top">HierarchyListener<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> notifies
+               interested parties of changes in a grouped graph.
+               
+               The information is conveyed using objects of type 
+               <a href="../api/y/view/hierarchy/HierarchyEvent.html" title="Link to API documentation" target="_top">HierarchyEvent<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, and covers 
+               changes that relate to hierarchy level modifications of graph elements. 
+               
+            </p>
+            <p>
+               To receive notifications, HierarchyListener implementations have to be properly 
+               registered with a HierarchyManager object. 
+               
+               <a href="hier_events_and_listeners.html#hier_ev_listeners" title="Figure&nbsp;7.7.&nbsp;Context for using HierarchyListener">Figure&nbsp;7.7, &#8220;Context for using HierarchyListener&#8221;</a> gives an overview on interface 
+               HierarchyListener's role. 
+               
+            </p>
+            <div class="figure"><a name="hier_ev_listeners"></a><p class="title"><b>Figure&nbsp;7.7.&nbsp;Context for using HierarchyListener</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/hierarchy_events_listeners.jpg" align="middle" alt="Context for using HierarchyListener."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               Class <a href="../api/y/view/hierarchy/DefaultNodeChangePropagator.html" title="Link to API documentation" target="_top">DefaultNodeChangePropagator<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               can additionally be registered with the root graph of a grouped graph to notify
+               interested parties of node label changes
+               
+               and changes of the realizer delegate of a group node/folder node.
+               
+               
+               
+               
+            </p>
+            <div class="figure"><a name="hier_node_change"></a><p class="title"><b>Figure&nbsp;7.8.&nbsp;Context for using DefaultNodeChangePropagator</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/hierarchy_node_change.jpg" align="middle" alt="Context for using DefaultNodeChangePropagator."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="hier_mvc_controller.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="view_hierarchy.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="hier_layout.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">User Interaction&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Automatic Layout</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

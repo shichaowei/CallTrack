@@ -1,0 +1,191 @@
+<html>
+<head>
+	<style type="text/css">
+	<!--
+body {
+    font-family:Verdana, sans-serif;
+		margin-left:3px;
+		margin-right:3px;
+		margin-top:0px;
+		margin-bottom:0px;
+	}
+
+h1 {
+    padding-left:0px;
+    padding-top:8px;
+    padding-bottom:8px;
+    color:#4079ea;
+    font-size:16px;
+    margin-bottom:5px;
+}
+
+p {
+	padding-bottom:0px;
+	padding-top:0px;
+	margin-top:3px;
+	margin-bottom:0px;
+	margin-left:0px;
+	font-size:10px;
+	color:#000000;
+	}
+
+h2 {
+  font-size:12px;
+	color:#4079ea;
+  margin-top:10px;
+  margin-bottom:0px;
+}
+
+h3 {
+  font-size:11px;
+/*	margin-left:10px; */
+	margin-left:0px;
+  margin-top:8px;
+  margin-bottom:2px;
+}
+
+h4 {
+  font-size:10px;
+  margin-left:0px;
+  margin-top:6px;
+  margin-bottom:2px;
+}
+
+
+dl {
+	font-size:10px;
+	margin-top:2px;
+	margin-bottom:2px;
+	margin-left:0px;
+}
+
+dt {
+	font-weight:bold;
+	margin-top:4px;
+	color:#333366;
+}
+
+dt.inner {
+  font-weight:bold;
+  margin-top:4px;
+  color:#000000;
+}
+
+  dd {
+	margin-left:5px;
+}
+
+.copyright {
+    font-size: 10px; 
+    font-style:italic;
+    text-align:right;
+    margin-top:20px;
+}
+
+code, tt {
+	font-family:monospace;
+	font-size:10px;
+	color:#0000C0;
+}
+
+.keyword {
+  font-weight:bold;
+}
+
+-->
+	</style>
+</head>
+<body>
+<h2>Graph Explorer Demo</h2>
+<p>
+For large graphs, it is often not feasible to display all elements to a user.
+Therefore, strategies to filter and/or navigate the graph elements have to be
+used. This demo shows how large graphs can be explored interactively.
+</p>
+<h3>Concepts</h3>
+<p>
+This demo works with two graphs: a (large) model graph and a (smaller) view
+graph.
+The model graph constitutes the complete set of available information.
+The demo lists (the labels of) the model graph's  nodes in a searchable tree on
+its left-hand side.
+The view graph is a (small) excerpt of the model graph.
+It is displayed in the central graph view.
+</p>
+<h3>How to Explore Graphs</h3>
+<p>
+Double-clicking on an item in the tree will add a corresponding node to the
+displayed view graph. Nodes in the view are sometimes decorated with a small,
+yellow icon in their upper right corner. The number given in the icon is the
+number of nodes/edges that are connected to the corresponding node in the model
+graph but are currently <b>not</b> displayed in the view. Double-clicking on
+such a node in the view will add some or all of those nodes/edges, too.
+</p>
+<p>
+By holding down <code>CTRL</code> while double-clicking on a node,
+it is possible to reposition the node's neighbors instead of adding new
+neighbors to the view.
+</p>
+<h3>The File Menu</h3>
+<dl>
+  <dt>Load Model Graph</dt>
+  <dd>
+    Loads a graph as model graph. Supports graphs in GraphML (*.graphml) and
+    compressed GraphML (*.graphmlz) format.
+  </dd>
+  <dt>Save Model Graph</dt>
+  <dd>
+    Saves the current model graph in either GraphML (*.graphml) or compressed
+    GraphML (*.graphmlz) format.
+  </dd>
+  <dt>Save Filtered Graph</dt>
+  <dd>
+    Saves the view graph that is displayed in the central graph view in either
+    GraphML (*.graphml) or compressed GraphML (*.graphmlz) format.
+  </dd>
+</dl>
+<h3>The Sample Graphs Menu</h3>
+<p>
+Each entry loads an example model graph. All example graphs are loaded from
+compressed GraphML (*.graphmlz) format.
+</p>
+<h2>Settings</h2>
+<dl>
+  <dt>Layout</dt>
+  <dd>
+  Specifies the layout strategy that is used to position elements.
+  The button to the right of the combo box calculates a new layout for the
+  visible graph.
+  </dd>
+  <dt>Explore Nodes</dt>
+  <dd>
+  Specifies the nodes that are added by exploration. Possible values are:
+  <br/><span class="keyword">Predecessors</span>
+  means all nodes that are reachable only by outgoing edges of a selected node.
+  <br/><span class="keyword">Successors</span>
+  means all nodes that are reachable only by ingoing edges of a selected node.
+  <br/><span class="keyword">Neighbors</span>
+  means all nodes that are reachable by ingoing and outgoing edges of a
+  selected node.
+  </dd>
+  <dt>Max New Nodes on Click</dt>
+  <dd>
+  Specifies the maximum number of new nodes that are added by exploration.
+  If the number of hidden neighbors of a node is larger than this value,
+  adding all neighbors requires several double-clicks.
+  </dd>
+  <dt>Filter Neighbors</dt>
+  <dd>
+  If this option is enabled, exploration removes nodes if the length of the
+  shortest path from a node to any selected node is greater than the value of
+  <span class="keyword">Max Neighbor Distance</span>.
+  </dd>
+  <dt>Max Neighbor Distance</dt>
+  <dd>
+  If <span class="keyword">Filter Neighbors</span> is enabled, exploration
+  removes nodes if the length of the shortest path from a node to any selected
+  node is greater than the value of this option.
+  </dd>
+</dl>
+</body>
+</html>

@@ -1,0 +1,1603 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>GraphML</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="io.html" title="Chapter&nbsp;9.&nbsp;Input and Output">
+      <link rel="previous" href="reading_writing.html" title="Reading and Writing Graph Structure Data">
+      <link rel="next" href="ygf.html" title="YGF">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">GraphML</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="reading_writing.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;9.&nbsp;Input and Output</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="ygf.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="graphml"></a>GraphML
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div><a class="indexterm" name="d0e34286"></a><a class="indexterm" name="d0e34291"></a><p>
+            The <a href="http://graphml.graphdrawing.org/" target="_blank">GraphML</a> file format 
+            results from the joint effort of the graph drawing community to define a common 
+            format for exchanging graph structure data. 
+            It uses an XML-based syntax and supports the entire range of possible graph structure
+            constellations including, most notably, grouped graphs.
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="graphml_example"></a>What GraphML Looks Like
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               An abbreviated excerpt of a GraphML file that shows the encoding of a graph is 
+               presented in <a href="graphml.html#ex_graphml" title="Example&nbsp;9.3.&nbsp;Abbreviated GraphML representation">Example&nbsp;9.3, &#8220;Abbreviated GraphML representation&#8221;</a>. 
+               The basic graph structure is encoded using the GraphML elements <tt class="code">&lt;graph&gt;</tt>,
+               <tt class="code">&lt;node&gt;</tt>, and <tt class="code">&lt;edge&gt;</tt>. 
+               
+               Each of these elements has an XML attribute <tt class="code">id</tt> whose value is used 
+               to uniquely identify graphs, nodes, and edges within a GraphML file. 
+               XML attributes <tt class="code">source</tt> and <tt class="code">target</tt> which are part of 
+               the &lt;edge&gt; element, reference unique node IDs to indicate both source and 
+               target node of an edge. 
+               
+            </p>
+            <p>
+               <a href="graphml.html#ex_graphml" title="Example&nbsp;9.3.&nbsp;Abbreviated GraphML representation">Example&nbsp;9.3, &#8220;Abbreviated GraphML representation&#8221;</a> also shows yFiles-specific enhancements to the 
+               GraphML file format that describe the visual representation of a graph. 
+               These enhancements are nested within the <tt class="code">&lt;data&gt;</tt> element of a node or an
+               edge. 
+               
+            </p>
+            <div class="example"><a name="ex_graphml"></a><p class="title"><b>Example&nbsp;9.3.&nbsp;Abbreviated GraphML representation</b></p><pre class="programlisting xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!-- This file was written by the JAVA GraphML Library. --&gt;
+&lt;graphml xmlns="http://graphml.graphdrawing.org/xmlns" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
+           http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd"
+         xmlns:y="http://www.yworks.com/xml/graphml"&gt;
+  &lt;key id="d0" for="node" yfiles.type="nodegraphics"/&gt;
+  &lt;key id="d1" for="edge" yfiles.type="edgegraphics"/&gt;
+  &lt;graph id="G" edgedefault="directed"&gt;
+    &lt;node id="n0"&gt;
+      &lt;data key="d0"&gt;
+        &lt;y:ShapeNode&gt;
+          &lt;y:Geometry x="170.5" y="-15.0" width="59.0" height="30.0"/&gt;
+          &lt;y:Fill color="#CCCCFF" transparent="false"/&gt;
+          &lt;y:BorderStyle type="line" width="1.0" color="#000000"/&gt;
+          &lt;y:NodeLabel&gt;January&lt;/y:NodeLabel&gt;
+          &lt;y:Shape type="rectangle"/&gt;
+        &lt;/y:ShapeNode&gt;
+      &lt;/data&gt;
+    &lt;/node&gt;
+    &lt;node id="n1"/&gt;
+    &lt;edge id="e1" source="n1" target="n0"&gt;
+      &lt;data key="d1"&gt;
+        &lt;y:PolyLineEdge&gt;
+          &lt;y:Path sx="0.0" sy="-15.0" tx="29.5" ty="0.0"&gt;
+            &lt;y:Point x="425.0" y="0.0"/&gt;
+          &lt;/y:Path&gt;
+          &lt;y:LineStyle type="line" width="1.0" color="#000000"/&gt;
+          &lt;y:Arrows source="none" target="standard"/&gt;
+          &lt;y:EdgeLabel&gt;Happy New Year!&lt;/y:EdgeLabel&gt;
+          &lt;y:BendStyle smoothed="false"/&gt;
+        &lt;/y:PolyLineEdge&gt;
+      &lt;/data&gt;
+    &lt;/edge&gt;
+  &lt;/graph&gt;
+&lt;/graphml&gt;
+</pre></div>
+            <p>
+               The GraphML file format is also described in the 
+               <a href="http://graphml.graphdrawing.org/primer/graphml-primer.html" target="_blank">GraphML Primer</a>. 
+               The definition of the XML structure can be seen from the
+               <a href="http://www.yworks.com/xml/schema/graphml/1.1/doc/index.html" target="_blank">schema documentation</a> 
+               or from the XML schema definition file 
+               <a href="http://www.yworks.com/xml/schema/graphml/1.1/graphml-structure.xsd" target="_blank">graphml-structure.xsd</a>.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="graphml_common"></a>Reading and Writing GraphML
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class
+               <a href="../api/y/io/GraphMLIOHandler.html" title="Link to API documentation" target="_top">GraphMLIOHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> from package
+               <a href="../api/y/io/package-summary.html" title="Link to API documentation" target="_top">y.io<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+               provides I/O support for the GraphML file format.
+               It is a direct subclass of abstract class
+               <a href="../api/y/io/IOHandler.html" title="Link to API documentation" target="_top">IOHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, see also <a href="graphml.html#fig_graphml_classes" title="Figure&nbsp;9.2.&nbsp;GraphML I/O handler class hierarchy">Figure&nbsp;9.2, &#8220;GraphML I/O handler class hierarchy&#8221;</a>.
+               
+            </p>
+            <div class="figure"><a name="fig_graphml_classes"></a><p class="title"><b>Figure&nbsp;9.2.&nbsp;GraphML I/O handler class hierarchy</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/graphml_iohandler_3.jpg" align="middle" alt="GraphML I/O handler class hierarchy."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               The code fragment in <a href="graphml.html#ex_graphmliohandler" title="Example&nbsp;9.4.&nbsp;Instantiating a GraphMLIOHandler">Example&nbsp;9.4, &#8220;Instantiating a GraphMLIOHandler&#8221;</a> shows how to
+               instantiate and use a GraphMLIOHandler to write an instance of type
+               <a href="../api/y/view/Graph2D.html" title="Link to API documentation" target="_top">Graph2D<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to a GraphML-encoded file.
+               Class
+               <a href="../api/y/io/ZipGraphMLIOHandler.html" title="Link to API documentation" target="_top">ZipGraphMLIOHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+               can be used in a similar manner to write Zip-compressed GraphML files which are
+               up to 50 times smaller than their uncompressed counterparts.
+               
+            </p>
+            <div class="example"><a name="ex_graphmliohandler"></a><p class="title"><b>Example&nbsp;9.4.&nbsp;Instantiating a GraphMLIOHandler</b></p><pre class="programlisting java">
+public void encodeAsGraphML(Graph2D graph)
+{
+  // Instantiate a GraphML I/O handler and write the graph to file.
+  try {
+    IOHandler ioh = new GraphMLIOHandler();
+    ioh.write(graph, "MyGraphML.graphml");
+  }
+  catch (IOException ioEx) {
+    // Something went wrong. Complain.
+  }
+}
+</pre></div>
+            <p>
+               Reading and writing GraphML is done by the <tt class="code">read</tt> and <tt class="code">write</tt> methods.
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/IOHandler.html#read(y.view.Graph2D, java.io.InputStream)" title="Link to API documentation" target="_top">void read(Graph2D graph, InputStream in)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/IOHandler.html#read(y.view.Graph2D, java.lang.String)" title="Link to API documentation" target="_top">void read(Graph2D graph, String name)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/IOHandler.html#read(y.view.Graph2D, java.net.URL)" title="Link to API documentation" target="_top">void read(Graph2D graph, URL url)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/IOHandler.html#read(y.view.Graph2D, org.w3c.dom.Document)" title="Link to API documentation" target="_top">void read(Graph2D graph, Document documentElement)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Methods for reading GraphML.</td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/IOHandler.html#write(y.view.Graph2D, java.io.OutputStream)" title="Link to API documentation" target="_top">void write(Graph2D graph, OutputStream out)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/IOHandler.html#write(y.view.Graph2D, java.lang.String)" title="Link to API documentation" target="_top">void write(Graph2D graph, String name)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/IOHandler.html#write(y.view.Graph2D, java.io.Writer)" title="Link to API documentation" target="_top">void write(Graph2D graph, Writer writer)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Methods for writing GraphML.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="graphml_extension"></a>Reading and Writing Additional Data
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e34448"></a><p>
+               GraphML allows to associate in form of a GraphML document fragment to a graph element. This
+               section demonstrates the GraphML format for associated data and how to use the yFiles
+               library to write associated data in a GraphML file.
+               
+            </p><a class="indexterm" name="d0e34455"></a><a class="indexterm" name="d0e34460"></a><div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="graphml_ext_mechanism"></a>GraphML Default Extension Mechanism
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The GraphML default extension mechanism allows to declare so-called GraphML
+                  attributes that can be used to conveniently store additional information in a
+                  GraphML file.
+                  In its original form, this mechanism directly supports additional data of type
+                  boolean, int, long, float, double, and String.
+                  By means of customization to the default mechanism, however, GraphML attributes
+                  can be used to store data of arbitrary complexity and type.
+                  
+               </p>
+               <p>
+                  A GraphML attribute is declared using the <tt class="code">&lt;key&gt;</tt> element which comprises a
+                  unique identifier as well as scope, name, and the domain of values (i.e., the
+                  actual type) for the attribute.
+                  <a href="graphml.html#XML_attributes_key" title="Table&nbsp;9.3.&nbsp;XML attributes for GraphML <key&gt; element">Table&nbsp;9.3, &#8220;XML attributes for GraphML &lt;key&gt; element&#8221;</a> lists the set of XML attributes and
+                  describes their function within the declaration of a GraphML attribute.
+                  
+                  Note that in a GraphML file, <tt class="code">&lt;key&gt;</tt> elements must be placed before any
+                  &lt;graph&gt; element.
+                  
+               </p>
+               <div class="table"><a name="XML_attributes_key"></a><p class="title"><b>Table&nbsp;9.3.&nbsp;XML attributes for GraphML &lt;key&gt; element</b></p>
+                  <table summary="XML attributes for GraphML <key&gt; element" width="100%" border="0">
+                     <colgroup>
+                        <col width="20%" align="left">
+                        <col width="20%" align="left">
+                        <col width="60%" align="left">
+                     </colgroup>
+                     <thead valign="top">
+                        <tr>
+                           <th align="left">XML Attribute</th>
+                           <th align="left">Value Domain</th>
+                           <th align="left">Description</th>
+                        </tr>
+                     </thead>
+                     <tbody valign="top">
+                        <tr>
+                           <td align="left"><tt class="code">id</tt></td>
+                           <td align="left">NMTOKEN</td>
+                           <td align="left">
+                              Uniquely identifies the GraphML attribute declaration within a GraphML file.
+                              Required to enable the GraphML attribute look-up mechanism.
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><tt class="code">for</tt></td>
+                           <td align="left">one of "graph", "node", "edge", or "port"</td>
+                           <td align="left">Determines the scope of the GraphML attribute.</td>
+                        </tr>
+                        <tr>
+                           <td align="left"><tt class="code">attr.name</tt></td>
+                           <td align="left">NMTOKEN</td>
+                           <td align="left">
+                              Identifying name for the GraphML attribute that can be used by an application.
+                              
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><tt class="code">attr.type</tt></td>
+                           <td align="left">one of "boolean", "int", "long", "float", "double", or "string"</td>
+                           <td align="left">
+                              Determines the domain for the values (i.e., the actual type) of the GraphML
+                              attribute.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <p>
+                  Actual values for a GraphML attribute are defined using the <tt class="code">&lt;data&gt;</tt>
+                  element which is nested within the GraphML elements <tt class="code">&lt;graph&gt;</tt>, <tt class="code">&lt;node&gt;</tt>,
+                  <tt class="code">&lt;edge&gt;</tt>, or <tt class="code">&lt;port&gt;</tt>.
+                  Required with each <tt class="code">&lt;data&gt;</tt> element is XML attribute <tt class="code">key</tt>
+                  which is used by a look-up mechanism to find the proper GraphML attribute declaration
+                  for the contents of a given <tt class="code">&lt;data&gt;</tt> element.
+                  
+                  
+                  
+               </p>
+               <p>
+                  This GraphML attribute look-up mechanism is responsible for matching the value
+                  given for the <tt class="code">key</tt> attribute of a <tt class="code">&lt;data&gt;</tt> element to the unique
+                  ID defined by the <tt class="code">id</tt> attribute of a <tt class="code">&lt;key&gt;</tt> element.
+                  
+                  The mapping that is established by this match is essential for delegating the
+                  parsing of a given <tt class="code">&lt;data&gt;</tt> element to the proper parser code that handles the
+                  specific contents.
+                  
+                  
+                  
+               </p>
+               <p>
+                    The GraphML default extension mechanism can be customized to enable GraphML
+                    attributes that hold arbitrarily complex data.
+                    GraphMLIOHandler uses this mechanism to read and write additional data of simple and complex type.
+                    The basic technique to enhance the extension mechanism is to define a new XML
+                    attribute with the <tt class="code">&lt;key&gt;</tt> element and nest user-defined XML elements inside
+                    the <tt class="code">&lt;data&gt;</tt> element.
+                    
+               </p>
+               <p>
+                  The <tt class="code">&lt;key&gt;</tt> elements define a unique id which matches the <tt class="code">key</tt>
+                  attribute of the corresponding <tt class="code">&lt;data&gt;</tt> elements. The following GraphML
+                  example has <tt class="code">&lt;data&gt;</tt> elements which encode data for nodes and which
+                  are defined in the <tt class="code">&lt;key&gt;</tt> element with the id "d0".
+                  
+               </p>
+               <div class="example"><a name="default_extension_definition"></a><p class="title"><b>Example&nbsp;9.5.&nbsp;Outline of a GraphML file with GraphML attribute of simple type</b></p><pre class="programlisting xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;graphml xmlns="..."&gt;
+...
+&lt;!-- Definition of a GraphML attribute to store additional data for a --&gt;
+&lt;!-- graph's nodes. --&gt;
+  &lt;key id="d0" for="node" attr.name="boolean-value" attr.type="boolean"/&gt;
+
+  &lt;graph id="G" edgedefault="directed"&gt;
+    ...
+&lt;!-- A node that has a &lt;data&gt; element referring to the GraphML attribute --&gt;
+&lt;!-- "d0." The node's value (of type boolean) is "true." --&gt;
+    &lt;node id="n0"&gt;
+      &lt;data key="d0"&gt;true&lt;/data&gt;
+    &lt;/node&gt;
+    &lt;node id="n1"&gt;
+      &lt;data key="d0"&gt;false&lt;/data&gt;
+    &lt;/node&gt;
+    ...
+  &lt;/graph&gt;
+&lt;/graphml&gt;
+</pre></div>
+               <p>
+                  The XML structure of the enhanced GraphML file format as defined by the yFiles
+                  GraphML extension package can be seen from the following XML schema definition
+                  files:
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li><a href="http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd" target="_blank">ygraphml.xsd</a>
+                        declares additional XML elements to be nested within GraphML &lt;data&gt; elements
+                        
+                     </li>
+                     <li><a href="http://www.yworks.com/xml/schema/graphml/1.1/ygraphics.xsd" target="_blank">ygraphics.xsd</a>
+                        defines new XML elements that encode predefined yFiles realizer implementations
+                        and also all kinds of data types to be used with these newly defined XML
+                        elements
+                        
+                     </li>
+                     <li><a href="http://www.yworks.com/xml/schema/graphml/1.1/yprocessors.xsd" target="_blank">yprocessors.xsd</a>
+                        defines new XML elements that encode so-called post-processors
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="graphml_extension_simple"></a>Direct Support for Simple Data Types
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div><a class="indexterm" name="d0e34622"></a><p>
+                  <a href="../api/y/io/GraphMLIOHandler.html" title="Link to API documentation" target="_top">GraphMLIOHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> delegates most of the
+                  work to a core implementation, the <a href="../api/y/io/graphml/GraphMLHandler.html" title="Link to API documentation" target="_top">GraphMLHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  That handler can be obtained using the method <a href="../api/y/io/GraphMLIOHandler.html#getGraphMLHandler()" title="Link to API documentation" target="_top">getGraphMLHandler()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  Most aspects of GraphML reading and writing, e.g. adding attributes as shown in
+                  the next chapter, have to be configured at the core handler instead of
+                  GraphMLIOHandler itself.
+                  
+               </p>
+               <div class="example"><a name="ex_graphml_core"></a><p class="title"><b>Example&nbsp;9.6.&nbsp;Getting the core GraphMLHandler</b></p><pre class="programlisting java">
+GraphMLIOHandler ioh = new GraphMLIOHandler();
+GraphMLHandler core = ioh.getGraphMLHandler();
+</pre></div>
+               <p>
+                  Both reading and writing of additional data that is of simple types (like boolean, int, long, float,
+                  double, or String) is supported transparently. This means, an DataProvider that holds int values, for
+                  example, can be serialized to a GraphML attribute with minimal effort using the convenience functionality
+                  provided by GraphMLIOHandler (the same applies for the deserialization of a corresponding DataAcceptor).
+                  
+               </p>
+               <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Important</h3>
+                  <p>
+                     The yFiles GraphML extension package makes use of the data accessor
+                     implementations of the yFiles library to store the values of a GraphML
+                     attribute.
+                     However, these implementations provide no support for either TYPE_LONG or
+                     TYPE_FLOAT.
+                     Therefore, when storing the values of a GraphML attribute in a given data
+                     acceptor, TYPE_LONG is type-casted to int and TYPE_FLOAT is type-casted to
+                     double.
+                     
+                  </p>
+               </div>
+               <p>
+                  As already mentioned above, additional data of simple type is written in a GraphML file as shown in <a href="graphml.html#default_extension_definition" title="Example&nbsp;9.5.&nbsp;Outline of a GraphML file with GraphML attribute of simple type">Example&nbsp;9.5, &#8220;Outline of a GraphML file with GraphML attribute of simple type&#8221;</a>.
+                  
+               </p>
+               <p>
+                  For data consisting of structured types, reading and writing requires a (de)serializer to be registered.
+                  Custom (de)serialization is described in <a href="graphml.html#graphml_serialization" title="Serialization and Deserialization of Structured Data">the section called &#8220;Serialization and Deserialization of Structured Data&#8221;</a>.
+                  <a href="graphml.html#graphml_extension_maps_structured" title="Reading and Writing Data Using DataProviders and DataAcceptors as Data Holders">the section called &#8220;Reading and Writing Data Using DataProviders and DataAcceptors as Data Holders&#8221;</a> describes how the custom (de)serialization can be
+                  applied to write a complex mapped attribute.
+                  The following section handles mapped attributes of simple type.
+                  
+               </p>
+               <div class="section" lang="en">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title"><a name="graphml_extension_maps"></a>Reading and Writing Data Using DataProviders and DataAcceptors as Data Holders
+                           </h5>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+                  <p>
+                     The GraphML framework supports reading additional data most conveniently when using
+                     <a href="../api/y/base/DataProvider.html" title="Link to API documentation" target="_top">DataProvider<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and <a href="../api/y/base/DataAcceptor.html" title="Link to API documentation" target="_top">DataAcceptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                     instances to store the retrieved data. This functionality is built on top of the general
+                     serialization and deserialization support. GraphMLHandler provides a number of convenience methods
+                     that enable registering DataAcceptors as input data targets:
+                     
+                  </p>
+                  <div class="techn_templ">
+                     <center>
+                        <table width="100%" border="1">
+                           <colgroup>
+                              <col width="16%" align="left">
+                              <col width="84%" align="left">
+                           </colgroup>
+                           <tbody valign="top">
+                              <tr class="techn_api">
+                                 <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/graphml/GraphMLHandler.html#addInputDataAcceptor(java.lang.String, y.base.DataAcceptor, y.io.graphml.KeyScope, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">void addInputDataAcceptor(
+          String name,
+          DataAcceptor dataAcceptor,
+          KeyScope scope,
+          KeyType type)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/graphml/GraphMLHandler.html#addInputDataAcceptor(java.lang.String, y.base.DataAcceptor, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">void addInputDataAcceptor(
+          String name,
+          DataAcceptor dataAcceptor,
+          KeyType type)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/graphml/GraphMLHandler.html#addInputDataAcceptor(java.lang.String, java.lang.Object, y.io.graphml.KeyScope, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">void addInputDataAcceptor(
+          String name,
+          Object dataProviderKey,
+          KeyScope scope,
+          KeyType type)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                              </tr>
+                              <tr class="spacing">
+                                 <td align="left">Description</td>
+                                 <td align="left">Register a DataAcceptor instance for use as an input data target</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+                  <p>
+                     The DataAcceptor instances bind the data stored in GraphML attributes to their corresponding graph elements.
+                     The specified name must correspond to the <tt class="code">attr.name</tt> of the GraphML attribute's key definition.
+                     
+                  </p>
+                  <p>
+                     Class <a href="../api/y/io/graphml/KeyScope.html" title="Link to API documentation" target="_top">KeyScope<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> defines constants which define the "scope" of
+                     the attribute, e.g. <a href="../api/y/io/graphml/KeyScope.html#NODE" title="Link to API documentation" target="_top">KeyScope.NODE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> or
+                     <a href="../api/y/io/graphml/KeyScope.html#EDGE" title="Link to API documentation" target="_top">KeyScope.EDGE<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. In the corresponding GraphML <tt class="code">&lt;key&gt;</tt>
+                     element the scope is defined in the <tt class="code">for</tt> attribute.
+                     
+                  </p>
+                  <p>
+                     Similarly, class <a href="../api/y/io/graphml/KeyType.html" title="Link to API documentation" target="_top">KeyType<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> defines constants which define the
+                     "type" of the attribute data, e.g.
+                     <a href="../api/y/io/graphml/KeyType.html#STRING" title="Link to API documentation" target="_top">KeyType.STRING<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> or
+                     <a href="../api/y/io/graphml/KeyType.html#INT" title="Link to API documentation" target="_top">KeyType.INT<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. In the corresponding GraphML
+                     <tt class="code">&lt;key&gt;</tt>
+                     element the type is defined in the <tt class="code">attr.type</tt> attribute. If no key type is defined,
+                     the attribute is treated as complex (i.e. structured) data.
+                     
+                  </p>
+                  <p>
+                     <a href="graphml.html#ex_graphml_extension_read" title="Example&nbsp;9.7.&nbsp;Adding a GraphML attribute for reading to the GraphMLIOHandler">Example&nbsp;9.7, &#8220;Adding a GraphML attribute for reading to the GraphMLIOHandler&#8221;</a> shows how to register a data acceptor as input target
+                     for a GraphML attribute with node scope that stores <tt class="code">boolean</tt> values.
+                     
+                  </p>
+                  <div class="example"><a name="ex_graphml_extension_read"></a><p class="title"><b>Example&nbsp;9.7.&nbsp;Adding a GraphML attribute for reading to the GraphMLIOHandler</b></p><pre class="programlisting java">
+//  &lt;key id="d0" for="node" attr.name="boolean-value" attr.type="boolean"/&gt;
+GraphMLHandler core = ioHandler.getGraphMLHandler();
+core.addInputDataAcceptor("boolean-value",
+                          node2boolMap,
+                          KeyScope.NODE,
+                          KeyType.BOOLEAN);
+</pre></div>
+                  <p>
+                     As an alternative to registering already instantiated DataAcceptor instances as the input targets,
+                     GraphMLHandler also supports registering DataAcceptor "futures" using the class
+                     <a href="../api/y/io/graphml/Future.html" title="Link to API documentation" target="_top">Future<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. Basically, "future" means that
+                     DataAcceptor instances are created lazily depending on whether there is actually a GraphML attribute
+                     with a matching <tt class="code">attr.name</tt> specified in the GraphML file that is read.
+                     The following methods can be used to declare DataAcceptor "futures" when reading
+                     GraphML.
+                     
+                     
+                  </p>
+                  <div class="techn_templ">
+                     <center>
+                        <table width="100%" border="1">
+                           <colgroup>
+                              <col width="16%" align="left">
+                              <col width="84%" align="left">
+                           </colgroup>
+                           <tbody valign="top">
+                              <tr class="techn_api">
+                                 <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/graphml/GraphMLHandler.html#addInputDataAcceptorFuture(java.lang.String, y.io.graphml.KeyScope, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">Future addInputDataAcceptorFuture(
+          String name,
+          KeyScope scope,
+          KeyType type)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                              </tr>
+                              <tr class="spacing">
+                                 <td align="left">Description</td>
+                                 <td align="left">
+                                    Registers a "future" DataAcceptor for lazy creation
+                                    
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+                  <p>
+                     To write data from a <a href="../api/y/base/DataProvider.html" title="Link to API documentation" target="_top">DataProvider<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to a GraphML attribute,
+                     <a href="../api/y/io/graphml/GraphMLHandler.html" title="Link to API documentation" target="_top">GraphMLHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> provides a set of methods to register the
+                     DataProvider instance as an output data source that can be used analogously to the attribute input methods:
+                     
+                  </p>
+                  <div class="techn_templ">
+                     <center>
+                        <table width="100%" border="1">
+                           <colgroup>
+                              <col width="16%" align="left">
+                              <col width="84%" align="left">
+                           </colgroup>
+                           <tbody valign="top">
+                              <tr class="techn_api">
+                                 <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/graphml/GraphMLHandler.html#addOutputDataProvider(java.lang.String, y.base.DataProvider, y.io.graphml.KeyScope, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">void addOutputDataProvider(
+          String name,
+          DataProvider dataProvider,
+          KeyScope scope,
+          KeyType type)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/graphml/GraphMLHandler.html#addOutputDataProvider(java.lang.String, java.lang.String, y.base.DataProvider, y.io.graphml.KeyScope, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">void addOutputDataProvider(
+          String name,
+          String uri,
+          DataProvider dataProvider,
+          KeyScope scope,
+          KeyType type)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                              </tr>
+                              <tr class="spacing">
+                                 <td align="left">Description</td>
+                                 <td align="left">Register a DataProvider instance for use as an input data source</td>
+                              </tr>
+                              <tr class="techn_api">
+                                 <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/graphml/GraphMLHandler.html#addRegisteredOutputDataProvider(java.lang.String, y.io.graphml.KeyScope, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">void addRegisteredOutputDataProvider(
+          String name,
+          KeyScope scope,
+          KeyType type)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/graphml/GraphMLHandler.html#addRegisteredOutputDataProvider(java.lang.String, java.lang.Object, y.io.graphml.KeyScope, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">void addRegisteredOutputDataProvider(
+          String name,
+          Object registryTag,
+          KeyScope scope,
+          KeyType type)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/graphml/GraphMLHandler.html#addRegisteredOutputDataProvider(java.lang.String, java.lang.String, java.lang.Object, y.io.graphml.KeyScope, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">void addRegisteredOutputDataProvider(
+          String name,
+          String uri,
+          Object registryTag,
+          KeyScope scope,
+          KeyType type)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                              </tr>
+                              <tr class="spacing">
+                                 <td align="left">Description</td>
+                                 <td align="left">Add a DataProvider which is registered at the graph for use as an input data source</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+                  <p>
+                     <a href="graphml.html#ex_graphml_extension_rw" title="Example&nbsp;9.8.&nbsp;Adding a GraphML attribute for writing to the GraphMLIOHandler">Example&nbsp;9.8, &#8220;Adding a GraphML attribute for writing to the GraphMLIOHandler&#8221;</a> shows how to register a data
+                     provider writing a GraphML attribute with node scope and <tt class="code">boolean</tt> values.
+                     
+                  </p>
+                  <div class="example"><a name="ex_graphml_extension_rw"></a><p class="title"><b>Example&nbsp;9.8.&nbsp;Adding a GraphML attribute for writing to the GraphMLIOHandler</b></p><pre class="programlisting java">
+//  &lt;key id="d0" for="node" attr.name="boolean-value" attr.type="boolean"/&gt;
+
+// node2boolMap is a DataMap which implements
+// both DataAcceptor and DataProvider
+GraphMLHandler core = ioHandler.getGraphMLHandler();
+core.addOutputDataProvider("boolean-value",
+                          node2boolMap,
+                          KeyScope.NODE,
+                          KeyType.BOOLEAN);
+</pre></div>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="graphml_structured_data"></a>Support for Structured Data
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <div class="section" lang="en">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title"><a name="graphml_serialization"></a>Serialization and Deserialization of Structured Data
+                           </h5>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+                  <p>
+                     Serialization and deserialization logic for structured data can be provided by means of event listeners.
+                     Serialization for custom data will be handled by a
+                     <a href="../api/y/io/graphml/output/SerializationHandler.html" title="Link to API documentation" target="_top">SerializationHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, deserialization by a
+                     <a href="../api/y/io/graphml/input/DeserializationHandler.html" title="Link to API documentation" target="_top">DeserializationHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. Handling complex data mapped
+                     in a DataProvider / DataAcceptor is described in <a href="graphml.html#graphml_extension_maps_structured" title="Reading and Writing Data Using DataProviders and DataAcceptors as Data Holders">the section called &#8220;Reading and Writing Data Using DataProviders and DataAcceptors as Data Holders&#8221;</a>.
+                     In addition,
+                     <a href="../api/y/io/graphml/GraphMLHandler.html#addSerializationHandler(y.io.graphml.output.SerializationHandler)" title="Link to API documentation" target="_top">
+                        addSerializationHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and
+                     <a href="../api/y/io/graphml/GraphMLHandler.html#addDeserializationHandler(y.io.graphml.input.DeserializationHandler)" title="Link to API documentation" target="_top">
+                        addDeserializationHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> available with the GraphMLHandler can also be used to attach event
+                     listeners that provide custom (de)serialization logic. These event handlers can be used to realize general support
+                     for structured types in nested XML content of GraphML attribute data.
+                     The listeners will be invoked when
+                     <a href="../api/y/io/graphml/output/GraphMLWriteContext.html#serialize(java.lang.Object)" title="Link to API documentation" target="_top">serialize<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                     and <a href="../api/y/io/graphml/input/GraphMLParseContext.html#deserialize(org.w3c.dom.Node)" title="Link to API documentation" target="_top">
+                        deserialize<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> are invoked on the
+                     <a href="../api/y/io/graphml/output/GraphMLWriteContext.html" title="Link to API documentation" target="_top">GraphMLWriteContext<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> or
+                     <a href="../api/y/io/graphml/input/GraphMLParseContext.html" title="Link to API documentation" target="_top">GraphMLParseContext<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, respectively.
+                     
+                  </p>
+                  <p>
+                     <a href="graphml.html#ex_graphml_item_class" title="Example&nbsp;9.9.&nbsp;A simple class to be serialized">Example&nbsp;9.9, &#8220;A simple class to be serialized&#8221;</a> shows a simple class with a single String 
+                     value.
+                     
+                  </p>
+                  <div class="example"><a name="ex_graphml_item_class"></a><p class="title"><b>Example&nbsp;9.9.&nbsp;A simple class to be serialized</b></p><pre class="programlisting java">
+public static class Item {
+  private String value;
+
+  public Item(String value) {
+    this.value = value;
+  }
+
+  public String getValue() {
+    return value;
+  }
+}
+</pre></div>
+                  <p>
+                     The GraphML element which can be used to represent the example class is shown in
+                     <a href="graphml.html#ex_graphml_item_graphml" title="Example&nbsp;9.10.&nbsp;The GraphML element which represents the class Item">Example&nbsp;9.10, &#8220;The GraphML element which represents the class Item&#8221;</a>. The value can be represented as String, so it is best to
+                     serialize it as an attribute. 
+                     
+                  </p>
+                  <div class="example"><a name="ex_graphml_item_graphml"></a><p class="title"><b>Example&nbsp;9.10.&nbsp;The GraphML element which represents the class Item</b></p><pre class="programlisting xml">
+&lt;Item value="MyValue"/&gt;
+</pre></div>
+                  <p>
+                     In order to handle the example <tt class="code">Item</tt> class, a matching serializer (i.e. a
+                     <a href="../api/y/io/graphml/output/SerializationHandler.html" title="Link to API documentation" target="_top">SerializationHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>) and deserializer
+                     (<a href="../api/y/io/graphml/input/DeserializationHandler.html" title="Link to API documentation" target="_top">DeserializationHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>) have to be registered at
+                     the GraphMLHandler 
+                     as shown in <a href="graphml.html#ex_graphml_ser_registration" title="Example&nbsp;9.11.&nbsp;Registration of a custom serializer/deserializer">Example&nbsp;9.11, &#8220;Registration of a custom serializer/deserializer&#8221;</a>.
+                     
+                  </p>
+                  <div class="example"><a name="ex_graphml_ser_registration"></a><p class="title"><b>Example&nbsp;9.11.&nbsp;Registration of a custom serializer/deserializer</b></p><pre class="programlisting java">
+GraphMLIOHandler ioHandler = new GraphMLIOHandler();
+GraphMLHandler core = ioHandler.getGraphMLHandler();
+// register serializer and deserializer
+core.addSerializationHandler(new ItemSerializer());
+core.addDeserializationHandler(new ItemDeserializer());
+</pre></div>
+                  <p>
+                     A <a href="../api/y/io/graphml/output/SerializationHandler.html" title="Link to API documentation" target="_top">SerializationHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> has to implement the method
+                     <a href="../api/y/io/graphml/output/SerializationHandler.html#onHandleSerialization(y.io.graphml.output.SerializationEvent)" title="Link to API documentation" target="_top">
+                        onHandleSerialization(SerializationEvent event)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. The
+                     <a href="../api/y/io/graphml/output/SerializationEvent.html" title="Link to API documentation" target="_top">SerializationEvent<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> holds the necessary information
+                     to serialize an object. The object to deserialize can be obtained by
+                     <a href="../api/y/io/graphml/output/SerializationEvent.html#getItem()" title="Link to API documentation" target="_top">getItem()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>,
+                     the <a href="../api/y/io/graphml/output/XmlWriter.html" title="Link to API documentation" target="_top">XmlWriter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> instance which writes the GraphML
+                     can be obtained by
+                     <a href="../api/y/io/graphml/output/SerializationEvent.html#getWriter()" title="Link to API documentation" target="_top">getWriter()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. If necessary,
+                     <a href="../api/y/io/graphml/output/SerializationEvent.html#getContext()" title="Link to API documentation" target="_top">getContext()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                     yields the <a href="../api/y/io/graphml/output/GraphMLWriteContext.html" title="Link to API documentation" target="_top">GraphMLWriteContext<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                     
+                  </p>
+                  <p>
+                     The serializer has to verify whether it can handle the given item. If that is the case, it uses the given
+                     writer to write the XML. Important: after writing the XML, the event has to be marked as handled,
+                     so no other serializer will handle the item.
+                     
+                  </p>
+                  <p>
+                     An example <a href="../api/y/io/graphml/output/SerializationHandler.html" title="Link to API documentation" target="_top">SerializationHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> implementation which handles
+                     the serialization of the example class <tt class="code">Item</tt> is shown in <a href="graphml.html#ex_graphml_serializer" title="Example&nbsp;9.12.&nbsp;A custom serializer for the example class Item">Example&nbsp;9.12, &#8220;A custom serializer for the example class Item&#8221;</a>.
+                     
+                  </p>
+                  <div class="example"><a name="ex_graphml_serializer"></a><p class="title"><b>Example&nbsp;9.12.&nbsp;A custom serializer for the example class Item</b></p><pre class="programlisting java">
+public class ItemSerializer implements SerializationHandler {
+
+  public void onHandleSerialization(SerializationEvent event)
+                                      throws GraphMLWriteException {
+    // get the item to serialize
+    Object o = event.getItem();
+    // if this serializer can handle the item: handle it
+    // otherwise do nothing
+    if (o instanceof Item) {
+      Item item = (Item) o;
+      // Use the writer to write the Item element
+      XmlWriter writer = event.getWriter();
+      writer.writeStartElement("Item", null);
+      writer.writeAttribute("value", item.getValue());
+      writer.writeEndElement();
+      // The Item is serialized: Mark the event as handled
+      event.setHandled(true);
+    }
+  }
+}
+</pre></div>
+                  <p>
+                     Creating a custom serializer can be facilitated by using the abstract implementation
+                     <a href="../api/y/io/graphml/output/AbstractSerializer.html" title="Link to API documentation" target="_top">AbstractSerializer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. Using this class as base,
+                     developers have to implement the methods
+                     
+                  </p>
+                  <div class="itemizedlist">
+                     <ul type="disc">
+                        <li><a href="../api/y/io/graphml/output/AbstractSerializer.html#canHandle(y.io.graphml.output.SerializationEvent)" title="Link to API documentation" target="_top">
+                                  boolean canHandle(SerializationEvent e)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to return <tt class="code">true</tt> if the serializer
+                               claims to handle the given event.
+                             
+                        </li>
+                        <li><a href="../api/y/io/graphml/output/AbstractSerializer.html#serializeItem(java.lang.Object, y.io.graphml.output.XmlWriter, y.io.graphml.output.GraphMLWriteContext)" title="Link to API documentation" target="_top">
+                                  void serializeItem(Object item, XmlWriter writer, GraphMLWriteContext context)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to use the given
+                               writer to serialize the given item as XML.
+                             
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     
+                  </p>
+                  <p>
+                     The deserializer for the Item class is shown in <a href="graphml.html#ex_graphml_deserializer" title="Example&nbsp;9.13.&nbsp;A custom deserializer for the example class Item">Example&nbsp;9.13, &#8220;A custom deserializer for the example class Item&#8221;</a>.
+                     Similar to the serializer, it has to test whether it can handle the element, which usually
+                     is determined by the namespace and the name of the given
+                     <a href="../api/y/io/graphml/input/DeserializationEvent.html#getXmlNode()" title="Link to API documentation" target="_top">element<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                     If the element cannot be handled, the deserializer does nothing, if it can, the deserializer has
+                     to create a new instance of the class to deserialize and pass it as
+                     <a href="../api/y/io/graphml/input/DeserializationEvent.html#setResult()" title="Link to API documentation" target="_top">result<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to the event.
+                     
+                  </p>
+                  <div class="example"><a name="ex_graphml_deserializer"></a><p class="title"><b>Example&nbsp;9.13.&nbsp;A custom deserializer for the example class Item</b></p><pre class="programlisting java">
+public class ItemDeserializer implements DeserializationHandler {
+  public void onHandleDeserialization(DeserializationEvent event)
+                                        throws GraphMLParseException {
+    // get the element to parse
+    org.w3c.dom.Node xmlNode = event.getXmlNode();
+    // if the element can be parsed
+    // create a new instance
+    if (xmlNode.getNodeType() == org.w3c.dom.Node.ELEMENT_NODE
+            &amp;&amp; "Item".equals(xmlNode.getLocalName())) {
+      // create a new instance with the value of the "value" attribute
+      Item item = new Item(((Element) xmlNode).getAttribute("value"));
+      // pass the new instance as result
+      // Note: setting the result already marks the event as handled
+      event.setResult(item);
+    }
+  }
+}
+</pre></div>
+                  <p>
+                     Creating a custom serializer can be facilitated by using the abstract implementation
+                     <a href="../api/y/io/graphml/input/AbstractDeserializer.html" title="Link to API documentation" target="_top">AbstractDeserializer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. Using this class as base,
+                     developers have to implement the methods
+                     
+                  </p>
+                  <div class="itemizedlist">
+                     <ul type="disc">
+                        <li><a href="../api/y/io/graphml/input/AbstractDeserializer.html#canHandle(y.io.graphml.input.DeserializationEvent)" title="Link to API documentation" target="_top">
+                                  boolean canHandle(DeserializationEvent e)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to return <tt class="code">true</tt> if the deserializer
+                               claims to handle the given event.
+                             
+                        </li>
+                        <li><a href="../api/y/io/graphml/input/AbstractDeserializer.html#deserializeNode(org.w3c.dom.Node, y.io.graphml.input.GraphMLParseContext)" title="Link to API documentation" target="_top">
+                                  Object deserializeNode(Node xmlNode, GraphMLParseContext context)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to return the instance of the
+                               which is represented by the given XML node.
+                             
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     
+                  </p>
+               </div>
+               <div class="section" lang="en">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title"><a name="graphml_extension_maps_structured"></a>Reading and Writing Data Using DataProviders and DataAcceptors as Data Holders
+                           </h5>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+                  <p>
+                     <a href="../api/y/io/graphml/GraphMLHandler.html" title="Link to API documentation" target="_top">GraphMLHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> supports adding input data acceptors and output
+                     data providers together with a <a href="../api/y/io/graphml/input/DeserializationHandler.html" title="Link to API documentation" target="_top">DeserializationHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                     and <a href="../api/y/io/graphml/output/SerializationHandler.html" title="Link to API documentation" target="_top">SerializationHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, respectively:
+                     
+                  </p>
+                  <div class="techn_templ">
+                     <center>
+                        <table width="100%" border="1">
+                           <colgroup>
+                              <col width="16%" align="left">
+                              <col width="84%" align="left">
+                           </colgroup>
+                           <tbody valign="top">
+                              <tr class="techn_api">
+                                 <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/graphml/GraphMLHandler.html#addInputDataAcceptor(java.lang.String, y.base.DataAcceptor, y.io.graphml.KeyScope, y.io.graphml.input.DeserializationHandler)" title="Link to API documentation" target="_top">void addInputDataAcceptor(
+          String name,
+          DataAcceptor dataAcceptor,
+          KeyScope scope,
+          DeserializationHandler deserializationCallback)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                              </tr>
+                              <tr class="spacing">
+                                 <td align="left">Description</td>
+                                 <td align="left">Register a DataAcceptor together with a DeserializationHandler to handle complex data</td>
+                              </tr>
+                              <tr class="techn_api">
+                                 <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/graphml/GraphMLHandler.html#addOutputDataProvider(java.lang.String, y.base.DataProvider, y.io.graphml.output.SerializationHandler, y.io.graphml.KeyScope)" title="Link to API documentation" target="_top">void addOutputDataProvider(
+          String name,
+          DataProvider dataProvider,
+          SerializationHandler serializationCallback,
+          KeyScope scope)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/graphml/GraphMLHandler.html#addOutputDataProvider(java.lang.String, java.lang.String, y.base.DataProvider, y.io.graphml.output.SerializationHandler, y.io.graphml.KeyScope, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">void addOutputDataProvider(
+          String name,
+          String uri,
+          DataProvider dataProvider,
+          SerializationHandler serializationCallback,
+          KeyScope scope,
+          KeyType type)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                              </tr>
+                              <tr class="spacing">
+                                 <td align="left">Description</td>
+                                 <td align="left">Register a DataProvider together with a SerializationHandler to handle complex data</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="graphml_extension_dynamic"></a>Dynamic Registration of Attributes
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The general scheme for serialization and deserialization of data types uses
+                  so-called output handlers and input handlers.
+                  These handlers are responsible for writing out, respectively reading in
+                  (structured) data. The reading and writing mechanism discussed so far uses
+                  predefined input and output handler implementations behind the scenes.
+                  
+               </p>
+               <p>
+                  In most cases it is sufficient to rely on these implementation.
+                  However, using input and output handlers provides more flexibility in data handling like
+                  dynamic registering of such handlers:
+                  Event listener for registering both output handlers
+                  
+                  and input handlers
+                  
+                  can be attached to the GraphMLHandler using
+                  <a href="../api/y/io/graphml/GraphMLHandler.html#addInputHandlerProvider(y.io.graphml.input.InputHandlerProvider)" title="Link to API documentation" target="_top">addInputHandlerProvider()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  and
+                  <a href="../api/y/io/graphml/GraphMLHandler.html#addOutputHandlerProvider(y.io.graphml.output.OutputHandlerProvider)" title="Link to API documentation" target="_top">addOutputHandlerProvider()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  events, respectively.
+                  They are invoked by GraphMLHandler dynamically, i.e., at the time of writing or reading.
+                  
+               </p>
+               <p>
+                  A <a href="../api/y/io/graphml/input/InputHandlerProvider.html" title="Link to API documentation" target="_top">InputHandlerProvider<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> allows registering an input
+                  handler based on the GraphML data to parse (or to be more exact: depending on the <tt class="code">&lt;key&gt;</tt> definitions).
+                  The listener has to verify whether
+                  the <a href="../api/y/io/graphml/input/QueryInputHandlersEvent.html" title="Link to API documentation" target="_top">QueryInputHandlersEvent<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is not already handled
+                  and whether scope and name of the attribute match the handler's definitions. If that is the case,
+                  it registers the appropriate input handler and initializes it as shown in <a href="graphml.html#ex_query_input_handlers" title="Example&nbsp;9.14.&nbsp;Attaching input handlers to a GraphMLIOHandler instance">Example&nbsp;9.14, &#8220;Attaching input handlers to a GraphMLIOHandler instance&#8221;</a>.
+                  Registering the input handler marks the event as handled, so no other input handler will be registered
+                  for that key.
+                  
+               </p>
+               <div class="example"><a name="ex_query_input_handlers"></a><p class="title"><b>Example&nbsp;9.14.&nbsp;Attaching input handlers to a GraphMLIOHandler instance</b></p><pre class="programlisting java">
+// ioHandler is of type GraphMLIOHandler
+GraphMLHandler core = ioHandler.getGraphMLHandler();
+core.addInputHandlerProvider(new InputHandlerProvider() {
+  public void onQueryInputHandler(QueryInputHandlersEvent event)
+                                      throws GraphMLParseException {
+    Element keyDefinition = event.getKeyDefinition();
+    // Test whether the event is not yet handled
+    // and whether the key definitions are matching the handler
+    if (!event.isHandled()
+        &amp;&amp; GraphMLHandler.matchesScope(keyDefinition, KeyScope.EDGE)
+        &amp;&amp; GraphMLHandler.matchesName(keyDefinition, "myEdgeAttribute")) {
+      MyInputHandler handler = new MyInputHandler();
+      // initialize the handler
+      handler.initializeFromKeyDefinition(event.getContext(), keyDefinition);
+      // register the handler
+      event.addInputHandler(handler);
+    }
+  }
+});
+</pre></div>
+               <p>
+                  A <a href="../api/y/io/graphml/output/OutputHandlerProvider.html" title="Link to API documentation" target="_top">OutputHandlerProvider<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> allows registering an output
+                  handler dynamically. It is invoked each time GraphMLHandler starts a write process. An output handler can be registered
+                  as shown in <a href="graphml.html#ex_query_output_handlers" title="Example&nbsp;9.15.&nbsp;Attaching output handlers to a GraphMLIOHandler instance">Example&nbsp;9.15, &#8220;Attaching output handlers to a GraphMLIOHandler instance&#8221;</a>.
+                  
+               </p>
+               <div class="example"><a name="ex_query_output_handlers"></a><p class="title"><b>Example&nbsp;9.15.&nbsp;Attaching output handlers to a GraphMLIOHandler instance</b></p><pre class="programlisting java">
+// ioHandler is of type GraphMLIOHandler
+GraphMLHandler core = ioHandler.getGraphMLHandler();
+core.addOutputHandlerProvider(new OutputHandlerProvider() {
+  public void onQueryOutputHandler(QueryOutputHandlersEvent event)
+                                        throws GraphMLWriteException {
+      event.addOutputHandler(new MyOutputHandler(), KeyScope.EDGE);
+  }
+});
+</pre></div>
+               <p>
+                  Output handlers and input handlers are implementations of interfaces
+                  <a href="../api/y/io/graphml/output/OutputHandler.html" title="Link to API documentation" target="_top">OutputHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and
+                  <a href="../api/y/io/graphml/input/InputHandler.html" title="Link to API documentation" target="_top">InputHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>,
+                  respectively.
+                  For both interfaces there are abstract implementations available which serve as
+                  convenient base classes:
+                  
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li><a href="../api/y/io/graphml/output/AbstractOutputHandler.html" title="Link to API documentation" target="_top">AbstractOutputHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                        and
+                        <a href="../api/y/io/graphml/output/AbstractDataProviderOutputHandler.html" title="Link to API documentation" target="_top">AbstractDataProviderOutputHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></li>
+                     <li><a href="../api/y/io/graphml/input/AbstractInputHandler.html" title="Link to API documentation" target="_top">AbstractInputHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                        and
+                        <a href="../api/y/io/graphml/input/AbstractDataAcceptorInputHandler.html" title="Link to API documentation" target="_top">AbstractDataAcceptorInputHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  
+               </p>
+               <p>
+                  The predefined classes
+                  <a href="../api/y/io/graphml/output/ComplexDataProviderOutputHandler.html" title="Link to API documentation" target="_top">ComplexDataProviderOutputHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  and
+                  <a href="../api/y/io/graphml/input/ComplexDataAcceptorInputHandler.html" title="Link to API documentation" target="_top">ComplexDataAcceptorInputHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  provide the default support for writing and reading structured data that is
+                  held by DataProvider and DataAcceptor instances.
+                  
+               </p>
+               <p>
+                  The tutorial demo application <a href="../../src/demo/io/graphml/ComplexExtensionGraphMLDemo.java" title="Link to demo code" target="_top">ComplexExtensionGraphMLDemo.java</a> 
+                  shows how to read and write structured data.
+                  
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="graphml_custom_realizer"></a>Support for Custom Realizer Implementations
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               The yFiles GraphML extension package enables convenient (de)serialization of
+               node and edge realizers by means of so-called realizer serializers.
+               
+               Realizer serializers encapsulate the logic for encoding and parsing the
+               different kinds of realizer implementations available with the yFiles library.
+               
+               
+            </p>
+            <p>
+               <a href="graphml.html#fig_graphml_node_serializer" title="Figure&nbsp;9.3.&nbsp;GraphML node realizer serializer class hierarchy">Figure&nbsp;9.3, &#8220;GraphML node realizer serializer class hierarchy&#8221;</a> depicts the hierarchy of node
+               realizer serializer classes that are predefined by the yFiles GraphML extension
+               package.
+               Note that it reflects the hierarchy of the node realizer classes from package
+               <a href="../api/y/view/package-summary.html" title="Link to API documentation" target="_top">y.view<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+               
+            </p>
+            <div class="figure"><a name="fig_graphml_node_serializer"></a><p class="title"><b>Figure&nbsp;9.3.&nbsp;GraphML node realizer serializer class hierarchy</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/graphml_node_serializer_3.jpg" align="middle" alt="GraphML node realizer serializer class hierarchy."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  The hierarchy of predefined edge realizer serializer classes is analogous to
+                  that of the node realizer serializer classes as shown in
+                  <a href="graphml.html#fig_graphml_node_serializer" title="Figure&nbsp;9.3.&nbsp;GraphML node realizer serializer class hierarchy">Figure&nbsp;9.3, &#8220;GraphML node realizer serializer class hierarchy&#8221;</a>.
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="graphml_custom_realizer_serializer"></a>Support for Custom Realizer
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Adding support for custom realizer implementations to the GraphML file format
+                  can be done by registering appropriate custom serializers with the <a href="../api/y/io/GraphMLIOHandler.html" title="Link to API documentation" target="_top">GraphMLIOHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+                  GraphMLIOHandler provides a number of methods to register a RealizerSerializer:
+                  
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/GraphMLIOHandler.html#addNodeRealizerSerializer(y.io.graphml.NodeRealizerSerializer)" title="Link to API documentation" target="_top">void addNodeRealizerSerializer(NodeRealizerSerializer nrs)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/GraphMLIOHandler.html#addEdgeRealizerSerializer(y.io.graphml.EdgeRealizerSerializer)" title="Link to API documentation" target="_top">void addEdgeRealizerSerializer(EdgeRealizerSerializer ers)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Methods for registering serializers for custom node and edge realizers</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  GraphMLIOHandler delegates the management of
+                  realizer serializers to its core <a href="../api/y/io/graphml/graph2d/Graph2DGraphMLHandler.html" title="Link to API documentation" target="_top">Graph2DGraphMLHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, which also offers methods to
+                  register realizer serializers. Furthermore, the realizer serializers can also be removed from the Graph2DGraphMLHandler.
+                  
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/graphml/graph2d/Graph2DGraphMLHandler.html#addNodeRealizerSerializer(y.io.graphml.NodeRealizerSerializer)" title="Link to API documentation" target="_top">void addNodeRealizerSerializer(NodeRealizerSerializer nrs)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/graphml/graph2d/Graph2DGraphMLHandler.html#addEdgeRealizerSerializer(y.io.graphml.EdgeRealizerSerializer)" title="Link to API documentation" target="_top">void addEdgeRealizerSerializer(EdgeRealizerSerializer ers)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Methods for registering serializers for custom node and edge realizers</td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/graphml/graph2d/Graph2DGraphMLHandler.html#removeNodeRealizerSerializer(y.io.graphml.NodeRealizerSerializer)" title="Link to API documentation" target="_top">void removeNodeRealizerSerializer(NodeRealizerSerializer nrs)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/graphml/graph2d/Graph2DGraphMLHandler.html#removeEdgeRealizerSerializer(y.io.graphml.EdgeRealizerSerializer)" title="Link to API documentation" target="_top">void removeEdgeRealizerSerializer(EdgeRealizerSerializer ers)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Methods for removing serializers for custom node and edge realizers</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  The tasks of a serializer are similar to those described for serializers and deserializers in
+                  <a href="graphml.html#graphml_serialization" title="Serialization and Deserialization of Structured Data">the section called &#8220;Serialization and Deserialization of Structured Data&#8221;</a>.
+                  
+                  The encoding part of a serializer is responsible for generating any 
+                  user-defined XML elements which are nested within GraphML <tt class="code">&lt;data&gt;</tt> elements.
+                  
+                  The parsing part extracts its data by processing the DOM (Document Object 
+                  Model) structure of a GraphML file starting at the DOM node that represents a 
+                  GraphML <tt class="code">&lt;data&gt;</tt> elements.
+                  
+               </p>
+               <p>
+                  It is recommended to use the abstract classes
+                  <a href="../api/y/io/graphml/graph2d/AbstractNodeRealizerSerializer.html" title="Link to API documentation" target="_top">AbstractNodeRealizerSerializer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and
+                  <a href="../api/y/io/graphml/graph2d/AbstractEdgeRealizerSerializer.html" title="Link to API documentation" target="_top">AbstractEdgeRealizerSerializer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> as
+                  base for custom realizer serializers. These classes already handle the (usually) common
+                  tasks like reading and writing labels or the geometry.
+                  
+               </p>
+               <p>
+                  A node or edge realizer serializer which is based on the abstract classes has to
+                  implement the following methods:
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li><a href="../api/y/io/graphml/graph2d/NodeRealizerSerializer.html#getRealizerClass()" title="Link to API documentation" target="_top">getRealizerClass()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to return
+                        the class of the realizer to handle. The abstract implementation will query this method
+                        to determine whether a given realizer instance can be written by this serializer. The class returned
+                        by this method will also be used to create a new instance in the deserializing process.
+                        
+                     </li>
+                     <li><a href="../api/y/io/graphml/graph2d/NodeRealizerSerializer.html#getName()" title="Link to API documentation" target="_top">getName()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to return
+                        the name of the XML element which represents the realizer to handle. The abstract implementation
+                        will query this method to determine the name of the XML node to write to represent the realizer to serialize.
+                        The name will also be queried to determine whether a given XML node can be deserialized by this serializer.
+                        
+                     </li>
+                     <li><a href="../api/y/io/graphml/graph2d/NodeRealizerSerializer.html#getNamespaceURI()" title="Link to API documentation" target="_top">getNamespaceURI()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to return
+                        the namespace of the XML element which represents the realizer to handle.
+                        
+                     </li>
+                     <li><a href="../api/y/io/graphml/graph2d/NodeRealizerSerializer.html#write(y.view.NodeRealizer, y.io.graphml.output.XmlWriter, y.io.graphml.output.GraphMLWriteContext)" title="Link to API documentation" target="_top">
+                           void write(NodeRealizer realizer, XmlWriter writer, GraphMLWriteContext context)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to write the contents
+                        of the XML element which represents the realizer to serialize using the given
+                        <a href="../api/y/io/graphml/output/XmlWriter.html" title="Link to API documentation" target="_top">XmlWriter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. Implementations have to call
+                        the super implementation
+                         first before writing their own context. If
+                        custom attributes should be written to the top level element,
+                        <a href="../api/y/io/graphml/graph2d/NodeRealizerSerializer.html#writeAttributes(y.view.NodeRealizer, y.io.graphml.output.XmlWriter, y.io.graphml.output.GraphMLWriteContext)" title="Link to API documentation" target="_top">
+                           void writeAttributes(NodeRealizer realizer, XmlWriter writer, GraphMLWriteContext context)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                        has to be overridden, to write those attributes.
+                        
+                     </li>
+                     <li><a href="../api/y/io/graphml/graph2d/NodeRealizerSerializer.html#parse(y.view.NodeRealizer, org.w3c.dom.Node, y.io.graphml.input.GraphMLParseContext)" title="Link to API documentation" target="_top">
+                           void parse(NodeRealizer nr, Node domNode, GraphMLParseContext context)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> to set the properties of the
+                        given realizer according to the contents of the given XML element. Implementations have to call
+                        the super implementation first.
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  Tutorial demo application 
+                  <a href="../../src/demo/io/graphml/CustomNodeRealizerSerializerDemo.java" title="Link to demo code" target="_top">CustomNodeRealizerSerializerDemo.java</a>,
+                  which uses 
+                  <a href="../../src/demo/io/graphml/CustomNodeRealizerSerializer.java" title="Link to demo code" target="_top">CustomNodeRealizerSerializer.java</a>,
+                  shows the code of a custom realizer serializer, how it is registered with the 
+                  RealizerSerializerManager of a GraphMLIOHandler instance, and also how it is 
+                  used.
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="graphml_custom_realizer_generic"></a>Support for GenericNodeRealizer and GenericEdgeRealizer
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  A <a href="../api/y/view/GenericNodeRealizer.html" title="Link to API documentation" target="_top">GenericNodeRealizer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> or <a href="../api/y/view/GenericEdgeRealizer.html" title="Link to API documentation" target="_top">GenericEdgeRealizer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  is serialized automatically by writing out its
+                  <a href="../api/y/view/GenericNodeRealizer.html#getConfiguration()" title="Link to API documentation" target="_top">configuration name<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  See <a href="custom_realizers.html#customization_implements" title="Providing Interface Implementations">the section called &#8220;Providing Interface Implementations&#8221;</a> for details about customizing a generic node or edge
+                  realizer. The example configuration in that chapter which is registered with the name "Ellipse"
+                  will be serialized as &lt;y:GenericNode configuration="Ellipse"&gt;.
+                  
+               </p>
+               <p>
+                  When reading GraphML developers have to make sure that a generic node or edge realizer configuration
+                  with the serialized configuration name exists. If not a configuration with that name will be
+                  created using the default implementations.
+                  
+               </p>
+               <p>
+                  The <a href="../api/y/view/GenericNodeRealizer.html#getStyleProperties()" title="Link to API documentation" target="_top">style properties<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  and <a href="../api/y/view/GenericNodeRealizer.html#getUserData()" title="Link to API documentation" target="_top">user data<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  associated with the realizer will be (de)serialized automatically. Simple types will be (de)serialized
+                  without further configuration. For complex types, a matching
+                  <a href="../api/y/io/graphml/output/SerializationHandler.html" title="Link to API documentation" target="_top">SerializationHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and
+                  <a href="../api/y/io/graphml/input/DeserializationHandler.html" title="Link to API documentation" target="_top">DeserializationHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> have to be registered at the
+                  <a href="../api/y/io/graphml/GraphMLHandler.html" title="Link to API documentation" target="_top">GraphMLHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> as described in
+                  <a href="graphml.html#graphml_serialization" title="Serialization and Deserialization of Structured Data">the section called &#8220;Serialization and Deserialization of Structured Data&#8221;</a>.
+                  
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="graphml_advanced"></a>Advanced Topics
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               
+            </p><a class="indexterm" name="d0e35250"></a><div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="graphml_postprocessors"></a>yFiles GraphML Post-Processors
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                    yFiles GraphML provides support for advanced graph
+                    post-processing functionality.
+                    So-called post-processors are embedded statements in a GraphML file that
+                    reference code which is executed after the graph defined in the file is parsed.
+                  
+                    They allow to conveniently manipulate essential aspects of a GraphML-encoded
+                    graph directly following the parsing process and prior to display.
+                    
+               </p>
+               <p>
+                    For example, post-processors can be used to automatically compute a layout for
+                    a freshly parsed graph.
+                  
+                    Consequently, post-processors come in handy when graphs are automatically
+                    generated from data that inherently provide only structural information, i.e.,
+                    that lack coordinates or even dimensional information.
+                    
+               </p>
+               <p>
+                    A post-processor can be any class that inherits from
+                    <a href="../api/y/module/YModule.html" title="Link to API documentation" target="_top">YModule<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> which most notably includes the
+                    layout modules from package
+                    <a href="../api/y/module/package-summary.html" title="Link to API documentation" target="_top">y.module<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+                    Note however, that the services of a post-processor are not limited to
+                    providing automatic layout to a graph, resizing its nodes, or setting the
+                    background of a view.
+                    In fact, any kind of code can be part of such a class.
+                    
+               </p>
+               <p>
+                    Execution of a post-processor is started by calling its main startup method
+                    <a href="../api/y/module/YModule.html#start(y.view.Graph2D)" title="Link to API documentation" target="_top">start(Graph2D)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                    which is defined in class YModule.
+                    The Graph2D object that is given as the parameter is the freshly parsed graph
+                    from the GraphML file.
+                    
+               </p>
+               <p>
+                    The post-processor definitions are embedded in a GraphML file by means of a
+                    GraphML attribute that holds structured data.
+                    
+                    
+                    <a href="graphml.html#ex_graphml_postprocessors" title="Example&nbsp;9.16.&nbsp;yFiles-specific GraphML attribute for post-processors">Example&nbsp;9.16, &#8220;yFiles-specific GraphML attribute for post-processors&#8221;</a> shows the combination of values for
+                    XML attributes <tt class="code">yfiles.type</tt> and <tt class="code">for</tt> that is used to
+                    declare the post-processor GraphML attribute with graph scope.
+                    
+                    
+               </p>
+               <div class="example"><a name="ex_graphml_postprocessors"></a><p class="title"><b>Example&nbsp;9.16.&nbsp;yFiles-specific GraphML attribute for post-processors</b></p><pre class="programlisting xml">
+  &lt;!-- Support for post-processors for a graph. --&gt;
+  &lt;key id="d2" for="graph" yfiles.type="postprocessors"/&gt;
+  </pre></div>
+               <p>
+                    <a href="graphml.html#graphml_postprocessors_data" title="Example&nbsp;9.17.&nbsp;Post-processor setup">Example&nbsp;9.17, &#8220;Post-processor setup&#8221;</a> shows the general scheme of
+                    embedding post-processor definitions into a GraphML file.
+                    The &lt;y:Postprocessors&gt; element nested within the &lt;data&gt; element of a
+                    graph encloses any number of proper post-processor definitions, which comprise
+                    both the classname of the post-processor and the configuration for its
+                    parameters.
+                  
+                    The classname is given with the &lt;y:Processor&gt; element and the configuration
+                    is encoded using nested &lt;y:Option&gt; elements.
+                    XML attribute <tt class="code">name</tt> of such a &lt;y:Option&gt; element denotes a
+                    correspondingly named option item, which is part of the
+                    <a href="../api/y/option/OptionHandler.html" title="Link to API documentation" target="_top">OptionHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> object that is used to
+                    configure the post-processor's parameters.
+                    
+                    
+               </p>
+               <p>
+                    As described above, a post-processor is invoked after the graph defined in the
+                    GraphML file has been parsed.
+                    If multiple &lt;y:Processor&gt; elements appear within a &lt;y:Postprocessors&gt;
+                    element, they constitute a post-processing chain where the actual invocation
+                    order of post-processors is determined by their order of appearance.
+                    
+               </p>
+               <div class="example"><a name="graphml_postprocessors_data"></a><p class="title"><b>Example&nbsp;9.17.&nbsp;Post-processor setup</b></p><pre class="programlisting xml">
+  &lt;!-- A post-processor's setup nested within the &lt;data&gt; element of a graph. --&gt;
+  &lt;graph id="G" edgedefault="directed"&gt;
+    &lt;data key="d2"&gt;
+      &lt;y:Postprocessors&gt;
+        &lt;y:Processor class="y.module.HierarchicLayoutModule"&gt;
+          &lt;y:Option value="LAYOUT_GROUPS" name="GROUPING.GROUP_LAYOUT_POLICY"/&gt;
+          &lt;y:Option value="true" name="NODE_ORDER.USE_TRANSPOSITION"/&gt;
+          &lt;y:Option value="TOP_TO_BOTTOM" name="LAYOUT.ORIENTATION"/&gt;
+          &lt;y:Option value="TIGHT_TREE" name="NODE_RANK.RANKING_POLICY"/&gt;
+          &lt;y:Option value="POLYLINE" name="LAYOUT.EDGE_ROUTING"/&gt;
+        &lt;/y:Processor&gt;
+      &lt;/y:Postprocessors&gt;
+    &lt;/data&gt;
+    ...
+  &lt;/graph&gt;
+  </pre></div>
+               <p>
+                    The tutorial demo application
+                    <a href="../../src/demo/io/graphml/PostprocessorDemo.java" title="Link to demo code" target="_top">PostprocessorDemo.java</a>
+                    demonstrates the post-processor functionality provided by the yFiles GraphML
+                    extension package.
+                  
+                    Note that the demo can also be used to conveniently generate proper XML markup
+                    for predefined post-processors from either the yFiles library or the yFiles
+                    GraphML extension package.
+                  
+                    
+                    
+               </p>
+               <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Tip</h3>
+                  <p>
+                       
+                       The command line
+                       tool <a href="../../src/demo/io/GraphFormatConverter.java" title="Link to demo code" target="_top">GraphFormatConverter.java</a> can be used,
+                       for example, to conveniently create GIF or JPG images from a given graph
+                       encoded in GraphML file format.
+                       Furthermore, if suitable post-processors are embedded in the GraphML file, the
+                       actual conversion that is performed by the tool can also automatically adjust
+                       the widths of all nodes or calculate a layout for the graph.
+                       
+                       
+                  </p>
+               </div>
+            </div><a class="indexterm" name="d0e35316"></a><a class="indexterm" name="d0e35321"></a><div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="graphml_xslt"></a>yFiles XSLT Support for GraphML
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The yFiles GraphML extension package provides advanced conversion services for 
+                  arbitrary XML-based data. 
+                  By means of a suitable XSLT stylesheet any valid XML file can be transformed 
+                  into a graph structure encoded in GraphML file format. 
+                  
+               </p>
+               <p>
+                  The tutorial demo application 
+                  <a href="../../src/demo/io/graphml/XmlXslDemo.java" title="Link to demo code" target="_top">XmlXslDemo.java</a> shows how to
+                  import XML files as GraphML. 
+                  
+                  Predefined XSLT stylesheets are available for the following XML-based file 
+                  types and information: 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        Ant build scripts: 
+                        <a href="../../src/demo/io/graphml/resources/xsl/ant2graphml.xsl" title="Link to demo code" target="_top">ant2graphml.xsl</a></li>
+                     <li>
+                        OWL Web ontology data: 
+                        <a href="../../src/demo/io/graphml/resources/xsl/owl2graphml.xsl" title="Link to demo code" target="_top">owl2graphml.xsl</a></li>
+                     <li>
+                        XML data tree structure: 
+                        <a href="../../src/demo/io/graphml/resources/xsl/xmltree2graphml.xsl" title="Link to demo code" target="_top">xmltree2graphml.xsl</a></li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  
+               </p>
+               <p>
+                  Note that the predefined XSLT stylesheets make use of the yFiles 
+                  post-processors functionality: obviously, none of the aforementioned types of 
+                  XML data files provide coordinates or even dimensional information for its 
+                  content. 
+                  The XSLT stylesheets embed post-processors in each generated GraphML file which 
+                  automatically calculate a layout when the encoded graph is loaded. 
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="graphml_lowlevel_graph"></a>Reading and Writing Graphs of Arbitrary Type
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The most convenient way to use the yFiles GraphML extension package for reading 
+                  and writing GraphML file format is by using the services of class 
+                  GraphMLIOHandler. 
+                  However, being a true yFiles <a href="../api/y/io/IOHandler.html" title="Link to API documentation" target="_top">IOHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+                  this class requires a <a href="../api/y/view/Graph2D.html" title="Link to API documentation" target="_top">Graph2D<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> object when 
+                  reading or writing a file. 
+                  
+                  Using the class <a href="../api/y/io/graphml/GraphMLHandler.html" title="Link to API documentation" target="_top">GraphMLHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> it is also
+                  possible to read and write graphs of arbitrary type.
+                  
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="graphml_tutorial"></a>Tutorial Demo Code
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Loading and saving graphs in GraphML file format is demonstrated in the
+               tutorial demo application
+               <a href="../../src/demo/io/graphml/GraphMLDemo.java" title="Link to demo code" target="_top">GraphMLDemo.java</a>.
+               
+               <a href="../../src/demo/io/graphml/SimpleAttributesDemo.java" title="Link to demo code" target="_top">SimpleAttributesDemo.java</a> shows
+               a detailed example of how the GraphML default extension mechanism can be used
+               to read and write simple data types.
+               
+            </p>
+            <p>
+               For examples how customized encoding and parsing logic can be provided, please
+               see the following tutorial demo applications:
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li><a href="../../src/demo/io/graphml/ComplexExtensionGraphMLDemo.java" title="Link to demo code" target="_top">ComplexExtensionGraphMLDemo.java</a>
+                     shows how to read and write structured data.
+                     
+                  </li>
+                  <li><a href="../../src/demo/io/graphml/CustomNodeRealizerSerializerDemo.java" title="Link to demo code" target="_top">CustomNodeRealizerSerializerDemo.java</a>
+                     together with
+                     <a href="../../src/demo/io/graphml/CustomNodeRealizerSerializer.java" title="Link to demo code" target="_top">CustomNodeRealizerSerializer.java</a>
+                     shows how custom realizer serializers can be used.
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+               
+            </p>
+            <p>
+               <a href="../../src/demo/io/graphml/PostprocessorDemo.java" title="Link to demo code" target="_top">PostprocessorDemo.java</a>
+               demonstrates the post-processor functionality provided by the yFiles GraphML
+               extension package.
+               
+            </p>
+            <p>
+               <a href="../../src/demo/io/graphml/XmlXslDemo.java" title="Link to demo code" target="_top">XmlXslDemo.java</a> shows how XML files can imported 
+               as GraphML by the means of an XSLT stylesheet.
+               
+            </p>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="reading_writing.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="io.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="ygf.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Reading and Writing Graph Structure Data&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;YGF</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

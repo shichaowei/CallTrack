@@ -1,0 +1,820 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Interactive Organic Layout</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="layout.html" title="Chapter&nbsp;5.&nbsp;Automatic Graph Layout">
+      <link rel="previous" href="smart_organic_layouter.html" title="Organic Layout Style">
+      <link rel="next" href="orthogonal_layouter.html" title="Orthogonal Layout">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Interactive Organic Layout</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="smart_organic_layouter.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;5.&nbsp;Automatic Graph Layout</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="orthogonal_layouter.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="interactive_organic_layouter"></a>Interactive Organic Layout
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            
+            Class <a href="../api/y/layout/organic/InteractiveOrganicLayouter.html" title="Link to API documentation" target="_top">InteractiveOrganicLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+            provides <a href="smart_organic_layouter.html" title="Organic Layout Style">organic layout</a> for use in 
+            interactive environments. 
+            
+            
+            
+            Its strength is its capability to generate continuous updates to the layout of 
+            a graph during calculation. 
+            Furthermore, it also allows a user to seemingly simultaneously perform 
+            arbitrary modifications to a graph, which are subsequently accounted for in the 
+            layout calculation. 
+            
+            
+            
+            
+         </p>
+         <p>
+            In contrast to the majority of yFiles layout algorithms, class 
+            InteractiveOrganicLayouter does not inherit from CanonicMultiStageLayouter, but 
+            is instead provided as an implementation of interface 
+            <a href="../api/y/layout/Layouter.html" title="Link to API documentation" target="_top">Layouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> as depicted in 
+            <a href="interactive_organic_layouter.html#fig_iol" title="Figure&nbsp;5.62.&nbsp;Interactive organic layout implementation">Figure&nbsp;5.62, &#8220;Interactive organic layout implementation&#8221;</a>. 
+            
+         </p>
+         <div class="figure"><a name="fig_iol"></a><p class="title"><b>Figure&nbsp;5.62.&nbsp;Interactive organic layout implementation</b></p>
+            <div class="informaltable">
+               <center>
+                  <table border="0">
+                     <colgroup>
+                        <col width="100%">
+                     </colgroup>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/layouter_iol.jpg" align="middle" alt="Interactive organic layout implementation."></div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <p>
+            Among other things, this means that there is no special support for routing of 
+            either self-loops or parallel edges, for example. 
+            In particular, when a graph contains parallel edges, they will be routed using 
+            overlapping edge paths. 
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="iol_usage"></a>General Usage
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               InteractiveOrganicLayouter is designed to be used in a concurrent setup where 
+               the layout algorithm runs in a thread of its own. 
+               
+               This enables an application that executes on the event-dispatching thread (EDT) 
+               and presents a graphical user interface (GUI) to the user to remain fully 
+               interactive even while the layout algorithm performs its calculations. 
+               
+               
+               Moreover, the actual setup also enables modifications to the graph seemingly 
+               simultaneous to the layout calculation by InteractiveOrganicLayouter. 
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="iol_setup"></a>Setup
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  First and foremost, the setup for using interactive organic layout relies on a thread 
+                  to encapsulate the layout functionality. 
+                  The thread can be created and started by means of the following convenience method. 
+                  It subsequently begins the layout calculation for the given graph.
+                  
+               </p>
+               <div class="techn_templ"><a name="meths_thread_creation"></a><center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#startLayout(y.layout.LayoutGraph)" title="Link to API documentation" target="_top">Thread startLayout(LayoutGraph graph)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Creates and starts the layout thread.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  If the graph that is to be processed by InteractiveOrganicLayouter is intended 
+                  to allow structural modifications by a user, then it is strongly recommended to 
+                  use an instance of <a href="../api/y/layout/CopiedLayoutGraph.html" title="Link to API documentation" target="_top">CopiedLayoutGraph<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  instead of a simple LayoutGraph. 
+                  Doing so helps avoiding race conditions and synchronization problems that occur 
+                  when nodes and/or edges can be added to or removed from the graph while the 
+                  layout algorithm performs its calculations.
+                  
+               </p>
+               <p>
+                  Creation of the layout thread using a copy of the original graph is shown in 
+                  <a href="interactive_organic_layouter.html#ex_layout_thread" title="Example&nbsp;5.33.&nbsp;Creating the layout thread">Example&nbsp;5.33, &#8220;Creating the layout thread&#8221;</a>.
+                  
+               </p>
+               <div class="example"><a name="ex_layout_thread"></a><p class="title"><b>Example&nbsp;5.33.&nbsp;Creating the layout thread</b></p><pre class="programlisting java">
+void createAndStartLayoutThread(InteractiveOrganicLayouter iol, 
+                                LayoutGraph graph) {
+  // Create a copy of the given graph. Using an instance of CopiedLayoutGraph 
+  // helps avoiding race conditions with graph *structure* modifications from a 
+  // user. 
+  final CopiedLayoutGraph clg = new CopiedLayoutGraph(graph);
+  iol.startLayout(clg);
+}
+</pre></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="iol_state"></a>State
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Interactive organic layout algorithm can be in either of three states: running, 
+                  sleeping, or stopped. 
+                  When running, the algorithm lives on the allowed maximal runtime and 
+                  continuously calculates "intermediate" layouts for the given graph. 
+                  When sleeping, the algorithm does nothing, but is still "alive." 
+                  In contrast, when stopped, the algorithm is terminated. 
+                  
+                  <a href="interactive_organic_layouter.html#fig_iol_state" title="Figure&nbsp;5.63.&nbsp;State diagram for InteractiveOrganicLayouter">Figure&nbsp;5.63, &#8220;State diagram for InteractiveOrganicLayouter&#8221;</a> depicts the states and the possible state 
+                  transitions of InteractiveOrganicLayouter. 
+                  
+               </p>
+               <div class="figure"><a name="fig_iol_state"></a><p class="title"><b>Figure&nbsp;5.63.&nbsp;State diagram for InteractiveOrganicLayouter</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/iol_states.jpg" align="middle" alt="State diagram for InteractiveOrganicLayouter."></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  The following methods can be used to query the current state of an InteractiveOrganicLayouter 
+                  instance, change its state, and set the maximal runtime. 
+                  
+                  Note that when an instance is changed from "sleeping" to "running" state, the maximal 
+                  runtime is again fully available.
+                  
+               </p>
+               <div class="techn_templ"><a name="meths_iol_state"></a><center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#isRunning()" title="Link to API documentation" target="_top">boolean isRunning()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#isSleeping()" title="Link to API documentation" target="_top">boolean isSleeping()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#isStopped()" title="Link to API documentation" target="_top">boolean isStopped()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Getter methods to query the algorithm's current state.</td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#wakeUp()" title="Link to API documentation" target="_top">void wakeUp()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#stop()" title="Link to API documentation" target="_top">void stop()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#stopAndWait()" title="Link to API documentation" target="_top">void stopAndWait()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Methods to change the current state.</td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#setMaxTime(long)" title="Link to API documentation" target="_top">void setMaxTime(long maxTime)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Determines the maximal runtime when in "running" state.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="iol_polling"></a>Polling for Results
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The concurrent setup as used with InteractiveOrganicLayouter means that the 
+                  layout process does not return a single result by itself, but instead 
+                  continuously generates "intermediate" results as long as it is in "running" 
+                  state. 
+                  These results are in the layout algorithm's data structures only, but can be 
+                  polled by a user at any time and be used as continuous updates to the layout of 
+                  a graph. 
+                  
+               </p>
+               <p>
+                  The following methods allow to easily poll either the current coordinates of single 
+                  nodes or commit all current positions of nodes to the original graph at once:
+                  
+               </p>
+               <div class="techn_templ"><a name="meths_iol_get"></a><center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#getCenterX(y.base.Node)" title="Link to API documentation" target="_top">double getCenterX(Node node)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#getCenterY(y.base.Node)" title="Link to API documentation" target="_top">double getCenterY(Node node)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#getCenter(y.base.Node)" title="Link to API documentation" target="_top">YPoint getCenter(Node node)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Retrieve the current center coordinate(s) of a single node from InteractiveOrganicLayouter's 
+                                 data structures.
+                                 
+                              </td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#commitPositions()" title="Link to API documentation" target="_top">void commitPositions()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#commitPositionsSmoothly(double, double)" title="Link to API documentation" target="_top">double commitPositionsSmoothly(double maxMovement, double percentage)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Updates all node locations with the coordinates from InteractiveOrganicLayouter's 
+                                 data structures.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  Typically, to assign the "intermediate" results in a contiuous fashion to the 
+                  original graph, a technique similar to that outlined in 
+                  <a href="interactive_organic_layouter.html#ex_iol_polling" title="Example&nbsp;5.34.&nbsp;Repeatedly polling InteractiveOrganicLayouter for the current node positions">Example&nbsp;5.34, &#8220;Repeatedly polling InteractiveOrganicLayouter for the current node positions&#8221;</a> can be used. 
+                  The current positions of all nodes are repeatedly polled by means of a 
+                  <tt class="classname">javax.swing.Timer</tt>. 
+                  
+               </p>
+               <div class="example"><a name="ex_iol_polling"></a><p class="title"><b>Example&nbsp;5.34.&nbsp;Repeatedly polling InteractiveOrganicLayouter for the current node positions</b></p><pre class="programlisting java">
+void createAndStartPollingTimer(final InteractiveOrganicLayouter iol) {
+  // Create and start a Timer object that will poll the given 
+  // InteractiveOrganicLayouter instance every 25 milliseconds to update the 
+  // node positions in the original graph. 
+  new javax.swing.Timer(25, new ActionListener() {
+    public void actionPerformed(ActionEvent ae) {
+      // Test if the layout algorithm is in running state. 
+      if (iol == null || !iol.isRunning()) {
+        return;
+      }
+      // Smoothly update the node positions from the layout algorithm's data 
+      // structures to the original graph. 
+      iol.commitPositionsSmoothly(50, 0.15);
+    }
+  }).start();
+}
+</pre></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="iol_interaction"></a>Interaction
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The interactive organic layout algorithm allows a user to seemingly 
+                  simultaneously modify node positions and also node-related parameters while 
+                  layout calculation takes place. 
+                  
+                  The following methods can be used to update InteractiveOrganicLayouter's data structures 
+                  with new node positions, and also to specify further node-related parameters that 
+                  determine, e.g., the size of a node or its inertia:
+                  
+               </p>
+               <div class="techn_templ"><a name="meths_iol_set"></a><center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#setCenterX(y.base.Node, double)" title="Link to API documentation" target="_top">void setCenterX(Node node, double x)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#setCenterY(y.base.Node, double)" title="Link to API documentation" target="_top">void setCenterY(Node node, double y)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#setCenter(y.base.Node, double, double)" title="Link to API documentation" target="_top">void setCenter(Node node, double x, double y)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Set the current center coordinate(s) of a single node in InteractiveOrganicLayouter's 
+                                 data structures.
+                                 
+                              </td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#setInertia(y.base.Node, double)" title="Link to API documentation" target="_top">void setInertia(Node node, double inertia)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#setRadius(y.base.Node, double)" title="Link to API documentation" target="_top">void setRadius(Node node, double radius)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Further node-related parameters used by InteractiveOrganicLayouter.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  In addition, InteractiveOrganicLayouter optionally also supports modifications 
+                  to the original graph's structure, i.e., nodes and/or edges can be added to or 
+                  removed from the graph and the layout calculation subsequently properly 
+                  accounts for these changes. 
+                  
+                  The following setter method has to be used to enable support for structural modifications.
+                  
+               </p>
+               <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Important</h3>
+                  <p>
+                     To avoid race conditions and synchronization problems when structural changes 
+                     to the graph are allowed, it is strongly recommended to provide 
+                     InteractiveOrganicLayouter a copy of the original graph using an instance of 
+                     CopiedLayoutGraph. 
+                     See also <a href="interactive_organic_layouter.html#iol_setup" title="Setup">the section called &#8220;Setup&#8221;</a>. 
+                     
+                  </p>
+               </div>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#setAutomaticStructureUpdateEnabled(boolean)" title="Link to API documentation" target="_top">void setAutomaticStructureUpdateEnabled(boolean enable)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Enables/disables automatic updates for structural changes in the original graph.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  To properly support arbitrary structural modifications to the original graph, 
+                  interactive organic layout relies on proper notification by means of graph 
+                  events. 
+                  To this end, a <a href="../api/y/base/GraphListener.html" title="Link to API documentation" target="_top">GraphListener<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is 
+                  registered with the original graph that informs InteractiveOrganicLayouter of 
+                  any structural changes that occur. 
+                  
+                  See also the description of graph listeners in 
+                  <a href="events_and_listeners.html" title="Events and Listeners">the section called &#8220;Events and Listeners&#8221;</a>. 
+                  
+               </p>
+               <p>
+                  As an alternative to using automatic structure updates, the structure of the 
+                  original graph can also be synchronized explicitly using code similar to that 
+                  shown in <a href="interactive_organic_layouter.html#ex_iol_sync" title="Example&nbsp;5.35.&nbsp;Performing explicit structure updates">Example&nbsp;5.35, &#8220;Performing explicit structure updates&#8221;</a>. 
+                  
+               </p>
+               <div class="example"><a name="ex_iol_sync"></a><p class="title"><b>Example&nbsp;5.35.&nbsp;Performing explicit structure updates</b></p><pre class="programlisting java">
+// 'iol' is of type y.layout.organic.InteractiveOrganicLayouter. 
+
+boolean enabled = iol.isAutomaticStructureUpdateEnabled();
+// Disable automatic structure updates. 
+iol.setAutomaticStructureUpdateEnabled(false);
+
+// Perform the actual graph structure modifications on the original graph. 
+// For example, remove some nodes and edges... 
+modifyOriginalGraphStructureHere();
+
+// Synchronize the structure of the original graph with that of the copy given 
+// to InteractiveOrganicLayouter. 
+iol.syncStructure();
+
+// Reset to previous behavior for automatic structure updates. 
+iol.setAutomaticStructureUpdateEnabled(enabled);
+</pre></div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="interactive_organic_dataprovider"></a>Supplemental Layout Data
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class InteractiveOrganicLayouter knows a number of data provider keys which 
+               are used to retrieve supplemental layout data for a graph's elements. 
+               
+               The data is bound to the graph by means of a data provider, which is registered 
+               using a given look-up key. 
+               <a href="interactive_organic_layouter.html#tab_interactive_organic_keys" title="Table&nbsp;5.42.&nbsp;Data provider look-up keys">Table&nbsp;5.42, &#8220;Data provider look-up keys&#8221;</a> lists all look-up keys for 
+               InteractiveOrganicLayouter. 
+               
+            </p>
+            <p>
+               Binding supplemental layout data to a graph is described in 
+               <a href="layout_concepts.html#supplemental_information" title="Providing Supplemental Layout Data">the section called &#8220;Providing Supplemental Layout Data&#8221;</a>. 
+               
+            </p>
+            <div class="table"><a name="tab_interactive_organic_keys"></a><p class="title"><b>Table&nbsp;5.42.&nbsp;Data provider look-up keys</b></p>
+               <table summary="Data provider look-up keys" width="100%" border="1">
+                  <colgroup>
+                     <col width="25%" align="left">
+                     <col width="10%" align="left">
+                     <col width="10%" align="left">
+                     <col width="55%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Key</th>
+                        <th align="left">Element Type</th>
+                        <th align="left">Value Type</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/organic/OrganicLayouter.html#PREFERRED_EDGE_LENGTH_DATA" title="Link to API documentation" target="_top">PREFERRED_EDGE_LENGTH_DATA<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">double</td>
+                        <td align="left">
+                             For each edge a double value that indicates its preferred length. 
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="interactive_organic_options"></a>Layout Options
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Interactive organic layout provides a set of options that affect its behavior. 
+               These options can be set using the setter methods of class InteractiveOrganicLayouter.
+               
+            </p>
+            <div class="techn_templ"><a name="meths_iol_max_runtime"></a><center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Maximal Runtime</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#setMaxTime(long)" title="Link to API documentation" target="_top">void setMaxTime(long time)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Sets the maximal duration of the layout process in milliseconds. 
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               After the layout process has finished or the time specified using <a href="interactive_organic_layouter.html#meths_iol_max_runtime">Maximal Runtime</a> 
+               is spent, InteractiveOrganicLayouter will sleep, i.e., it has to be awakened before 
+               another layout process can be invoked (see also the description of <a href="interactive_organic_layouter.html#iol_state" title="State">running/sleeping state of InteractiveOrganicLayouter</a>).
+               
+            </p>
+            <p>
+               If this upper bound is hit during the layout process, the quality of the layout 
+               may not be optimal. 
+               Increasing the value increases the likeliness of an optimal layout.
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Preferred Node Distance</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#setPreferredNodeDistance(double)" title="Link to API documentation" target="_top">void setPreferredNodeDistance(double distance)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              The preferred node distance which will be used to calculate the layout. 
+                              The layout algorithm tries to arrange the nodes in such a way that the desired distance 
+                              is complied with.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               The following methods allow to specify both the general preferred length for all 
+               edges as well as individual preferred edge lengths. 
+               The layout algorithm tries to arrange the nodes in such a way that the edges have 
+               the desired edge length. 
+               
+               Note that the edge length is measured from node border to node border.
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Preferred Edge Length</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#setPreferredEdgeLength(double)" title="Link to API documentation" target="_top">void setPreferredEdgeLength(double preferredEdgeLength)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#setPreferredEdgeLength(y.base.Edge, double)" title="Link to API documentation" target="_top">void setPreferredEdgeLength(Edge edge, double newEdgeLength)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Setter methods for both general preferred edge lengths as well as individual preferred 
+                              edge lengths.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               Alternatively, to specify the preferred edge length for each edge individually, 
+               a data provider holding such supplemental layout data can be bound to the graph. 
+               The data provider is expected to be registered with the graph using key <a href="../api/y/layout/organic/OrganicLayouter.html#PREFERRED_EDGE_LENGTH_DATA" title="Link to API documentation" target="_top">PREFERRED_EDGE_LENGTH_DATA<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               
+               Note that in the absence of an individual preferred edge length the general preferred 
+               edge length will be used.
+               
+            </p>
+            <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Important</h3>
+               <p>
+                  Although the data provider look-up key defined in class OrganicLayouter is 
+                  used to specify individual preferred edge lengths, the actual type of data 
+                  provided are double values. 
+                  
+               </p>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Quality</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#setQuality(double)" title="Link to API documentation" target="_top">void setQuality(double quality)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              This setting can be used to adjust the quality of the layout calculated by the layout 
+                              algorithm. 
+                              Small values lead to short running times, while greater values result in better 
+                              quality. 
+                              For large graph structures (hundreds and thousands of nodes) it is advisable to 
+                              begin with smaller values and to gradually increase them.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="d0e11906"></a>Output Restrictions
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Class InteractiveOrganicLayouter allows to impose so-called 
+                  "output restrictions" on the result of the layout calculcation. 
+                  More precisely, the layout result can be determined to fit into a specified 
+                  region, e.g., a rectangle or a circle. 
+                  Also, the layout result can be restricted to a specified aspect ratio, too. 
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/organic/InteractiveOrganicLayouter.html#setOutputRestriction(y.layout.organic.OutputRestriction)" title="Link to API documentation" target="_top">void setOutputRestriction(OutputRestriction outputRestriction)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Class <a href="../api/y/layout/organic/OutputRestriction.html" title="Link to API documentation" target="_top">OutputRestriction<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> serves as 
+                                 a factory to create predefined output restrictions that can be used in conjunction 
+                                 with this setter method. 
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="interactive_organic_tutorial"></a>Tutorial Demo Code
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Using the layout functionality of class 
+               <a href="../api/y/layout/organic/InteractiveOrganicLayouter.html" title="Link to API documentation" target="_top">InteractiveOrganicLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> in 
+               an interactive environment where the user can "live"-drag nodes is presented in 
+               detail in the following tutorial demo applications: 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li><a href="../../src/demo/layout/organic/InteractiveOrganicDemo.java" title="Link to demo code" target="_top">InteractiveOrganicDemo.java</a></li>
+                  <li><a href="../../src/demo/layout/organic/NavigationDemo.java" title="Link to demo code" target="_top">NavigationDemo.java</a></li>
+                  <li><a href="../../src/demo/layout/organic/AnimatedNavigationDemo.java" title="Link to demo code" target="_top">AnimatedNavigationDemo.java</a></li>
+               </ul>
+            </div>
+            <p>
+               
+               
+            </p>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="smart_organic_layouter.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="layout.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="orthogonal_layouter.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Organic Layout Style&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Orthogonal Layout</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

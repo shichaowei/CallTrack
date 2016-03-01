@@ -1,0 +1,257 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Layout Stages</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="layout.html" title="Chapter&nbsp;5.&nbsp;Automatic Graph Layout">
+      <link rel="previous" href="incremental_layout.html" title="Incremental Layout">
+      <link rel="next" href="layout_stages_ComponentLayouter.html" title="Class ComponentLayouter">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Layout Stages</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="incremental_layout.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;5.&nbsp;Automatic Graph Layout</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="layout_stages_ComponentLayouter.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="layout_stages"></a>Layout Stages
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div><a class="indexterm" name="d0e4977"></a><p>
+            A layout stage, as already explained in <a href="layout_concepts.html#stages" title="The Layout Stages Concept">the section called &#8220;The Layout Stages Concept&#8221;</a>, serves as a 
+            standardized container that encapsulates arbitrary layout functionality and 
+            provides a general means to string together multiple layout stages into a 
+            compound layout process. 
+            
+            It is an implementation of interface 
+            <a href="../api/y/layout/LayoutStage.html" title="Link to API documentation" target="_top">LayoutStage<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and most commonly also an 
+            extension of abstract class 
+            <a href="../api/y/layout/AbstractLayoutStage.html" title="Link to API documentation" target="_top">AbstractLayoutStage<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+            
+         </p>
+         <p>
+            The encapsulated layout functionality of the predefined yFiles layout stages covers 
+            special-purpose layouts (see <a href="layout_stages.html#tab_layout_stages_special_purpose" title="Table&nbsp;5.19.&nbsp;Layout stages that provide special-purpose layout functionality">Table&nbsp;5.19, &#8220;Layout stages that provide special-purpose layout functionality&#8221;</a>) 
+            as well as enhancements to the layout process of specific layout styles (for example, 
+            <a href="tree_layouter.html#tree_layouter_stages" title="Enhancing the Layout Process">tree layout</a> and <a href="orthogonal_layouter.html#orthogonal_stages" title="Applicable Layout Stages">orthogonal layout</a>) 
+            and edge routing styles, respectively (see <a href="orthogonal_edge_router.html#orthogonal_router_stages" title="Enhancing the Routing Process">orthogonal edge routing</a>).
+            
+         </p>
+         <p>
+            <a href="layout_stages.html#tab_layout_stages_layout_process" title="Table&nbsp;5.18.&nbsp;Predefined layout stages">Table&nbsp;5.18, &#8220;Predefined layout stages&#8221;</a> lists another kind of layout 
+            stages that contribute to the inner workings of a layout process itself. 
+            
+         </p>
+         <div class="table"><a name="tab_layout_stages_layout_process"></a><p class="title"><b>Table&nbsp;5.18.&nbsp;Predefined layout stages</b></p>
+            <table summary="Predefined layout stages" width="100%" border="1">
+               <colgroup>
+                  <col width="33%" align="left">
+                  <col width="67%" align="left">
+               </colgroup>
+               <thead valign="top">
+                  <tr>
+                     <th align="left">Classname</th>
+                     <th align="left">Description</th>
+                  </tr>
+               </thead>
+               <tbody valign="top">
+                  <tr>
+                     <td align="left"><a href="../api/y/layout/ComponentLayouter.html" title="Link to API documentation" target="_top">ComponentLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                     <td align="left">
+                          Arranges the connected components of a graph. 
+                          Part of the default compound layout process as established by class 
+                          <a href="../api/y/layout/CanonicMultiStageLayouter.html" title="Link to API documentation" target="_top">CanonicMultiStageLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+                          
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="../api/y/layout/CompositeLayoutStage.html" title="Link to API documentation" target="_top">CompositeLayoutStage<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                     <td align="left">
+                          Allows to establish a custom compound layout process consisting of multiple 
+                          layout stages.
+                          <a href="layout_stages.html#ex_CompositeLayoutStage" title="Example&nbsp;5.19.&nbsp;Defining a custom compound layout process using CompositeLayoutStage">See below</a> for an example of using
+                          class CompositeLayoutStage to create a custom layout process.
+                          
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="../api/y/layout/grouping/FixedGroupLayoutStage.html" title="Link to API documentation" target="_top">FixedGroupLayoutStage<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                     <td align="left">
+                          Used to prevent an existing layout inside a group node from being altered 
+                          when calculating a layout for a grouped graph.
+                          
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="../api/y/layout/LayoutMultiplexer.html" title="Link to API documentation" target="_top">LayoutMultiplexer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                     <td align="left">
+                          Enables using individual layout algorithms for components (when used as the 
+                          core layouter of class ComponentLayouter) or for the contents of group nodes 
+                          (when used as the core layouter of class RecursiveGroupLayouter).
+                          
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="../api/y/layout/grouping/RecursiveGroupLayouter.html" title="Link to API documentation" target="_top">RecursiveGroupLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                     <td align="left">
+                          Provides support for recursively calculating a layout for grouped graphs.
+                          
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="../api/y/layout/labeling/GreedyMISLabeling.html" title="Link to API documentation" target="_top">GreedyMISLabeling<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, <a href="../api/y/layout/labeling/SALabeling.html" title="Link to API documentation" target="_top">SALabeling<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                     <td align="left">
+                          Place labels without altering the graph layout. 
+                          See also <a href="labeling.html#general_labeling" title="Generic Labeling">the section called &#8220;Generic Labeling&#8221;</a>.
+                          
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            Purpose and usage of ComponentLayouter is described in 
+            <a href="layout_stages_ComponentLayouter.html" title="Class ComponentLayouter">the section called &#8220;Class ComponentLayouter&#8221;</a>. 
+            Note that this section also shows how to use class LayoutMultiplexer in 
+            conjunction with ComponentLayouter in order to have different layout algorithms 
+            applied to the separate components of a graph. 
+            
+         </p>
+         <p>
+            Using class CompositeLayoutStage to create a custom layout process is shown in the
+            following code example:
+            
+         </p>
+         <div class="example"><a name="ex_CompositeLayoutStage"></a><p class="title"><b>Example&nbsp;5.19.&nbsp;Defining a custom compound layout process using CompositeLayoutStage</b></p><pre class="programlisting java">
+// 'hierarchic' is of type y.layout.hierarchic.HierarchicLayouter.
+
+// String together a label layout process.
+CompositeLayoutStage ll = new CompositeLayoutStage();
+ll.appendStage(new LabelLayoutTranslator());
+ll.appendStage(new LabelLayoutDataRefinement());
+// Set the compound label layout process as the label layouter for 
+// HierarchicLayouter.
+hierarchic.setLabelLayouter(ll);
+hierarchic.setLabelLayouterEnabled(true);
+</pre></div>
+         <p>
+            <a href="layout_stages.html#tab_layout_stages_special_purpose" title="Table&nbsp;5.19.&nbsp;Layout stages that provide special-purpose layout functionality">Table&nbsp;5.19, &#8220;Layout stages that provide special-purpose layout functionality&#8221;</a> lists layout stages that
+            provide special-purpose layout functionality.
+            
+         </p>
+         <div class="table"><a name="tab_layout_stages_special_purpose"></a><p class="title"><b>Table&nbsp;5.19.&nbsp;Layout stages that provide special-purpose layout functionality</b></p>
+            <table summary="Layout stages that provide special-purpose layout functionality" width="100%" border="1">
+               <colgroup>
+                  <col width="33%" align="left">
+                  <col width="67%" align="left">
+               </colgroup>
+               <thead valign="top">
+                  <tr>
+                     <th align="left">Classname</th>
+                     <th align="left">Description</th>
+                  </tr>
+               </thead>
+               <tbody valign="top">
+                  <tr>
+                     <td align="left"><a href="../api/y/layout/GraphLayoutLineWrapper.html" title="Link to API documentation" target="_top">GraphLayoutLineWrapper<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                     <td align="left">
+                          "Line-wraps" or "column-wraps" a graph layout.
+                          Best suited for use in conjunction with hierarchic layout.
+                          
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            The <a href="layout_stages_GraphLayoutLineWrapper.html" title="Class GraphLayoutLineWrapper">description of class
+               GraphLayoutLineWrapper</a> explains the options of this layout stage and how
+            to use it.
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="layout_stages_tutorial"></a>Tutorial Demo Code
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               The following tutorial demo code has examples on how to use 
+               FixedGroupLayoutStage and RecursiveGroupLayouter: 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li><a href="../../src/demo/layout/withoutview/RecursiveGroupLayouterDemo.java" title="Link to demo code" target="_top">RecursiveGroupLayouterDemo.java</a> shows
+                     how RecursiveGroupLayouter can be used when calculating a layout for a grouped graph
+                     
+                  </li>
+                  <li><a href="../../src/demo/layout/module/OrthogonalLayoutModule.java" title="Link to demo code" target="_top">OrthogonalLayoutModule.java</a> presents the 
+                     technique of prepending an orthogonal layout with an invocation of 
+                     FixedGroupLayoutStage in order to avoid altering the layout of group node 
+                     contents
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+               
+            </p>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="incremental_layout.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="layout.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="layout_stages_ComponentLayouter.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Incremental Layout&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Class ComponentLayouter</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

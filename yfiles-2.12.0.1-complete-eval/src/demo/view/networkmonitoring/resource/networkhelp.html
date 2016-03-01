@@ -1,0 +1,126 @@
+<html>
+<head>
+    <style type="text/css">
+        <!--
+    body {
+        font-family:Verdana, sans-serif;
+            margin-left:3px;
+            margin-right:3px;
+            margin-top:0px;
+            margin-bottom:0px;
+        }
+
+    h1 {
+        padding-left:0px;
+        padding-top:8px;
+        padding-bottom:8px;
+        color:#4079ea;
+        font-size:16px;
+        margin-bottom:5px;
+    }
+
+    p {
+        padding-bottom:0px;
+        padding-top:0px;
+        margin-top:3px;
+        margin-bottom:0px;
+        margin-left:0px;
+        font-size:10px;
+        color:#000000;
+        }
+
+    h2 {
+      font-size:12px;
+        color:#4079ea;
+      margin-top:10px;
+      margin-bottom:0px;
+    }
+
+    h3 {
+      font-size:11px;
+    /*	margin-left:10px; */
+        margin-left:0px;
+      margin-top:8px;
+      margin-bottom:2px;
+    }
+
+    h4 {
+      font-size:10px;
+      margin-left:0px;
+      margin-top:6px;
+      margin-bottom:2px;
+    }
+
+
+    dl {
+        font-size:10px;
+        margin-top:2px;
+        margin-bottom:2px;
+        margin-left:0px;
+    }
+
+    dt {
+        font-weight:bold;
+        margin-top:4px;
+        color:#333366;
+    }
+
+    dt.inner {
+      font-weight:bold;
+      margin-top:4px;
+      color:#000000;
+    }
+
+      dd {
+        margin-left:5px;
+    }
+
+    .copyright {
+        font-size: 10px;
+        font-style:italic;
+        text-align:right;
+        margin-top:20px;
+    }
+
+    code, tt {
+        font-family:monospace;
+        font-size:10px;
+        color:#0000C0;
+    }
+
+    .keyword {
+      font-weight:bold;
+    }
+
+    -->
+    </style>
+</head>
+<body>
+<h2>Network Monitoring</h2>
+<p>
+    This demo shows a simple network monitoring tool. You can watch the traffic flow through the network
+    and even influence the network.
+    The network consists of PCs, Laptops, Tablets, Switches, Server, Databases and W-LANS. The color of the edges
+    change from green to yellow to red depending on its traffic load. The traffic load of nodes is shown on their
+    info label. Active edges are marked through an animation.
+</p>
+
+<h3>Things to try</h3>
+<dl>
+    <dt>Open/Hide Info Label</dt>
+    <dd>Every node has an info label. It can be shown and hidden by clicking on the node. It shows the
+    name, IP address and traffic load. You can also close it by clicking on the x in the top right corner.
+    Remember that info labels are only visible at a detailed zoom level.</dd>
+    <dt>Disable nodes</dt>
+    <dd>The info label also contains a power button in the bottom right corner. Clicking on it (de)activates
+    the node, preventing it from processing data. This way you can influence the data flow and watch what happens.</dd>
+    <dt>Enable Failures</dt>
+    <dd>By Clicking on "Enable Failures" you allow failures to happen randomly. Nodes and edges get broken
+    and can't process data anymore. Broken elements are marked with a stop sign. If a failures happens on a node or
+    edge outside the current viewport, then the viewport will be moved to focus the broken element.
+    You can repair elements by clicking on the stop sign. To repair a node, you can also
+    open the info label and then click on the green arc arrow at the bottom right corner.</dd>
+</dl>
+
+</body>
+</html>

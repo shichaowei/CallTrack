@@ -1,0 +1,339 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Advanced Application Logic</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="view.html" title="Chapter&nbsp;6.&nbsp;Displaying and Editing Graphs">
+      <link rel="previous" href="animation.html" title="Animations for Graph Elements">
+      <link rel="next" href="viewer_layout.html" title="Automatic Layout">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Advanced Application Logic</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="animation.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;6.&nbsp;Displaying and Editing Graphs</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="viewer_layout.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="advanced_stuff"></a>Advanced Application Logic
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            The yFiles library provides advanced functionality to be used in an application 
+            context. 
+            Besides support to undo/redo user actions inside a view, there is also support 
+            to generate an animated transformation for graph layout changes. 
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="undo_redo"></a>Undo/Redo
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e31464"></a><a class="indexterm" name="d0e31469"></a><p>
+               Class <a href="../api/y/view/Graph2DUndoManager.html" title="Link to API documentation" target="_top">Graph2DUndoManager<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> provides 
+               undo/redo support for Graph2D changes of both structural and graphical nature. 
+               
+               It implements the interfaces <a href="../api/y/base/GraphListener.html" title="Link to API documentation" target="_top">GraphListener<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               and <a href="../api/y/view/Graph2D.BackupRealizersHandler.html" title="Link to API documentation" target="_top">Graph2D.BackupRealizersHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, and 
+               is accordingly registered twice with a Graph2D object. 
+               
+            </p>
+            <div class="figure"><a name="undo_hierarchy"></a><p class="title"><b>Figure&nbsp;6.69.&nbsp;Class complex around undo/redo functionality</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/undo_redo_max.jpg" align="middle" alt="Class complex around undo/redo functionality."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               For non-structural changes (like visual aspects, position, size, etc.), Graph2DUndoManager 
+               relies on the correct <a href="custom_realizers.html" title="Writing Customized Realizers">replication behavior of realizers</a>, 
+               since the actual undo mechanism keeps backup copies of all node and edge realizers 
+               that are associated with modified or even deleted graph elements.
+               
+            </p>
+            <p>
+               This backup store is filled by means of the <a href="../api/y/view/Graph2D.html#backupRealizers(y.base.EdgeCursor)" title="Link to API documentation" target="_top">backupRealizers<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               methods in class Graph2D. 
+               In interactive scenarios where a user modifies graph elements, these methods are 
+               used behind the scenes (e.g., by the involved <a href="mvc_controller.html#cls_EditMode" title="Class EditMode">yFiles view modes</a>); 
+               in non-interactive scenarios, when graph elements are modified programmatically, 
+               client code has to call these methods explicitly.
+               
+            </p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  Graph elements that have been deleted (a structural change) and then get reinserted 
+                  as the result of an undo command, are represented by their original objects. 
+                  The realizer objects that are associated with these reinserted graph elements 
+                  are also taken from the backup store. 
+                  
+                  However, the graph structure has a different order after a reinsert operation, since 
+                  the graph elements are merely appended to the respective graph data structures.
+                  
+               </p>
+            </div>
+            <p>
+               To reduce the number of actual undo/redo steps, sequences of graph changes can 
+               be grouped into single undo/redo commands. 
+               
+               So-called pre-event and post-event commands provided by class 
+               <a href="../api/y/base/GraphEvent.html" title="Link to API documentation" target="_top">GraphEvent<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> serve as special bracketing 
+               indicators. 
+               Class <a href="../api/y/base/Graph.html" title="Link to API documentation" target="_top">Graph<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> offers direct support to insert
+               these commands into the undo/redo history, see the following methods for undo/redo
+               history bracketing.
+               
+            </p>
+            <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Important</h3>
+               <p>
+                  If used, pre-event and post-event commands have to be properly balanced to 
+                  guarantee correct working of the undo/redo mechanism. 
+                  
+               </p>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/base/Graph.html#firePreEvent()" title="Link to API documentation" target="_top">void firePreEvent()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Opens the bracket, i.e., inserts a pre-event command into the undo/redo history.
+                              The subsequent commands present a single undo/redo step.
+                              
+                           </td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/base/Graph.html#firePostEvent()" title="Link to API documentation" target="_top">void firePostEvent()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Closes the bracket, i.e., inserts a post-event command into the undo/redo history.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               Graph2DUndoManager has getter methods that return complete Swing Actions for 
+               integration of both undo and redo operations into an application's context. 
+               
+            </p>
+            <p>
+               <a href="../../src/demo/view/application/UndoRedoDemo.java" title="Link to demo code" target="_top">UndoRedoDemo.java</a> is a tutorial demo 
+               that shows the yFiles support for undo/redo functionality in an application 
+               context. 
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="clipboard"></a>Clipboard
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e31560"></a><p>
+               Class <a href="../api/y/view/Graph2DClipboard.html" title="Link to API documentation" target="_top">Graph2DClipboard<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> provides clipboard 
+               functionality for <a href="../api/y/view/Graph2D.html" title="Link to API documentation" target="_top">Graph2D<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> objects. 
+               
+               The clipboard can be used to create a copy of selected parts of a Graph2D 
+               instance, and can also be used to paste a previously copied subgraph back into 
+               a graph again. 
+               
+            </p>
+            <div class="figure"><a name="clipboard_hierarchy"></a><p class="title"><b>Figure&nbsp;6.70.&nbsp;Clipboard classes hierarchy</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/clipboard.jpg" align="middle" alt="Clipboard classes hierarchy."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               Graph2DClipboard provides Java Swing actions that encapsulate all necessary 
+               clipboard functionality, namely the three operations Cut, Copy, and Paste. 
+               
+               Copies of graph elements are created by means of a 
+               <a href="../api/y/util/GraphCopier.CopyFactory.html" title="Link to API documentation" target="_top">GraphCopier.CopyFactory<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> implementation. 
+               By default, the CopyFactory implementation that is registered with the graph is 
+               used to this end. 
+               Alternatively, the 
+               <a href="../api/y/view/Graph2DClipboard.html#setCopyFactory(y.util.GraphCopier.CopyFactory)" title="Link to API documentation" target="_top">setCopyFactory<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               method can be used to set a different CopyFactory.
+               
+            </p>
+            <p>
+               Graph2DClipboard also supports copy and paste functionality for grouped nodes and 
+               nested graph structures from a graph hierarchy, i.e., a graph with an associated 
+               <a href="../api/y/view/hierarchy/HierarchyManager.html" title="Link to API documentation" target="_top">HierarchyManager<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> instance, in a 
+               consistent manner.
+               
+            </p>
+            <p>
+               The Paste action supports pasting the contents of the clipboard directly into a 
+               group node. 
+               Through the <a href="../api/y/view/Graph2DClipboard.html#setPasteTargetGroupPolicy(byte)" title="Link to API documentation" target="_top">setPasteTargetGroupPolicy(byte)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               method, the action can be customized to use one of several policies that determine 
+               the group node into which to paste.
+               
+               
+            </p>
+            <p>
+               <a href="../../src/demo/view/application/ClipboardDemo.java" title="Link to demo code" target="_top">ClipboardDemo.java</a> is a tutorial demo 
+               that shows the yFiles clipboard functionality in an application context. 
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="morphing"></a>Layout Morphing
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e31610"></a><a class="indexterm" name="d0e31615"></a><a class="indexterm" name="d0e31622"></a><a class="indexterm" name="d0e31629"></a><p>
+               Class <a href="../api/y/view/LayoutMorpher.html" title="Link to API documentation" target="_top">LayoutMorpher<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is an implementation 
+               of the general animation concept defined by interface 
+               <a href="../api/y/anim/AnimationObject.html" title="Link to API documentation" target="_top">AnimationObject<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               It generates a smooth animation that shows a graph's transformation from one 
+               layout to another. 
+               
+               To this end class LayoutMorpher utilizes an object of type 
+               <a href="../api/y/layout/GraphLayout.html" title="Link to API documentation" target="_top">GraphLayout<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> that is expected to hold 
+               positional information for all graph elements from the original graph which is 
+               displayed by the associated Graph2DView. 
+               
+            </p>
+            <div class="figure"><a name="layoutmorpher_hierarchy"></a><p class="title"><b>Figure&nbsp;6.71.&nbsp;Usage relations for class LayoutMorpher</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/layoutmorpher_only.jpg" align="middle" alt="Usage relations for class LayoutMorpher."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               LayoutMorpher provides methods to optionally animate changes in the viewport's 
+               clipping and zoom level, or to end the animation with a specific node being in 
+               the center of the view. 
+               
+               To start the generated animation method 
+               <a href="../api/y/view/LayoutMorpher.html#execute()" title="Link to API documentation" target="_top">execute()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> has to be called.
+               
+            </p>
+            <p>
+               Note that the calculated animation highlights changes in the locations of nodes 
+               and the locations of control points of edges. 
+               Also animated are changes in width and height of nodes as well as changes in the 
+               locations and directions of node and edge labels.
+               
+            </p>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="animation.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="view.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="viewer_layout.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Animations for Graph Elements&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Automatic Layout</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,154 @@
+<html>
+<head>
+  <style type="text/css">
+    <!--
+body {
+    font-family:Verdana, sans-serif;
+        margin-left:3px;
+        margin-right:3px;
+        margin-top:0px;
+        margin-bottom:0px;
+    }
+
+h1 {
+    padding-left:0px;
+    padding-top:8px;
+    padding-bottom:8px;
+    color:#4079ea;
+    font-size:16px;
+    margin-bottom:5px;
+}
+
+p {
+    padding-bottom:0px;
+    padding-top:0px;
+    margin-top:3px;
+    margin-bottom:0px;
+    margin-left:0px;
+    font-size:10px;
+    color:#000000;
+    }
+
+h2 {
+  font-size:12px;
+    color:#4079ea;
+  margin-top:10px;
+  margin-bottom:0px;
+}
+
+h3 {
+  font-size:11px;
+/*	margin-left:10px; */
+    margin-left:0px;
+  margin-top:8px;
+  margin-bottom:2px;
+}
+
+h4 {
+  font-size:10px;
+  margin-left:0px;
+  margin-top:6px;
+  margin-bottom:2px;
+}
+
+
+dl {
+    font-size:10px;
+    margin-top:2px;
+    margin-bottom:2px;
+    margin-left:0px;
+}
+
+dt {
+    font-weight:bold;
+    margin-top:4px;
+    color:#333366;
+}
+
+dt.inner {
+  font-weight:bold;
+  margin-top:4px;
+  color:#000000;
+}
+
+  dd {
+    margin-left:5px;
+}
+
+.copyright {
+    font-size: 10px;
+    font-style:italic;
+    text-align:right;
+    margin-top:20px;
+}
+
+code, tt {
+    font-family:monospace;
+    font-size:10px;
+    color:#0000C0;
+}
+
+.keyword {
+  font-weight:bold;
+}
+
+-->
+  </style>
+</head>
+<body>
+<h2>Help</h2>
+
+<h3>Description</h3>
+<p>
+  This demo shows yFiles' octilinear edge routing capabilities. An edge routing algorithm routes edges without
+  changing the current node positions. While an orthogonal edge routing algorithm only produces horizontal and vertical
+  edge segments, this router also allows octilinear edge segments, i.e., it produces edge routes where the slope of
+  each segment is a multiple of 45 degrees.
+  Besides the basic octilinear edge routing capabilities, this class also demonstrates the edge grouping feature.
+    For clarity, edges of the same edge group are displayed in a common color.
+</p>
+
+<h3>Usage</h3>
+<p>
+    Create edge groups either by selecting multiple edges and choosing item "Group Selected Edges" in the context menu
+    or by selecting a node and choosing item "Group In-Edges" or "Group Out-Edges" in the context menu.
+    Note that edges can be either grouped at their source or at their target (not both at the same time).
+    Press "Route" to route the edges.
+</p>
+
+<h3>Available Options</h3>
+
+<dl>
+  <dt>Automatic Routing</dt>
+  <dd>
+    If this option is enabled, the edge routing is automatically triggered when creating new edges,
+    changing edges or moving/resizing nodes.
+  </dd>
+
+  <dt>Octilinear Routing</dt>
+  <dd>
+    If this option is enabled, the algorithm also produces octilinear (non-orthogonal) edge segments.
+  </dd>
+
+  <dt>Preferred Octilinear Segment Length</dt>
+  <dd>
+    Specifies the preferred maximum length of non-orthogonal edge segments.
+  </dd>
+
+  <dt>Ignore Edge Groups</dt>
+  <dd>
+    If this option is enabled, the algorithm ignores the specified edge groups.
+  </dd>
+
+  <dt>Minimum Edge Distance</dt>
+  <dd>
+    Specifies the minimum distance between two edges.
+  </dd>
+
+  <dt>Minimum Node Distance</dt>
+  <dd>
+    Specifies the minimum distance between an edge and a node.
+  </dd>
+</dl>
+</body>
+</html>

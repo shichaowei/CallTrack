@@ -1,0 +1,1513 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Orthogonal Bus-style Edge Routing</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="layout.html" title="Chapter&nbsp;5.&nbsp;Automatic Graph Layout">
+      <link rel="previous" href="channel_edge_router.html" title="Channel Edge Routing">
+      <link rel="next" href="labeling.html" title="Automatic Label Placement">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Orthogonal Bus-style Edge Routing</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="channel_edge_router.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;5.&nbsp;Automatic Graph Layout</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="labeling.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="orthogonal_bus_router"></a>Orthogonal Bus-style Edge Routing
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div><a class="indexterm" name="d0e20825"></a><a class="indexterm" name="d0e20832"></a><a class="indexterm" name="d0e20839"></a><p>
+            This section presents orthogonal bus-style edge routing.
+            
+         </p>
+         <div class="itemizedlist">
+            <ul type="disc">
+               <li><a href="orthogonal_bus_router.html#busrouter_about" title="About this Algorithm">About this Algorithm</a>:
+                  What it is about, the main traits of this algorithm.
+                  
+               </li>
+               <li>
+                  BusRouter is <a href="orthogonal_bus_router.html#cls_BusRouter" title="Class BusRouter">the main class</a> that provides orthogonal
+                  bus-style edge routing.
+                  
+               </li>
+            </ul>
+         </div>
+         <p>
+            
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="busrouter_about"></a>About this Algorithm
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Orthogonal bus-style edge routing combines the (likely confusing) mass of edges
+               in parts of a diagram where each node is connected to each other node in a concise,
+               tree-like structure that consists of vertical and horizontal line segments.
+               
+               The positions of the nodes in a diagram are not altered by this algorithm.
+               
+            </p>
+            <p>
+               The algorithm aims to find routes where all edge paths share as much way as possible.
+               It yields long line segments where ideally all but the first and last segments of
+               all edge paths are drawn on top of each other, with short connections branching
+               off to the nodes.
+               The short connections bundle the respective first or last segments of a node's incident
+               edges.
+               
+            </p>
+            <div class="figure"><a name="d0e20863"></a><p class="title"><b>Figure&nbsp;5.113.&nbsp;Bus-style edge routing sample</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="50%">
+                           <col width="50%">
+                        </colgroup>
+                        <tbody valign="middle">
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/bus_3buses.jpg" align="middle" alt="Bus-style edge routing sample"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/bus_3buses_layout.jpg" align="middle" alt="Bus-style edge routing sample"></div>
+                              </td>
+                           </tr>
+                           <tr align="center" valign="top">
+                              <td align="center" valign="top">Diagram with three completely connected parts.</td>
+                              <td align="center" valign="top">
+                                 A clear representation of the same diagram using orthogonal bus-style edge routing.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               Carefully observe that the resulting representation, with many edge segments drawn
+               on top of each other, leaves little room for a sensible interpretation of edge direction.
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="d0e20891"></a>Terminology
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  This routing style works on the set of edges of a <span class="bold"><b>complete (sub)graph</b></span>,
+                  (a part of) a diagram where each node is connected to a each other node.
+                  
+                  Mathematically, this set of edges is equivalent to a <span class="bold"><b>hyperedge</b></span>,
+                  an edge that not only connects two nodes, but a set of nodes with each other.
+                  
+               </p>
+               <p>
+                  The orthogonal edge paths that are calculated for the set of edges form a representation
+                  that, in its entirety, is called <span class="bold"><b>bus-style representation</b></span>
+                  or often also simply <span class="bold"><b>bus</b></span>.
+                  
+                  This bus consists of <span class="bold"><b>bus connections</b></span>, which simply
+                  mean the (ideally) short line segments directly starting at the nodes, and the <span class="bold"><b>backbone segments</b></span>.
+                  
+               </p>
+               <p>
+                  Backbone segments are "at the heart" of the representation and refer to the vertical
+                  and horizontal line segments where the line segments from the nodes (the bus connections)
+                  end.
+                  
+               </p>
+               <div class="figure"><a name="d0e20918"></a><p class="title"><b>Figure&nbsp;5.114.&nbsp;Replacing the set of edges in a complete graph by a bus-style representation</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="33%">
+                              <col width="33%">
+                              <col width="34%">
+                           </colgroup>
+                           <tbody valign="middle">
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/6star-complete.jpg" align="middle" alt="Replacing the set of edges in a complete graph by a bus-style representation"></div>
+                                 </td>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/6star-hub.jpg" align="middle" alt="Replacing the set of edges in a complete graph by a bus-style representation"></div>
+                                 </td>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/6star-bus.jpg" align="middle" alt="Replacing the set of edges in a complete graph by a bus-style representation"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center" valign="top">
+                                 <td align="center" valign="top">A complete graph, where each node is connected to each other node.</td>
+                                 <td align="center" valign="top">The set of edges (conceptually) reduced to a star-like hyperedge.</td>
+                                 <td align="center" valign="top">
+                                    Bus-style representation of the edges. 
+                                    The edge set is the same as in the initial figure, however, edge paths are drawn 
+                                    on top of each other.
+                                    
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+            </div>
+            <p>
+               The orthogonal bus-style edge routing algorithm uses a two-phase process, basically:
+               
+            </p>
+            <div class="orderedlist">
+               <ol type="1">
+                  <li>
+                     Find a set of good initial backbone segments.
+                     This phase is referred to as the <span class="bold"><b>backbone selection</b></span>
+                     phase.
+                     
+                  </li>
+                  <li>
+                     Connect initial backbone segments with each other and also each node to each of
+                     the initial backbone segments by using orthogonal edge paths.
+                     Reduce the set of resulting structures to the most optimal structure where backbone
+                     segments are long and bus connections from the nodes are short.
+                     
+                     This phase is referred to as the <span class="bold"><b>routing and recombination</b></span>
+                     phase.
+                     
+                  </li>
+               </ol>
+            </div>
+            <p>
+               
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="d0e20967"></a>Relevant Classes
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  <a href="orthogonal_bus_router.html#tab_busrouter_classes" title="Table&nbsp;5.83.&nbsp;Relevant classes for this algorithm">Table&nbsp;5.83, &#8220;Relevant classes for this algorithm&#8221;</a> lists the relevant classes for the orthogonal
+                  bus-style edge routing algorithm.
+                  
+               </p>
+               <div class="table"><a name="tab_busrouter_classes"></a><p class="title"><b>Table&nbsp;5.83.&nbsp;Relevant classes for this algorithm</b></p>
+                  <table summary="Relevant classes for this algorithm" width="100%" border="1">
+                     <colgroup>
+                        <col width="33%" align="left">
+                        <col width="67%" align="left">
+                     </colgroup>
+                     <thead valign="top">
+                        <tr>
+                           <th align="left">Classname</th>
+                           <th align="left">Description</th>
+                        </tr>
+                     </thead>
+                     <tbody valign="top">
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/router/BusRouter.html" title="Link to API documentation" target="_top">BusRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Main algorithm.
+                                See <a href="orthogonal_bus_router.html#cls_BusRouter" title="Class BusRouter">the description</a> below.
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/router/BusDescriptor.html" title="Link to API documentation" target="_top">BusDescriptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Provides bus-related configurations for an edge.
+                                Determines the bus ID, most notably.
+                                See <a href="orthogonal_bus_router.html#busrouter_related" title="Related Classes">Related Classes</a>.
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/router/BusRepresentations.html" title="Link to API documentation" target="_top">BusRepresentations<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Facilitates generation of the set of edges of a complete subgraph from a conceptually
+                                equivalent reduced structure, the hub structure.
+                                Also supports conversion of bus-style representations to hub structures.
+                                See <a href="orthogonal_bus_router.html#busrouter_related" title="Related Classes">Related Classes</a>.
+                                
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="cls_BusRouter"></a>Class BusRouter
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class <a href="../api/y/layout/router/BusRouter.html" title="Link to API documentation" target="_top">BusRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is a layout algorithm
+               for routing the set of edges of complete subgraphs.
+               The positions of the nodes in a diagram are not altered by this algorithm.
+               
+            </p>
+            <p>
+               The edge paths that are generated by this algorithm form a so-called bus-style representation
+               that consists of vertical and horizontal line segments only, where many edge paths
+               are drawn on top of each other.
+               This bus-style representation resembles a tree-like structure that connects the
+               nodes.
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="busrouter_setup"></a>Setup for Routing
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  To calculate actual bus-style representations, BusRouter needs a mapping to determine
+                  which edges belong to a common bus.
+                  The mapping that assigns a bus ID to each edge is specified using <a href="orthogonal_bus_router.html#busrouter_related" title="Related Classes">the BusDescriptor class</a>.
+                  
+               </p>
+               <p>
+                  A data provider holding BusDescriptor objects is expected to be registered with
+                  the graph using the <a href="../api/y/layout/router/BusRouter.html#EDGE_DESCRIPTOR_DPKEY" title="Link to API documentation" target="_top">EDGE_DESCRIPTOR_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  look-up key.
+                  During layout calculation, BusRouter first retrieves the data provider using the
+                  look-up key, and afterwards retrieves the contained information.
+                  
+                  Note that in the absence of an individual bus ID for an edge, a bus consisting only
+                  of the single edge is created.
+                  
+               </p>
+               <div class="example"><a name="ex_setup_busrouter_buses"></a><p class="title"><b>Example&nbsp;5.47.&nbsp;Creating the mapping for buses</b></p><pre class="programlisting java">
+// 'graph' is of type y.layout.LayoutGraph.
+
+// Create bus ID objects.
+String myBusID = "This is the first bus.";
+String myOtherBusID = "A second bus.";
+
+// Create edge map that is used as a data provider later on.
+EdgeMap em = Maps.createHashedEdgeMap();
+
+// Establish a mapping from edges to bus IDs.
+for (EdgeCursor ec = graph.edges(); ec.ok(); ec.next()) {
+  Edge e = ec.edge();
+  if (doesEdgeBelongToFirstBus(e)) {
+    em.set(e, new BusDescriptor(myBusID));
+  }
+  else if (doesEdgeBelongToSecondBus(e)) {
+    em.set(e, new BusDescriptor(myOtherBusID));
+  }
+  // If there is no BusDescriptor for an edge in the data provider, the edge
+  // will be routed as a "bus of its own" consisting only of the single edge.
+}
+
+// Register the edge map as a data provider with the graph.
+graph.addDataProvider(BusRouter.EDGE_DESCRIPTOR_DPKEY, em);
+
+// Invoke buffered layout.
+invokeBufferedLayout(graph, new BusRouter());
+</pre></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="busrouter_options"></a>Routing Options
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  BusRouter provides a set of options that affect the routing behavior.
+                  This section highlights some of the configuration options available. 
+                  
+               </p>
+               <p>
+                  The <a href="../api/y/layout/router/BusRouter.html#setScope(byte)" title="Link to API documentation" target="_top">setScope(byte)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> method
+                  determines the set of edges that the router should process.
+                  
+                  When only a subset should be routed, a data provider holding the subset information
+                  for each edge is looked up.
+                  The data provider is expected to be registered with the graph using the <a href="../api/y/layout/router/BusRouter.html#EDGE_SUBSET_DPKEY" title="Link to API documentation" target="_top">EDGE_SUBSET_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  look-up key.
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusRouter.html#SCOPE_ALL" title="Link to API documentation" target="_top">SCOPE_ALL<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Routes all edges in the graph.</td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusRouter.html#SCOPE_SUBSET" title="Link to API documentation" target="_top">SCOPE_SUBSET<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Routes only the specified subset of edges in the graph.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  The following properties affect the backbone selection phase of the algorithm, where
+                  good initial backbone segments are calculated.
+                  
+               </p>
+               <div class="techn_templ"><a name="meths_BusRouter_min_backbone_length"></a><center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Minimum Backbone Segment Length</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusRouter.html#setMinimumBackboneSegmentLength(double)" title="Link to API documentation" target="_top">void setMinimumBackboneSegmentLength(double minimumLength)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Sets the minimum length of a backbone segment. 
+                                 This value is used to select initial backbone segments.
+                                 Note that the final lengths of backbone segment may not comply with this setting.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <div class="techn_templ"><a name="meths_BusRouter_preferred_backbone_count"></a><center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Preferred Backbone Segment Count</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusRouter.html#setPreferredBackboneSegmentCount(int)" title="Link to API documentation" target="_top">void setPreferredBackboneSegmentCount(int preferredCount)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Sets the preferred number of backbone segments with the same orientation.
+                                 This value is used to select initial backbone segments.
+                                 Note that the final number of vertical (horizontal) backbone segment may not comply
+                                 with this setting.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  During the routing and recombination phase, these settings are used:
+                  
+               </p>
+               <div class="techn_templ"><a name="meths_BusRouter_minimum_connections_count"></a><center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Minimum Bus Connections Count</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusRouter.html#setMinimumBusConnectionsCount(int)" title="Link to API documentation" target="_top">void setMinimumBusConnectionsCount(int minimumCount)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Determines the minimum number of bus connections a backbone segment must have.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Crossing Cost</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusRouter.html#setCrossingCost(double)" title="Link to API documentation" target="_top">void setCrossingCost(double cost)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Determines a "penalty" for edge crossings.
+                                 Good values for a crossing penalty lie in the range from <tt class="code">1.0</tt> to <tt class="code">3.0</tt>.
+                                 By default this value is set to <tt class="code">1.0</tt>.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  Distances and grid routing options have effect across all phases.
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Minimum Edge Distance</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusRouter.html#setMinimumDistanceToEdge(int)" title="Link to API documentation" target="_top">void setMinimumDistanceToEdge(int dist)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Determines the distance between any two edge segments.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Minimum Distance to Node</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusRouter.html#setMinimumDistanceToNode(int)" title="Link to API documentation" target="_top">void setMinimumDistanceToNode(int dist)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Determines the distance between edge segments and node sides.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Route on Grid</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusRouter.html#setGridRoutingEnabled(boolean)" title="Link to API documentation" target="_top">void setGridRoutingEnabled(boolean enabled)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">If set, then all edge paths will be routed on grid lines of a predefined grid.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="busrouter_incremental"></a>Incremental Routing
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Incremental routing means generation of a bus-style representation using an already
+               existing bus-style representation as sketch.
+               It can be used when
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>new edges are added to a bus, or when</li>
+                  <li>a node of the bus is moved, and its incident edges need to be routed anew.</li>
+               </ul>
+            </div>
+            <p>
+               
+               
+            </p>
+            <p>
+               Incremental routing of bus-style representations is supported by denoting so-called
+               fixed edges using the <a href="orthogonal_bus_router.html#meths_BusDescriptor_fixed">corresponding BusDescriptor property</a>.
+               
+               When rearranging existing edges or adding new nodes and edges to an existing bus, 
+               the paths of non-fixed edges are calculated anew.
+               The structure induced by the fixed edges must be orthogonal and cycle-free.
+               
+            </p>
+            <p>
+               In the initial phase, appropriate backbone segments are determined from the structure 
+               of the fixed edges with respect to the <a href="orthogonal_bus_router.html#meths_BusRouter_min_backbone_length">Minimum Backbone Segment Length</a> 
+               and <a href="orthogonal_bus_router.html#meths_BusRouter_preferred_backbone_count">Preferred Backbone Segment Count</a>
+               settings. 
+               In the second phase, bus connections from nodes of non-fixed edges to the determined
+               backbone segments are calculated as described above.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="busrouter_related"></a>Related Classes
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="cls_BusDescriptor"></a>Class BusDescriptor
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Class <a href="../api/y/layout/router/BusDescriptor.html" title="Link to API documentation" target="_top">BusDescriptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> configures bus-related
+                  options for edges.
+                  The following options can be set:
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>which bus an edge belongs to</li>
+                     <li>
+                        whether an edge is fixed, i.e., whether it is part of the bus-style representation
+                        that shall remain unaltered when buses are rearranged
+                        
+                     </li>
+                     <li>an optional group ID for an edge's source end and target end, respectively</li>
+                  </ul>
+               </div>
+               <p>
+                  
+               </p>
+               <p>
+                  Class BusDescriptor provides a number of options for bus configuration:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Bus ID</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusDescriptor.html#setID(java.lang.Object)" title="Link to API documentation" target="_top">void setID(Object id)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Determines the bus ID of an edge.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  Support for incremental scenarios is provided by the following property.
+                  The paths of non-fixed edges are calculated anew when rearranging an existing bus-style 
+                  representation.
+                  
+               </p>
+               <div class="techn_templ"><a name="meths_BusDescriptor_fixed"></a><center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Fixed Edge</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusDescriptor.html#setFixed(boolean)" title="Link to API documentation" target="_top">void setFixed(boolean fixed)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Determines whether an edge is fixed or not.
+                                 
+                                 The paths of non-fixed edges will be routed anew when rearranging an existing bus-style
+                                 representation.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  The following methods allow to set optional group IDs for edge ends.
+                  These serve to partition the set of edge ends connected to a node and allow to create
+                  separate bus connections at a node.
+                  
+               </p>
+               <p>
+                  Note that although the direction of the edges is irrelevant for bus-style edge routing
+                  in general, it becomes relevant in conjunction with setting group IDs.
+                  To allow different group IDs for the ends of an edge, the terms "source" end and
+                  "target" end of the underlying technical representation of an edge come into play.
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Source End Group ID</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusDescriptor.html#setSourceGroupID(java.lang.Object)" title="Link to API documentation" target="_top">void setSourceGroupID(Object sourceGroupID)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Determines the group ID of an edge's source end.
+                                 Group IDs allow to create separate bus connections at a node.
+                                 
+                              </td>
+                           </tr>
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Target End Group ID</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusDescriptor.html#setTargetGroupID(java.lang.Object)" title="Link to API documentation" target="_top">void setTargetGroupID(Object targetGroupID)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Determines the group ID of an edge's target end.
+                                 Group IDs allow to create separate bus connections at a node.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  Separate bus connections at nodes are illustrated in <a href="orthogonal_bus_router.html#fig_busrouter_edge_grouping" title="Figure&nbsp;5.115.&nbsp;Edge grouping by IDs">Figure&nbsp;5.115, &#8220;Edge grouping by IDs&#8221;</a>.
+                  
+               </p>
+               <div class="figure"><a name="fig_busrouter_edge_grouping"></a><p class="title"><b>Figure&nbsp;5.115.&nbsp;Edge grouping by IDs</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/bus_edge_group1_orth.jpg" align="middle" alt="Edge grouping by IDs"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">
+                                    Separate bus connections at nodes A (2 bus connections) and B (3 bus connections)
+                                    achieved through different group IDs.
+                                    
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  The group IDs for the edge ends connecting to node B in the above figure could have
+                  been set up using the following code:
+                  
+               </p>
+               <div class="example"><a name="ex_setup_group_ids"></a><p class="title"><b>Example&nbsp;5.48.&nbsp;Setup of group IDs for edge ends</b></p><pre class="programlisting java">
+// 'nodeB' is of type y.base.Node.
+
+int numberOfGroups = 3, i = 0;
+
+// Setup of group IDs for edge ends at node 'B' (nodeB).
+Edge e = nodeB.firstInEdge();
+while (e != null) {
+  BusDescriptor bd = myGetBusDescriptorForEdge(e);
+  // Set the group ID for the edge end connecting to nodeB.
+  bd.setTargetGroupID(new Integer(i++ % numberOfGroups));
+  e = e.nextInEdge();
+}
+
+// Retrieve the initial outgoing edge from the node.
+e = nodeB.firstOutEdge();
+while (e != null) {
+  BusDescriptor bd = myGetBusDescriptorForEdge(e);
+  // Set the group ID for the edge end connecting to nodeB.
+  bd.setSourceGroupID(new Integer(i++ % numberOfGroups));
+  e = e.nextOutEdge();
+}
+</pre></div>
+               <p>
+                  <a href="orthogonal_bus_router.html#ex_setup_busrouter_buses" title="Example&nbsp;5.47.&nbsp;Creating the mapping for buses">Example&nbsp;5.47, &#8220;Creating the mapping for buses&#8221;</a> shows how a BusDescriptor for a bus is
+                  created and associated with edges of a graph.
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="cls_BusRepresentations"></a>Class BusRepresentations
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Class <a href="../api/y/layout/router/BusRepresentations.html" title="Link to API documentation" target="_top">BusRepresentations<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is a utility
+                  class that provides convenience conversion support related to bus representations.
+                  
+               </p>
+               <p>
+                  BusRepresentations can be used to easily create the set of edges of a complete subgraph
+                  from a <span class="bold"><b>hub structure</b></span>, a conceptually equivalent
+                  structure that uses a reduced number of edges which connect the (regular) nodes
+                  to a number of artificially introduced, so-called <span class="bold"><b>hub</b></span>
+                  nodes.
+                  The hub nodes serve as a means to facilitate convenient definition of this structure.
+                  
+               </p>
+               <p>
+                  A hub structure is a tree-like representation of a hyperedge, with the nodes of
+                  the complete subgraph being the leaves, and both root node and (an arbitrary number
+                  of) inner nodes denoted by the term hub nodes.
+                  
+               </p>
+               <p>
+                  Hub nodes can be specified by means of a data provider holding boolean values, which
+                  is used with the following static conversion methods:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusRepresentations.html#replaceHubsBySubgraph(y.layout.LayoutGraph, y.base.DataProvider, y.base.DataAcceptor)" title="Link to API documentation" target="_top">static EdgeList replaceHubsBySubgraph(
+    LayoutGraph graph, DataProvider hubMarker, DataAcceptor descriptorAcceptor)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/layout/router/BusRepresentations.html#replaceHubsBySubgraph(y.layout.LayoutGraph, y.base.EdgeList[], y.base.DataProvider, y.base.DataProvider, y.base.DataAcceptor)" title="Link to API documentation" target="_top">static EdgeList replaceHubsBySubgraph(
+    LayoutGraph graph, EdgeList[] hubEdgesLists, DataProvider hubMarker,
+    DataProvider fixedMarker, DataAcceptor descriptorAcceptor)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Converts a hub structure to the set of edges of a complete subgraphs by creating
+                                 new edges between regular nodes and removing the hub nodes.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  Hub structures are tree-like and can be specified as needed, i.e., there is no "canonical" 
+                  way that a hub structure needs to look like to achieve a specific complete subgraph.
+                  
+                  For example, a minimal hub structure would consist of a single hub node where all 
+                  regular nodes connect to.
+                  The first two structures in <a href="orthogonal_bus_router.html#fig_busrouter_hub_structures" title="Figure&nbsp;5.116.&nbsp;Hub structures">Figure&nbsp;5.116, &#8220;Hub structures&#8221;</a> are conceptually
+                  equivalent hub structures that represent the same hyperedge.
+                  
+                  Both result in the right figure after layout.
+                  
+               </p>
+               <div class="figure"><a name="fig_busrouter_hub_structures"></a><p class="title"><b>Figure&nbsp;5.116.&nbsp;Hub structures</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="33%">
+                              <col width="33%">
+                              <col width="34%">
+                           </colgroup>
+                           <tbody valign="middle">
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/bus_hub1.jpg" align="middle" alt="Hub structures"></div>
+                                 </td>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/bus_hub2.jpg" align="middle" alt="Hub structures"></div>
+                                 </td>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/bus_hub3_orth.jpg" align="middle" alt="Hub structures"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center" valign="top">
+                                 <td align="center" valign="top">
+                                    A hub structure with two hub nodes (emphasized, in the middle) representing a hyperedge
+                                    that connects nodes with each other (complete graph).
+                                    
+                                 </td>
+                                 <td align="center" valign="top">An equivalent hub structure with three hub nodes.</td>
+                                 <td align="center" valign="top">The resulting bus-style representation after layout.</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  Converting the bus-style representation back to a hub structure is supported by
+                  the following method:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/BusRepresentations.html#replaceSubgraphByHubs(y.layout.LayoutGraph, y.base.EdgeCursor, y.base.DataProvider, y.base.DataAcceptor)" title="Link to API documentation" target="_top">static void replaceSubgraphByHubs(
+    LayoutGraph graph, EdgeCursor edgeCursor, DataProvider descriptorProvider,
+    DataAcceptor busIDAcceptor)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Converts the bus-style representation of the edges of a complete subgraph to a hub
+                                 structure.
+                                 Replaces bends in the bus-style representation and connection points of bus connections
+                                 at backbone segments with hub nodes and uses only edges between hub nodes and hub
+                                 nodes and regular nodes.
+                                 
+                                 The edge paths must form an orthogonal, cycle-free bus.
+                                 Note that the hub structure is generated from the actual edge paths of the bus-style
+                                 representation.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  <a href="orthogonal_bus_router.html#fig_busrouter_hub_structure_after_layout" title="Figure&nbsp;5.117.&nbsp;Hub structure after layout and conversion">Figure&nbsp;5.117, &#8220;Hub structure after layout and conversion&#8221;</a> shows the resulting hub
+                  structure after converting the bus-style representation as routed in <a href="orthogonal_bus_router.html#fig_busrouter_hub_structures" title="Figure&nbsp;5.116.&nbsp;Hub structures">Figure&nbsp;5.116, &#8220;Hub structures&#8221;</a>.
+                  Observe that there are five hub nodes that reflect the actual routes of the edge
+                  paths.
+                  Overall, this graph has 6 regular nodes, 5 hub nodes, and 10 edges (4 edges between
+                  hub nodes).
+                  
+               </p>
+               <div class="figure"><a name="fig_busrouter_hub_structure_after_layout"></a><p class="title"><b>Figure&nbsp;5.117.&nbsp;Hub structure after layout and conversion</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody valign="middle">
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/bus_hub3.jpg" align="middle" alt="Hub structure after layout and conversion"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center">
+                                 <td align="center">
+                                    Hub structure with five hub nodes that result from the actual edge paths of the
+                                    bus-style representation.
+                                    
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  Conversion from hub structure to edges of a complete subgraph and vice versa is
+                  also used in tutorial demo application <a href="../../src/demo/layout/router/BusRouterDemo.java" title="Link to demo code" target="_top">BusRouterDemo.java</a>.
+                  
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="busrouter_stages"></a>Applicable Layout Stages
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               <a href="orthogonal_bus_router.html#tab_busrouter_stages" title="Table&nbsp;5.84.&nbsp;Layout Stages">Table&nbsp;5.84, &#8220;Layout Stages&#8221;</a> lists layout stages that can be used to enhance 
+               the routing process of class BusRouter. 
+               
+            </p>
+            <div class="table"><a name="tab_busrouter_stages"></a><p class="title"><b>Table&nbsp;5.84.&nbsp;Layout Stages</b></p>
+               <table summary="Layout Stages" width="100%" border="1">
+                  <colgroup>
+                     <col width="20%" align="left">
+                     <col width="80%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Classname</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/router/polyline/PolylineLayoutStage.html" title="Link to API documentation" target="_top">PolylineLayoutStage<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             With class BusRouter as the core layouter, this stage adds octilinear edge routing 
+                             to the diagram that results from the orthogonal bus-style edge routing calculation.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="busrouter_advanced"></a>Advanced Routing Features
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               The bus ID, respectively the group ID, defines a strong relationship amongst edges.
+               
+               Edge ends at a common node from edges of the same bus connect to the node using
+               a common location (thus forming a bus connection).
+               Similarly, a common location is also used to connect all edge ends to the node whose
+               edges have the same bus ID and where the edge ends have the same group ID associated.
+               
+               The respective common location for such a set of edge ends can be influenced using:
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li><a href="orthogonal_bus_router.html#busrouter_port_constraints" title="Port Constraints">port constraints</a></li>
+                  <li><a href="orthogonal_bus_router.html#busrouter_port_candidates" title="Port Candidates">port candidates</a></li>
+               </ul>
+            </div>
+            <p>
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="busrouter_port_constraints"></a>Port Constraints
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Orthogonal bus-style edge routing obeys both types of port constraints, weak and
+                  strong.
+                  The port constraints are retrieved from data providers that are bound to the
+                  graph using the look-up keys
+                  <a href="../api/y/layout/PortConstraintKeys.html#SOURCE_PORT_CONSTRAINT_KEY" title="Link to API documentation" target="_top">SOURCE_PORT_CONSTRAINT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  and
+                  <a href="../api/y/layout/PortConstraintKeys.html#TARGET_PORT_CONSTRAINT_KEY" title="Link to API documentation" target="_top">TARGET_PORT_CONSTRAINT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>,
+                  respectively.
+                  
+               </p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     If edge ends at a common node from edges of the same bus are associated with inconsistent
+                     or even contradicting port constraints, then any of these port constraints can determine
+                     the actual location of the common port.
+                     
+                     The same holds for the common port of edge ends from edges that in addition have
+                     the same group ID.
+                     
+                  </p>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="busrouter_port_candidates"></a>Port Candidates
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  In addition to the support provided for port constraints, orthogonal bus-style edge
+                  routing also supports the concept of port candidates.
+                  Both aspects, i.e., matching port candidates as well as modeling enhanced port constraints
+                  are supported.
+                  
+               </p>
+               <p>
+                  For the matching of port candidates, the set of allowed anchor locations for bus
+                  connections at the nodes are retrieved from a data provider that is bound to the
+                  graph using the look-up key <a href="../api/y/layout/PortCandidateSet.html#NODE_DP_KEY" title="Link to API documentation" target="_top">NODE_DP_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+                  
+                  The subset of desired anchor locations where the source ports and target ports
+                  of edges like to connect to are retrieved from data providers that are bound to
+                  the graph using the look-up keys
+                  <a href="../api/y/layout/PortCandidate.html#SOURCE_PCLIST_DPKEY" title="Link to API documentation" target="_top">SOURCE_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  and
+                  <a href="../api/y/layout/PortCandidate.html#TARGET_PCLIST_DPKEY" title="Link to API documentation" target="_top">TARGET_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>,
+                  respectively.
+                  
+               </p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     The cardinality defined with a PortCandidateSet object is interpreted in terms of
+                     different bus IDs (group IDs) instead of number of edges.
+                     
+                  </p>
+               </div>
+               <p>
+                  See <a href="layout_advanced_features.html#adv_port_candidates" title="Port Candidates">the section called &#8220;Port Candidates&#8221;</a> for a detailed description of the port
+                  candidates concept.
+                  
+               </p>
+               <p>
+                  For modeling enhanced port constraints, the set of possible port candidates for
+                  the edges of a graph are retrieved from data providers that are bound to the
+                  graph using the look-up keys
+                  <a href="../api/y/layout/PortCandidate.html#SOURCE_PCLIST_DPKEY" title="Link to API documentation" target="_top">SOURCE_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  and
+                  <a href="../api/y/layout/PortCandidate.html#TARGET_PCLIST_DPKEY" title="Link to API documentation" target="_top">TARGET_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>,
+                  respectively.
+                  
+               </p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     If edge ends at a common node from edges of the same bus are associated with inconsistent
+                     or even contradicting port candidates, then any of these port candidates can determine
+                     the actual location of the common port.
+                     
+                     The same holds for the common port of edge ends from edges that in addition have
+                     the same group ID.
+                     
+                  </p>
+               </div>
+               <p>
+                  The following table lists the data provider look-up keys that are recognized by
+                  BusRouter in conjunction with port candidates.
+                  
+               </p>
+               <div class="table"><a name="d0e21610"></a><p class="title"><b>Table&nbsp;5.85.&nbsp;Data provider look-up keys</b></p>
+                  <table summary="Data provider look-up keys" width="100%" border="1">
+                     <colgroup>
+                        <col width="25%" align="left">
+                        <col width="10%" align="left">
+                        <col width="10%" align="left">
+                        <col width="55%" align="left">
+                     </colgroup>
+                     <thead valign="top">
+                        <tr>
+                           <th align="left">Key</th>
+                           <th align="left">Element Type</th>
+                           <th align="left">Value Type</th>
+                           <th align="left">Description</th>
+                        </tr>
+                     </thead>
+                     <tbody valign="top">
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/PortCandidateSet.html#NODE_DP_KEY" title="Link to API documentation" target="_top">NODE_DP_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">Node</td>
+                           <td align="left">PortCandidateSet</td>
+                           <td align="left">
+                                For each node a PortCandidateSet object encoding the set of allowed anchor locations
+                                for bus connections.
+                                Note that the cardinality defined with a PortCandidateSet object is interpreted
+                                in terms of different bus IDs (group IDs) instead of number of edges.
+                              
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/PortCandidate.html#SOURCE_PCLIST_DPKEY" title="Link to API documentation" target="_top">SOURCE_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">Edge</td>
+                           <td align="left">Collection</td>
+                           <td align="left">
+                                For each edge a <tt class="classname">java.util.Collection</tt> of PortCandidate
+                                objects that encode the subset of desired anchor locations where the source
+                                port likes to connect to.
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/PortCandidate.html#TARGET_PCLIST_DPKEY" title="Link to API documentation" target="_top">TARGET_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">Edge</td>
+                           <td align="left">Collection</td>
+                           <td align="left">
+                                For each edge a <tt class="classname">java.util.Collection</tt> of PortCandidate
+                                objects that encode the subset of desired anchor locations where the target
+                                port likes to connect to.
+                                
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="busrouter_config"></a>Configuration Hints
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="d0e21667"></a>Esthetic Buses
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Values of at least <tt class="code">3</tt> (the default) for property <a href="orthogonal_bus_router.html#meths_BusRouter_minimum_connections_count">Minimum Bus Connections Count</a>
+                  result in longer backbone segments and clearly visible bus-like representations.
+                  The value should be increased for large graphs.
+                  
+               </p>
+               <p>
+                  The value for property <a href="orthogonal_bus_router.html#meths_BusRouter_min_backbone_length">Minimum Backbone Segment Length</a>
+                  should be at least as large as the typical width (height) of a node in the diagram.
+                  
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="busrouter_tutorial"></a>Tutorial Demo Code
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Tutorial demo application <a href="../../src/demo/layout/router/BusRouterDemo.java" title="Link to demo code" target="_top">BusRouterDemo.java</a>
+               presents bus-style edge routing.
+               Layout module <a href="../../src/demo/layout/module/BusRouterModule.java" title="Link to demo code" target="_top">BusRouterModule.java</a> shows
+               configuration aspects of BusRouter and can also be used to interactively explore
+               the effects of different settings.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="busrouter_dataprovider"></a>Supplemental Layout Data
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class BusRouter knows a number of data provider keys which are used to retrieve
+               supplemental layout data for each graph element.
+               The data is bound to the graph by means of a data provider which is registered using
+               a given look-up key.
+               
+               <a href="orthogonal_bus_router.html#tab_busrouter_keys" title="Table&nbsp;5.86.&nbsp;Data provider look-up keys">Table&nbsp;5.86, &#8220;Data provider look-up keys&#8221;</a> lists all look-up keys that BusRouter tests
+               during the layout process in order to query supplemental data.
+               
+            </p>
+            <p>
+               Binding supplemental layout data to a graph is described in <a href="layout_concepts.html#supplemental_information" title="Providing Supplemental Layout Data">the section called &#8220;Providing Supplemental Layout Data&#8221;</a>.
+               
+            </p>
+            <div class="table"><a name="tab_busrouter_keys"></a><p class="title"><b>Table&nbsp;5.86.&nbsp;Data provider look-up keys</b></p>
+               <table summary="Data provider look-up keys" width="100%" border="1">
+                  <colgroup>
+                     <col width="25%" align="left">
+                     <col width="10%" align="left">
+                     <col width="10%" align="left">
+                     <col width="55%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Key</th>
+                        <th align="left">Element Type</th>
+                        <th align="left">Value Type</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/router/BusRouter.html#EDGE_DESCRIPTOR_DPKEY" title="Link to API documentation" target="_top">EDGE_DESCRIPTOR_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">BusDescriptor</td>
+                        <td align="left">
+                             For each edge a <a href="../api/y/layout/router/BusDescriptor.html" title="Link to API documentation" target="_top">BusDescriptor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> object
+                             that configures a number of bus-related configuration options, most notably, an
+                             edge's bus ID.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/router/BusRouter.html#EDGE_SUBSET_DPKEY" title="Link to API documentation" target="_top">EDGE_SUBSET_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">boolean</td>
+                        <td align="left">
+                             For each edge a boolean value indicating whether it should be routed or not.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/PortConstraintKeys.html#SOURCE_PORT_CONSTRAINT_KEY" title="Link to API documentation" target="_top">SOURCE_PORT_CONSTRAINT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">
+                             PortConstraint
+                             
+                        </td>
+                        <td align="left">
+                             For each edge a PortConstraint object encoding its source end's port
+                             constraint.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/PortConstraintKeys.html#TARGET_PORT_CONSTRAINT_KEY" title="Link to API documentation" target="_top">TARGET_PORT_CONSTRAINT_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">
+                             PortConstraint
+                             
+                        </td>
+                        <td align="left">
+                             For each edge a PortConstraint object encoding its target end's port
+                             constraint.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/PortCandidateSet.html#NODE_DP_KEY" title="Link to API documentation" target="_top">NODE_DP_KEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">PortCandidateSet</td>
+                        <td align="left">
+                             For each node a PortCandidateSet object encoding the set of allowed anchor locations
+                             for bus connections.
+                             Note that the cardinality defined with a PortCandidateSet object is interpreted
+                             in terms of different bus IDs (group IDs) instead of number of edges.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/PortCandidate.html#SOURCE_PCLIST_DPKEY" title="Link to API documentation" target="_top">SOURCE_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">Collection</td>
+                        <td align="left">
+                             For each edge a <tt class="classname">java.util.Collection</tt> of PortCandidate
+                             objects that encode the subset of desired anchor locations where the source
+                             port likes to connect to.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/PortCandidate.html#TARGET_PCLIST_DPKEY" title="Link to API documentation" target="_top">TARGET_PCLIST_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">Collection</td>
+                        <td align="left">
+                             For each edge a <tt class="classname">java.util.Collection</tt> of PortCandidate
+                             objects that encode the subset of desired anchor locations where the target
+                             port likes to connect to.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="channel_edge_router.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="layout.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="labeling.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Channel Edge Routing&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Automatic Label Placement</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

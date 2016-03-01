@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
+  <!--Created by yFiles for Java 2.10-->
+  <key for="graphml" id="d0" yfiles.type="resources"/>
+  <key for="port" id="d1" yfiles.type="portgraphics"/>
+  <key for="port" id="d2" yfiles.type="portgeometry"/>
+  <key for="port" id="d3" yfiles.type="portuserdata"/>
+  <key for="node" id="d4" yfiles.type="nodegraphics"/>
+  <key for="edge" id="d5" yfiles.type="edgegraphics"/>
+  <graph edgedefault="directed" id="G">
+    <node id="n0">
+      <data key="d4">
+        <y:GenericNode configuration="com.yworks.umlDiagram.class">
+          <y:Geometry height="249.9638671875" width="196.4892578125" x="341.75537109375" y="115.01806640625"/>
+          <y:Fill color="#FFFFFF" color2="#228B22" transparent="false"/>
+          <y:BorderStyle color="#D5FFB3" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" bottomInset="15" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="16" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="44.6015625" leftInset="0" modelName="custom" rightInset="0" textColor="#FFFFFF" topInset="10" visible="true" width="60.4453125" x="20.0" y="0.0">Product<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="63.1376953125" x="20.0" y="49.6015625">Attributes<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="49.6015625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="72.482421875" x="20.0" y="181.509765625">Operations<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="181.509765625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="97.37890625" x="30.0" y="70.7529296875">- productId : int<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="70.7529296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="93.4755859375" x="30.0" y="91.904296875">- name : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="91.904296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="126.158203125" x="30.0" y="113.0556640625">- description : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="113.0556640625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="69.3515625" x="30.0" y="134.20703125">- price : int<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="134.20703125" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="156.4892578125" x="30.0" y="155.3583984375">- imageFileName : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="155.3583984375" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="117.216796875" x="30.0" y="202.6611328125">+ displayProduct()<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="202.6611328125" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="135.892578125" x="30.0" y="223.8125">+ getProductDetails()<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="223.8125" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:UserData>
+            <y:Model name="Product" type="Class">
+              <y:Attributes>
+                <y:Attribute value="- productId : int"/>
+                <y:Attribute value="- name : string"/>
+                <y:Attribute value="- description : string"/>
+                <y:Attribute value="- price : int"/>
+                <y:Attribute value="- imageFileName : string"/>
+              </y:Attributes>
+              <y:Operations>
+                <y:Operation value="+ displayProduct()"/>
+                <y:Operation value="+ getProductDetails()"/>
+              </y:Operations>
+            </y:Model>
+          </y:UserData>
+          <y:StyleProperties>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.operationButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.attributeButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.nodeOpacity" value="1.0"/>
+            <y:Property class="java.lang.Integer" name="com.yworks.umlDiagram.style.mouseOverButton" value="-1"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.selectionOpacity" value="0.0"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n1">
+      <data key="d4">
+        <y:GenericNode configuration="com.yworks.umlDiagram.class">
+          <y:Geometry height="207.6611328125" width="197.6923828125" x="341.15380859375" y="436.16943359375"/>
+          <y:Fill color="#FFFFFF" color2="#228B22" transparent="false"/>
+          <y:BorderStyle color="#D5FFB3" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" bottomInset="15" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="16" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="44.6015625" leftInset="0" modelName="custom" rightInset="0" textColor="#FFFFFF" topInset="10" visible="true" width="69.3515625" x="20.0" y="0.0">Category<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="63.1376953125" x="20.0" y="49.6015625">Attributes<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="49.6015625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="72.482421875" x="20.0" y="160.3583984375">Operations<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="160.3583984375" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="104.37890625" x="30.0" y="70.7529296875">- categoryId : int<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="70.7529296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="121.5029296875" x="30.0" y="91.904296875">- departmentId : int<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="91.904296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="93.4755859375" x="30.0" y="113.0556640625">- name : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="113.0556640625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="126.158203125" x="30.0" y="134.20703125">- description : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="134.20703125" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="157.6923828125" x="30.0" y="181.509765625">+getProductInCategory()<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="181.509765625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:UserData>
+            <y:Model name="Category" type="Class">
+              <y:Attributes>
+                <y:Attribute value="- categoryId : int"/>
+                <y:Attribute value="- departmentId : int"/>
+                <y:Attribute value="- name : string"/>
+                <y:Attribute value="- description : string"/>
+              </y:Attributes>
+              <y:Operations>
+                <y:Operation value="+getProductInCategory()"/>
+              </y:Operations>
+            </y:Model>
+          </y:UserData>
+          <y:StyleProperties>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.operationButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.attributeButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Integer" name="com.yworks.umlDiagram.style.mouseOverButton" value="-1"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.selectionOpacity" value="0.0"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n2">
+      <data key="d4">
+        <y:GenericNode configuration="com.yworks.umlDiagram.class">
+          <y:Geometry height="186.509765625" width="226.478515625" x="586.7607421875" y="446.7451171875"/>
+          <y:Fill color="#FFFFFF" color2="#228B22" transparent="false"/>
+          <y:BorderStyle color="#D5FFB3" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" bottomInset="15" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="16" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="44.6015625" leftInset="0" modelName="custom" rightInset="0" textColor="#FFFFFF" topInset="10" visible="true" width="88.90625" x="20.0" y="0.0">Department<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="63.1376953125" x="20.0" y="49.6015625">Attributes<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="49.6015625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="72.482421875" x="20.0" y="139.20703125">Operations<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="139.20703125" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="121.5029296875" x="30.0" y="70.7529296875">- departmentId : int<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="70.7529296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="93.4755859375" x="30.0" y="91.904296875">- name : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="91.904296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="126.158203125" x="30.0" y="113.0556640625">- description : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="113.0556640625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="186.478515625" x="30.0" y="160.3583984375">+ getCategoryInDepartment()<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="160.3583984375" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:UserData>
+            <y:Model name="Department" type="Class">
+              <y:Attributes>
+                <y:Attribute value="- departmentId : int"/>
+                <y:Attribute value="- name : string"/>
+                <y:Attribute value="- description : string"/>
+              </y:Attributes>
+              <y:Operations>
+                <y:Operation value="+ getCategoryInDepartment()"/>
+              </y:Operations>
+            </y:Model>
+          </y:UserData>
+          <y:StyleProperties>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.operationButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.attributeButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Integer" name="com.yworks.umlDiagram.style.mouseOverButton" value="-1"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.selectionOpacity" value="0.0"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n3">
+      <data key="d4">
+        <y:GenericNode configuration="com.yworks.umlDiagram.class">
+          <y:Geometry height="186.509765625" width="206.6201171875" x="596.68994140625" y="-13.2548828125"/>
+          <y:Fill color="#FFFFFF" color2="#228B22" transparent="false"/>
+          <y:BorderStyle color="#D5FFB3" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" bottomInset="15" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="16" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="44.6015625" leftInset="0" modelName="custom" rightInset="0" textColor="#FFFFFF" topInset="10" visible="true" width="127.15625" x="20.0" y="0.0">SessionManager<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="63.1376953125" x="20.0" y="49.6015625">Attributes<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="49.6015625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="72.482421875" x="20.0" y="118.0556640625">Operations<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="118.0556640625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="97.365234375" x="30.0" y="70.7529296875">- userId : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="70.7529296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="166.6201171875" x="30.0" y="91.904296875">- departmentName : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="91.904296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="74.41015625" x="30.0" y="139.20703125">+ getUser()<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="139.20703125" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="117.99609375" x="30.0" y="160.3583984375">+ getDepartment()<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="160.3583984375" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:UserData>
+            <y:Model name="SessionManager" type="Class">
+              <y:Attributes>
+                <y:Attribute value="- userId : string"/>
+                <y:Attribute value="- departmentName : string"/>
+              </y:Attributes>
+              <y:Operations>
+                <y:Operation value="+ getUser()"/>
+                <y:Operation value="+ getDepartment()"/>
+              </y:Operations>
+            </y:Model>
+          </y:UserData>
+          <y:StyleProperties>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.operationButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.attributeButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.nodeOpacity" value="1.0"/>
+            <y:Property class="java.lang.Integer" name="com.yworks.umlDiagram.style.mouseOverButton" value="-1"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.selectionOpacity" value="0.0"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n4">
+      <data key="d4">
+        <y:GenericNode configuration="com.yworks.umlDiagram.class">
+          <y:Geometry height="292.2666015624999" width="193.3720703125" x="-16.68603515625" y="713.86669921875"/>
+          <y:Fill color="#FFFFFF" color2="#228B22" transparent="false"/>
+          <y:BorderStyle color="#D5FFB3" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" bottomInset="15" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="16" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="44.6015625" leftInset="0" modelName="custom" rightInset="0" textColor="#FFFFFF" topInset="10" visible="true" width="74.6796875" x="20.0" y="0.0">Customer<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="63.1376953125" x="20.0" y="49.6015625">Attributes<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="49.6015625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="72.482421875" x="20.0" y="202.6611328125">Operations<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="202.6611328125" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="153.3720703125" x="30.0" y="70.7529296875">- customerName : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="70.7529296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="108.26171875" x="30.0" y="91.904296875">- address : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="91.904296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="91.91015625" x="30.0" y="113.0556640625">- email : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="113.0556640625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="77.9375" x="30.0" y="134.20703125">- phone : int<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="134.20703125" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="143.275390625" x="30.0" y="155.3583984375">- creditcardInfo : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="155.3583984375" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="133.9580078125" x="30.0" y="176.509765625">- shippingInfo : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="176.509765625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="72.072265625" x="30.0" y="223.8125">+ register()<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="223.8125" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="54.96875" x="30.0" y="244.9638671875">+ login()<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="244.9638671875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="67.41015625" x="30.0" y="266.115234375">+ search()<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="266.115234375" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:UserData>
+            <y:Model name="Customer" type="Class">
+              <y:Attributes>
+                <y:Attribute value="- customerName : string"/>
+                <y:Attribute value="- address : string"/>
+                <y:Attribute value="- email : string"/>
+                <y:Attribute value="- phone : int"/>
+                <y:Attribute value="- creditcardInfo : string"/>
+                <y:Attribute value="- shippingInfo : string"/>
+              </y:Attributes>
+              <y:Operations>
+                <y:Operation value="+ register()"/>
+                <y:Operation value="+ login()"/>
+                <y:Operation value="+ search()"/>
+              </y:Operations>
+            </y:Model>
+          </y:UserData>
+          <y:StyleProperties>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.operationButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.attributeButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Integer" name="com.yworks.umlDiagram.style.mouseOverButton" value="-1"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.selectionOpacity" value="0.0"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n5">
+      <data key="d4">
+        <y:GenericNode configuration="com.yworks.umlDiagram.class">
+          <y:Geometry height="165.3583984375" width="194.6025390625" x="262.69873046875" y="717.32080078125"/>
+          <y:Fill color="#FFFFFF" color2="#228B22" transparent="false"/>
+          <y:BorderStyle color="#D5FFB3" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" bottomInset="15" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="16" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="44.6015625" leftInset="0" modelName="custom" rightInset="0" textColor="#FFFFFF" topInset="10" visible="true" width="104.8984375" x="20.0" y="0.0">Administrator<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="63.1376953125" x="20.0" y="49.6015625">Attributes<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="49.6015625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="72.482421875" x="20.0" y="118.0556640625">Operations<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="118.0556640625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="93.4755859375" x="30.0" y="70.7529296875">- name : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="70.7529296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="91.91015625" x="30.0" y="91.904296875">- email : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="91.904296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="154.6025390625" x="30.0" y="139.20703125">+ updateCatalog() : bool<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="139.20703125" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:UserData>
+            <y:Model name="Administrator" type="Class">
+              <y:Attributes>
+                <y:Attribute value="- name : string"/>
+                <y:Attribute value="- email : string"/>
+              </y:Attributes>
+              <y:Operations>
+                <y:Operation value="+ updateCatalog() : bool"/>
+              </y:Operations>
+            </y:Model>
+          </y:UserData>
+          <y:StyleProperties>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.operationButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.attributeButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Integer" name="com.yworks.umlDiagram.style.mouseOverButton" value="-1"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.selectionOpacity" value="0.0"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n6">
+      <data key="d4">
+        <y:GenericNode configuration="com.yworks.umlDiagram.class">
+          <y:Geometry height="186.509765625" width="171.23046875" x="134.384765625" y="-13.2548828125"/>
+          <y:Fill color="#FFFFFF" color2="#228B22" transparent="false"/>
+          <y:BorderStyle color="#D5FFB3" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" bottomInset="15" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="16" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="44.6015625" leftInset="0" modelName="custom" rightInset="0" textColor="#FFFFFF" topInset="10" visible="true" width="35.578125" x="20.0" y="0.0">User<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="63.1376953125" x="20.0" y="49.6015625">Attributes<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="49.6015625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#FFFFFF" visible="true" width="72.482421875" x="20.0" y="139.20703125">Operations<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="20.0" offsetY="139.20703125" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="97.365234375" x="30.0" y="70.7529296875">- userId : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="70.7529296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="118.3720703125" x="30.0" y="91.904296875">- password : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="91.904296875" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="120.7236328125" x="30.0" y="113.0556640625">- loginState : string<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="113.0556640625" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" configuration="com.yworks.umlDiagram.label" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="21.1513671875" modelName="custom" textColor="#404040" visible="true" width="131.23046875" x="30.0" y="160.3583984375">+ verifyLogin() : bool<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="30.0" offsetY="160.3583984375" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:UserData>
+            <y:Model name="User" type="Class">
+              <y:Attributes>
+                <y:Attribute value="- userId : string"/>
+                <y:Attribute value="- password : string"/>
+                <y:Attribute value="- loginState : string"/>
+              </y:Attributes>
+              <y:Operations>
+                <y:Operation value="+ verifyLogin() : bool"/>
+              </y:Operations>
+            </y:Model>
+          </y:UserData>
+          <y:StyleProperties>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.operationButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.attributeButtonOpacity" value="0.0"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.nodeOpacity" value="1.0"/>
+            <y:Property class="java.lang.Integer" name="com.yworks.umlDiagram.style.mouseOverButton" value="-1"/>
+            <y:Property class="java.lang.Float" name="com.yworks.umlDiagram.style.selectionOpacity" value="0.0"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <edge id="e0" source="n2" target="n1">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="-113.2392578125" sy="0.0" tx="98.84619140625" ty="0.0"/>
+          <y:LineStyle color="#404040" type="line" width="1.0"/>
+          <y:Arrows source="diamond" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e1" source="n1" target="n0">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="-103.83056640625" tx="0.0" ty="124.98193359375"/>
+          <y:LineStyle color="#404040" type="line" width="1.0"/>
+          <y:Arrows source="diamond" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e2" source="n2" target="n3">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="-93.2548828125" tx="0.0" ty="93.2548828125"/>
+          <y:LineStyle color="#404040" type="line" width="1.0"/>
+          <y:Arrows source="diamond" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e3" source="n3" target="n6">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="-103.31005859375" sy="0.0" tx="85.615234375" ty="0.0"/>
+          <y:LineStyle color="#404040" type="line" width="1.0"/>
+          <y:Arrows source="diamond" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e4" source="n4" target="n6">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="-146.13330078125" tx="0.0" ty="93.2548828125">
+            <y:Point x="80.0" y="680.0"/>
+            <y:Point x="220.0" y="680.0"/>
+          </y:Path>
+          <y:LineStyle color="#404040" type="line" width="1.0"/>
+          <y:Arrows source="none" target="white_delta"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e5" source="n5" target="n6">
+      <data key="d5">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="-82.67919921875" tx="0.0" ty="93.2548828125">
+            <y:Point x="360.0" y="680.0"/>
+            <y:Point x="220.0" y="680.0"/>
+          </y:Path>
+          <y:LineStyle color="#404040" type="line" width="1.0"/>
+          <y:Arrows source="none" target="white_delta"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+  </graph>
+  <data key="d0">
+    <y:Resources/>
+  </data>
+</graphml>

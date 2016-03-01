@@ -1,0 +1,211 @@
+<html>
+<head>
+  <style type="text/css">
+    <!--
+body {
+    font-family:Verdana, sans-serif;
+        margin-left:3px;
+        margin-right:3px;
+        margin-top:0px;
+        margin-bottom:0px;
+    }
+
+h1 {
+    padding-left:0px;
+    padding-top:8px;
+    padding-bottom:8px;
+    color:#4079ea;
+    font-size:16px;
+    margin-bottom:5px;
+}
+
+p {
+    padding-bottom:0px;
+    padding-top:0px;
+    margin-top:3px;
+    margin-bottom:0px;
+    margin-left:0px;
+    font-size:10px;
+    color:#000000;
+    }
+
+h2 {
+  font-size:12px;
+    color:#4079ea;
+  margin-top:10px;
+  margin-bottom:0px;
+}
+
+h3 {
+  font-size:11px;
+/*	margin-left:10px; */
+    margin-left:0px;
+  margin-top:8px;
+  margin-bottom:2px;
+}
+
+h4 {
+  font-size:10px;
+  margin-left:0px;
+  margin-top:6px;
+  margin-bottom:2px;
+}
+
+
+dl {
+    font-size:10px;
+    margin-top:2px;
+    margin-bottom:2px;
+    margin-left:0px;
+}
+
+dt {
+    font-weight:bold;
+    margin-top:4px;
+    color:#333366;
+}
+
+dt.inner {
+  font-weight:bold;
+  margin-top:4px;
+  color:#000000;
+}
+
+  dd {
+    margin-left:5px;
+}
+
+.copyright {
+    font-size: 10px;
+    font-style:italic;
+    text-align:right;
+    margin-top:20px;
+}
+
+code, tt {
+    font-family:monospace;
+    font-size:10px;
+    color:#0000C0;
+}
+
+.keyword {
+  font-weight:bold;
+}
+
+-->
+  </style>
+</head>
+<body>
+<h2>Description</h2>
+
+<p>
+  This demo shows how to configure the <code>PreferredPlacementDescriptor</code> of labels and how this effects the
+  label placement of layouters.
+</p>
+
+<h3>Usage</h3>
+
+<dl>
+  <dt>Adding a New Label</dt>
+  <dd>
+    To add a new edge label right-click on an edge and choose the item <code>Add Label</code>.
+  </dd>
+
+  <dt>Editing the Label Settings</dt>
+  <dd>
+    The properties in the side bar are constantly updated to show the common settings of the placement descriptors of
+    the currently selected labels. Any change of these settings is applied to all selected labels and a new layout is
+    calculated to visualize the result of these settings.
+  </dd>
+
+  <dt>Automatic Layout Calculation</dt>
+  <dd>
+    The selected layout is calculated immediately after changing any of the label properties or if the
+    <code>Layout</code> button is pressed.
+  </dd>
+</dl>
+
+<h3>Properties</h3>
+
+<dl>
+  <dt>Placement Along the Edge</dt>
+  <dd>
+    Whether the label should be placed near the source or target node, centered between source and target or anywhere.
+  </dd>
+  <dt>Side of the Edge</dt>
+  <dd>
+    Whether the label should be placed centered on or left or right beneath the edge.
+  </dd>
+  <dt>Side Interpretation</dt>
+  <dd>
+    Determines if 'left' and 'right' of the edge is interpreted relative to the edge direction or using the absolute
+    position. In the latter case, the edge side is ambiguous for horizontal segments and either the left or the right
+    side can be 'North' of the edge.
+  </dd>
+
+  <dt>Angle (in Degrees)</dt>
+  <dd>
+    The rotation angle (in degrees) of the label.
+  </dd>
+  <dt>Angle Reference</dt>
+  <dd>
+    Whether the rotation angle is relative to the edge slope or absolute.
+  </dd>
+  <dt>Angle Rotation on Right Side</dt>
+  <dd>
+    While the angle for labels on the edge and left of the edge is always interpreted clockwise,
+    the rotation for labels on the right side can either be interpreted Co-rotating with those labels or
+    Counter-rotating, that means counter-clockwise.
+  </dd>
+  <dt>Add 180 Degrees on Right Side</dt>
+  <dd>
+    Whether additional 180 degrees should be added to the rotation of labels that are right of the edge.
+  </dd>
+  <dt>Distance to Edge</dt>
+  <dd>
+    The distance between the edge and the closest label corner.
+  </dd>
+
+</dl>
+
+<h3>Label Visualization</h3>
+<p>
+  Using the drop down box in the top menu you can choose to either
+  'Visualize Label Descriptor' or 'Visualize Label Bounds'.
+</p>
+<dl>
+  <dt>Visualize Label Descriptor</dt>
+  <dd>
+    Different visual amendments are used to visualize the label descriptor
+    settings of an edge:
+    <ul>
+      <li>
+        The arrow-shaped background with the color gradient visualizes the final
+        label orientation.
+      </li>
+      <li>
+        A blue line with a small arc shows how label is rotated by the set angle.
+      </li>
+      <li>
+        A red line with a semi-circle shows when an additional 180 degree offset
+        has been added for right-side labels.
+      </li>
+      <li>
+        A green line with two filled semi-circles runs between the center of the
+        closest label side and its foot of a dropped perpendicular on the edge.
+      </li>
+      <li>An orange text shows the set side of the label.</li>
+    </ul>
+  </dd>
+  <dt>Visualize Label Bounds</dt>
+  <dd>
+    Visualizes the oriented rectangular bounds of the label:
+    <ul>
+      <li>A red circle marks the anchor point.</li>
+      <li>An orange arrow visualizes the up-vector (scaled by the labels height).</li>
+      <li>Green and blue double-pointed arrows indicate the width and height.</li>
+    </ul>
+  </dd>
+</dl>
+</body>
+</html>

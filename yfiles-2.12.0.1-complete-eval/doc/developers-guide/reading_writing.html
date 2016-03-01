@@ -1,0 +1,145 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Reading and Writing Graph Structure Data</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="io.html" title="Chapter&nbsp;9.&nbsp;Input and Output">
+      <link rel="previous" href="io.html" title="Chapter&nbsp;9.&nbsp;Input and Output">
+      <link rel="next" href="graphml.html" title="GraphML">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Reading and Writing Graph Structure Data</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="io.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;9.&nbsp;Input and Output</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="graphml.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="reading_writing"></a>Reading and Writing Graph Structure Data
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div><a class="indexterm" name="d0e34130"></a><a class="indexterm" name="d0e34137"></a><a class="indexterm" name="d0e34142"></a><a class="indexterm" name="d0e34147"></a><a class="indexterm" name="d0e34152"></a><a class="indexterm" name="d0e34157"></a><a class="indexterm" name="d0e34162"></a><a class="indexterm" name="d0e34167"></a><a class="indexterm" name="d0e34172"></a><a class="indexterm" name="d0e34177"></a><a class="indexterm" name="d0e34184"></a><a class="indexterm" name="d0e34191"></a><a class="indexterm" name="d0e34198"></a><a class="indexterm" name="d0e34205"></a><a class="indexterm" name="d0e34210"></a><p>
+            By default, the yFiles library already offers various possibilities for writing 
+            a graph to different file formats. 
+            <a href="reading_writing.html#FFs" title="Table&nbsp;9.2.&nbsp;Supported file formats">Table&nbsp;9.2, &#8220;Supported file formats&#8221;</a> lists the supported graph exchange file formats. 
+            
+            The recommended file format, GraphML, is listed topmost. 
+            It offers the best mixture of robustness, compatibility, and flexibility.
+            
+         </p>
+         <div class="table"><a name="FFs"></a><p class="title"><b>Table&nbsp;9.2.&nbsp;Supported file formats</b></p>
+            <table summary="Supported file formats" width="100%" border="1">
+               <colgroup>
+                  <col width="16%" align="center">
+                  <col width="20%" align="left">
+                  <col width="64%" align="left">
+               </colgroup>
+               <thead valign="top">
+                  <tr>
+                     <th align="center">File Name Extension</th>
+                     <th align="left">Format Name</th>
+                     <th align="left">Description</th>
+                  </tr>
+               </thead>
+               <tbody valign="top">
+                  <tr>
+                     <td align="center">graphml</td>
+                     <td align="left"><a href="graphml.html" title="GraphML">GraphML</a></td>
+                     <td align="left">
+                        
+                            XML-based file format. 
+                            Not to be confused with <a href="gml.html" title="GML">GML</a>, its aged ancestor.
+                          
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="center">ygf</td>
+                     <td align="left"><a href="ygf.html" title="YGF">Y Graph Format</a></td>
+                     <td align="left">
+                            Proprietary binary file format. 
+                          
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="center">gml</td>
+                     <td align="left"><a href="gml.html" title="GML">Graph Modeling Language</a></td>
+                     <td align="left">
+                            Text-based file format. 
+                            The ancestor of modern, XML-based <a href="graphml.html" title="GraphML">GraphML</a>.
+                        
+                          
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="center">xgml</td>
+                     <td align="left"><a href="xgml.html" title="XGML">Graph Modeling Language</a></td>
+                     <td align="left">
+                            Text-based file format. 
+                            XML-ish variant of GML. 
+                          
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="center">tgf</td>
+                     <td align="left"><a href="tgf.html" title="TGF">Trivial Graph Format</a></td>
+                     <td align="left">
+                            Text-based file format. 
+                            Saves only a graph's structure and existing labels. 
+                        
+                          
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="io.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="io.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="graphml.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Chapter&nbsp;9.&nbsp;Input and Output&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;GraphML</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,1758 @@
+<html>
+   <head>
+      <title>Migration Notes</title>
+      <link rel="stylesheet" href="../../yfiles.css" type="text/css">
+      <style type="text/css">
+h3 {
+  margin-left: 0px;
+}
+h4 {
+  font-size: 12px;
+  font-weight: normal;
+  text-decoration: underline;
+  margin-top: 8px;
+  margin-left: 8px;
+  margin-bottom: 0px;
+}
+
+div.example div.informaltable div.migration td.version {
+  font-size: 12px;
+  background-color: #A4B9EA;
+  font-weight: bold;
+  text-align: center;
+}
+      </style>
+   </head>
+   <body>
+      <div class="appendix" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title"><a name="migration"></a>Migration Notes</h1>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <div class="toc">
+            <p><b>Table of Contents</b></p>
+            <dl>
+               <dt><span class="section"><a href="#d0e27486">Migrating From yFiles for Java 2.6 to 2.7</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="#migration_java">API Changes</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="#d0e27501">Hierarchy-related Functionality Moved to Base Classes</a></span></dt>
+                           <dt><span class="section"><a href="#d0e27615">Group Node Realizers now use Double-precision Insets</a></span></dt>
+
+                           <dt><span class="section"><a href="#migration_Graph2DClipboard">Graph2DClipboard Uses CopyFactory</a></span></dt>
+                           <dt><span class="section"><a href="#migration_misc">Miscellaneous</a></span></dt>
+                        </dl>
+                     </dd>
+                     <dt><span class="section"><a href="#d0e27800">Removed</a></span></dt>
+                     <dt><span class="section"><a href="#migration_java_graphml">GraphML Compatibility</a></span></dt>
+                     <dd>
+
+                        <dl>
+                           <dt><span class="section"><a href="#migration_java_graphml_most_prominent">Most Prominent Changes</a></span></dt>
+                           <dt><span class="section"><a href="#migration_graphml_GraphMLIOHandler_changes">GraphMLIOHandler Changes</a></span></dt>
+                           <dt><span class="section"><a href="#d0e28017">Adding Custom Data to GraphML</a></span></dt>
+                           <dt><span class="section"><a href="#d0e28421">(De)Serialization of Custom Realizers</a></span></dt>
+                           <dt><span class="section"><a href="#d0e28452">GraphML Demos Moved to New Package</a></span></dt>
+
+                        </dl>
+                     </dd>
+                  </dl>
+               </dd>
+            </dl>
+         </div>
+         <div class="section" lang="en">
+
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both"><a name="d0e27486"></a>Migrating From yFiles for Java 2.6 to 2.7
+                     </h2>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+
+            <p>
+               The migration of a yFiles for Java 2.6 application to yFiles for Java 2.7 comprises 
+               changes to your code as described in <a href="#migration_java" title="API Changes">the section called &#8220;API Changes&#8221;</a>. 
+               
+               Additionally, if your application uses the yFiles GraphML extension package for 
+               graph structure I/O, see also the notes on <a href="#migration_java_graphml" title="GraphML Compatibility">GraphML compatibility</a>.
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+
+                        <h2 class="title"><a name="migration_java"></a>API Changes
+                        </h2>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  
+               </p>
+               <div class="section" lang="en">
+
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h3 class="title"><a name="d0e27501"></a>Hierarchy-related Functionality Moved to Base Classes
+                           </h3>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+
+                  <div class="section" lang="en">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h4 class="title"><a name="d0e27504"></a>Change
+                              </h4>
+                           </div>
+                        </div>
+                        <div></div>
+
+                     </div>
+                     <p>
+                        Hierarchy-related ViewMode implementations from the <a href="../../api/y/view/hierarchy/package-summary.html" title="Link to API documentation" target="_top">y.view.hierarchy</a>
+                        package have been removed.
+                        Their functionality has been incorporated into the corresponding base classes, which 
+                        can now correctly deal with hierarchically organized Graph2D instances.
+                        
+                     </p>
+                  </div>
+                  <div class="section" lang="en">
+                     <div class="titlepage">
+
+                        <div>
+                           <div>
+                              <h4 class="title"><a name="d0e27512"></a>Remedy
+                              </h4>
+                           </div>
+                        </div>
+                        <div></div>
+                     </div>
+                     <p>
+
+                        Replace occurrences of hierarchy-related ViewMode classes as listed in the following 
+                        table with the corresponding base class.
+                        
+                     </p>
+                     <div class="table"><a name="tab_compat_hierarchy_viewmodes"></a>
+                        <table summary="Hierarchy-related ViewMode functionality" width="100%" border="1">
+                           <colgroup>
+                              <col width="50%" align="left">
+                              <col width="50%" align="left">
+                           </colgroup>
+
+                           <thead>
+                              <tr>
+                                 <th align="left">Hierarchy-related ViewMode</th>
+                                 <th align="left">Base class</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+
+                                 <td align="left"><tt class="code">HierarchyEditMode</tt></td>
+                                 <td align="left"><a href="../../api/y/view/EditMode.html" title="Link to API documentation" target="_top">EditMode</a></td>
+                              </tr>
+                              <tr>
+                                 <td align="left"><tt class="code">HierarchyMoveSelectionMode</tt></td>
+                                 <td align="left"><a href="../../api/y/view/MoveSelectionMode.html" title="Link to API documentation" target="_top">MoveSelectionMode</a></td>
+                              </tr>
+
+                              <tr>
+                                 <td align="left"><tt class="code">HierarchyCreateEdgeMode</tt></td>
+                                 <td align="left"><a href="../../api/y/view/CreateEdgeMode.html" title="Link to API documentation" target="_top">CreateEdgeMode</a></td>
+                              </tr>
+                              <tr>
+                                 <td align="left"><tt class="code">HierarchySelectionBoxMode</tt></td>
+                                 <td align="left"><a href="../../api/y/view/SelectionBoxMode.html" title="Link to API documentation" target="_top">SelectionBoxMode</a></td>
+
+                              </tr>
+                              <tr>
+                                 <td align="left"><tt class="code">HierarchyHotSpotMode</tt></td>
+                                 <td align="left"><a href="../../api/y/view/HotSpotMode.html" title="Link to API documentation" target="_top">HotSpotMode</a></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+
+                  </div>
+                  <div class="section" lang="en">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h4 class="title"><a name="d0e27560"></a>Change
+                              </h4>
+                           </div>
+                        </div>
+
+                        <div></div>
+                     </div>
+                     <p>
+                        Similarly, the functionality of the following hierarchy-related classes has also 
+                        been moved to the corresponding base class.
+                        
+                     </p>
+                  </div>
+                  <div class="section" lang="en">
+                     <div class="titlepage">
+                        <div>
+
+                           <div>
+                              <h4 class="title"><a name="d0e27565"></a>Remedy
+                              </h4>
+                           </div>
+                        </div>
+                        <div></div>
+                     </div>
+                     <p>
+                        Replace occurrences of these classes as listed in the following
+                        table with the corresponding base class.
+                        
+                     </p>
+
+                     <div class="table"><a name="tab_compat_hierarchy_appl_logic"></a>
+                        <table summary="Hierarchy-related application logic" width="100%" border="1">
+                           <colgroup>
+                              <col width="50%" align="left">
+                              <col width="50%" align="left">
+                           </colgroup>
+                           <thead>
+
+                              <tr>
+                                 <th align="left">Hierarchy-related class</th>
+                                 <th align="left">Base class</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td align="left"><tt class="code">Graph2DHierarchyClipboard</tt></td>
+
+                                 <td align="left"><a href="../../api/y/view/Graph2DClipboard.html" title="Link to API documentation" target="_top">Graph2DClipboard</a></td>
+                              </tr>
+                              <tr>
+                                 <td align="left"><tt class="code">Graph2DHierarchyUndoManager</tt></td>
+                                 <td align="left"><a href="../../api/y/view/Graph2DUndoManager.html" title="Link to API documentation" target="_top">Graph2DUndoManager</a></td>
+                              </tr>
+                           </tbody>
+
+                        </table>
+                     </div>
+                  </div>
+                  <div class="example"><a name="ex_migrate_UndoManager"></a><p class="title"><i>Registering a Graph2DUndoManager</i></p>
+                     <div class="informaltable">
+                        <div class="migration">
+                           <table width="100%" border="1">
+
+                              <colgroup>
+                                 <col width="5%">
+                                 <col width="95%">
+                              </colgroup>
+                              <tbody>
+                                 <tr>
+                                    <td class="version" align="center">2.6</td>
+                                    <td><pre class="programlisting java">
+// 'hm' is of type y.view.hierarchy.HierarchyManager.
+// 'graph2D' is of type y.view.Graph2D.
+
+Graph2DHierarchyUndoManager manager = new Graph2DHierarchyUndoManager(hm);
+graph2D.addGraphListener(manager);
+graph2D.setBackupRealizersHandler(manager);
+hm.addHierarchyListener(manager);
+</pre></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="version" align="center">2.7</td>
+                                    <td><pre class="programlisting java">
+// 'graph2D' is of type y.view.Graph2D.
+
+Graph2DUndoManager manager = new Graph2DUndoManager(graph2D);
+</pre></td>
+                                 </tr>
+                              </tbody>
+
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="section" lang="en">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+
+                           <h3 class="title"><a name="d0e27615"></a>Group Node Realizers now use Double-precision Insets
+                           </h3>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+                  <div class="section" lang="en">
+                     <div class="titlepage">
+                        <div>
+
+                           <div>
+                              <h4 class="title"><a name="d0e27618"></a>Change
+                              </h4>
+                           </div>
+                        </div>
+                        <div></div>
+                     </div>
+                     <p>
+                        Group node realizers and grouping related data providers now use double-precision
+                        <a href="../../api/y/geom/YInsets.html" title="Link to API documentation" target="_top">YInsets</a> instead of integer-precision
+                        <tt class="code">java.awt.Insets</tt>.
+                        
+                     </p>
+
+                  </div>
+                  <div class="section" lang="en">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h4 class="title"><a name="d0e27628"></a>Remedy
+                              </h4>
+                           </div>
+                        </div>
+
+                        <div></div>
+                     </div>
+                     <p>
+                        If you are using custom insets for group node realizers, replace occurrences of integer-precision
+                        <tt class="code">java.awt.Insets</tt> with double-precision <a href="../../api/y/geom/YInsets.html" title="Link to API documentation" target="_top">YInsets</a> 
+                        in the methods listed in the following table.
+                        
+                     </p>
+                     <p>
+
+                        You should also replace any Insets that you pass to layout algorithms by means of 
+                        data providers and use YInsets instead.
+                        
+                     </p>
+                     <div class="table"><a name="tab_compat_insets"></a>
+                        <table summary="Double-precision insets" width="100%" border="1">
+                           <colgroup>
+                              <col width="50%" align="left">
+                              <col width="50%" align="left">
+                           </colgroup>
+
+                           <thead>
+                              <tr>
+                                 <th align="left">Interface/class name</th>
+                                 <th align="left">Method</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+
+                                 <td rowspan="2" align="left"><tt class="code">AutoBoundsFeature</tt> implementations: ProxyAutoBoundsNodeRealizer, 
+                                        GroupNodeRealizer, GenericGroupNodeRealizer.GenericAutoBoundsFeature
+                                      
+                                 </td>
+                                 <td align="left"><a href="../../api/y/view/hierarchy/AutoBoundsFeature.html#getAutoBoundsInsets()" title="Link to API documentation" target="_top">YInsets getAutoBoundsInsets()</a></td>
+                              </tr>
+                              <tr>
+                                 <td align="left"><a href="../../api/y/view/hierarchy/AutoBoundsFeature.html#setAutoBoundsInsets(y.geom.YInsets)" title="Link to API documentation" target="_top">void setAutoBoundsInsets(YInsets insets)</a></td>
+                              </tr>
+
+                              <tr>
+                                 <td align="left"><tt class="code">GenericGroupNodeRealizer.GenericAutoBoundsFeature</tt></td>
+                                 <td align="left"><a href="../../api/y/view/hierarchy/GenericGroupNodeRealizer.GenericAutoBoundsFeature.html#getAutoBoundsInsets(y.view.NodeRealizer)" title="Link to API documentation" target="_top">YInsets getAutoBoundsInsets(NodeRealizer nr)</a></td>
+                              </tr>
+                              <tr>
+                                 <td rowspan="4" align="left"><tt class="code">GroupFeature</tt> implementations: GroupNodeRealizer and GenericGroupNodeRealizer
+                                      
+                                 </td>
+
+                                 <td align="left"><a href="../../api/y/view/hierarchy/GroupFeature.html#getBorderInsets()" title="Link to API documentation" target="_top">YInsets getBorderInsets()</a></td>
+                              </tr>
+                              <tr>
+                                 <td align="left"><a href="../../api/y/view/hierarchy/GroupFeature.html#setBorderInsets(y.geom.YInsets)" title="Link to API documentation" target="_top">void setBorderInsets(YInsets insets)</a></td>
+                              </tr>
+                              <tr>
+                                 <td align="left"><a href="../../api/y/view/hierarchy/GroupFeature.html#getMinimalInsets()" title="Link to API documentation" target="_top">YInsets getMinimalInsets()</a></td>
+
+                              </tr>
+                              <tr>
+                                 <td align="left"><a href="../../api/y/view/hierarchy/GroupFeature.html#setMinimalInsets(y.geom.YInsets)" title="Link to API documentation" target="_top">void setMinimalInsets(YInsets insets)</a></td>
+                              </tr>
+                              <tr>
+                                 <td align="left"><tt class="code">OrientationLayouter</tt></td>
+                                 <td align="left"><a href="../../api/y/layout/OrientationLayouter.html#createOrientedInsets(y.geom.YInsets)" title="Link to API documentation" target="_top">YInsets createOrientedInsets(YInsets insets)</a></td>
+
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div class="section" lang="en">
+                  <div class="titlepage">
+                     <div>
+
+                        <div>
+                           <h3 class="title"><a name="migration_Graph2DClipboard"></a>Graph2DClipboard Uses CopyFactory
+                           </h3>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+                  <div class="section" lang="en">
+                     <div class="titlepage">
+
+                        <div>
+                           <div>
+                              <h4 class="title"><a name="d0e27702"></a>Change
+                              </h4>
+                           </div>
+                        </div>
+                        <div></div>
+                     </div>
+                     <p>
+
+                        Class <a href="../../api/y/view/Graph2DClipboard.html" title="Link to API documentation" target="_top">Graph2DClipboard</a> now uses a <a href="../../api/y/util/GraphCopier.CopyFactory.html" title="Link to API documentation" target="_top">GraphCopier.CopyFactory</a> 
+                        implementation instead of a <a href="../../api/y/base/GraphFactory.html" title="Link to API documentation" target="_top">GraphFactory</a> implementation 
+                        to create the clipboard graph and copy parts of the given original graph to and 
+                        from that graph. 
+                        As a consequence, the corresponding setter and getter methods have changed.
+                        See the following table.
+                     </p>
+                  </div>
+                  <div class="section" lang="en">
+                     <div class="titlepage">
+
+                        <div>
+                           <div>
+                              <h4 class="title"><a name="d0e27713"></a>Remedy
+                              </h4>
+                           </div>
+                        </div>
+                        <div></div>
+                     </div>
+                     <p>
+
+                        If you are setting a custom GraphFactory implementation in your code, you will have 
+                        to switch to a GraphCopier.CopyFactory implementation instead.
+                        
+                     </p>
+                     <div class="table"><a name="tab_compat_methods_Graph2DClipboard"></a>
+                        <table summary="Changed methods in Graph2DClipboard" width="100%" border="1">
+                           <colgroup>
+                              <col width="50%" align="left">
+                              <col width="50%" align="left">
+                           </colgroup>
+
+                           <thead>
+                              <tr>
+                                 <th align="left">Old method</th>
+                                 <th align="left">New method</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+
+                                 <td align="left"><tt class="code">GraphFactory getGraphFactory()</tt></td>
+                                 <td align="left"><a href="../../api/y/view/Graph2DClipboard.html#getCopyFactory()" title="Link to API documentation" target="_top">GraphCopier.CopyFactory getCopyFactory()</a></td>
+                              </tr>
+                              <tr>
+                                 <td align="left"><tt class="code">void setGraphFactory(GraphFactory)</tt></td>
+                                 <td align="left"><a href="../../api/y/view/Graph2DClipboard.html#setCopyFactory(y.util.GraphCopier.CopyFactory)" title="Link to API documentation" target="_top">void setCopyFactory(GraphCopier.CopyFactory)</a></td>
+                              </tr>
+
+                           </tbody>
+                        </table>
+                     </div>
+                     <p>
+                        For example, if your GraphFactory created graphs of custom type (e.g. <tt class="code">MyCustomGraph2D</tt>)
+                        then a CopyFactory implementation would provide this functionality as shown
+                        in the following example:
+                        
+                     </p>
+
+                     <div class="example">
+                        <div class="informaltable">
+                           <div class="migration">
+                              <table width="100%" border="1">
+                                 <colgroup>
+                                    <col width="5%">
+                                    <col width="95%">
+
+                                 </colgroup>
+                                 <tbody>
+                                    <tr>
+                                       <td class="version" align="center">2.6</td>
+                                       <td><pre class="programlisting java">
+// Custom y.base.GraphFactory implementation.
+public class MyCustomGraphFactory extends Graph2DCopyFactory {
+  public Graph createGraph(Object hint) {
+    return new MyCustomGraph2D();
+  }
+
+  public Node createNode(Graph graph, Object hint) {
+    if (hint instanceof Node) {
+      Node originalNode = (Node)hint;
+      if (originalNode.getGraph() instanceof MyCustomGraph2D) {
+        MyCustomGraph2D otherGraph = 
+            (MyCustomGraph2D)originalNode.getGraph();
+        MyCustomGraph2D targetGraph2D = (MyCustomGraph2D)graph;
+        Node copiedNode = super.createNode(graph, hint);
+        targetGraph2D.setMyCustomAttribute(
+            copiedNode, otherGraph.getMyCustomAttribute(originalNode));
+        return copiedNode;
+      }
+    }
+    return super.createNode(graph, hint);
+  }
+}
+</pre></td>
+                                    </tr>
+                                    <tr>
+
+                                       <td class="version" align="center">2.7</td>
+                                       <td><pre class="programlisting java">
+// Custom y.util.GraphCopier.CopyFactory implementation.
+public class MyCustomGraph2DCopyFactory extends
+             Graph2DCopyFactory.HierarchicGraph2DCopyFactory {
+  public Graph createGraph() {
+    return new MyCustomGraph2D();
+  }
+
+  public Node copyNode(Graph targetGraph, Node originalNode) {
+    if (originalNode.getGraph() instanceof MyCustomGraph2D) {
+      MyCustomGraph2D otherGraph = 
+          (MyCustomGraph2D)originalNode.getGraph();
+      MyCustomGraph2D targetGraph2D = (MyCustomGraph2D)targetGraph;
+      Node copiedNode = super.copyNode(targetGraph, originalNode);
+      targetGraph2D.setMyCustomAttribute(
+          copiedNode, otherGraph.getMyCustomAttribute(originalNode));
+      return copiedNode;
+    }
+    return super.copyNode(targetGraph, originalNode);
+  }
+}
+</pre></td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+
+                     </div>
+                     <p>
+                        Note that the <tt class="code">createGraph</tt> method will be called to create the proper 
+                        graph type in the clipboard necessary to hold graph elements during the clipboard 
+                        actions.
+                        
+                     </p>
+                  </div>
+               </div>
+               <div class="section" lang="en">
+                  <div class="titlepage">
+
+                     <div>
+                        <div>
+                           <h3 class="title"><a name="migration_misc"></a>Miscellaneous
+                           </h3>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+                  <div class="section" lang="en">
+
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h4 class="title"><a name="d0e27780"></a>Change
+                              </h4>
+                           </div>
+                        </div>
+                        <div></div>
+                     </div>
+
+                     <p>
+                        The protected <tt class="code">deleteSelection(Graph2DView)</tt> method from class <a href="../../api/y/view/Graph2DViewActions.html" title="Link to API documentation" target="_top">Graph2DViewActions</a> 
+                        has been deprecated. 
+                        It is also final now and can no longer be overwritten in order to customize delete 
+                        behavior.
+                        
+                     </p>
+                  </div>
+                  <div class="section" lang="en">
+                     <div class="titlepage">
+
+                        <div>
+                           <div>
+                              <h4 class="title"><a name="d0e27790"></a>Remedy
+                              </h4>
+                           </div>
+                        </div>
+                        <div></div>
+                     </div>
+                     <p>
+
+                        As a replacement, use the <a href="../../api/y/view/Graph2DViewActions.DeleteSelectionAction.html#delete(y.view.Graph2DView)" title="Link to API documentation" target="_top">delete(Graph2DView)</a> 
+                        method from dedicated class <a href="../../api/y/view/Graph2DViewActions.DeleteSelectionAction.html" title="Link to API documentation" target="_top">Graph2DViewActions.DeleteSelectionAction</a>.
+                        
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+
+                  <div>
+                     <div>
+                        <h2 class="title"><a name="d0e27800"></a>Removed
+                        </h2>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+
+                  The methods listed in the following table were obsolete and thus removed from <a href="../../api/y/view/Graph2DView.html" title="Link to API documentation" target="_top">Graph2DView</a>.
+                  
+               </p>
+               <div class="table"><a name="tab_compat_removed_Graph2DView"></a>
+                  <table summary="Methods removed from Graph2DView" width="100%" border="1">
+                     <colgroup>
+                        <col width="100%" align="left">
+                     </colgroup>
+
+                     <thead>
+                        <tr>
+                           <th align="left">Method</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td align="left"><tt class="code">void setGridCursorPosition(double x, double y)</tt></td>
+
+                        </tr>
+                        <tr>
+                           <td align="left"><tt class="code">void gridCursorActive(boolean enabled)</tt></td>
+                        </tr>
+                        <tr>
+                           <td align="left"><tt class="code">void setSecureDrawingMode(boolean enabled)</tt></td>
+                        </tr>
+                     </tbody>
+
+                  </table>
+               </div>
+               <p>
+                  The following classes have been removed:
+                  
+               </p>
+               <div class="table"><a name="tab_compat_removed_classes"></a>
+                  <table summary="Removed classes" width="100%" border="1">
+                     <colgroup>
+
+                        <col width="25%" align="left">
+                        <col width="75%" align="left">
+                     </colgroup>
+                     <thead>
+                        <tr>
+                           <th align="left">Class name</th>
+                           <th align="left">Description</th>
+                        </tr>
+
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td align="left"><tt class="code">y.view.hierarchy.HierarchyEditMode</tt></td>
+                           <td align="left">The functionality of this class has been integrated into its base class <a href="../../api/y/view/EditMode.html" title="Link to API documentation" target="_top">EditMode</a>.
+                           </td>
+                        </tr>
+                        <tr>
+
+                           <td align="left"><tt class="code">y.view.hierarchy.HierarchyMoveSelectionMode</tt></td>
+                           <td align="left">The functionality of this class has been integrated into its base class <a href="../../api/y/view/MoveSelectionMode.html" title="Link to API documentation" target="_top">MoveSelectionMode</a>.
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><tt class="code">y.view.hierarchy.HierarchyCreateEdgeMode</tt></td>
+                           <td align="left">The functionality of this class has been integrated into its base class <a href="../../api/y/view/CreateEdgeMode.html" title="Link to API documentation" target="_top">CreateEdgeMode</a>.
+                           </td>
+
+                        </tr>
+                        <tr>
+                           <td align="left"><tt class="code">y.view.hierarchy.HierarchySelectionBoxMode</tt></td>
+                           <td align="left">The functionality of this class has been integrated into its base class <a href="../../api/y/view/SelectionBoxMode.html" title="Link to API documentation" target="_top">SelectionBoxMode</a>.
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><tt class="code">y.view.hierarchy.HierarchyHotSpotMode</tt></td>
+
+                           <td align="left">The functionality of this class has been integrated into its base class <a href="../../api/y/view/HotSpotMode.html" title="Link to API documentation" target="_top">HotSpotMode</a>.
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><tt class="code">y.view.hierarchy.Graph2DHierarchyClipboard</tt></td>
+                           <td align="left">The functionality of this class has been integrated into its base class <a href="../../api/y/view/Graph2DClipboard.html" title="Link to API documentation" target="_top">Graph2DClipboard</a>.
+                           </td>
+
+                        </tr>
+                        <tr>
+                           <td align="left"><tt class="code">y.view.hierarchy.Graph2DHierarchyUndoManager</tt></td>
+                           <td align="left">The functionality of this class has been integrated into its base class <a href="../../api/y/view/Graph2DUndoManager.html" title="Link to API documentation" target="_top">Graph2DUndoManager</a>.
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h2 class="title"><a name="migration_java_graphml"></a>GraphML Compatibility
+                        </h2>
+                     </div>
+
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  GraphML support is now an integrated part of the yFiles for Java diagramming library, 
+                  replacing the GraphML extension package. Although it can still
+                  be used with yFiles, new features of yFiles 2.7 are not supported by the extension package.
+                  
+                  Generally, the GraphML format itself has not changed, i.e., old files can be still 
+                  be read by the new GraphML support classes. Files written by the new GraphML
+                  support can be read by applications that use the yFiles GraphML extension package
+                  unless they use new features of yFiles 2.7, e.g. new realizer implementations.
+                  
+               </p>
+               <div class="section" lang="en">
+                  <div class="titlepage">
+                     <div>
+
+                        <div>
+                           <h3 class="title"><a name="migration_java_graphml_most_prominent"></a>Most Prominent Changes
+                           </h3>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+                  <p>
+                     The most basic usage of the GraphML support is also the same: if you are only relying 
+                     on the <tt class="code">read</tt> and <tt class="code">write</tt> methods of class GraphMLIOHandler, 
+                     all that you will need to change is the import statement for GraphMLIOHandler in 
+                     your classes:
+                     
+                  </p>
+
+                  <div class="table"><a name="tab_graphml_compat_import_GraphMLIOHandler"></a>
+                     <table summary="New package for class GraphMLIOHandler" width="100%" border="1">
+                        <colgroup>
+                           <col width="25%" align="left">
+                           <col width="75%" align="left">
+                        </colgroup>
+                        <thead>
+
+                           <tr>
+                              <th align="left">Old import</th>
+                              <th align="left">New import</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td align="left"><tt class="code">yext.graphml.graph2D.GraphMLIOHandler</tt></td>
+
+                              <td align="left"><a href="../../api/y/io/GraphMLIOHandler.html" title="Link to API documentation" target="_top">y.io.GraphMLIOHandler</a></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <p>
+                     Note, however, that some of the more specialized <tt class="code">read</tt> and <tt class="code">write</tt> 
+                     methods of class GraphMLIOHandler have changed, <a href="#migration_graphml_GraphMLIOHandler_changes" title="GraphMLIOHandler Changes">see below</a>.
+                     
+                  </p>
+
+                  <p>
+                     If you are storing custom data in your GraphML files, or are using custom realizer 
+                     implementations in your application, which you also (de)serialize to/from GraphML 
+                     format, then you will need to update your code as described in the following sections.
+                     
+                  </p>
+                  <p>
+                     If you are using the GraphML post-processor support, then you will have to change 
+                     the package name:
+                     
+                  </p>
+                  <div class="table"><a name="tab_graphml_compat_import_processors"></a>
+                     <table summary="New package for GraphML post-processors" width="100%" border="1">
+
+                        <colgroup>
+                           <col width="25%" align="left">
+                           <col width="75%" align="left">
+                        </colgroup>
+                        <thead>
+                           <tr>
+                              <th align="left">Old package name</th>
+                              <th align="left">New package name</th>
+
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td align="left"><tt class="code">yext.graphml.processor</tt></td>
+                              <td align="left"><a href="../../api/y/io/graphml/graph2d/package-summary.html" title="Link to API documentation" target="_top">y.io.graphml.graph2d</a></td>
+                           </tr>
+                        </tbody>
+
+                     </table>
+                  </div>
+                  <p>
+                     Note that class <tt class="code">yext.graphml.processor.NodeSizeAdapter</tt> has been removed 
+                     from the library. 
+                     However, the source code for this class can be found in <tt class="code">demo.io.graphml</tt>.
+                     
+                  </p>
+               </div>
+               <div class="section" lang="en">
+
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h3 class="title"><a name="migration_graphml_GraphMLIOHandler_changes"></a>GraphMLIOHandler Changes
+                           </h3>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+
+                  <p>
+                     The GraphMLIOHandler class of the integrated GraphML support resides in the <tt class="code">y.io</tt> 
+                     package. 
+                     Changes due to the new XML support include the methods in the following table:
+                     
+                  </p>
+                  <div class="table"><a name="tab_graphml_compat_methods_GraphMLIOHandler"></a>
+                     <table summary="GraphMLIOHandler method changes" width="100%" border="1">
+                        <colgroup>
+
+                           <col width="25%" align="left">
+                           <col width="75%" align="left">
+                        </colgroup>
+                        <thead>
+                           <tr>
+                              <th align="left">Old method</th>
+                              <th align="left">New method</th>
+                           </tr>
+
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td align="left"><tt class="code">read(Graph2D, org.w3c.dom.Node)</tt></td>
+                              <td align="left">
+                                 <p>
+                                        <a href="../../api/y/io/GraphMLIOHandler.html#read(y.view.Graph2D, org.w3c.dom.Document)" title="Link to API documentation" target="_top">read(Graph2D, org.w3c.dom.Document)</a>
+                                        
+                                 </p>
+
+                                 <p>
+                                        If you want to pass a Node which is not a Document, you need to create a new Document and import the Node
+                                        and its subtree.
+                                        
+                                 </p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <p>
+
+                     The <tt class="code">write(Graph2D, javax.xml.transform.Result)</tt> method has been removed.
+                     Instead, you need to write in a temporary buffer which can serve as InputSource for your StreamResult. 
+                     
+                  </p>
+               </div>
+               <div class="section" lang="en">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h3 class="title"><a name="d0e28017"></a>Adding Custom Data to GraphML
+                           </h3>
+
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+                  <p>
+                     Persisting custom application data in GraphML files using the support for simple 
+                     data types has slightly changed. 
+                     Instead of the methods listed in the following table:
+                     
+                  </p>
+                  <div class="table"><a name="tab_graphml_compat_simple_data_ep"></a>
+
+                     <table summary="GraphML extension package support for simple data types" width="100%" border="1">
+                        <colgroup>
+                           <col width="25%" align="left">
+                           <col width="75%" align="left">
+                        </colgroup>
+                        <thead>
+                           <tr>
+                              <th align="left">Class name</th>
+
+                              <th align="left">Method name</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td rowspan="4" align="left"><tt class="code">yext.graphml.graph2D.GraphMLIOHandler</tt></td>
+                              <td align="left"><tt class="code">addAttribute(NodeMap map, String attrName, int type)</tt></td>
+
+                           </tr>
+                           <tr>
+                              <td align="left"><tt class="code">addNodeAttribute(DataProvider out, DataAcceptor in, String attrName, int type)</tt></td>
+                           </tr>
+                           <tr>
+                              <td align="left"><tt class="code">addAttribute(EdgeMap map, String attrName, int type)</tt></td>
+                           </tr>
+                           <tr>
+
+                              <td align="left"><tt class="code">addEdgeAttribute(DataProvider out, DataAcceptor in, String attrName, int type)</tt></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <p>
+                     ... you will need to use the following methods from class <a href="../../api/y/io/graphml/GraphMLHandler.html" title="Link to API documentation" target="_top">GraphMLHandler</a>:
+                     
+                  </p>
+
+                  <div class="table"><a name="tab_graphml_compat_simple_data_integrated"></a>
+                     <table summary="Integrated GraphML support for simple data types" width="100%" border="1">
+                        <colgroup>
+                           <col width="25%" align="left">
+                           <col width="75%" align="left">
+                        </colgroup>
+                        <thead>
+
+                           <tr>
+                              <th align="left">Class name</th>
+                              <th align="left">Method name</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td rowspan="3" align="left"><tt class="code">y.io.graphml.GraphMLHandler</tt></td>
+
+                              <td align="left"><a href="../../api/y/io/graphml/GraphMLHandler.html#addInputDataAcceptor(java.lang.String, y.base.DataAcceptor, y.io.graphml.KeyScope, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">addInputDataAcceptor(String name, DataAcceptor dataAcceptor, KeyScope scope, KeyType valueType)</a></td>
+                           </tr>
+                           <tr>
+                              <td align="left"><a href="../../api/y/io/graphml/GraphMLHandler.html#addOutputDataProvider(java.lang.String, y.base.DataProvider, y.io.graphml.KeyScope, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">addOutputDataProvider(String name, DataProvider dataProvider, KeyScope scope, KeyType valueType)</a></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+
+                  <p>
+                     Note that the actual scope of the data provider/data acceptor is now a parameter 
+                     of the methods, i.e, there are no dedicated methods for the different scopes. A code
+                     example which demonstrates how to migrate the registration of a data map is shown below:
+                     
+                  </p>
+                  <div class="example">
+                     <div class="informaltable">
+                        <div class="migration">
+                           <table width="100%" border="1">
+                              <colgroup>
+
+                                 <col width="5%">
+                                 <col width="95%">
+                              </colgroup>
+                              <tbody>
+                                 <tr>
+                                    <td class="version" align="center">2.6</td>
+                                    <td><pre class="programlisting java">
+void addNodeColorGraphMLAttribute(GraphMLIOHandler handler, 
+                                  NodeMap map) {
+  // The given node map will be accessed by the reader and writer classes
+  // whenever a GraphML file is read or written.
+
+  handler.addAttribute(map, "color", AttributeConstants.TYPE_STRING);
+}
+</pre></td>
+
+                                 </tr>
+                                 <tr>
+                                    <td class="version" align="center">2.7</td>
+                                    <td><pre class="programlisting java">
+// 'ioHandler' is of type y.io.GraphMLIOHandler.
+
+void addNodeColorGraphMLAttribute(GraphMLIOHandler ioHandler, 
+                                  NodeMap map) {
+  // The given node map will be accessed by the reader and writer classes
+  // whenever a GraphML file is read or written.
+
+  GraphMLHandler graphmlH = ioHandler.getGraphMLHandler();
+  graphmlH.addInputDataAcceptor("color", map, 
+                                KeyScope.NODE, KeyType.STRING);
+  graphmlH.addOutputDataProvider("color", map, 
+                                 KeyScope.NODE, KeyType.STRING);
+}
+</pre></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     The <a href="../../api/y/io/graphml/KeyScope.html" title="Link to API documentation" target="_top">KeyScope</a> class replaces the <tt class="code">GraphMLConstants</tt> 
+                     from the <tt class="code">org.graphdrawing.graphml</tt> package, which is no longer necessary 
+                     with the new GraphML support.
+                     Similarly, the <a href="../../api/y/io/graphml/KeyType.html" title="Link to API documentation" target="_top">KeyType</a> class replaces the <tt class="code">AttributeConstants</tt> 
+                     from the <tt class="code">org.graphdrawing.graphml.attr</tt> package.
+                     
+                  </p>
+
+                  <p>
+                     The <a href="../../../src/demo/io/graphml/SimpleAttributesDemo.java" title="Link to demo code" target="_top">SimpleAttributesDemo.java</a> shows how to 
+                     use the new methods.
+                     
+                  </p>
+                  <p>
+The recommended new scheme for persisting custom application data of structured 
+(non-simple) data types in GraphML files is event-based and makes use of the methods 
+from the following table, which are similar to those used with simple data types:
+                  </p>
+                  <div class="table">
+                     <table summary="Integrated GraphML: Support for structured data types" width="100%" border="1">
+                        <colgroup>
+                           <col width="25%" align="left">
+                           <col width="75%" align="left">
+
+                        </colgroup>
+                        <thead>
+                           <tr>
+                              <th align="left">Class name</th>
+                              <th align="left">Method name</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+
+                           <tr>
+                              <td rowspan="4" align="left"><tt class="code">y.io.graphml.GraphMLHandler</tt></td>
+                              <td align="left"><a href="../../api/y/io/graphml/GraphMLHandler.html#addDeserializationHandler(y.io.graphml.input.DeserializationHandler)" title="Link to API documentation" target="_top">addDeserializationHandler(DeserializationHandler deserializationCallback)</a></td>
+                           </tr>
+                           <tr>
+                              <td align="left"><a href="../../api/y/io/graphml/GraphMLHandler.html#addSerializationHandler(y.io.graphml.input.SerializationHandler)" title="Link to API documentation" target="_top">addSerializationHandler(SerializationHandler serializationCallback)</a></td>
+                           </tr>
+
+                           <tr>
+                              <td align="left"><a href="../../api/y/io/graphml/GraphMLHandler.html#addInputDataAcceptor(java.lang.String, y.base.DataAcceptor, y.io.graphml.KeyScope, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">addInputDataAcceptor(String name, DataAcceptor dataAcceptor, KeyScope scope, DeserializationHandler deserializationCallback)</a></td>
+                           </tr>
+                           <tr>
+                              <td align="left"><a href="../../api/y/io/graphml/GraphMLHandler.html#addOutputDataProvider(java.lang.String, y.base.DataProvider, y.io.graphml.KeyScope, y.io.graphml.KeyType)" title="Link to API documentation" target="_top">addOutputDataProvider(String name, DataProvider dataProvider, KeyScope scope, SerializationHandler serializationCallback)</a></td>
+                           </tr>
+                        </tbody>
+                     </table>
+
+                  </div>
+                  
+                  <p>
+                     Instead of registering subordinate input/output handlers you will need to create
+                     (de)serialization event listeners as described in <a href="../../developers-guide/graphml.html#graphml_structured_data" title="Support for Structured Data">the section called &#8220;Support for Structured Data&#8221;</a>
+                     and register them with the GraphMLHandler class. The following examples show how to parse
+                     the XML fragment
+                     
+                  </p><pre style="margin-left:8px;" class="programlisting xml">
+&lt;Color xmlns="demo" value="AABBEE"/>
+</pre><p>
+                     to <tt class="code">java.awt.Color</tt> and store it in a node map resp. how to serialize the
+                     value stored in map to such a GraphML attribute: 
+                     
+                  </p>
+                  <div class="example"><a name="d0e28137"></a><p class="title"><i>Adding subordinate input/output handlers: registering the handlers</i></p>
+                     <div class="informaltable">
+                        <div class="migration">
+
+                           <table width="100%" border="1">
+                              <colgroup>
+                                 <col width="5%">
+                                 <col width="95%">
+                              </colgroup>
+                              <tbody>
+                                 <tr>
+                                    <td class="version" align="center">2.6</td>
+
+                                    <td><pre class="programlisting java">
+NodeMap map = graph.createNodeMap();
+GraphMLIOHandler ioHandler;
+ioHandler.addInputHandler(new ColorInputHandler(map));
+ioHandler.addOutputHandler(new ColorOutputHandler(map),
+                           GraphMLConstants.SCOPE_NODE);
+</pre></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="version" align="center">2.7</td>
+                                    <td><pre class="programlisting java">
+NodeMap map = graph.createNodeMap();
+GraphMLIOHandler ioHandler;
+ioHandler.getGraphMLHandler().addInputDataAcceptor(
+    "myColorAttribute", map, KeyScope.NODE, new ColorDeserializer());
+ioHandler.getGraphMLHandler().addOutputDataProvider(
+    "myColorAttribute", map, KeyScope.NODE, new ColorSerializer());
+</pre></td>
+                                 </tr>
+
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     With the GraphML extension package, complex data is parsed in an input handler. It is
+                     the input handler's responsibility to accept the data from a given key, to parse the data
+                     and to store the result in a data acceptor. With yFiles 2.7, complex data can be handled by
+                     registering an input
+                     data acceptor with a given DeserializationHandler. The handler will be automatically invoked
+                     when data with the given name and scope is to be parsed and the result will be stored in
+                     the given map. The deserialization logic can be re-used from the old input handler:
+                     
+                  </p>
+                  <div class="example"><a name="d0e28159"></a><p class="title"><i>Adding subordinate input/output handlers: InputHandler/Deserializer</i></p>
+
+                     <div class="informaltable">
+                        <div class="migration">
+                           <table width="100%" border="1">
+                              <colgroup>
+                                 <col width="5%">
+                                 <col width="95%">
+                              </colgroup>
+                              <tbody>
+                                 <tr>
+
+                                    <td class="version" align="center">2.6</td>
+                                    <td><pre class="programlisting java">
+public class ColorInputHandler extends AbstractDOMInputHandler {
+  private NodeMap myColorMap;
+
+  public ColorInputHandler(NodeMap myColorMap) {
+    this.myColorMap = myColorMap;
+  }
+
+  protected void parseData(DOMGraphMLParseContext context, Graph graph,
+                           Object nodeedge, boolean defaultMode,
+                           Node domNode) {
+    if (!defaultMode) {
+      NodeList children = domNode.getChildNodes();
+      if (children != null) {
+        for (int i = 0; i &lt; children.getLength(); i++) {
+          Node n = children.item(i);
+          // deserialization logic to be re-used
+          // in the yFiles 2.7 deserializer
+          if (n.getNodeType() == Node.ELEMENT_NODE &amp;&amp;
+                "demo".equals(n.getNamespaceURI()) &amp;&amp;
+                "Color".equals(n.getLocalName())) {
+            String valueAttr = ((Element)n).getAttribute("value");
+            if (valueAttr.length() &gt; 0) {
+              myColorMap.set(nodeedge, Color.decode(valueAttr));
+            }
+          }
+        }
+      }
+    }
+  }
+
+  protected void applyDefault(DOMGraphMLParseContext context,
+                              Graph graph, Object nodeedge) {
+  }
+
+  public boolean acceptKey(NamedNodeMap attributes, int scopeType) {
+    // accept only data-tags which have the
+    // attr.name=myColorAttribute and scope SCOPE_NODE.
+    Node node = attributes.getNamedItem("attr.name");
+    if (node == null) {
+      return false;
+    }
+    return "myColorAttribute".equals(node.getNodeValue()) &amp;&amp; 
+           scopeType == GraphMLConstants.SCOPE_NODE;
+  }
+}
+</pre></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="version" align="center">2.7</td>
+                                    <td><pre class="programlisting java">
+public class ColorDeserializer extends NameBasedDeserializer {
+  public String getNamespaceURI(GraphMLParseContext context) {
+    return "demo";
+  }
+
+  public String getNodeName(GraphMLParseContext context) {
+    return "Color";
+  }
+
+  public Object deserializeNode(org.w3c.dom.Node xmlNode,
+              GraphMLParseContext context) throws GraphMLParseException {
+    if (xmlNode.getNodeType() == org.w3c.dom.Node.ELEMENT_NODE &amp;&amp;
+                      "demo".equals(xmlNode.getNamespaceURI()) &amp;&amp;
+                      "Color".equals(xmlNode.getLocalName())) {
+      String valueAttr = ((Element) xmlNode).getAttribute("value");
+      if (valueAttr.length() &gt; 0) {
+        return Color.decode(valueAttr);
+      }
+    }
+    return null;
+  }
+}
+</pre></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     Migrating an output handler to a SerializationHandler follows the same rules:
+                     With yFiles 2.7, an output data provider is registered with a given SerializationHandler.
+                     The SerializationHandler will be automatically invoked when data from the given map has to be written.
+                     The serialization logic can be re-used from the old output handler:
+                     
+
+                  </p>
+                  <div class="example"><a name="d0e28181"></a><p class="title"><i>Adding subordinate input/output handlers: OutputHandler/Serializer</i></p>
+                     <div class="informaltable">
+                        <div class="migration">
+                           <table width="100%" border="1">
+                              <colgroup>
+                                 <col width="5%">
+
+                                 <col width="95%">
+                              </colgroup>
+                              <tbody>
+                                 <tr>
+                                    <td class="version" align="center">2.6</td>
+                                    <td><pre class="programlisting java">
+public class ColorOutputHandler extends AbstractOutputHandler {
+  private NodeMap myColorMap;
+
+  public ColorOutputHandler(NodeMap myColorMap) {
+    this.myColorMap = myColorMap;
+  }
+
+  public void printKeyAttributes(GraphMLWriteContext context,
+                                 XmlWriter writer) {
+    // mark with type declaration
+    writer.writeAttribute("attr.name", "myColorAttribute");
+  }
+
+  public void printDataOutput(GraphMLWriteContext context,
+                              Graph graph,
+                              Object nodeedge,
+                              XmlWriter writer) {
+    writer.writeStartElement("Color", "demo");
+    Color c = (Color) myColorMap.get(nodeedge);
+    if (c != null) {
+      writer.writeAttribute("value", c.getRGB());
+    }
+    writer.writeEndElement();
+  }
+
+  public void printKeyOutput(GraphMLWriteContext context, 
+                             XmlWriter writer) {
+  }
+}
+</pre></td>
+                                 </tr>
+
+                                 <tr>
+                                    <td class="version" align="center">2.7</td>
+                                    <td><pre class="programlisting java">
+public class ColorSerializer extends TypeBasedSerializer {
+  protected Class getSerializationType(GraphMLWriteContext context) {
+    return Color.class;
+  }
+
+  public void serializeItem(Object item, XmlWriter writer, 
+                            GraphMLWriteContext context) 
+              throws GraphMLWriteException {
+    Color c = (Color) item;
+    if (c != null) {
+      writer.writeStartElement("Color", "demo")
+            .writeAttribute("value", c.getRGB()).writeEndElement();
+    }
+  }
+}
+</pre></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+
+                     </div>
+                  </div>
+                  
+                  <p>
+                     If your input handler/output handler logic does more than just writing to a data 
+                     acceptor/reading from a data provider, then you can create input handler/output 
+                     handler listeners to register your handlers.
+                     The examples below demonstrate how to migrate the same output handlers as in the
+                     above example to yFiles 2.7 using explicit Output/InputHandlers
+                     instead of (de)serialization event handlers.
+                     
+                  </p>
+                  <div class="example"><a name="d0e28235"></a><p class="title"><i>Adding subordinate input/output handlers: registering the handlers</i></p>
+                     <div class="informaltable">
+                        <div class="migration">
+                           <table width="100%" border="1">
+
+                              <colgroup>
+                                 <col width="5%">
+                                 <col width="95%">
+                              </colgroup>
+                              <tbody>
+                                 <tr>
+                                    <td class="version" align="center">2.6</td>
+                                    <td><pre class="programlisting java">
+NodeMap map = graph.createNodeMap();
+GraphMLIOHandler ioHandler;
+ioHandler.addInputHandler(new ColorInputHandler(map));
+ioHandler.addOutputHandler(new ColorOutputHandler(map),
+                           GraphMLConstants.SCOPE_NODE);
+</pre></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="version" align="center">2.7</td>
+                                    <td><pre class="programlisting java">
+NodeMap map = graph.createNodeMap();
+GraphMLIOHandler ioHandler;
+ioHandler.getGraphMLHandler()
+         .addInputHandlerProvider(new ColorInputHandler(map));
+ioHandler.getGraphMLHandler()
+         .addOutputHandlerProvider(new ColorOutputHandler(map));
+</pre></td>
+                                 </tr>
+                              </tbody>
+
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     Claiming parsing responsibility for a given key definition is no longer done inside
+                     the input handler (via the <tt class="code">acceptKey</tt> method).
+                     Instead, the listener checks whether the key definition matches and only then registers
+                     the actual input handler. If you want to keep your code more or less structured as before,
+                     your handler can additionally implement the InputHandlerProvider interface to process the event there,
+                     as shown in the example. For matching of the standard attributes, GraphMLHandler offers several static
+                     convenience methods, as shown in the example below.
+                     
+                  </p>
+                  <p>
+
+                     The contract for an input handler has also changed, however, you can conveniently
+                     use abstract class <a href="../../api/y/io/graphml/input/AbstractInputHandler.html" title="Link to API documentation" target="_top">AbstractInputHandler</a>
+                     as the base for your new input handler implementation.
+                     Among other things, the <tt class="code">parseData</tt> method no longer bears a <tt class="code">defaultMode</tt>
+                     parameter.
+                     Instead of using this parameter's value, you will need to explicitly call
+                     <a href="../../api/y/io/graphml/input/AbstractInputHandler.html#initializeFromKeyDefinition(y.io.graphml.input.GraphMLParseContext, org.w3c.dom.Element)" title="Link to API documentation" target="_top">initializeFromKeyDefinition</a>
+                     to set up your input handler appropriately, as shown in the following example.
+                     Code present in <tt class="code">parseData</tt> needs to be split into code for <tt class="code">setValue</tt> and <tt class="code">parseDataCore</tt>, as shown
+                     in the example above.
+                     Since default value handling in the new framework is quite different from the extension package, migration must be
+                     done on a case-by-case base.
+                     The default implementation in AbstractInputHandler delegates to <tt class="code">parseDataCore</tt> to parse the default value,
+                     which <tt class="code">applyDefault</tt> retrieves and sets (via <tt class="code">setValue</tt>). Therefore, in most use cases, it is not necessary to write
+                     any custom default value handling code at all.
+                     
+                  </p>
+
+                  <div class="example"><a name="d0e28291"></a><p class="title"><i>Adding subordinate input/output handlers: InputHandler/InputHandlerProvider</i></p>
+                     <div class="informaltable">
+                        <div class="migration">
+                           <table width="100%" border="1">
+                              <colgroup>
+                                 <col width="5%">
+                                 <col width="95%">
+
+                              </colgroup>
+                              <tbody>
+                                 <tr>
+                                    <td class="version" align="center">2.6</td>
+                                    <td><pre class="programlisting java">
+public class ColorInputHandler extends AbstractDOMInputHandler {
+  private NodeMap myColorMap;
+
+  public ColorInputHandler(NodeMap myColorMap) {
+    this.myColorMap = myColorMap;
+  }
+
+  protected void parseData(DOMGraphMLParseContext context, Graph graph,
+                           Object nodeedge, boolean defaultMode,
+                           Node domNode) {
+    if (!defaultMode) {
+      // parsing logic here:
+      // "result" is the object which results from parsing "domNode"
+
+      // apply the value:
+      myColorMap.set(nodeedge, result);
+    }
+  }
+
+  protected void applyDefault(DOMGraphMLParseContext context,
+                              Graph graph, Object nodeedge) {
+  }
+
+  public boolean acceptKey(NamedNodeMap attributes, int scopeType) {
+    // accept only data-tags which have the
+    // attr.name=myColorAttribute and scope SCOPE_NODE.
+    Node node = attributes.getNamedItem("attr.name");
+    if (node == null) {
+      return false;
+    }
+    return "myColorAttribute".equals(node.getNodeValue()) &amp;&amp; 
+           scopeType == GraphMLConstants.SCOPE_NODE;
+  }
+}
+</pre></td>
+                                 </tr>
+
+                                 <tr>
+                                    <td class="version" align="center">2.7</td>
+                                    <td><pre class="programlisting java">
+public class ColorInputHandler extends AbstractInputHandler
+                               implements InputHandlerProvider {
+  private NodeMap myColorMap;
+
+  public ColorInputHandler(NodeMap myColorMap) {
+    this.myColorMap = myColorMap;
+  }
+
+  // Input handler registration is done by methods
+  // of interface InputHandlerProvider
+  public void onQueryInputHandler(QueryInputHandlersEvent event)
+              throws GraphMLParseException {
+    if (acceptKey(event.getKeyDefinition())) {
+      initializeFromKeyDefinition(event.getContext(),
+                                  event.getKeyDefinition());
+      event.addInputHandler(this);
+    }
+  }
+
+  // Corresponds to the code in parseData that actually parses the value
+  // Note that no special default value handling is required
+  protected Object parseDataCore(GraphMLParseContext context,
+                                 org.w3c.dom.Node node)
+                                        throws GraphMLParseException {
+    // parsing logic here (same as with yFiles 2.6):
+    // "result" is the object which results from parsing "domNode"
+    return result;
+  }
+
+  // Corresponds to the code in parseData that actually applies the value
+  protected void setValue(GraphMLParseContext context,
+                          Object key,
+                          Object data) throws GraphMLParseException {
+    // apply the value:
+    myColorMap.set(key, data);
+  }
+
+  //Predicate for onQueryInputHandler
+  public boolean acceptKey(Element keyDefinition) {
+    return GraphMLHandler.matchesName(keyDefinition, "myColorAttribute")
+        &amp;&amp; GraphMLHandler.matchesScope(keyDefinition, KeyScope.NODE);
+  }
+}
+</pre></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     Similarly, the contract for an output handler has also changed.
+                     Again, you can conveniently use abstract class <a href="../../api/y/io/graphml/output/AbstractOutputHandler.html" title="Link to API documentation" target="_top">AbstractOutputHandler</a>
+                     as the base for your new output handler implementation. Note that since this class also implements the
+                     <a href="../../api/y/io/graphml/output/OutputHandlerProvider.html" title="Link to API documentation" target="_top">OutputHandlerProvider</a> interface, it can be registered
+                     directly with
+                     <a href="../../api/y/io/graphml/GraphMLHandler.html#addOutputHandlerProvider(y.io.graphml.output.OutputHandlerProvider)" title="Link to API documentation" target="_top">
+
+                        GraphMLHandler.addOutputHandlerProvider</a>. Code present in <tt class="code">printDataOutput</tt> needs to be split into
+                     code for <tt class="code">getValue</tt> and <tt class="code">writeValueCore</tt>, as shown
+                     in the following example. A replacement for <tt class="code">printKeyAttributes</tt> is only needed if you write custom
+                     attributes for the <tt class="code">&lt;key&gt;</tt> element (i.e. anything
+                     except "attr.name", "for", "attr.type". In that case, return the corresponding attribute as a GraphMLXmlAttribute
+                     instance in <tt class="code">getKeyDefinitionAttributes</tt>.
+                     
+                  </p>
+
+                  <div class="example"><a name="d0e28338"></a><p class="title"><i>Adding subordinate input/output handlers: OutputHandler</i></p>
+                     <div class="informaltable">
+                        <div class="migration">
+                           <table width="100%" border="1">
+                              <colgroup>
+                                 <col width="5%">
+                                 <col width="95%">
+
+                              </colgroup>
+                              <tbody>
+                                 <tr>
+                                    <td class="version" align="center">2.6</td>
+                                    <td><pre class="programlisting java">
+public class ColorOutputHandler extends AbstractOutputHandler {
+  private NodeMap myColorMap;
+
+  public ColorOutputHandler(NodeMap myColorMap) {
+    this.myColorMap = myColorMap;
+  }
+
+  public void printKeyAttributes(GraphMLWriteContext context,
+                                 XmlWriter writer) {
+    // mark with type declaration
+    writer.writeAttribute("attr.name", "myColorAttribute");
+  }
+
+  public void printDataOutput(GraphMLWriteContext context,
+                              Graph graph,
+                              Object nodeedge,
+                              XmlWriter writer) {
+    // retrieve the data to serialize
+    Color c = (Color) myColorMap.get(nodeedge);
+    // writing logic:
+    if (c != null) {
+      context.getWriter().writeStartElement("Color", "demo")
+                         .writeAttribute("value", c.getRGB())
+                         .writeEndElement();
+    }
+  }
+
+  public void printKeyOutput(GraphMLWriteContext context, 
+                             XmlWriter writer) {
+  }
+}
+</pre></td>
+                                 </tr>
+                                 <tr>
+
+                                    <td class="version" align="center">2.7</td>
+                                    <td><pre class="programlisting java">
+public class ColorOutputHandler extends AbstractOutputHandler {
+  private NodeMap myColorMap;
+
+  public ColorOutputHandler(NodeMap myColorMap) {
+    super("myNodeAttribute", KeyScope.NODE, KeyType.COMPLEX);
+    this.myColorMap = myColorMap;
+  }
+
+  // Corresponds to the code in printDataOutput
+  // that actually writes the value
+  protected void writeValueCore(GraphMLWriteContext context, Object data) 
+                 throws GraphMLWriteException {
+    Color c = (Color) data;
+    // writing logic. Note that the logic has not changed from 2.6 to 2.7
+    if (c != null) {
+      context.getWriter().writeStartElement("Color", "demo")
+                         .writeAttribute("value", c.getRGB())
+                         .writeEndElement();
+    }
+  }
+
+  // Corresponds to the code in printDataOutput that retrieves
+  // the atttibute value for a gieven graph element.
+  protected Object getValue(GraphMLWriteContext context,
+                            Object key) throws GraphMLWriteException {
+    // retrieve the data to serialize
+    return myColorMap.get(key);
+  }
+}
+</pre></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+
+                  </div>
+                  <p>
+                     The listeners will be queried dynamically during reading/writing of the GraphML. 
+                     In the listener you can then register your input handler/output handler as described 
+                     in <a href="../../developers-guide/graphml.html#graphml_extension_dynamic" title="Dynamic Registration of Attributes">the section called &#8220;Dynamic Registration of Attributes&#8221;</a>.
+                     
+                  </p>
+                  <p>
+                     In this implementation, if you need to add XML attributes to the key definition, 
+                     this is done using a <tt class="classname">java.util.Collection</tt> of 
+                     <a href="../../api/y/io/graphml/output/GraphMLXmlAttribute.html" title="Link to API documentation" target="_top">GraphMLXmlAttribute</a> objects instead 
+                     of using the <tt class="code">printKeyAttribute</tt> method. 
+                     
+                     Also, the XmlWriter instance is no longer a parameter to the print-related methods.
+                     Instead, the writer can be retrieved from the
+                     <a href="../../api/y/io/graphml/output/GraphMLWriteContext.html" title="Link to API documentation" target="_top">GraphMLWriteContext</a>,
+                     which also provides access to the current graph and the current GraphML element 
+                     (<tt class="code">&lt;graph&gt;</tt>, <tt class="code">&lt;node&gt;</tt>, and <tt class="code">&lt;edge&gt;</tt>).
+                     
+                  </p>
+
+                  <p>
+                     The tutorial demo application <a href="../../../src/demo/io/graphml/ComplexExtensionGraphMLDemo.java" title="Link to demo code" target="_top">ComplexExtensionGraphMLDemo.java</a> 
+                     shows how to read and write structured data using input handlers and output handlers.
+                     
+                  </p>
+                  <div class="section" lang="en">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h4 style="font-size:11px; text-decoration:none; font-weight:bold;"><a name="d0e28387"></a>XMLAttributesParser and XMLAttributesProvider have been replaced</h4>
+
+                           </div>
+                        </div>
+                        <div></div>
+                     </div>
+                     <p>
+                        Interface <tt class="code">org.graphdrawing.graphml.reader.dom.XMLAttributesParser</tt> has
+                        been replaced by interface
+                        <a href="../../api/y/io/graphml/input/ParseEventListener.html" title="Link to API documentation" target="_top">y.io.graphml.input.ParseEventListener</a>.
+                        The methods <tt class="code">parseXXXAttributes</tt> (e.g. parseNodeAttributes) map to the <tt class="code">onXXXParsing</tt>
+
+                        (e.g. <a href="../../api/y/io/graphml/input/ParseEventListener.html#onNodeParsing(ParseEvent)" title="Link to API documentation" target="_top">onNodeParsing</a>)
+                        methods. Instances can be registered with
+                        <a href="../../api/y/io/graphml/GraphMLHandler.html#addParseEventListener(y.io.graphml.input.ParseEventListener)" title="Link to API documentation" target="_top">
+                           GraphMLHandler.addParseEventListener</a>.
+                        
+                     </p>
+                     <p>
+                        Similarly, interface <tt class="code">org.graphdrawing.graphml.writer.XMLAttributesProvider</tt>
+                        has been replaced by interface
+                        <a href="../../api/y/io/graphml/output/WriteEventListener.html" title="Link to API documentation" target="_top">y.io.graphml.output.WriteEventListener</a>.
+                        The methods <tt class="code">printXXXAttributes</tt> map to the <tt class="code">onXXXWriting</tt> methods. Instances can be registered with
+                        <a href="../../api/y/io/graphml/GraphMLHandler.html#addWriteEventListener(y.io.graphml.output.WriteEventListener)" title="Link to API documentation" target="_top">
+
+                           GraphMLHandler.addWriteEventListener</a>.
+                        
+                     </p>
+                  </div>
+               </div>
+               <div class="section" lang="en">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h3 class="title"><a name="d0e28421"></a>(De)Serialization of Custom Realizers
+                           </h3>
+
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+                  <p>
+                     Realizer serializer implementations that handle custom node realizers or edge realizers 
+                     are no longer registered using the <tt class="code">RealizerSerializerManager</tt> class. 
+                     Instead, GraphMLIOHandler directly offers convenience methods that allow to register 
+                     realizer serializer implementations.
+                     
+                  </p>
+                  <p>
+                     Change your code that uses class RealizerSerializerManager like this:
+                     
+                  </p>
+
+                  <div class="example">
+                     <div class="informaltable">
+                        <div class="migration">
+                           <table width="100%" border="1">
+                              <colgroup>
+                                 <col width="5%">
+                                 <col width="95%">
+
+                              </colgroup>
+                              <tbody>
+                                 <tr>
+                                    <td class="version" align="center">2.6</td>
+                                    <td><pre class="programlisting java">
+// 'graphmlIO' is of type yext.graphml.graph2D.GraphMLIOHandler.
+
+graphmlIO.getRealizerSerializerManager().
+    addNodeRealizerSerializer(new MyNodeRealizerSerializer());
+</pre></td>
+                                 </tr>
+                                 <tr>
+
+                                    <td class="version" align="center">2.7</td>
+                                    <td><pre class="programlisting java">
+// 'graphmlIO' is of type y.io.GraphMLIOHandler.
+
+graphmlIO.addNodeRealizerSerializer(new MyNodeRealizerSerializer());
+</pre></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+
+                  </div>
+                  <p>
+                     Note that the GraphMLIOHandler convenience methods for registering realizer serializers 
+                     actually delegate to class <a href="../../api/y/io/graphml/graph2d/Graph2DGraphMLHandler.html" title="Link to API documentation" target="_top">Graph2DGraphMLHandler</a>. 
+                     This class also provides methods for de-registering any realizer serializers.
+                     
+                  </p>
+               </div>
+               <div class="section" lang="en">
+                  <div class="titlepage">
+                     <div>
+
+                        <div>
+                           <h3 class="title"><a name="d0e28452"></a>GraphML Demos Moved to New Package
+                           </h3>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div>
+                  <p>
+                     You will find the GraphML demos in the following package:
+                     
+                  </p>
+
+                  <div class="table">
+                     <table summary="New package for GraphML demos" width="100%" border="1">
+                        <colgroup>
+                           <col width="25%" align="left">
+                           <col width="75%" align="left">
+                        </colgroup>
+                        <thead>
+
+                           <tr>
+                              <th align="left">Old package name</th>
+                              <th align="left">New package name</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td align="left"><tt class="code">demo.yext.graphml</tt></td>
+
+                              <td align="left"><tt class="code">demo.io.graphml</tt></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <p class="copyright">Copyright &copy;2004-2016, yWorks GmbH. All rights reserved.</p>
+   </body>
+</html>

@@ -1,0 +1,347 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Chapter&nbsp;7.&nbsp;Graph Hierarchies</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="previous" href="viewer_layout.html" title="Automatic Layout">
+      <link rel="next" href="hier_uses.html" title="Working with Graph Hierarchies">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Chapter&nbsp;7.&nbsp;Graph Hierarchies</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="viewer_layout.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">&nbsp;</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="hier_uses.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="chapter" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title"><a name="view_hierarchy"></a>Chapter&nbsp;7.&nbsp;Graph Hierarchies
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <div class="toc">
+            <p><b>Table of Contents</b></p>
+            <dl>
+               <dt><span class="section"><a href="view_hierarchy.html#hier_concepts">Concepts</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="view_hierarchy.html#hier_grouping_nesting">Grouping and Nesting</a></span></dt>
+                     <dt><span class="section"><a href="view_hierarchy.html#hier_proxies">Special Proxy Elements</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="view_hierarchy.html#hier_group_folder">Group Node and Folder Node</a></span></dt>
+                           <dt><span class="section"><a href="view_hierarchy.html#hier_inter_edge">Inter-Edge</a></span></dt>
+                        </dl>
+                     </dd>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="hier_uses.html">Working with Graph Hierarchies</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="hier_uses.html#hier_comparison">Comparing the Concepts</a></span></dt>
+                     <dt><span class="section"><a href="hier_uses.html#hier_nesting_adv">Nesting Characteristics</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="hier_mvc_model.html">Managing Graph Hierarchies</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="hier_mvc_model.html#cls_HierarchyManager">Class HierarchyManager</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="hier_mvc_model.html#hier_hierarchical_structure">Graph Hierarchy</a></span></dt>
+                           <dt><span class="section"><a href="hier_mvc_model.html#hier_groups">Creating Grouped Nodes</a></span></dt>
+                           <dt><span class="section"><a href="hier_mvc_model.html#hier_folders">Creating Nested Graphs</a></span></dt>
+                           <dt><span class="section"><a href="hier_mvc_model.html#hier_inters">Handling Inter-edges</a></span></dt>
+                           <dt><span class="section"><a href="hier_mvc_model.html#hier_order">Node Visiting Order</a></span></dt>
+                           <dt><span class="section"><a href="hier_mvc_model.html#hier_traversal">Traversal Policies</a></span></dt>
+                        </dl>
+                     </dd>
+                     <dt><span class="section"><a href="hier_mvc_model.html#cls_DefaultHierarchyGraphFactory">Class DefaultHierarchyGraphFactory</a></span></dt>
+                     <dt><span class="section"><a href="hier_mvc_model.html#tutorial_HierarchyManager">Tutorial Demo Code</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="hier_realizers.html">Node Realizers</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="hier_realizers.html#cls_GroupNodeRealizer">Classes GroupNodeRealizer and GenericGroupNodeRealizer</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="hier_realizers.html#gnr_resizing">Resizing Policy</a></span></dt>
+                        </dl>
+                     </dd>
+                     <dt><span class="section"><a href="hier_realizers.html#cls_AutoBoundsFeature">Interface AutoBoundsFeature</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="hier_mvc_view.html">View Implementations</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="hier_mvc_view.html#cls_HierarchyJTree">Class HierarchyJTree</a></span></dt>
+                     <dt><span class="section"><a href="hier_mvc_view.html#hier_mvc_view_related">Related Classes</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="hier_mvc_view.html#cls_DefaultNodeChangePropagator">Class DefaultNodeChangePropagator</a></span></dt>
+                           <dt><span class="section"><a href="hier_mvc_view.html#cls_HierarchyTreeTransferHandler">Class HierarchyTreeTransferHandler</a></span></dt>
+                        </dl>
+                     </dd>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="hier_mvc_controller.html">User Interaction</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="hier_mvc_controller.html#d0e33009">Tutorial Demo Code</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="hier_events_and_listeners.html">Events and Listeners</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="hier_events_and_listeners.html#hier_evts_hierarchy">Hierarchy Changes</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="hier_layout.html">Automatic Layout</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="hier_layout.html#cls_GroupLayoutConfigurator">Class GroupLayoutConfigurator</a></span></dt>
+                  </dl>
+               </dd>
+            </dl>
+         </div><a class="indexterm" name="d0e31914"></a><p>
+            This chapter describes the yFiles concept of graph hierarchies, often also referred
+            to as grouped graphs. 
+            Discussed are all aspects from managing to user interaction, visual 
+            representation, and also layout preparation. 
+            
+         </p>
+         <p>
+            Graph hierarchies can be used to naturally organize large data sets or 
+            inherently hierarchically structured data. 
+            
+            
+            
+            The yFiles library provides sophisticated support for graph hierarchies that 
+            seamlessly integrates with the notion of a graph as described in 
+            <a href="concepts.html" title="Chapter&nbsp;3.&nbsp;General Concepts in yFiles">Chapter&nbsp;3, <i>General Concepts in yFiles</i></a>. 
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both"><a name="hier_concepts"></a>Concepts
+                     </h2>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e31928"></a><p>
+               A graph hierarchy is an augmentation to the graph concept where proper graph 
+               structures are allowed to be nested within other graphs to arbitrary depth, 
+               forming a hierarchically organized inclusion tree of graphs. 
+               
+               At the top of this inclusion tree is the so-called "root graph," the top level 
+               graph that is present in any graph hierarchy. 
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="hier_grouping_nesting"></a>Grouping and Nesting
+                        </h3>
+                     </div>
+                  </div>
+                  <div></div>
+               </div><a class="indexterm" name="d0e31938"></a><a class="indexterm" name="d0e31941"></a><p>
+                  The yFiles library knows of two complementary ideas, namely "grouping" and 
+                  "nesting." 
+                  
+                  Grouping and nesting differ in both structural as well as visual nature. 
+                  While both approaches make use of proxy nodes that reside in the original 
+                  graph, 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                          grouped nodes are stored within the same graph, 
+                        
+                     </li>
+                     <li>
+                          nested graph structures are stored separately. 
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  Thus, grouping is merely of conceptual nature, while nesting is a true 
+                  hierarchical inclusion of graph structures. 
+                  
+                  Note that grouped nodes can live side by side with nested graph structures. 
+                  
+                  
+                  
+                  <a href="view_hierarchy.html#hier_two_concepts" title="Figure&nbsp;7.1.&nbsp;Grouping and nesting side by side">Figure&nbsp;7.1, &#8220;Grouping and nesting side by side&#8221;</a> shows grouping and nesting within one 
+                  graph. 
+                  
+               </p>
+               <div class="figure"><a name="hier_two_concepts"></a><p class="title"><b>Figure&nbsp;7.1.&nbsp;Grouping and nesting side by side</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/grouping_foldering.gif" align="middle" alt="Grouping and nesting."></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="hier_proxies"></a>Special Proxy Elements
+                        </h3>
+                     </div>
+                  </div>
+                  <div></div>
+               </div><a class="indexterm" name="d0e31974"></a><div class="section" lang="en">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title"><a name="hier_group_folder"></a>Group Node and Folder Node
+                           </h4>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div><a class="indexterm" name="d0e31982"></a><a class="indexterm" name="d0e31985"></a><a class="indexterm" name="d0e31988"></a><p>
+                     The proxy nodes that are used to either enclose grouped nodes (with grouping) 
+                     or represent nested graph structures (with nesting) are called "group node" and 
+                     "folder node," respectively. 
+                     
+                  </p>
+                  <p>
+                     The nested graph that is associated with a folder node is called the "inner 
+                     graph" of this folder node. 
+                     The graph where the folder node resides in is called the "parent graph" of the 
+                     inner graph, and is hierarchically one level above the inner graph. 
+                     
+                     Note that a folder node serves as a means to link inner graph to parent graph. 
+                     A folder node is also called "anchor node." 
+                     
+                  </p>
+                  <p>
+                     
+                     From a conceptual point of view, grouped nodes that are contained in a group 
+                     node can be thought of as being hierarchically one level below the graph where 
+                     the group node resides in. 
+                     
+                     Technically, however, these nodes belong to the same graph as the group node. 
+                     
+                  </p>
+                  <p>
+                     The difference in semantics of grouping and nesting is also reflected by the 
+                     visual representation of group nodes and folder nodes. 
+                     
+                     While grouped nodes contained in a group node are visible within the graph 
+                     containing the group node itself, the nested graph structure that is associated 
+                     with a folder node is hidden. 
+                     
+                     However, a folder node provides access to its inner graph at any time, e.g., 
+                     via a mouse double click that occurs within its area. 
+                     
+                  </p>
+                  <p>
+                     <a href="view_hierarchy.html#hier_two_concepts" title="Figure&nbsp;7.1.&nbsp;Grouping and nesting side by side">Figure&nbsp;7.1, &#8220;Grouping and nesting side by side&#8221;</a> shows both a group node and a folder node 
+                     within the same graph. 
+                     The content of the folder node cannot be seen in the graph view, but is listed 
+                     in the tree-like view in the lower left corner of the application's window. 
+                     
+                  </p>
+               </div>
+               <div class="section" lang="en">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title"><a name="hier_inter_edge"></a>Inter-Edge
+                           </h4>
+                        </div>
+                     </div>
+                     <div></div>
+                  </div><a class="indexterm" name="d0e32008"></a><p>
+                     Besides group node and folder node there is also a proxy edge introduced that 
+                     is used to replace an edge that connects nodes on different hierarchy levels. 
+                     
+                     
+                     
+                     Such an edge would actually connect nodes in different graphs, which is not 
+                     allowed. 
+                     It is therefore redirected in a manner so that it connects nodes that are 
+                     within the same graph. 
+                     
+                  </p>
+                  <p>
+                     The resulting redirected edge, which serves as a proxy for the original edge, 
+                     is a so-called "inter-edge." 
+                     
+                  </p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="viewer_layout.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="index.html" target="_top">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="hier_uses.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Automatic Layout&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Working with Graph Hierarchies</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

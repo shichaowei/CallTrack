@@ -1,0 +1,441 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Chapter&nbsp;6.&nbsp;Displaying and Editing Graphs</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="previous" href="labeling.html" title="Automatic Label Placement">
+      <link rel="next" href="mvc_model.html" title="Graph Structure Enhancements">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Chapter&nbsp;6.&nbsp;Displaying and Editing Graphs</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="labeling.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">&nbsp;</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="mvc_model.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="chapter" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title"><a name="view"></a>Chapter&nbsp;6.&nbsp;Displaying and Editing Graphs
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <div class="toc">
+            <p><b>Table of Contents</b></p>
+            <dl>
+               <dt><span class="section"><a href="view.html#mvc">Model-View-Controller Paradigm</a></span></dt>
+               <dt><span class="section"><a href="mvc_model.html">Graph Structure Enhancements</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="mvc_model.html#cls_Graph2D">Class Graph2D</a></span></dt>
+                     <dt><span class="section"><a href="mvc_model.html#view_advanced">Advanced Topics</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="mvc_model.html#view_copying">Copying a Graph2D</a></span></dt>
+                        </dl>
+                     </dd>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="realizers.html">Bringing Graph Elements to Life: The Realizer Concept</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="realizers.html#binding_realizers">Binding Realizers</a></span></dt>
+                     <dt><span class="section"><a href="realizers.html#nr_er_common">General Features</a></span></dt>
+                     <dt><span class="section"><a href="realizers.html#node_realizers">Node Realizers</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="realizers.html#cls_ShapeNodeRealizer">Class ShapeNodeRealizer</a></span></dt>
+                           <dt><span class="section"><a href="realizers.html#cls_ImageNodeRealizer">Class ImageNodeRealizer</a></span></dt>
+                           <dt><span class="section"><a href="realizers.html#cls_GenericNodeRealizer">Class GenericNodeRealizer</a></span></dt>
+                        </dl>
+                     </dd>
+                     <dt><span class="section"><a href="realizers.html#edge_realizers">Edge Realizers</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="realizers.html#cls_PolyLineEdgeRealizer">Class PolyLineEdgeRealizer</a></span></dt>
+                           <dt><span class="section"><a href="realizers.html#cls_ArcEdgeRealizer">Class ArcEdgeRealizer</a></span></dt>
+                           <dt><span class="section"><a href="realizers.html#cls_BezierEdgeRealizer">Class BezierEdgeRealizer</a></span></dt>
+                           <dt><span class="section"><a href="realizers.html#cls_SplineEdgeRealizer">Class SplineEdgeRealizer</a></span></dt>
+                           <dt><span class="section"><a href="realizers.html#cls_QuadCurveEdgeRealizer">Class QuadCurveEdgeRealizer</a></span></dt>
+                           <dt><span class="section"><a href="realizers.html#cls_GenericEdgeRealizer">Class GenericEdgeRealizer</a></span></dt>
+                        </dl>
+                     </dd>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="realizer_related.html">Realizer-Related Features</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="realizer_related.html#labels">Label Support</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="realizer_related.html#labels_configurations">Configurations</a></span></dt>
+                           <dt><span class="section"><a href="realizer_related.html#labels_customization">Customizing Label Behavior</a></span></dt>
+                           <dt><span class="section"><a href="realizer_related.html#labels_label_model">Label Models</a></span></dt>
+                           <dt><span class="section"><a href="realizer_related.html#node_label_model">Node Label Models</a></span></dt>
+                           <dt><span class="section"><a href="realizer_related.html#edge_label_model">Edge Label Models</a></span></dt>
+                           <dt><span class="section"><a href="realizer_related.html#edgelabels_autorotation">Auto-rotated Edge Labels</a></span></dt>
+                           <dt><span class="section"><a href="realizer_related.html#d0e25446">Automatic Edge Label Placement</a></span></dt>
+                        </dl>
+                     </dd>
+                     <dt><span class="section"><a href="realizer_related.html#nodeports">Node Ports</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="realizer_related.html#nodeports_customization">Customizing Node Port Behavior</a></span></dt>
+                           <dt><span class="section"><a href="realizer_related.html#port_location_model">Port Location Model</a></span></dt>
+                           <dt><span class="section"><a href="realizer_related.html#port_location_model_parameter">Port Location Model Parameter</a></span></dt>
+                           <dt><span class="section"><a href="realizer_related.html#nodeports_labeling">Labeling Node Ports</a></span></dt>
+                           <dt><span class="section"><a href="realizer_related.html#nodeports_layout">Support for Automatic Layout</a></span></dt>
+                        </dl>
+                     </dd>
+                     <dt><span class="section"><a href="realizer_related.html#er_related">EdgeRealizer-related Classes</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="realizer_related.html#cls_Arrow">Class Arrow</a></span></dt>
+                           <dt><span class="section"><a href="realizer_related.html#cls_Bend">Class Bend</a></span></dt>
+                           <dt><span class="section"><a href="realizer_related.html#cls_LineType">Class LineType</a></span></dt>
+                        </dl>
+                     </dd>
+                     <dt><span class="section"><a href="realizer_related.html#selection">Selection State</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="custom_realizers.html">Writing Customized Realizers</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="custom_realizers.html#customization_extends">Subclassing and Overriding</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="custom_realizers.html#r_replication">Realizer Replication</a></span></dt>
+                           <dt><span class="section"><a href="custom_realizers.html#r_bounds_calculation">Bounds Calculation</a></span></dt>
+                           <dt><span class="section"><a href="custom_realizers.html#r_(de)serialization">YGF Serialization and Deserialization</a></span></dt>
+                        </dl>
+                     </dd>
+                     <dt><span class="section"><a href="custom_realizers.html#customization_implements">Providing Interface Implementations</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="custom_realizers.html#customization_gnr">Class GenericNodeRealizer</a></span></dt>
+                           <dt><span class="section"><a href="custom_realizers.html#customization_ger">Class GenericEdgeRealizer</a></span></dt>
+                        </dl>
+                     </dd>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="jcomponent_support.html">Swing User Interface Components as Node Realizers</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="jcomponent_support.html#jcomponent_rendering">Rendering</a></span></dt>
+                     <dt><span class="section"><a href="jcomponent_support.html#jcomponent_editor">Editor Functionality</a></span></dt>
+                     <dt><span class="section"><a href="jcomponent_support.html#jcomponent_tutorial">Tutorial Demo Code</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="mvc_view.html">View Implementations</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="mvc_view.html#cls_Graph2DView">Class Graph2DView</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="mvc_view.html#view_layout_support">Support for Automatic Layout</a></span></dt>
+                           <dt><span class="section"><a href="mvc_view.html#world_coordinates">World and View Coordinates</a></span></dt>
+                           <dt><span class="section"><a href="mvc_view.html#viewport_clipping">Viewport and Clipping</a></span></dt>
+                           <dt><span class="section"><a href="mvc_view.html#scroll_bars">Scroll Bars</a></span></dt>
+                           <dt><span class="section"><a href="mvc_view.html#grid">Grid</a></span></dt>
+                           <dt><span class="section"><a href="mvc_view.html#selection_box">Selection Box</a></span></dt>
+                           <dt><span class="section"><a href="mvc_view.html#render_order">Rendering Order</a></span></dt>
+                           <dt><span class="section"><a href="mvc_view.html#rendering_hints">Rendering Hints</a></span></dt>
+                           <dt><span class="section"><a href="mvc_view.html#dragdrop">Drag and Drop Support</a></span></dt>
+                           <dt><span class="section"><a href="mvc_view.html#d0e28347">Tutorial Demo Code</a></span></dt>
+                        </dl>
+                     </dd>
+                     <dt><span class="section"><a href="mvc_view.html#cls_OverView">Class Overview</a></span></dt>
+                     <dt><span class="section"><a href="mvc_view.html#mvc_view_related">Related Classes and Interfaces</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="mvc_view.html#renderer">Class DefaultGraph2DRenderer</a></span></dt>
+                           <dt><span class="section"><a href="mvc_view.html#cls_GraphicsContext">Class GraphicsContext</a></span></dt>
+                           <dt><span class="section"><a href="mvc_view.html#drawables">Interface Drawable</a></span></dt>
+                           <dt><span class="section"><a href="mvc_view.html#mousewheel">Classes Graph2DViewMouseWheelZoomListener, Graph2DViewMouseWheelScrollListener</a></span></dt>
+                           <dt><span class="section"><a href="mvc_view.html#cls_NavigationComponent">Class NavigationComponent</a></span></dt>
+                        </dl>
+                     </dd>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="mvc_controller.html">User Interaction</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="mvc_controller.html#interaction_mouse">Mouse-Driven Actions</a></span></dt>
+                     <dt><span class="section"><a href="mvc_controller.html#interaction_keyboard">Keyboard-Driven Actions</a></span></dt>
+                     <dt><span class="section"><a href="mvc_controller.html#label_editor">Label Editor</a></span></dt>
+                     <dt><span class="section"><a href="mvc_controller.html#node_cell_editors">Node-Related Editing Capabilities</a></span></dt>
+                     <dt><span class="section"><a href="mvc_controller.html#cls_ViewMode">ViewMode Workings</a></span></dt>
+                     <dt><span class="section"><a href="mvc_controller.html#cls_EditMode">Class EditMode</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="mvc_controller.html#orthogonal_edge_paths">Support for Orthogonal Edge Paths</a></span></dt>
+                           <dt><span class="section"><a href="mvc_controller.html#snapping">Support for Interactive Snapping of Graph Elements</a></span></dt>
+                           <dt><span class="section"><a href="mvc_controller.html#cls_MoveLabelMode">Class MoveLabelMode</a></span></dt>
+                           <dt><span class="section"><a href="mvc_controller.html#cls_HotSpotMode">Class HotSpotMode</a></span></dt>
+                        </dl>
+                     </dd>
+                     <dt><span class="section"><a href="mvc_controller.html#cls_NavigationMode">Class NavigationMode</a></span></dt>
+                     <dt><span class="section"><a href="mvc_controller.html#cls_CellEditorMode">Class CellEditorMode</a></span></dt>
+                     <dt><span class="section"><a href="mvc_controller.html#cls_MagnifierViewMode">Class MagnifierViewMode</a></span></dt>
+                     <dt><span class="section"><a href="mvc_controller.html#cls_AutoDragViewMode">Class AutoDragViewMode</a></span></dt>
+                     <dt><span class="section"><a href="mvc_controller.html#cls_TooltipMode">Class TooltipMode</a></span></dt>
+                     <dt><span class="section"><a href="mvc_controller.html#mvc_controller_related">Related Classes and Interfaces</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="mvc_controller.html#cls_HitInfo">Class HitInfo</a></span></dt>
+                           <dt><span class="section"><a href="mvc_controller.html#intf_MouseInputEditor">Interface MouseInputEditor</a></span></dt>
+                        </dl>
+                     </dd>
+                     <dt><span class="section"><a href="mvc_controller.html#custom_edit_mode">Customizing an EditMode</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="mvc_controller.html#tutorial_cls_EditMode">Tutorial Demo Code</a></span></dt>
+                        </dl>
+                     </dd>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="view_events_and_listeners.html">Events and Listeners</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="view_events_and_listeners.html#evts_graphical">Graphical Property Changes</a></span></dt>
+                     <dt><span class="section"><a href="view_events_and_listeners.html#evts_selection">Selection State Changes</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="multiviews.html">Multiple Views on a Common Model Graph</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="multiviews.html#multiviews_concept">Concept</a></span></dt>
+                     <dt><span class="section"><a href="multiviews.html#cls_ModelViewManager">Class ModelViewManager</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="multiviews.html#multiviews_synchronization">Synchronization</a></span></dt>
+                           <dt><span class="section"><a href="multiviews.html#multiviews_filtering">Filtering</a></span></dt>
+                        </dl>
+                     </dd>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="viewer_localviews.html">Local Views</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="viewer_localviews.html#localviews_concept">Concept</a></span></dt>
+                     <dt><span class="section"><a href="viewer_localviews.html#cls_LocalViewCreator">Class LocalViewCreator</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="viewer_localviews.html#local_views_creators">Creator Implementations</a></span></dt>
+                           <dt><span class="section"><a href="viewer_localviews.html#local_views_manage">Managing Local Views</a></span></dt>
+                           <dt><span class="section"><a href="viewer_localviews.html#local_view_mappings">Mapping Graph Elements between Local View and Model</a></span></dt>
+                        </dl>
+                     </dd>
+                     <dt><span class="section"><a href="viewer_localviews.html#tutorial_local_views">Tutorial Demo Code</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="printing.html">Printing a Graph's Visual Representation</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="printing.html#printing_scaling">Scaling and Clipping</a></span></dt>
+                     <dt><span class="section"><a href="printing.html#printing_title_bar_footer">Title Bar and Footer Support</a></span></dt>
+                     <dt><span class="section"><a href="printing.html#printing_preview">Printing Preview</a></span></dt>
+                     <dt><span class="section"><a href="printing.html#printing_custom_view">Creating a Dedicated Printing View</a></span></dt>
+                     <dt><span class="section"><a href="printing.html#printing_tutorial">Tutorial Demo Code</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="animation.html">Animations for Graph Elements</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="animation.html#animation_structural">Animation Framework</a></span></dt>
+                     <dt><span class="section"><a href="animation.html#animation_tutorial">Tutorial Demo Code</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="advanced_stuff.html">Advanced Application Logic</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="advanced_stuff.html#undo_redo">Undo/Redo</a></span></dt>
+                     <dt><span class="section"><a href="advanced_stuff.html#clipboard">Clipboard</a></span></dt>
+                     <dt><span class="section"><a href="advanced_stuff.html#morphing">Layout Morphing</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="viewer_layout.html">Automatic Layout</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="viewer_layout.html#cls_Graph2DLayoutExecutor">Class Graph2DLayoutExecutor</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="viewer_layout.html#cls_Graph2DLayoutExecutor_async">Asynchronous Layout</a></span></dt>
+                        </dl>
+                     </dd>
+                     <dt><span class="section"><a href="viewer_layout.html#viewer_layout_view">Graph2DView Support for Automatic Layout</a></span></dt>
+                     <dd>
+                        <dl>
+                           <dt><span class="section"><a href="viewer_layout.html#tutorial_Graph2DLayoutExecutor">Tutorial Demo Code</a></span></dt>
+                        </dl>
+                     </dd>
+                  </dl>
+               </dd>
+            </dl>
+         </div>
+         <p>
+            <a class="indexterm" name="d0e22545"></a>
+            
+            This chapter shows how to render a graph in a so-called "view." 
+            It presents the classes that are responsible for the visual representation of 
+            graph elements and explains their contribution to the "look and feel" of an 
+            application. 
+            
+            Furthermore, it shows how user interaction with both graph elements and the 
+            view containing a graph is handled. 
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both"><a name="mvc"></a>Model-View-Controller Paradigm
+                     </h2>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e22554"></a><p>
+               
+               Package <a href="../api/y/view/package-summary.html" title="Link to API documentation" target="_top">y.view<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               bundles the yFiles classes that provide user interface (UI) functionality. 
+               
+               UI functionality comprises two main aspects, namely the representation of a 
+               graph structure to the user and the interaction of a user with the graph 
+               structure. 
+               
+            </p>
+            <p>
+               
+               The classes from package y.view reflect the Model-View-Controller (MVC) 
+               paradigm, i.e., conceptually they can be divided into three types, each having 
+               specific responsibilities: 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>
+                     Model classes: hold data specific to the application 
+                     
+                  </li>
+                  <li>
+                     View classes: present information to the user 
+                     
+                  </li>
+                  <li>
+                     Controller classes: tie the model to the view 
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+               In terms of MVC then, class <a href="../api/y/view/Graph2D.html" title="Link to API documentation" target="_top">Graph2D<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               together with classes <a href="../api/y/view/NodeRealizer.html" title="Link to API documentation" target="_top">NodeRealizer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and 
+               <a href="../api/y/view/EdgeRealizer.html" title="Link to API documentation" target="_top">EdgeRealizer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> make up the model which 
+               holds the data and its state. 
+               
+               Class <a href="../api/y/view/Graph2DView.html" title="Link to API documentation" target="_top">Graph2DView<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> defines the view which 
+               presents the information to the user. 
+               
+               Finally, class <a href="../api/y/view/ViewMode.html" title="Link to API documentation" target="_top">ViewMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and its 
+               descendants tie together model and view. 
+               
+            </p>
+            <p>
+               The respective parts of MVC are further described in the following sections: 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>
+                     Model: <a href="mvc_model.html" title="Graph Structure Enhancements">Graph Structure Enhancements</a> and 
+                     <a href="realizers.html" title="Bringing Graph Elements to Life: The Realizer Concept">Bringing Graph Elements to Life: The Realizer Concept</a></li>
+                  <li>
+                     View: <a href="mvc_view.html" title="View Implementations">View Implementations</a></li>
+                  <li>
+                     Controller: <a href="mvc_controller.html" title="User Interaction">User Interaction</a></li>
+               </ul>
+            </div>
+            <p>
+               
+            </p>
+            <p>
+               <a href="view.html#mvc_yFiles" title="Figure&nbsp;6.1.&nbsp;Model-View-Controller paradigm in package y.view">Figure&nbsp;6.1, &#8220;Model-View-Controller paradigm in package y.view&#8221;</a> depicts the interdependencies of the three parts. 
+               
+               The view (a Graph2DView instance) renders the model (an object of type 
+               Graph2D); it also propagates user interface events to the controller (class 
+               ViewMode and its descendants). 
+               
+               According to these events, the controller then changes state on either view or 
+               model. 
+               
+            </p>
+            <div class="figure"><a name="mvc_yFiles"></a><p class="title"><b>Figure&nbsp;6.1.&nbsp;Model-View-Controller paradigm in package y.view</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/mvc_y_view.jpg" align="middle" alt="Model-View-Controller paradigm in package y.view."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="labeling.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="index.html" target="_top">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="mvc_model.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Automatic Label Placement&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Graph Structure Enhancements</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

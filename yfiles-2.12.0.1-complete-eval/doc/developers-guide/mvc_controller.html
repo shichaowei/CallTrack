@@ -1,0 +1,2149 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>User Interaction</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="view.html" title="Chapter&nbsp;6.&nbsp;Displaying and Editing Graphs">
+      <link rel="previous" href="mvc_view.html" title="View Implementations">
+      <link rel="next" href="view_events_and_listeners.html" title="Events and Listeners">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">User Interaction</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="mvc_view.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;6.&nbsp;Displaying and Editing Graphs</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="view_events_and_listeners.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="mvc_controller"></a>User Interaction
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div><a class="indexterm" name="d0e28831"></a><a class="indexterm" name="d0e28836"></a><p>
+            In terms of the Model-View-Controller (MVC) paradigm, the controller part is 
+            the tie between the model and the view. 
+            It handles the user interaction and accordingly changes state of both model 
+            and view. 
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="interaction_mouse"></a>Mouse-Driven Actions
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e28844"></a><p>
+               All mouse-based user interaction is handled by class 
+               <a href="../api/y/view/ViewMode.html" title="Link to API documentation" target="_top">ViewMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and its descendants. 
+               See below for a <a href="mvc_controller.html#cls_ViewMode" title="ViewMode Workings">detailed description of class 
+                  ViewMode</a>. 
+               
+               The term "mouse-based" summarizes simple mouse clicks as well as more complex 
+               gestures that denote, e.g.:  
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>
+                     creation of graph elements 
+                     
+                  </li>
+                  <li>
+                     interaction with graph elements, e.g., selecting some nodes, moving a 
+                     selection, resizing a node, etc. 
+                     
+                  </li>
+                  <li>
+                     manipulation of the viewport, e.g., moving the clipping area
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+               
+            </p>
+            <p>
+               <a href="mvc_controller.html#mouse_viewmode" title="Figure&nbsp;6.50.&nbsp;ViewMode class hierarchy">Figure&nbsp;6.50, &#8220;ViewMode class hierarchy&#8221;</a> shows the hierarchy of class ViewMode 
+               featuring a subset of its descendants. 
+               
+            </p>
+            <div class="figure"><a name="mouse_viewmode"></a><p class="title"><b>Figure&nbsp;6.50.&nbsp;ViewMode class hierarchy</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/viewmode_complex_selected.jpg" align="middle" alt="ViewMode class hierarchy."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="interaction_keyboard"></a>Keyboard-Driven Actions
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e28888"></a><a class="indexterm" name="d0e28893"></a><p>
+               Editing a graph is most naturally done using the mouse, but keyboard input is 
+               equally important, e.g., to change a label's text, to delete selected graph 
+               elements, or to quickly select nodes or edges. 
+               
+               Class <a href="../api/y/view/Graph2DViewActions.html" title="Link to API documentation" target="_top">Graph2DViewActions<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> provides a set 
+               of default keyboard actions that can be conveniently installed with a 
+               Graph2DView. 
+               <a href="mvc_controller.html#ex_Graph2DViewActions_install" title="Example&nbsp;6.38.&nbsp;Installing default keyboard actions with a Graph2DView">Example&nbsp;6.38, &#8220;Installing default keyboard actions with a Graph2DView&#8221;</a> presents the single line needed 
+               to accomplish this.
+               
+            </p>
+            <div class="example"><a name="ex_Graph2DViewActions_install"></a><p class="title"><b>Example&nbsp;6.38.&nbsp;Installing default keyboard actions with a Graph2DView</b></p><pre class="programlisting java">
+// 'myView' is of type y.view.Graph2DView.
+
+new Graph2DViewActions(myView).install();
+</pre></div>
+            <p>
+               Customized keyboard actions can easily be registered with a Graph2DView object 
+               using the Java Swing classes <tt class="classname">ActionMap</tt> and 
+               <tt class="classname">InputMap</tt>. 
+               <a href="mvc_controller.html#keyboard_maps" title="Figure&nbsp;6.51.&nbsp;Using ActionMap and InputMap">Figure&nbsp;6.51, &#8220;Using ActionMap and InputMap&#8221;</a> depicts their interaction with the view and 
+               with Graph2DViewActions.
+               
+            </p>
+            <div class="figure"><a name="keyboard_maps"></a><p class="title"><b>Figure&nbsp;6.51.&nbsp;Using ActionMap and InputMap</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/keyboard_maps_2.jpg" align="middle" alt="Using ActionMap and InputMap."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               The set of default keyboard actions provided by Graph2DViewActions can be 
+               conveniently retrieved readily encoded in ActionMap and InputMap objects, 
+               respectively. 
+               See <a href="mvc_controller.html#keyboard_actions" title="Example&nbsp;6.39.&nbsp;Registering keyboard actions">Example&nbsp;6.39, &#8220;Registering keyboard actions&#8221;</a> for the necessary steps to get the 
+               default keyboard actions, to add further actions to the set, and then register 
+               them altogether with the view. 
+               
+            </p>
+            <div class="example"><a name="keyboard_actions"></a><p class="title"><b>Example&nbsp;6.39.&nbsp;Registering keyboard actions</b></p><pre class="programlisting java">
+public void registerSimpleZoomKeyboardActions(Graph2DView view) {
+  Graph2DViewActions actions = new Graph2DViewActions(view);
+  // Create the maps to hold the actions. 
+  ActionMap aMap = actions.createActionMap();
+  InputMap iMap = actions.createDefaultInputMap(aMap);
+
+  // Add custom keyboard actions to the maps. 
+  // Connect 'zoom in' action to num pad '+' key. 
+  iMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_ADD, 0), "ZOOM IN");
+  aMap.put("ZOOM IN", new Zoom(1.2));
+  
+  // Connect 'zoom out' action to num pad '-' key. 
+  iMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_SUBTRACT, 0), "ZOOM OUT");
+  aMap.put("ZOOM OUT", new Zoom(0.8));
+  
+  // Register the maps with the canvas component of 'view.' 
+  view.getCanvasComponent().setActionMap(aMap);
+  view.getCanvasComponent().setInputMap(JComponent.WHEN_FOCUSED, iMap);
+}
+</pre></div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="label_editor"></a>Label Editor
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e28948"></a><p>
+               The built-in label editor directly provided by class Graph2DView can be opened 
+               in-place, i.e., at the label's location, or at any other suitable place in the 
+               view. 
+               
+               It supports single-line as well as multi-line labels. 
+               
+            </p>
+            <div class="figure"><a name="labeleditor_hierarchy"></a><p class="title"><b>Figure&nbsp;6.52.&nbsp;Graph2DView's built-in label editor</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/labeleditor_only.jpg" align="middle" alt="Graph2DView's built-in label editor."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               Using the callback mechanism provided by interface 
+               <tt class="classname">PropertyChangeListener</tt> notifications for label change 
+               events and text change events are easily realized. 
+               
+            </p>
+            <p>
+               Method 
+               <a href="../api/y/view/YLabel.html#getTextLocation()" title="Link to API documentation" target="_top">getTextLocation<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               from abstract class <a href="../api/y/view/YLabel.html" title="Link to API documentation" target="_top">YLabel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> delivers the 
+               proper location for the label editor to appear in-place, i.e., where the actual 
+               label resides. 
+               
+               Note that the location where the label editor should open is given in world 
+               coordinates rather than view coordinates. 
+               
+            </p>
+            <p>
+               Customization of label text editing in a view is supported by inner class <a href="../api/y/view/Graph2DViewActions.EditLabelAction.html" title="Link to API documentation" target="_top">Graph2DViewActions.EditLabelAction<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, 
+               which is registered with the view as a <a href="mvc_controller.html#interaction_keyboard" title="Keyboard-Driven Actions">keyboard action</a>,
+               by default.
+               
+            </p>
+            <p>
+               Among other things, <a href="../../src/demo/view/viewmode/PopupModeDemo.java" title="Link to demo code" target="_top">PopupModeDemo.java</a> 
+               demonstrates the usage of Graph2DView's label editor. 
+               
+            </p>
+         </div><a class="indexterm" name="d0e28995"></a><div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="node_cell_editors"></a>Node-Related Editing Capabilities
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Interface <a href="../api/y/view/NodeCellEditor.html" title="Link to API documentation" target="_top">NodeCellEditor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> enables the use 
+               of <tt class="classname">JComponent</tt>s as editors for node-related data. 
+               
+               It behaves similar to Java Swing interfaces such as 
+               <tt class="classname">TableCellEditor</tt> or 
+               <tt class="classname">TreeCellEditor</tt>, and serves as a callback for the view 
+               mode descendant class CellEditorMode. 
+               
+               
+               
+            </p>
+            <div class="figure"><a name="fig_NodeCellEditor"></a><p class="title"><b>Figure&nbsp;6.53.&nbsp;Class NodeCellEditor's context</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/node_cell_editor.jpg" align="middle" alt="Class NodeCellEditor's context."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               The following method of NodeCellEditor is called by CellEditorMode to initiate node
+               editing using the returned JComponent:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/NodeCellEditor.html#getNodeCellEditorComponent(y.view.Graph2DView, y.view.NodeRealizer, java.lang.Object, boolean)" title="Link to API documentation" target="_top">JComponent getNodeCellEditorComponent(Graph2DView view, NodeRealizer context,
+                                      Object value, boolean isSelected)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Callback method of interface NodeCellEditor.
+                              Parameter 'value' holds the value of the cell to be edited, i.e., the actual
+                              node-related data that is presented in the JComponent.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               
+               See <a href="mvc_controller.html#cls_CellEditorMode" title="Class CellEditorMode">the section called &#8220;Class CellEditorMode&#8221;</a> for a description of the view mode 
+               that enables node editing using node cell editors. 
+               
+               
+               Tutorial demo application 
+               <a href="../../src/demo/view/realizer/SwingRendererDemo.java" title="Link to demo code" target="_top">SwingRendererDemo.java</a> shows how 
+               NodeCellEditor implementations can be created using Java Swing's abstract class 
+               <tt class="classname">AbstractCellEditor</tt> as a convenient basis. 
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="cls_ViewMode"></a>ViewMode Workings
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e29063"></a><a class="indexterm" name="d0e29068"></a><a class="indexterm" name="d0e29073"></a><a class="indexterm" name="d0e29076"></a><a class="indexterm" name="d0e29081"></a><a class="indexterm" name="d0e29086"></a><a class="indexterm" name="d0e29091"></a><p>
+               Class <a href="../api/y/view/ViewMode.html" title="Link to API documentation" target="_top">ViewMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> provides the base 
+               functionality to handle mouse-based interaction that happens in a view. 
+               
+               User-generated mouse events like, e.g., a mouse button press, release, or mouse 
+               drag with one of the buttons down are received and processed by appropriate 
+               methods. 
+               
+            </p>
+            <p>
+               Processing mouse events in class ViewMode has two faces to it. 
+               First of all, there are "low-level" methods from the implementation for Java 
+               Swing interface <tt class="classname">MouseInputListener</tt>. 
+               Then there are additional, but more high-level and application-oriented methods 
+               available. 
+               
+               The former methods convey actual mouse events that use view coordinates, while 
+               the latter ones directly use coordinates from the model, i.e., they are already 
+               converted to world coordinates. 
+               
+            </p>
+            <div class="figure"><a name="viewmode_hierarchy"></a><p class="title"><b>Figure&nbsp;6.54.&nbsp;ViewMode hierarchy</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/viewmode_complex_3.jpg" align="middle" alt="ViewMode hierarchy."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p><a name="viewmode_chaining"></a>
+               View modes can be "chained," i.e., one view mode can yield control to another, 
+               which is referred to as a "child mode" in this context. 
+               Yielding control to a child mode means setting it as the active child mode, 
+               which is done using appropriate methods from class ViewMode. 
+               
+               The child mode (or simply "child") then proceeds processing mouse events and 
+               after it is done returns control to its parent mode (its "parent"). 
+               
+               Note that a view mode can have at most one active child mode at any time. 
+               
+               The following methods can be used to get both the parent and the child of a view
+               mode.
+               
+            </p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  The term "child mode" is just another name for a view mode that is used in a 
+                  specific context, namely view mode chaining. 
+                  
+                  In particular, every child mode is a proper view mode that can be used on its 
+                  own, i.e., without the need for a "parent mode." 
+                  
+               </p>
+            </div>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/ViewMode.html#getChild()" title="Link to API documentation" target="_top">ViewMode getChild()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/ViewMode.html#getParent()" title="Link to API documentation" target="_top">ViewMode getParent()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">ViewMode methods to get the parent and child modes.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               View modes are added to respectively removed from a view using the following methods 
+               of Graph2DView:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/Graph2DView.html#addViewMode(y.view.ViewMode)" title="Link to API documentation" target="_top">void addViewMode(ViewMode vm)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/Graph2DView.html#removeViewMode(y.view.ViewMode)" title="Link to API documentation" target="_top">void removeViewMode(ViewMode vm)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              ViewMode-related methods from class Graph2DView to add and remove a view mode to
+                              the canvas.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               To provide convenient notification support class ViewMode offers the following methods
+               to add implementations of interface <tt class="classname">PropertyChangeListener</tt>. 
+               
+               The listeners are notified whenever one of the view mode's properties changes, 
+               most notably when the view mode gets activated or deactivated or when it enters 
+               or leaves editing state. 
+               Other property changes that are also signaled include, e.g., a view mode's 
+               usage as a child mode or as a parent mode. 
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Property change support</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/view/ViewMode.html#addPropertyChangeListener(java.beans.PropertyChangeListener)" title="Link to API documentation" target="_top">void addPropertyChangeListener(PropertyChangeListener pcl)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/ViewMode.html#addPropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener)" title="Link to API documentation" target="_top">void addPropertyChangeListener(String pName,
+                               PropertyChangeListener pcl)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+
+<a href="../api/y/view/ViewMode.html#removePropertyChangeListener(java.beans.PropertyChangeListener)" title="Link to API documentation" target="_top">void removePropertyChangeListener(PropertyChangeListener pcl)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/ViewMode.html#removePropertyChangeListener(java.lang.String, java.beans.PropertyChangeListener)" title="Link to API documentation" target="_top">void removePropertyChangeListener(String pName,
+                                  PropertyChangeListener pcl)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Methods to add and remove property change listeners to a view mode.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               A view mode's editing state characterizes whether the view mode currently 
+               processes some user interaction. 
+               This property is appropriately updated by all predefined view modes and should 
+               also by any customized variant. 
+               The following methods support getting and setting the editing state:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/ViewMode.html#isEditing()" title="Link to API documentation" target="_top">boolean isEditing()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/ViewMode.html#setEditing(boolean)" title="Link to API documentation" target="_top">protected void setEditing(boolean editing)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Getter and setter methods for a view mode's editing state.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               Notifications about view mode property changes complement the notification 
+               mechanism that signals property changes relating to a graph's visual 
+               representation. 
+               Registering listeners with view modes provides qualified information about both 
+               beginning and ending of any mouse-based user interaction while listeners that 
+               receive Graph2DEvent objects are continuously notified during the interaction. 
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="cls_EditMode"></a>Class EditMode
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e29229"></a><a class="indexterm" name="d0e29234"></a><a class="indexterm" name="d0e29239"></a><a class="indexterm" name="d0e29244"></a><p>
+               Among all ViewMode descendants class 
+               <a href="../api/y/view/EditMode.html" title="Link to API documentation" target="_top">EditMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> takes the most prominent role. 
+               It is the major mode that serves as the entry point for mouse events from the 
+               view. 
+               By default, it has a number of child modes associated, each of which 
+               specialized in handling mouse gestures within a specific context. 
+               
+               <a href="mvc_controller.html#all_modes" title="Table&nbsp;6.17.&nbsp;Specialized view modes associated with class EditMode">Table&nbsp;6.17, &#8220;Specialized view modes associated with class EditMode&#8221;</a> lists all of class EditMode's child modes. 
+               
+            </p>
+            <div class="table"><a name="all_modes"></a><p class="title"><b>Table&nbsp;6.17.&nbsp;Specialized view modes associated with class EditMode</b></p>
+               <table summary="Specialized view modes associated with class EditMode" width="100%" border="1">
+                  <colgroup>
+                     <col width="33%" align="left">
+                     <col width="67%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Classname</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left">CellEditorMode</td>
+                        <td align="left">
+                             Can be registered to handle node editing. 
+                             See also <a href="mvc_controller.html#cls_CellEditorMode" title="Class CellEditorMode">the section called &#8220;Class CellEditorMode&#8221;</a>. 
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/view/CreateEdgeMode.html" title="Link to API documentation" target="_top">CreateEdgeMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Handles edge creation including the creation of control points. 
+                             Any node ports present at start node or end node are taken into account.
+                             Edge creation does also cover aborting the process of creating an edge. 
+                           
+                             Provides special support for <a href="mvc_controller.html#orthogonal_edge_paths" title="Support for Orthogonal Edge Paths">orthogonal edge paths</a> 
+                             and <a href="mvc_controller.html#snapping" title="Support for Interactive Snapping of Graph Elements">interactive snapping of graph elements</a>.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/view/HotSpotMode.html" title="Link to API documentation" target="_top">HotSpotMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Handles node resizing. 
+                             Provides special support for <a href="mvc_controller.html#orthogonal_edge_paths" title="Support for Orthogonal Edge Paths">orthogonal edge paths</a> 
+                             and <a href="mvc_controller.html#snapping" title="Support for Interactive Snapping of Graph Elements">interactive snapping of graph elements</a>. 
+                             See also <a href="mvc_controller.html#cls_HotSpotMode" title="Class HotSpotMode">the section called &#8220;Class HotSpotMode&#8221;</a>.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left">MouseInputMode</td>
+                        <td align="left">
+                             Delegates mouse input to so-called mouse input editors using double precision 
+                             mouse events. 
+                           
+                             See <a href="mvc_controller.html#intf_MouseInputEditor" title="Interface MouseInputEditor">the section called &#8220;Interface MouseInputEditor&#8221;</a> for a description of the mouse 
+                             input editor concept. 
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/view/MoveLabelMode.html" title="Link to API documentation" target="_top">MoveLabelMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Handles node and edge label moving and triggers the presentation of label position
+                             candidate boxes.
+                             Provides special support for interactive snapping of labels.
+                             See also <a href="mvc_controller.html#cls_MoveLabelMode" title="Class MoveLabelMode">the section called &#8220;Class MoveLabelMode&#8221;</a>.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/view/MovePortMode.html" title="Link to API documentation" target="_top">MovePortMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Handles moving the port of an edge at the same node. 
+                             Any node ports present at a node are taken into account.
+                           
+                             Provides special support for <a href="mvc_controller.html#snapping" title="Support for Interactive Snapping of Graph Elements">interactive snapping of graph elements</a>.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/view/MoveSelectionMode.html" title="Link to API documentation" target="_top">MoveSelectionMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Handles moving a collection of selected graph elements. 
+                           
+                             Provides special support for <a href="mvc_controller.html#orthogonal_edge_paths" title="Support for Orthogonal Edge Paths">orthogonal edge paths</a> 
+                             and <a href="mvc_controller.html#snapping" title="Support for Interactive Snapping of Graph Elements">interactive snapping of graph elements</a>.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/view/MoveViewPortMode.html" title="Link to API documentation" target="_top">MoveViewPortMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Handles moving the viewport.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/view/OrthogonalMoveBendsMode.html" title="Link to API documentation" target="_top">OrthogonalMoveBendsMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Provides support for moving bends and edge segments in such a way that an 
+                             edge's path is always orthogonal. 
+                           
+                             Provides special support for <a href="mvc_controller.html#orthogonal_edge_paths" title="Support for Orthogonal Edge Paths">orthogonal edge paths</a> 
+                             and <a href="mvc_controller.html#snapping" title="Support for Interactive Snapping of Graph Elements">interactive snapping of graph elements</a>.
+                           
+                           
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/view/PopupMode.html" title="Link to API documentation" target="_top">PopupMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Handles context-sensitive menus. 
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/view/SelectionBoxMode.html" title="Link to API documentation" target="_top">SelectionBoxMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Handles creating a rectangular box in the view and changes the selection 
+                             state of graph elements contained in that box.
+                           
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/view/MoveNodePortMode.html" title="Link to API documentation" target="_top">MoveNodePortMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Handles moving a node port at a node.</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               Depending on the given context, class EditMode delegates the processing to the 
+               appropriate child mode by chaining it, i.e., setting it as the active child 
+               mode. 
+               
+            </p>
+            <div class="figure"><a name="childmodes"></a><p class="title"><b>Figure&nbsp;6.55.&nbsp;Child modes of class EditMode</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/editmode_childmodes.jpg" align="middle" alt="Child modes of class EditMode."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p><a name="view_mode_chaining"></a>
+               <a class="indexterm" name="d0e29384"></a>
+               <a class="indexterm" name="d0e29390"></a>
+               
+               Chaining of another view mode is done as outlined in <a href="mvc_controller.html#chaining" title="Example&nbsp;6.40.&nbsp;Chaining another view mode">Example&nbsp;6.40, &#8220;Chaining another view mode&#8221;</a> 
+               using one of the following methods.
+               These methods are vital to chaining view modes, among other things, they are 
+               responsible for: 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>
+                     Setting the parent mode's view as the active view for the child mode 
+                     
+                  </li>
+                  <li>
+                     Providing the child with a reference to its parent 
+                     
+                  </li>
+                  <li>
+                     Invoking the child mode's initialization method 
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>View mode chaining support</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/view/ViewMode.html#setChild(y.view.ViewMode, java.awt.event.MouseEvent, java.awt.event.MouseEvent)" title="Link to API documentation" target="_top">void setChild(ViewMode child,
+              MouseEvent pressEvent,
+              MouseEvent dragEvent)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/ViewMode.html#setChild(y.view.ViewMode, java.awt.event.MouseEvent, java.awt.event.MouseEvent, java.awt.event.MouseEvent)" title="Link to API documentation" target="_top">void setChild(ViewMode child,
+              MouseEvent pressEvent,
+              MouseEvent dragEvent,
+              MouseEvent releaseEvent)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Child mode methods from class ViewMode.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               To provide the child mode with a well-defined state for its start, the most 
+               current mouse events are handed over in canonical order, i.e., press, drag, and 
+               release. 
+               All further mouse events are then received by both parent and child, but 
+               processed only by the child mode. 
+               
+            </p>
+            <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Important</h3>
+               <p>
+                  View modes rely on a contract regarding the mouse events they are given at 
+                  startup. 
+                  While the mouse release event, or both mouse drag and mouse release event can 
+                  be <tt class="code">null</tt>, there must always be given a valid mouse press event. 
+                  
+               </p>
+            </div>
+            <p>
+               After processing is completed, the child mode returns control to its parent 
+               invoking its 
+               <a href="../api/y/view/ViewMode.html#reactivateParent()" title="Link to API documentation" target="_top">reactivateParent()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> method. 
+               
+               Note that this method uses the reference to the parent that has been set before 
+               by the chaining mechanism. 
+               If no parent is set, then calling the method has no effect. 
+               
+            </p>
+            <div class="example"><a name="chaining"></a><p class="title"><b>Example&nbsp;6.40.&nbsp;Chaining another view mode</b></p><pre class="programlisting java">
+public void mousePressedRight(double x, double y)
+{
+  // 'lastPressEvent,' 'lastDragEvent,' and 'lastReleaseEvent' are of type 
+  // java.awt.event.MouseEvent 
+  // NB: These are protected fields of class y.view.ViewMode 
+  
+  // Create a new instance of the specialized view mode and set it the active 
+  // child of this view mode. 
+  if (canMoveSelection)
+    // Hand over the most current last mouse events so that the child mode 
+    // starts with a well-defined state. 
+    setChild(new MoveSelectionMode(), 
+             lastPressEvent, lastDragEvent, lastReleaseEvent);
+}
+</pre></div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="orthogonal_edge_paths"></a>Support for Orthogonal Edge Paths
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Class EditMode and its associated child modes provide special support for 
+                  orthogonal edge paths. 
+                  Specifically, the following edge-related mouse gestures offer specialized 
+                  behavior for this kind of paths: 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>edge creation (<a href="../api/y/view/CreateEdgeMode.html" title="Link to API documentation" target="_top">CreateEdgeMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>)
+                     </li>
+                     <li>
+                        moving edge segments and creating new bends/edge segments (<a href="../api/y/view/OrthogonalMoveBendsMode.html" title="Link to API documentation" target="_top">OrthogonalMoveBendsMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>)
+                        
+                     </li>
+                     <li>moving the ports of an edge (<a href="../api/y/view/MovePortMode.html" title="Link to API documentation" target="_top">MovePortMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>)
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+               </p>
+               <p>
+                  Additionally, the following mouse gestures, which have an impact on edge paths, 
+                  too, also offer specialized behavior: 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>resizing nodes (<a href="../api/y/view/HotSpotMode.html" title="Link to API documentation" target="_top">HotSpotMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>)
+                     </li>
+                     <li>moving selected nodes/bends (<a href="../api/y/view/MoveSelectionMode.html" title="Link to API documentation" target="_top">MoveSelectionMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>)
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+               </p>
+               <p>
+                  The following method can be used to activate the specialized behavior for all edges
+                  of the graph across EditMode and its involved associated child modes (except CreateEdgeMode,
+                  see <a href="mvc_controller.html#meths_orthogonal_edge_paths">the section called &#8220;Support for Orthogonal Edge Paths&#8221;</a>):
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/EditMode.html#setOrthogonalEdgeRouting(boolean)" title="Link to API documentation" target="_top">void setOrthogonalEdgeRouting(boolean enable)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  In contrast, when only a specific set of edges should have orthogonal edge path 
+                  support activated, then either a data provider can be registered with the graph 
+                  using the look-up key 
+                  <a href="../api/y/view/EditMode.html#ORTHOGONAL_ROUTING_DPKEY" title="Link to API documentation" target="_top">ORTHOGONAL_ROUTING_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, or the 
+                  following callback method can be overridden. 
+                  
+                  Both the data provider and the callback method serve to indicate whether a 
+                  given edge's path is orthogonal or not. 
+                  This indication is conveyed using a boolean value. 
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/EditMode.html#isOrthogonalRouting(y.base.Edge)" title="Link to API documentation" target="_top">protected boolean isOrthogonalRouting(Edge e)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Allows to specify the set of orthogonal edges.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p><a name="meths_orthogonal_edge_paths"></a>
+                  Note that, except CreateEdgeMode, which can be set up using the following methods,
+                  the involved child modes, too, access the data provider registered using the aforementioned
+                  look-up key.
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/CreateEdgeMode.html#isOrthogonalEdgeCreation()" title="Link to API documentation" target="_top">boolean isOrthogonalEdgeCreation()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/CreateEdgeMode.html#setOrthogonalEdgeCreation(boolean)" title="Link to API documentation" target="_top">void setOrthogonalEdgeCreation(boolean orthogonalEdgeCreation)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">CreateEdgeMode's methods to control orthogonal edge path support.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  OrthogonalMoveBendsMode, MoveSelectionMode, HotSpotMode, and CreateEdgeMode further 
+                  complete the support for orthogonal edge paths by the <tt class="code">setRemovingInnerBendsEnabled</tt> 
+                  method, which removes all bends that lie inside the bounds their edge's end nodes.
+                  
+               </p>
+               <p>
+                  <a href="../../src/demo/view/viewmode/OrthogonalEdgeViewModeDemo.java" title="Link to demo code" target="_top">OrthogonalEdgeViewModeDemo.java</a> 
+                  demonstrates the support for orthogonal edge paths provided by EditMode and 
+                  CreateEdgeMode. 
+                  
+               </p>
+            </div><a class="indexterm" name="d0e29544"></a><div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="snapping"></a>Support for Interactive Snapping of Graph Elements
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The associated child modes of class EditMode provide special support for interactive 
+                  snapping of graph elements, which means visual and also "perceptible" feedback during 
+                  a mouse move gesture when graph elements 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>are aligned (top, bottom, left, right, middle),</li>
+                     <li>are equidistant,</li>
+                     <li>have the same width/height, or</li>
+                     <li>have some specified distances from each other.</li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  
+               </p>
+               <p>
+                  Specifically, the following mouse gestures offer specialized behavior: 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>moving selected nodes/bends (<a href="../api/y/view/MoveSelectionMode.html" title="Link to API documentation" target="_top">MoveSelectionMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>)
+                     </li>
+                     <li>resizing nodes (<a href="../api/y/view/HotSpotMode.html" title="Link to API documentation" target="_top">HotSpotMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>)
+                     </li>
+                     <li>moving the ports of an edge (<a href="../api/y/view/MovePortMode.html" title="Link to API documentation" target="_top">MovePortMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>)
+                     </li>
+                     <li>
+                        moving segments of orthogonal edges and creating new bends/segments in orthogonal 
+                        edges (<a href="../api/y/view/OrthogonalMoveBendsMode.html" title="Link to API documentation" target="_top">OrthogonalMoveBendsMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>)
+                        
+                     </li>
+                     <li>edge creation (<a href="../api/y/view/CreateEdgeMode.html" title="Link to API documentation" target="_top">CreateEdgeMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>)
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  
+               </p>
+               <p>
+                  <a href="mvc_controller.html#fig_snapping_visual" title="Figure&nbsp;6.56.&nbsp;Visual feedback during mouse move gestures with snapping support enabled">Figure&nbsp;6.56, &#8220;Visual feedback during mouse move gestures with snapping support enabled&#8221;</a> illustrates the visual feedback that is given 
+                  during mouse move gestures.
+                  
+               </p>
+               <div class="figure"><a name="fig_snapping_visual"></a><p class="title"><b>Figure&nbsp;6.56.&nbsp;Visual feedback during mouse move gestures with snapping support enabled</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="30%">
+                              <col width="39%">
+                              <col width="31%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/snapped_nodes_smaller.png" align="middle" alt="Visual feedback."></div>
+                                 </td>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/snapped_nodes_middle_smaller.png" align="middle" alt="Visual feedback."></div>
+                                 </td>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/snap_width_smaller.png" align="middle" alt="Visual feedback."></div>
+                                 </td>
+                              </tr>
+                              <tr align="center" valign="top">
+                                 <td align="center" valign="top">Two nodes aligned at their center coordinates (moving a node).</td>
+                                 <td align="center" valign="top">Equidistant between two nodes (moving a node).</td>
+                                 <td align="center" valign="top">Same widths (resizing a node).</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  During a mouse move gesture, the "perceptible" feedback can be experienced as 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        a small jump, when moving towards a coordinate where nodes are aligned, for example, 
+                        and
+                        
+                     </li>
+                     <li>a small halt/lag, when moving away from that coordinate.</li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  Such "coordinates of interest," i.e., where a node that is currently being moved 
+                  and some other node(s) are aligned, for example, are called snap lines.
+                  
+               </p>
+               <p>
+                  The support for interactive snapping of graph elements can be conveniently enabled  
+                  on class EditMode. 
+                  By default, the snapping then covers alignment, equidistance, and same widths/heights.
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/EditMode.html#setSnappingEnabled(boolean)" title="Link to API documentation" target="_top">void setSnappingEnabled(boolean snapping)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Convenience to enable snapping support.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  Further snapping behavior can be configured using the properties of the particular 
+                  child modes that provide snapping support. 
+                  Preferred distances between graph elements, for example, can be specified using 
+                  the snap context of classes MoveSelectionMode, MovePortMode, and OrthogonalMoveBendsMode. 
+                  
+                  The snap context can be retrieved through the <tt class="code">getSnapContext</tt> method.
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/MoveSnapContext.html#setNodeToNodeDistance(double)" title="Link to API documentation" target="_top">void setNodeToNodeDistance(double dist)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/MoveSnapContext.html#setNodeToEdgeDistance(double)" title="Link to API documentation" target="_top">void setNodeToEdgeDistance(double dist)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/MoveSnapContext.html#setEdgeToEdgeDistance(double)" title="Link to API documentation" target="_top">void setEdgeToEdgeDistance(double dist)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Specifying preferred distances between graph elements.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  Support for interactive snapping of graph elements is further completed by class 
+                  <a href="../api/y/view/DropSupport.html" title="Link to API documentation" target="_top">DropSupport<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, which also handles a mouse move 
+                  gesture.
+                  
+               </p>
+               <p>
+                  In addition to the default set of snap lines that result from the graph elements 
+                  themselves, custom snap lines can be created and added using the <a href="../api/y/view/SnapLine.html" title="Link to API documentation" target="_top">SnapLine<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  class.
+                  
+               </p>
+               <p>
+                  Tutorial demo application <a href="../../src/demo/view/viewmode/SnapLineDemo.java" title="Link to demo code" target="_top">SnapLineDemo.java</a> 
+                  shows how snapping support is set up using the properties of the child modes. 
+                  The demo also shows how to create and add a custom snap line.
+                  
+               </p>
+            </div><a class="indexterm" name="d0e29695"></a><a class="indexterm" name="d0e29700"></a><div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="cls_MoveLabelMode"></a>Class MoveLabelMode
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Class <a href="../api/y/view/MoveLabelMode.html" title="Link to API documentation" target="_top">MoveLabelMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is a specialized view
+                  mode that handles the mouse gesture for moving labels of graph elements.
+                  
+               </p>
+               <p>
+                  Depending on the <a href="realizer_related.html#labels_label_model" title="Label Models">label model</a> that is
+                  associated with a label being moved, MoveLabelMode additionally renders available
+                  label position candidate boxes that the label can be snapped to, or provides special
+                  support for interactive snapping of labels.
+                  
+                  The latter means visual and also "perceptible" feedback (see also <a href="mvc_controller.html#snapping" title="Support for Interactive Snapping of Graph Elements">the section called &#8220;Support for Interactive Snapping of Graph Elements&#8221;</a>)
+                  during the move gesture when the label
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>is aligned with the center or the borderlines of its node,</li>
+                     <li>is aligned with the center or the borderlines of other labels of its node,</li>
+                     <li>is on the path of its edge,</li>
+                     <li>
+                        has the same perpendicular distance to an edge segment as before the move gesture
+                        started.
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  If the associated label model is a "free" label model, there is nothing rendered
+                  in addition.
+                  
+               </p>
+               <div class="figure"><a name="fig_MoveLabelMode_additional_renderings"></a><p class="title"><b>Figure&nbsp;6.57.&nbsp;Additional renderings provided by MoveLabelMode</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="50%">
+                              <col width="50%">
+                           </colgroup>
+                           <tbody>
+                              <tr valign="middle">
+                                 <td valign="middle">
+                                    <div class="mediaobject" align="center"><img src="figures/mlm-add-rend-corners.png" align="middle" alt="Node label candidates by NodeLabel.CORNERS"></div>
+                                 </td>
+                                 <td valign="middle">
+                                    <div class="mediaobject" align="center"><img src="figures/mlm-add-rend-rselm.png" align="middle" alt="Edge label candidates by RotatedSliderEdgeLabelModel."></div>
+                                 </td>
+                              </tr>
+                              <tr align="center" valign="top">
+                                 <td align="center" valign="top">
+                                    Label position candidate boxes outside of a node for a node label that uses label
+                                    model <tt class="code">NodeLabel.CORNERS</tt>.
+                                    
+                                 </td>
+                                 <td align="center" valign="top">Label position candidate boxes for an edge label that uses RotatedSliderEdgeLabelModel.</td>
+                              </tr>
+                              <tr valign="middle">
+                                 <td valign="middle">
+                                    <div class="mediaobject" align="center"><img src="figures/mlm-add-rend-smart-nlabel.png" align="middle" alt="Node label snap lines supported by SmartNodeLabelModel."></div>
+                                 </td>
+                                 <td valign="middle">
+                                    <div class="mediaobject" align="center"><img src="figures/mlm-add-rend-smart-elabel.png" align="middle" alt="Edge label snap lines supported by SmartEdgeLabelModel."></div>
+                                 </td>
+                              </tr>
+                              <tr align="center" valign="top">
+                                 <td align="center" valign="top">Snap lines for a node label with label model SmartNodeLabelModel.</td>
+                                 <td align="center" valign="top">Snap lines for an edge label with label model SmartEdgeLabelModel.</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  At the end of the gesture, on mouse release, MoveLabelMode lets the label snap to
+                  its new position.
+                  This is either one of the candidate boxes, or a position defined by a snap line,
+                  or the current position of the mouse.
+                  
+                  In effect, MoveLabelMode takes care that the label position after the move gesture
+                  is in accordance with the label's associated model.
+                  
+               </p>
+               <p>
+                  Note that <a href="../api/y/view/SmartNodeLabelModel.html" title="Link to API documentation" target="_top">SmartNodeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and <a href="../api/y/view/SmartEdgeLabelModel.html" title="Link to API documentation" target="_top">SmartEdgeLabelModel<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  actually allow the same freedom as "free" label models, i.e., the label is allowed 
+                  to take on any position.
+                  The optional special support for interactive snapping of labels in conjunction with
+                  these label models just provides a guidance for the user to better achieve certain
+                  aligned positions.
+                  
+               </p>
+               <p>
+                  By default, support for interactive snapping of labels is disabled.
+                  It can be enabled using:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/MoveLabelMode.html#setSnappingEnabled(boolean)" title="Link to API documentation" target="_top">void setSnappingEnabled(boolean snapping)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">Enables label snapping support.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  The snapping behavior can be configured using the snap context returned by the following
+                  getter method:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/MoveLabelMode.html#getSnapContext()" title="Link to API documentation" target="_top">LabelSnapContext getSnapContext()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  Tutorial demo application <a href="../../src/demo/view/viewmode/SmartLabelModelDemo.java" title="Link to demo code" target="_top">SmartLabelModelDemo.java</a>
+                  shows how view mode MoveLabelMode can be configured to support label snapping with
+                  label models SmartNodeLabelModel and SmartEdgeLabelModel.
+                  
+               </p>
+            </div><a class="indexterm" name="d0e29833"></a><a class="indexterm" name="d0e29838"></a><div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="cls_HotSpotMode"></a>Class HotSpotMode
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Class <a href="../api/y/view/HotSpotMode.html" title="Link to API documentation" target="_top">HotSpotMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is a specialized view 
+                  mode that handles the mouse gesture for resizing of nodes, more precisely 
+                  resizing the visual representation thereof.
+                  
+               </p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     The term "hotspot" is used for the knobs that are painted around a selected 
+                     node. 
+                     These knobs (sometimes also called "handles") can be used to change the node's 
+                     width and height by means of a mouse drag gesture.
+                     
+                  </p>
+               </div>
+               <div class="figure"><a name="fig_hotspots"></a><p class="title"><b>Figure&nbsp;6.58.&nbsp;Hotspots around selected nodes</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/nr_selected_2.jpg" align="middle" alt="Hotspots around selected nodes."></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  HotSpotMode provides several resize policies that affect the actual resizing 
+                  behavior. 
+                  Changing the resize policy can be done using the 
+                  <a href="../api/y/view/HotSpotMode.html#setResizePolicy(byte)" title="Link to API documentation" target="_top">setResizePolicy<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  method. 
+                  
+               </p>
+               <p>
+                  The default resize policy, in addition to the normal resizing behavior, also 
+                  supports: 
+                  
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        keeping the aspect ratio when the primary modifier key is pressed (the Shift 
+                        key by default)
+                        
+                     </li>
+                     <li>
+                        keeping the center locations when the secondary modifier key is pressed (the 
+                        Control key by default)
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  while dragging one of the hotspots of selected nodes.
+                  
+                  
+                  
+                  
+                  
+               </p>
+               <p>
+                  When resizing, class HotSpotMode also respects minimum size and maximum size 
+                  constraints if such information is provided by node realizers that are resized. 
+                  See also the description for 
+                  <a href="realizers.html#nr_sizeconstraints">providing node size constraints</a> for 
+                  more details.
+                  
+               </p>
+               <p>
+                  Furthermore, node resizing optionally also supports <a href="mvc_controller.html#orthogonal_edge_paths" title="Support for Orthogonal Edge Paths">orthogonal edge paths</a> 
+                  and <a href="mvc_controller.html#snapping" title="Support for Interactive Snapping of Graph Elements">interactive snapping of graph elements</a>.
+                  
+               </p>
+               <p>
+                  Node resizing can be canceled by the user using the Escape key by default. 
+                  Setting another cancel key can be done using:
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/HotSpotMode.html#setCancelKeyCode(int)" title="Link to API documentation" target="_top">void setCancelKeyCode(int cancelKeyCode)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="cls_NavigationMode"></a>Class NavigationMode
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e29914"></a><p>
+               Class <a href="../api/y/view/NavigationMode.html" title="Link to API documentation" target="_top">NavigationMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> provides a 
+               convenient alternative to move the viewport so that it shows another part of 
+               the model. 
+               
+               Instead of using the scroll bars, the clipping is changed by dragging the mouse 
+               around the view. 
+               While NavigationMode is active no direct mouse interaction with graph elements 
+               is possible, i.e., all mouse events involving the left button are consumed for 
+               changing the viewport.
+               
+            </p>
+            <p>
+               Note however, that NavigationMode's associated child mode (class 
+               <a href="../api/y/view/PopupMode.html" title="Link to API documentation" target="_top">PopupMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>) still provides a way of 
+               indirectly manipulating graph elements via the items from the presented popup 
+               menu. 
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="cls_CellEditorMode"></a>Class CellEditorMode
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e29930"></a><a class="indexterm" name="d0e29935"></a><p>
+               
+               Class <a href="../api/y/view/CellEditorMode.html" title="Link to API documentation" target="_top">CellEditorMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is a view mode 
+               descendant that bridges the gap between general mouse-based user interaction 
+               with elements in the view and specialized node-related editing capabilities 
+               that are provided by means of NodeCellEditor implementations. 
+               (See <a href="mvc_controller.html#node_cell_editors" title="Node-Related Editing Capabilities">Node-Related Editing Capabilities</a> for 
+               a detailed description of node cell editors.)
+               
+            </p>
+            <p>
+               For example, if registered with a view's EditMode instance, this specialized 
+               view mode is invoked whenever a so-called "edit node gesture" for a node that 
+               has a NodeCellEditor associated is recognized. 
+               
+               
+               (The default edit node gesture that is recognized by class EditMode is a mouse 
+               double-click on a node.) 
+               
+               
+               
+               CellEditorMode then retrieves the actual NodeCellEditor implementation that is 
+               associated with the node, and initiates node cell editing by installing the 
+               <tt class="classname">JComponent</tt> which is returned by that node cell editor as 
+               the node's editor. 
+               
+               
+               
+            </p>
+            <p>
+               <a href="mvc_controller.html#fig_CellEditorMode" title="Figure&nbsp;6.59.&nbsp;Class CellEditorMode's context">Figure&nbsp;6.59, &#8220;Class CellEditorMode's context&#8221;</a> depicts the interrelations of 
+               CellEditorMode. 
+               
+            </p>
+            <div class="figure"><a name="fig_CellEditorMode"></a><p class="title"><b>Figure&nbsp;6.59.&nbsp;Class CellEditorMode's context</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/cell_editor_mode_4.jpg" align="middle" alt="Class CellEditorMode's context."></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               CellEditorMode is also responsible for mapping from nodes to both node cell 
+               editors and the objects that are used to hold the node-related data. 
+               
+               
+               
+               The constructors of class CellEditorMode listed below can be used to instantiate
+               this view mode so that it either 
+               
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>
+                     shares a single NodeCellEditor implementation for all nodes of a graph or 
+                     
+                  </li>
+                  <li>
+                     uses the given data provider to map from nodes to corresponding NodeCellEditor 
+                     implementations. 
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+               The DataMap parameter is used to provide the mapping from nodes to 
+               corresponding <tt class="classname">Object</tt>s that hold the node-related data 
+               which are presented in a JComponent. 
+               
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/CellEditorMode.html#CellEditorMode(y.view.NodeCellEditor, y.base.DataMap)" title="Link to API documentation" target="_top">CellEditorMode(NodeCellEditor nodeCellEditor, DataMap userObjectMap)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">A single NodeCellEditor implementation is shared for all nodes.</td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/CellEditorMode.html#CellEditorMode(y.base.DataProvider, y.base.DataMap)" title="Link to API documentation" target="_top">CellEditorMode(DataProvider nodeCellEditorProvider, DataMap userObjectMap)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              The data provider is queried for the NodeCellEditor implementation of a given node.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               The tutorial demo application 
+               <a href="../../src/demo/view/realizer/SwingRendererDemo.java" title="Link to demo code" target="_top">SwingRendererDemo.java</a> shows how 
+               CellEditorMode is used as a child mode of class EditMode to initiate node 
+               editing with different NodeCellEditor implementations. 
+               
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="cls_MagnifierViewMode"></a>Class MagnifierViewMode
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e30017"></a><p>
+               Class <a href="../api/y/view/MagnifierViewMode.html" title="Link to API documentation" target="_top">MagnifierViewMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is a view mode 
+               that provides a magnifying glass "tool" which enables convenient local zooming 
+               in a Graph2DView. 
+               The magnifying glass follows the mouse movement and supports mouse wheel 
+               zooming. 
+               Additionally, the radius of the circle where the zoom applies can be changed 
+               using the mouse wheel, too. 
+               
+            </p>
+            <div class="figure"><a name="fig_magnifying_glass"></a><p class="title"><b>Figure&nbsp;6.60.&nbsp;Magnifying glass "tool"</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/magnifier.jpg" align="middle" alt="Magnifying glass &#34;tool.&#34;"></div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               <a href="mvc_controller.html#ex_magnifier" title="Example&nbsp;6.41.&nbsp;Registering a MagnifierViewMode">Example&nbsp;6.41, &#8220;Registering a MagnifierViewMode&#8221;</a> demonstrates how to configure and install 
+               MagnifierViewMode concurrently with other view modes. 
+               Among other things, this means that interaction with graph elements as provided 
+               by these view modes is still possible while the magnifying glass is active.
+               
+            </p>
+            <div class="example"><a name="ex_magnifier"></a><p class="title"><b>Example&nbsp;6.41.&nbsp;Registering a MagnifierViewMode</b></p><pre class="programlisting java">
+// 'view' is of type y.view.Graph2DView.
+
+MagnifierViewMode magnifierMode = new MagnifierViewMode();
+magnifierMode.setMagnifierRadius(100);
+magnifierMode.setMagnifierZoomFactor(2.0);
+
+view.addViewMode(magnifierMode);
+</pre></div>
+            <p>
+               MagnifierViewMode is shown in tutorial demo application 
+               <a href="../../src/demo/view/viewmode/MagnifierViewModeDemo.java" title="Link to demo code" target="_top">MagnifierViewModeDemo.java</a>. 
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="cls_AutoDragViewMode"></a>Class AutoDragViewMode
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e30059"></a><p>
+               Class <a href="../api/y/view/AutoDragViewMode.html" title="Link to API documentation" target="_top">AutoDragViewMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is a view mode 
+               that provides support for automatically scrolling the current view when the 
+               cursor is moved outside of the view's bounds during a mouse drag gesture.
+               
+               In particular, this covers the following mouse gestures:
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>moving selected graph elements</li>
+                  <li>creating an edge</li>
+                  <li>resizing nodes</li>
+                  <li>moving a label to another label position</li>
+               </ul>
+            </div>
+            <p>
+               
+               
+            </p>
+            <p>
+               <a href="mvc_controller.html#ex_autodrag" title="Example&nbsp;6.42.&nbsp;Registering an AutoDragViewMode">Example&nbsp;6.42, &#8220;Registering an AutoDragViewMode&#8221;</a> shows how AutoDragViewMode is registered with a 
+               view.
+               
+            </p>
+            <div class="example"><a name="ex_autodrag"></a><p class="title"><b>Example&nbsp;6.42.&nbsp;Registering an AutoDragViewMode</b></p><pre class="programlisting java">
+// 'view' is of type y.view.Graph2DView.
+
+// Register the AutoDragViewMode with the view.
+view.addViewMode(new AutoDragViewMode());
+</pre></div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="cls_TooltipMode"></a>Class TooltipMode
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e30090"></a><a class="indexterm" name="d0e30095"></a><p>
+               Class <a href="../api/y/view/TooltipMode.html" title="Link to API documentation" target="_top">TooltipMode<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is a view mode that provides
+               tooltip support for all kinds of graph elements:
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>nodes and edges,</li>
+                  <li>node labels and edge labels, and</li>
+                  <li>node ports.</li>
+               </ul>
+            </div>
+            <p>
+               
+               By default, tooltips for nodes and edges are enabled and the text of the first node
+               label and first edge label, respectively, is displayed.
+               
+            </p>
+            <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Important</h3>
+               <p>
+                  If TooltipMode is used in parallel to EditMode, which also provides tooltip support,
+                  however, only for nodes and edges, then to avoid any interferences only the tooltip
+                  functionality of TooltipMode should be used.
+                  
+               </p>
+            </div>
+            <p>
+               Tooltip generation can be easily customized by subclassing TooltipMode and overriding
+               the getter methods that return the actual tooltip text for a given graph element.
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/TooltipMode.html#getNodeTip(y.base.Node)" title="Link to API documentation" target="_top">protected String getNodeTip(Node node)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/TooltipMode.html#getEdgeTip(y.base.Edge)" title="Link to API documentation" target="_top">protected String getEdgeTip(Edge edge)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/TooltipMode.html#getNodeLabelTip(y.view.NodeLabel)" title="Link to API documentation" target="_top">protected String getNodeLabelTip(NodeLabel label)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/TooltipMode.html#getEdgeLabelTip(y.view.EdgeLabel)" title="Link to API documentation" target="_top">protected String getEdgeLabelTip(EdgeLabel label)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/TooltipMode.html#getNodePortTip(y.view.NodePort)" title="Link to API documentation" target="_top">protected String getNodePortTip(NodePort port)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Getter methods (callbacks) that return the tooltip text for a given graph element.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               The following code shows how a customized TooltipMode that returns alternative HTML
+               tooltips can be registered with the view:
+               
+            </p>
+            <div class="example"><a name="ex_TooltipMode_html_tooltips"></a><p class="title"><b>Example&nbsp;6.43.&nbsp;Registering a customized TooltipMode that generates HTML tooltips</b></p><pre class="programlisting java">
+// 'view' is of type y.view.Graph2DView.
+
+// Register a customized TooltipMode with the view.
+view.addViewMode(new TooltipMode() {
+  // Returns the HTML code for a label that nicely formats the number of a
+  // node's incoming and outgoing edges.
+  protected String getNodeTip(Node n) {
+    String text = "&lt;html&gt;&lt;table&gt;&lt;tr&gt;";
+    text += "&lt;td rowspan=\"2\"&gt;&lt;em&gt;Edges&lt;/em&gt;&lt;/td&gt;";
+    text += "&lt;td align=\"right\"&gt;&lt;b&gt;" + n.inDegree() + "&lt;/b&gt;&lt;/td&gt;";
+    text += "&lt;td align=\"left\"&gt;&lt;em&gt;Incoming&lt;/em&gt;&lt;/td&gt;";
+    text += "&lt;/tr&gt;&lt;tr&gt;";
+    text += "&lt;td align=\"right\"&gt;&lt;b&gt;" + n.outDegree() + "&lt;/b&gt;&lt;/td&gt;";
+    text += "&lt;td align=\"left\"&gt;&lt;em&gt;Outgoing&lt;/em&gt;&lt;/td&gt;";
+    text += "&lt;/tr&gt;&lt;/table&gt;&lt;/html&gt;";
+
+    return text;
+  }
+  
+  // Returns HTML code for a label that nicely prints the number of an edge's
+  // bends.
+  protected String getEdgeTip(Edge e) {
+    EdgeRealizer er = view.getGraph2D().getRealizer(e);
+
+    String text = "&lt;html&gt;&lt;table&gt;&lt;tr&gt;";
+    text += "&lt;td align=\"right\"&gt;&lt;b&gt;" + er.bendCount() + "&lt;/b&gt;&lt;/td&gt;";
+    text += "&lt;td align=\"left\"&gt;&lt;em&gt;Bends&lt;/em&gt;&lt;/td&gt;";
+    text += "&lt;/tr&gt;&lt;/table&gt;&lt;/html&gt;";
+
+    return text;
+  }
+});
+</pre></div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="mvc_controller_related"></a>Related Classes and Interfaces
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="cls_HitInfo"></a>Class HitInfo
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div><a class="indexterm" name="d0e30160"></a><a class="indexterm" name="d0e30165"></a><a class="indexterm" name="d0e30170"></a><p>
+                  Class <a href="../api/y/view/HitInfo.html" title="Link to API documentation" target="_top">HitInfo<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is responsible for collecting
+                  and storing hit-testing information on graph elements (i.e., nodes and edges), their
+                  labels, and further parts of graph elements like node ports, ports, and bends.
+                  
+                  
+                  It uses the reverse of the rendering order as established by 
+                  <a href="mvc_view.html#render_order" title="Rendering Order">graph renderers</a> that implement interface 
+                  <a href="../api/y/view/OrderRenderer.html" title="Link to API documentation" target="_top">OrderRenderer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> for traversing the graph 
+                  elements, and by default only takes into account visible elements when 
+                  collecting the information.
+                  
+               </p>
+               <p>
+                  HitInfo objects use world coordinates and optionally return only the first 
+                  element or all elements at the given coordinates. 
+                  Of particular importance when only the first element should be returned is the 
+                  hit-testing precedence which is applied when collecting the information. 
+                  
+                  The default precedence is:
+                  
+               </p>
+               <div class="orderedlist">
+                  <ol type="1">
+                     <li>
+                        Ports
+                        
+                     </li>
+                     <li>
+                        Bends
+                        
+                     </li>
+                     <li>
+                        Edge labels
+                        
+                     </li>
+                     <li>
+                        Edges
+                        
+                     </li>
+                     <li>
+                        Nodes
+                        
+                     </li>
+                     <li>
+                        Node labels
+                        
+                     </li>
+                     <li>
+                        Node ports
+                        
+                     </li>
+                  </ol>
+               </div>
+               <p>
+                  
+                  This precedence can easily be changed. 
+                  
+                  Alternatively, using the following constructor hit-testing can also be performed
+                  for a specified graph element type, i.e., only for nodes or only for edges, for 
+                  example. 
+                  The type of graph element is specified using the constants defined in class 
+                  HitInfo.
+                  
+               </p>
+               <div class="techn_templ">
+                  <center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr class="techn_api">
+                              <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/HitInfo.html#HitInfo(y.view.Graph2DView, double, double, boolean, int)" title="Link to API documentation" target="_top">HitInfo(Graph2DView view, double x, double y, boolean firstHitOnly, int type)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 HitInfo support for hit-testing only a specified graph element type.
+                                 Optionally returns all hit graph elements of the specified type.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  Using a HitInfo object is straightforward. 
+                  Following a mouse event within a view, the event's coordinates are translated 
+                  to world coordinates with which a HitInfo object can be instantiated. 
+                  
+                  This object then collects and stores all elements that are at the given 
+                  coordinates. 
+                  Single elements as well as sets of elements can afterwards be queried using 
+                  HitInfo's getter methods. 
+                  
+                  <a href="mvc_controller.html#hitinfo_context" title="Figure&nbsp;6.61.&nbsp;Class HitInfo's context">Figure&nbsp;6.61, &#8220;Class HitInfo's context&#8221;</a> shows class HitInfo and its context. 
+                  
+               </p>
+               <div class="figure"><a name="hitinfo_context"></a><p class="title"><b>Figure&nbsp;6.61.&nbsp;Class HitInfo's context</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="100%">
+                           </colgroup>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/hitinfo_only_2.jpg" align="middle" alt="Class HitInfo's context."></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  
+                  
+                  In order to change the hit-testing precedence for a single view mode, the 
+                  getter method can be customized as shown in <a href="mvc_controller.html#ex_hitinfo" title="Example&nbsp;6.44.&nbsp;Customizing HitInfo precedence in the context of a single view mode">Example&nbsp;6.44, &#8220;Customizing HitInfo precedence in the context of a single view mode&#8221;</a>.
+                  
+               </p>
+               <div class="example"><a name="ex_hitinfo"></a><p class="title"><b>Example&nbsp;6.44.&nbsp;Customizing HitInfo precedence in the context of a single view mode</b></p><pre class="programlisting java">
+public class MyEditMode extends EditMode {
+  protected HitInfo getHitInfo(double x, double y) {
+    // Instantiate a HitInfo object that collects only the first node at the 
+    // given coordinates.
+    HitInfo hi = new HitInfo(view, x, y, true, HitInfo.NODE);
+    // Set the most current HitInfo object to the one just created.
+    setLastHitInfo(hi);
+    // Return the HitInfo object.
+    return hi;
+  }
+}
+</pre></div>
+               <p>
+                  Class HitInfo is aware of grouped graphs and accordingly uses the visiting order
+                  defined with the HierarchyManager object that governs a given graph.
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="intf_MouseInputEditor"></a>Interface MouseInputEditor
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div><a class="indexterm" name="d0e30253"></a><a class="indexterm" name="d0e30258"></a><p>
+                  A mouse input editor, i.e., an implementation for interface 
+                  <a href="../api/y/view/MouseInputEditor.html" title="Link to API documentation" target="_top">MouseInputEditor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, is a consumer of mouse 
+                  events that happen in the view. 
+                  It enables convenient mouse-based interaction with arbitrary elements such as 
+                  node realizers and edge realizers, but also implementations of interface 
+                  Drawable. 
+                  
+                  
+                  A mouse input editor allows to receive and process mouse events with double 
+                  precision world coordinates. 
+                  
+                  
+                  
+               </p>
+               <p>
+                  The mouse input mode that is active with a view's EditMode instance can be 
+                  configured to forward mouse events using class 
+                  <a href="../api/y/view/Mouse2DEvent.html" title="Link to API documentation" target="_top">Mouse2DEvent<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> whenever the current mouse 
+                  coordinates are above elements that have such a mouse input editor associated. 
+                  
+               </p>
+               <p>
+                  
+                  
+                  
+                  
+                  
+                  
+               </p>
+               <p>
+                  Abstract class <a href="../api/y/view/AbstractMouseInputEditor.html" title="Link to API documentation" target="_top">AbstractMouseInputEditor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+                  serves as a base class implementation for interface MouseInputEditor that 
+                  already provides convenient support for state change listeners. 
+                  
+                  The tutorial demo applications 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li><a href="../../src/demo/view/viewmode/MouseInputDemo.java" title="Link to demo code" target="_top">MouseInputDemo.java</a> and 
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  show how AbstractMouseInputEditor can be used to create custom mouse event 
+                  consumers in the context of Drawable and NodeRealizer implementations, 
+                  respectively. 
+                  
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="custom_edit_mode"></a>Customizing an EditMode
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div><a class="indexterm" name="d0e30285"></a><p>
+               The predefined EditMode offers default behavior that can be modified in various 
+               ways using, e.g., setter methods to allow or disallow certain mouse gestures, 
+               or callback methods to completely change specific aspects of user interaction. 
+               
+               Among the things that can be disallowed, are, e.g., node and edge creation,
+               node resizing, and bend creation.
+               
+               Furthermore, class EditMode's behavior can also be modified by exchanging any 
+               of its child modes with customized variants. 
+               
+            </p>
+            <p>
+               <a href="mvc_controller.html#even_odd_edge_creation" title="Example&nbsp;6.45.&nbsp;Customizing edge creation">Example&nbsp;6.45, &#8220;Customizing edge creation&#8221;</a> is an excerpt from 
+               <a href="../../src/demo/view/viewmode/CreateEdgeModeDemo.java" title="Link to demo code" target="_top">CreateEdgeModeDemo.java</a>, a tutorial 
+               demo application that shows how to customize an EditMode by exchanging one of 
+               its specialized view modes. 
+               
+            </p>
+            <div class="example"><a name="even_odd_edge_creation"></a><p class="title"><b>Example&nbsp;6.45.&nbsp;Customizing edge creation</b></p><pre class="programlisting java">
+public class EvenOddCreateEdgeMode extends CreateEdgeMode {
+  public boolean isEven(Node n) {
+    try {
+      return (Integer.parseInt(getGraph2D().getLabelText(n)) % 2 == 0);
+    }
+    catch (Exception ex) {
+      return true;
+    }
+  }
+  
+  // Accept the given node as source for an edge if its label is an even number. 
+  protected boolean acceptSourceNode(Node source, double x, double y) {
+    return isEven(source);
+  }
+  
+  // Accept the given node as source for an edge if its label is an odd number. 
+  protected boolean acceptTargetNode(Node target, double x, double y) {
+    return !isEven(target);
+  }
+}
+
+public class CustomizedEdgeModeDemo extends ViewActionDemo {
+  public CreateEdgeModeDemo() {
+    // Register a customized CreateEdgeMode version. 
+    editMode.setCreateEdgeMode(new EvenOddCreateEdgeMode());
+  }
+}
+</pre></div>
+            <p>
+               A customized view mode that is also used for view mode chaining should be 
+               designed to return control to its parent in a well-behaved manner. 
+               
+               More precisely, the call to reactivate a parent should occur after a mouse 
+               release event has been processed. 
+               The call should never occur such that the parent receives a mouse drag or mouse 
+               release event as the first event. 
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="tutorial_cls_EditMode"></a>Tutorial Demo Code
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  For further view mode customization examples see the tutorial demo 
+                  applications: 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li><a href="../../src/demo/view/viewmode/CreateEdgeModeDemo.java" title="Link to demo code" target="_top">CreateEdgeModeDemo.java</a></li>
+                     <li><a href="../../src/demo/view/viewmode/PopupModeDemo.java" title="Link to demo code" target="_top">PopupModeDemo.java</a> and 
+                          <a href="../../src/demo/view/advanced/InactiveLayerDemo.java" title="Link to demo code" target="_top">InactiveLayerDemo.java</a></li>
+                     <li><a href="../../src/demo/view/viewmode/MouseInputDemo.java" title="Link to demo code" target="_top">MouseInputDemo.java</a></li>
+                     <li><a href="../../src/demo/view/advanced/ports/LogicGatesDemo.java" title="Link to demo code" target="_top">LogicGatesDemo.java</a></li>
+                     <li><a href="../../src/demo/view/viewmode/PortCreateEdgeModeDemo.java" title="Link to demo code" target="_top">PortCreateEdgeModeDemo.java</a></li>
+                     <li><a href="../../src/demo/view/realizer/StateNodeRealizerDemo.java" title="Link to demo code" target="_top">StateNodeRealizerDemo.java</a> together 
+                          with <a href="../../src/demo/view/realizer/StateNodeRealizer.java" title="Link to demo code" target="_top">StateNodeRealizer.java</a></li>
+                  </ul>
+               </div>
+               <p>
+                  
+               </p>
+            </div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="mvc_view.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="view.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="view_events_and_listeners.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">View Implementations&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Events and Listeners</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

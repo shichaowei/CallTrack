@@ -1,0 +1,294 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:y="http://www.yworks.com/demo">
+<head>
+<title>Mind Map Demo</title>
+<style type="text/css">
+<!--
+              body {
+  font-family:Verdana, sans-serif; 
+  margin-left:12px;
+  margin-right:12px;
+  margin-top:12px;
+  margin-bottom:12px;
+}
+
+h1 { 
+  padding-left:8px;
+  padding-top:8px;
+  padding-bottom:8px;
+  background-color:#d0d0d0;
+  color:#4079ea;
+/*  color:#4d88ff; */
+  font-size:18px;
+  margin-bottom:5px;
+}
+
+p {   
+  padding-bottom:0px;
+  padding-top:0px;
+  margin-top:3px;
+  margin-bottom:0px;
+/*  margin-left:10px; */
+  margin-left:8px;
+  font-size:12px;
+  color:#000000;
+}
+
+p.note {
+  background-color:#e0e0e0;
+  margin-top:10px;
+  margin-left:0px;
+  margin-bottom:10px;
+  padding-left:8px;
+}
+
+h2 { 
+  font-size:14px; 
+  color:#4079ea; 
+  margin-top:10px; 
+  margin-bottom:0px; 
+}
+
+h3 { 
+  font-size:13px; 
+/*  margin-left:10px; */
+  margin-left:8px;
+  margin-top:8px; 
+  margin-bottom:2px; 
+}
+
+table {
+/*  margin-left:10px; */
+  margin-left: 8px;
+  margin-top: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid white;
+  vertical-align: baseline;
+  border-collapse: collapse;
+}
+
+td { 
+  font-size:12px;
+  background-color: #E3EEFE;
+  vertical-align:top;
+  border: 1px solid white;
+  vertical-align: baseline;
+}
+
+th {
+  font-size:12px; 
+  background-color:#a4b9ea;
+  text-align: left;
+}
+
+a {
+  color: #AA5522; font-weight:bold;
+}
+a:link {
+  text-decoration:none;
+}
+a:visited {
+  text-decoration:none; color:#772200;
+}
+a:active, 
+a:focus, 
+a:hover {
+  text-decoration: underline;
+}
+
+div.li1 {
+  font-size:12px;
+  margin-top:8px; 
+  margin-bottom:0px; 
+  margin-left:10px; 
+}
+div.li2 { 
+  margin-left:20px;
+  margin-top:2px; 
+  margin-bottom:2px; 
+  font-weight:bold;
+  font-size:12px; 
+}
+
+dl { 
+  font-size:12px;
+  margin-top:2px;
+  margin-bottom:2px;
+  margin-left:15px;
+}
+dt { 
+  font-weight:bold;
+  margin-top:4px;
+/*  color:#000000; */
+  color:#333366;
+}
+dd { 
+  margin-left:15px;
+}
+
+li { 
+  /* does not work in pre-1.5 Java JEditorPane :-( */
+/*  list-style-type:none; */
+  font-size:12px;
+}
+
+caption {
+  font-size:12px;
+}
+
+.copyright { 
+  font-size: 10px;
+  font-style:italic;
+  text-align:right;
+  margin-top:20px;
+}
+
+code, tt { 
+  font-family:monospace;
+  font-size:12px;
+  color:#0000C0;
+}
+
+            -->
+</style>
+</head>
+<body>
+    <h1>Mind Map Demo</h1>
+    <p>
+      Demonstrates how to implement a basic, yet powerful mind map application
+      using yFiles for Java.
+      Import from and export to FreeMind's native XML format is supported.
+      The design follows the suggestions of Tony Buzan, the inventor of mind maps.
+    </p>
+    <h2>User Interaction</h2>
+    <dl>
+      <dt>Adding items</dt>
+      <dd>
+        Either move the mouse over an existing item and click the green plus symbol
+        of the overlay controls, or select an existing item and type
+        <code>INSERT</code> to add a child item and <code>ENTER</code> to add
+        a sibling item.
+      </dd>
+      <dt>Deleting items</dt>
+      <dd>
+        Either move the mouse over an existing item and click the red minus symbol
+        of the overlay controls, or select an existing item and type
+        <code>DELETE</code> or <code>BACKSPACE</code> to remove the selected item
+        and all of its children.
+      </dd>
+      <dt>Expanding and collapsing items</dt>
+      <dd>
+        Either click on the blue arrow symbol below an item with children or
+        select an item with children and type <code>NUMPAD -</code> to collapse the
+        item or <code>NUMPAD +</code> to expand the previously collapsed item.
+      </dd>
+      <dt>Creating cross-references</dt>
+      <dd>
+        Either move the mouse over an existing item and click the light blue arrow
+        symbol or select an existing item, then press and hold <code>SHIFT</code>
+        and click on another item or move the mouse over an existing item, press
+        and hold <code>SHIFT</code>, then drag the mouse to another item.
+      </dd>
+      <dt>Editing text</dt>
+      <dd>
+        Either double-click an existing item or select an existing item and type
+        <code>F2</code>.
+        Text for cross-references may be added/edited the same way.
+      </dd>
+      <dt>Changing colors</dt>
+      <dd>
+        Move the mouse over an existing item and click the multi-colored symbol.
+      </dd>
+      <dt>Changing icons</dt>
+      <dd>
+        Move the mouse over an existing item and click the smiley symbol.
+        Choosing the crossed out box removes a previously selected icon.
+      </dd>
+      <dt>Changing the mind map structure</dt>
+      <dd>
+        Dragging an existing item close to another item will reassign it to a
+        new parent item.
+        Dragging an existing item away from all other items will delete it once
+        the mouse is released.
+      </dd>
+      <dt>Loading and Saving mind maps</dt>
+      <dd>
+        Mind maps may be loaded from and saved as GraphML and FreeMind's native
+        XML format.
+      </dd>
+    </dl>
+  <table class="toplevel">
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr><tr xmlns="">
+<td><a href="MindMapDemo.java">demo.view.mindmap.MindMapDemo</a></td><td>
+      Manipulate or create completely new, nice looking mind maps.
+    </td>
+</tr>
+<tr xmlns="">
+<td><a href="CollapseButton.java">demo.view.mindmap.CollapseButton</a></td><td>
+      Hides or unhides children of an item.
+    </td>
+</tr>
+<tr xmlns="">
+<td><a href="FreeMindIOHandler.java">demo.view.mindmap.FreeMindIOHandler</a></td><td>
+      Provides methods to import and export FreeMind documents.
+      It is tested with FreeMind 0.9.0 and Freeplane 1.2.0.
+      It should work for other versions, too, though.
+    </td>
+</tr>
+<tr xmlns="">
+<td><a href="HoverButton.java">demo.view.mindmap.HoverButton</a></td><td>This class provides button functionality to manipulate the mind map.</td>
+</tr>
+<tr xmlns="">
+<td><a href="KeyboardHandling.java">demo.view.mindmap.KeyboardHandling</a></td><td>This class provides several actions for keyboard interaction and
+      a method to register the actions
+    </td>
+</tr>
+<tr xmlns="">
+<td><a href="LayoutUtil.java">demo.view.mindmap.LayoutUtil</a></td><td>
+      Provides utility methods for automatically arranging a mind map.
+    </td>
+</tr>
+<tr xmlns="">
+<td><a href="MindMapUtil.java">demo.view.mindmap.MindMapUtil</a></td><td>This class provides static methods to manipulate the mind map</td>
+</tr>
+<tr xmlns="">
+<td><a href="MindMapRenderer.java">demo.view.mindmap.MindMapRenderer</a></td><td>
+      Renders the elements of a mind map in a specific order.
+      This specific rendering order is
+      <ol xmlns="http://www.w3.org/1999/xhtml">
+      <li>normal edges,</li>
+      <li>nodes,</li>
+      <li>cross-reference edges, and</li>
+      <li>node labels</li>
+      </ol>
+    </td>
+</tr>
+<tr xmlns="">
+<td><a href="MoveNodeMode.java">demo.view.mindmap.MoveNodeMode</a></td><td>
+      Handles mouse dragged events to rearrange the mind map.
+    </td>
+</tr>
+</table>
+<h2>Running the Demos</h2>
+<h3>From Within an IDE</h3>
+<p>
+            Set <tt>&lt;yFilesDir&gt;/src</tt> as your source directory.
+            Then add <tt>&lt;yFilesDir&gt;/lib/y.jar</tt>
+<b>and</b> the source folder
+            <tt>&lt;yFilesDir&gt;/src</tt> to your classpath.
+            Now you should be ready to compile and run all executable demo classes.
+            </p>
+<h3>With Ant</h3>
+<p>
+              First make sure you have the
+              <a href="http://ant.apache.org">build tool Ant</a> installed on your system.
+              Now you can use the demo build script <tt>build.xml</tt>
+              located in <tt>&lt;yFilesDir&gt;/src/demo</tt> to launch each demo by specifying its simple class name as a target.
+              Alternatively, launch the interactive demo driver by specifying <tt>run</tt> as target to
+              conveniently access all demos.
+            </p>
+</body>
+</html>

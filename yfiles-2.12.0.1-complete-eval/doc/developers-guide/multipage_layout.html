@@ -1,0 +1,956 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Multi-page Layout</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="layout.html" title="Chapter&nbsp;5.&nbsp;Automatic Graph Layout">
+      <link rel="previous" href="partial_layout.html" title="Partial Layout">
+      <link rel="next" href="major_routers.html" title="Edge Routing Algorithms">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Multi-page Layout</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="partial_layout.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;5.&nbsp;Automatic Graph Layout</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="major_routers.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="multipage_layout"></a>Multi-page Layout
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div><a class="indexterm" name="d0e17767"></a><a class="indexterm" name="d0e17772"></a><p>
+            This section presents the multi-page layout concept.
+            
+         </p>
+         <div class="itemizedlist">
+            <ul type="disc">
+               <li><a href="multipage_layout.html#multipage_layout_about" title="About the Concept">About the Concept</a>:
+                  What it is about, the main traits of this concept.
+                  
+               </li>
+               <li>
+                  Introduction of MultiPageLayouter, <a href="multipage_layout.html#cls_MultiPageLayouter" title="Class MultiPageLayouter">the main class</a>
+                  that enables multi-page layout.
+                  
+               </li>
+            </ul>
+         </div>
+         <p>
+            
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="multipage_layout_about"></a>About the Concept
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Multi-page layout enables the presentation of large graphs in an easily navigable
+               and clear manner.
+               It means breaking apart a given graph into a set of smaller graphs so that each
+               layout of a small graph fits into a given width and height.
+               
+            </p>
+            <p>
+               A multi-page layout with its set of small graphs avoids common presentation problems
+               of large graphs with many nodes and edges.
+               Problems, like, e.g., graph elements that are hardly discernible because of a small
+               zoom level when viewing/printing the entire graph, or long edge paths that are hard
+               to follow over numerous poster pages in a poster print-out of a graph.
+               
+            </p>
+            <p>
+               The algorithm aims to find small graphs whose layout utilizes the specified width
+               and height to the best extent.
+               It puts as many as possible elements from the original graph into each small graph,
+               thus minimizing the number of resulting small graphs.
+               
+            </p>
+            <div class="figure"><a name="d0e17798"></a><p class="title"><b>Figure&nbsp;5.97.&nbsp;Multi-page layout sample</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="50%">
+                           <col width="50%">
+                        </colgroup>
+                        <tbody valign="middle">
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/pop-artists-reduced-colorized-10percent.png" align="middle" alt="Multi-page layout sample"></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/multipage-4pages.png" align="middle" alt="Multi-page layout sample"></div>
+                              </td>
+                           </tr>
+                           <tr align="center" valign="top">
+                              <td align="center" valign="top">Original diagram.</td>
+                              <td align="center" valign="top">
+                                 Four (out of eight) small graphs that result from running multi-page layout.
+                                 Blue nodes are directly from the original diagram, yellow nodes are additional proxy 
+                                 elements (see text).
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               Breaking apart the original graph is done by sub-dividing it and, for each connection
+               between two nodes that is cut, introducing additional nodes and edges as proxy elements
+               in both involved smaller graphs.
+               
+               The proxy elements in either small graph stand in for the original edge and can
+               be used as a means to get to the corresponding other small graph.
+               
+            </p>
+            <p>
+               Sub-division can furthermore also take place at the node level, where nodes with
+               many connections are split up into multiple "parts" that are distributed to different
+               small graphs.
+               This also introduces additional nodes and edges as proxy elements in the involved
+               smaller graphs.
+               
+            </p>
+            <p>
+               Carefully observe that, in contrast to the major layout algorithms of the yFiles
+               library, multi-page layout produces not a single graph as its result, but instead
+               a set of graphs.
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="d0e17826"></a>Terminology
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The original graph that is given to the algorithm is also called the <span class="bold"><b>model graph</b></span>.
+                  The smaller graphs that result from sub-dividing and augmenting the model graph
+                  are referred to as the <span class="bold"><b>page graphs</b></span>.
+                  
+                  
+                  The additional nodes and edges that are introduced to represent an edge from the
+                  original graph between two nodes which are in different page graphs after sub-division,
+                  are called <span class="bold"><b>connector nodes</b></span> and <span class="bold"><b>connector edges</b></span>,
+                  respectively, or also often simply <span class="bold"><b>connectors</b></span>.
+                  
+               </p>
+               <div class="figure"><a name="d0e17846"></a><p class="title"><b>Figure&nbsp;5.98.&nbsp;Replacing an edge and introducing connector nodes and connector edges</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="50%">
+                              <col width="50%">
+                           </colgroup>
+                           <tbody valign="middle">
+                              <tr>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/multipage-before-replace.jpg" align="middle" alt="Replacing an edge and introducing connector nodes and connector edges"></div>
+                                 </td>
+                                 <td>
+                                    <div class="mediaobject" align="center"><img src="figures/multipage-after-replace-augment.png" align="middle" alt="Replacing an edge and introducing connector nodes and connector edges"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center" valign="top">
+                                 <td align="center" valign="top">Connected nodes A and B with their neighbors in the original graph.</td>
+                                 <td align="center" valign="top">
+                                    A and B in different page graphs.
+                                    Both nodes have an additional <span class="bold"><b>connector node</b></span> (emphasized, 
+                                    smaller) and an additional <span class="bold"><b>connector edge</b></span> (emphasized)
+                                    that stand in for the connecting edge of the original graph.
+                                    
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+               <p>
+                  Further nodes and edges are added when a node with many connections needs to be
+                  split up into multiple parts in order to be able to assign these parts to different
+                  page graphs.
+                  Each of the parts gets an equal share of the original neighbor nodes (roughly).
+                  
+               </p>
+               <p>
+                  The additional new parts of the original node are called <span class="bold"><b>proxy nodes</b></span>,
+                  all edges incident to them are called <span class="bold"><b>proxy edges</b></span>.
+                  They represent the connections between the original node and its neighbors.
+                  
+                  For each of the proxy nodes in other page graphs, the original node gets a so-called
+                  <span class="bold"><b>proxy reference node</b></span> as a new neighbor.
+                  The connecting edge to this new neighbor is called <span class="bold"><b>proxy reference edge</b></span>.
+                  
+               </p>
+               <div class="figure"><a name="d0e17894"></a><p class="title"><b>Figure&nbsp;5.99.&nbsp;Splitting up a node and introducing a proxy node, proxy edges, a proxy reference node, and a proxy reference
+                        edge</b></p>
+                  <div class="informaltable">
+                     <center>
+                        <table border="0">
+                           <colgroup>
+                              <col width="24%">
+                              <col width="30%">
+                              <col width="46%">
+                           </colgroup>
+                           <tbody valign="middle">
+                              <tr valign="middle">
+                                 <td valign="middle">
+                                    <div class="mediaobject" align="center"><img src="figures/multipage-before-split.jpg" align="middle" alt="Splitting up a node and introducing a proxy node, proxy edges, a proxy reference node, and a proxy reference edge"></div>
+                                 </td>
+                                 <td valign="middle">
+                                    <div class="mediaobject" align="center"><img src="figures/multipage-split-conceptually.jpg" align="middle" alt="Splitting up a node and introducing a proxy node, proxy edges, a proxy reference node, and a proxy reference edge"></div>
+                                 </td>
+                                 <td valign="middle">
+                                    <div class="mediaobject" align="center"><img src="figures/multipage-after-split-augment.png" align="middle" alt="Splitting up a node and introducing a proxy node, proxy edges, a proxy reference node, and a proxy reference edge"></div>
+                                 </td>
+                              </tr>
+                              <tr align="center" valign="top">
+                                 <td align="center" valign="top">Original node with its neighbors.</td>
+                                 <td align="center" valign="top">The node (conceptually) before the split.</td>
+                                 <td align="center" valign="top">
+                                    The node split up into two "parts," A and A', in different page graphs, each having
+                                    (roughly) one half of the original neighbors.
+                                    A' (emphasized, normal size) is a <span class="bold"><b>proxy node</b></span> of
+                                    the original node A.
+                                    It is connected to the original node's neighbors by means of <span class="bold"><b>proxy edges</b></span>
+                                    (emphasized) that stand in for the connecting edges of the original graph.
+                                    A has an additional <span class="bold"><b>proxy reference node</b></span> (emphasized,
+                                    smaller) that references proxy node A'.
+                                    The connecting edge is a <span class="bold"><b>proxy reference edge</b></span> (emphasized).
+                                    
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </center>
+                  </div>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="d0e17941"></a>Relevant Classes
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The following table lists the relevant classes and interfaces for multi-page layout:
+                  
+               </p>
+               <div class="table"><a name="tab_multipage_classes"></a><p class="title"><b>Table&nbsp;5.67.&nbsp;Relevant classes for this algorithm</b></p>
+                  <table summary="Relevant classes for this algorithm" width="100%" border="1">
+                     <colgroup>
+                        <col width="33%" align="left">
+                        <col width="67%" align="left">
+                     </colgroup>
+                     <thead valign="top">
+                        <tr>
+                           <th align="left">Classname</th>
+                           <th align="left">Description</th>
+                        </tr>
+                     </thead>
+                     <tbody valign="top">
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/multipage/MultiPageLayouter.html" title="Link to API documentation" target="_top">MultiPageLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Main algorithm.
+                                See <a href="multipage_layout.html#cls_MultiPageLayouter" title="Class MultiPageLayouter">the description</a> below.
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/multipage/MultiPageLayout.html" title="Link to API documentation" target="_top">MultiPageLayout<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                The container to hold the results of a multi-page layout, i.e., the page graphs.
+                                See <a href="multipage_layout.html#multipage_related" title="Related Classes and Interfaces">Related Classes and Interfaces</a>.
+                                
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="left"><a href="../api/y/layout/multipage/ElementFactory.html" title="Link to API documentation" target="_top">ElementFactory<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                           <td align="left">
+                                Interface that defines element creation callbacks for customization of the additional
+                                nodes and edges that augment the page graphs.
+                                See <a href="multipage_layout.html#multipage_related" title="Related Classes and Interfaces">Related Classes and Interfaces</a>.
+                                
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="cls_MultiPageLayouter"></a>Class MultiPageLayouter
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class <a href="../api/y/layout/multipage/MultiPageLayouter.html" title="Link to API documentation" target="_top">MultiPageLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is the
+               main class for calculating multi-page layouts.
+               It generates a set of so-called page graphs whose layouts each fit into a given
+               width and height.
+               
+               To calculate the actual layouts of the page graphs, it relies on a core layout algorithm.
+               
+            </p>
+            <p>
+               Class MultiPageLayouter uses a scheme that is different from that of the yFiles
+               major layout algorithms in several ways:
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>
+                     The preferred way to start a multi-page layout is to use the calcLayout method of
+                     class MultiPageLayouter.
+                     
+                  </li>
+                  <li>
+                     
+                     The result of the layout is a set of graphs, the page graphs.
+                     
+                  </li>
+                  <li>
+                     The original graph that is given to MultiPageLayouter is not modified in any way.
+                     
+                  </li>
+                  <li>
+                     The page graphs contain graph elements from the original graph plus additional nodes
+                     and edges.
+                     
+                  </li>
+               </ul>
+            </div>
+            <p>
+               
+               
+            </p>
+            <p>
+               A multi-page layout is started using:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Layout Invocation</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/multipage/MultiPageLayouter.html#calcLayout(y.layout.LayoutGraph)" title="Link to API documentation" target="_top">MultiPageLayout calcLayout(LayoutGraph graph)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Method to start multi-page layout.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               The result of the algorithm is returned in a <a href="multipage_layout.html#cls_MultiPageLayout" title="Class MultiPageLayout">MultiPageLayout</a>
+               container object.
+               The original graph that is given to MultiPageLayouter is not modified in any way.
+               
+               
+            </p>
+            <p>
+               Note that starting a multi-page layout in <a href="layout_concepts.html#buffering" title="Using Buffered Layout">buffered mode</a>
+               or using convenience <a href="viewer_layout.html" title="Automatic Layout">class Graph2DLayoutExecutor</a>
+               implicitly calls MultiPageLayouter's <a href="../api/y/layout/Layouter.html#doLayout(y.layout.LayoutGraph)" title="Link to API documentation" target="_top">doLayout<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+               method (originally defined in interface Layouter).
+               
+               This method, however, does not return a MultiPageLayout object, i.e., the result 
+               of the layout calculation is not accessible without further setup.
+               
+            </p>
+            <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Important</h3>
+               <p>
+                  The result of a multi-page layout calculation cannot be returned through MultiPageLayouter's
+                  doLayout method.
+                  
+                  
+               </p>
+            </div>
+            <p>
+               Instead, the MultiPageLayout container object needs to be retrieved through an implementation
+               of interface <a href="../api/y/layout/multipage/LayoutCallback.html" title="Link to API documentation" target="_top">LayoutCallback<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, which
+               needs to be registered with MultiPageLayouter using:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/layout/multipage/MultiPageLayouter.html#setLayoutCallback(y.layout.multipage.LayoutCallback)" title="Link to API documentation" target="_top">void setLayoutCallback(LayoutCallback callback)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Setter method for a LayoutCallback implementation.
+                              After a multi-page layout has completed, the implementation gets called and receives
+                              the MultiPageLayout container object holding the resulting page graphs.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               A simple LayoutCallback implementation is used in tutorial demo application <a href="../../src/demo/layout/multipage/MultiPageLayoutDemo.java" title="Link to demo code" target="_top">MultiPageLayoutDemo.java</a>:
+               
+            </p>
+            <div class="example"><a name="ex_LayoutCallback"></a><p class="title"><b>Example&nbsp;5.40.&nbsp;LayoutCallback implementation</b></p><pre class="programlisting java">
+static class SimpleLayoutCallback implements LayoutCallback {
+  MultiPageLayout result;
+
+  public void layoutDone(MultiPageLayout result) {
+    this.result = result;
+  }
+
+  public MultiPageLayout pop() {
+    MultiPageLayout result = this.result;
+    this.result = null;
+    return result;
+  }
+}
+</pre></div>
+            <p>
+               Note that the resulting page graphs in the MultiPageLayout container object are
+               all of type <a href="../api/y/layout/LayoutGraph.html" title="Link to API documentation" target="_top">LayoutGraph<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>.
+               
+               To get graphs of type <a href="../api/y/view/Graph2D.html" title="Link to API documentation" target="_top">Graph2D<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> from the page
+               graphs, to show them in a <a href="../api/y/view/Graph2DView.html" title="Link to API documentation" target="_top">Graph2DView<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, each
+               LayoutGraph needs to be copied using <a href="mvc_model.html#view_copying" title="Copying a Graph2D">class GraphCopier</a>.
+               
+               The MultiPageGraph2DBuilder class from tutorial demo application <a href="../../src/demo/layout/multipage/MultiPageLayoutDemo.java" title="Link to demo code" target="_top">MultiPageLayoutDemo.java</a>
+               shows how this can be done.
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="multipage_setup"></a>Setup for Layout
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  To calculate a multi-page layout, class MultiPageLayouter needs
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>a core layout algorithm to actually compute the layouts of the page graphs</li>
+                     <li>
+                        data providers registered with the original graph that provide unique IDs for all
+                        nodes, edges, node labels, and edge labels of the model graph
+                        
+                     </li>
+                     <li>
+                        a LayoutCallback implementation, if the layout is invoked using the doLayout method
+                        of class MultiPageLayouter
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  The core layout algorithm can be set using the <a href="../api/y/layout/LayoutStage.html#setCoreLayouter(y.layout.Layouter)" title="Link to API documentation" target="_top">setCoreLayouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  method (originally defined in interface LayoutStage):
+                  
+               </p>
+               <div class="example"><a name="ex_multipage_core_layouter"></a><p class="title"><b>Example&nbsp;5.41.&nbsp;Setting the core layouter</b></p><pre class="programlisting java">
+// Create multi-page layout algorithm.
+MultiPageLayouter mpl = new MultiPageLayouter();
+
+// Create and set core layout algorithm.
+mpl.setCoreLayouter(new IncrementalHierarchicLayouter());
+</pre></div>
+               <p>
+                  MultiPageLayouter uses unique IDs for the elements from the original graph to relate
+                  page graph elements to their originals from the model graph.
+                  In particular, the IDs are necessary to collect the information that is returned
+                  for connectors and proxy elements as part of the MultiPageLayout container.
+                  
+               </p>
+               <p>
+                  Unique IDs for nodes and edges can be specified using the data provider look-up 
+                  keys <a href="../api/y/layout/multipage/MultiPageLayouter.html#NODE_ID_DPKEY" title="Link to API documentation" target="_top">NODE_ID_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  and <a href="../api/y/layout/multipage/MultiPageLayouter.html#EDGE_ID_DPKEY" title="Link to API documentation" target="_top">EDGE_ID_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>,
+                  respectively, unique IDs for node labels and edge labels using the look-up keys
+                  <a href="../api/y/layout/multipage/MultiPageLayouter.html#NODE_LABEL_ID_DPKEY" title="Link to API documentation" target="_top">NODE_LABEL_ID_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  and <a href="../api/y/layout/multipage/MultiPageLayouter.html#EDGE_LABEL_ID_DPKEY" title="Link to API documentation" target="_top">EDGE_LABEL_ID_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>,
+                  respectively.
+                  
+               </p>
+               <p>
+                  The following code shows the canonical approach to provide unique IDs for graph
+                  elements.
+                  This scheme is also used in tutorial demo application <a href="../../src/demo/layout/multipage/MultiPageLayoutDemo.java" title="Link to demo code" target="_top">MultiPageLayoutDemo.java</a>:
+                  
+               </p>
+               <div class="example"><a name="ex_multipage_unique_IDs"></a><p class="title"><b>Example&nbsp;5.42.&nbsp;Canonical setup of mandatory unique IDs for graph elements</b></p><pre class="programlisting java">
+void setupCanonicalUniqueIDs(Graph modelGraph) {
+  // A data provider that simply returns the given object itself as its unique
+  // ID.
+  final DataProvider idProvider = new DataProviderAdapter() {
+    public Object get(Object dataHolder) {
+      return dataHolder;
+    }
+  };
+
+  // Use this data provider for all kinds of graph elements that need unique IDs.
+  modelGraph.addDataProvider(MultiPageLayouter.NODE_ID_DPKEY, idProvider);
+  modelGraph.addDataProvider(MultiPageLayouter.EDGE_ID_DPKEY, idProvider);
+  modelGraph.addDataProvider(MultiPageLayouter.NODE_LABEL_ID_DPKEY, idProvider);
+  modelGraph.addDataProvider(MultiPageLayouter.EDGE_LABEL_ID_DPKEY, idProvider);
+}
+</pre></div>
+               <p>
+                  In summary, the setup of MultiPageLayouter looks like this:
+                  
+               </p>
+               <div class="example"><a name="ex_multipage_setup"></a><p class="title"><b>Example&nbsp;5.43.&nbsp;Setup of MultiPageLayouter</b></p><pre class="programlisting java">
+// 'modelGraph' is of type y.layout.LayoutGraph.
+
+// Create multi-page layout algorithm.
+MultiPageLayouter mpl = new MultiPageLayouter();
+
+// Create and set core layout algorithm.
+IncrementalHierarchicLayouter ihl = new IncrementalHierarchicLayouter();
+mpl.setCoreLayouter(ihl);
+
+// Set up unique IDs for graph elements.
+setupCanonicalUniqueIDs(modelGraph);
+
+SimpleLayoutCallback callback = new SimpleLayoutCallback();
+mpl.setLayoutCallback(callback);
+
+// Calculate multi-page layout.
+(new BufferedLayouter(mpl)).doLayout(modelGraph);
+
+// Get the resulting page graphs.
+MultiPageLayout result = callback.pop();
+
+// Now, do something with 'result'...
+
+// Remove the data providers registered by setupCanonicalUniqueIDs.
+modelGraph.removeDataProvider(MultiPageLayouter.EDGE_LABEL_ID_DPKEY);
+modelGraph.removeDataProvider(MultiPageLayouter.NODE_LABEL_ID_DPKEY);
+modelGraph.removeDataProvider(MultiPageLayouter.EDGE_ID_DPKEY);
+modelGraph.removeDataProvider(MultiPageLayouter.NODE_ID_DPKEY);
+</pre></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="multipage_options"></a>Layout Options
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  
+               </p>
+               <div class="techn_templ"><a name="meths_MultiPageLayouter_page_size"></a><center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Page Size</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/multipage/MultiPageLayouter.html#setMaxPageSize(y.geom.YDimension)" title="Link to API documentation" target="_top">void setMaxPageSize(YDimension maxPageSize)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 Specifies the page dimensions, i.e., the width and height into which the layout
+                                 of a page graph needs to fit.
+                                 
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+               <p>
+                  By default, MultiPageLayouter distributes the nodes from the original graph to the
+                  page graphs automatically.
+                  By means of a data provider that is bound to the graph using the look-up key <a href="../api/y/layout/multipage/MultiPageLayouter.html#NODE_CLUSTER_ID_DPKEY" title="Link to API documentation" target="_top">NODE_CLUSTER_ID_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>,
+                  nodes of the original graph that should end up in the same page graph can be assigned
+                  an object that serves as an ID.
+                  
+                  MultiPageLayouter then tries to distribute nodes with the same ID to the same page
+                  graph.
+                  
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="d0e18166"></a>Algorithm Execution Options
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  
+               </p>
+               <div class="techn_templ"><a name="meths_MultiPageLayouter_max_duration"></a><center>
+                     <table width="100%" border="1">
+                        <colgroup>
+                           <col width="16%" align="left">
+                           <col width="84%" align="left">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td colspan="2" align="left"><span class="bold"><b>Maximal Duration</b></span></td>
+                           </tr>
+                           <tr class="techn_api">
+                              <td align="left">API</td>
+                              <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/multipage/MultiPageLayouter.html#setPreferredMaximalDuration(long)" title="Link to API documentation" target="_top">void setPreferredMaximalDuration(long duration)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                           </tr>
+                           <tr class="spacing">
+                              <td align="left">Description</td>
+                              <td align="left">
+                                 <p>
+                                    Sets the preferred maximal duration of the layout process in milliseconds.
+                                    By default, the algorithm runs without time restriction.
+                                    
+                                 </p>
+                                 <p>
+                                    Higher values enable the algorithm to find a smaller set of page graphs, where each
+                                    makes better use of the available page size.
+                                    Also, there are less connectors and proxy elements in the page graphs.
+                                    
+                                 </p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="multipage_related"></a>Related Classes and Interfaces
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="cls_MultiPageLayout"></a>Class MultiPageLayout
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  Class <a href="../api/y/layout/multipage/MultiPageLayout.html" title="Link to API documentation" target="_top">MultiPageLayout<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is the container
+                  to hold the results of the multi-page layout.
+                  It is returned by the calcLayout method of class MultiPageLayouter.
+                  
+               </p>
+               <p>
+                  MultiPageLayout provides access to all page graphs from the layout result and enables
+                  identification of original graph elements, connectors, and proxy elements.
+                  This information is encapsulated in <a href="../api/y/layout/multipage/NodeInfo.html" title="Link to API documentation" target="_top">NodeInfo<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  and <a href="../api/y/layout/multipage/EdgeInfo.html" title="Link to API documentation" target="_top">EdgeInfo<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> objects, respectively
+                  <a href="../api/y/layout/multipage/NodeLabelInfo.html" title="Link to API documentation" target="_top">NodeLabelInfo<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> and <a href="../api/y/layout/multipage/EdgeLabelInfo.html" title="Link to API documentation" target="_top">EdgeLabelInfo<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+                  objects.
+                  
+               </p>
+               <p>
+                  The following code shows how to use NodeInfo objects to find all indexes of page
+                  graphs that are connected to the first page graph from a multi-page layout result:
+                  
+               </p>
+               <div class="example"><a name="ex_MultiPageLayout"></a><p class="title"><b>Example&nbsp;5.44.&nbsp;Querying the MultiPageLayout</b></p><pre class="programlisting java">
+// 'result' is of type y.layout.multipage.MultiPageLayout.
+
+// Get the first from the resulting page graphs.
+LayoutGraph firstGraph = result.getPage(0);
+
+for (NodeCursor nc = firstGraph.nodes(); nc.ok(); nc.next()) {
+  Node node = nc.node();
+  // Get the NodeInfo object for the current node.
+  NodeInfo ni = result.getNodeInfo(node);
+
+  // Is the current node a connector node?
+  if (ni.getType() == NodeInfo.TYPE_CONNECTOR) {
+    // Get its opposite connector node.
+    Node oppositeConnectorNode = ni.getReferencingNode();
+    // Get the opposite's node NodeInfo object.
+    NodeInfo ni2 = result.getNodeInfo(oppositeConnectorNode);
+
+    // Find out the index of the page graph the opposite node is in.
+    int otherPage = ni2.getPageNo();
+    System.out.println("Connector node (" + node +
+                       ") connects to page graph at index: " + otherPage);
+  }
+}
+</pre></div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="intf_ElementFactory"></a>Interface ElementFactory
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  During the sub-division process, class MultiPageLayouter uses an implementation
+                  of interface <a href="../api/y/layout/multipage/ElementFactory.html" title="Link to API documentation" target="_top">ElementFactory<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> as
+                  a factory to create the
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>connector nodes and edges,</li>
+                     <li>proxy nodes and edges, and</li>
+                     <li>proxy reference nodes and edges</li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  that replace elements of the original graph and augment the page graphs.
+                  
+                  
+                  Class <a href="../api/y/layout/multipage/DefaultElementFactory.html" title="Link to API documentation" target="_top">DefaultElementFactory<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> is
+                  the predefined default implementation, which provides convenient implementations
+                  of all callback methods.
+                  
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="d0e18242"></a>Tutorial Demo Code
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Tutorial demo application <a href="../../src/demo/layout/multipage/MultiPageLayoutDemo.java" title="Link to demo code" target="_top">MultiPageLayoutDemo.java</a>
+               shows how to use class MultiPageLayouter to sub-divide large graphs into smaller
+               bits of navigable information.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="multipage_dataprovider"></a>Supplemental Layout Data
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class MultiPageLayouter knows a number of data provider keys which are used to retrieve
+               supplemental layout data for a graph's elements.
+               The data is bound to the graph by means of a data provider which is registered using
+               a given look-up key.
+               <a href="multipage_layout.html#tab_multipage_keys" title="Table&nbsp;5.68.&nbsp;Data provider look-up keys">Table&nbsp;5.68, &#8220;Data provider look-up keys&#8221;</a> lists all look-up keys that MultiPageLayouter
+               tests during the layout process in order to query supplemental data.
+               
+            </p>
+            <p>
+               Binding supplemental layout data to a graph is described in
+               <a href="layout_concepts.html#supplemental_information" title="Providing Supplemental Layout Data">the section called &#8220;Providing Supplemental Layout Data&#8221;</a>.
+               
+            </p>
+            <div class="table"><a name="tab_multipage_keys"></a><p class="title"><b>Table&nbsp;5.68.&nbsp;Data provider look-up keys</b></p>
+               <table summary="Data provider look-up keys" width="100%" border="1">
+                  <colgroup>
+                     <col width="25%" align="left">
+                     <col width="10%" align="left">
+                     <col width="10%" align="left">
+                     <col width="55%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Key</th>
+                        <th align="left">Element Type</th>
+                        <th align="left">Value Type</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/multipage/MultiPageLayouter.html#NODE_ID_DPKEY" title="Link to API documentation" target="_top">NODE_ID_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">Object</td>
+                        <td align="left">
+                             For each node an Object that is used as a unique ID.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/multipage/MultiPageLayouter.html#EDGE_ID_DPKEY" title="Link to API documentation" target="_top">EDGE_ID_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">Object</td>
+                        <td align="left">
+                             For each edge an Object that is used as a unique ID.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/multipage/MultiPageLayouter.html#NODE_LABEL_ID_DPKEY" title="Link to API documentation" target="_top">NODE_LABEL_ID_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">NodeLabelLayout</td>
+                        <td align="left">Object</td>
+                        <td align="left">
+                             For each NodeLabelLayout instance an Object that is used as a unique ID.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/multipage/MultiPageLayouter.html#EDGE_LABEL_ID_DPKEY" title="Link to API documentation" target="_top">EDGE_LABEL_ID_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">EdgeLabelLayout</td>
+                        <td align="left">Object</td>
+                        <td align="left">
+                             For each EdgeLabelLayout instance an Object that is used as a unique ID.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/multipage/MultiPageLayouter.html#NODE_CLUSTER_ID_DPKEY" title="Link to API documentation" target="_top">NODE_CLUSTER_ID_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Node</td>
+                        <td align="left">Object</td>
+                        <td align="left">
+                             For each node an arbitrary Object indicating its cluster ID.
+                             This ID is used to find nodes that preferably should be in the same page graph.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/multipage/MultiPageLayouter.html#EDGE_TYPE_DPKEY" title="Link to API documentation" target="_top">EDGE_TYPE_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">Object</td>
+                        <td align="left">
+                             For each edge an arbitrary Object indicating its (application-specific) type.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="partial_layout.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="layout.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="major_routers.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Partial Layout&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Edge Routing Algorithms</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

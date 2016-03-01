@@ -1,0 +1,167 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Related Classes</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="tabular_presentation.html" title="Chapter&nbsp;8.&nbsp;Tabular Data Presentation">
+      <link rel="previous" href="tabular_data_table_structure.html" title="Table Structure Model">
+      <link rel="next" href="tabular_data_layout.html" title="Automatic Layout">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Related Classes</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="tabular_data_table_structure.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;8.&nbsp;Tabular Data Presentation</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="tabular_data_layout.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="tabular_data_related_classes"></a>Related Classes
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            Class <a href="../api/y/view/tabular/TableSupport.html" title="Link to API documentation" target="_top">TableSupport<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> offers convenience 
+            methods for manipulating the table structure. 
+            It is used by the user interaction modes to maintain a consistent state of the table 
+            structure. 
+            There is support for adding rows and columns, for resizing, and for reordering them, 
+            as well as for re-parenting them, i.e., changing the parent of a child row or column.
+            
+         </p>
+         <div class="techn_templ">
+            <center>
+               <table width="100%" border="1">
+                  <colgroup>
+                     <col width="16%" align="left">
+                     <col width="84%" align="left">
+                  </colgroup>
+                  <tbody valign="top">
+                     <tr class="techn_api">
+                        <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableSupport.html#addRow(y.view.tabular.TableGroupNodeRealizer.RowContainer, int)" title="Link to API documentation" target="_top">Row addRow(RowContainer rc, int index)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/tabular/TableSupport.html#addColumn(y.view.tabular.TableGroupNodeRealizer.ColumnContainer, int)" title="Link to API documentation" target="_top">Column addColumn(ColumnContainer cc, int index)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                     </tr>
+                     <tr class="spacing">
+                        <td align="left">Description</td>
+                        <td align="left">
+                           Adds a row (column) to the given RowContainer (ColumnContainer).
+                           The row's (column's) size and minimum size are adopted from the default values specified
+                           with TableGroupNodeRealizer.
+                           
+                        </td>
+                     </tr>
+                     <tr class="techn_api">
+                        <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableSupport.html#setHeight(y.view.tabular.TableGroupNodeRealizer.Row, double, boolean)" title="Link to API documentation" target="_top">boolean setHeight(Row r, double newSize, boolean moveContentOfChangedRow)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/tabular/TableSupport.html#setWidth(y.view.tabular.TableGroupNodeRealizer.Column, double, boolean)" title="Link to API documentation" target="_top">boolean setWidth(Column c, double newSize, boolean moveContentOfChangedColumn)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                     </tr>
+                     <tr class="spacing">
+                        <td align="left">Description</td>
+                        <td align="left">Resizes a row or column.</td>
+                     </tr>
+                     <tr class="techn_api">
+                        <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableSupport.html#setIndex(y.view.tabular.TableGroupNodeRealizer.Row, int)" title="Link to API documentation" target="_top">void setIndex(Row row, int index)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                     </tr>
+                     <tr class="spacing">
+                        <td align="left">Description</td>
+                        <td align="left">
+                           Enables reordering of a row.
+                           A similar method for reordering a column is also available.
+                           
+                        </td>
+                     </tr>
+                     <tr class="techn_api">
+                        <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableSupport.html#setParent(y.view.tabular.TableGroupNodeRealizer.Row, y.view.tabular.TableGroupNodeRealizer.RowContainer)" title="Link to API documentation" target="_top">void setParent(Row row, RowContainer rc)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                     </tr>
+                     <tr class="spacing">
+                        <td align="left">Description</td>
+                        <td align="left">
+                           Enables re-parenting of a row.
+                           A similar method for re-parenting a column is also available.
+                           
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </center>
+         </div>
+         <p>
+            Ultimately, all of these methods resort to methods provided directly by the types 
+            that constitute the table structure model, namely Table, Row, and Column. 
+            However, in contrast to their methods, which can be considered side effects-free 
+            in the sense that they only affect the instance they are called upon, TableSupport 
+            ensures consistent state after any changes to the table structure.
+            
+         </p>
+         <p>
+            Consistent state here means, that after resizing a child row, for example: 
+            
+         </p>
+         <div class="itemizedlist">
+            <ul type="disc">
+               <li>any parent rows are resized accordingly,</li>
+               <li>all subsequent rows are moved accordingly, and also that the</li>
+               <li>
+                  content nodes of the diagram that are affected by the resizing are also moved accordingly, 
+                  so that they keep their position relative to their containing row.
+                  
+               </li>
+            </ul>
+         </div>
+         <p>
+            
+            
+         </p>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="tabular_data_table_structure.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="tabular_presentation.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="tabular_data_layout.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Table Structure Model&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Automatic Layout</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

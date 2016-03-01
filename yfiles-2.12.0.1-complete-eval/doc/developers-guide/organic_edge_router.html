@@ -1,0 +1,362 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Organic Edge Routing</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="layout.html" title="Chapter&nbsp;5.&nbsp;Automatic Graph Layout">
+      <link rel="previous" href="major_routers.html" title="Edge Routing Algorithms">
+      <link rel="next" href="polyline_edge_router.html" title="Polyline Edge Routing">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Organic Edge Routing</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="major_routers.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;5.&nbsp;Automatic Graph Layout</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="polyline_edge_router.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="organic_edge_router"></a>Organic Edge Routing
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            <a href="../api/y/layout/router/OrganicEdgeRouter.html" title="Link to API documentation" target="_top">OrganicEdgeRouter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> routes edges 
+            organically to ensure that they do not overlap nodes and that they keep a 
+            specifiable minimal distance to the nodes. 
+            It is especially well suited for non-orthogonal, organic or cyclic layout 
+            styles.
+            
+         </p>
+         <p>
+            The algorithm is based on a force directed layout paradigm. 
+            Nodes act as repulsive forces on edges in order to guarantee a certain minimal 
+            distance between nodes and edges. 
+            Edges tend to contract themselves. 
+            Using simulated annealing, this finally leads to edge layouts that are 
+            calculated for each edge separately.
+            
+         </p>
+         <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title"><a name="organic_router_preconditions"></a>Important
+            </h3>
+            <p>
+               This algorithm will only work correctly if there is enough room between each 
+               pair of nodes in the graph. 
+               In particular, there should be a distance of at least twice the minimal 
+               distance (see below) between any two nodes.
+               
+            </p>
+            <p>
+               In order to ensure that these preconditions are met, the 
+               <a href="organic_edge_router.html#organic_router_stages" title="Enhancing the Routing Process">technique described below</a> can be 
+               used.
+               
+            </p>
+         </div>
+         <div class="figure"><a name="d0e18474"></a><p class="title"><b>Figure&nbsp;5.102.&nbsp;Sample edge routings produced with OrganicEdgeRouter</b></p>
+            <div class="informaltable">
+               <center>
+                  <table border="0">
+                     <colgroup>
+                        <col width="59%">
+                        <col width="41%">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/organic-star-routing1.jpg" align="middle" alt="Sample edge routings produced with OrganicEdgeRouter"></div>
+                           </td>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/organic-routing1.jpg" align="middle" alt="Sample edge routings produced with OrganicEdgeRouter"></div>
+                           </td>
+                        </tr>
+                        <tr align="center">
+                           <td align="center">
+                                Postprocessing edge routing of an organically laid out tree. 
+                              
+                           </td>
+                           <td align="center">
+                                Automatic edge routing of a hand-laid-out graph structure. 
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="organic_router_options"></a>Routing Options
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               By default, OrganicEdgeRouter reroutes all edges of a given graph.
+               When only a subset of the edges should be routed, a data provider holding the selection
+               state for each edge is looked up.
+               The data provider is expected to be registered with the graph using the <a href="../api/y/layout/router/OrganicEdgeRouter.html#ROUTE_EDGE_DPKEY" title="Link to API documentation" target="_top">ROUTE_EDGE_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+               look-up key.
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Minimal Distance</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/OrganicEdgeRouter.html#setMinimalDistance(double)" title="Link to API documentation" target="_top">void setMinimalDistance(double minimalDistance)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>This specifies the minimal allowed distance between nodes and edges.</p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Use Existing Bends</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/OrganicEdgeRouter.html#setUsingBends(boolean)" title="Link to API documentation" target="_top">void setUsingBends(boolean usingBends)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 This option specifies whether existing bends should be used as an initial
+                                 solution for the new routing.
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Route Only Necessary</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/OrganicEdgeRouter.html#setRoutingAll(boolean)" title="Link to API documentation" target="_top">void setRoutingAll(boolean routingAll)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 If this option is enabled, all edges are routed. 
+                                 By default, this option is disabled and only edges that violate the minimal distance
+                                 criterion are rerouted.
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" align="left"><span class="bold"><b>Allow Edge Overlaps</b></span></td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td align="left">API</td>
+                           <td align="left"><pre class="programlisting ignore"><a href="../api/y/layout/router/OrganicEdgeRouter.html#setEdgeNodeOverlapAllowed(boolean)" title="Link to API documentation" target="_top">void setEdgeNodeOverlapAllowed(boolean edgeNodeOverlapAllowed)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              <p>
+                                 This option specifies whether edges are allowed to overlap with nodes.
+                                 Enabling this option often improves the routing when nodes are not allowed to
+                                 move (i.e., when using the node enlargement layout stage is not an option), and
+                                 some distances between nodes do not comply with the
+                                 <a href="organic_edge_router.html#organic_router_preconditions">algorithm's preconditions</a>.
+                                 
+                                 Note that the minimal distance cannot always be maintained when using this
+                                 option.
+                                 
+                              </p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="organic_router_stages"></a>Enhancing the Routing Process
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               In order to ensure that the preconditions of OrganicEdgeRouter are met for 
+               arbitrary graphs, the routing process can be enhanced using specialized layout 
+               stages. 
+               In particular, the 
+               <a href="../api/y/layout/router/OrganicEdgeRouter.html#createNodeEnlargementStage()" title="Link to API documentation" target="_top">createNodeEnlargementStage()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               method returns a layout stage that perfectly lends itself for usage in 
+               conjunction with logic that creates more space between the nodes of a graph.
+               
+               The code in <a href="organic_edge_router.html#ex_ensuring_preconditions" title="Example&nbsp;5.45.&nbsp;Ensuring OrganicEdgeRouter's preconditions">Example&nbsp;5.45, &#8220;Ensuring OrganicEdgeRouter's preconditions&#8221;</a> presents this 
+               technique.
+               
+            </p>
+            <div class="example"><a name="ex_ensuring_preconditions"></a><p class="title"><b>Example&nbsp;5.45.&nbsp;Ensuring OrganicEdgeRouter's preconditions</b></p><pre class="programlisting java">
+// 'graph' is of type y.layout.LayoutGraph.
+
+OrganicEdgeRouter oer = new OrganicEdgeRouter();
+LayoutStage nodeEnlarger = oer.createNodeEnlargementStage();
+
+CompositeLayoutStage cls = new CompositeLayoutStage();
+cls.appendStage(nodeEnlarger);
+cls.appendStage(new BendConverter());
+cls.appendStage(new RemoveOverlapsLayoutStage(0.0));
+
+oer.setCoreLayouter(cls);
+oer.doLayout(graph);
+</pre></div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="organic_router_dataprovider"></a>Supplemental Layout Data
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Class OrganicEdgeRouter knows a number of data provider keys which are used to
+               retrieve supplemental layout data for a graph's elements.
+               The data is bound to the graph by means of a data provider which is registered using
+               a given look-up key.
+               <a href="organic_edge_router.html#tab_organic_router_keys" title="Table&nbsp;5.69.&nbsp;Data provider look-up keys">Table&nbsp;5.69, &#8220;Data provider look-up keys&#8221;</a> lists all look-up keys that OrganicEdgeRouter
+               tests during the layout process in order to query supplemental data.
+               
+            </p>
+            <p>
+               Binding supplemental layout data to a graph is described in
+               <a href="layout_concepts.html#supplemental_information" title="Providing Supplemental Layout Data">the section called &#8220;Providing Supplemental Layout Data&#8221;</a>.
+               
+            </p>
+            <div class="table"><a name="tab_organic_router_keys"></a><p class="title"><b>Table&nbsp;5.69.&nbsp;Data provider look-up keys</b></p>
+               <table summary="Data provider look-up keys" width="100%" border="1">
+                  <colgroup>
+                     <col width="25%" align="left">
+                     <col width="10%" align="left">
+                     <col width="10%" align="left">
+                     <col width="55%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Key</th>
+                        <th align="left">Element Type</th>
+                        <th align="left">Value Type</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/layout/router/OrganicEdgeRouter.html#ROUTE_EDGE_DPKEY" title="Link to API documentation" target="_top">ROUTE_EDGE_DPKEY<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Edge</td>
+                        <td align="left">boolean</td>
+                        <td align="left">
+                             For each edge a boolean value indicating whether the edge shall be considered
+                             for rerouting or not.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="organic_router_tutorial"></a>Tutorial Demo Code
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               The following yFiles source code demo programs demonstrate how 
+               OrganicEdgeRouter can be used within an application. 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li><a href="../../src/demo/layout/organic/OrganicLayouterDemo.java" title="Link to demo code" target="_top">OrganicLayouterDemo.java</a></li>
+               </ul>
+            </div>
+            <p>
+               
+               
+            </p>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="major_routers.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="layout.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="polyline_edge_router.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Edge Routing Algorithms&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Polyline Edge Routing</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

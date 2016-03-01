@@ -1,0 +1,401 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>YGF</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="io.html" title="Chapter&nbsp;9.&nbsp;Input and Output">
+      <link rel="previous" href="graphml.html" title="GraphML">
+      <link rel="next" href="gml.html" title="GML">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">YGF</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="graphml.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;9.&nbsp;Input and Output</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="gml.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="ygf"></a>YGF
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div><a class="indexterm" name="d0e35391"></a><a class="indexterm" name="d0e35398"></a><p>
+            YGF, the "Y Graph Format," is a binary file format that supports the entire 
+            range of possible graph structure constellations. 
+            
+            
+            In particular, this means that beyond "flat" graphs also grouped graphs can be saved,
+            preserving all relevant hierarchical information. 
+            
+            
+            
+            This information includes, e.g., any inter-edges from the hierarchy, the 
+            structure of any inner graphs, and whether a node containing an inner graph is 
+            a group node or a folder node. 
+            
+         </p>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="ygf_common"></a>Common Usage
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               A YGF file is written using class <a href="../api/y/io/YGFIOHandler.html" title="Link to API documentation" target="_top">YGFIOHandler<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               This class is responsible for properly (de)serializing all graph elements to an 
+               object stream which is written to file. 
+               
+               For (de)serialization of classes <a href="../api/y/view/NodeRealizer.html" title="Link to API documentation" target="_top">NodeRealizer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               and <a href="../api/y/view/EdgeRealizer.html" title="Link to API documentation" target="_top">EdgeRealizer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>, YGFIOHandler resorts to 
+               their respective (de)serialization methods. 
+               
+               
+               The code fragment in <a href="ygf.html#ex_ygfiohandler" title="Example&nbsp;9.18.&nbsp;Instantiating a YGFIOHandler">Example&nbsp;9.18, &#8220;Instantiating a YGFIOHandler&#8221;</a> shows how to instantiate 
+               a YGFIOHandler and using it to write a graph to file. 
+               
+            </p>
+            <div class="example"><a name="ex_ygfiohandler"></a><p class="title"><b>Example&nbsp;9.18.&nbsp;Instantiating a YGFIOHandler</b></p><pre class="programlisting java">
+// Instantiate a YGF I/O handler and write the graph to file. 
+IOHandler ioh = new YGFIOHandler();
+writeGraphToFile(graph, ioh, "MyYGF.ygf");
+</pre></div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="ygf_custom"></a>Extending YGF With Custom Data
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Adding custom data from a graph to a YGF file can be accomplished by 
+               overriding appropriate methods from class YGFIOHandler. 
+               
+               There is a number of protected methods that cover all sorts of graph elements, 
+               i.e., nodes and edges, but also group nodes, folder nodes, and inter-edges. 
+               
+               For each of these elements there is a method available for both input and 
+               output, i.e., to write the respective item and to read it. 
+               
+               
+               
+               
+               See below for all output methods for graph elements.
+               
+            </p>
+            <p>
+               Note that the input/output methods for the respective realizer types are almost 
+               never suitable subjects for customization. 
+               Instead, the "Info" methods from class YGFIOHandler are customized. 
+               They, in turn, invoke the "Realizer" methods. 
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/YGFIOHandler.html#write(y.view.Graph2D, java.io.ObjectOutputStream)" title="Link to API documentation" target="_top">protected void write(Graph2D g, ObjectOutputStream out)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/YGFIOHandler.html#writeNodeInfo(y.view.Graph2D, y.base.Node, java.io.ObjectOutputStream)" title="Link to API documentation" target="_top">protected void writeNodeInfo(Graph2D g, Node v, ObjectOutputStream out)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/YGFIOHandler.html#writeEdgeInfo(y.view.Graph2D, y.base.Edge, java.io.ObjectOutputStream)" title="Link to API documentation" target="_top">protected void writeEdgeInfo(Graph2D g, Edge e, ObjectOutputStream out)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              The more important methods when creating a specialization of class YGFIOHandler.
+                              "Normal" graph stuff.
+                              Note: All methods can throw java.io.IOException.
+                              
+                           </td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/YGFIOHandler.html#writeFolderNodeInfo(y.view.Graph2D, y.base.Node, java.io.ObjectOutputStream)" title="Link to API documentation" target="_top">protected void writeFolderNodeInfo(Graph2D g, Node v, ObjectOutputStream out)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/YGFIOHandler.html#writeGroupNodeInfo(y.view.Graph2D, y.base.Node, java.io.ObjectOutputStream)" title="Link to API documentation" target="_top">protected void writeGroupNodeInfo(Graph2D g, Node v, ObjectOutputStream out)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/YGFIOHandler.html#writeInterEdgeInfo(y.view.Graph2D, y.base.Edge, java.io.ObjectOutputStream)" title="Link to API documentation" target="_top">protected void writeInterEdgeInfo(Graph2D g, Edge e, ObjectOutputStream out)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Graph hierarchy stuff.
+                              Note: All methods can throw java.io.IOException.
+                              
+                           </td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/io/YGFIOHandler.html#writeNodeRealizer(y.view.Graph2D, y.base.Node, java.io.ObjectOutputStream)" title="Link to API documentation" target="_top">protected void writeNodeRealizer(Graph2D g, Node v, ObjectOutputStream out)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/io/YGFIOHandler.html#writeEdgeRealizer(y.view.Graph2D, y.base.Edge, java.io.ObjectOutputStream)" title="Link to API documentation" target="_top">protected void writeEdgeRealizer(Graph2D g, Edge e, ObjectOutputStream out)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              The less important methods when creating a specialization of class YGFIOHandler.
+                              Invoked by the above methods.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="important_custom_ygf"></a>Some Rules
+                        </h4>
+                     </div>
+                  </div>
+                  <div></div>
+               </div>
+               <p>
+                  The important things to take care of when overriding any of the methods, can be 
+                  summarized as follows: 
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        Providing both input and output logic, i.e., write and read implementations at 
+                        once make for a complete I/O handler. 
+                        
+                     </li>
+                     <li>
+                        Input and output have to be symmetric, i.e., everything written also has to be 
+                        read (and vice versa). 
+                        In particular, the sequence of items has to match. 
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+                  Furthermore, to avoid possible backward compatibility problems that can arise 
+                  from a customized file format that evolves over time, the following have proven 
+                  to be good practices: 
+                  
+                  
+                  
+               </p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        Using version identifier marks at the beginning of a section of appended custom 
+                        data. 
+                        (This will help in distinguishing different versions of a customized YGF file 
+                        format.) 
+                        
+                        
+                     </li>
+                     <li>
+                        Providing default values for custom data that cannot be read. 
+                        (For example, because the data is not present in older versions of a 
+                        customized YGF file format.) 
+                        
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  
+               </p>
+            </div>
+            <p>
+               <a href="ygf.html#ex_customygf" title="Example&nbsp;9.19.&nbsp;Customized version of a YGFIOHandler">Example&nbsp;9.19, &#8220;Customized version of a YGFIOHandler&#8221;</a> presents a customized YGFIOHandler that writes 
+               and reads custom data to/from a generated YGF file. 
+               The custom data has to be provided by an edge map that can be set using the 
+               setter method. 
+               Note that the actual data that is to be (de)serialized has to implement the 
+               <tt class="classname">java.io.Serializable</tt> interface. 
+               
+            </p>
+            <div class="example"><a name="ex_customygf"></a><p class="title"><b>Example&nbsp;9.19.&nbsp;Customized version of a YGFIOHandler</b></p><pre class="programlisting java">
+public class MyYGFIOHandler extends YGFIOHandler
+{
+  protected DataProvider em;
+  
+  public void setEdgeMap(EdgeMap em){ this.em = em; }
+  
+  // Customized version to append data to the normal edge information stuff. 
+  protected void writeEdgeInfo(Graph2D graph, Edge e, ObjectOutputStream out)
+  throws IOException
+  {
+    // First, write out a version identifier mark. 
+    out.writeByte(YVersion.VERSION_1);
+    
+    super.writeEdgeInfo(graph, e, out);
+    // After the normal stuff has been written, append the custom data. 
+    // The data is retrieved from the data provider (which is an edge map). 
+    out.writeObject((String)em.get(e));
+  }
+  
+  // Customized version to read the normal edge information stuff and also the 
+  // appended data. 
+  protected void readEdgeInfo(Graph2D graph, Edge e, ObjectInputStream in)
+  throws IOException
+  {
+    String relationType;
+    
+    switch (in.readByte())
+    {
+      case YVersion.VERSION_1:
+        // The correct version identifier mark has been seen. Good! 
+        
+        super.readEdgeInfo(graph, e, in);
+        // After the normal stuff, read the appended custom data also. 
+        try {
+          relationType = (String)in.readObject();
+        }
+        catch (ClassNotFoundException cnfEx) {
+          relationType = null;
+        }
+        // The data is stored to the data provider (which is an edge map). 
+        ((EdgeMap)em).set(e, relationType);
+        break;
+      default:
+        // Bad! The version identifier mark does not match. 
+        throw new IOException("Unknown file format.");
+    }
+  }
+}
+</pre></div>
+            <p>
+               
+               
+               By means of the two methods 
+               <a href="../api/y/io/YGFIOHandler.html#writeNodeRealizer(y.view.Graph2D, y.base.Node, java.io.ObjectOutputStream)" title="Link to API documentation" target="_top">writeNodeRealizer(Graph2D, Node, ObjectOutputStream)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               and 
+               <a href="../api/y/io/YGFIOHandler.html#writeEdgeRealizer(y.view.Graph2D, y.base.Edge, java.io.ObjectOutputStream)" title="Link to API documentation" target="_top">writeEdgeRealizer(Graph2D, Edge, ObjectOutputStream)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               the respective realizer type is written to a YGF file. 
+               
+               Properly adding data that is held by customized versions of abstract classes 
+               <a href="../api/y/view/NodeRealizer.html" title="Link to API documentation" target="_top">NodeRealizer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> or 
+               <a href="../api/y/view/EdgeRealizer.html" title="Link to API documentation" target="_top">EdgeRealizer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+               can then be accomplished by overriding the appropriate (de)serialization method 
+               of either realizer type:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/NodeRealizer.html#read(java.io.ObjectInputStream)" title="Link to API documentation" target="_top">void read(ObjectInputStream in)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/NodeRealizer.html#write(java.io.ObjectOutputStream)" title="Link to API documentation" target="_top">void write(ObjectOutputStream out)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">The node realizer's (de)serialization methods.</td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/EdgeRealizer.html#read(java.io.ObjectInputStream)" title="Link to API documentation" target="_top">void read(ObjectInputStream in)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/EdgeRealizer.html#write(java.io.ObjectOutputStream)" title="Link to API documentation" target="_top">void write(ObjectOutputStream out)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">The edge realizer's (de)serialization methods.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               The same <a href="ygf.html#important_custom_ygf" title="Some Rules">rules</a> that apply to 
+               overriding I/O methods from class YGFIOHandler also apply to overriding the 
+               serialization methods from the realizer classes. 
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="ygf_tutorial"></a>Tutorial Demo Code
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               For examples of customized realizers see the tutorial demo applications: 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li><a href="../../src/demo/view/realizer/StateNodeRealizer.java" title="Link to demo code" target="_top">StateNodeRealizer.java</a> together with 
+                       <a href="../../src/demo/view/realizer/StateNodeRealizerDemo.java" title="Link to demo code" target="_top">StateNodeRealizerDemo.java</a></li>
+                  <li><a href="../../src/demo/view/realizer/UMLClassNodeRealizer.java" title="Link to demo code" target="_top">UMLClassNodeRealizer.java</a></li>
+               </ul>
+            </div>
+            <p>
+               
+            </p>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="graphml.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="io.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="gml.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">GraphML&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;GML</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,782 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>Table Structure Model</title>
+      <link rel="stylesheet" href="ystyle.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+      <link rel="home" href="index.html" title="yFiles for Java Developer's Guide">
+      <link rel="up" href="tabular_presentation.html" title="Chapter&nbsp;8.&nbsp;Tabular Data Presentation">
+      <link rel="previous" href="tabular_presentation.html" title="Chapter&nbsp;8.&nbsp;Tabular Data Presentation">
+      <link rel="next" href="tabular_data_related_classes.html" title="Related Classes">
+      <link rel="stylesheet" href="jsdt/toc.css" type="text/css"><script type="text/javascript" src="jsdt/jquery.min.js"></script><script type="text/javascript" src="jsdt/toc.js"></script><link type="text/css" rel="stylesheet" href="jssh/SyntaxHighlighter.css"><script type="text/javascript" src="jssh/shCore.js"></script><script type="text/javascript" src="jssh/shBrushJava.js"></script><script type="text/javascript" src="jssh/shBrushXml.js"></script><script type="text/javascript">
+  function sh() {
+
+    dp.SyntaxHighlighter.HighlightAll('programlisting', false, false, false, null, false);
+  }
+  </script></head>
+   <body onload="sh()" bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <div class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center">Table Structure Model</th>
+            </tr>
+            <tr>
+               <td width="20%" align="left"><a accesskey="p" href="tabular_presentation.html">Prev</a>&nbsp;
+               </td>
+               <th width="60%" align="center">Chapter&nbsp;8.&nbsp;Tabular Data Presentation</th>
+               <td width="20%" align="right">&nbsp;<a accesskey="n" href="tabular_data_related_classes.html">Next</a></td>
+            </tr>
+         </table>
+         <div class="navline"></div>
+         <div style="display:none"><img src="figures/navbg.jpg" alt=""><img src="figures/navline.jpg" alt=""></div>
+      </div>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="tabular_data_table_structure"></a>Table Structure Model
+                  </h2>
+               </div>
+            </div>
+            <div></div>
+         </div>
+         <p>
+            Class <a href="../api/y/view/tabular/TableGroupNodeRealizer.html" title="Link to API documentation" target="_top">TableGroupNodeRealizer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> defines 
+            and uses a model that represents the structure of the table it is rendering. 
+            Basically, the model comprises the rows and columns of the table. 
+            The rows and columns may have so-called child rows and child columns, respectively, 
+            to support nested row and column structures.
+            
+         </p>
+         <p>
+            <a href="tabular_data_table_structure.html#fig_table_structure" title="Figure&nbsp;8.2.&nbsp;Table structure as rendered by TableGroupNodeRealizer">Figure&nbsp;8.2, &#8220;Table structure as rendered by TableGroupNodeRealizer&#8221;</a> shows the visual representation of a table 
+            as rendered by TableGroupNodeRealizer. 
+            The table has two top-level rows where one consists of two child rows. 
+            Similarly, there are two top-level columns where one consists of two child columns. 
+            
+            Note that there are no content nodes.
+            
+         </p>
+         <div class="figure"><a name="fig_table_structure"></a><p class="title"><b>Figure&nbsp;8.2.&nbsp;Table structure as rendered by TableGroupNodeRealizer</b></p>
+            <div class="informaltable">
+               <center>
+                  <table border="0">
+                     <colgroup>
+                        <col width="100%">
+                     </colgroup>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/table-rows-columns-smaller.png" align="middle" alt="Table structure as rendered by TableGroupNodeRealizer."></div>
+                           </td>
+                        </tr>
+                        <tr align="center">
+                           <td align="center">
+                                Table representation with several rows and columns and also child rows and columns.
+                                
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <p>
+            The table structure model is constituted by the types listed in <a href="tabular_data_table_structure.html#tab_table_structure_classes" title="Table&nbsp;8.1.&nbsp;Table structure interfaces">Table&nbsp;8.1, &#8220;Table structure interfaces&#8221;</a>.
+            
+         </p>
+         <div class="table"><a name="tab_table_structure_classes"></a><p class="title"><b>Table&nbsp;8.1.&nbsp;Table structure interfaces</b></p>
+            <table summary="Table structure interfaces" width="100%" border="1">
+               <colgroup>
+                  <col width="25%" align="left">
+                  <col width="75%" align="left">
+               </colgroup>
+               <thead valign="top">
+                  <tr>
+                     <th align="left">Type name</th>
+                     <th align="left">Description</th>
+                  </tr>
+               </thead>
+               <tbody valign="top">
+                  <tr>
+                     <td align="left"><a href="../api/y/view/tabular/TableGroupNodeRealizer.Table.html" title="Link to API documentation" target="_top">TableGroupNodeRealizer.Table<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                     <td align="left">
+                          Holds the top-level rows and columns of a table structure. 
+                          Note that this interface inherits from both RowContainer and ColumnContainer.
+                          
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="../api/y/view/tabular/TableGroupNodeRealizer.Row.html" title="Link to API documentation" target="_top">TableGroupNodeRealizer.Row<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                     <td align="left">
+                          Models a row in a table structure. 
+                          Note that a Row is also a RowContainer.
+                          
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="../api/y/view/tabular/TableGroupNodeRealizer.Column.html" title="Link to API documentation" target="_top">TableGroupNodeRealizer.Column<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                     <td align="left">
+                          Models a column in a table structure. 
+                          Note that a Column is also a ColumnContainer.
+                          
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="../api/y/view/tabular/TableGroupNodeRealizer.RowContainer.html" title="Link to API documentation" target="_top">TableGroupNodeRealizer.RowContainer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                     <td align="left">A top-level container that can hold multiple Row objects.</td>
+                  </tr>
+                  <tr>
+                     <td align="left"><a href="../api/y/view/tabular/TableGroupNodeRealizer.ColumnContainer.html" title="Link to API documentation" target="_top">TableGroupNodeRealizer.ColumnContainer<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                     <td align="left">A top-level container that can hold multiple Column objects.</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            The main element of the table structure model is a Table instance that can be retrieved 
+            from a TableGroupNodeRealizer using the <a href="../api/y/view/tabular/TableGroupNodeRealizer.html#getTable()" title="Link to API documentation" target="_top">getTable<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+            method. 
+            The Table instance holds the top-level rows and columns of a table.
+            
+         </p>
+         <p>
+            The area that belongs to a row (column) is determined by its height (width) as well 
+            as by its position with respect to the order of rows (columns). 
+            A row (column) spans all columns (rows) of the table structure, i.e., its width 
+            (height) is the accumulated width (height) of all columns (rows).
+            
+         </p>
+         <p>
+            While the width of a row (height of a column) is determined implicitly, its height 
+            (width) can be set (using either the corresponding Row/Column instance directly 
+            or <a href="tabular_data_related_classes.html" title="Related Classes">class TableSupport</a>). 
+            This size, however, is restricted by the row's (column's) minimum size. 
+            In other words, a row (column) cannot be made smaller than its minimum size.
+            
+         </p>
+         <p>
+            Note that the actual bounds of a row (column) cannot be set explicitly. 
+            Instead, they are determined as a result of the table structure, which means they 
+            are calculated anew by the row's (column's) <tt class="code">calculateBounds</tt> method 
+            whenever necessary.
+            
+         </p>
+         <div class="figure"><a name="fig_table_insets"></a><p class="title"><b>Figure&nbsp;8.3.&nbsp;Insets in a table structure</b></p>
+            <div class="informaltable">
+               <center>
+                  <table border="0">
+                     <colgroup>
+                        <col width="100%">
+                     </colgroup>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <div class="mediaobject" align="center"><img src="figures/table-insets.png" align="middle" alt="Insets in a table structure."></div>
+                           </td>
+                        </tr>
+                        <tr align="center">
+                           <td align="center">Table, column, and child column insets at the top of a table structure.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <p>
+            From a geometric point of view, a table consists of its content area, which is determined 
+            by the geometry of its row and columns, and the surrounding border area. 
+            The border area is determined by the table insets, and may be used to display a 
+            table description, for example.
+            
+         </p>
+         <div class="techn_templ">
+            <center>
+               <table width="100%" border="1">
+                  <colgroup>
+                     <col width="16%" align="left">
+                     <col width="84%" align="left">
+                  </colgroup>
+                  <tbody valign="top">
+                     <tr class="techn_api">
+                        <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableGroupNodeRealizer.Table.html#setInsets(y.geom.YInsets)" title="Link to API documentation" target="_top">void setInsets(YInsets insets)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                     </tr>
+                     <tr class="spacing">
+                        <td align="left">Description</td>
+                        <td align="left">
+                           Sets the table's insets.
+                           The insets define a border around the rows and columns of a table structure.
+                           A similar method to define a border around the content area of a row or column is
+                           available on TableGroupNodeRealizer.Row and TableGroupNodeRealizer.Column, respectively.
+                           
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </center>
+         </div>
+         <p>
+            Similarly, rows and columns also have a content area and a border area surrounding 
+            it, which is determined by corresponding row (column) insets. 
+            The content area may either contain the child rows (columns), if any, or the content 
+            nodes of the row (column).
+            
+            Insets for new rows and columns are adopted from the default values specified with 
+            the TableGroupNodeRealizer.
+            
+         </p>
+         <div class="techn_templ">
+            <center>
+               <table width="100%" border="1">
+                  <colgroup>
+                     <col width="16%" align="left">
+                     <col width="84%" align="left">
+                  </colgroup>
+                  <tbody valign="top">
+                     <tr class="techn_api">
+                        <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableGroupNodeRealizer.html#setDefaultRowInsets(y.geom.YInsets)" title="Link to API documentation" target="_top">void setDefaultRowInsets(YInsets insets)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/tabular/TableGroupNodeRealizer.html#setDefaultColumnInsets(y.geom.YInsets)" title="Link to API documentation" target="_top">void setDefaultColumnInsets(YInsets insets)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                     </tr>
+                     <tr class="spacing">
+                        <td align="left">Description</td>
+                        <td align="left">
+                           Sets the default insets that are used for newly created rows and columns.
+                           The insets define minimum distances between the content nodes within a row (column)
+                           and the row's (column's) border, respectively minimum distances between the borders
+                           of child rows (columns) and the borders of its parent.
+                           
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </center>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tabular_data_table_structure_usage"></a>Working with the Table Structure Model
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               Upon initialization, TableGroupNodeRealizer uses a model consisting of one top-level 
+               row and column.
+               Further top-level rows and columns can be added using the Table instance, child 
+               rows or columns can be added on Row or Column instances using the methods defined 
+               in interfaces RowContainer and ColumnContainer, respectively: 
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableGroupNodeRealizer.RowContainer.html#addRow()" title="Link to API documentation" target="_top">Row addRow()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/tabular/TableGroupNodeRealizer.RowContainer.html#addRow(int)" title="Link to API documentation" target="_top">Row addRow(int index)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Adds a row to a RowContainer.
+                              A similar method to add a column to a ColumnContainer is available on TableGroupNodeRealizer.ColumnContainer.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               <a href="tabular_data_table_structure.html#ex_rows_columns" title="Example&nbsp;8.1.&nbsp;Adding more rows and columns">Example&nbsp;8.1, &#8220;Adding more rows and columns&#8221;</a> illustrates a simple tabular presentation with 
+               two rows and columns together with its setup in code.
+               
+            </p>
+            <div class="example"><a name="ex_rows_columns"></a><p class="title"><b>Example&nbsp;8.1.&nbsp;Adding more rows and columns</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/table-2x2.png" align="middle" alt="A 2x2 table."></div>
+                              </td>
+                           </tr>
+                           <tr align="center">
+                              <td align="center">A minimalistic table with 2 rows and columns.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div><pre class="programlisting java">
+// 'graph' is of type y.view.Graph2D.
+
+// Create a TableGroupNodeRealizer to represent the table structure.
+TableGroupNodeRealizer tgnr = new TableGroupNodeRealizer();
+Table table = tgnr.getTable();
+// Add another row and column. The table's size is now 2x2.
+table.addRow();
+table.addColumn();
+
+// Set insets on the table so that the rows and columns stand out.
+table.setInsets(new YInsets(10, 10, 10, 10));
+
+// Get the graph's hierarchy manager, and...
+HierarchyManager hm = HierarchyManager.getInstance(graph);
+// ...create the group node to assign the previously created table realizer to.
+graph.setRealizer(hm.createGroupNode(graph), tgnr);
+</pre></div>
+            <p>
+               The association of a content node to a row and a column is only done on a geometric 
+               basis, i.e., the node's center coordinates determine the row (column) that it belongs 
+               to.
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableGroupNodeRealizer.Table.html#rowAt(double, double)" title="Link to API documentation" target="_top">Row rowAt(double x, double y)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/tabular/TableGroupNodeRealizer.Table.html#columnAt(double, double)" title="Link to API documentation" target="_top">Column columnAt(double x, double y)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Returns the row (column) at the given coordinates.</td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableGroupNodeRealizer.Table.html#getRow(y.base.Node)" title="Link to API documentation" target="_top">Row getRow(Node n)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/tabular/TableGroupNodeRealizer.Table.html#getColumn(y.base.Node)" title="Link to API documentation" target="_top">Column getColumn(Node n)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Returns the associated row (column) of a content node.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               A content node can be moved to another row (column) either explicitly by moving 
+               the node geometrically, or logically in terms of the table structure using the methods 
+               below.
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableGroupNodeRealizer.Table.html#rowAt(double, double)" title="Link to API documentation" target="_top">Row rowAt(double x, double y)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/tabular/TableGroupNodeRealizer.Table.html#columnAt(double, double)" title="Link to API documentation" target="_top">Column columnAt(double x, double y)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Returns the row (column) at the given coordinates.</td>
+                        </tr>
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableGroupNodeRealizer.Table.html#moveToRow(y.base.Node, y.view.tabular.TableGroupNodeRealizer.Row)" title="Link to API documentation" target="_top">void moveToRow(Node n, Row r)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/tabular/TableGroupNodeRealizer.Table.html#moveToColumn(y.base.Node, y.view.tabular.TableGroupNodeRealizer.Column)" title="Link to API documentation" target="_top">void moveToColumn(Node n, Column c)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Moves content nodes to another row (column).</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               The content nodes within a row (column) can be retrieved using:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableGroupNodeRealizer.Row.html#getNodes()" title="Link to API documentation" target="_top">NodeList getNodes()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">
+                              Yields the associated content nodes of a row.
+                              Note that a similar method is available on TableGroupNodeRealizer.Column, too.
+                              
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tabular_data_controller"></a>User Interaction
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               On top of the view modes that usually handle all mouse-based user interaction, class 
+               TableGroupNodeRealizer brings additional support for handling mouse gestures specific 
+               to the tabular representation of a diagram. 
+               
+               The additional mouse gesture support covers, for example: 
+               
+            </p>
+            <div class="itemizedlist">
+               <ul type="disc">
+                  <li>Selecting rows and columns,</li>
+                  <li>resizing them, and</li>
+                  <li>changing their position in the order of rows (columns).</li>
+               </ul>
+            </div>
+            <p>
+               
+               By default, TableGroupNodeRealizer is configured to recognize its mouse gestures, 
+               if node-specific mouse interaction as shown in <a href="tabular_data_table_structure.html#ex_mouse_interaction" title="Example&nbsp;8.2.&nbsp;Enabling node-specific mouse interaction">Example&nbsp;8.2, &#8220;Enabling node-specific mouse interaction&#8221;</a> 
+               is enabled.
+               
+            </p>
+            <div class="example"><a name="ex_mouse_interaction"></a><p class="title"><b>Example&nbsp;8.2.&nbsp;Enabling node-specific mouse interaction</b></p><pre class="programlisting java">
+// 'editMode' is of type y.view.EditMode.
+
+editMode.getMouseInputMode().setNodeSearchingEnabled(true);
+</pre></div>
+            <p>
+               The actual support for handling the mouse gestures is encapsulated by a set of MouseInputEditor 
+               sub modes that are used by class <a href="../api/y/view/MultiplexingNodeEditor.html" title="Link to API documentation" target="_top">MultiplexingNodeEditor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               MultiplexingNodeEditor is registered in the TableGroupNodeRealizer's default configuration 
+               as the implementation for the GenericMouseInputEditorProvider interface. 
+               
+               <a href="tabular_data_table_structure.html#tab_tabular_submodes" title="Table&nbsp;8.2.&nbsp;TableGroupNodeRealizer-specific user interaction modes">Table&nbsp;8.2, &#8220;TableGroupNodeRealizer-specific user interaction modes&#8221;</a> lists the MouseInputEditor implementations 
+               involved.
+               
+            </p>
+            <div class="table"><a name="tab_tabular_submodes"></a><p class="title"><b>Table&nbsp;8.2.&nbsp;TableGroupNodeRealizer-specific user interaction modes</b></p>
+               <table summary="TableGroupNodeRealizer-specific user interaction modes" width="100%" border="1">
+                  <colgroup>
+                     <col width="25%" align="left">
+                     <col width="75%" align="left">
+                  </colgroup>
+                  <thead valign="top">
+                     <tr>
+                        <th align="left">Classname</th>
+                        <th align="left">Description</th>
+                     </tr>
+                  </thead>
+                  <tbody valign="top">
+                     <tr>
+                        <td align="left"><a href="../api/y/view/tabular/TableLabelEditor.html" title="Link to API documentation" target="_top">TableLabelEditor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Handles editing of row and column labels in a table rendered by TableGroupNodeRealizer.</td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/view/tabular/TableSelectionEditor.html" title="Link to API documentation" target="_top">TableSelectionEditor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">Selection state handling of rows and columns.</td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/view/tabular/TableSizeEditor.html" title="Link to API documentation" target="_top">TableSizeEditor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Handles resizing of rows and columns. 
+                             Uses a <a href="tabular_data_related_classes.html" title="Related Classes">TableSupport</a> instance 
+                             to consistently move content nodes and bends that are affected by the resizing 
+                             operation.
+                             
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="../api/y/view/tabular/TableOrderEditor.html" title="Link to API documentation" target="_top">TableOrderEditor<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a></td>
+                        <td align="left">
+                             Recognizes and handles row (column) re-parenting/reordering mouse gestures. 
+                             Uses a <a href="tabular_data_related_classes.html" title="Related Classes">TableSupport</a> instance 
+                             to consistently move content nodes and bends that are affected by the re-parenting/reordering 
+                             operation.
+                             
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               More information relating to MouseInputEditor can be found in <a href="mvc_controller.html#intf_MouseInputEditor" title="Interface MouseInputEditor">the section called &#8220;Interface MouseInputEditor&#8221;</a>.
+               
+            </p>
+            <p>
+               Further support for drag'n'drop mouse gestures is provided by means of the DropTargetListener 
+               implementations <a href="../api/y/view/tabular/RowDropTargetListener.html" title="Link to API documentation" target="_top">RowDropTargetListener<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               and <a href="../api/y/view/tabular/ColumnDropTargetListener.html" title="Link to API documentation" target="_top">ColumnDropTargetListener<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               They facilitate convenient creation of new rows and columns, including visual feedback 
+               for a user.
+               
+            </p>
+            <p>
+               Tutorial demo application <a href="../../src/demo/view/application/SwimlaneDemo.java" title="Link to demo code" target="_top">SwimlaneDemo.java</a> 
+               demonstrates this kind of interaction and shows how to customize it. 
+               The demo also presents a way to create new rows and columns via drag'n'drop gestures.
+               
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="tabular_data_rows_columns"></a>Rows and Columns
+                     </h3>
+                  </div>
+               </div>
+               <div></div>
+            </div>
+            <p>
+               The rows and columns of a table structure that is rendered by a TableGroupNodeRealizer 
+               can be annotated with labels. 
+               Labels can be specified to lie either within or outside the bounds of their row 
+               or column. 
+               The following methods in TableGroupNodeRealizer enable convenient label configuration:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableGroupNodeRealizer.html#configureRowLabel(NodeLabel, Row, boolean, double)" title="Link to API documentation" target="_top">void configureRowLabel(NodeLabel nl, Row r, boolean inside,
+                       double leftRightRatio)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/tabular/TableGroupNodeRealizer.html#configureColumnLabel(NodeLabel, Column, boolean, double)" title="Link to API documentation" target="_top">void configureColumnLabel(NodeLabel nl, Column c, boolean inside,
+                          double topBottomRatio)<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Configuration of row and column labels.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+            <p>
+               <a href="tabular_data_table_structure.html#ex_row_column_labels" title="Example&nbsp;8.3.&nbsp;Row and column labels">Example&nbsp;8.3, &#8220;Row and column labels&#8221;</a> illustrates labels in a tabular presentation 
+               with a single row and a single column together with its setup in code.
+               
+            </p>
+            <div class="example"><a name="ex_row_column_labels"></a><p class="title"><b>Example&nbsp;8.3.&nbsp;Row and column labels</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="100%">
+                        </colgroup>
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/table-labels.png" align="middle" alt="Row and column labels."></div>
+                              </td>
+                           </tr>
+                           <tr align="center">
+                              <td align="center">Row and column labels.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div><pre class="programlisting java">
+// 'realizer' is of type y.view.tabular.TableGroupNodeRealizer.
+// 'table' is of type y.view.tabular.TableGroupNodeRealizer.Table.
+// 'labelLeft' to 'labelBottom' are of type y.view.NodeLabel.
+
+// Configuration of the two labels of the first row.
+// Configures the label so that it is at the left side of the row.
+realizer.configureRowLabel(labelLeft, table.getRow(0), true, 0.0);
+// Configures the other label so that it is at the right side of the row.
+realizer.configureRowLabel(labelRight, table.getRow(0), true, 1.0);
+
+// Configuration of the two labels of the first column.
+// Configures the label so that it is at the top side of the column.
+realizer.configureColumnLabel(labelTop, table.getColumn(0), true, 0.0);
+// Configures the other label so that it is at the bottom side of the column.
+realizer.configureColumnLabel(labelBottom, table.getColumn(0), true, 1.0);
+</pre></div>
+            <p>
+               Note that row labels at the left side are automatically rotated 90 degrees counterclockwise 
+               while row labels at the right side are rotated 90 degress clockwise.
+               
+            </p>
+            <p>
+               The visual representation of a table structure rendered by a TableGroupNodeRealizer 
+               is governed by class <a href="../api/y/view/tabular/TableNodePainter.html" title="Link to API documentation" target="_top">TableNodePainter<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>,  
+               an implementation of the GenericNodeRealizer.Painter interface. 
+               TableNodePainter delegates the actual work to subordinate painters that are responsible 
+               for painting: 
+               
+            </p>
+            <div class="orderedlist">
+               <ol type="1">
+                  <li>
+                     the background of the table group node itself, then the backgrounds of all rows 
+                     and columns
+                     
+                  </li>
+                  <li>
+                     the foreground of the table group node itself, then the foregrounds of all rows 
+                     and columns
+                     
+                  </li>
+               </ol>
+            </div>
+            <p>
+               
+               The background means the actual fill, the foreground means the border of a table, 
+               row, or column.
+               
+            </p>
+            <p>
+               The subordinate painters are also of type GenericNodeRealizer.Painter. 
+               They can be easily replaced by custom implementations.
+               
+            </p>
+            <p>
+               TableNodePainter comes with several predefined configurations. 
+               The default configuration paints the table and each row and column using a given 
+               color. 
+               The alternative configurations allow for alternating colors of consecutive columns 
+               or rows. 
+               <a href="tabular_data_table_structure.html#fig_row_column_painter" title="Figure&nbsp;8.4.&nbsp;Row/column background rendering">Figure&nbsp;8.4, &#8220;Row/column background rendering&#8221;</a> illustrates the results for the predefined 
+               configurations of TableNodePainter.
+               
+            </p>
+            <div class="figure"><a name="fig_row_column_painter"></a><p class="title"><b>Figure&nbsp;8.4.&nbsp;Row/column background rendering</b></p>
+               <div class="informaltable">
+                  <center>
+                     <table border="0">
+                        <colgroup>
+                           <col width="50%">
+                           <col width="50%">
+                        </colgroup>
+                        <tbody valign="top">
+                           <tr>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/table_painter_default.png" align="middle" alt="Row/column background rendering."></div>
+                              </td>
+                              <td>
+                                 <div class="mediaobject" align="center"><img src="figures/table_painter_alternating.png" align="middle" alt="Row/column background rendering."></div>
+                              </td>
+                           </tr>
+                           <tr align="center">
+                              <td align="center">Default background rendering.</td>
+                              <td align="center">
+                                   Alternating background rendering of both consecutive rows and consecutive columns.
+                                   
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </center>
+               </div>
+            </div>
+            <p>
+               Custom colors and line types for a configuration can be specified using an implementation 
+               of interface <a href="../api/y/view/tabular/TableStyle.html" title="Link to API documentation" target="_top">TableStyle<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>. 
+               The implementation is set as a style property using the <a href="../api/y/view/GenericNodeRealizer.html#setStyleProperty(String, Object)" title="Link to API documentation" target="_top">setStyleProperty<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a> 
+               method defined in TableGroupNodeRealizer's superclass GenericNodeRealizer.
+               
+            </p>
+            <p>
+               Tutorial demo application <a href="../../src/demo/view/realizer/TableStyleDemo.java" title="Link to demo code" target="_top">TableStyleDemo.java</a> 
+               shows how to use TableStyle implementations with the predefined TableNodePainter 
+               configurations to configure colors and line types.
+               
+            </p>
+            <p>
+               The selection state of Row and Column instances can be accessed using their isSelected 
+               and setSelected methods. 
+               All currently selected rows and columns of a table structure are returned by the 
+               following methods:
+               
+            </p>
+            <div class="techn_templ">
+               <center>
+                  <table width="100%" border="1">
+                     <colgroup>
+                        <col width="16%" align="left">
+                        <col width="84%" align="left">
+                     </colgroup>
+                     <tbody valign="top">
+                        <tr class="techn_api">
+                           <td colspan="2" align="left"><pre class="programlisting ignore"><a href="../api/y/view/tabular/TableGroupNodeRealizer.Table.html#selectedRows()" title="Link to API documentation" target="_top">Collection selectedRows()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+<a href="../api/y/view/tabular/TableGroupNodeRealizer.Table.html#selectedColumns()" title="Link to API documentation" target="_top">Collection selectedColumns()<sup xmlns="http://www.w3.org/1999/xhtml" xmlns:fo="http://www.w3.org/1999/XSL/Format"><img src="figures/icon_api.gif" align="bottom" border="0"></img></sup></a>
+</pre></td>
+                        </tr>
+                        <tr class="spacing">
+                           <td align="left">Description</td>
+                           <td align="left">Convenience access to all selected rows or columns of the Table.</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </center>
+            </div>
+         </div>
+      </div>
+      <table class="copyright" border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tbody>
+            <tr>
+               <td align="right">
+                  <p class="copyright">Copyright &copy;2004-2015, yWorks GmbH. All rights reserved.</p>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="navfooter">
+         <div class="navline2"></div>
+         <div style="display:none"><img src="figures/navline2.jpg" alt=""><img src="figures/navbg2.jpg" alt=""></div>
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left"><a accesskey="p" href="tabular_presentation.html">Prev</a>&nbsp;
+               </td>
+               <td width="20%" align="center"><a accesskey="u" href="tabular_presentation.html">Up</a></td>
+               <td width="40%" align="right">&nbsp;<a accesskey="n" href="tabular_data_related_classes.html">Next</a></td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top">Chapter&nbsp;8.&nbsp;Tabular Data Presentation&nbsp;</td>
+               <td width="20%" align="center"><a accesskey="h" href="index.html" target="_top">Home</a></td>
+               <td width="40%" align="right" valign="top">&nbsp;Related Classes</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>
