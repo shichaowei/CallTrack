@@ -34,7 +34,10 @@ import java.util.Enumeration;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+import org.apache.bcel.classfile.ClassFormatException;
 import org.apache.bcel.classfile.ClassParser;
+
+import gr.gousiosg.javacg.utils.Utils;
 
 /**
  * Constructs a callgraph out of a JAR archive. Can combine multiple archives
@@ -47,34 +50,55 @@ public class JCallGraph {
 
     public static void main(String[] args) {
         ClassParser cp;
-        try {
-            for (String arg : args) {
+        if(args.length >= 3){
+        	File f = new File(args[0]);
+        	 if (!f.exists()) {
+                 System.err.println("Jar file " + args[0] + " does not exist");
+                 System.exit(-1);
+             }
+        	
+        	 JarFile jar = null;
+			try {
+				jar = new JarFile(f);
+			} catch (IOException e1) {
+				 System.err.println("Error while processing jar: " + e1.getMessage());
+				 e1.printStackTrace();
+				 System.exit(-1);
+			}
 
-                File f = new File(arg);
-                
-                if (!f.exists()) {
-                    System.err.println("Jar file " + arg + " does not exist");
-                }
-                
-                JarFile jar = new JarFile(f);
+			Utils.deleteFiles(args[2]);
+			
+             Enumeration<JarEntry> entries = jar.entries();
+             while (entries.hasMoreElements()) {
+                 JarEntry entry = entries.nextElement();
+                 if (entry.isDirectory())
+                     continue;
 
-                Enumeration<JarEntry> entries = jar.entries();
-                while (entries.hasMoreElements()) {
-                    JarEntry entry = entries.nextElement();
-                    if (entry.isDirectory())
-                        continue;
+                 if (!entry.getName().endsWith(".class"))
+                     continue;
 
-                    if (!entry.getName().endsWith(".class"))
-                        continue;
-
-                    cp = new ClassParser(arg,entry.getName());
-                    ClassVisitor visitor = new ClassVisitor(cp.parse());
-                    visitor.start();
-                }
-            }
-        } catch (IOException e) {
-            System.err.println("Error while processing jar: " + e.getMessage());
-            e.printStackTrace();
+                 cp = new ClassParser(args[0],entry.getName());
+                 ClassVisitor visitor;
+				try {
+					visitor = new ClassVisitor(cp.parse(),args[1], args[2]);
+					visitor.start();
+				} catch (ClassFormatException e) {
+					 System.err.println("Error while processing jar: " + e.getMessage());
+					 e.printStackTrace();
+				} catch (IOException e) {
+					 System.err.println("Error while processing jar: " + e.getMessage());
+			         e.printStackTrace();
+				}
+             }
+         
+        	 
+        	
+        }else{
+        	System.err.println("Params error. You have to execute \"java -jar projectToAnalyze.jar pattern outputFilePrefix\"");
+        	System.exit(-1);
+        	
         }
+        
+        
     }
 }

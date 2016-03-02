@@ -45,11 +45,15 @@ public class ClassVisitor extends EmptyVisitor {
     private JavaClass clazz;
     private ConstantPoolGen constants;
     private String classReferenceFormat;
-    
-    public ClassVisitor(JavaClass jc) {
+    private String filePrefix;
+    private String pattern;
+    public ClassVisitor(JavaClass jc,String pattern, String filePrefix) {
         clazz = jc;
         constants = new ConstantPoolGen(clazz.getConstantPool());
-        classReferenceFormat = "C:" + clazz.getClassName() + " %s";
+        //clazz.getClassName call %s
+        classReferenceFormat = clazz.getClassName() + " %s";
+        this.filePrefix = filePrefix;
+        this.pattern = pattern;
     }
 
     public void visitJavaClass(JavaClass jc) {
@@ -67,15 +71,20 @@ public class ClassVisitor extends EmptyVisitor {
             if (constant.getTag() == 7) {
                 String referencedClass = 
                     constantPool.constantToString(constant);
-                System.out.println(String.format(classReferenceFormat,
-                        referencedClass));
+                
+                if(referencedClass.contains(pattern)){
+                	String output = String.format(classReferenceFormat,
+                			referencedClass).replaceAll("[$\\d]+", "");
+                	System.out.println(output);
+                	
+                }
             }
         }
     }
 
     public void visitMethod(Method method) {
         MethodGen mg = new MethodGen(method, clazz.getClassName(), constants);
-        MethodVisitor visitor = new MethodVisitor(mg, clazz);
+        MethodVisitor visitor = new MethodVisitor(mg, clazz, this.pattern, this.filePrefix);
         visitor.start(); 
     }
 

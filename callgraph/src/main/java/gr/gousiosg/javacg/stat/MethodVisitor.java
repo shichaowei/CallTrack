@@ -54,13 +54,17 @@ public class MethodVisitor extends EmptyVisitor {
     private MethodGen mg;
     private ConstantPoolGen cp;
     private String format;
-
-    public MethodVisitor(MethodGen m, JavaClass jc) {
+    private String filePrefix;
+    private String pattern;
+    
+    public MethodVisitor(MethodGen m, JavaClass jc,String pattern, String filePrefix) {
         visitedClass = jc;
         mg = m;
         cp = mg.getConstantPool();
-        format = "M:" + visitedClass.getClassName() + ":" + mg.getName() 
-            + " " + "(%s)%s:%s";
+        format = visitedClass.getClassName() + ":" + mg.getName() 
+            + " " + "%s:%s";
+        this.pattern = pattern;
+        this.filePrefix = filePrefix;
     }
 
     public void start() {
@@ -85,21 +89,36 @@ public class MethodVisitor extends EmptyVisitor {
 
     @Override
     public void visitINVOKEVIRTUAL(INVOKEVIRTUAL i) {
-        System.out.println(String.format(format,"M",i.getReferenceType(cp),i.getMethodName(cp)));
+    	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp));
+    	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
+    		
+    		System.out.println(output);
+    	}
     }
 
     @Override
     public void visitINVOKEINTERFACE(INVOKEINTERFACE i) {
-        System.out.println(String.format(format,"I",i.getReferenceType(cp),i.getMethodName(cp)));
+    	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp));
+    	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
+    		
+    		System.out.println(output);
+    	}
     }
 
     @Override
     public void visitINVOKESPECIAL(INVOKESPECIAL i) {
-        System.out.println(String.format(format,"O",i.getReferenceType(cp),i.getMethodName(cp)));
+    	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp));
+    	if(i.getReferenceType(cp).toString().contains(this.pattern) ){ 		
+    		System.out.println(output);
+    	}
     }
 
     @Override
     public void visitINVOKESTATIC(INVOKESTATIC i) {
-        System.out.println(String.format(format,"S",i.getReferenceType(cp),i.getMethodName(cp)));
+    	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp));
+    	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
+    		
+    		System.out.println(output);
+    	}
     }
 }
