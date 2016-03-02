@@ -28,6 +28,9 @@
 
 package gr.gousiosg.javacg.stat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.bcel.classfile.JavaClass;
 import org.apache.bcel.generic.ConstantPoolGen;
 import org.apache.bcel.generic.ConstantPushInstruction;
@@ -54,22 +57,22 @@ public class MethodVisitor extends EmptyVisitor {
     private MethodGen mg;
     private ConstantPoolGen cp;
     private String format;
-    private String filePrefix;
     private String pattern;
+    private List<String> peers;
     
-    public MethodVisitor(MethodGen m, JavaClass jc,String pattern, String filePrefix) {
+    public MethodVisitor(MethodGen m, JavaClass jc,String pattern) {
         visitedClass = jc;
         mg = m;
         cp = mg.getConstantPool();
         format = visitedClass.getClassName() + ":" + mg.getName() 
             + " " + "%s:%s";
         this.pattern = pattern;
-        this.filePrefix = filePrefix;
+        this.peers = new ArrayList<String>();
     }
 
-    public void start() {
+    public List<String> start() {
         if (mg.isAbstract() || mg.isNative())
-            return;
+            return null;
         for (InstructionHandle ih = mg.getInstructionList().getStart(); 
                 ih != null; ih = ih.getNext()) {
             Instruction i = ih.getInstruction();
@@ -77,6 +80,8 @@ public class MethodVisitor extends EmptyVisitor {
             if (!visitInstruction(i))
                 i.accept(this);
         }
+        
+        return peers;
     }
 
     private boolean visitInstruction(Instruction i) {
@@ -91,8 +96,7 @@ public class MethodVisitor extends EmptyVisitor {
     public void visitINVOKEVIRTUAL(INVOKEVIRTUAL i) {
     	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
-    		
-    		System.out.println(output);
+    		ClassVisitor.edges.add(output);
     	}
     }
 
@@ -101,7 +105,7 @@ public class MethodVisitor extends EmptyVisitor {
     	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
     		
-    		System.out.println(output);
+    		ClassVisitor.edges.add(output);
     	}
     }
 
@@ -109,17 +113,15 @@ public class MethodVisitor extends EmptyVisitor {
     public void visitINVOKESPECIAL(INVOKESPECIAL i) {
     	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){ 		
-    		System.out.println(output);
+    		ClassVisitor.edges.add(output);
     	}
     }
 
     @Override
     public void visitINVOKESTATIC(INVOKESTATIC i) {
-    	//.replaceAll("[$\\d]+", "");
     	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
-    		
-    		System.out.println(output);
+    		ClassVisitor.edges.add(output);
     	}
     }
 }

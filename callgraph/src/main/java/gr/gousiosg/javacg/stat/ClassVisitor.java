@@ -28,6 +28,9 @@
 
 package gr.gousiosg.javacg.stat;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.apache.bcel.classfile.Constant;
 import org.apache.bcel.classfile.ConstantPool;
 import org.apache.bcel.classfile.EmptyVisitor;
@@ -45,14 +48,14 @@ public class ClassVisitor extends EmptyVisitor {
     private JavaClass clazz;
     private ConstantPoolGen constants;
     private String classReferenceFormat;
-    private String filePrefix;
     private String pattern;
-    public ClassVisitor(JavaClass jc,String pattern, String filePrefix) {
+    public static Set<String> edges = new HashSet<String>();
+    
+    public ClassVisitor(JavaClass jc,String pattern) {
         clazz = jc;
         constants = new ConstantPoolGen(clazz.getConstantPool());
         //clazz.getClassName call %s
         classReferenceFormat = clazz.getClassName() + " %s";
-        this.filePrefix = filePrefix;
         this.pattern = pattern;
     }
 
@@ -75,7 +78,7 @@ public class ClassVisitor extends EmptyVisitor {
                 if(referencedClass.contains(pattern)){
                 	String output = String.format(classReferenceFormat,
                 			referencedClass).replaceAll("[$\\d]+", "");
-                	System.out.println(output);
+                	ClassVisitor.edges.add(output);
                 	
                 }
             }
@@ -84,7 +87,7 @@ public class ClassVisitor extends EmptyVisitor {
 
     public void visitMethod(Method method) {
         MethodGen mg = new MethodGen(method, clazz.getClassName(), constants);
-        MethodVisitor visitor = new MethodVisitor(mg, clazz, this.pattern, this.filePrefix);
+        MethodVisitor visitor = new MethodVisitor(mg, clazz, this.pattern);
         visitor.start(); 
     }
 
