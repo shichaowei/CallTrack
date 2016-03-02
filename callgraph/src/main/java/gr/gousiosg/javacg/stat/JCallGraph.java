@@ -30,43 +30,31 @@ package gr.gousiosg.javacg.stat;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import java.util.regex.Pattern;
 
 import org.apache.bcel.classfile.ClassFormatException;
 import org.apache.bcel.classfile.ClassParser;
 
-import gr.gousiosg.javacg.utils.Utils;
+import y.view.Graph2D;
+import y.view.Graph2DView;
 
-/**
- * Constructs a callgraph out of a JAR archive. Can combine multiple archives
- * into a single call graph.
- * 
- * @author Georgios Gousios <gousiosg@gmail.com>
- * 
- */
+
+
 public class JCallGraph {
 
-	private Map<Node, List<Node>> graph = new HashMap<Node, List<Node>>();
+	
 	private String jarName;
 	private String pattern;
+	  Graph2DView view;
+	  Graph2D graph;
 
 	public JCallGraph(String jarName, String pattern) {
 		this.jarName = jarName;
 		this.pattern = pattern;
-		try {
-			graph.put(new Node("id.sentinel", "Start Node"), new ArrayList<Node>());
-		} catch (InvalidNodeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 
 //	public static void main(String[] args) {
@@ -167,61 +155,24 @@ public class JCallGraph {
 	}
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		JCallGraph cg = new JCallGraph(args[0], args[1]);
 		cg.prepare();
 		for(String line : ClassVisitor.edges){
-			System.out.println(line);
+			if(Pattern.compile("([a-z][a-z_0-9]*\\.)*[A-Z_]($[A-Z_]|[\\w_])*:[\\w_]* ([a-z][a-z_0-9]*\\.)*[A-Z_]($[A-Z_]|[\\w_])*:[\\w_]*").matcher(line).find()){
+				System.out.println(line + "[method-to-method]");
+				String[] nodesDeVided = line.split(" ");				
+				
+			}else{
+				System.out.println(line + "[class-to-class]");
+			}
 		}
 		
 	}
 
-	public Map<Node, List<Node>> getGraphRoot(String jar, String pattern) {
-		return this.graph;
+	
 
-	}
-
-	class Node {
-		private String id, label;
-
-		public Node(String id, String label) throws InvalidNodeException {
-			setId(id);
-			setLabel(label);
-		}
-
-		public boolean equals(Object o) {
-			if (!(o instanceof Node))
-				return false;
-
-			Node n = (Node) o;
-			return this.id.equals(n.getId());
-		}
-
-		public String getId() {
-			return id;
-		}
-
-		public void setId(String id) throws InvalidNodeException {
-			if (id == null || "".equals(id.trim()))
-				throw new InvalidNodeException("ID cannot be empty.");
-			this.id = id;
-		}
-
-		public String getLabel() {
-			return label;
-		}
-
-		public void setLabel(String label) throws InvalidNodeException {
-			if (label == null || "".equals(label.trim()))
-				throw new InvalidNodeException("Label cannot be empty.");
-			this.label = label;
-		}
-
-	}
-
-	class InvalidNodeException extends Exception {
-		public InvalidNodeException(String msg) {
-			super(msg);
-		}
-	}
+	
+	
+	
 }
