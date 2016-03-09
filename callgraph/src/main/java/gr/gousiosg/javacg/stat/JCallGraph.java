@@ -30,7 +30,12 @@ package gr.gousiosg.javacg.stat;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.regex.Pattern;
@@ -38,6 +43,9 @@ import java.util.regex.Pattern;
 import org.apache.bcel.classfile.ClassFormatException;
 import org.apache.bcel.classfile.ClassParser;
 
+import gr.gousiosg.javacg.model.EdgeDTO;
+import gr.gousiosg.javacg.utils.Utils;
+import y.base.Node;
 import y.view.Graph2D;
 import y.view.Graph2DView;
 
@@ -45,13 +53,16 @@ public class JCallGraph {
 
 	private String jarName;
 	private String pattern;
-	Graph2DView view;
-	Graph2D graph;
+	// private Graph2DView view;
+	private Graph2D graphClasses;
+
+	private Map<String, List<EdgeDTO>> graphMapClasses = new HashMap<String, List<EdgeDTO>>();
+	private Map<String, List<EdgeDTO>> graphMapMethods = new HashMap<String, List<EdgeDTO>>();
 
 	public JCallGraph(String jarName, String pattern) {
 		this.jarName = jarName;
 		this.pattern = pattern;
-
+		graphClasses = new Graph2D();
 	}
 
 	// public static void main(String[] args) {
@@ -152,21 +163,85 @@ public class JCallGraph {
 
 	}
 
-	public static void main(String[] args) {
-		JCallGraph cg = new JCallGraph(args[0], args[1]);
-		cg.prepare();
+	public void processInput() {
 		for (String line : ClassVisitor.edges) {
-			if (Pattern
-					.compile(
-							"([a-z][a-z_0-9]*\\.)*[A-Z_]($[A-Z_]|[\\w_])*:[\\w_]* ([a-z][a-z_0-9]*\\.)*[A-Z_]($[A-Z_]|[\\w_])*:[\\w_]*")
-					.matcher(line).find()) {
+			String[] nodesDeVided = line.split(" ");
+
+			if (nodesDeVided[0].contains(":") && nodesDeVided[1].contains(":")) {
 				System.out.println(line + "[method-to-method]");
-				String[] nodesDeVided = line.split(" ");
+				String fromNode = nodesDeVided[1];
+				String toNode = nodesDeVided[0];
+
+				if (!graphMapMethods.containsKey(fromNode)) {
+					EdgeDTO edge = new EdgeDTO(fromNode, toNode);
+					List<EdgeDTO> list = new ArrayList<EdgeDTO>();
+					list.add(edge);
+					graphMapMethods.put(fromNode, list);
+				} else {
+					EdgeDTO edge = new EdgeDTO(fromNode, toNode);
+					graphMapMethods.get(fromNode).add(edge);
+				}
+
+				if (!graphMapMethods.containsKey(toNode)) {
+					EdgeDTO edge = new EdgeDTO(fromNode, toNode);
+					List<EdgeDTO> list = new ArrayList<EdgeDTO>();
+					graphMapMethods.put(fromNode, list);
+				}
 
 			} else {
 				System.out.println(line + "[class-to-class]");
+
+				String fromNode = nodesDeVided[1];
+				String toNode = nodesDeVided[0];
+
+				if (!graphMapClasses.containsKey(fromNode)) {
+					EdgeDTO edge = new EdgeDTO(fromNode, toNode);
+					List<EdgeDTO> list = new ArrayList<EdgeDTO>();
+					list.add(edge);
+					graphMapClasses.put(fromNode, list);
+				} else {
+					EdgeDTO edge = new EdgeDTO(fromNode, toNode);
+					graphMapClasses.get(fromNode).add(edge);
+				}
+
+				if (!graphMapClasses.containsKey(toNode)) {
+					EdgeDTO edge = new EdgeDTO(fromNode, toNode);
+					List<EdgeDTO> list = new ArrayList<EdgeDTO>();
+					graphMapClasses.put(fromNode, list);
+				}
+
+				// Node n1 = this.graph.createNode(100, 100, nodesDeVided[1] ==
+				// null? "Null Node" : nodesDeVided[1]);
+				// Node n2 = this.graph.createNode(100, 100, nodesDeVided[1] ==
+				// null? "Null Node" : nodesDeVided[1]);
+
+				// graph.createEdge(n1,n2);
+
 			}
 		}
+		String pathTestFileClasses = "C:\\Users\\walter\\workspace\\callgraph\\Exemplo_grafo-classes.tgf";
+		String pathTestFileMethods = "C:\\Users\\walter\\workspace\\callgraph\\Exemplo_grafo-methods.tgf";
+
+		Utils.deleteFiles(pathTestFileClasses);
+		Utils.deleteFiles(pathTestFileMethods);
+
+		Utils.writeFile(pathTestFileClasses, graphMapClasses);
+		Utils.writeFile(pathTestFileMethods, graphMapMethods);
+
+	}
+
+	public Graph2D getGraph() {
+		return this.graphClasses;
+	}
+
+	public Set<String> getEdgesSet() {
+		return ClassVisitor.edges;
+	}
+
+	public static void main(String[] args) {
+		JCallGraph cg = new JCallGraph(args[0], args[1]);
+		cg.prepare();
+		cg.processInput();
 
 	}
 
