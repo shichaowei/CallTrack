@@ -35,6 +35,7 @@ import org.apache.bcel.classfile.JavaClass;
 import org.apache.bcel.generic.ConstantPoolGen;
 import org.apache.bcel.generic.ConstantPushInstruction;
 import org.apache.bcel.generic.EmptyVisitor;
+import org.apache.bcel.generic.FieldOrMethod;
 import org.apache.bcel.generic.INVOKEINTERFACE;
 import org.apache.bcel.generic.INVOKESPECIAL;
 import org.apache.bcel.generic.INVOKESTATIC;
@@ -43,6 +44,7 @@ import org.apache.bcel.generic.Instruction;
 import org.apache.bcel.generic.InstructionConstants;
 import org.apache.bcel.generic.InstructionHandle;
 import org.apache.bcel.generic.MethodGen;
+import org.apache.bcel.generic.NEW;
 import org.apache.bcel.generic.ReturnInstruction;
 
 /**
@@ -88,7 +90,7 @@ public class MethodVisitor extends EmptyVisitor {
         short opcode = i.getOpcode();
 
         return ((InstructionConstants.INSTRUCTIONS[opcode] != null)
-                && !(i instanceof ConstantPushInstruction) 
+                //&& !(i instanceof ConstantPushInstruction) 
                 && !(i instanceof ReturnInstruction));
     }
 
@@ -124,4 +126,6 @@ public class MethodVisitor extends EmptyVisitor {
     		ClassVisitor.edges.add(output);
     	}
     }
+    
+
 }

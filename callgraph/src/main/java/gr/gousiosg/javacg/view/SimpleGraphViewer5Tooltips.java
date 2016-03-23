@@ -58,9 +58,12 @@ import y.base.NodeCursor;
 import y.io.IOHandler;
 import y.io.TGFIOHandler;
 import y.layout.organic.OrganicLayouter;
+import y.layout.tree.TreeComponentLayouter;
+import y.layout.tree.TreeLayouter;
 import y.module.io.TGFInput;
 import y.util.DataProviderAdapter;
 import y.view.Arrow;
+import y.view.EditMode;
 import y.view.Graph2D;
 import y.view.Graph2DEvent;
 import y.view.Graph2DListener;
@@ -104,7 +107,7 @@ public class SimpleGraphViewer5Tooltips {
     // Add a mouse wheel listener to zoom in and out of the view.
     new Graph2DViewMouseWheelZoomListener().addToCanvas(view);
     // Add a view mode for convenient mouse navigation.
-    view.addViewMode(new MoveSelectionMode());
+    view.addViewMode(new EditMode());
    // view.addViewMode(new TooltipMode());
     return view;
   }
@@ -258,6 +261,7 @@ public class SimpleGraphViewer5Tooltips {
   
   
   public static void main(String[] args) {
+	  System.out.println(8 | 7);
     SimpleGraphViewer5Tooltips sgv = 
       new SimpleGraphViewer5Tooltips(new Dimension(400, 300), "SimpleGraphViewer");
     sgv.createGraphs();
@@ -294,7 +298,6 @@ public class SimpleGraphViewer5Tooltips {
     view.setAutoscrolls(true);
     
     view.applyLayout(new OrganicLayouter());
-    
     //view.addViewMode();
     sgv.show();
     

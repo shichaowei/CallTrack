@@ -41,5 +41,8 @@ public class Utils {
 	
 	public static void deleteFiles(String filePath){
 		
+		File f = new File(filePath);
+		f.delete();
+		
 	}
 }

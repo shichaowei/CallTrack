@@ -23,5 +23,9 @@ public class EdgeDTO{
 	public void setToID(String toID) {
 		this.toID = toID;
 	}
+
+	public boolean haveNode(String nodeId){
+		return this.fromID.equals(nodeId) || this.toID.equals(nodeId);
+	}
 	
 }

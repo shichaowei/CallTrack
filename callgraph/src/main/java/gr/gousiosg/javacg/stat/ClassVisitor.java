@@ -71,13 +71,14 @@ public class ClassVisitor extends EmptyVisitor {
             Constant constant = constantPool.getConstant(i);
             if (constant == null)
                 continue;
-            if (constant.getTag() == 7) {
+            if (constant.getTag() == 7 ) {
                 String referencedClass = 
                     constantPool.constantToString(constant);
                 
                 if(referencedClass.contains(pattern)){
                 	String output = String.format(classReferenceFormat,
                 			referencedClass).replaceAll("[$\\d]+", "");
+                	output = output.replaceAll("\\[L", "");
                 	ClassVisitor.edges.add(output);
                 	
                 }

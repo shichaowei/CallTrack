@@ -168,22 +168,25 @@ public class JCallGraph {
 			String[] nodesDeVided = line.split(" ");
 
 			if (nodesDeVided[0].contains(":") && nodesDeVided[1].contains(":")) {
-				System.out.println(line + "[method-to-method]");
+				// System.out.println(line + "[method-to-method]");
 				String fromNode = nodesDeVided[1];
 				String toNode = nodesDeVided[0];
 
 				if (!graphMapMethods.containsKey(fromNode)) {
-					EdgeDTO edge = new EdgeDTO(fromNode, toNode);
 					List<EdgeDTO> list = new ArrayList<EdgeDTO>();
-					list.add(edge);
+					if (!fromNode.equals(toNode)) {
+						EdgeDTO edge = new EdgeDTO(fromNode, toNode);
+						list.add(edge);
+					}
 					graphMapMethods.put(fromNode, list);
 				} else {
-					EdgeDTO edge = new EdgeDTO(fromNode, toNode);
-					graphMapMethods.get(fromNode).add(edge);
+					if (!fromNode.equals(toNode)) {
+						EdgeDTO edge = new EdgeDTO(fromNode, toNode);
+						graphMapMethods.get(fromNode).add(edge);
+					}
 				}
 
 				if (!graphMapMethods.containsKey(toNode)) {
-					EdgeDTO edge = new EdgeDTO(fromNode, toNode);
 					List<EdgeDTO> list = new ArrayList<EdgeDTO>();
 					graphMapMethods.put(fromNode, list);
 				}
@@ -197,15 +200,18 @@ public class JCallGraph {
 				if (!graphMapClasses.containsKey(fromNode)) {
 					EdgeDTO edge = new EdgeDTO(fromNode, toNode);
 					List<EdgeDTO> list = new ArrayList<EdgeDTO>();
-					list.add(edge);
-					graphMapClasses.put(fromNode, list);
+					if (!fromNode.equals(toNode)) {
+						list.add(edge);
+						graphMapClasses.put(fromNode, list);
+					}
 				} else {
-					EdgeDTO edge = new EdgeDTO(fromNode, toNode);
-					graphMapClasses.get(fromNode).add(edge);
+					if (!fromNode.equals(toNode)) {
+						EdgeDTO edge = new EdgeDTO(fromNode, toNode);
+						graphMapClasses.get(fromNode).add(edge);
+					}
 				}
 
 				if (!graphMapClasses.containsKey(toNode)) {
-					EdgeDTO edge = new EdgeDTO(fromNode, toNode);
 					List<EdgeDTO> list = new ArrayList<EdgeDTO>();
 					graphMapClasses.put(fromNode, list);
 				}
