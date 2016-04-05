@@ -61,9 +61,8 @@ public class MethodVisitor extends EmptyVisitor {
     private String format;
     private String pattern;
     private List<String> peers;
-    private ClassVisitor classVisitor;
     
-    public MethodVisitor(MethodGen m, JavaClass jc,String pattern, ClassVisitor classVisitor) {
+    public MethodVisitor(MethodGen m, JavaClass jc,String pattern) {
         visitedClass = jc;
         mg = m;
         cp = mg.getConstantPool();
@@ -71,7 +70,6 @@ public class MethodVisitor extends EmptyVisitor {
             + " " + "%s:%s";
         this.pattern = pattern;
         this.peers = new ArrayList<String>();
-        this.classVisitor = classVisitor;
     }
 
     public List<String> start() {
@@ -100,7 +98,7 @@ public class MethodVisitor extends EmptyVisitor {
     public void visitINVOKEVIRTUAL(INVOKEVIRTUAL i) {
     	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
-    		classVisitor.getEdges().add(output);
+    		ClassVisitor.edges.add(output);
     	}
     }
 
@@ -109,7 +107,7 @@ public class MethodVisitor extends EmptyVisitor {
     	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
     		
-    		classVisitor.getEdges().add(output);
+    		ClassVisitor.edges.add(output);
     	}
     }
 
@@ -117,7 +115,7 @@ public class MethodVisitor extends EmptyVisitor {
     public void visitINVOKESPECIAL(INVOKESPECIAL i) {
     	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){ 		
-    		classVisitor.getEdges().add(output);
+    		ClassVisitor.edges.add(output);
     	}
     }
 
@@ -125,7 +123,7 @@ public class MethodVisitor extends EmptyVisitor {
     public void visitINVOKESTATIC(INVOKESTATIC i) {
     	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
-    		classVisitor.getEdges().add(output);
+    		ClassVisitor.edges.add(output);
     	}
     }
     

@@ -1,12 +1,13 @@
 package gr.gousiosg.javacg.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import gr.gousiosg.javacg.model.Edge;
 import gr.gousiosg.javacg.model.Node;
 
 public class Graph {
-	private List<Node> nodes;
-	private List<Edge> edges;
+	private List<Node> nodes = new ArrayList<Node>();
+	private List<Edge> edges = new ArrayList<Edge>();
 
 	public List<Node> getNodes() {
 		return nodes;

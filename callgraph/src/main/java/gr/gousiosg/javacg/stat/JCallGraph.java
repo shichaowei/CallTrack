@@ -30,7 +30,6 @@ package gr.gousiosg.javacg.stat;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +37,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import java.util.regex.Pattern;
 
 import org.apache.bcel.classfile.ClassFormatException;
 import org.apache.bcel.classfile.ClassParser;
@@ -57,9 +55,8 @@ public class JCallGraph {
 	private ClassVisitor visitor;
 	private Graph graphOfClass = new Graph();
 	private Graph graphOfMethods = new Graph();
+	private Utils util = new Utils();
 
-	private Map<String, List<EdgeDTO>> graphMapClasses = new HashMap<String, List<EdgeDTO>>();
-	private Map<String, List<EdgeDTO>> graphMapMethods = new HashMap<String, List<EdgeDTO>>();
 
 	public JCallGraph(String jarName, String pattern) {
 		this.jarName = jarName;
@@ -113,7 +110,8 @@ public class JCallGraph {
 
 	public void processInput() {
 		int count = 0;
-		for (String line : this.visitor.getEdges()) {
+		System.out.println(ClassVisitor.edges.size());
+		for (String line : ClassVisitor.edges) {
 			String[] nodesDeVided = line.split(" ");
 
 			if (nodesDeVided[0].contains(":") && nodesDeVided[1].contains(":")) {
@@ -141,7 +139,7 @@ public class JCallGraph {
 					graphOfMethods.putNode(toNode);
 				}
 				
-				if(!graphOfMethods.containsEdge(edge)){
+				if(!graphOfMethods.containsEdge(edge) && !edge.isSelfLoop()){
 					graphOfMethods.putEdge(edge);
 				}
 				
@@ -171,26 +169,24 @@ public class JCallGraph {
 					graphOfClass.putNode(toNode);
 				}
 				
-				if(!graphOfClass.containsEdge(edge)){
+				if(!graphOfClass.containsEdge(edge) && !edge.isSelfLoop()){
 					graphOfClass.putEdge(edge);
 				}
 
 			}
+			count++;
 		}
-		String pathTestFileClasses = "C:\\Users\\walter\\workspace\\callgraph\\Exemplo_grafo-classes.tgf";
-		String pathTestFileMethods = "C:\\Users\\walter\\workspace\\callgraph\\Exemplo_grafo-methods.tgf";
-		String pathFileAsJSON = "C:\\Users\\walter\\workspace\\callgraph\\Exemplo_grafo-methods.json";
-
-		Utils.deleteFiles(pathTestFileClasses);
-		Utils.deleteFiles(pathTestFileMethods);
-
-		Utils.writeFile(pathTestFileClasses, graphMapClasses);
-		Utils.writeFile(pathTestFileMethods, graphMapMethods);
+		
+		String pathFileAsJSON = "view\\main\\data.json";
+		util.deleteFiles(pathFileAsJSON);
+		
+		util.writeJSONFile(pathFileAsJSON, graphOfClass);
+	
 
 	}
 
 	public Set<String> getEdgesSet() {
-		return this.visitor.getEdges();
+		return ClassVisitor.edges;
 	}
 
 	public static void main(String[] args) {

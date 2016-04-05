@@ -4,6 +4,7 @@ public class Edge{
 	private String id;
 	private String from;
 	private String to;
+	private String arrows = "to";
 	
 	public String getId() {
 		return id;
@@ -39,5 +40,15 @@ public class Edge{
 		
 		return this.getFrom().equals(external.getFrom()) && this.getTo().equals(external.getTo());
 		
+	}
+	
+	public boolean isSelfLoop(){
+		return this.getFrom().equals(this.getTo());
+	}
+	public String getArrows() {
+		return arrows;
+	}
+	public void setArrows(String arrows) {
+		this.arrows = arrows;
 	}
 }

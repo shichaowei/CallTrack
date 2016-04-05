@@ -7,11 +7,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import gr.gousiosg.javacg.model.EdgeDTO;
+import gr.gousiosg.javacg.model.Graph;
 
 public class Utils {
 
-	public static void writeFile(String fileName, Map<String, List<EdgeDTO>> graphModel) {
+	public void writeFile(String fileName, Map<String, List<EdgeDTO>> graphModel) {
 		try {
 			// String filename= "MyGraph.txt";
 			String idContents = "";
@@ -40,13 +44,25 @@ public class Utils {
 		}
 	}
 	
-	public static void writeFileAsJSON(String fileName, Map<String, List<EdgeDTO>> graphModel){
-		//TODO
+	public void writeJSONFile(String fileName, Graph graph){
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json = gson.toJson(graph);
+		System.out.println(json);
 		
+		json = "data = " + json;
+		
+		try {
+			FileWriter fw = new FileWriter(fileName, true);
+			fw.write(json);
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
-	public static void deleteFiles(String filePath) {
+	public void deleteFiles(String filePath) {
 
 		File f = new File(filePath);
 		f.delete();
