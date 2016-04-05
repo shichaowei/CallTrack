@@ -43,18 +43,20 @@ import java.util.regex.Pattern;
 import org.apache.bcel.classfile.ClassFormatException;
 import org.apache.bcel.classfile.ClassParser;
 
+import gr.gousiosg.javacg.model.Edge;
 import gr.gousiosg.javacg.model.EdgeDTO;
+import gr.gousiosg.javacg.model.Graph;
+import gr.gousiosg.javacg.model.Node;
 import gr.gousiosg.javacg.utils.Utils;
-import y.base.Node;
-import y.view.Graph2D;
-import y.view.Graph2DView;
 
 public class JCallGraph {
 
 	private String jarName;
 	private String pattern;
 	// private Graph2DView view;
-	private Graph2D graphClasses;
+	private ClassVisitor visitor;
+	private Graph graphOfClass = new Graph();
+	private Graph graphOfMethods = new Graph();
 
 	private Map<String, List<EdgeDTO>> graphMapClasses = new HashMap<String, List<EdgeDTO>>();
 	private Map<String, List<EdgeDTO>> graphMapMethods = new HashMap<String, List<EdgeDTO>>();
@@ -62,63 +64,10 @@ public class JCallGraph {
 	public JCallGraph(String jarName, String pattern) {
 		this.jarName = jarName;
 		this.pattern = pattern;
-		graphClasses = new Graph2D();
+		// graphClasses = new Graph2D();
 	}
 
-	// public static void main(String[] args) {
-	// ClassParser cp;
-	// if(args.length >= 3){
-	// File f = new File(args[0]);
-	// if (!f.exists()) {
-	// System.err.println("Jar file " + args[0] + " does not exist");
-	// System.exit(-1);
-	// }
-	//
-	// JarFile jar = null;
-	// try {
-	// jar = new JarFile(f);
-	// } catch (IOException e1) {
-	// System.err.println("Error while processing jar: " + e1.getMessage());
-	// e1.printStackTrace();
-	// System.exit(-1);
-	// }
-	//
-	// Utils.deleteFiles(args[2]);
-	//
-	// Enumeration<JarEntry> entries = jar.entries();
-	// while (entries.hasMoreElements()) {
-	// JarEntry entry = entries.nextElement();
-	// if (entry.isDirectory())
-	// continue;
-	//
-	// if (!entry.getName().endsWith(".class"))
-	// continue;
-	//
-	// cp = new ClassParser(args[0],entry.getName());
-	// ClassVisitor visitor;
-	// try {
-	// visitor = new ClassVisitor(cp.parse(),args[1];
-	// visitor.start();
-	// } catch (ClassFormatException e) {
-	// System.err.println("Error while processing jar: " + e.getMessage());
-	// e.printStackTrace();
-	// } catch (IOException e) {
-	// System.err.println("Error while processing jar: " + e.getMessage());
-	// e.printStackTrace();
-	// }
-	// }
-	//
-	//
-	//
-	// }else{
-	// System.err.println("Params error. You have to execute \"java -jar
-	// projectToAnalyze.jar pattern outputFilePrefix\"");
-	// System.exit(-1);
-	//
-	// }
-	//
-	//
-	// }
+
 
 	public void prepare() {
 		ClassParser cp;
@@ -148,7 +97,6 @@ public class JCallGraph {
 				continue;
 
 			cp = new ClassParser(this.jarName, entry.getName());
-			ClassVisitor visitor;
 			try {
 				visitor = new ClassVisitor(cp.parse(), this.pattern);
 				visitor.start();
@@ -164,69 +112,74 @@ public class JCallGraph {
 	}
 
 	public void processInput() {
-		for (String line : ClassVisitor.edges) {
+		int count = 0;
+		for (String line : this.visitor.getEdges()) {
 			String[] nodesDeVided = line.split(" ");
 
 			if (nodesDeVided[0].contains(":") && nodesDeVided[1].contains(":")) {
-				// System.out.println(line + "[method-to-method]");
-				String fromNode = nodesDeVided[1];
-				String toNode = nodesDeVided[0];
+				// Generating Label and creating "from Node"
+				String fromNodeId = nodesDeVided[1];
+				String[] nodeIdSplited = fromNodeId.split("\\.");
+				String label = nodeIdSplited[nodeIdSplited.length - 1];
+				Node fromNode = new Node(fromNodeId, label);
 
-				if (!graphMapMethods.containsKey(fromNode)) {
-					List<EdgeDTO> list = new ArrayList<EdgeDTO>();
-					if (!fromNode.equals(toNode)) {
-						EdgeDTO edge = new EdgeDTO(fromNode, toNode);
-						list.add(edge);
-					}
-					graphMapMethods.put(fromNode, list);
-				} else {
-					if (!fromNode.equals(toNode)) {
-						EdgeDTO edge = new EdgeDTO(fromNode, toNode);
-						graphMapMethods.get(fromNode).add(edge);
-					}
+				// Generating Label and creating "to Node"
+				String toNodeId = nodesDeVided[0];
+				nodeIdSplited = toNodeId.split("\\.");
+				label = nodeIdSplited[nodeIdSplited.length - 1];
+				Node toNode = new Node(toNodeId, label);
+	
+				//Generating Edge
+				Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
+				
+				if (!graphOfMethods.containsNode(fromNode)) {
+					graphOfMethods.putNode(fromNode);
+
+				} 
+
+				if(!graphOfMethods.containsNode(toNode)){
+					graphOfMethods.putNode(toNode);
 				}
-
-				if (!graphMapMethods.containsKey(toNode)) {
-					List<EdgeDTO> list = new ArrayList<EdgeDTO>();
-					graphMapMethods.put(fromNode, list);
+				
+				if(!graphOfMethods.containsEdge(edge)){
+					graphOfMethods.putEdge(edge);
 				}
-
+				
+				
 			} else {
-				System.out.println(line + "[class-to-class]");
+				// Generating Label and creating "from Node"
+				String fromNodeId = nodesDeVided[1];
+				String[] nodeIdSplited = fromNodeId.split("\\.");
+				String label = nodeIdSplited[nodeIdSplited.length - 1];
+				Node fromNode = new Node(fromNodeId, label);
 
-				String fromNode = nodesDeVided[1];
-				String toNode = nodesDeVided[0];
+				// Generating Label and creating "to Node"
+				String toNodeId = nodesDeVided[0];
+				nodeIdSplited = toNodeId.split("\\.");
+				label = nodeIdSplited[nodeIdSplited.length - 1];
+				Node toNode = new Node(toNodeId, label);
+	
+				//Generating Edge
+				Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
 
-				if (!graphMapClasses.containsKey(fromNode)) {
-					EdgeDTO edge = new EdgeDTO(fromNode, toNode);
-					List<EdgeDTO> list = new ArrayList<EdgeDTO>();
-					if (!fromNode.equals(toNode)) {
-						list.add(edge);
-						graphMapClasses.put(fromNode, list);
-					}
-				} else {
-					if (!fromNode.equals(toNode)) {
-						EdgeDTO edge = new EdgeDTO(fromNode, toNode);
-						graphMapClasses.get(fromNode).add(edge);
-					}
+				if (!graphOfClass.containsNode(fromNode)) {
+					graphOfClass.putNode(fromNode);
+
+				} 
+
+				if(!graphOfClass.containsNode(toNode)){
+					graphOfClass.putNode(toNode);
 				}
-
-				if (!graphMapClasses.containsKey(toNode)) {
-					List<EdgeDTO> list = new ArrayList<EdgeDTO>();
-					graphMapClasses.put(fromNode, list);
+				
+				if(!graphOfClass.containsEdge(edge)){
+					graphOfClass.putEdge(edge);
 				}
-
-				// Node n1 = this.graph.createNode(100, 100, nodesDeVided[1] ==
-				// null? "Null Node" : nodesDeVided[1]);
-				// Node n2 = this.graph.createNode(100, 100, nodesDeVided[1] ==
-				// null? "Null Node" : nodesDeVided[1]);
-
-				// graph.createEdge(n1,n2);
 
 			}
 		}
 		String pathTestFileClasses = "C:\\Users\\walter\\workspace\\callgraph\\Exemplo_grafo-classes.tgf";
 		String pathTestFileMethods = "C:\\Users\\walter\\workspace\\callgraph\\Exemplo_grafo-methods.tgf";
+		String pathFileAsJSON = "C:\\Users\\walter\\workspace\\callgraph\\Exemplo_grafo-methods.json";
 
 		Utils.deleteFiles(pathTestFileClasses);
 		Utils.deleteFiles(pathTestFileMethods);
@@ -236,12 +189,8 @@ public class JCallGraph {
 
 	}
 
-	public Graph2D getGraph() {
-		return this.graphClasses;
-	}
-
 	public Set<String> getEdgesSet() {
-		return ClassVisitor.edges;
+		return this.visitor.getEdges();
 	}
 
 	public static void main(String[] args) {

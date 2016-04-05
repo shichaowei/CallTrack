@@ -49,7 +49,7 @@ public class ClassVisitor extends EmptyVisitor {
     private ConstantPoolGen constants;
     private String classReferenceFormat;
     private String pattern;
-    public static Set<String> edges = new HashSet<String>();
+    public Set<String> edges = new HashSet<String>();
     
     public ClassVisitor(JavaClass jc,String pattern) {
         clazz = jc;
@@ -57,6 +57,7 @@ public class ClassVisitor extends EmptyVisitor {
         //clazz.getClassName call %s
         classReferenceFormat = clazz.getClassName() + " %s";
         this.pattern = pattern;
+        
     }
 
     public void visitJavaClass(JavaClass jc) {
@@ -79,7 +80,7 @@ public class ClassVisitor extends EmptyVisitor {
                 	String output = String.format(classReferenceFormat,
                 			referencedClass).replaceAll("[$\\d]+", "");
                 	output = output.replaceAll("\\[L", "");
-                	ClassVisitor.edges.add(output);
+                	edges.add(output);
                 	
                 }
             }
@@ -88,11 +89,19 @@ public class ClassVisitor extends EmptyVisitor {
 
     public void visitMethod(Method method) {
         MethodGen mg = new MethodGen(method, clazz.getClassName(), constants);
-        MethodVisitor visitor = new MethodVisitor(mg, clazz, this.pattern);
+        MethodVisitor visitor = new MethodVisitor(mg, clazz, this.pattern, this);
         visitor.start(); 
     }
 
     public void start() {
         visitJavaClass(clazz);
     }
+
+	public Set<String> getEdges() {
+		return edges;
+	}
+
+	public void setEdges(Set<String> edges) {
+		this.edges = edges;
+	}
 }
