@@ -121,14 +121,68 @@
 
     network.on("selectNode", function (params) {
         console.log('selectNode Event:', params);
-        var connectedNodes = network.getConnectedNodes(params.nodes[0]) 
-        console.log(connectedNodes);
+        //var connectedEdges = network.getConnectedEdges(params.nodes[0])
 
+        function Selections() {
+            this.nodes = [];
+            this.edge = [];
+        }; 
+
+        var  sel = new Selections();
+        console.log("before recursivePaint");
+        recursivePaint(params.nodes[0], sel);
+
+        
+        network.setSelection(selections, {highlightEdges: true});
+        console.log("after paint");
+        //network.selectNodes(startNodesArray);
+
+       /* 
+        console.log(connectedNodes);
+        network.selectNodes(params.nodes);
         if(connectedNodes != null || connectedNodes.length > 0){
-            network.selectNodes(connectedNodes, true);
-        } 
+            network.selectNodes(connectedNodes, false);
+        } */
 
     });
+    //TODO fix this fucking recursion!!!¬¬
+    function recursivePaint(nodeStart, selections){
+        if(contains(nodeStart,selections.nodes)){
+            console.log(nodeStart + " is in" + selections.nodes)
+            return;
+        }
+
+        //Add current Node to selection
+        selections.nodes.push(nodeStart);
+
+        //get all edges for this node
+        var connectedEdges = network.getConnectedEdges(nodeStart);
+        for(i=0; i < connectedEdges.length; i++){
+
+            //get toNode of current edge
+            var toNode = network.getConnectedNodes(connectedEdges[i])[1];
+
+            //if toNode is different of currentNode, add egde and call to next Node;
+             if(toNode != nodeStart && !contains(toNode, selections.nodes)){
+                console.log("Going to " + toNode);
+                selections.edges = connectedEdges[i];
+                recursivePaint(toNode,selections);
+             }
+
+        }
+
+    }
+
+    function contains(key, array){
+
+        for(i=0; i < array.length; i++){
+            if(key == array[i]){
+
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 </script>

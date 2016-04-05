@@ -1,5297 +1,1763 @@
 data = {
   "nodes": [
     {
-      "id": "extractor.view.Main:changeToExtractPanel",
-      "label": "Main:changeToExtractPanel"
-    },
-    {
-      "id": "extractor.view.Main:doLogin",
-      "label": "Main:doLogin"
-    },
-    {
-      "id": "extractor.utils.Constants:readConfigurationFile",
-      "label": "Constants:readConfigurationFile"
-    },
-    {
-      "id": "extractor.utils.Constants:init",
-      "label": "Constants:init"
-    },
-    {
-      "id": "extractor.core.KeysHashGenerator:checkKeyLoadingIsOK",
-      "label": "KeysHashGenerator:checkKeyLoadingIsOK"
-    },
-    {
-      "id": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey",
-      "label": "KeysHashGenerator:generateHashForSSALoadKey"
-    },
-    {
-      "id": "extractor.view.Main:setNoteKeyListener",
-      "label": "Main:setNoteKeyListener"
-    },
-    {
-      "id": "extractor.view.Main:initActions",
-      "label": "Main:initActions"
-    },
-    {
-      "id": "extractor.core.Extractor:\u003cinit\u003e",
-      "label": "Extractor:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.core.PathExtractor:\u003cinit\u003e",
-      "label": "PathExtractor:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.utils.TestType:getValueByName",
-      "label": "TestType:getValueByName"
-    },
-    {
-      "id": "extractor.view.Main:isNoteRequired",
-      "label": "Main:isNoteRequired"
-    },
-    {
-      "id": "extractor.utils.FileIO:getAllLines",
-      "label": "FileIO:getAllLines"
-    },
-    {
-      "id": "extractor.utils.FileIO:getSpecifications",
-      "label": "FileIO:getSpecifications"
-    },
-    {
-      "id": "extractor.controller.ConsumerListener:allExtractionsSent",
-      "label": "ConsumerListener:allExtractionsSent"
-    },
-    {
-      "id": "extractor.core.MultipleExtractionSender:run",
-      "label": "MultipleExtractionSender:run"
-    },
-    {
-      "id": "extractor.view.Main:jButtonConfigMouseClicked",
-      "label": "Main:jButtonConfigMouseClicked"
-    },
-    {
-      "id": "extractor.view.Main:access",
-      "label": "Main:access"
-    },
-    {
-      "id": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "label": "InternalException:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.in.Messages:readMessagesFile",
-      "label": "Messages:readMessagesFile"
-    },
-    {
-      "id": "extractor.view.Main:\u003cinit\u003e",
-      "label": "Main:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.view.Main:setButtonExtractActionListener",
-      "label": "Main:setButtonExtractActionListener"
-    },
-    {
-      "id": "extractor.model.Extraction:getProperties",
-      "label": "Extraction:getProperties"
-    },
-    {
-      "id": "extractor.core.Extractor:extract",
-      "label": "Extractor:extract"
-    },
-    {
-      "id": "extractor.view.PlaceholderPasswordField:getInsets",
-      "label": "PlaceholderPasswordField:getInsets"
-    },
-    {
-      "id": "extractor.view.PlaceholderPasswordField:paintComponent",
-      "label": "PlaceholderPasswordField:paintComponent"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:setText",
-      "label": "PlaceholderTextField:setText"
-    },
-    {
-      "id": "extractor.view.Main:doLogout",
-      "label": "Main:doLogout"
-    },
-    {
-      "id": "extractor.model.Property:setValue",
-      "label": "Property:setValue"
-    },
-    {
-      "id": "extractor.model.Property:\u003cinit\u003e",
-      "label": "Property:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:sendOfflineFiles",
-      "label": "ExtractionController:sendOfflineFiles"
-    },
-    {
-      "id": "extractor.core.AutoCollectExtractor:run",
-      "label": "AutoCollectExtractor:run"
-    },
-    {
-      "id": "extractor.view.Config:access",
-      "label": "Config:access"
-    },
-    {
-      "id": "extractor.view.Config:shouldYieldFocus",
-      "label": "Config:shouldYieldFocus"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:extractByPath",
-      "label": "ExtractionController:extractByPath"
-    },
-    {
-      "id": "extractor.view.Main:extractByPath",
-      "label": "Main:extractByPath"
-    },
-    {
-      "id": "extractor.view.Config:\u003cinit\u003e",
-      "label": "Config:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.view.Config:getInstance",
-      "label": "Config:getInstance"
-    },
-    {
-      "id": "extractor.utils.CalendarUtils:realYear",
-      "label": "CalendarUtils:realYear"
-    },
-    {
-      "id": "extractor.specification.RegexReader:extractValues",
-      "label": "RegexReader:extractValues"
-    },
-    {
-      "id": "extractor.controller.CommunicationController:ping",
-      "label": "CommunicationController:ping"
-    },
-    {
-      "id": "extractor.utils.ServerPoll:run",
-      "label": "ServerPoll:run"
-    },
-    {
-      "id": "extractor.view.Main:setDefaultCloseOperation",
-      "label": "Main:setDefaultCloseOperation"
-    },
-    {
-      "id": "extractor.view.Main:initGUI",
-      "label": "Main:initGUI"
-    },
-    {
-      "id": "extractor.specification.RegexReader:setToCalendar",
-      "label": "RegexReader:setToCalendar"
-    },
-    {
-      "id": "extractor.core.KeysHashGenerator:joinCollection",
-      "label": "KeysHashGenerator:joinCollection"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:validatePathLLT",
-      "label": "ConfigValidator:validatePathLLT"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:getInvalidConfigurations",
-      "label": "ConfigValidator:getInvalidConfigurations"
-    },
-    {
-      "id": "extractor.view.Config:dispose",
-      "label": "Config:dispose"
-    },
-    {
-      "id": "extractor.view.Config:saveConfigs",
-      "label": "Config:saveConfigs"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:validateServerLocation",
-      "label": "ConfigValidator:validateServerLocation"
-    },
-    {
-      "id": "extractor.view.Main:setPasswordInputFocusListener",
-      "label": "Main:setPasswordInputFocusListener"
-    },
-    {
-      "id": "extractor.core.KeysHashGenerator:\u003cinit\u003e",
-      "label": "KeysHashGenerator:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.view.Config:addWindowListener",
-      "label": "Config:addWindowListener"
-    },
-    {
-      "id": "extractor.view.Config:initGUI",
-      "label": "Config:initGUI"
-    },
-    {
-      "id": "extractor.model.Property:setType",
-      "label": "Property:setType"
-    },
-    {
-      "id": "extractor.core.RuntimeManager:\u003cinit\u003e",
-      "label": "RuntimeManager:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.filedecryptor.DecryptorManager:doBoosterDecrypt",
-      "label": "DecryptorManager:doBoosterDecrypt"
-    },
-    {
-      "id": "extractor.core.AutoCollectExtractor:\u003cinit\u003e",
-      "label": "AutoCollectExtractor:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:extractByAutoCollect",
-      "label": "ExtractionController:extractByAutoCollect"
-    },
-    {
-      "id": "extractor.view.Main:setSerialNumberInputFocusListener",
-      "label": "Main:setSerialNumberInputFocusListener"
-    },
-    {
-      "id": "extractor.controller.OfflineService:countOfflineExtractions",
-      "label": "OfflineService:countOfflineExtractions"
-    },
-    {
-      "id": "extractor.view.PlaceholderPasswordField:setBorder",
-      "label": "PlaceholderPasswordField:setBorder"
-    },
-    {
-      "id": "extractor.utils.TestType:\u003cinit\u003e",
-      "label": "TestType:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.utils.TestType:\u003cclinit\u003e",
-      "label": "TestType:\u003cclinit\u003e"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:getOfflineService",
-      "label": "ExtractionController:getOfflineService"
-    },
-    {
-      "id": "extractor.core.ExtractionQueueResourceAccessible[]:clone",
-      "label": "ExtractionQueueResourceAccessible[]:clone"
-    },
-    {
-      "id": "extractor.core.ExtractionQueueResourceAccessible:values",
-      "label": "ExtractionQueueResourceAccessible:values"
-    },
-    {
-      "id": "extractor.view.Main:incrementNumberOfSuccesfulSents",
-      "label": "Main:incrementNumberOfSuccesfulSents"
-    },
-    {
-      "id": "extractor.view.Main:focusGained",
-      "label": "Main:focusGained"
-    },
-    {
-      "id": "extractor.view.Main:keyPressed",
-      "label": "Main:keyPressed"
-    },
-    {
-      "id": "extractor.utils.TestType:getName",
-      "label": "TestType:getName"
-    },
-    {
-      "id": "extractor.view.Main:itemStateChanged",
-      "label": "Main:itemStateChanged"
-    },
-    {
-      "id": "extractor.core.RuntimeManager:verifyExecution",
-      "label": "RuntimeManager:verifyExecution"
-    },
-    {
-      "id": "extractor.core.LLTExtractor:specificExtraction",
-      "label": "LLTExtractor:specificExtraction"
-    },
-    {
-      "id": "extractor.view.Main:clearMessageLabel",
-      "label": "Main:clearMessageLabel"
-    },
-    {
-      "id": "extractor.view.Main:setTitle",
-      "label": "Main:setTitle"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:addFocusListener",
-      "label": "PlaceholderTextField:addFocusListener"
-    },
-    {
-      "id": "extractor.view.Main:setNoteInputFocusListner",
-      "label": "Main:setNoteInputFocusListner"
-    },
-    {
-      "id": "extractor.controller.OfflineExtractionSender:\u003cinit\u003e",
-      "label": "OfflineExtractionSender:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.controller.OfflineService:\u003cinit\u003e",
-      "label": "OfflineService:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.view.Config:verify",
-      "label": "Config:verify"
-    },
-    {
-      "id": "extractor.utils.Constants:createNewTempFolder",
-      "label": "Constants:createNewTempFolder"
-    },
-    {
-      "id": "extractor.view.PlaceholderPasswordField:setPlaceholder",
-      "label": "PlaceholderPasswordField:setPlaceholder"
-    },
-    {
-      "id": "extractor.model.Extraction:getSerialNumber",
-      "label": "Extraction:getSerialNumber"
-    },
-    {
-      "id": "extractor.controller.OfflineService:saveExtractionOffline",
-      "label": "OfflineService:saveExtractionOffline"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:setBorder",
-      "label": "PlaceholderTextField:setBorder"
-    },
-    {
-      "id": "extractor.in.Messages:init",
-      "label": "Messages:init"
-    },
-    {
-      "id": "extractor.core.KeysHashGenerator:selectFileToExtract",
-      "label": "KeysHashGenerator:selectFileToExtract"
-    },
-    {
-      "id": "extractor.view.Main:extractByAutoCollect",
-      "label": "Main:extractByAutoCollect"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:stopExtractions",
-      "label": "MultiplePathExtractor:stopExtractions"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:stopExtractByPath",
-      "label": "ExtractionController:stopExtractByPath"
-    },
-    {
-      "id": "extractor.view.Main:setSize",
-      "label": "Main:setSize"
-    },
-    {
-      "id": "extractor.specification.PropertySpecification:setPattern",
-      "label": "PropertySpecification:setPattern"
-    },
-    {
-      "id": "extractor.specification.PropertySpecification:\u003cinit\u003e",
-      "label": "PropertySpecification:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.exceptions.WrongPasswordException:getMessage",
-      "label": "WrongPasswordException:getMessage"
-    },
-    {
-      "id": "extractor.model.Extraction:setProductNumber",
-      "label": "Extraction:setProductNumber"
-    },
-    {
-      "id": "extractor.model.Extraction:\u003cinit\u003e",
-      "label": "Extraction:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.view.Main:isNoteEmpty",
-      "label": "Main:isNoteEmpty"
-    },
-    {
-      "id": "extractor.view.Main:actionPerformed",
-      "label": "Main:actionPerformed"
-    },
-    {
-      "id": "extractor.core.LLTExtractor:selectMxxTestTypeFile",
-      "label": "LLTExtractor:selectMxxTestTypeFile"
-    },
-    {
-      "id": "extractor.core.LLTExtractor:buildRuntimeManagerInstance",
-      "label": "LLTExtractor:buildRuntimeManagerInstance"
-    },
-    {
-      "id": "extractor.utils.Constants:readApplicationProperties",
-      "label": "Constants:readApplicationProperties"
-    },
-    {
-      "id": "extractor.core.RuntimeManager:exec",
-      "label": "RuntimeManager:exec"
-    },
-    {
-      "id": "extractor.view.Config:windowOpened",
-      "label": "Config:windowOpened"
-    },
-    {
-      "id": "extractor.core.ExtractionQueue:size",
-      "label": "ExtractionQueue:size"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:addActionListener",
-      "label": "PlaceholderTextField:addActionListener"
-    },
-    {
-      "id": "extractor.view.Main:setSerialNumberInputActionListener",
-      "label": "Main:setSerialNumberInputActionListener"
-    },
-    {
-      "id": "extractor.view.Main:setPasswordInputACtionListener",
-      "label": "Main:setPasswordInputACtionListener"
-    },
-    {
-      "id": "extractor.communication.Client:submitJsonToURL",
-      "label": "Client:submitJsonToURL"
-    },
-    {
-      "id": "extractor.communication.Client:sendExtraction",
-      "label": "Client:sendExtraction"
-    },
-    {
-      "id": "extractor.core.MultipleExtractionSender:resetCounters",
-      "label": "MultipleExtractionSender:resetCounters"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:addKeyListener",
-      "label": "PlaceholderTextField:addKeyListener"
-    },
-    {
-      "id": "extractor.view.Main:setPNandSNKeyListener",
-      "label": "Main:setPNandSNKeyListener"
-    },
-    {
-      "id": "extractor.utils.TestType:values",
-      "label": "TestType:values"
-    },
-    {
-      "id": "extractor.controller.OfflineService:sendOfflineExtractions",
-      "label": "OfflineService:sendOfflineExtractions"
-    },
-    {
-      "id": "extractor.core.OfflineExtractionProducer:generateExtractionFromJson",
-      "label": "OfflineExtractionProducer:generateExtractionFromJson"
-    },
-    {
-      "id": "extractor.core.OfflineExtractionProducer:run",
-      "label": "OfflineExtractionProducer:run"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:validateResultsFolder",
-      "label": "ConfigValidator:validateResultsFolder"
-    },
-    {
-      "id": "extractor.view.Main:jButtonLogoutNavbarMouseClicked",
-      "label": "Main:jButtonLogoutNavbarMouseClicked"
-    },
-    {
-      "id": "extractor.view.Main:startWatcherMode",
-      "label": "Main:startWatcherMode"
-    },
-    {
-      "id": "extractor.utils.GrammarGenerator:readPatternsFile",
-      "label": "GrammarGenerator:readPatternsFile"
-    },
-    {
-      "id": "extractor.utils.GrammarGenerator:\u003cinit\u003e",
-      "label": "GrammarGenerator:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.utils.Constants:updateConfig",
-      "label": "Constants:updateConfig"
-    },
-    {
-      "id": "extractor.view.PlaceholderPasswordField:setText",
-      "label": "PlaceholderPasswordField:setText"
-    },
-    {
-      "id": "extractor.specification.PropertySpecification:getPropertyName",
-      "label": "PropertySpecification:getPropertyName"
-    },
-    {
-      "id": "extractor.view.Main:run",
-      "label": "Main:run"
-    },
-    {
-      "id": "extractor.controller.ProducerListener:updateNumberOfExtractionsDone",
-      "label": "ProducerListener:updateNumberOfExtractionsDone"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:extractAll",
-      "label": "MultiplePathExtractor:extractAll"
-    },
-    {
-      "id": "extractor.view.Main:groupRadioButtons",
-      "label": "Main:groupRadioButtons"
-    },
-    {
-      "id": "extractor.controller.ProducerListener:startProducing",
-      "label": "ProducerListener:startProducing"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:run",
-      "label": "MultiplePathExtractor:run"
-    },
-    {
-      "id": "extractor.view.Main:getHeight",
-      "label": "Main:getHeight"
-    },
-    {
-      "id": "extractor.view.Main:setProcuctNumberInputActionListener",
-      "label": "Main:setProcuctNumberInputActionListener"
-    },
-    {
-      "id": "extractor.specification.RegexReader:extractFromPattern",
-      "label": "RegexReader:extractFromPattern"
-    },
-    {
-      "id": "extractor.view.Main:setVisibleTestTypes",
-      "label": "Main:setVisibleTestTypes"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:fileValidation",
-      "label": "ConfigValidator:fileValidation"
-    },
-    {
-      "id": "extractor.utils.Logflex:logProperties",
-      "label": "Logflex:logProperties"
-    },
-    {
-      "id": "extractor.utils.Constants:testTypes",
-      "label": "Constants:testTypes"
-    },
-    {
-      "id": "extractor.model.Session:reset",
-      "label": "Session:reset"
-    },
-    {
-      "id": "extractor.core.ExtractionQueue:\u003cinit\u003e",
-      "label": "ExtractionQueue:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.core.MultipleExtractionSender:addProducerThread",
-      "label": "MultipleExtractionSender:addProducerThread"
-    },
-    {
-      "id": "extractor.utils.Logflex:info",
-      "label": "Logflex:info"
-    },
-    {
-      "id": "extractor.utils.Logflex:newTestLog",
-      "label": "Logflex:newTestLog"
-    },
-    {
-      "id": "extractor.view.Main:windowClosing",
-      "label": "Main:windowClosing"
-    },
-    {
-      "id": "extractor.core.Extractor:decryptBoosterIfExists",
-      "label": "Extractor:decryptBoosterIfExists"
-    },
-    {
-      "id": "extractor.validation.ProductAndSerialValidator:matchesProductNumber",
-      "label": "ProductAndSerialValidator:matchesProductNumber"
-    },
-    {
-      "id": "extractor.view.Main:focusLost",
-      "label": "Main:focusLost"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:\u003cinit\u003e",
-      "label": "ExtractionController:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:reset",
-      "label": "ExtractionController:reset"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:validateResumeFolder",
-      "label": "ConfigValidator:validateResumeFolder"
-    },
-    {
-      "id": "extractor.controller.OfflineService:stopOfflineExtraction",
-      "label": "OfflineService:stopOfflineExtraction"
-    },
-    {
-      "id": "extractor.utils.BrowserManager:openWebpage",
-      "label": "BrowserManager:openWebpage"
-    },
-    {
-      "id": "extractor.view.Main:doExtract",
-      "label": "Main:doExtract"
-    },
-    {
-      "id": "extractor.utils.Constants:defaultTestType",
-      "label": "Constants:defaultTestType"
-    },
-    {
-      "id": "extractor.utils.Constants:getPropertiesValue",
-      "label": "Constants:getPropertiesValue"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:\u003cinit\u003e",
-      "label": "PlaceholderTextField:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.core.ApplicationsHashGenerator:selectFileToExtract",
-      "label": "ApplicationsHashGenerator:selectFileToExtract"
-    },
-    {
-      "id": "extractor.core.ApplicationsHashGenerator:generateHashForRunningLST",
-      "label": "ApplicationsHashGenerator:generateHashForRunningLST"
-    },
-    {
-      "id": "extractor.view.Main:setProductNumberInputFocusListener",
-      "label": "Main:setProductNumberInputFocusListener"
-    },
-    {
-      "id": "extractor.core.OfflineExtractionProducer:\u003cinit\u003e",
-      "label": "OfflineExtractionProducer:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:existsFileWithName",
-      "label": "MultiplePathExtractor:existsFileWithName"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:moveFilesFromTo",
-      "label": "MultiplePathExtractor:moveFilesFromTo"
-    },
-    {
-      "id": "extractor.communication.SecurityManager:getHTTPSConnection",
-      "label": "SecurityManager:getHTTPSConnection"
-    },
-    {
-      "id": "extractor.model.Extraction:addProperties",
-      "label": "Extraction:addProperties"
-    },
-    {
-      "id": "extractor.specification.PropertySpecification:setTypeOfProperty",
-      "label": "PropertySpecification:setTypeOfProperty"
-    },
-    {
-      "id": "extractor.utils.GrammarGenerator:getValidProductNumbers",
-      "label": "GrammarGenerator:getValidProductNumbers"
-    },
-    {
-      "id": "extractor.view.Main:refresh",
-      "label": "Main:refresh"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:getText",
-      "label": "PlaceholderTextField:getText"
-    },
-    {
-      "id": "extractor.specification.SingleLinePositionReader:extract",
-      "label": "SingleLinePositionReader:extract"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:setForeground",
-      "label": "PlaceholderTextField:setForeground"
-    },
-    {
-      "id": "extractor.core.MultipleExtractionSender:stopExecution",
-      "label": "MultipleExtractionSender:stopExecution"
-    },
-    {
-      "id": "extractor.view.Config:groupRadioButtons",
-      "label": "Config:groupRadioButtons"
-    },
-    {
-      "id": "extractor.core.AutoCollectExtractor:stopAutoCollect",
-      "label": "AutoCollectExtractor:stopAutoCollect"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:stopExtractByAutoCollect",
-      "label": "ExtractionController:stopExtractByAutoCollect"
-    },
-    {
-      "id": "extractor.specification.PropertySpecification:getPattern",
-      "label": "PropertySpecification:getPattern"
-    },
-    {
-      "id": "extractor.core.LLTExtractor:\u003cinit\u003e",
-      "label": "LLTExtractor:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.core.KeysHashGenerator:generateMDHash",
-      "label": "KeysHashGenerator:generateMDHash"
-    },
-    {
-      "id": "extractor.utils.Constants:createTempFolder",
-      "label": "Constants:createTempFolder"
-    },
-    {
-      "id": "extractor.view.PlaceholderPasswordField:setBounds",
-      "label": "PlaceholderPasswordField:setBounds"
-    },
-    {
-      "id": "extractor.filedecryptor.DecryptorManager:doLifecounterDecrypt",
-      "label": "DecryptorManager:doLifecounterDecrypt"
-    },
-    {
-      "id": "extractor.core.Extractor:decryptLifecounterIfExists",
-      "label": "Extractor:decryptLifecounterIfExists"
-    },
-    {
-      "id": "extractor.core.OfflineExtractionProducer:isRunning",
-      "label": "OfflineExtractionProducer:isRunning"
-    },
-    {
-      "id": "extractor.controller.OfflineExtractionSender:run",
-      "label": "OfflineExtractionSender:run"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:resetCounters",
-      "label": "MultiplePathExtractor:resetCounters"
-    },
-    {
-      "id": "extractor.validation.ProductAndSerialValidator:matchesSerialNumberAndProductNumbersFamily",
-      "label": "ProductAndSerialValidator:matchesSerialNumberAndProductNumbersFamily"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:listAvailableFolders",
-      "label": "MultiplePathExtractor:listAvailableFolders"
-    },
-    {
-      "id": "extractor.view.Main:main",
-      "label": "Main:main"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:setPlaceholder",
-      "label": "PlaceholderTextField:setPlaceholder"
-    },
-    {
-      "id": "extractor.exceptions.BlockedUserException:printStackTrace",
-      "label": "BlockedUserException:printStackTrace"
-    },
-    {
-      "id": "extractor.model.Property:setName",
-      "label": "Property:setName"
-    },
-    {
-      "id": "extractor.model.OfflineExtraction:getFile",
-      "label": "OfflineExtraction:getFile"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:validateLLTPort",
-      "label": "ConfigValidator:validateLLTPort"
-    },
-    {
-      "id": "extractor.view.PlaceholderPasswordField:\u003cinit\u003e",
-      "label": "PlaceholderPasswordField:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.view.Main:setEnabled",
-      "label": "Main:setEnabled"
-    },
-    {
-      "id": "extractor.view.Config:windowClosed",
-      "label": "Config:windowClosed"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:addProducerListener",
-      "label": "ExtractionController:addProducerListener"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:getInstance",
-      "label": "ExtractionController:getInstance"
-    },
-    {
-      "id": "extractor.controller.CommunicationController:sendExtraction",
-      "label": "CommunicationController:sendExtraction"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:extractByLLT",
-      "label": "ExtractionController:extractByLLT"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:validateCurrentConfigurations",
-      "label": "ConfigValidator:validateCurrentConfigurations"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:addProducerListener",
-      "label": "MultiplePathExtractor:addProducerListener"
-    },
-    {
-      "id": "extractor.model.Session:getInstance",
-      "label": "Session:getInstance"
-    },
-    {
-      "id": "extractor.view.Main:getY",
-      "label": "Main:getY"
-    },
-    {
-      "id": "extractor.view.Main:setButtonOpenPathActionListener",
-      "label": "Main:setButtonOpenPathActionListener"
-    },
-    {
-      "id": "extractor.core.Extractor:generateModel",
-      "label": "Extractor:generateModel"
-    },
-    {
-      "id": "extractor.view.Main:getX",
-      "label": "Main:getX"
-    },
-    {
-      "id": "extractor.specification.PropertySpecification:setFileNameToExtract",
-      "label": "PropertySpecification:setFileNameToExtract"
-    },
-    {
-      "id": "extractor.model.Extraction:setTestType",
-      "label": "Extraction:setTestType"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:isReadCollectDir",
-      "label": "MultiplePathExtractor:isReadCollectDir"
-    },
-    {
-      "id": "extractor.model.OfflineExtraction:getExtraction",
-      "label": "OfflineExtraction:getExtraction"
-    },
-    {
-      "id": "extractor.specification.RegexReader:extract",
-      "label": "RegexReader:extract"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:addConsumerListener",
-      "label": "ExtractionController:addConsumerListener"
-    },
-    {
-      "id": "extractor.utils.FileIO:convertFileToStringList",
-      "label": "FileIO:convertFileToStringList"
-    },
-    {
-      "id": "extractor.specification.PositionReader:extract",
-      "label": "PositionReader:extract"
-    },
-    {
-      "id": "extractor.utils.Logflex:\u003cinit\u003e",
-      "label": "Logflex:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.utils.Logflex:getInstance",
-      "label": "Logflex:getInstance"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:validateLLTLogsFolder",
-      "label": "ConfigValidator:validateLLTLogsFolder"
-    },
-    {
-      "id": "extractor.validation.ProductAndSerialValidator:getInstance",
-      "label": "ProductAndSerialValidator:getInstance"
-    },
-    {
-      "id": "extractor.view.Main:createErrorPopUp",
-      "label": "Main:createErrorPopUp"
-    },
-    {
-      "id": "extractor.utils.FileIO:getValuesOfCSVLine",
-      "label": "FileIO:getValuesOfCSVLine"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:isRunning",
-      "label": "MultiplePathExtractor:isRunning"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:isMultiplePathExtractorProducerRunning",
-      "label": "ExtractionController:isMultiplePathExtractorProducerRunning"
-    },
-    {
-      "id": "extractor.core.ApplicationsHashGenerator:joinCollection",
-      "label": "ApplicationsHashGenerator:joinCollection"
-    },
-    {
-      "id": "extractor.controller.OfflineExtractionSender:setConsumerListener",
-      "label": "OfflineExtractionSender:setConsumerListener"
-    },
-    {
-      "id": "extractor.view.Main:updateNumberOfAvailableExtractions",
-      "label": "Main:updateNumberOfAvailableExtractions"
-    },
-    {
-      "id": "extractor.view.Main:getComponents",
-      "label": "Main:getComponents"
-    },
-    {
-      "id": "extractor.specification.PropertySpecification:getFileNameToExtract",
-      "label": "PropertySpecification:getFileNameToExtract"
-    },
-    {
-      "id": "extractor.view.Config:addListenersToRadioButtonsDefaultTestType",
-      "label": "Config:addListenersToRadioButtonsDefaultTestType"
-    },
-    {
-      "id": "extractor.view.PlaceholderPasswordField:getDisabledTextColor",
-      "label": "PlaceholderPasswordField:getDisabledTextColor"
-    },
-    {
-      "id": "extractor.view.Main:setEnableWatcherModeComponents",
-      "label": "Main:setEnableWatcherModeComponents"
-    },
-    {
-      "id": "extractor.core.ExtractionQueue:pollExtraction",
-      "label": "ExtractionQueue:pollExtraction"
-    },
-    {
-      "id": "extractor.view.Config:setVisible",
-      "label": "Config:setVisible"
-    },
-    {
-      "id": "extractor.specification.PropertySpecification:getTypeOfProperty",
-      "label": "PropertySpecification:getTypeOfProperty"
-    },
-    {
-      "id": "extractor.model.Session:getSessionToken",
-      "label": "Session:getSessionToken"
-    },
-    {
-      "id": "extractor.utils.Logflex:newPreTestLog",
-      "label": "Logflex:newPreTestLog"
-    },
-    {
-      "id": "extractor.communication.Client:\u003cinit\u003e",
-      "label": "Client:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.utils.FileIO:getFileToExtract",
-      "label": "FileIO:getFileToExtract"
-    },
-    {
-      "id": "extractor.view.Main:updateCounterMessage",
-      "label": "Main:updateCounterMessage"
-    },
-    {
-      "id": "extractor.model.Session:initialize",
-      "label": "Session:initialize"
-    },
-    {
-      "id": "extractor.controller.CommunicationController:login",
-      "label": "CommunicationController:login"
-    },
-    {
-      "id": "extractor.view.Main:updateNumberOfExtractionsDone",
-      "label": "Main:updateNumberOfExtractionsDone"
-    },
-    {
-      "id": "extractor.core.KeysHashGenerator:getAllKeys",
-      "label": "KeysHashGenerator:getAllKeys"
-    },
-    {
-      "id": "extractor.controller.CommunicationController:\u003cinit\u003e",
-      "label": "CommunicationController:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.utils.ServerPoll:\u003cinit\u003e",
-      "label": "ServerPoll:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.model.Session:getType",
-      "label": "Session:getType"
-    },
-    {
-      "id": "extractor.model.OfflineExtraction:\u003cinit\u003e",
-      "label": "OfflineExtraction:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.view.Config:validateConfigValues",
-      "label": "Config:validateConfigValues"
-    },
-    {
-      "id": "extractor.core.Extractor:selectFileToExtract",
-      "label": "Extractor:selectFileToExtract"
-    },
-    {
-      "id": "extractor.view.PlaceholderPasswordField:addActionListener",
-      "label": "PlaceholderPasswordField:addActionListener"
-    },
-    {
-      "id": "extractor.communication.SecurityManager:\u003cinit\u003e",
-      "label": "SecurityManager:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.communication.SecurityManager:trustAllHosts",
-      "label": "SecurityManager:trustAllHosts"
-    },
-    {
-      "id": "extractor.view.Config:setAndLogIfChanged",
-      "label": "Config:setAndLogIfChanged"
-    },
-    {
-      "id": "extractor.view.Config:setJTExtOpenPathActionListener",
-      "label": "Config:setJTExtOpenPathActionListener"
-    },
-    {
-      "id": "extractor.view.Main:setDefaultTestType",
-      "label": "Main:setDefaultTestType"
-    },
-    {
-      "id": "extractor.utils.Logflex:newPreQALog",
-      "label": "Logflex:newPreQALog"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:deleteFileWithNameInDirectory",
-      "label": "MultiplePathExtractor:deleteFileWithNameInDirectory"
-    },
-    {
-      "id": "extractor.view.Main:getContentPane",
-      "label": "Main:getContentPane"
-    },
-    {
-      "id": "extractor.view.Config:getJCheckBox",
-      "label": "Config:getJCheckBox"
-    },
-    {
-      "id": "extractor.core.RuntimeManager:getScriptOutput",
-      "label": "RuntimeManager:getScriptOutput"
-    },
-    {
-      "id": "extractor.view.Config:getHeight",
-      "label": "Config:getHeight"
-    },
-    {
-      "id": "extractor.core.ExtractionQueueResourceAccessible:\u003cinit\u003e",
-      "label": "ExtractionQueueResourceAccessible:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.core.ExtractionQueueResourceAccessible:\u003cclinit\u003e",
-      "label": "ExtractionQueueResourceAccessible:\u003cclinit\u003e"
-    },
-    {
-      "id": "extractor.view.Main:getNote",
-      "label": "Main:getNote"
-    },
-    {
-      "id": "extractor.view.Config:addListenersToCheckVisibleTestTypeBoxes",
-      "label": "Config:addListenersToCheckVisibleTestTypeBoxes"
-    },
-    {
-      "id": "extractor.controller.ConsumerListener:updateNumberOfAvailableSents",
-      "label": "ConsumerListener:updateNumberOfAvailableSents"
-    },
-    {
-      "id": "extractor.specification.PropertySpecification:setTypeOfPattern",
-      "label": "PropertySpecification:setTypeOfPattern"
-    },
-    {
-      "id": "extractor.specification.PropertySpecification:getTypeOfPattern",
-      "label": "PropertySpecification:getTypeOfPattern"
-    },
-    {
-      "id": "extractor.validation.ProductAndSerialValidator:\u003cinit\u003e",
-      "label": "ProductAndSerialValidator:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.core.MultipleExtractionSender:\u003cinit\u003e",
-      "label": "MultipleExtractionSender:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.exceptions.WrongPasswordException:printStackTrace",
-      "label": "WrongPasswordException:printStackTrace"
-    },
-    {
-      "id": "extractor.view.Main:switchButtonsEnabling",
-      "label": "Main:switchButtonsEnabling"
-    },
-    {
-      "id": "extractor.specification.PropertySpecification:setPropertyName",
-      "label": "PropertySpecification:setPropertyName"
-    },
-    {
-      "id": "extractor.view.Config:itemStateChanged",
-      "label": "Config:itemStateChanged"
-    },
-    {
-      "id": "extractor.view.Main:setUserInputFocusListener",
-      "label": "Main:setUserInputFocusListener"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:getInsets",
-      "label": "PlaceholderTextField:getInsets"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:paintComponent",
-      "label": "PlaceholderTextField:paintComponent"
-    },
-    {
-      "id": "extractor.controller.CommunicationController:logout",
-      "label": "CommunicationController:logout"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:directoryValidation",
-      "label": "ConfigValidator:directoryValidation"
-    },
-    {
-      "id": "extractor.view.Config:parseCheckBoxesVisibleTestType",
-      "label": "Config:parseCheckBoxesVisibleTestType"
-    },
-    {
-      "id": "extractor.exceptions.WrongPasswordException:\u003cinit\u003e",
-      "label": "WrongPasswordException:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:setAutoscrolls",
-      "label": "PlaceholderTextField:setAutoscrolls"
-    },
-    {
-      "id": "extractor.communication.Client:poll",
-      "label": "Client:poll"
-    },
-    {
-      "id": "extractor.view.Main:update",
-      "label": "Main:update"
-    },
-    {
-      "id": "extractor.controller.ConsumerListener:startConsuming",
-      "label": "ConsumerListener:startConsuming"
-    },
-    {
-      "id": "extractor.communication.TestTypeSerializer:serialize",
-      "label": "TestTypeSerializer:serialize"
-    },
-    {
-      "id": "extractor.core.OfflineExtractionProducer:countOfflineExtractions",
-      "label": "OfflineExtractionProducer:countOfflineExtractions"
-    },
-    {
-      "id": "extractor.view.Config:setResizable",
-      "label": "Config:setResizable"
-    },
-    {
-      "id": "extractor.view.Main:setLocationRelativeTo",
-      "label": "Main:setLocationRelativeTo"
-    },
-    {
-      "id": "extractor.view.Main:pack",
-      "label": "Main:pack"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:setBackground",
-      "label": "PlaceholderTextField:setBackground"
-    },
-    {
-      "id": "extractor.view.Main:createYesNoPopUp",
-      "label": "Main:createYesNoPopUp"
-    },
-    {
-      "id": "extractor.specification.SingleLinePositionReader:formatDate",
-      "label": "SingleLinePositionReader:formatDate"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:getDisabledTextColor",
-      "label": "PlaceholderTextField:getDisabledTextColor"
-    },
-    {
-      "id": "extractor.view.Main:allExtractionsDone",
-      "label": "Main:allExtractionsDone"
-    },
-    {
-      "id": "extractor.communication.TestTypeSerializer:\u003cinit\u003e",
-      "label": "TestTypeSerializer:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.communication.Client:generateJson",
-      "label": "Client:generateJson"
-    },
-    {
-      "id": "extractor.utils.FileIO:getCSVFile",
-      "label": "FileIO:getCSVFile"
-    },
-    {
-      "id": "extractor.model.Extraction:getTestType",
-      "label": "Extraction:getTestType"
-    },
-    {
-      "id": "extractor.view.Main:getGraphics",
-      "label": "Main:getGraphics"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:\u003cinit\u003e",
-      "label": "MultiplePathExtractor:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:extractPath",
-      "label": "MultiplePathExtractor:extractPath"
-    },
-    {
-      "id": "extractor.validation.ProductAndSerialValidator:matchesSerialNumber",
-      "label": "ProductAndSerialValidator:matchesSerialNumber"
-    },
-    {
-      "id": "extractor.core.PathExtractor:specificExtraction",
-      "label": "PathExtractor:specificExtraction"
-    },
-    {
-      "id": "extractor.utils.Constants:secondsToMilliseconds",
-      "label": "Constants:secondsToMilliseconds"
-    },
-    {
-      "id": "extractor.view.Config:getJRadioButton",
-      "label": "Config:getJRadioButton"
-    },
-    {
-      "id": "extractor.exceptions.InternalException:getMessage",
-      "label": "InternalException:getMessage"
-    },
-    {
-      "id": "extractor.view.Main:allExtractionsSent",
-      "label": "Main:allExtractionsSent"
-    },
-    {
-      "id": "extractor.view.Config:getContentPane",
-      "label": "Config:getContentPane"
-    },
-    {
-      "id": "extractor.view.Config:createInexistingFolders",
-      "label": "Config:createInexistingFolders"
-    },
-    {
-      "id": "extractor.controller.ProducerListener:allExtractionsDone",
-      "label": "ProducerListener:allExtractionsDone"
-    },
-    {
-      "id": "extractor.view.PlaceholderPasswordField:setForeground",
-      "label": "PlaceholderPasswordField:setForeground"
-    },
-    {
-      "id": "extractor.core.ExtractionQueue:isEmpty",
-      "label": "ExtractionQueue:isEmpty"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:isDirValid",
-      "label": "ConfigValidator:isDirValid"
-    },
-    {
-      "id": "extractor.view.Main:validatePath",
-      "label": "Main:validatePath"
-    },
-    {
-      "id": "extractor.exceptions.BlockedUserException:getMessage",
-      "label": "BlockedUserException:getMessage"
-    },
-    {
-      "id": "extractor.view.PlaceholderPasswordField:getPassword",
-      "label": "PlaceholderPasswordField:getPassword"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:deleteDirectory",
-      "label": "MultiplePathExtractor:deleteDirectory"
-    },
-    {
-      "id": "extractor.core.AutoCollectExtractor:isRunning",
-      "label": "AutoCollectExtractor:isRunning"
-    },
-    {
-      "id": "extractor.controller.ExtractionController:isExtractingByAutoCollect",
-      "label": "ExtractionController:isExtractingByAutoCollect"
-    },
-    {
-      "id": "extractor.view.Main:setNoteInputActionListener",
-      "label": "Main:setNoteInputActionListener"
-    },
-    {
-      "id": "extractor.utils.TestType[]:clone",
-      "label": "TestType[]:clone"
-    },
-    {
-      "id": "extractor.model.Extraction:getProductNumber",
-      "label": "Extraction:getProductNumber"
-    },
-    {
-      "id": "extractor.model.Session:setSessionToken",
-      "label": "Session:setSessionToken"
-    },
-    {
-      "id": "extractor.model.Session:\u003cinit\u003e",
-      "label": "Session:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.controller.ProducerListener:updateNumberOfAvailableExtractions",
-      "label": "ProducerListener:updateNumberOfAvailableExtractions"
-    },
-    {
-      "id": "extractor.view.Main:setAutoRequestFocus",
-      "label": "Main:setAutoRequestFocus"
-    },
-    {
-      "id": "extractor.utils.GrammarGenerator:getInstance",
-      "label": "GrammarGenerator:getInstance"
-    },
-    {
-      "id": "extractor.validation.ProductAndSerialValidator:populateFamilyAndSerialNumberVerifier",
-      "label": "ProductAndSerialValidator:populateFamilyAndSerialNumberVerifier"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:setBounds",
-      "label": "PlaceholderTextField:setBounds"
-    },
-    {
-      "id": "extractor.core.ApplicationsHashGenerator:generateMDHash",
-      "label": "ApplicationsHashGenerator:generateMDHash"
-    },
-    {
-      "id": "extractor.view.Main:setVisible",
-      "label": "Main:setVisible"
-    },
-    {
-      "id": "extractor.utils.TestType:equals",
-      "label": "TestType:equals"
-    },
-    {
-      "id": "extractor.utils.ImageFactory:getInstance",
-      "label": "ImageFactory:getInstance"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:requestFocus",
-      "label": "PlaceholderTextField:requestFocus"
-    },
-    {
-      "id": "extractor.model.Extraction:setNote",
-      "label": "Extraction:setNote"
-    },
-    {
-      "id": "extractor.specification.PositionReader:getValuesOfPattern",
-      "label": "PositionReader:getValuesOfPattern"
-    },
-    {
-      "id": "extractor.core.OfflineExtractionProducer:stopExecution",
-      "label": "OfflineExtractionProducer:stopExecution"
-    },
-    {
-      "id": "extractor.specification.RegexReader:getWords",
-      "label": "RegexReader:getWords"
-    },
-    {
-      "id": "extractor.view.Config:setTitle",
-      "label": "Config:setTitle"
-    },
-    {
-      "id": "extractor.controller.ConsumerListener:incrementNumberOfSuccesfulSents",
-      "label": "ConsumerListener:incrementNumberOfSuccesfulSents"
-    },
-    {
-      "id": "extractor.core.ApplicationsHashGenerator:\u003cinit\u003e",
-      "label": "ApplicationsHashGenerator:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.view.Main:updateNumberOfAvailableSents",
-      "label": "Main:updateNumberOfAvailableSents"
-    },
-    {
-      "id": "extractor.core.ExtractionQueue:addExtraction",
-      "label": "ExtractionQueue:addExtraction"
-    },
-    {
-      "id": "extractor.view.Main:startProducing",
-      "label": "Main:startProducing"
-    },
-    {
-      "id": "extractor.utils.Constants:parseListOfTestsVisible",
-      "label": "Constants:parseListOfTestsVisible"
-    },
-    {
-      "id": "extractor.exceptions.ConnectionErrorException:getMessage",
-      "label": "ConnectionErrorException:getMessage"
-    },
-    {
-      "id": "extractor.model.Property:setOrder",
-      "label": "Property:setOrder"
-    },
-    {
-      "id": "extractor.view.Main:changeOfflineMode",
-      "label": "Main:changeOfflineMode"
-    },
-    {
-      "id": "extractor.in.Messages:assigment",
-      "label": "Messages:assigment"
-    },
-    {
-      "id": "extractor.exceptions.ParameterException:\u003cinit\u003e",
-      "label": "ParameterException:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.core.MultiplePathExtractor:isFolderUpToExtract",
-      "label": "MultiplePathExtractor:isFolderUpToExtract"
-    },
-    {
-      "id": "extractor.utils.GrammarGenerator:generateGrammar",
-      "label": "GrammarGenerator:generateGrammar"
-    },
-    {
-      "id": "extractor.view.Config:actionPerformed",
-      "label": "Config:actionPerformed"
-    },
-    {
-      "id": "extractor.core.OfflineExtractionProducer:getOfflineExtractionsSize",
-      "label": "OfflineExtractionProducer:getOfflineExtractionsSize"
-    },
-    {
-      "id": "extractor.view.Config:setLocation",
-      "label": "Config:setLocation"
-    },
-    {
-      "id": "extractor.core.MultipleExtractionSender:addConsumerListener",
-      "label": "MultipleExtractionSender:addConsumerListener"
-    },
-    {
-      "id": "extractor.view.Main:addWindowListener",
-      "label": "Main:addWindowListener"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:checkFilePermissions",
-      "label": "ConfigValidator:checkFilePermissions"
-    },
-    {
-      "id": "extractor.view.PlaceholderTextField:setEnabled",
-      "label": "PlaceholderTextField:setEnabled"
-    },
-    {
-      "id": "extractor.exceptions.ConnectionErrorException:\u003cinit\u003e",
-      "label": "ConnectionErrorException:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.view.Main:setFocusableWindowState",
-      "label": "Main:setFocusableWindowState"
-    },
-    {
-      "id": "extractor.core.Extractor:getNote",
-      "label": "Extractor:getNote"
-    },
-    {
-      "id": "extractor.core.ApplicationsHashGenerator:getAllListedApps",
-      "label": "ApplicationsHashGenerator:getAllListedApps"
-    },
-    {
-      "id": "extractor.exceptions.BlockedUserException:\u003cinit\u003e",
-      "label": "BlockedUserException:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.communication.Client:doLogin",
-      "label": "Client:doLogin"
-    },
-    {
-      "id": "extractor.core.LLTExtractor:createBackup",
-      "label": "LLTExtractor:createBackup"
-    },
-    {
-      "id": "extractor.core.Extractor:specificExtraction",
-      "label": "Extractor:specificExtraction"
-    },
-    {
-      "id": "extractor.model.Extraction:setSerialNumber",
-      "label": "Extraction:setSerialNumber"
-    },
-    {
-      "id": "extractor.utils.GrammarGenerator:getValidSerialNumbers",
-      "label": "GrammarGenerator:getValidSerialNumbers"
-    },
-    {
-      "id": "extractor.utils.TestType:valueOf",
-      "label": "TestType:valueOf"
-    },
-    {
-      "id": "extractor.model.Extraction:setDisableLLT",
-      "label": "Extraction:setDisableLLT"
-    },
-    {
-      "id": "extractor.view.Config:setLocationByPlatform",
-      "label": "Config:setLocationByPlatform"
-    },
-    {
-      "id": "extractor.core.Extractor:setNote",
-      "label": "Extractor:setNote"
-    },
-    {
-      "id": "extractor.utils.TestType:isAValidName",
-      "label": "TestType:isAValidName"
-    },
-    {
-      "id": "extractor.communication.SecurityManager:\u003cclinit\u003e",
-      "label": "SecurityManager:\u003cclinit\u003e"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:portNumberValidation",
-      "label": "ConfigValidator:portNumberValidation"
-    },
-    {
-      "id": "extractor.utils.ImageFactory:\u003cinit\u003e",
-      "label": "ImageFactory:\u003cinit\u003e"
-    },
-    {
-      "id": "extractor.core.ExtractionQueue:resetQueue",
-      "label": "ExtractionQueue:resetQueue"
-    },
-    {
-      "id": "extractor.view.Main:jLabelNavbarMousePressed",
-      "label": "Main:jLabelNavbarMousePressed"
-    },
-    {
-      "id": "extractor.controller.OfflineExtractionSender:stopExecution",
-      "label": "OfflineExtractionSender:stopExecution"
-    },
-    {
-      "id": "extractor.specification.PatternReadable:extract",
-      "label": "PatternReadable:extract"
-    },
-    {
-      "id": "extractor.model.Extraction:validateProductNumberAndSerialNumber",
-      "label": "Extraction:validateProductNumberAndSerialNumber"
-    },
-    {
-      "id": "extractor.model.Extraction:getNote",
-      "label": "Extraction:getNote"
-    },
-    {
-      "id": "extractor.validation.ConfigValidator:URLValidation",
-      "label": "ConfigValidator:URLValidation"
-    },
-    {
-      "id": "extractor.view.Main:remove",
-      "label": "Main:remove"
-    },
-    {
-      "id": "extractor.view.PlaceholderPasswordField:addFocusListener",
-      "label": "PlaceholderPasswordField:addFocusListener"
-    },
-    {
-      "id": "extractor.view.Main:mouseClicked",
-      "label": "Main:mouseClicked"
-    },
-    {
-      "id": "extractor.view.Main:setIconImage",
-      "label": "Main:setIconImage"
-    },
-    {
-      "id": "extractor.view.Config:setSize",
-      "label": "Config:setSize"
-    },
-    {
-      "id": "extractor.view.Main:setResizable",
-      "label": "Main:setResizable"
-    },
-    {
-      "id": "extractor.view.Main:startConsuming",
-      "label": "Main:startConsuming"
-    },
-    {
-      "id": "extractor.core.Extractor:\u003cclinit\u003e",
-      "label": "Extractor:\u003cclinit\u003e"
+      "id": "extractor.utils.Constants",
+      "label": "Constants",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.in.Messages",
+      "label": "Messages",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.PathExtractor",
+      "label": "PathExtractor",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.exceptions.InternalException",
+      "label": "InternalException",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.MultiplePathExtractor",
+      "label": "MultiplePathExtractor",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.MultipleExtractionSender",
+      "label": "MultipleExtractionSender",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.validation.ProductAndSerialValidator",
+      "label": "ProductAndSerialValidator",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.model.Property",
+      "label": "Property",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.utils.FileIO",
+      "label": "FileIO",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.specification.PositionReader",
+      "label": "PositionReader",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.controller.ExtractionController",
+      "label": "ExtractionController",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.RuntimeManager",
+      "label": "RuntimeManager",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.filedecryptor.DecryptorManager",
+      "label": "DecryptorManager",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.validation.ConfigValidator",
+      "label": "ConfigValidator",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.controller.CommunicationController",
+      "label": "CommunicationController",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.utils.ServerPoll",
+      "label": "ServerPoll",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.communication.SecurityManager",
+      "label": "SecurityManager",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.communication.Client",
+      "label": "Client",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.model.Extraction",
+      "label": "Extraction",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.OfflineExtractionProducer",
+      "label": "OfflineExtractionProducer",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.utils.TestType",
+      "label": "TestType",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.view.Config",
+      "label": "Config",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.controller.OfflineService",
+      "label": "OfflineService",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.controller.ConsumerListener",
+      "label": "ConsumerListener",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.model.Session",
+      "label": "Session",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.view.Main",
+      "label": "Main",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.specification.SingleLinePositionReader",
+      "label": "SingleLinePositionReader",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.Extractor",
+      "label": "Extractor",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.AutoCollectExtractor",
+      "label": "AutoCollectExtractor",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.controller.OfflineExtractionSender",
+      "label": "OfflineExtractionSender",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.utils.GrammarGenerator",
+      "label": "GrammarGenerator",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.utils.ImageFactory",
+      "label": "ImageFactory",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.exceptions.ParameterException",
+      "label": "ParameterException",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.exceptions.ConnectionErrorException",
+      "label": "ConnectionErrorException",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.LLTExtractor",
+      "label": "LLTExtractor",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.view.PlaceholderTextField",
+      "label": "PlaceholderTextField",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.ExtractionQueue",
+      "label": "ExtractionQueue",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.utils.Logflex",
+      "label": "Logflex",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.specification.RegexReader",
+      "label": "RegexReader",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.utils.CalendarUtils",
+      "label": "CalendarUtils",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.view.PlaceholderPasswordField",
+      "label": "PlaceholderPasswordField",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.specification.PatternReadable",
+      "label": "PatternReadable",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.specification.PropertySpecification",
+      "label": "PropertySpecification",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.exceptions.WrongPasswordException",
+      "label": "WrongPasswordException",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.controller.ProducerListener",
+      "label": "ProducerListener",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.exceptions.BlockedUserException",
+      "label": "BlockedUserException",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.utils.CryptographyManager",
+      "label": "CryptographyManager",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.ExtractionQueueResourceAccessible;",
+      "label": "ExtractionQueueResourceAccessible;",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.ExtractionQueueResourceAccessible",
+      "label": "ExtractionQueueResourceAccessible",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.model.OfflineExtraction",
+      "label": "OfflineExtraction",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.KeysHashGenerator",
+      "label": "KeysHashGenerator",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.exceptions.InvalidFileSchema",
+      "label": "InvalidFileSchema",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.utils.BrowserManager",
+      "label": "BrowserManager",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.validation.ExtractionValidator",
+      "label": "ExtractionValidator",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.communication.TestTypeSerializer",
+      "label": "TestTypeSerializer",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.ApplicationsHashGenerator",
+      "label": "ApplicationsHashGenerator",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.utils.TestType;",
+      "label": "TestType;",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
+    },
+    {
+      "id": "extractor.core.StoppableExtractor",
+      "label": "StoppableExtractor",
+      "color": {
+        "highlight": {
+          "background": "#ED181B",
+          "border": "#FF0000"
+        },
+        "background": "#D2E5FF",
+        "border": "#2B7CE9"
+      }
     }
   ],
   "edges": [
     {
-      "id": "3",
-      "from": "extractor.view.Main:changeToExtractPanel",
-      "to": "extractor.view.Main:doLogin",
+      "id": "1",
+      "from": "extractor.in.Messages",
+      "to": "extractor.core.PathExtractor",
       "arrows": "to"
     },
     {
-      "id": "5",
-      "from": "extractor.utils.Constants:readConfigurationFile",
-      "to": "extractor.utils.Constants:init",
+      "id": "2",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.core.MultiplePathExtractor",
       "arrows": "to"
     },
     {
-      "id": "6",
-      "from": "extractor.core.KeysHashGenerator:checkKeyLoadingIsOK",
-      "to": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey",
+      "id": "4",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.core.MultipleExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "7",
-      "from": "extractor.view.Main:setNoteKeyListener",
-      "to": "extractor.view.Main:initActions",
+      "id": "8",
+      "from": "extractor.validation.ProductAndSerialValidator",
+      "to": "extractor.core.MultiplePathExtractor",
       "arrows": "to"
     },
     {
-      "id": "10",
-      "from": "extractor.core.Extractor:\u003cinit\u003e",
-      "to": "extractor.core.PathExtractor:\u003cinit\u003e",
+      "id": "9",
+      "from": "extractor.in.Messages",
+      "to": "extractor.model.Property",
       "arrows": "to"
     },
     {
-      "id": "12",
-      "from": "extractor.utils.TestType:getValueByName",
-      "to": "extractor.view.Main:isNoteRequired",
+      "id": "11",
+      "from": "extractor.utils.FileIO",
+      "to": "extractor.specification.PositionReader",
       "arrows": "to"
     },
     {
-      "id": "13",
-      "from": "extractor.utils.FileIO:getAllLines",
-      "to": "extractor.utils.FileIO:getSpecifications",
+      "id": "16",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "14",
-      "from": "extractor.controller.ConsumerListener:allExtractionsSent",
-      "to": "extractor.core.MultipleExtractionSender:run",
+      "id": "18",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.utils.FileIO",
       "arrows": "to"
     },
     {
-      "id": "15",
-      "from": "extractor.view.Main:jButtonConfigMouseClicked",
-      "to": "extractor.view.Main:access",
+      "id": "21",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.in.Messages",
       "arrows": "to"
     },
     {
-      "id": "17",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.in.Messages:readMessagesFile",
+      "id": "24",
+      "from": "extractor.core.RuntimeManager",
+      "to": "extractor.filedecryptor.DecryptorManager",
       "arrows": "to"
     },
     {
-      "id": "19",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:setButtonExtractActionListener",
+      "id": "36",
+      "from": "extractor.controller.CommunicationController",
+      "to": "extractor.utils.ServerPoll",
       "arrows": "to"
     },
     {
-      "id": "20",
-      "from": "extractor.model.Extraction:getProperties",
-      "to": "extractor.core.Extractor:extract",
+      "id": "39",
+      "from": "extractor.communication.SecurityManager",
+      "to": "extractor.communication.Client",
       "arrows": "to"
     },
     {
-      "id": "22",
-      "from": "extractor.view.PlaceholderPasswordField:getInsets",
-      "to": "extractor.view.PlaceholderPasswordField:paintComponent",
+      "id": "46",
+      "from": "extractor.model.Extraction",
+      "to": "extractor.core.OfflineExtractionProducer",
       "arrows": "to"
     },
     {
-      "id": "23",
-      "from": "extractor.view.PlaceholderTextField:setText",
-      "to": "extractor.view.Main:doLogout",
+      "id": "48",
+      "from": "extractor.utils.TestType",
+      "to": "extractor.view.Config",
       "arrows": "to"
     },
     {
-      "id": "25",
-      "from": "extractor.model.Property:setValue",
-      "to": "extractor.model.Property:\u003cinit\u003e",
+      "id": "53",
+      "from": "extractor.controller.OfflineService",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "26",
-      "from": "extractor.controller.ExtractionController:sendOfflineFiles",
-      "to": "extractor.core.AutoCollectExtractor:run",
+      "id": "54",
+      "from": "extractor.controller.ConsumerListener",
+      "to": "extractor.core.MultipleExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "27",
-      "from": "extractor.view.Config:access",
-      "to": "extractor.view.Config:shouldYieldFocus",
+      "id": "55",
+      "from": "extractor.model.Session",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "28",
-      "from": "extractor.controller.ExtractionController:extractByPath",
-      "to": "extractor.view.Main:extractByPath",
+      "id": "57",
+      "from": "extractor.controller.ExtractionController",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "29",
-      "from": "extractor.view.Config:\u003cinit\u003e",
-      "to": "extractor.view.Config:getInstance",
+      "id": "63",
+      "from": "extractor.communication.Client",
+      "to": "extractor.controller.OfflineService",
       "arrows": "to"
     },
     {
-      "id": "31",
-      "from": "extractor.utils.CalendarUtils:realYear",
-      "to": "extractor.specification.RegexReader:extractValues",
+      "id": "66",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.communication.Client",
       "arrows": "to"
     },
     {
-      "id": "32",
-      "from": "extractor.controller.CommunicationController:ping",
-      "to": "extractor.utils.ServerPoll:run",
+      "id": "76",
+      "from": "extractor.core.Extractor",
+      "to": "extractor.core.PathExtractor",
       "arrows": "to"
     },
     {
-      "id": "34",
-      "from": "extractor.view.Main:setDefaultCloseOperation",
-      "to": "extractor.view.Main:initGUI",
+      "id": "77",
+      "from": "extractor.core.AutoCollectExtractor",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "35",
-      "from": "extractor.specification.RegexReader:setToCalendar",
-      "to": "extractor.specification.RegexReader:extractValues",
+      "id": "89",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.filedecryptor.DecryptorManager",
       "arrows": "to"
     },
     {
-      "id": "37",
-      "from": "extractor.core.KeysHashGenerator:joinCollection",
-      "to": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey",
+      "id": "95",
+      "from": "extractor.controller.CommunicationController",
+      "to": "extractor.controller.OfflineExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "38",
-      "from": "extractor.validation.ConfigValidator:validatePathLLT",
-      "to": "extractor.validation.ConfigValidator:getInvalidConfigurations",
+      "id": "105",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.utils.FileIO",
       "arrows": "to"
     },
     {
-      "id": "40",
-      "from": "extractor.view.Config:dispose",
-      "to": "extractor.view.Config:saveConfigs",
+      "id": "112",
+      "from": "extractor.utils.TestType",
+      "to": "extractor.utils.Constants",
       "arrows": "to"
     },
     {
-      "id": "41",
-      "from": "extractor.validation.ConfigValidator:validateServerLocation",
-      "to": "extractor.validation.ConfigValidator:getInvalidConfigurations",
+      "id": "113",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.filedecryptor.DecryptorManager",
       "arrows": "to"
     },
     {
-      "id": "42",
-      "from": "extractor.view.Main:setPasswordInputFocusListener",
-      "to": "extractor.view.Main:initActions",
+      "id": "120",
+      "from": "extractor.utils.FileIO",
+      "to": "extractor.utils.GrammarGenerator",
       "arrows": "to"
     },
     {
-      "id": "43",
-      "from": "extractor.core.KeysHashGenerator:\u003cinit\u003e",
-      "to": "extractor.core.Extractor:extract",
+      "id": "121",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.utils.ImageFactory",
       "arrows": "to"
     },
     {
-      "id": "44",
-      "from": "extractor.view.Config:addWindowListener",
-      "to": "extractor.view.Config:initGUI",
+      "id": "122",
+      "from": "extractor.model.Extraction",
+      "to": "extractor.core.MultiplePathExtractor",
       "arrows": "to"
     },
     {
-      "id": "45",
-      "from": "extractor.model.Property:setType",
-      "to": "extractor.model.Property:\u003cinit\u003e",
+      "id": "124",
+      "from": "extractor.exceptions.ParameterException",
+      "to": "extractor.utils.FileIO",
       "arrows": "to"
     },
     {
-      "id": "47",
-      "from": "extractor.core.RuntimeManager:\u003cinit\u003e",
-      "to": "extractor.filedecryptor.DecryptorManager:doBoosterDecrypt",
+      "id": "125",
+      "from": "extractor.exceptions.ConnectionErrorException",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "49",
-      "from": "extractor.core.AutoCollectExtractor:\u003cinit\u003e",
-      "to": "extractor.controller.ExtractionController:extractByAutoCollect",
+      "id": "127",
+      "from": "extractor.core.RuntimeManager",
+      "to": "extractor.core.LLTExtractor",
       "arrows": "to"
     },
     {
-      "id": "50",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:setSerialNumberInputFocusListener",
+      "id": "133",
+      "from": "extractor.in.Messages",
+      "to": "extractor.model.Extraction",
       "arrows": "to"
     },
     {
-      "id": "51",
-      "from": "extractor.controller.OfflineService:countOfflineExtractions",
-      "to": "extractor.view.Main:doLogin",
+      "id": "135",
+      "from": "extractor.communication.Client",
+      "to": "extractor.controller.CommunicationController",
       "arrows": "to"
     },
     {
-      "id": "52",
-      "from": "extractor.view.PlaceholderPasswordField:setBorder",
-      "to": "extractor.view.Main:initGUI",
+      "id": "136",
+      "from": "extractor.view.PlaceholderTextField",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "56",
-      "from": "extractor.utils.TestType:\u003cinit\u003e",
-      "to": "extractor.utils.TestType:\u003cclinit\u003e",
+      "id": "140",
+      "from": "extractor.in.Messages",
+      "to": "extractor.controller.OfflineService",
       "arrows": "to"
     },
     {
-      "id": "59",
-      "from": "extractor.controller.ExtractionController:getOfflineService",
-      "to": "extractor.view.Main:doLogout",
+      "id": "149",
+      "from": "extractor.validation.ConfigValidator",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "60",
-      "from": "extractor.core.ExtractionQueueResourceAccessible[]:clone",
-      "to": "extractor.core.ExtractionQueueResourceAccessible:values",
+      "id": "151",
+      "from": "extractor.core.OfflineExtractionProducer",
+      "to": "extractor.controller.OfflineService",
       "arrows": "to"
     },
     {
-      "id": "61",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:incrementNumberOfSuccesfulSents",
+      "id": "155",
+      "from": "extractor.exceptions.ParameterException",
+      "to": "extractor.specification.SingleLinePositionReader",
       "arrows": "to"
     },
     {
-      "id": "62",
-      "from": "extractor.utils.TestType:getValueByName",
-      "to": "extractor.view.Main:focusGained",
+      "id": "156",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.utils.GrammarGenerator",
       "arrows": "to"
     },
     {
-      "id": "64",
-      "from": "extractor.utils.TestType:getValueByName",
-      "to": "extractor.view.Main:keyPressed",
+      "id": "157",
+      "from": "extractor.core.ExtractionQueue",
+      "to": "extractor.controller.OfflineService",
       "arrows": "to"
     },
     {
-      "id": "65",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.view.Main:itemStateChanged",
+      "id": "169",
+      "from": "extractor.utils.TestType",
+      "to": "extractor.utils.Logflex",
       "arrows": "to"
     },
     {
-      "id": "67",
-      "from": "extractor.core.RuntimeManager:verifyExecution",
-      "to": "extractor.core.LLTExtractor:specificExtraction",
+      "id": "171",
+      "from": "extractor.specification.RegexReader",
+      "to": "extractor.utils.FileIO",
       "arrows": "to"
     },
     {
-      "id": "68",
-      "from": "extractor.view.Main:clearMessageLabel",
-      "to": "extractor.view.Main:jButtonConfigMouseClicked",
+      "id": "176",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "69",
-      "from": "extractor.view.Main:setTitle",
-      "to": "extractor.view.Main:initGUI",
+      "id": "181",
+      "from": "extractor.validation.ProductAndSerialValidator",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "70",
-      "from": "extractor.view.PlaceholderTextField:addFocusListener",
-      "to": "extractor.view.Main:setNoteInputFocusListner",
+      "id": "183",
+      "from": "extractor.controller.ExtractionController",
+      "to": "extractor.core.AutoCollectExtractor",
       "arrows": "to"
     },
     {
-      "id": "71",
-      "from": "extractor.controller.OfflineExtractionSender:\u003cinit\u003e",
-      "to": "extractor.controller.OfflineService:\u003cinit\u003e",
+      "id": "185",
+      "from": "extractor.core.Extractor",
+      "to": "extractor.core.LLTExtractor",
       "arrows": "to"
     },
     {
-      "id": "72",
-      "from": "extractor.validation.ConfigValidator:validatePathLLT",
-      "to": "extractor.view.Config:verify",
+      "id": "190",
+      "from": "extractor.model.Session",
+      "to": "extractor.controller.CommunicationController",
       "arrows": "to"
     },
     {
-      "id": "73",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.utils.Constants:createNewTempFolder",
+      "id": "193",
+      "from": "extractor.specification.PropertySpecification",
+      "to": "extractor.core.Extractor",
       "arrows": "to"
     },
     {
-      "id": "75",
-      "from": "extractor.view.Main:clearMessageLabel",
-      "to": "extractor.view.Main:focusGained",
+      "id": "206",
+      "from": "extractor.controller.CommunicationController",
+      "to": "extractor.core.MultipleExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "78",
-      "from": "extractor.view.PlaceholderPasswordField:setPlaceholder",
-      "to": "extractor.view.Main:initGUI",
+      "id": "219",
+      "from": "extractor.controller.ConsumerListener",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "79",
-      "from": "extractor.model.Extraction:getSerialNumber",
-      "to": "extractor.controller.OfflineService:saveExtractionOffline",
+      "id": "223",
+      "from": "extractor.filedecryptor.DecryptorManager",
+      "to": "extractor.core.Extractor",
       "arrows": "to"
     },
     {
-      "id": "80",
-      "from": "extractor.view.PlaceholderTextField:setBorder",
-      "to": "extractor.view.Main:initGUI",
+      "id": "225",
+      "from": "extractor.core.Extractor",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "81",
-      "from": "extractor.view.PlaceholderPasswordField:setBorder",
-      "to": "extractor.view.Main:doLogout",
+      "id": "234",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.controller.OfflineService",
       "arrows": "to"
     },
     {
-      "id": "82",
-      "from": "extractor.in.Messages:readMessagesFile",
-      "to": "extractor.in.Messages:init",
+      "id": "236",
+      "from": "extractor.exceptions.WrongPasswordException",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "83",
-      "from": "extractor.core.KeysHashGenerator:selectFileToExtract",
-      "to": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey",
+      "id": "244",
+      "from": "extractor.controller.ProducerListener",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "84",
-      "from": "extractor.utils.TestType:getValueByName",
-      "to": "extractor.view.Main:extractByAutoCollect",
+      "id": "248",
+      "from": "extractor.exceptions.BlockedUserException",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "85",
-      "from": "extractor.core.MultiplePathExtractor:stopExtractions",
-      "to": "extractor.controller.ExtractionController:stopExtractByPath",
+      "id": "250",
+      "from": "extractor.controller.ProducerListener",
+      "to": "extractor.core.MultiplePathExtractor",
       "arrows": "to"
     },
     {
-      "id": "87",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.utils.Constants:readConfigurationFile",
+      "id": "256",
+      "from": "extractor.specification.PatternReadable",
+      "to": "extractor.specification.SingleLinePositionReader",
       "arrows": "to"
     },
     {
-      "id": "88",
-      "from": "extractor.view.Main:setSize",
-      "to": "extractor.view.Main:initGUI",
+      "id": "261",
+      "from": "extractor.in.Messages",
+      "to": "extractor.utils.FileIO",
       "arrows": "to"
     },
     {
-      "id": "90",
-      "from": "extractor.specification.PropertySpecification:setPattern",
-      "to": "extractor.specification.PropertySpecification:\u003cinit\u003e",
+      "id": "266",
+      "from": "extractor.controller.OfflineService",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "91",
-      "from": "extractor.view.Config:\u003cinit\u003e",
-      "to": "extractor.view.Config:initGUI",
+      "id": "267",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.view.Config",
       "arrows": "to"
     },
     {
-      "id": "92",
-      "from": "extractor.exceptions.WrongPasswordException:getMessage",
-      "to": "extractor.view.Main:doLogin",
+      "id": "274",
+      "from": "extractor.exceptions.WrongPasswordException",
+      "to": "extractor.communication.Client",
       "arrows": "to"
     },
     {
-      "id": "93",
-      "from": "extractor.model.Extraction:setProductNumber",
-      "to": "extractor.model.Extraction:\u003cinit\u003e",
+      "id": "278",
+      "from": "extractor.in.Messages",
+      "to": "extractor.core.RuntimeManager",
       "arrows": "to"
     },
     {
-      "id": "94",
-      "from": "extractor.view.Main:setButtonExtractActionListener",
-      "to": "extractor.view.Main:initActions",
+      "id": "283",
+      "from": "extractor.model.Session",
+      "to": "extractor.view.Config",
       "arrows": "to"
     },
     {
-      "id": "96",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.model.Property:setType",
+      "id": "288",
+      "from": "extractor.validation.ConfigValidator",
+      "to": "extractor.view.Config",
       "arrows": "to"
     },
     {
-      "id": "97",
-      "from": "extractor.view.Main:isNoteEmpty",
-      "to": "extractor.view.Main:actionPerformed",
+      "id": "292",
+      "from": "extractor.exceptions.BlockedUserException",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "98",
-      "from": "extractor.core.LLTExtractor:selectMxxTestTypeFile",
-      "to": "extractor.core.LLTExtractor:buildRuntimeManagerInstance",
+      "id": "297",
+      "from": "extractor.in.Messages",
+      "to": "extractor.communication.Client",
       "arrows": "to"
     },
     {
-      "id": "99",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.utils.Constants:readApplicationProperties",
+      "id": "314",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.validation.ProductAndSerialValidator",
       "arrows": "to"
     },
     {
-      "id": "100",
-      "from": "extractor.core.RuntimeManager:exec",
-      "to": "extractor.core.LLTExtractor:specificExtraction",
+      "id": "316",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.model.Extraction",
       "arrows": "to"
     },
     {
-      "id": "101",
-      "from": "extractor.view.Config:access",
-      "to": "extractor.view.Config:windowOpened",
+      "id": "319",
+      "from": "extractor.in.Messages",
+      "to": "extractor.utils.TestType",
       "arrows": "to"
     },
     {
-      "id": "102",
-      "from": "extractor.view.PlaceholderTextField:setBorder",
-      "to": "extractor.view.Main:actionPerformed",
+      "id": "321",
+      "from": "extractor.utils.FileIO",
+      "to": "extractor.core.Extractor",
       "arrows": "to"
     },
     {
-      "id": "103",
-      "from": "extractor.core.ExtractionQueue:size",
-      "to": "extractor.core.MultipleExtractionSender:run",
+      "id": "322",
+      "from": "extractor.core.ExtractionQueueResourceAccessible;",
+      "to": "extractor.core.ExtractionQueueResourceAccessible",
       "arrows": "to"
     },
     {
-      "id": "104",
-      "from": "extractor.view.PlaceholderTextField:addActionListener",
-      "to": "extractor.view.Main:setSerialNumberInputActionListener",
+      "id": "326",
+      "from": "extractor.core.OfflineExtractionProducer",
+      "to": "extractor.controller.OfflineExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "106",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.view.Main:keyPressed",
+      "id": "329",
+      "from": "extractor.utils.Logflex",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "107",
-      "from": "extractor.view.Main:setPasswordInputACtionListener",
-      "to": "extractor.view.Main:initActions",
+      "id": "336",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.specification.RegexReader",
       "arrows": "to"
     },
     {
-      "id": "108",
-      "from": "extractor.communication.Client:submitJsonToURL",
-      "to": "extractor.communication.Client:sendExtraction",
+      "id": "341",
+      "from": "extractor.specification.PatternReadable",
+      "to": "extractor.core.Extractor",
       "arrows": "to"
     },
     {
-      "id": "109",
-      "from": "extractor.core.MultipleExtractionSender:resetCounters",
-      "to": "extractor.core.AutoCollectExtractor:run",
+      "id": "342",
+      "from": "extractor.model.OfflineExtraction",
+      "to": "extractor.controller.OfflineExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "110",
-      "from": "extractor.view.PlaceholderTextField:addKeyListener",
-      "to": "extractor.view.Main:setPNandSNKeyListener",
+      "id": "346",
+      "from": "extractor.utils.ImageFactory",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "111",
-      "from": "extractor.utils.TestType:values",
-      "to": "extractor.utils.TestType:getValueByName",
+      "id": "362",
+      "from": "extractor.specification.PropertySpecification",
+      "to": "extractor.utils.FileIO",
       "arrows": "to"
     },
     {
-      "id": "115",
-      "from": "extractor.core.OfflineExtractionProducer:generateExtractionFromJson",
-      "to": "extractor.core.OfflineExtractionProducer:run",
+      "id": "371",
+      "from": "extractor.core.ExtractionQueue",
+      "to": "extractor.core.ExtractionQueueResourceAccessible",
       "arrows": "to"
     },
     {
-      "id": "116",
-      "from": "extractor.validation.ConfigValidator:validateResultsFolder",
-      "to": "extractor.view.Config:verify",
+      "id": "377",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "117",
-      "from": "extractor.view.Main:doLogout",
-      "to": "extractor.view.Main:jButtonLogoutNavbarMouseClicked",
+      "id": "384",
+      "from": "extractor.controller.ConsumerListener",
+      "to": "extractor.controller.OfflineExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "118",
-      "from": "extractor.view.Main:startWatcherMode",
-      "to": "extractor.view.Main:doLogin",
+      "id": "409",
+      "from": "extractor.utils.Logflex",
+      "to": "extractor.core.Extractor",
       "arrows": "to"
     },
     {
-      "id": "119",
-      "from": "extractor.utils.GrammarGenerator:readPatternsFile",
-      "to": "extractor.utils.GrammarGenerator:\u003cinit\u003e",
+      "id": "414",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.core.MultiplePathExtractor",
       "arrows": "to"
     },
     {
-      "id": "123",
-      "from": "extractor.utils.Constants:updateConfig",
-      "to": "extractor.view.Config:saveConfigs",
+      "id": "417",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.core.OfflineExtractionProducer",
       "arrows": "to"
     },
     {
-      "id": "126",
-      "from": "extractor.view.PlaceholderPasswordField:setText",
-      "to": "extractor.view.Main:doLogout",
+      "id": "418",
+      "from": "extractor.core.KeysHashGenerator",
+      "to": "extractor.core.Extractor",
       "arrows": "to"
     },
     {
-      "id": "128",
-      "from": "extractor.specification.PropertySpecification:getPropertyName",
-      "to": "extractor.core.Extractor:extract",
+      "id": "421",
+      "from": "extractor.exceptions.WrongPasswordException",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "129",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:run",
+      "id": "431",
+      "from": "extractor.exceptions.ParameterException",
+      "to": "extractor.specification.RegexReader",
       "arrows": "to"
     },
     {
-      "id": "130",
-      "from": "extractor.controller.ProducerListener:updateNumberOfExtractionsDone",
-      "to": "extractor.core.MultiplePathExtractor:extractAll",
+      "id": "434",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.utils.Constants",
       "arrows": "to"
     },
     {
-      "id": "131",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.view.Main:groupRadioButtons",
+      "id": "435",
+      "from": "extractor.specification.PatternReadable",
+      "to": "extractor.specification.PositionReader",
       "arrows": "to"
     },
     {
-      "id": "132",
-      "from": "extractor.controller.ProducerListener:startProducing",
-      "to": "extractor.core.MultiplePathExtractor:run",
+      "id": "438",
+      "from": "extractor.controller.ConsumerListener",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "134",
-      "from": "extractor.view.Main:getHeight",
-      "to": "extractor.view.Main:jButtonConfigMouseClicked",
+      "id": "439",
+      "from": "extractor.filedecryptor.DecryptorManager",
+      "to": "extractor.utils.FileIO",
       "arrows": "to"
     },
     {
-      "id": "137",
-      "from": "extractor.view.PlaceholderTextField:addActionListener",
-      "to": "extractor.view.Main:setProcuctNumberInputActionListener",
+      "id": "442",
+      "from": "extractor.view.Config",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "138",
-      "from": "extractor.specification.RegexReader:extractFromPattern",
-      "to": "extractor.utils.FileIO:getSpecifications",
+      "id": "454",
+      "from": "extractor.model.Extraction",
+      "to": "extractor.utils.Logflex",
       "arrows": "to"
     },
     {
-      "id": "139",
-      "from": "extractor.view.Main:setVisibleTestTypes",
-      "to": "extractor.view.Main:initActions",
+      "id": "457",
+      "from": "extractor.exceptions.WrongPasswordException",
+      "to": "extractor.controller.CommunicationController",
       "arrows": "to"
     },
     {
-      "id": "141",
-      "from": "extractor.validation.ConfigValidator:fileValidation",
-      "to": "extractor.validation.ConfigValidator:validatePathLLT",
+      "id": "462",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.core.Extractor",
       "arrows": "to"
     },
     {
-      "id": "142",
-      "from": "extractor.model.Extraction:getSerialNumber",
-      "to": "extractor.utils.Logflex:logProperties",
+      "id": "475",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.utils.Logflex",
       "arrows": "to"
     },
     {
-      "id": "143",
-      "from": "extractor.utils.TestType:getValueByName",
-      "to": "extractor.utils.Constants:testTypes",
+      "id": "489",
+      "from": "extractor.model.Property",
+      "to": "extractor.model.Extraction",
       "arrows": "to"
     },
     {
-      "id": "144",
-      "from": "extractor.view.Main:initActions",
-      "to": "extractor.view.Main:initGUI",
+      "id": "492",
+      "from": "extractor.controller.ProducerListener",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "145",
-      "from": "extractor.model.Session:reset",
-      "to": "extractor.view.Config:saveConfigs",
+      "id": "498",
+      "from": "extractor.core.ExtractionQueue",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "146",
-      "from": "extractor.core.ExtractionQueue:\u003cinit\u003e",
-      "to": "extractor.controller.OfflineService:\u003cinit\u003e",
+      "id": "500",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.controller.CommunicationController",
       "arrows": "to"
     },
     {
-      "id": "147",
-      "from": "extractor.core.MultipleExtractionSender:addProducerThread",
-      "to": "extractor.core.AutoCollectExtractor:run",
+      "id": "507",
+      "from": "extractor.model.Extraction",
+      "to": "extractor.core.Extractor",
       "arrows": "to"
     },
     {
-      "id": "148",
-      "from": "extractor.utils.Logflex:info",
-      "to": "extractor.utils.Logflex:newTestLog",
+      "id": "517",
+      "from": "extractor.core.MultipleExtractionSender",
+      "to": "extractor.core.AutoCollectExtractor",
       "arrows": "to"
     },
     {
-      "id": "152",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:windowClosing",
+      "id": "522",
+      "from": "extractor.exceptions.BlockedUserException",
+      "to": "extractor.controller.OfflineExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "153",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.specification.RegexReader:extractValues",
+      "id": "531",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.specification.SingleLinePositionReader",
       "arrows": "to"
     },
     {
-      "id": "154",
-      "from": "extractor.filedecryptor.DecryptorManager:doBoosterDecrypt",
-      "to": "extractor.core.Extractor:decryptBoosterIfExists",
+      "id": "532",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.model.Property",
       "arrows": "to"
     },
     {
-      "id": "158",
-      "from": "extractor.validation.ProductAndSerialValidator:matchesProductNumber",
-      "to": "extractor.view.Main:focusLost",
+      "id": "536",
+      "from": "extractor.model.Session",
+      "to": "extractor.communication.Client",
       "arrows": "to"
     },
     {
-      "id": "159",
-      "from": "extractor.controller.ExtractionController:\u003cinit\u003e",
-      "to": "extractor.controller.ExtractionController:reset",
+      "id": "546",
+      "from": "extractor.exceptions.BlockedUserException",
+      "to": "extractor.controller.CommunicationController",
       "arrows": "to"
     },
     {
-      "id": "161",
-      "from": "extractor.validation.ConfigValidator:validateResumeFolder",
-      "to": "extractor.validation.ConfigValidator:getInvalidConfigurations",
+      "id": "547",
+      "from": "extractor.view.Main",
+      "to": "extractor.view.Config",
       "arrows": "to"
     },
     {
-      "id": "162",
-      "from": "extractor.controller.OfflineService:stopOfflineExtraction",
-      "to": "extractor.view.Main:doLogout",
+      "id": "548",
+      "from": "extractor.controller.CommunicationController",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "163",
-      "from": "extractor.utils.BrowserManager:openWebpage",
-      "to": "extractor.view.Main:doExtract",
+      "id": "550",
+      "from": "extractor.in.Messages",
+      "to": "extractor.specification.RegexReader",
       "arrows": "to"
     },
     {
-      "id": "164",
-      "from": "extractor.utils.Constants:defaultTestType",
-      "to": "extractor.utils.Constants:getPropertiesValue",
+      "id": "553",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.utils.GrammarGenerator",
       "arrows": "to"
     },
     {
-      "id": "165",
-      "from": "extractor.view.PlaceholderTextField:setBorder",
-      "to": "extractor.view.Main:focusLost",
+      "id": "555",
+      "from": "extractor.communication.TestTypeSerializer",
+      "to": "extractor.communication.Client",
       "arrows": "to"
     },
     {
-      "id": "166",
-      "from": "extractor.view.PlaceholderTextField:\u003cinit\u003e",
-      "to": "extractor.view.Main:initGUI",
+      "id": "557",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.communication.Client",
       "arrows": "to"
     },
     {
-      "id": "167",
-      "from": "extractor.view.Main:setPNandSNKeyListener",
-      "to": "extractor.view.Main:initActions",
+      "id": "562",
+      "from": "extractor.exceptions.ConnectionErrorException",
+      "to": "extractor.communication.Client",
       "arrows": "to"
     },
     {
-      "id": "168",
-      "from": "extractor.core.ApplicationsHashGenerator:selectFileToExtract",
-      "to": "extractor.core.ApplicationsHashGenerator:generateHashForRunningLST",
+      "id": "567",
+      "from": "extractor.utils.TestType",
+      "to": "extractor.core.LLTExtractor",
       "arrows": "to"
     },
     {
-      "id": "170",
-      "from": "extractor.view.Main:setProductNumberInputFocusListener",
-      "to": "extractor.view.Main:initActions",
+      "id": "571",
+      "from": "extractor.core.ExtractionQueueResourceAccessible",
+      "to": "extractor.core.ExtractionQueue",
       "arrows": "to"
     },
     {
-      "id": "172",
-      "from": "extractor.core.OfflineExtractionProducer:\u003cinit\u003e",
-      "to": "extractor.controller.OfflineService:\u003cinit\u003e",
+      "id": "583",
+      "from": "extractor.core.Extractor",
+      "to": "extractor.core.MultiplePathExtractor",
       "arrows": "to"
     },
     {
-      "id": "173",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:setNoteKeyListener",
+      "id": "584",
+      "from": "extractor.controller.OfflineExtractionSender",
+      "to": "extractor.controller.OfflineService",
       "arrows": "to"
     },
     {
-      "id": "177",
-      "from": "extractor.core.MultiplePathExtractor:existsFileWithName",
-      "to": "extractor.core.MultiplePathExtractor:moveFilesFromTo",
+      "id": "589",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.core.PathExtractor",
       "arrows": "to"
     },
     {
-      "id": "178",
-      "from": "extractor.view.PlaceholderPasswordField:setText",
-      "to": "extractor.view.Main:focusGained",
+      "id": "595",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.core.LLTExtractor",
       "arrows": "to"
     },
     {
-      "id": "179",
-      "from": "extractor.communication.SecurityManager:getHTTPSConnection",
-      "to": "extractor.communication.Client:submitJsonToURL",
+      "id": "598",
+      "from": "extractor.core.ExtractionQueue",
+      "to": "extractor.controller.OfflineExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "180",
-      "from": "extractor.view.PlaceholderTextField:setBorder",
-      "to": "extractor.view.Main:doLogin",
+      "id": "607",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.view.Config",
       "arrows": "to"
     },
     {
-      "id": "182",
-      "from": "extractor.model.Property:\u003cinit\u003e",
-      "to": "extractor.model.Extraction:addProperties",
+      "id": "609",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.core.RuntimeManager",
       "arrows": "to"
     },
     {
-      "id": "184",
-      "from": "extractor.view.PlaceholderTextField:setText",
-      "to": "extractor.view.Main:doLogin",
+      "id": "611",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.controller.OfflineService",
       "arrows": "to"
     },
     {
-      "id": "186",
-      "from": "extractor.specification.PropertySpecification:setTypeOfProperty",
-      "to": "extractor.specification.PropertySpecification:\u003cinit\u003e",
+      "id": "618",
+      "from": "extractor.model.OfflineExtraction",
+      "to": "extractor.core.OfflineExtractionProducer",
       "arrows": "to"
     },
     {
-      "id": "188",
-      "from": "extractor.utils.GrammarGenerator:getValidProductNumbers",
-      "to": "extractor.validation.ProductAndSerialValidator:matchesProductNumber",
+      "id": "624",
+      "from": "extractor.core.ExtractionQueue",
+      "to": "extractor.core.MultipleExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "189",
-      "from": "extractor.view.Main:initGUI",
-      "to": "extractor.view.Main:refresh",
+      "id": "633",
+      "from": "extractor.model.Extraction",
+      "to": "extractor.communication.Client",
       "arrows": "to"
     },
     {
-      "id": "191",
-      "from": "extractor.view.PlaceholderTextField:getText",
-      "to": "extractor.view.Main:keyPressed",
+      "id": "637",
+      "from": "extractor.utils.BrowserManager",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "192",
-      "from": "extractor.utils.FileIO:getAllLines",
-      "to": "extractor.specification.SingleLinePositionReader:extract",
+      "id": "642",
+      "from": "extractor.utils.FileIO",
+      "to": "extractor.specification.RegexReader",
       "arrows": "to"
     },
     {
-      "id": "194",
-      "from": "extractor.view.PlaceholderTextField:setForeground",
-      "to": "extractor.view.Main:doLogin",
+      "id": "645",
+      "from": "extractor.exceptions.ParameterException",
+      "to": "extractor.utils.GrammarGenerator",
       "arrows": "to"
     },
     {
-      "id": "195",
-      "from": "extractor.core.MultipleExtractionSender:stopExecution",
-      "to": "extractor.core.AutoCollectExtractor:run",
+      "id": "647",
+      "from": "extractor.controller.OfflineService",
+      "to": "extractor.core.MultipleExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "196",
-      "from": "extractor.in.Messages:init",
-      "to": "extractor.view.Main:refresh",
+      "id": "650",
+      "from": "extractor.model.Extraction",
+      "to": "extractor.controller.CommunicationController",
       "arrows": "to"
     },
     {
-      "id": "198",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.core.LLTExtractor:specificExtraction",
+      "id": "651",
+      "from": "extractor.core.ApplicationsHashGenerator",
+      "to": "extractor.core.Extractor",
       "arrows": "to"
     },
     {
-      "id": "199",
-      "from": "extractor.view.Config:groupRadioButtons",
-      "to": "extractor.view.Config:initGUI",
+      "id": "653",
+      "from": "extractor.utils.TestType;",
+      "to": "extractor.utils.TestType",
       "arrows": "to"
     },
     {
-      "id": "200",
-      "from": "extractor.view.Main:setSerialNumberInputActionListener",
-      "to": "extractor.view.Main:initActions",
+      "id": "665",
+      "from": "extractor.in.Messages",
+      "to": "extractor.utils.Constants",
       "arrows": "to"
     },
     {
-      "id": "201",
-      "from": "extractor.core.AutoCollectExtractor:stopAutoCollect",
-      "to": "extractor.controller.ExtractionController:stopExtractByAutoCollect",
+      "id": "670",
+      "from": "extractor.utils.CalendarUtils",
+      "to": "extractor.specification.RegexReader",
       "arrows": "to"
     },
     {
-      "id": "202",
-      "from": "extractor.specification.PropertySpecification:getPattern",
-      "to": "extractor.core.Extractor:extract",
+      "id": "673",
+      "from": "extractor.in.Messages",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "204",
-      "from": "extractor.core.KeysHashGenerator:generateMDHash",
-      "to": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey",
+      "id": "674",
+      "from": "extractor.core.MultiplePathExtractor",
+      "to": "extractor.core.AutoCollectExtractor",
       "arrows": "to"
     },
     {
-      "id": "205",
-      "from": "extractor.utils.Constants:createTempFolder",
-      "to": "extractor.utils.Constants:init",
+      "id": "680",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.core.PathExtractor",
       "arrows": "to"
     },
     {
-      "id": "207",
-      "from": "extractor.view.PlaceholderPasswordField:setBounds",
-      "to": "extractor.view.Main:initGUI",
+      "id": "681",
+      "from": "extractor.utils.FileIO",
+      "to": "extractor.specification.SingleLinePositionReader",
       "arrows": "to"
     },
     {
-      "id": "208",
-      "from": "extractor.filedecryptor.DecryptorManager:doLifecounterDecrypt",
-      "to": "extractor.core.Extractor:decryptLifecounterIfExists",
+      "id": "682",
+      "from": "extractor.model.Extraction",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "209",
-      "from": "extractor.view.Main:extractByAutoCollect",
-      "to": "extractor.view.Main:access",
+      "id": "683",
+      "from": "extractor.controller.CommunicationController",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "210",
-      "from": "extractor.view.PlaceholderTextField:setForeground",
-      "to": "extractor.view.Main:doExtract",
+      "id": "684",
+      "from": "extractor.core.MultiplePathExtractor",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "211",
-      "from": "extractor.core.OfflineExtractionProducer:isRunning",
-      "to": "extractor.controller.OfflineExtractionSender:run",
+      "id": "691",
+      "from": "extractor.core.ExtractionQueue",
+      "to": "extractor.core.MultiplePathExtractor",
       "arrows": "to"
     },
     {
-      "id": "212",
-      "from": "extractor.utils.Logflex:logProperties",
-      "to": "extractor.core.Extractor:extract",
+      "id": "699",
+      "from": "extractor.core.MultipleExtractionSender",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "213",
-      "from": "extractor.core.MultiplePathExtractor:resetCounters",
-      "to": "extractor.core.AutoCollectExtractor:run",
+      "id": "701",
+      "from": "extractor.view.PlaceholderPasswordField",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "214",
-      "from": "extractor.validation.ProductAndSerialValidator:matchesSerialNumberAndProductNumbersFamily",
-      "to": "extractor.core.MultiplePathExtractor:listAvailableFolders",
+      "id": "712",
+      "from": "extractor.utils.TestType",
+      "to": "extractor.communication.Client",
       "arrows": "to"
     },
     {
-      "id": "215",
-      "from": "extractor.utils.Constants:init",
-      "to": "extractor.view.Main:main",
+      "id": "713",
+      "from": "extractor.model.Extraction",
+      "to": "extractor.controller.OfflineService",
       "arrows": "to"
     },
     {
-      "id": "216",
-      "from": "extractor.validation.ProductAndSerialValidator:matchesSerialNumberAndProductNumbersFamily",
-      "to": "extractor.view.Main:actionPerformed",
+      "id": "718",
+      "from": "extractor.exceptions.BlockedUserException",
+      "to": "extractor.core.MultipleExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "217",
-      "from": "extractor.view.PlaceholderTextField:setPlaceholder",
-      "to": "extractor.view.Main:initGUI",
+      "id": "719",
+      "from": "extractor.core.ExtractionQueue",
+      "to": "extractor.core.OfflineExtractionProducer",
       "arrows": "to"
     },
     {
-      "id": "218",
-      "from": "extractor.exceptions.BlockedUserException:printStackTrace",
-      "to": "extractor.view.Main:doExtract",
+      "id": "725",
+      "from": "extractor.exceptions.ConnectionErrorException",
+      "to": "extractor.controller.CommunicationController",
       "arrows": "to"
     },
     {
-      "id": "220",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.model.Property:setName",
+      "id": "737",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.in.Messages",
       "arrows": "to"
     },
     {
-      "id": "221",
-      "from": "extractor.model.OfflineExtraction:getFile",
-      "to": "extractor.controller.OfflineExtractionSender:run",
+      "id": "744",
+      "from": "extractor.exceptions.WrongPasswordException",
+      "to": "extractor.core.MultipleExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "222",
-      "from": "extractor.validation.ConfigValidator:validateLLTPort",
-      "to": "extractor.validation.ConfigValidator:getInvalidConfigurations",
+      "id": "751",
+      "from": "extractor.utils.TestType",
+      "to": "extractor.communication.TestTypeSerializer",
       "arrows": "to"
     },
     {
-      "id": "224",
-      "from": "extractor.view.PlaceholderPasswordField:\u003cinit\u003e",
-      "to": "extractor.view.Main:initGUI",
+      "id": "758",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "226",
-      "from": "extractor.core.RuntimeManager:exec",
-      "to": "extractor.filedecryptor.DecryptorManager:doLifecounterDecrypt",
+      "id": "767",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.core.LLTExtractor",
       "arrows": "to"
     },
     {
-      "id": "227",
-      "from": "extractor.in.Messages:init",
-      "to": "extractor.view.Main:\u003cinit\u003e",
+      "id": "772",
+      "from": "extractor.specification.PatternReadable",
+      "to": "extractor.specification.RegexReader",
       "arrows": "to"
     },
     {
-      "id": "228",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:setPasswordInputFocusListener",
+      "id": "782",
+      "from": "extractor.in.Messages",
+      "to": "extractor.core.LLTExtractor",
       "arrows": "to"
     },
     {
-      "id": "229",
-      "from": "extractor.view.Main:setEnabled",
-      "to": "extractor.view.Config:windowClosed",
+      "id": "784",
+      "from": "extractor.model.Extraction",
+      "to": "extractor.core.MultipleExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "230",
-      "from": "extractor.controller.ExtractionController:addProducerListener",
-      "to": "extractor.view.Main:extractByPath",
+      "id": "785",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.controller.OfflineExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "231",
-      "from": "extractor.controller.ExtractionController:getInstance",
-      "to": "extractor.core.MultipleExtractionSender:run",
+      "id": "794",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.specification.PatternReadable",
       "arrows": "to"
     },
     {
-      "id": "232",
-      "from": "extractor.controller.CommunicationController:sendExtraction",
-      "to": "extractor.controller.ExtractionController:extractByLLT",
+      "id": "798",
+      "from": "extractor.controller.ExtractionController",
+      "to": "extractor.core.MultipleExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "233",
-      "from": "extractor.validation.ConfigValidator:validateLLTPort",
-      "to": "extractor.validation.ConfigValidator:validateCurrentConfigurations",
+      "id": "801",
+      "from": "extractor.exceptions.BlockedUserException",
+      "to": "extractor.communication.Client",
       "arrows": "to"
     },
     {
-      "id": "235",
-      "from": "extractor.core.MultipleExtractionSender:stopExecution",
-      "to": "extractor.controller.ExtractionController:stopExtractByPath",
+      "id": "805",
+      "from": "extractor.core.LLTExtractor",
+      "to": "extractor.controller.ExtractionController",
       "arrows": "to"
     },
     {
-      "id": "237",
-      "from": "extractor.core.MultiplePathExtractor:addProducerListener",
-      "to": "extractor.controller.ExtractionController:extractByAutoCollect",
+      "id": "819",
+      "from": "extractor.utils.TestType",
+      "to": "extractor.view.Main",
       "arrows": "to"
     },
     {
-      "id": "238",
-      "from": "extractor.model.Session:getInstance",
-      "to": "extractor.view.Main:doLogin",
+      "id": "833",
+      "from": "extractor.utils.GrammarGenerator",
+      "to": "extractor.validation.ProductAndSerialValidator",
       "arrows": "to"
     },
     {
-      "id": "239",
-      "from": "extractor.view.Main:getY",
-      "to": "extractor.view.Config:\u003cinit\u003e",
+      "id": "836",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.core.Extractor",
       "arrows": "to"
     },
     {
-      "id": "240",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.model.Session:getInstance",
+      "id": "837",
+      "from": "extractor.controller.ExtractionController",
+      "to": "extractor.controller.CommunicationController",
       "arrows": "to"
     },
     {
-      "id": "241",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:setButtonOpenPathActionListener",
+      "id": "847",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.model.Session",
       "arrows": "to"
     },
     {
-      "id": "242",
-      "from": "extractor.utils.FileIO:getSpecifications",
-      "to": "extractor.core.Extractor:generateModel",
+      "id": "848",
+      "from": "extractor.exceptions.InternalException",
+      "to": "extractor.specification.PositionReader",
       "arrows": "to"
     },
     {
-      "id": "243",
-      "from": "extractor.view.Main:getX",
-      "to": "extractor.view.Config:\u003cinit\u003e",
+      "id": "850",
+      "from": "extractor.utils.Constants",
+      "to": "extractor.validation.ConfigValidator",
       "arrows": "to"
     },
     {
-      "id": "245",
-      "from": "extractor.view.PlaceholderTextField:getText",
-      "to": "extractor.view.Main:focusLost",
+      "id": "851",
+      "from": "extractor.in.Messages",
+      "to": "extractor.view.Config",
       "arrows": "to"
     },
     {
-      "id": "246",
-      "from": "extractor.specification.PropertySpecification:setFileNameToExtract",
-      "to": "extractor.specification.PropertySpecification:\u003cinit\u003e",
+      "id": "854",
+      "from": "extractor.exceptions.WrongPasswordException",
+      "to": "extractor.controller.OfflineExtractionSender",
       "arrows": "to"
     },
     {
-      "id": "247",
-      "from": "extractor.model.Extraction:setTestType",
-      "to": "extractor.model.Extraction:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "249",
-      "from": "extractor.core.MultiplePathExtractor:isReadCollectDir",
-      "to": "extractor.core.MultiplePathExtractor:listAvailableFolders",
-      "arrows": "to"
-    },
-    {
-      "id": "252",
-      "from": "extractor.model.OfflineExtraction:getExtraction",
-      "to": "extractor.controller.OfflineExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "253",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.specification.RegexReader:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "254",
-      "from": "extractor.controller.ExtractionController:addConsumerListener",
-      "to": "extractor.view.Main:extractByAutoCollect",
-      "arrows": "to"
-    },
-    {
-      "id": "255",
-      "from": "extractor.utils.FileIO:convertFileToStringList",
-      "to": "extractor.specification.PositionReader:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "257",
-      "from": "extractor.utils.Logflex:\u003cinit\u003e",
-      "to": "extractor.utils.Logflex:getInstance",
-      "arrows": "to"
-    },
-    {
-      "id": "258",
-      "from": "extractor.specification.PropertySpecification:\u003cinit\u003e",
-      "to": "extractor.utils.FileIO:getSpecifications",
-      "arrows": "to"
-    },
-    {
-      "id": "259",
-      "from": "extractor.validation.ConfigValidator:validateLLTLogsFolder",
-      "to": "extractor.validation.ConfigValidator:validateCurrentConfigurations",
-      "arrows": "to"
-    },
-    {
-      "id": "260",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.view.Main:isNoteRequired",
-      "arrows": "to"
-    },
-    {
-      "id": "262",
-      "from": "extractor.validation.ProductAndSerialValidator:getInstance",
-      "to": "extractor.view.Main:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "263",
-      "from": "extractor.validation.ConfigValidator:validateCurrentConfigurations",
-      "to": "extractor.view.Main:refresh",
-      "arrows": "to"
-    },
-    {
-      "id": "264",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.utils.GrammarGenerator:readPatternsFile",
-      "arrows": "to"
-    },
-    {
-      "id": "265",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.view.Config:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "268",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:setPasswordInputACtionListener",
-      "arrows": "to"
-    },
-    {
-      "id": "269",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.utils.Constants:defaultTestType",
-      "arrows": "to"
-    },
-    {
-      "id": "270",
-      "from": "extractor.controller.OfflineService:\u003cinit\u003e",
-      "to": "extractor.controller.ExtractionController:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "271",
-      "from": "extractor.validation.ConfigValidator:validateResultsFolder",
-      "to": "extractor.validation.ConfigValidator:getInvalidConfigurations",
-      "arrows": "to"
-    },
-    {
-      "id": "272",
-      "from": "extractor.view.Main:createErrorPopUp",
-      "to": "extractor.view.Main:extractByAutoCollect",
-      "arrows": "to"
-    },
-    {
-      "id": "273",
-      "from": "extractor.view.Main:setProcuctNumberInputActionListener",
-      "to": "extractor.view.Main:initActions",
-      "arrows": "to"
-    },
-    {
-      "id": "275",
-      "from": "extractor.view.PlaceholderTextField:addFocusListener",
-      "to": "extractor.view.Main:setProductNumberInputFocusListener",
-      "arrows": "to"
-    },
-    {
-      "id": "276",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.utils.FileIO:getValuesOfCSVLine",
-      "arrows": "to"
-    },
-    {
-      "id": "279",
-      "from": "extractor.view.Main:doExtract",
-      "to": "extractor.view.Main:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "280",
-      "from": "extractor.core.MultiplePathExtractor:isRunning",
-      "to": "extractor.controller.ExtractionController:isMultiplePathExtractorProducerRunning",
-      "arrows": "to"
-    },
-    {
-      "id": "281",
-      "from": "extractor.core.ApplicationsHashGenerator:joinCollection",
-      "to": "extractor.core.ApplicationsHashGenerator:generateHashForRunningLST",
-      "arrows": "to"
-    },
-    {
-      "id": "282",
-      "from": "extractor.controller.OfflineExtractionSender:setConsumerListener",
-      "to": "extractor.controller.OfflineService:sendOfflineExtractions",
-      "arrows": "to"
-    },
-    {
-      "id": "284",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.specification.PositionReader:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "285",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:updateNumberOfAvailableExtractions",
-      "arrows": "to"
-    },
-    {
-      "id": "286",
-      "from": "extractor.controller.OfflineService:saveExtractionOffline",
-      "to": "extractor.core.MultipleExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "287",
-      "from": "extractor.specification.RegexReader:extractFromPattern",
-      "to": "extractor.specification.RegexReader:extractValues",
-      "arrows": "to"
-    },
-    {
-      "id": "290",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.utils.Constants:updateConfig",
-      "arrows": "to"
-    },
-    {
-      "id": "291",
-      "from": "extractor.core.MultiplePathExtractor:addProducerListener",
-      "to": "extractor.controller.ExtractionController:extractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "293",
-      "from": "extractor.view.Main:getComponents",
-      "to": "extractor.view.Main:jButtonConfigMouseClicked",
-      "arrows": "to"
-    },
-    {
-      "id": "294",
-      "from": "extractor.specification.PropertySpecification:getFileNameToExtract",
-      "to": "extractor.core.Extractor:decryptBoosterIfExists",
-      "arrows": "to"
-    },
-    {
-      "id": "295",
-      "from": "extractor.controller.ExtractionController:extractByLLT",
-      "to": "extractor.view.Main:doExtract",
-      "arrows": "to"
-    },
-    {
-      "id": "298",
-      "from": "extractor.view.Config:\u003cinit\u003e",
-      "to": "extractor.view.Config:addListenersToRadioButtonsDefaultTestType",
-      "arrows": "to"
-    },
-    {
-      "id": "299",
-      "from": "extractor.view.PlaceholderPasswordField:getDisabledTextColor",
-      "to": "extractor.view.PlaceholderPasswordField:paintComponent",
-      "arrows": "to"
-    },
-    {
-      "id": "300",
-      "from": "extractor.view.Main:setEnableWatcherModeComponents",
-      "to": "extractor.view.Main:access",
-      "arrows": "to"
-    },
-    {
-      "id": "301",
-      "from": "extractor.core.ExtractionQueue:pollExtraction",
-      "to": "extractor.core.MultipleExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "303",
-      "from": "extractor.view.Config:setVisible",
-      "to": "extractor.view.Main:jButtonConfigMouseClicked",
-      "arrows": "to"
-    },
-    {
-      "id": "304",
-      "from": "extractor.specification.PropertySpecification:getTypeOfProperty",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "305",
-      "from": "extractor.model.Session:getSessionToken",
-      "to": "extractor.model.Session:getInstance",
-      "arrows": "to"
-    },
-    {
-      "id": "306",
-      "from": "extractor.utils.Logflex:info",
-      "to": "extractor.utils.Logflex:newPreTestLog",
-      "arrows": "to"
-    },
-    {
-      "id": "307",
-      "from": "extractor.controller.CommunicationController:sendExtraction",
-      "to": "extractor.core.MultipleExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "308",
-      "from": "extractor.view.Main:doExtract",
-      "to": "extractor.view.Main:keyPressed",
-      "arrows": "to"
-    },
-    {
-      "id": "309",
-      "from": "extractor.communication.Client:\u003cinit\u003e",
-      "to": "extractor.controller.OfflineService:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "311",
-      "from": "extractor.controller.ExtractionController:stopExtractByAutoCollect",
-      "to": "extractor.view.Main:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "312",
-      "from": "extractor.filedecryptor.DecryptorManager:doLifecounterDecrypt",
-      "to": "extractor.utils.FileIO:getFileToExtract",
-      "arrows": "to"
-    },
-    {
-      "id": "313",
-      "from": "extractor.controller.ExtractionController:sendOfflineFiles",
-      "to": "extractor.view.Main:doLogin",
-      "arrows": "to"
-    },
-    {
-      "id": "315",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:updateCounterMessage",
-      "arrows": "to"
-    },
-    {
-      "id": "317",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "318",
-      "from": "extractor.model.Session:initialize",
-      "to": "extractor.controller.CommunicationController:login",
-      "arrows": "to"
-    },
-    {
-      "id": "320",
-      "from": "extractor.view.Main:updateCounterMessage",
-      "to": "extractor.view.Main:updateNumberOfExtractionsDone",
-      "arrows": "to"
-    },
-    {
-      "id": "323",
-      "from": "extractor.validation.ConfigValidator:validateServerLocation",
-      "to": "extractor.validation.ConfigValidator:validateCurrentConfigurations",
-      "arrows": "to"
-    },
-    {
-      "id": "324",
-      "from": "extractor.core.KeysHashGenerator:getAllKeys",
-      "to": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey",
-      "arrows": "to"
-    },
-    {
-      "id": "325",
-      "from": "extractor.view.Main:createErrorPopUp",
-      "to": "extractor.view.Main:startWatcherMode",
-      "arrows": "to"
-    },
-    {
-      "id": "327",
-      "from": "extractor.controller.CommunicationController:\u003cinit\u003e",
-      "to": "extractor.utils.ServerPoll:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "328",
-      "from": "extractor.model.Session:getType",
-      "to": "extractor.view.Main:doLogin",
-      "arrows": "to"
-    },
-    {
-      "id": "330",
-      "from": "extractor.model.OfflineExtraction:\u003cinit\u003e",
-      "to": "extractor.core.OfflineExtractionProducer:run",
-      "arrows": "to"
-    },
-    {
-      "id": "331",
-      "from": "extractor.view.PlaceholderTextField:setBorder",
-      "to": "extractor.view.Main:doLogout",
-      "arrows": "to"
-    },
-    {
-      "id": "332",
-      "from": "extractor.view.Config:validateConfigValues",
-      "to": "extractor.view.Config:saveConfigs",
-      "arrows": "to"
-    },
-    {
-      "id": "333",
-      "from": "extractor.controller.ExtractionController:getInstance",
-      "to": "extractor.core.AutoCollectExtractor:run",
-      "arrows": "to"
-    },
-    {
-      "id": "334",
-      "from": "extractor.core.Extractor:selectFileToExtract",
-      "to": "extractor.core.Extractor:decryptLifecounterIfExists",
-      "arrows": "to"
-    },
-    {
-      "id": "335",
-      "from": "extractor.view.PlaceholderPasswordField:addActionListener",
-      "to": "extractor.view.Main:setPasswordInputACtionListener",
-      "arrows": "to"
-    },
-    {
-      "id": "337",
-      "from": "extractor.communication.SecurityManager:\u003cinit\u003e",
-      "to": "extractor.communication.SecurityManager:trustAllHosts",
-      "arrows": "to"
-    },
-    {
-      "id": "338",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:focusGained",
-      "arrows": "to"
-    },
-    {
-      "id": "339",
-      "from": "extractor.model.Extraction:getSerialNumber",
-      "to": "extractor.core.MultipleExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "340",
-      "from": "extractor.specification.PropertySpecification:getFileNameToExtract",
-      "to": "extractor.core.Extractor:decryptLifecounterIfExists",
-      "arrows": "to"
-    },
-    {
-      "id": "343",
-      "from": "extractor.utils.Constants:createNewTempFolder",
-      "to": "extractor.controller.ExtractionController:extractByLLT",
-      "arrows": "to"
-    },
-    {
-      "id": "344",
-      "from": "extractor.view.Config:setAndLogIfChanged",
-      "to": "extractor.view.Config:saveConfigs",
-      "arrows": "to"
-    },
-    {
-      "id": "345",
-      "from": "extractor.utils.TestType:getValueByName",
-      "to": "extractor.view.Main:extractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "347",
-      "from": "extractor.model.Session:getSessionToken",
-      "to": "extractor.communication.Client:sendExtraction",
-      "arrows": "to"
-    },
-    {
-      "id": "348",
-      "from": "extractor.view.Config:\u003cinit\u003e",
-      "to": "extractor.view.Config:setJTExtOpenPathActionListener",
-      "arrows": "to"
-    },
-    {
-      "id": "349",
-      "from": "extractor.view.Main:setDefaultTestType",
-      "to": "extractor.view.Main:initActions",
-      "arrows": "to"
-    },
-    {
-      "id": "350",
-      "from": "extractor.controller.ExtractionController:\u003cinit\u003e",
-      "to": "extractor.controller.ExtractionController:getInstance",
-      "arrows": "to"
-    },
-    {
-      "id": "351",
-      "from": "extractor.utils.Logflex:newPreQALog",
-      "to": "extractor.utils.Logflex:logProperties",
-      "arrows": "to"
-    },
-    {
-      "id": "352",
-      "from": "extractor.core.MultiplePathExtractor:deleteFileWithNameInDirectory",
-      "to": "extractor.core.MultiplePathExtractor:moveFilesFromTo",
-      "arrows": "to"
-    },
-    {
-      "id": "354",
-      "from": "extractor.view.Main:getContentPane",
-      "to": "extractor.view.Main:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "355",
-      "from": "extractor.view.Config:getJCheckBox",
-      "to": "extractor.view.Config:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "356",
-      "from": "extractor.view.Main:changeToExtractPanel",
-      "to": "extractor.view.Main:refresh",
-      "arrows": "to"
-    },
-    {
-      "id": "357",
-      "from": "extractor.core.RuntimeManager:getScriptOutput",
-      "to": "extractor.core.LLTExtractor:specificExtraction",
-      "arrows": "to"
-    },
-    {
-      "id": "358",
-      "from": "extractor.view.Config:getHeight",
-      "to": "extractor.view.Main:jButtonConfigMouseClicked",
-      "arrows": "to"
-    },
-    {
-      "id": "359",
-      "from": "extractor.specification.PropertySpecification:getFileNameToExtract",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "360",
-      "from": "extractor.utils.Constants:createNewTempFolder",
-      "to": "extractor.controller.ExtractionController:extractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "361",
-      "from": "extractor.core.LLTExtractor:buildRuntimeManagerInstance",
-      "to": "extractor.core.LLTExtractor:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "363",
-      "from": "extractor.core.ExtractionQueueResourceAccessible:\u003cinit\u003e",
-      "to": "extractor.core.ExtractionQueueResourceAccessible:\u003cclinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "364",
-      "from": "extractor.view.Main:getNote",
-      "to": "extractor.view.Main:extractByAutoCollect",
-      "arrows": "to"
-    },
-    {
-      "id": "365",
-      "from": "extractor.core.Extractor:selectFileToExtract",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "366",
-      "from": "extractor.view.Config:\u003cinit\u003e",
-      "to": "extractor.view.Config:addListenersToCheckVisibleTestTypeBoxes",
-      "arrows": "to"
-    },
-    {
-      "id": "367",
-      "from": "extractor.model.Session:getInstance",
-      "to": "extractor.communication.Client:sendExtraction",
-      "arrows": "to"
-    },
-    {
-      "id": "368",
-      "from": "extractor.controller.ConsumerListener:updateNumberOfAvailableSents",
-      "to": "extractor.core.MultipleExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "369",
-      "from": "extractor.controller.ExtractionController:getInstance",
-      "to": "extractor.view.Main:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "370",
-      "from": "extractor.controller.ExtractionController:addConsumerListener",
-      "to": "extractor.view.Main:extractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "372",
-      "from": "extractor.specification.PropertySpecification:setTypeOfPattern",
-      "to": "extractor.specification.PropertySpecification:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "373",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:focusLost",
-      "arrows": "to"
-    },
-    {
-      "id": "374",
-      "from": "extractor.core.RuntimeManager:exec",
-      "to": "extractor.filedecryptor.DecryptorManager:doBoosterDecrypt",
-      "arrows": "to"
-    },
-    {
-      "id": "375",
-      "from": "extractor.specification.PropertySpecification:getTypeOfPattern",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "376",
-      "from": "extractor.utils.FileIO:getValuesOfCSVLine",
-      "to": "extractor.utils.FileIO:getSpecifications",
-      "arrows": "to"
-    },
-    {
-      "id": "378",
-      "from": "extractor.validation.ProductAndSerialValidator:\u003cinit\u003e",
-      "to": "extractor.validation.ProductAndSerialValidator:getInstance",
-      "arrows": "to"
-    },
-    {
-      "id": "379",
-      "from": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "380",
-      "from": "extractor.core.Extractor:decryptBoosterIfExists",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "381",
-      "from": "extractor.core.MultipleExtractionSender:\u003cinit\u003e",
-      "to": "extractor.controller.ExtractionController:extractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "383",
-      "from": "extractor.view.Main:jButtonLogoutNavbarMouseClicked",
-      "to": "extractor.view.Main:access",
-      "arrows": "to"
-    },
-    {
-      "id": "385",
-      "from": "extractor.exceptions.WrongPasswordException:printStackTrace",
-      "to": "extractor.view.Main:doExtract",
-      "arrows": "to"
-    },
-    {
-      "id": "386",
-      "from": "extractor.view.Main:switchButtonsEnabling",
-      "to": "extractor.view.Main:extractByAutoCollect",
-      "arrows": "to"
-    },
-    {
-      "id": "388",
-      "from": "extractor.specification.PropertySpecification:setPropertyName",
-      "to": "extractor.specification.PropertySpecification:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "389",
-      "from": "extractor.view.Config:access",
-      "to": "extractor.view.Config:itemStateChanged",
-      "arrows": "to"
-    },
-    {
-      "id": "391",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:setUserInputFocusListener",
-      "arrows": "to"
-    },
-    {
-      "id": "392",
-      "from": "extractor.view.PlaceholderTextField:getInsets",
-      "to": "extractor.view.PlaceholderTextField:paintComponent",
-      "arrows": "to"
-    },
-    {
-      "id": "393",
-      "from": "extractor.utils.Logflex:newTestLog",
-      "to": "extractor.utils.Logflex:logProperties",
-      "arrows": "to"
-    },
-    {
-      "id": "394",
-      "from": "extractor.view.PlaceholderTextField:getText",
-      "to": "extractor.view.PlaceholderTextField:paintComponent",
-      "arrows": "to"
-    },
-    {
-      "id": "395",
-      "from": "extractor.model.Session:reset",
-      "to": "extractor.controller.CommunicationController:logout",
-      "arrows": "to"
-    },
-    {
-      "id": "396",
-      "from": "extractor.view.Main:createErrorPopUp",
-      "to": "extractor.view.Config:validateConfigValues",
-      "arrows": "to"
-    },
-    {
-      "id": "398",
-      "from": "extractor.controller.CommunicationController:\u003cinit\u003e",
-      "to": "extractor.view.Main:refresh",
-      "arrows": "to"
-    },
-    {
-      "id": "399",
-      "from": "extractor.view.Main:createErrorPopUp",
-      "to": "extractor.view.Main:doLogin",
-      "arrows": "to"
-    },
-    {
-      "id": "400",
-      "from": "extractor.view.PlaceholderTextField:addFocusListener",
-      "to": "extractor.view.Main:setSerialNumberInputFocusListener",
-      "arrows": "to"
-    },
-    {
-      "id": "403",
-      "from": "extractor.view.Config:parseCheckBoxesVisibleTestType",
-      "to": "extractor.view.Config:saveConfigs",
-      "arrows": "to"
-    },
-    {
-      "id": "404",
-      "from": "extractor.validation.ConfigValidator:validateServerLocation",
-      "to": "extractor.view.Config:verify",
-      "arrows": "to"
-    },
-    {
-      "id": "405",
-      "from": "extractor.exceptions.WrongPasswordException:\u003cinit\u003e",
-      "to": "extractor.communication.Client:submitJsonToURL",
-      "arrows": "to"
-    },
-    {
-      "id": "406",
-      "from": "extractor.view.PlaceholderTextField:setText",
-      "to": "extractor.view.Main:keyPressed",
-      "arrows": "to"
-    },
-    {
-      "id": "407",
-      "from": "extractor.view.PlaceholderTextField:setAutoscrolls",
-      "to": "extractor.view.Main:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "408",
-      "from": "extractor.communication.Client:poll",
-      "to": "extractor.controller.CommunicationController:ping",
-      "arrows": "to"
-    },
-    {
-      "id": "410",
-      "from": "extractor.view.PlaceholderTextField:getText",
-      "to": "extractor.view.Main:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "411",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "412",
-      "from": "extractor.view.Main:update",
-      "to": "extractor.view.Main:refresh",
-      "arrows": "to"
-    },
-    {
-      "id": "413",
-      "from": "extractor.validation.ConfigValidator:validatePathLLT",
-      "to": "extractor.validation.ConfigValidator:validateCurrentConfigurations",
-      "arrows": "to"
-    },
-    {
-      "id": "415",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.model.Extraction:setTestType",
-      "arrows": "to"
-    },
-    {
-      "id": "416",
-      "from": "extractor.view.Main:setNoteInputFocusListner",
-      "to": "extractor.view.Main:initActions",
-      "arrows": "to"
-    },
-    {
-      "id": "419",
-      "from": "extractor.controller.ConsumerListener:startConsuming",
-      "to": "extractor.controller.OfflineExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "420",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.specification.SingleLinePositionReader:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "423",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.communication.TestTypeSerializer:serialize",
-      "arrows": "to"
-    },
-    {
-      "id": "424",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.view.Config:getJCheckBox",
-      "arrows": "to"
-    },
-    {
-      "id": "425",
-      "from": "extractor.core.OfflineExtractionProducer:countOfflineExtractions",
-      "to": "extractor.core.OfflineExtractionProducer:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "426",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:setPNandSNKeyListener",
-      "arrows": "to"
-    },
-    {
-      "id": "427",
-      "from": "extractor.view.Config:setResizable",
-      "to": "extractor.view.Config:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "428",
-      "from": "extractor.utils.FileIO:getAllLines",
-      "to": "extractor.specification.RegexReader:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "429",
-      "from": "extractor.core.MultiplePathExtractor:moveFilesFromTo",
-      "to": "extractor.core.MultiplePathExtractor:extractAll",
-      "arrows": "to"
-    },
-    {
-      "id": "432",
-      "from": "extractor.view.Main:setLocationRelativeTo",
-      "to": "extractor.view.Main:run",
-      "arrows": "to"
-    },
-    {
-      "id": "433",
-      "from": "extractor.view.Main:pack",
-      "to": "extractor.view.Main:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "436",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.utils.Constants:testTypes",
-      "arrows": "to"
-    },
-    {
-      "id": "437",
-      "from": "extractor.controller.ExtractionController:addProducerListener",
-      "to": "extractor.view.Main:extractByAutoCollect",
-      "arrows": "to"
-    },
-    {
-      "id": "440",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:keyPressed",
-      "arrows": "to"
-    },
-    {
-      "id": "441",
-      "from": "extractor.view.PlaceholderTextField:setBackground",
-      "to": "extractor.view.Main:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "443",
-      "from": "extractor.view.Main:createYesNoPopUp",
-      "to": "extractor.view.Main:doLogin",
-      "arrows": "to"
-    },
-    {
-      "id": "444",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:extractByAutoCollect",
-      "arrows": "to"
-    },
-    {
-      "id": "445",
-      "from": "extractor.specification.SingleLinePositionReader:formatDate",
-      "to": "extractor.specification.SingleLinePositionReader:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "447",
-      "from": "extractor.view.PlaceholderTextField:getDisabledTextColor",
-      "to": "extractor.view.PlaceholderTextField:paintComponent",
-      "arrows": "to"
-    },
-    {
-      "id": "448",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:allExtractionsDone",
-      "arrows": "to"
-    },
-    {
-      "id": "449",
-      "from": "extractor.communication.TestTypeSerializer:\u003cinit\u003e",
-      "to": "extractor.communication.Client:generateJson",
-      "arrows": "to"
-    },
-    {
-      "id": "450",
-      "from": "extractor.utils.FileIO:getCSVFile",
-      "to": "extractor.utils.FileIO:getSpecifications",
-      "arrows": "to"
-    },
-    {
-      "id": "452",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:extractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "453",
-      "from": "extractor.validation.ConfigValidator:validateServerLocation",
-      "to": "extractor.view.Main:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "455",
-      "from": "extractor.view.Main:updateCounterMessage",
-      "to": "extractor.view.Main:updateNumberOfAvailableExtractions",
-      "arrows": "to"
-    },
-    {
-      "id": "456",
-      "from": "extractor.view.PlaceholderTextField:setForeground",
-      "to": "extractor.view.Main:doLogout",
-      "arrows": "to"
-    },
-    {
-      "id": "458",
-      "from": "extractor.view.Main:setEnabled",
-      "to": "extractor.view.Config:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "459",
-      "from": "extractor.view.Main:createYesNoPopUp",
-      "to": "extractor.view.Main:access",
-      "arrows": "to"
-    },
-    {
-      "id": "460",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.utils.Constants:createTempFolder",
-      "arrows": "to"
-    },
-    {
-      "id": "461",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:setSerialNumberInputActionListener",
-      "arrows": "to"
-    },
-    {
-      "id": "463",
-      "from": "extractor.view.Main:changeToExtractPanel",
-      "to": "extractor.view.Main:doExtract",
-      "arrows": "to"
-    },
-    {
-      "id": "464",
-      "from": "extractor.controller.ExtractionController:getOfflineService",
-      "to": "extractor.core.MultipleExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "465",
-      "from": "extractor.controller.CommunicationController:logout",
-      "to": "extractor.view.Main:doLogout",
-      "arrows": "to"
-    },
-    {
-      "id": "466",
-      "from": "extractor.model.Extraction:getTestType",
-      "to": "extractor.utils.Logflex:logProperties",
-      "arrows": "to"
-    },
-    {
-      "id": "467",
-      "from": "extractor.view.Main:getGraphics",
-      "to": "extractor.view.Main:refresh",
-      "arrows": "to"
-    },
-    {
-      "id": "468",
-      "from": "extractor.core.MultiplePathExtractor:\u003cinit\u003e",
-      "to": "extractor.controller.ExtractionController:extractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "469",
-      "from": "extractor.core.MultiplePathExtractor:extractPath",
-      "to": "extractor.core.MultiplePathExtractor:extractAll",
-      "arrows": "to"
-    },
-    {
-      "id": "470",
-      "from": "extractor.validation.ProductAndSerialValidator:matchesSerialNumber",
-      "to": "extractor.view.Main:focusLost",
-      "arrows": "to"
-    },
-    {
-      "id": "471",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.core.PathExtractor:specificExtraction",
-      "arrows": "to"
-    },
-    {
-      "id": "472",
-      "from": "extractor.view.Main:createErrorPopUp",
-      "to": "extractor.view.Main:run",
-      "arrows": "to"
-    },
-    {
-      "id": "473",
-      "from": "extractor.utils.Constants:secondsToMilliseconds",
-      "to": "extractor.utils.Constants:getPropertiesValue",
-      "arrows": "to"
-    },
-    {
-      "id": "474",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:setNoteInputFocusListner",
-      "arrows": "to"
-    },
-    {
-      "id": "476",
-      "from": "extractor.view.Config:\u003cinit\u003e",
-      "to": "extractor.view.Config:getJRadioButton",
-      "arrows": "to"
-    },
-    {
-      "id": "477",
-      "from": "extractor.utils.Constants:getPropertiesValue",
-      "to": "extractor.utils.Constants:init",
-      "arrows": "to"
-    },
-    {
-      "id": "478",
-      "from": "extractor.exceptions.InternalException:getMessage",
-      "to": "extractor.view.Config:saveConfigs",
-      "arrows": "to"
-    },
-    {
-      "id": "479",
-      "from": "extractor.exceptions.InternalException:getMessage",
-      "to": "extractor.view.Main:windowClosing",
-      "arrows": "to"
-    },
-    {
-      "id": "481",
-      "from": "extractor.view.PlaceholderTextField:setText",
-      "to": "extractor.view.Main:itemStateChanged",
-      "arrows": "to"
-    },
-    {
-      "id": "482",
-      "from": "extractor.view.PlaceholderTextField:setText",
-      "to": "extractor.view.Main:startWatcherMode",
-      "arrows": "to"
-    },
-    {
-      "id": "483",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:allExtractionsSent",
-      "arrows": "to"
-    },
-    {
-      "id": "484",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.view.Config:groupRadioButtons",
-      "arrows": "to"
-    },
-    {
-      "id": "485",
-      "from": "extractor.view.Main:clearMessageLabel",
-      "to": "extractor.view.Main:doLogout",
-      "arrows": "to"
-    },
-    {
-      "id": "486",
-      "from": "extractor.controller.ConsumerListener:startConsuming",
-      "to": "extractor.core.MultipleExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "487",
-      "from": "extractor.view.Config:getContentPane",
-      "to": "extractor.view.Config:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "488",
-      "from": "extractor.model.Property:setName",
-      "to": "extractor.model.Property:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "490",
-      "from": "extractor.communication.Client:\u003cinit\u003e",
-      "to": "extractor.controller.CommunicationController:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "491",
-      "from": "extractor.communication.Client:sendExtraction",
-      "to": "extractor.controller.CommunicationController:sendExtraction",
-      "arrows": "to"
-    },
-    {
-      "id": "493",
-      "from": "extractor.view.Config:createInexistingFolders",
-      "to": "extractor.view.Config:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "495",
-      "from": "extractor.model.Session:getInstance",
-      "to": "extractor.controller.CommunicationController:login",
-      "arrows": "to"
-    },
-    {
-      "id": "496",
-      "from": "extractor.controller.ExtractionController:stopExtractByPath",
-      "to": "extractor.view.Main:doLogout",
-      "arrows": "to"
-    },
-    {
-      "id": "497",
-      "from": "extractor.controller.CommunicationController:\u003cinit\u003e",
-      "to": "extractor.controller.ExtractionController:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "499",
-      "from": "extractor.controller.ProducerListener:allExtractionsDone",
-      "to": "extractor.core.MultiplePathExtractor:run",
-      "arrows": "to"
-    },
-    {
-      "id": "502",
-      "from": "extractor.view.PlaceholderPasswordField:setForeground",
-      "to": "extractor.view.Main:doLogout",
-      "arrows": "to"
-    },
-    {
-      "id": "503",
-      "from": "extractor.view.Main:createErrorPopUp",
-      "to": "extractor.view.Main:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "505",
-      "from": "extractor.core.ExtractionQueue:isEmpty",
-      "to": "extractor.core.MultipleExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "506",
-      "from": "extractor.controller.CommunicationController:\u003cinit\u003e",
-      "to": "extractor.view.Main:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "508",
-      "from": "extractor.validation.ConfigValidator:isDirValid",
-      "to": "extractor.view.Main:validatePath",
-      "arrows": "to"
-    },
-    {
-      "id": "509",
-      "from": "extractor.controller.ExtractionController:reset",
-      "to": "extractor.view.Main:doLogin",
-      "arrows": "to"
-    },
-    {
-      "id": "510",
-      "from": "extractor.exceptions.BlockedUserException:getMessage",
-      "to": "extractor.view.Main:doLogin",
-      "arrows": "to"
-    },
-    {
-      "id": "511",
-      "from": "extractor.view.PlaceholderPasswordField:getPassword",
-      "to": "extractor.view.Main:doLogin",
-      "arrows": "to"
-    },
-    {
-      "id": "512",
-      "from": "extractor.view.Config:saveConfigs",
-      "to": "extractor.view.Config:access",
-      "arrows": "to"
-    },
-    {
-      "id": "513",
-      "from": "extractor.view.PlaceholderTextField:getText",
-      "to": "extractor.view.Main:doExtract",
-      "arrows": "to"
-    },
-    {
-      "id": "515",
-      "from": "extractor.validation.ConfigValidator:directoryValidation",
-      "to": "extractor.validation.ConfigValidator:validateResultsFolder",
-      "arrows": "to"
-    },
-    {
-      "id": "516",
-      "from": "extractor.model.Session:getType",
-      "to": "extractor.view.Main:refresh",
-      "arrows": "to"
-    },
-    {
-      "id": "519",
-      "from": "extractor.controller.OfflineService:saveExtractionOffline",
-      "to": "extractor.controller.ExtractionController:extractByLLT",
-      "arrows": "to"
-    },
-    {
-      "id": "520",
-      "from": "extractor.core.MultiplePathExtractor:deleteDirectory",
-      "to": "extractor.core.MultiplePathExtractor:extractAll",
-      "arrows": "to"
-    },
-    {
-      "id": "521",
-      "from": "extractor.core.AutoCollectExtractor:isRunning",
-      "to": "extractor.controller.ExtractionController:isExtractingByAutoCollect",
-      "arrows": "to"
-    },
-    {
-      "id": "523",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:setNoteInputActionListener",
-      "arrows": "to"
-    },
-    {
-      "id": "525",
-      "from": "extractor.utils.Constants:init",
-      "to": "extractor.view.Main:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "526",
-      "from": "extractor.utils.TestType[]:clone",
-      "to": "extractor.utils.TestType:values",
-      "arrows": "to"
-    },
-    {
-      "id": "527",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.view.Main:focusGained",
-      "arrows": "to"
-    },
-    {
-      "id": "528",
-      "from": "extractor.model.Extraction:getProductNumber",
-      "to": "extractor.utils.Logflex:logProperties",
-      "arrows": "to"
-    },
-    {
-      "id": "529",
-      "from": "extractor.core.MultiplePathExtractor:\u003cinit\u003e",
-      "to": "extractor.controller.ExtractionController:extractByAutoCollect",
-      "arrows": "to"
-    },
-    {
-      "id": "530",
-      "from": "extractor.model.Session:setSessionToken",
-      "to": "extractor.model.Session:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "533",
-      "from": "extractor.view.PlaceholderPasswordField:setForeground",
-      "to": "extractor.view.Main:focusGained",
-      "arrows": "to"
-    },
-    {
-      "id": "534",
-      "from": "extractor.controller.ProducerListener:updateNumberOfAvailableExtractions",
-      "to": "extractor.core.MultiplePathExtractor:extractAll",
-      "arrows": "to"
-    },
-    {
-      "id": "535",
-      "from": "extractor.view.Config:getJRadioButton",
-      "to": "extractor.view.Config:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "537",
-      "from": "extractor.view.Main:setAutoRequestFocus",
-      "to": "extractor.view.Main:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "538",
-      "from": "extractor.utils.GrammarGenerator:getInstance",
-      "to": "extractor.validation.ProductAndSerialValidator:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "540",
-      "from": "extractor.utils.GrammarGenerator:getValidProductNumbers",
-      "to": "extractor.validation.ProductAndSerialValidator:populateFamilyAndSerialNumberVerifier",
-      "arrows": "to"
-    },
-    {
-      "id": "541",
-      "from": "extractor.view.PlaceholderTextField:setBounds",
-      "to": "extractor.view.Main:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "542",
-      "from": "extractor.view.Main:getNote",
-      "to": "extractor.view.Main:access",
-      "arrows": "to"
-    },
-    {
-      "id": "543",
-      "from": "extractor.core.RuntimeManager:\u003cinit\u003e",
-      "to": "extractor.filedecryptor.DecryptorManager:doLifecounterDecrypt",
-      "arrows": "to"
-    },
-    {
-      "id": "544",
-      "from": "extractor.core.ApplicationsHashGenerator:generateMDHash",
-      "to": "extractor.core.ApplicationsHashGenerator:generateHashForRunningLST",
-      "arrows": "to"
-    },
-    {
-      "id": "545",
-      "from": "extractor.core.MultiplePathExtractor:extractAll",
-      "to": "extractor.core.MultiplePathExtractor:run",
-      "arrows": "to"
-    },
-    {
-      "id": "551",
-      "from": "extractor.view.PlaceholderTextField:addKeyListener",
-      "to": "extractor.view.Main:setNoteKeyListener",
-      "arrows": "to"
-    },
-    {
-      "id": "552",
-      "from": "extractor.controller.ExtractionController:extractByAutoCollect",
-      "to": "extractor.view.Main:extractByAutoCollect",
-      "arrows": "to"
-    },
-    {
-      "id": "554",
-      "from": "extractor.view.Main:setVisible",
-      "to": "extractor.view.Main:run",
-      "arrows": "to"
-    },
-    {
-      "id": "556",
-      "from": "extractor.view.Main:createErrorPopUp",
-      "to": "extractor.view.Main:doExtract",
-      "arrows": "to"
-    },
-    {
-      "id": "558",
-      "from": "extractor.view.Main:createErrorPopUp",
-      "to": "extractor.view.Main:keyPressed",
-      "arrows": "to"
-    },
-    {
-      "id": "559",
-      "from": "extractor.view.PlaceholderTextField:setBorder",
-      "to": "extractor.view.Main:focusGained",
-      "arrows": "to"
-    },
-    {
-      "id": "560",
-      "from": "extractor.utils.TestType:equals",
-      "to": "extractor.view.Main:setDefaultTestType",
-      "arrows": "to"
-    },
-    {
-      "id": "561",
-      "from": "extractor.view.PlaceholderTextField:setForeground",
-      "to": "extractor.view.Main:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "564",
-      "from": "extractor.utils.ImageFactory:getInstance",
-      "to": "extractor.view.Main:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "566",
-      "from": "extractor.core.ExtractionQueue:pollExtraction",
-      "to": "extractor.controller.OfflineExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "568",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.model.Session:initialize",
-      "arrows": "to"
-    },
-    {
-      "id": "569",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.view.Config:saveConfigs",
-      "arrows": "to"
-    },
-    {
-      "id": "572",
-      "from": "extractor.validation.ConfigValidator:validateLLTLogsFolder",
-      "to": "extractor.view.Config:verify",
-      "arrows": "to"
-    },
-    {
-      "id": "573",
-      "from": "extractor.view.Main:updateCounterMessage",
-      "to": "extractor.view.Main:incrementNumberOfSuccesfulSents",
-      "arrows": "to"
-    },
-    {
-      "id": "575",
-      "from": "extractor.core.LLTExtractor:\u003cinit\u003e",
-      "to": "extractor.controller.ExtractionController:extractByLLT",
-      "arrows": "to"
-    },
-    {
-      "id": "576",
-      "from": "extractor.view.PlaceholderTextField:requestFocus",
-      "to": "extractor.view.Main:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "578",
-      "from": "extractor.model.Extraction:setNote",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "579",
-      "from": "extractor.utils.GrammarGenerator:\u003cinit\u003e",
-      "to": "extractor.utils.GrammarGenerator:getInstance",
-      "arrows": "to"
-    },
-    {
-      "id": "580",
-      "from": "extractor.specification.PositionReader:getValuesOfPattern",
-      "to": "extractor.specification.PositionReader:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "581",
-      "from": "extractor.controller.OfflineService:sendOfflineExtractions",
-      "to": "extractor.controller.ExtractionController:sendOfflineFiles",
-      "arrows": "to"
-    },
-    {
-      "id": "582",
-      "from": "extractor.view.Main:getNote",
-      "to": "extractor.view.Main:extractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "585",
-      "from": "extractor.core.OfflineExtractionProducer:stopExecution",
-      "to": "extractor.controller.OfflineService:stopOfflineExtraction",
-      "arrows": "to"
-    },
-    {
-      "id": "586",
-      "from": "extractor.specification.RegexReader:getWords",
-      "to": "extractor.specification.RegexReader:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "587",
-      "from": "extractor.view.Config:setTitle",
-      "to": "extractor.view.Config:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "588",
-      "from": "extractor.view.Config:addListenersToCheckVisibleTestTypeBoxes",
-      "to": "extractor.view.Config:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "590",
-      "from": "extractor.view.Main:refresh",
-      "to": "extractor.view.Config:saveConfigs",
-      "arrows": "to"
-    },
-    {
-      "id": "591",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:updateNumberOfExtractionsDone",
-      "arrows": "to"
-    },
-    {
-      "id": "592",
-      "from": "extractor.controller.ExtractionController:isExtractingByAutoCollect",
-      "to": "extractor.view.Main:doLogout",
-      "arrows": "to"
-    },
-    {
-      "id": "593",
-      "from": "extractor.core.ExtractionQueue:\u003cinit\u003e",
-      "to": "extractor.controller.ExtractionController:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "594",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.core.RuntimeManager:exec",
-      "arrows": "to"
-    },
-    {
-      "id": "596",
-      "from": "extractor.view.Main:setUserInputFocusListener",
-      "to": "extractor.view.Main:initActions",
-      "arrows": "to"
-    },
-    {
-      "id": "597",
-      "from": "extractor.exceptions.InternalException:getMessage",
-      "to": "extractor.view.Main:extractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "599",
-      "from": "extractor.utils.Constants:init",
-      "to": "extractor.view.Main:refresh",
-      "arrows": "to"
-    },
-    {
-      "id": "601",
-      "from": "extractor.view.PlaceholderTextField:setText",
-      "to": "extractor.view.Main:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "602",
-      "from": "extractor.controller.ConsumerListener:incrementNumberOfSuccesfulSents",
-      "to": "extractor.controller.OfflineExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "603",
-      "from": "extractor.model.Session:\u003cinit\u003e",
-      "to": "extractor.model.Session:initialize",
-      "arrows": "to"
-    },
-    {
-      "id": "604",
-      "from": "extractor.view.PlaceholderTextField:getText",
-      "to": "extractor.view.Main:focusGained",
-      "arrows": "to"
-    },
-    {
-      "id": "605",
-      "from": "extractor.core.ApplicationsHashGenerator:\u003cinit\u003e",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "606",
-      "from": "extractor.controller.ExtractionController:stopExtractByAutoCollect",
-      "to": "extractor.view.Main:doLogout",
-      "arrows": "to"
-    },
-    {
-      "id": "608",
-      "from": "extractor.utils.Constants:updateConfig",
-      "to": "extractor.view.Main:windowClosing",
-      "arrows": "to"
-    },
-    {
-      "id": "610",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:updateNumberOfAvailableSents",
-      "arrows": "to"
-    },
-    {
-      "id": "612",
-      "from": "extractor.view.PlaceholderTextField:getText",
-      "to": "extractor.view.Main:isNoteEmpty",
-      "arrows": "to"
-    },
-    {
-      "id": "613",
-      "from": "extractor.core.ExtractionQueue:addExtraction",
-      "to": "extractor.core.MultiplePathExtractor:extractAll",
-      "arrows": "to"
-    },
-    {
-      "id": "614",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:startProducing",
-      "arrows": "to"
-    },
-    {
-      "id": "615",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.utils.Constants:parseListOfTestsVisible",
-      "arrows": "to"
-    },
-    {
-      "id": "616",
-      "from": "extractor.view.Main:switchButtonsEnabling",
-      "to": "extractor.view.Main:extractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "617",
-      "from": "extractor.view.Config:setJTExtOpenPathActionListener",
-      "to": "extractor.view.Config:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "620",
-      "from": "extractor.view.Main:initGUI",
-      "to": "extractor.view.Main:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "621",
-      "from": "extractor.exceptions.ConnectionErrorException:getMessage",
-      "to": "extractor.view.Main:doLogin",
-      "arrows": "to"
-    },
-    {
-      "id": "622",
-      "from": "extractor.communication.Client:generateJson",
-      "to": "extractor.controller.OfflineService:saveExtractionOffline",
-      "arrows": "to"
-    },
-    {
-      "id": "623",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:isNoteEmpty",
-      "arrows": "to"
-    },
-    {
-      "id": "625",
-      "from": "extractor.validation.ProductAndSerialValidator:matchesProductNumber",
-      "to": "extractor.core.MultiplePathExtractor:listAvailableFolders",
-      "arrows": "to"
-    },
-    {
-      "id": "626",
-      "from": "extractor.model.Property:setOrder",
-      "to": "extractor.model.Property:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "627",
-      "from": "extractor.exceptions.InternalException:getMessage",
-      "to": "extractor.view.Main:doExtract",
-      "arrows": "to"
-    },
-    {
-      "id": "628",
-      "from": "extractor.core.PathExtractor:\u003cinit\u003e",
-      "to": "extractor.core.MultiplePathExtractor:extractPath",
-      "arrows": "to"
-    },
-    {
-      "id": "629",
-      "from": "extractor.view.PlaceholderTextField:addActionListener",
-      "to": "extractor.view.Main:setNoteInputActionListener",
-      "arrows": "to"
-    },
-    {
-      "id": "630",
-      "from": "extractor.view.Config:addListenersToRadioButtonsDefaultTestType",
-      "to": "extractor.view.Config:groupRadioButtons",
-      "arrows": "to"
-    },
-    {
-      "id": "631",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "632",
-      "from": "extractor.view.Main:changeOfflineMode",
-      "to": "extractor.view.Config:saveConfigs",
-      "arrows": "to"
-    },
-    {
-      "id": "634",
-      "from": "extractor.exceptions.InternalException:getMessage",
-      "to": "extractor.view.Main:refresh",
-      "arrows": "to"
-    },
-    {
-      "id": "636",
-      "from": "extractor.view.Main:isNoteRequired",
-      "to": "extractor.view.Main:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "638",
-      "from": "extractor.in.Messages:assigment",
-      "to": "extractor.in.Messages:init",
-      "arrows": "to"
-    },
-    {
-      "id": "640",
-      "from": "extractor.utils.Constants:getPropertiesValue",
-      "to": "extractor.utils.Constants:updateConfig",
-      "arrows": "to"
-    },
-    {
-      "id": "641",
-      "from": "extractor.exceptions.ParameterException:\u003cinit\u003e",
-      "to": "extractor.utils.FileIO:getAllLines",
-      "arrows": "to"
-    },
-    {
-      "id": "643",
-      "from": "extractor.core.MultiplePathExtractor:isFolderUpToExtract",
-      "to": "extractor.core.MultiplePathExtractor:listAvailableFolders",
-      "arrows": "to"
-    },
-    {
-      "id": "644",
-      "from": "extractor.view.Main:validatePath",
-      "to": "extractor.view.Main:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "646",
-      "from": "extractor.exceptions.InternalException:getMessage",
-      "to": "extractor.view.Main:extractByAutoCollect",
-      "arrows": "to"
-    },
-    {
-      "id": "648",
-      "from": "extractor.controller.CommunicationController:sendExtraction",
-      "to": "extractor.controller.OfflineExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "649",
-      "from": "extractor.view.Config:access",
-      "to": "extractor.view.Config:windowClosed",
-      "arrows": "to"
-    },
-    {
-      "id": "652",
-      "from": "extractor.validation.ConfigValidator:validateResumeFolder",
-      "to": "extractor.view.Config:verify",
-      "arrows": "to"
-    },
-    {
-      "id": "655",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:itemStateChanged",
-      "arrows": "to"
-    },
-    {
-      "id": "656",
-      "from": "extractor.view.Config:getInstance",
-      "to": "extractor.view.Main:jButtonConfigMouseClicked",
-      "arrows": "to"
-    },
-    {
-      "id": "658",
-      "from": "extractor.utils.GrammarGenerator:generateGrammar",
-      "to": "extractor.utils.GrammarGenerator:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "659",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.model.Property:setValue",
-      "arrows": "to"
-    },
-    {
-      "id": "660",
-      "from": "extractor.view.Main:createErrorPopUp",
-      "to": "extractor.view.Config:saveConfigs",
-      "arrows": "to"
-    },
-    {
-      "id": "661",
-      "from": "extractor.core.Extractor:\u003cinit\u003e",
-      "to": "extractor.core.LLTExtractor:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "662",
-      "from": "extractor.validation.ConfigValidator:validateLLTPort",
-      "to": "extractor.view.Config:verify",
-      "arrows": "to"
-    },
-    {
-      "id": "663",
-      "from": "extractor.view.Config:access",
-      "to": "extractor.view.Config:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "664",
-      "from": "extractor.core.OfflineExtractionProducer:getOfflineExtractionsSize",
-      "to": "extractor.controller.OfflineService:sendOfflineExtractions",
-      "arrows": "to"
-    },
-    {
-      "id": "666",
-      "from": "extractor.view.Config:setLocation",
-      "to": "extractor.view.Config:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "667",
-      "from": "extractor.core.Extractor:generateModel",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "668",
-      "from": "extractor.core.ApplicationsHashGenerator:generateHashForRunningLST",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "669",
-      "from": "extractor.core.MultiplePathExtractor:isRunning",
-      "to": "extractor.core.MultiplePathExtractor:extractAll",
-      "arrows": "to"
-    },
-    {
-      "id": "671",
-      "from": "extractor.core.MultipleExtractionSender:addConsumerListener",
-      "to": "extractor.controller.ExtractionController:extractByAutoCollect",
-      "arrows": "to"
-    },
-    {
-      "id": "672",
-      "from": "extractor.core.Extractor:decryptLifecounterIfExists",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "675",
-      "from": "extractor.view.PlaceholderPasswordField:setForeground",
-      "to": "extractor.view.Main:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "676",
-      "from": "extractor.view.Main:addWindowListener",
-      "to": "extractor.view.Main:run",
-      "arrows": "to"
-    },
-    {
-      "id": "677",
-      "from": "extractor.validation.ConfigValidator:checkFilePermissions",
-      "to": "extractor.validation.ConfigValidator:fileValidation",
-      "arrows": "to"
-    },
-    {
-      "id": "678",
-      "from": "extractor.view.Main:getX",
-      "to": "extractor.view.Main:jButtonConfigMouseClicked",
-      "arrows": "to"
-    },
-    {
-      "id": "679",
-      "from": "extractor.view.Main:getY",
-      "to": "extractor.view.Main:jButtonConfigMouseClicked",
-      "arrows": "to"
-    },
-    {
-      "id": "685",
-      "from": "extractor.utils.TestType:getValueByName",
-      "to": "extractor.view.Main:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "686",
-      "from": "extractor.validation.ConfigValidator:directoryValidation",
-      "to": "extractor.validation.ConfigValidator:validateLLTLogsFolder",
-      "arrows": "to"
-    },
-    {
-      "id": "687",
-      "from": "extractor.view.PlaceholderTextField:setEnabled",
-      "to": "extractor.view.Main:allExtractionsSent",
-      "arrows": "to"
-    },
-    {
-      "id": "688",
-      "from": "extractor.exceptions.ConnectionErrorException:\u003cinit\u003e",
-      "to": "extractor.communication.Client:submitJsonToURL",
-      "arrows": "to"
-    },
-    {
-      "id": "689",
-      "from": "extractor.view.Main:setFocusableWindowState",
-      "to": "extractor.view.Config:saveConfigs",
-      "arrows": "to"
-    },
-    {
-      "id": "690",
-      "from": "extractor.core.Extractor:getNote",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "692",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:setProductNumberInputFocusListener",
-      "arrows": "to"
-    },
-    {
-      "id": "693",
-      "from": "extractor.model.Extraction:\u003cinit\u003e",
-      "to": "extractor.controller.ExtractionController:extractByLLT",
-      "arrows": "to"
-    },
-    {
-      "id": "694",
-      "from": "extractor.core.ApplicationsHashGenerator:getAllListedApps",
-      "to": "extractor.core.ApplicationsHashGenerator:generateHashForRunningLST",
-      "arrows": "to"
-    },
-    {
-      "id": "695",
-      "from": "extractor.view.Main:createYesNoPopUp",
-      "to": "extractor.view.Main:doExtract",
-      "arrows": "to"
-    },
-    {
-      "id": "696",
-      "from": "extractor.utils.TestType:getValueByName",
-      "to": "extractor.utils.Constants:defaultTestType",
-      "arrows": "to"
-    },
-    {
-      "id": "697",
-      "from": "extractor.exceptions.BlockedUserException:\u003cinit\u003e",
-      "to": "extractor.communication.Client:doLogin",
-      "arrows": "to"
-    },
-    {
-      "id": "698",
-      "from": "extractor.utils.Logflex:newPreTestLog",
-      "to": "extractor.utils.Logflex:logProperties",
-      "arrows": "to"
-    },
-    {
-      "id": "700",
-      "from": "extractor.view.Main:groupRadioButtons",
-      "to": "extractor.view.Main:initActions",
-      "arrows": "to"
-    },
-    {
-      "id": "702",
-      "from": "extractor.core.LLTExtractor:createBackup",
-      "to": "extractor.core.LLTExtractor:specificExtraction",
-      "arrows": "to"
-    },
-    {
-      "id": "703",
-      "from": "extractor.validation.ConfigValidator:validateLLTPort",
-      "to": "extractor.view.Main:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "704",
-      "from": "extractor.controller.CommunicationController:login",
-      "to": "extractor.view.Main:doLogin",
-      "arrows": "to"
-    },
-    {
-      "id": "705",
-      "from": "extractor.core.Extractor:specificExtraction",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "706",
-      "from": "extractor.view.PlaceholderTextField:addFocusListener",
-      "to": "extractor.view.Main:setUserInputFocusListener",
-      "arrows": "to"
-    },
-    {
-      "id": "707",
-      "from": "extractor.model.Extraction:setSerialNumber",
-      "to": "extractor.model.Extraction:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "708",
-      "from": "extractor.utils.GrammarGenerator:getValidSerialNumbers",
-      "to": "extractor.validation.ProductAndSerialValidator:matchesSerialNumber",
-      "arrows": "to"
-    },
-    {
-      "id": "709",
-      "from": "extractor.utils.TestType:valueOf",
-      "to": "extractor.view.Config:saveConfigs",
-      "arrows": "to"
-    },
-    {
-      "id": "710",
-      "from": "extractor.model.Extraction:setDisableLLT",
-      "to": "extractor.controller.ExtractionController:extractByLLT",
-      "arrows": "to"
-    },
-    {
-      "id": "711",
-      "from": "extractor.exceptions.InternalException:getMessage",
-      "to": "extractor.view.Main:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "714",
-      "from": "extractor.model.Session:getInstance",
-      "to": "extractor.view.Main:refresh",
-      "arrows": "to"
-    },
-    {
-      "id": "715",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:isNoteRequired",
-      "arrows": "to"
-    },
-    {
-      "id": "716",
-      "from": "extractor.utils.GrammarGenerator:getValidSerialNumbers",
-      "to": "extractor.validation.ProductAndSerialValidator:populateFamilyAndSerialNumberVerifier",
-      "arrows": "to"
-    },
-    {
-      "id": "717",
-      "from": "extractor.core.ExtractionQueue:addExtraction",
-      "to": "extractor.core.OfflineExtractionProducer:run",
-      "arrows": "to"
-    },
-    {
-      "id": "720",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:main",
-      "arrows": "to"
-    },
-    {
-      "id": "721",
-      "from": "extractor.core.MultipleExtractionSender:addProducerThread",
-      "to": "extractor.controller.ExtractionController:extractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "722",
-      "from": "extractor.core.Extractor:extract",
-      "to": "extractor.controller.ExtractionController:extractByLLT",
-      "arrows": "to"
-    },
-    {
-      "id": "723",
-      "from": "extractor.view.Config:setLocationByPlatform",
-      "to": "extractor.view.Config:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "724",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.core.LLTExtractor:selectMxxTestTypeFile",
-      "arrows": "to"
-    },
-    {
-      "id": "726",
-      "from": "extractor.utils.Logflex:info",
-      "to": "extractor.utils.Logflex:newPreQALog",
-      "arrows": "to"
-    },
-    {
-      "id": "727",
-      "from": "extractor.view.PlaceholderTextField:getText",
-      "to": "extractor.view.Main:doLogin",
-      "arrows": "to"
-    },
-    {
-      "id": "728",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.core.LLTExtractor:selectMxxTestTypeFile",
-      "arrows": "to"
-    },
-    {
-      "id": "729",
-      "from": "extractor.core.Extractor:extract",
-      "to": "extractor.core.MultiplePathExtractor:extractPath",
-      "arrows": "to"
-    },
-    {
-      "id": "730",
-      "from": "extractor.view.PlaceholderTextField:setEnabled",
-      "to": "extractor.view.Main:switchButtonsEnabling",
-      "arrows": "to"
-    },
-    {
-      "id": "731",
-      "from": "extractor.view.Config:initGUI",
-      "to": "extractor.view.Config:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "732",
-      "from": "extractor.core.MultiplePathExtractor:stopExtractions",
-      "to": "extractor.core.AutoCollectExtractor:run",
-      "arrows": "to"
-    },
-    {
-      "id": "733",
-      "from": "extractor.validation.ConfigValidator:checkFilePermissions",
-      "to": "extractor.validation.ConfigValidator:directoryValidation",
-      "arrows": "to"
-    },
-    {
-      "id": "734",
-      "from": "extractor.view.Main:createErrorPopUp",
-      "to": "extractor.view.Main:extractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "735",
-      "from": "extractor.core.MultipleExtractionSender:\u003cinit\u003e",
-      "to": "extractor.controller.ExtractionController:extractByAutoCollect",
-      "arrows": "to"
-    },
-    {
-      "id": "736",
-      "from": "extractor.model.Extraction:setNote",
-      "to": "extractor.controller.ExtractionController:extractByLLT",
-      "arrows": "to"
-    },
-    {
-      "id": "738",
-      "from": "extractor.core.Extractor:setNote",
-      "to": "extractor.core.LLTExtractor:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "739",
-      "from": "extractor.controller.ExtractionController:isExtractingByAutoCollect",
-      "to": "extractor.view.Main:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "740",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.utils.TestType:isAValidName",
-      "arrows": "to"
-    },
-    {
-      "id": "742",
-      "from": "extractor.view.Config:setLocation",
-      "to": "extractor.view.Main:jButtonConfigMouseClicked",
-      "arrows": "to"
-    },
-    {
-      "id": "746",
-      "from": "extractor.validation.ConfigValidator:validateLLTLogsFolder",
-      "to": "extractor.validation.ConfigValidator:getInvalidConfigurations",
-      "arrows": "to"
-    },
-    {
-      "id": "747",
-      "from": "extractor.communication.Client:doLogin",
-      "to": "extractor.controller.CommunicationController:login",
-      "arrows": "to"
-    },
-    {
-      "id": "749",
-      "from": "extractor.communication.SecurityManager:\u003cinit\u003e",
-      "to": "extractor.communication.SecurityManager:\u003cclinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "750",
-      "from": "extractor.controller.ExtractionController:reset",
-      "to": "extractor.view.Main:refresh",
-      "arrows": "to"
-    },
-    {
-      "id": "752",
-      "from": "extractor.utils.Constants:parseListOfTestsVisible",
-      "to": "extractor.utils.Constants:updateConfig",
-      "arrows": "to"
-    },
-    {
-      "id": "753",
-      "from": "extractor.validation.ConfigValidator:portNumberValidation",
-      "to": "extractor.validation.ConfigValidator:validateLLTPort",
-      "arrows": "to"
-    },
-    {
-      "id": "754",
-      "from": "extractor.communication.Client:submitJsonToURL",
-      "to": "extractor.communication.Client:doLogin",
-      "arrows": "to"
-    },
-    {
-      "id": "755",
-      "from": "extractor.utils.ImageFactory:\u003cinit\u003e",
-      "to": "extractor.utils.ImageFactory:getInstance",
-      "arrows": "to"
-    },
-    {
-      "id": "756",
-      "from": "extractor.utils.TestType:values",
-      "to": "extractor.utils.TestType:isAValidName",
-      "arrows": "to"
-    },
-    {
-      "id": "757",
-      "from": "extractor.model.Extraction:addProperties",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "759",
-      "from": "extractor.view.Main:\u003cinit\u003e",
-      "to": "extractor.view.Main:setProcuctNumberInputActionListener",
-      "arrows": "to"
-    },
-    {
-      "id": "760",
-      "from": "extractor.utils.Constants:testTypes",
-      "to": "extractor.utils.Constants:getPropertiesValue",
-      "arrows": "to"
-    },
-    {
-      "id": "761",
-      "from": "extractor.controller.ExtractionController:getOfflineService",
-      "to": "extractor.controller.ExtractionController:extractByLLT",
-      "arrows": "to"
-    },
-    {
-      "id": "762",
-      "from": "extractor.utils.Logflex:info",
-      "to": "extractor.utils.Logflex:logProperties",
-      "arrows": "to"
-    },
-    {
-      "id": "764",
-      "from": "extractor.view.Main:setButtonOpenPathActionListener",
-      "to": "extractor.view.Main:initActions",
-      "arrows": "to"
-    },
-    {
-      "id": "765",
-      "from": "extractor.core.ExtractionQueue:resetQueue",
-      "to": "extractor.controller.ExtractionController:stopExtractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "766",
-      "from": "extractor.validation.ProductAndSerialValidator:populateFamilyAndSerialNumberVerifier",
-      "to": "extractor.validation.ProductAndSerialValidator:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "768",
-      "from": "extractor.view.PlaceholderTextField:setEnabled",
-      "to": "extractor.view.Main:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "769",
-      "from": "extractor.view.PlaceholderTextField:setText",
-      "to": "extractor.view.Main:doExtract",
-      "arrows": "to"
-    },
-    {
-      "id": "770",
-      "from": "extractor.specification.RegexReader:extractValues",
-      "to": "extractor.specification.RegexReader:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "771",
-      "from": "extractor.view.Main:setNoteInputActionListener",
-      "to": "extractor.view.Main:initActions",
-      "arrows": "to"
-    },
-    {
-      "id": "773",
-      "from": "extractor.view.Main:updateCounterMessage",
-      "to": "extractor.view.Main:allExtractionsSent",
-      "arrows": "to"
-    },
-    {
-      "id": "774",
-      "from": "extractor.core.MultiplePathExtractor:listAvailableFolders",
-      "to": "extractor.core.MultiplePathExtractor:extractAll",
-      "arrows": "to"
-    },
-    {
-      "id": "775",
-      "from": "extractor.view.Main:clearMessageLabel",
-      "to": "extractor.view.Main:startWatcherMode",
-      "arrows": "to"
-    },
-    {
-      "id": "776",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.utils.FileIO:getSpecifications",
-      "arrows": "to"
-    },
-    {
-      "id": "777",
-      "from": "extractor.view.Main:jLabelNavbarMousePressed",
-      "to": "extractor.view.Main:access",
-      "arrows": "to"
-    },
-    {
-      "id": "778",
-      "from": "extractor.controller.OfflineExtractionSender:stopExecution",
-      "to": "extractor.controller.OfflineService:stopOfflineExtraction",
-      "arrows": "to"
-    },
-    {
-      "id": "779",
-      "from": "extractor.specification.PatternReadable:extract",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "780",
-      "from": "extractor.utils.TestType:getValueByName",
-      "to": "extractor.view.Main:doExtract",
-      "arrows": "to"
-    },
-    {
-      "id": "781",
-      "from": "extractor.model.Extraction:\u003cinit\u003e",
-      "to": "extractor.core.Extractor:extract",
-      "arrows": "to"
-    },
-    {
-      "id": "786",
-      "from": "extractor.view.Main:setSerialNumberInputFocusListener",
-      "to": "extractor.view.Main:initActions",
-      "arrows": "to"
-    },
-    {
-      "id": "787",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.utils.TestType:getValueByName",
-      "arrows": "to"
-    },
-    {
-      "id": "788",
-      "from": "extractor.controller.ExtractionController:getOfflineService",
-      "to": "extractor.view.Main:doLogin",
-      "arrows": "to"
-    },
-    {
-      "id": "789",
-      "from": "extractor.core.RuntimeManager:\u003cinit\u003e",
-      "to": "extractor.core.LLTExtractor:buildRuntimeManagerInstance",
-      "arrows": "to"
-    },
-    {
-      "id": "791",
-      "from": "extractor.utils.FileIO:getAllLines",
-      "to": "extractor.utils.GrammarGenerator:readPatternsFile",
-      "arrows": "to"
-    },
-    {
-      "id": "792",
-      "from": "extractor.utils.Logflex:getInstance",
-      "to": "extractor.controller.ExtractionController:extractByLLT",
-      "arrows": "to"
-    },
-    {
-      "id": "793",
-      "from": "extractor.model.Extraction:getProductNumber",
-      "to": "extractor.core.MultipleExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "795",
-      "from": "extractor.view.PlaceholderTextField:setBounds",
-      "to": "extractor.view.Main:changeToExtractPanel",
-      "arrows": "to"
-    },
-    {
-      "id": "797",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.model.Extraction:validateProductNumberAndSerialNumber",
-      "arrows": "to"
-    },
-    {
-      "id": "799",
-      "from": "extractor.core.Extractor:selectFileToExtract",
-      "to": "extractor.core.Extractor:decryptBoosterIfExists",
-      "arrows": "to"
-    },
-    {
-      "id": "800",
-      "from": "extractor.model.Extraction:getNote",
-      "to": "extractor.utils.Logflex:logProperties",
-      "arrows": "to"
-    },
-    {
-      "id": "802",
-      "from": "extractor.model.OfflineExtraction:getFile",
-      "to": "extractor.core.OfflineExtractionProducer:run",
-      "arrows": "to"
-    },
-    {
-      "id": "803",
-      "from": "extractor.view.PlaceholderTextField:setEnabled",
-      "to": "extractor.view.Main:setEnableWatcherModeComponents",
-      "arrows": "to"
-    },
-    {
-      "id": "804",
-      "from": "extractor.validation.ConfigValidator:URLValidation",
-      "to": "extractor.validation.ConfigValidator:validateServerLocation",
-      "arrows": "to"
-    },
-    {
-      "id": "807",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.view.Main:doExtract",
-      "arrows": "to"
-    },
-    {
-      "id": "808",
-      "from": "extractor.communication.Client:generateJson",
-      "to": "extractor.communication.Client:sendExtraction",
-      "arrows": "to"
-    },
-    {
-      "id": "809",
-      "from": "extractor.communication.SecurityManager:trustAllHosts",
-      "to": "extractor.communication.Client:poll",
-      "arrows": "to"
-    },
-    {
-      "id": "810",
-      "from": "extractor.view.PlaceholderTextField:setForeground",
-      "to": "extractor.view.Main:focusGained",
-      "arrows": "to"
-    },
-    {
-      "id": "811",
-      "from": "extractor.view.Main:remove",
-      "to": "extractor.view.Main:refresh",
-      "arrows": "to"
-    },
-    {
-      "id": "812",
-      "from": "extractor.view.PlaceholderPasswordField:addFocusListener",
-      "to": "extractor.view.Main:setPasswordInputFocusListener",
-      "arrows": "to"
-    },
-    {
-      "id": "813",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:mouseClicked",
-      "arrows": "to"
-    },
-    {
-      "id": "814",
-      "from": "extractor.model.Extraction:validateProductNumberAndSerialNumber",
-      "to": "extractor.model.Extraction:\u003cinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "815",
-      "from": "extractor.exceptions.BlockedUserException:\u003cinit\u003e",
-      "to": "extractor.communication.Client:submitJsonToURL",
-      "arrows": "to"
-    },
-    {
-      "id": "816",
-      "from": "extractor.view.Main:setIconImage",
-      "to": "extractor.view.Main:run",
-      "arrows": "to"
-    },
-    {
-      "id": "817",
-      "from": "extractor.view.Config:setSize",
-      "to": "extractor.view.Config:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "818",
-      "from": "extractor.view.Main:setResizable",
-      "to": "extractor.view.Main:initGUI",
-      "arrows": "to"
-    },
-    {
-      "id": "820",
-      "from": "extractor.view.Config:verify",
-      "to": "extractor.view.Config:shouldYieldFocus",
-      "arrows": "to"
-    },
-    {
-      "id": "821",
-      "from": "extractor.view.Main:extractByPath",
-      "to": "extractor.view.Main:access",
-      "arrows": "to"
-    },
-    {
-      "id": "822",
-      "from": "extractor.view.Main:clearMessageLabel",
-      "to": "extractor.view.Main:jLabelNavbarMousePressed",
-      "arrows": "to"
-    },
-    {
-      "id": "823",
-      "from": "extractor.view.Config:dispose",
-      "to": "extractor.view.Config:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "824",
-      "from": "extractor.exceptions.InternalException:\u003cinit\u003e",
-      "to": "extractor.controller.OfflineService:saveExtractionOffline",
-      "arrows": "to"
-    },
-    {
-      "id": "825",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.utils.Constants:updateConfig",
-      "arrows": "to"
-    },
-    {
-      "id": "826",
-      "from": "extractor.model.Extraction:setNote",
-      "to": "extractor.core.MultiplePathExtractor:extractAll",
-      "arrows": "to"
-    },
-    {
-      "id": "827",
-      "from": "extractor.utils.Constants:readApplicationProperties",
-      "to": "extractor.utils.Constants:init",
-      "arrows": "to"
-    },
-    {
-      "id": "828",
-      "from": "extractor.core.MultipleExtractionSender:addConsumerListener",
-      "to": "extractor.controller.ExtractionController:extractByPath",
-      "arrows": "to"
-    },
-    {
-      "id": "829",
-      "from": "extractor.validation.ConfigValidator:directoryValidation",
-      "to": "extractor.validation.ConfigValidator:validateResumeFolder",
-      "arrows": "to"
-    },
-    {
-      "id": "830",
-      "from": "extractor.view.Main:access",
-      "to": "extractor.view.Main:startConsuming",
-      "arrows": "to"
-    },
-    {
-      "id": "831",
-      "from": "extractor.view.Main:doLogin",
-      "to": "extractor.view.Main:access",
-      "arrows": "to"
-    },
-    {
-      "id": "832",
-      "from": "extractor.view.PlaceholderTextField:requestFocus",
-      "to": "extractor.view.Main:doExtract",
-      "arrows": "to"
-    },
-    {
-      "id": "834",
-      "from": "extractor.validation.ProductAndSerialValidator:getInstance",
-      "to": "extractor.core.MultiplePathExtractor:listAvailableFolders",
-      "arrows": "to"
-    },
-    {
-      "id": "835",
-      "from": "extractor.utils.Logflex:logProperties",
-      "to": "extractor.controller.ExtractionController:extractByLLT",
-      "arrows": "to"
-    },
-    {
-      "id": "838",
-      "from": "extractor.utils.TestType:getName",
-      "to": "extractor.view.Main:actionPerformed",
-      "arrows": "to"
-    },
-    {
-      "id": "840",
-      "from": "extractor.view.PlaceholderTextField:setBounds",
-      "to": "extractor.view.Main:startWatcherMode",
-      "arrows": "to"
-    },
-    {
-      "id": "841",
-      "from": "extractor.view.Main:setEnableWatcherModeComponents",
-      "to": "extractor.view.Main:extractByAutoCollect",
-      "arrows": "to"
-    },
-    {
-      "id": "843",
-      "from": "extractor.view.PlaceholderTextField:setEnabled",
-      "to": "extractor.view.Main:itemStateChanged",
-      "arrows": "to"
-    },
-    {
-      "id": "844",
-      "from": "extractor.utils.Logflex:getInstance",
-      "to": "extractor.core.Extractor:\u003cclinit\u003e",
-      "arrows": "to"
-    },
-    {
-      "id": "845",
-      "from": "extractor.validation.ConfigValidator:validateResultsFolder",
-      "to": "extractor.validation.ConfigValidator:validateCurrentConfigurations",
-      "arrows": "to"
-    },
-    {
-      "id": "846",
-      "from": "extractor.view.Main:updateCounterMessage",
-      "to": "extractor.view.Main:updateNumberOfAvailableSents",
-      "arrows": "to"
-    },
-    {
-      "id": "849",
-      "from": "extractor.communication.SecurityManager:getHTTPSConnection",
-      "to": "extractor.communication.Client:poll",
-      "arrows": "to"
-    },
-    {
-      "id": "852",
-      "from": "extractor.view.PlaceholderTextField:setText",
-      "to": "extractor.view.Main:focusGained",
-      "arrows": "to"
-    },
-    {
-      "id": "853",
-      "from": "extractor.validation.ConfigValidator:getInvalidConfigurations",
-      "to": "extractor.view.Main:run",
-      "arrows": "to"
-    },
-    {
-      "id": "855",
-      "from": "extractor.communication.SecurityManager:trustAllHosts",
-      "to": "extractor.communication.Client:submitJsonToURL",
-      "arrows": "to"
-    },
-    {
-      "id": "856",
-      "from": "extractor.controller.ConsumerListener:incrementNumberOfSuccesfulSents",
-      "to": "extractor.core.MultipleExtractionSender:run",
-      "arrows": "to"
-    },
-    {
-      "id": "858",
-      "from": "extractor.view.PlaceholderTextField:setForeground",
-      "to": "extractor.view.Main:focusLost",
+      "id": "857",
+      "from": "extractor.core.PathExtractor",
+      "to": "extractor.core.MultiplePathExtractor",
       "arrows": "to"
     }
   ]

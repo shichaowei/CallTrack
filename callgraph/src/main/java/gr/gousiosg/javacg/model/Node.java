@@ -3,12 +3,19 @@ package gr.gousiosg.javacg.model;
 public class Node{
 	private String id;
 	private String label;
-	
+	private ColorHighlight color;
 	
 	public Node(String id, String label) {
 		super();
 		setId(id);
 		setLabel(label);
+		color = new ColorHighlight();
+	}
+	public ColorHighlight getColor() {
+		return color;
+	}
+	public void setColor(ColorHighlight color) {
+		this.color = color;
 	}
 	public String getId() {
 		return id;
