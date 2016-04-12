@@ -174,7 +174,8 @@
         } 
 
     });*/
-    var printedNodes = []
+    var paintedNodes = [];
+    var paintedEdges = [];
     network.on("selectNode", function (params) {
         //selectionsObjects
         var rootNode = params.nodes[0];
@@ -182,23 +183,22 @@
         var nodesToSelect = [];
         if(rootNode != null){
             paint(rootNode);
-            network.selectNodes(nodesToSelect);
         }
 
     });
 
 
     function paint(rootNode){
-        if(contains(rootNode, printedNodes)){
+        if(contains(rootNode, paintedNodes)){
             return;
         }
         var edgesToSelect = [];
         var nodesToSelect = [];
          if(rootNode != null){
             console.log("painting " + rootNode + " ...");
-            printedNodes.push(rootNode);
+            paintedNodes.push(rootNode);
             
-            var nodesToSelect = network.getConnectedNodes(rootNode);
+           // var nodesToSelect = network.getConnectedNodes(rootNode);
             var edges = network.getConnectedEdges(rootNode);
 
             for(i = 0; i < edges.length; i++){
@@ -220,9 +220,51 @@
 
     }
 
+
+    //TODO fix this fucking recursion!!!¬¬
+    function recursivePaint(nodeStart, selections, nodes){
+        console.log(selections);
+        if(contains(nodeStart,selections.nodes)){
+            console.log(nodeStart + " is in" + selections.nodes);
+            return;
+        }else{
+             console.log(nodeStart + " is not in" + selections.nodes)
+        }
+
+        //Add current Node to selection
+        selections.nodes.push(nodeStart);
+
+        //get all edges for this node
+        var connectedEdges = network.getConnectedEdges(nodeStart);
+        console.log(connectedEdges.length);
+        for(i=0; i < connectedEdges.length; i++){
+
+            console.log("length: " + connectedEdges.length + "i: " + i);
+            
+            //get toNode of current edge
+            var toNode = network.getConnectedNodes(connectedEdges[i])[1];
+
+            //if toNode is different of currentNode, add egde and call to next Node;
+
+             if(toNode != nodeStart && !contains(nodeStart, selections.nodes)){
+                console.log("Going to " + toNode);
+                selections.edges.push(connectedEdges[i]);
+                console.log("calling recursion")
+                return recursivePaint(toNode,selections);
+             }
+
+             //console.log(selections);
+
+        }
+
+    }
+
     function contains(key, array){
         var count = 1;
+        console.log(key);
+        console.log(array);
         for(i=0; i < array.length; i++){
+            console.log("tested " + count + " time(s)");
             if(key == array[i]){
 
                 return true;

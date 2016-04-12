@@ -1,21 +1,19 @@
 package splab.ufcg.calltrack.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Node{
 	private String id;
 	private String label;
-	private ColorHighlight color;
+	private TypeNode type;
+	private Set<Node> edges = new HashSet<Node>();
+	private boolean visited = false;
 	
-	public Node(String id, String label) {
+	public Node(String id, String label, TypeNode type) {
 		super();
 		setId(id);
 		setLabel(label);
-		color = new ColorHighlight();
-	}
-	public ColorHighlight getColor() {
-		return color;
-	}
-	public void setColor(ColorHighlight color) {
-		this.color = color;
 	}
 	public String getId() {
 		return id;
@@ -38,4 +36,28 @@ public class Node{
 		
 		return this.id.equals(n.getId());
 	}
+	
+	public void putEdge(Node toNode){
+		edges.add(toNode);
+	}
+	public TypeNode getType() {
+		return type;
+	}
+	public void setType(TypeNode type) {
+		this.type = type;
+	}
+	public Set<Node> getEdges() {
+		return edges;
+	}
+	
+	
+	public void visit(){
+		if(!this.visited){
+			this.visited = true;
+			for(Node n : edges){
+				n.visit();
+			}
+		}
+	}
+	
 }

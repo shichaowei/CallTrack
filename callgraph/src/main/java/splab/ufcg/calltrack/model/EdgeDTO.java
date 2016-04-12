@@ -1,31 +1,54 @@
 package splab.ufcg.calltrack.model;
 
 public class EdgeDTO{
-	private String fromID,toID;
+	private String id;
+	private String from;
+	private String to;
+	private String arrows = "to";
 	
-	public EdgeDTO(String fromID,String toID) {
-		this.fromID = fromID;
-		this.toID = toID;
+	public String getId() {
+		return id;
 	}
-
-	public String getFromID() {
-		return fromID;
+	public EdgeDTO(String id, String from, String to) {
+		super();
+		this.id = id;
+		this.from = from;
+		this.to = to;
 	}
-
-	public void setFromID(String fromID) {
-		this.fromID = fromID;
+	public void setId(String id) {
+		this.id = id;
 	}
-
-	public String getToID() {
-		return toID;
+	public String getFrom() {
+		return from;
 	}
-
-	public void setToID(String toID) {
-		this.toID = toID;
+	public void setFrom(String from) {
+		this.from = from;
 	}
-
-	public boolean haveNode(String nodeId){
-		return this.fromID.equals(nodeId) || this.toID.equals(nodeId);
+	public String getTo() {
+		return to;
+	}
+	public void setTo(String to) {
+		this.to = to;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Node))
+			return false;
+		
+		EdgeDTO external = (EdgeDTO) obj;
+		
+		return this.getFrom().equals(external.getFrom()) && this.getTo().equals(external.getTo());
+		
+	}
+	
+	public boolean isSelfLoop(){
+		return this.getFrom().equals(this.getTo());
+	}
+	public String getArrows() {
+		return arrows;
+	}
+	public void setArrows(String arrows) {
+		this.arrows = arrows;
+	}
 }

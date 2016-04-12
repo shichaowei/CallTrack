@@ -1,41 +1,40 @@
 package splab.ufcg.calltrack.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
-import splab.ufcg.calltrack.model.Edge;
+import splab.ufcg.calltrack.exceptions.NodeNotFoundException;
 import splab.ufcg.calltrack.model.Node;
 
 public class Graph {
-	private List<Node> nodes = new ArrayList<Node>();
-	private List<Edge> edges = new ArrayList<Edge>();
+	
+	private Map<String, Node> nodes = new TreeMap<String, Node>();
+	
+	
+	public void putNode(String nodeId, String label, TypeNode type){
+		if(!nodes.containsKey(nodeId)){
+			nodes.put(nodeId, new Node(nodeId, label, type));
+		}
+	}
 
-	public List<Node> getNodes() {
+
+	public Map<String, Node> getNodes() {
 		return nodes;
 	}
-	public void setNodes(List<Node> nodes) {
-		this.nodes = nodes;
-	}
-	public List<Edge> getEdges() {
-		return edges;
-	}
-	public void setEdges(List<Edge> edges) {
-		this.edges = edges;
-	}
-	
-	public boolean containsNode(Node node){
-		return nodes.contains(node);
-	}
-	
-	public boolean containsEdge(Edge edge){
-		return edges.contains(edge);
+
+
+	public void putEdge(String fromNodeId, String toNodeId) throws NodeNotFoundException {
+		if(!nodes.containsKey(fromNodeId) )
+			throw new NodeNotFoundException("The node " + fromNodeId + " was not found.");
+		if(!nodes.containsKey(toNodeId))
+			throw new NodeNotFoundException("The node " + toNodeId + " was not found.");
+		
+		Node fromNode = nodes.get(fromNodeId);
+		Node toNode = nodes.get(toNodeId);
+		
+		fromNode.putEdge(toNode);
+		
+		
 	}
 	
-	public void putNode(Node node){
-		nodes.add(node);
-	}
-	
-	public void putEdge(Edge edge){
-		edges.add(edge);
-	}
 }

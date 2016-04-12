@@ -1,5 +1,6 @@
 package splab.ufcg.calltrack.model;
 
+
 public class Color {
 	String background, border;
 	

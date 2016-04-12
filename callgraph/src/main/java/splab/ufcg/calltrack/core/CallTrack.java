@@ -31,9 +31,7 @@ package splab.ufcg.calltrack.trackReflection;
 import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -41,13 +39,13 @@ import java.util.jar.JarFile;
 import org.apache.bcel.classfile.ClassFormatException;
 import org.apache.bcel.classfile.ClassParser;
 
-import splab.ufcg.calltrack.model.Edge;
-import splab.ufcg.calltrack.model.EdgeDTO;
+import splab.ufcg.calltrack.exceptions.NodeNotFoundException;
 import splab.ufcg.calltrack.model.Graph;
 import splab.ufcg.calltrack.model.Node;
+import splab.ufcg.calltrack.model.TypeNode;
 import splab.ufcg.calltrack.utils.Utils;
 
-public class CallGraph {
+public class CallTrack {
 
 	private String jarName;
 	private String pattern;
@@ -58,7 +56,7 @@ public class CallGraph {
 	private Utils util = new Utils();
 
 
-	public CallGraph(String jarName, String pattern) {
+	public CallTrack(String jarName, String pattern) {
 		this.jarName = jarName;
 		this.pattern = pattern;
 		// graphClasses = new Graph2D();
@@ -76,6 +74,7 @@ public class CallGraph {
 		}
 
 		JarFile jar = null;
+		
 		try {
 			jar = new JarFile(f);
 		} catch (IOException e1) {
@@ -94,8 +93,10 @@ public class CallGraph {
 				continue;
 
 			cp = new ClassParser(this.jarName, entry.getName());
+			
 			try {
 				visitor = new ClassVisitor(cp.parse(), this.pattern);
+				
 				visitor.start();
 			} catch (ClassFormatException e) {
 				System.err.println("Error while processing jar: " + e.getMessage());
@@ -108,40 +109,32 @@ public class CallGraph {
 
 	}
 
-	public void processInput() {
+	public void processInput() throws NodeNotFoundException {
 		int count = 0;
 		System.out.println(ClassVisitor.edges.size());
 		for (String line : ClassVisitor.edges) {
 			String[] nodesDeVided = line.split(" ");
-
-			if (nodesDeVided[0].contains(":") && nodesDeVided[1].contains(":")) {
+			
+			
+			
+			if (nodesDeVided[0].contains(":") && nodesDeVided[1].contains(":") && !nodesDeVided[0].equals(nodesDeVided[1]) && !(nodesDeVided[0].contains("clinit") || nodesDeVided[0].contains("clinit"))) {
 				// Generating Label and creating "from Node"
 				String fromNodeId = nodesDeVided[1];
 				String[] nodeIdSplited = fromNodeId.split("\\.");
 				String label = nodeIdSplited[nodeIdSplited.length - 1];
-				Node fromNode = new Node(fromNodeId, label);
+			//	Node fromNode = new Node(fromNodeId, label);
+				graphOfMethods.putNode(fromNodeId, label, TypeNode.NORMAL);
 
 				// Generating Label and creating "to Node"
 				String toNodeId = nodesDeVided[0];
 				nodeIdSplited = toNodeId.split("\\.");
 				label = nodeIdSplited[nodeIdSplited.length - 1];
-				Node toNode = new Node(toNodeId, label);
-	
+			//	Node toNode = new Node(toNodeId, label);
+				graphOfMethods.putNode(toNodeId, label, TypeNode.NORMAL);
 				//Generating Edge
-				Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
-				
-				if (!graphOfMethods.containsNode(fromNode)) {
-					graphOfMethods.putNode(fromNode);
+				//Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
+				graphOfMethods.putEdge(fromNodeId, toNodeId);
 
-				} 
-
-				if(!graphOfMethods.containsNode(toNode)){
-					graphOfMethods.putNode(toNode);
-				}
-				
-				if(!graphOfMethods.containsEdge(edge) && !edge.isSelfLoop()){
-					graphOfMethods.putEdge(edge);
-				}
 				
 				
 			} else {
@@ -149,39 +142,36 @@ public class CallGraph {
 				String fromNodeId = nodesDeVided[1];
 				String[] nodeIdSplited = fromNodeId.split("\\.");
 				String label = nodeIdSplited[nodeIdSplited.length - 1];
-				Node fromNode = new Node(fromNodeId, label);
+//				Node fromNode = new Node(fromNodeId, label);
+				graphOfClass.putNode(fromNodeId, label, TypeNode.NORMAL);
 
 				// Generating Label and creating "to Node"
 				String toNodeId = nodesDeVided[0];
 				nodeIdSplited = toNodeId.split("\\.");
 				label = nodeIdSplited[nodeIdSplited.length - 1];
-				Node toNode = new Node(toNodeId, label);
+//				Node toNode = new Node(toNodeId, label);
+				graphOfClass.putNode(toNodeId, label, TypeNode.NORMAL);
 	
 				//Generating Edge
-				Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
-
-				if (!graphOfClass.containsNode(fromNode)) {
-					graphOfClass.putNode(fromNode);
-
-				} 
-
-				if(!graphOfClass.containsNode(toNode)){
-					graphOfClass.putNode(toNode);
-				}
+//				Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
+				graphOfClass.putEdge(fromNodeId, toNodeId);
 				
-				if(!graphOfClass.containsEdge(edge) && !edge.isSelfLoop()){
-					graphOfClass.putEdge(edge);
-				}
-
 			}
 			count++;
 		}
 		
-		String pathFileAsJSON = "view\\main\\data.json";
-		util.deleteFiles(pathFileAsJSON);
+		//TODO Create all Artifacts Nodes from artifacts.conf and put in Graph
 		
-		util.writeJSONFile(pathFileAsJSON, graphOfClass);
+		
+		//TODO Process all changes(Visit the nodes) and must be one graph to each change listed
+		
+		
+		//TODO Transform each change graph to one DTO Graph that will be used to show in JS framework.
+		
+		
+		
 	
+		
 
 	}
 
@@ -190,9 +180,14 @@ public class CallGraph {
 	}
 
 	public static void main(String[] args) {
-		CallGraph cg = new CallGraph(args[0], args[1]);
+		CallTrack cg = new CallTrack(args[0], args[1]);
 		cg.prepare();
-		cg.processInput();
+		try {
+			cg.processInput();
+		} catch (NodeNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

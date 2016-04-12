@@ -10,12 +10,12 @@ import java.util.Set;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import splab.ufcg.calltrack.model.EdgeDTO;
+import splab.ufcg.calltrack.model.EdgeBruteLine;
 import splab.ufcg.calltrack.model.Graph;
 
 public class Utils {
 
-	public void writeFile(String fileName, Map<String, List<EdgeDTO>> graphModel) {
+	public void writeFile(String fileName, Map<String, List<EdgeBruteLine>> graphModel) {
 		try {
 			// String filename= "MyGraph.txt";
 			String idContents = "";
@@ -29,7 +29,7 @@ public class Utils {
 				System.out.println("Spliting " + id + " ...");
 				idContents += id + " " + nodeContent[nodeContent.length - 1] + "\r\n";
 
-				for (EdgeDTO edge : graphModel.get(id)) {
+				for (EdgeBruteLine edge : graphModel.get(id)) {
 					edgeContents += edge.getFromID() + " " + edge.getToID() + " Calls\r\n";
 				}
 
