@@ -24,6 +24,14 @@
 <pre id="eventSpan"></pre>
 <script type="text/javascript" src="data.json"></script>
 <script type="text/javascript">
+
+    function Selections() {
+            this.nodes = [];
+            this.edges = [];
+        }; 
+
+    var  selectionsObjects = {nodes: [], edges: []}
+
     var json  =  eval(data);
     console.log(json);
 
@@ -142,17 +150,12 @@
         console.log('blurEdge Event:', params);
     });*/
 
-    
+    /*
     network.on("selectNode", function (params) {
         console.log('selectNode Event:', params);
         //var connectedEdges = network.getConnectedEdges(params.nodes[0])
 
-        function Selections() {
-            this.nodes = [];
-            this.edges = [];
-        }; 
-
-        var  sel = {nodes: [], edges: []}
+        
         console.log("before recursivePaint");
         recursivePaint(params.nodes[0], sel);
 
@@ -168,43 +171,50 @@
         network.selectNodes(params.nodes);
         if(connectedNodes != null || connectedNodes.length > 0){
             network.selectNodes(connectedNodes, false);
-        } */
+        } 
+
+    });*/
+    var printedNodes = []
+    network.on("selectNode", function (params) {
+        //selectionsObjects
+        var rootNode = params.nodes[0];
+        var edgesToSelect = [];
+        var nodesToSelect = [];
+        if(rootNode != null){
+            paint(rootNode);
+            network.selectNodes(nodesToSelect);
+        }
 
     });
 
 
-    //TODO fix this fucking recursion!!!¬¬
-    function recursivePaint(nodeStart, selections){
-        console.log(selections);
-        if(contains(nodeStart,selections.nodes)){
-            console.log(nodeStart + " is in" + selections.nodes);
+    function paint(rootNode){
+        if(contains(rootNode, printedNodes)){
             return;
-        }else{
-             console.log(nodeStart + " is not in" + selections.nodes)
         }
-
-        //Add current Node to selection
-        selections.nodes.push(nodeStart);
-
-        //get all edges for this node
-        var connectedEdges = network.getConnectedEdges(nodeStart);
-        console.log(connectedEdges.length);
-        for(i=0; i < connectedEdges.length; i++){
-
-            console.log("length: " + connectedEdges.length + "i: " + i);
+        var edgesToSelect = [];
+        var nodesToSelect = [];
+         if(rootNode != null){
+            console.log("painting " + rootNode + " ...");
+            printedNodes.push(rootNode);
             
-            //get toNode of current edge
-            var toNode = network.getConnectedNodes(connectedEdges[i])[1];
+            var nodesToSelect = network.getConnectedNodes(rootNode);
+            var edges = network.getConnectedEdges(rootNode);
 
-            //if toNode is different of currentNode, add egde and call to next Node;
-             if(toNode != nodeStart && !selections.nodes.contains(nodeStart)){
-                console.log("Going to " + toNode);
-                selections.edges.push(connectedEdges[i]);
-                console.log("calling recursion")
-                return recursivePaint(toNode,selections);
-             }
+            for(i = 0; i < edges.length; i++){
+                if(edges[i][1] != rootNode){
+                    edgesToSelect.push(edges[i]);
+                }
+            }
 
-             //console.log(selections);
+            //alert(nodesToSelect);
+            //network.selectNodes(nodesToSelect,true);
+            //network.selectEdges(edgesToSelect);
+
+            for(i = 0; i < nodesToSelect.length; i++){
+                paint(nodesToSelect[i]);
+              
+            }
 
         }
 
@@ -212,10 +222,7 @@
 
     function contains(key, array){
         var count = 1;
-        console.log(key);
-        console.log(array);
         for(i=0; i < array.length; i++){
-            console.log("tested " + count + " time(s)");
             if(key == array[i]){
 
                 return true;
@@ -228,7 +235,5 @@
 
 
 </script>
-
-<script src="../../googleAnalytics.js"></script>
 </body>
 </html>

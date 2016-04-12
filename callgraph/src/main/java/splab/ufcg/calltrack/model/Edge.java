@@ -1,4 +1,4 @@
-package gr.gousiosg.javacg.model;
+package splab.ufcg.calltrack.model;
 
 public class Edge{
 	private String id;

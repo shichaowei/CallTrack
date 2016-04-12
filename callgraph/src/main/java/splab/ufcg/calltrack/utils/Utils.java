@@ -1,4 +1,4 @@
-package gr.gousiosg.javacg.utils;
+package splab.ufcg.calltrack.utils;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,8 +10,8 @@ import java.util.Set;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import gr.gousiosg.javacg.model.EdgeDTO;
-import gr.gousiosg.javacg.model.Graph;
+import splab.ufcg.calltrack.model.EdgeDTO;
+import splab.ufcg.calltrack.model.Graph;
 
 public class Utils {
 

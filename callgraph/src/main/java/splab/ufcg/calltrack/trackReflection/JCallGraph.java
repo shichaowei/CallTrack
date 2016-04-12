@@ -26,7 +26,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package gr.gousiosg.javacg.stat;
+package splab.ufcg.calltrack.trackReflection;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,11 +41,11 @@ import java.util.jar.JarFile;
 import org.apache.bcel.classfile.ClassFormatException;
 import org.apache.bcel.classfile.ClassParser;
 
-import gr.gousiosg.javacg.model.Edge;
-import gr.gousiosg.javacg.model.EdgeDTO;
-import gr.gousiosg.javacg.model.Graph;
-import gr.gousiosg.javacg.model.Node;
-import gr.gousiosg.javacg.utils.Utils;
+import splab.ufcg.calltrack.model.Edge;
+import splab.ufcg.calltrack.model.EdgeDTO;
+import splab.ufcg.calltrack.model.Graph;
+import splab.ufcg.calltrack.model.Node;
+import splab.ufcg.calltrack.utils.Utils;
 
 public class JCallGraph {
 

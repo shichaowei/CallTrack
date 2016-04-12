@@ -1,9 +1,10 @@
-package gr.gousiosg.javacg.model;
+package splab.ufcg.calltrack.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import gr.gousiosg.javacg.model.Edge;
-import gr.gousiosg.javacg.model.Node;
+
+import splab.ufcg.calltrack.model.Edge;
+import splab.ufcg.calltrack.model.Node;
 
 public class Graph {
 	private List<Node> nodes = new ArrayList<Node>();

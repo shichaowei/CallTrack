@@ -1,4 +1,4 @@
-package gr.gousiosg.javacg.model;
+package splab.ufcg.calltrack.model;
 
 public class ColorHighlight extends Color {
 	private Color highlight;
