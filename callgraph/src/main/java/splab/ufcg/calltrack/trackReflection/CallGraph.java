@@ -47,7 +47,7 @@ import splab.ufcg.calltrack.model.Graph;
 import splab.ufcg.calltrack.model.Node;
 import splab.ufcg.calltrack.utils.Utils;
 
-public class JCallGraph {
+public class CallGraph {
 
 	private String jarName;
 	private String pattern;
@@ -58,7 +58,7 @@ public class JCallGraph {
 	private Utils util = new Utils();
 
 
-	public JCallGraph(String jarName, String pattern) {
+	public CallGraph(String jarName, String pattern) {
 		this.jarName = jarName;
 		this.pattern = pattern;
 		// graphClasses = new Graph2D();
@@ -190,7 +190,7 @@ public class JCallGraph {
 	}
 
 	public static void main(String[] args) {
-		JCallGraph cg = new JCallGraph(args[0], args[1]);
+		CallGraph cg = new CallGraph(args[0], args[1]);
 		cg.prepare();
 		cg.processInput();
 
