@@ -26,7 +26,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package splab.ufcg.calltrack.trackReflection;
+package splab.ufcg.calltrack.core;
 
 import java.io.File;
 import java.io.IOException;
