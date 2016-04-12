@@ -7,7 +7,7 @@ The main idea of this project, is tracking change comportamental <b>atomic</b> o
 
 The steps to track are:</br>
   1 - Generate call relations.</br>
-  2 - Generate a graph data structure based on edges generated from CallGraph(from step 1).</br>
+  2 - Generate a graph data structure based on edges generated from step 1.</br>
   3 - Use Annotations to mark the Elected methods/class to possible change.</br>
   4 - Use Annotations to mark Methods/class as artefacts end-points.</br>
   5 - Process the project with annotations to Mapping change propagation.</br></br>
