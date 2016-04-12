@@ -62,10 +62,33 @@
         params.event = "[original event]";
         document.getElementById('eventSpan').innerHTML = '<h2>Click event:</h2>' + JSON.stringify(params, null, 4);
     });
+
+    
+
+
     network.on("doubleClick", function (params) {
+        if(params.nodes.length == 0)
+            return;
+
+
+        function Selections() {
+            this.nodes = [];
+            this.edges = [];
+        }; 
+
+        var  sel = new Selections();
+        console.log("before recursivePaint");
+        recursivePaint(params.nodes[0], sel);
+
+        
+        network.setSelection(selections, {highlightEdges: true});
+        console.log("after paint");
+
         params.event = "[original event]";
         document.getElementById('eventSpan').innerHTML = '<h2>doubleClick event:</h2>' + JSON.stringify(params, null, 4);
     });
+
+   
     network.on("oncontext", function (params) {
         params.event = "[original event]";
         document.getElementById('eventSpan').innerHTML = '<h2>oncontext (right click) event:</h2>' + JSON.stringify(params, null, 4);
@@ -119,23 +142,26 @@
         console.log('blurEdge Event:', params);
     });*/
 
+    
     network.on("selectNode", function (params) {
         console.log('selectNode Event:', params);
         //var connectedEdges = network.getConnectedEdges(params.nodes[0])
 
         function Selections() {
             this.nodes = [];
-            this.edge = [];
+            this.edges = [];
         }; 
 
-        var  sel = new Selections();
+        var  sel = {nodes: [], edges: []}
         console.log("before recursivePaint");
         recursivePaint(params.nodes[0], sel);
 
-        
-        network.setSelection(selections, {highlightEdges: true});
+       // console.log("Connected Nodes: " +  network.getConnectedNodes(params.nodes[0]));
+        c//onsole.log("Connected Edges: " + network.getConnectedEdges(params.nodes[0]));
+        //network.setSelection(selections, {highlightEdges: false});
         console.log("after paint");
         //network.selectNodes(startNodesArray);
+
 
        /* 
         console.log(connectedNodes);
@@ -145,11 +171,16 @@
         } */
 
     });
+
+
     //TODO fix this fucking recursion!!!¬¬
     function recursivePaint(nodeStart, selections){
+        console.log(selections);
         if(contains(nodeStart,selections.nodes)){
-            console.log(nodeStart + " is in" + selections.nodes)
+            console.log(nodeStart + " is in" + selections.nodes);
             return;
+        }else{
+             console.log(nodeStart + " is not in" + selections.nodes)
         }
 
         //Add current Node to selection
@@ -157,30 +188,41 @@
 
         //get all edges for this node
         var connectedEdges = network.getConnectedEdges(nodeStart);
+        console.log(connectedEdges.length);
         for(i=0; i < connectedEdges.length; i++){
 
+            console.log("length: " + connectedEdges.length + "i: " + i);
+            
             //get toNode of current edge
             var toNode = network.getConnectedNodes(connectedEdges[i])[1];
 
             //if toNode is different of currentNode, add egde and call to next Node;
-             if(toNode != nodeStart && !contains(toNode, selections.nodes)){
+             if(toNode != nodeStart && !selections.nodes.contains(nodeStart)){
                 console.log("Going to " + toNode);
-                selections.edges = connectedEdges[i];
-                recursivePaint(toNode,selections);
+                selections.edges.push(connectedEdges[i]);
+                console.log("calling recursion")
+                return recursivePaint(toNode,selections);
              }
+
+             //console.log(selections);
 
         }
 
     }
 
     function contains(key, array){
-
+        var count = 1;
+        console.log(key);
+        console.log(array);
         for(i=0; i < array.length; i++){
+            console.log("tested " + count + " time(s)");
             if(key == array[i]){
 
                 return true;
             }
+            count++;
         }
+        console.log("End of for when testing " + key + " value");
         return false;
     }
 
