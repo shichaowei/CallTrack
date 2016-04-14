@@ -55,14 +55,11 @@ public class CallTrack {
 	private Graph graphOfMethods = new Graph();
 	private Utils util = new Utils();
 
-
 	public CallTrack(String jarName, String pattern) {
 		this.jarName = jarName;
 		this.pattern = pattern;
 		// graphClasses = new Graph2D();
 	}
-
-
 
 	public void prepare() {
 		ClassParser cp;
@@ -74,7 +71,7 @@ public class CallTrack {
 		}
 
 		JarFile jar = null;
-		
+
 		try {
 			jar = new JarFile(f);
 		} catch (IOException e1) {
@@ -93,10 +90,10 @@ public class CallTrack {
 				continue;
 
 			cp = new ClassParser(this.jarName, entry.getName());
-			
+
 			try {
 				visitor = new ClassVisitor(cp.parse(), this.pattern);
-				
+
 				visitor.start();
 			} catch (ClassFormatException e) {
 				System.err.println("Error while processing jar: " + e.getMessage());
@@ -114,64 +111,59 @@ public class CallTrack {
 		System.out.println(ClassVisitor.edges.size());
 		for (String line : ClassVisitor.edges) {
 			String[] nodesDeVided = line.split(" ");
-			
-			
-			
-			if (nodesDeVided[0].contains(":") && nodesDeVided[1].contains(":") && !nodesDeVided[0].equals(nodesDeVided[1]) && !(nodesDeVided[0].contains("clinit") || nodesDeVided[0].contains("clinit"))) {
+
+			if (nodesDeVided[0].contains(":") && nodesDeVided[1].contains(":")
+					&& !nodesDeVided[0].equals(nodesDeVided[1])
+					&& !(nodesDeVided[0].contains("clinit") || nodesDeVided[0].contains("clinit"))) {
 				// Generating Label and creating "from Node"
 				String fromNodeId = nodesDeVided[1];
 				String[] nodeIdSplited = fromNodeId.split("\\.");
 				String label = nodeIdSplited[nodeIdSplited.length - 1];
-			//	Node fromNode = new Node(fromNodeId, label);
+				// Node fromNode = new Node(fromNodeId, label);
 				graphOfMethods.putNode(fromNodeId, label, TypeNode.NORMAL);
 
 				// Generating Label and creating "to Node"
 				String toNodeId = nodesDeVided[0];
 				nodeIdSplited = toNodeId.split("\\.");
 				label = nodeIdSplited[nodeIdSplited.length - 1];
-			//	Node toNode = new Node(toNodeId, label);
+				// Node toNode = new Node(toNodeId, label);
 				graphOfMethods.putNode(toNodeId, label, TypeNode.NORMAL);
-				//Generating Edge
-				//Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
+				// Generating Edge
+				// Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
 				graphOfMethods.putEdge(fromNodeId, toNodeId);
 
-				
-				
 			} else {
 				// Generating Label and creating "from Node"
 				String fromNodeId = nodesDeVided[1];
 				String[] nodeIdSplited = fromNodeId.split("\\.");
 				String label = nodeIdSplited[nodeIdSplited.length - 1];
-//				Node fromNode = new Node(fromNodeId, label);
+				// Node fromNode = new Node(fromNodeId, label);
 				graphOfClass.putNode(fromNodeId, label, TypeNode.NORMAL);
 
 				// Generating Label and creating "to Node"
 				String toNodeId = nodesDeVided[0];
 				nodeIdSplited = toNodeId.split("\\.");
 				label = nodeIdSplited[nodeIdSplited.length - 1];
-//				Node toNode = new Node(toNodeId, label);
+				// Node toNode = new Node(toNodeId, label);
 				graphOfClass.putNode(toNodeId, label, TypeNode.NORMAL);
-	
-				//Generating Edge
-//				Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
+
+				// Generating Edge
+				// Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
 				graphOfClass.putEdge(fromNodeId, toNodeId);
-				
+
 			}
 			count++;
 		}
-		
-		//TODO Create all Artifacts Nodes from artifacts.conf and put in Graph
-		
-		
-		//TODO Process all changes(Visit the nodes) and must be one graph to each change listed
-		
-		
-		//TODO Transform each change graph to one DTO Graph that will be used to show in JS framework.
-		
-		
-		
-	
-		
+
+		// TODO Create all Artifacts Nodes from method-mapping.artifacs and
+		// classes-mapping.artifacts and after put in Graph and link with
+		// referenced node.
+
+		// TODO Process all changes(Visit the nodes) and must be one graph to
+		// each change listed
+
+		// TODO Transform each change graph to one DTO Graph that will be used
+		// to show in JS framework.
 
 	}
 
