@@ -28,6 +28,7 @@
 
 package splab.ufcg.calltrack.core;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
@@ -41,7 +42,6 @@ import org.apache.bcel.classfile.ClassParser;
 
 import splab.ufcg.calltrack.exceptions.NodeNotFoundException;
 import splab.ufcg.calltrack.model.Graph;
-import splab.ufcg.calltrack.model.Node;
 import splab.ufcg.calltrack.model.TypeNode;
 import splab.ufcg.calltrack.utils.Utils;
 
@@ -108,8 +108,8 @@ public class CallTrack {
 
 	public void processInput() throws NodeNotFoundException {
 		int count = 0;
-		System.out.println(ClassVisitor.edges.size());
-		for (String line : ClassVisitor.edges) {
+		System.out.println(ClassVisitor.edgesMethods.size());
+		for (String line : ClassVisitor.edgesMethods) {
 			String[] nodesDeVided = line.split(" ");
 
 			if (nodesDeVided[0].contains(":") && nodesDeVided[1].contains(":")
@@ -130,34 +130,49 @@ public class CallTrack {
 				graphOfMethods.putNode(toNodeId, label, TypeNode.NORMAL);
 				// Generating Edge
 				// Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
-				graphOfMethods.putEdge(fromNodeId, toNodeId);
+				if(!fromNodeId.equals(toNodeId))
+					graphOfMethods.putEdge(fromNodeId, toNodeId);
 
-			} else {
-				// Generating Label and creating "from Node"
-				String fromNodeId = nodesDeVided[1];
-				String[] nodeIdSplited = fromNodeId.split("\\.");
-				String label = nodeIdSplited[nodeIdSplited.length - 1];
-				// Node fromNode = new Node(fromNodeId, label);
-				graphOfClass.putNode(fromNodeId, label, TypeNode.NORMAL);
-
-				// Generating Label and creating "to Node"
-				String toNodeId = nodesDeVided[0];
-				nodeIdSplited = toNodeId.split("\\.");
-				label = nodeIdSplited[nodeIdSplited.length - 1];
-				// Node toNode = new Node(toNodeId, label);
-				graphOfClass.putNode(toNodeId, label, TypeNode.NORMAL);
-
-				// Generating Edge
-				// Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
-				graphOfClass.putEdge(fromNodeId, toNodeId);
-
-			}
+			} 
 			count++;
+		}
+		
+		count = 0;
+		
+		for(String line : ClassVisitor.edgesClass){
+			String[] nodesDeVided = line.split(" ");
+			// Generating Label and creating "from Node"
+			String fromNodeId = nodesDeVided[1];
+			String[] nodeIdSplited = fromNodeId.split("\\.");
+			String label = nodeIdSplited[nodeIdSplited.length - 1];
+			// Node fromNode = new Node(fromNodeId, label);
+			graphOfClass.putNode(fromNodeId, label, TypeNode.NORMAL);
+
+			// Generating Label and creating "to Node"
+			String toNodeId = nodesDeVided[0];
+			nodeIdSplited = toNodeId.split("\\.");
+			label = nodeIdSplited[nodeIdSplited.length - 1];
+			// Node toNode = new Node(toNodeId, label);
+			graphOfClass.putNode(toNodeId, label, TypeNode.NORMAL);
+
+			// Generating Edge
+			// Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
+			if(!fromNodeId.equals(toNodeId))
+				graphOfClass.putEdge(fromNodeId, toNodeId);
 		}
 
 		Utils util = new Utils();
 		util.deleteFiles("view/data.json");
 		util.writeJSONFile("view/data.json", graphOfMethods.getGraphDTO());
+		
+		File f = new File("view/index.html");
+		
+		try {
+			Desktop.getDesktop().browse(f.toURI());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// TODO Create all Artifacts Nodes from method-mapping.artifacs and
 		// classes-mapping.artifacts and after put in Graph and link with
@@ -172,7 +187,7 @@ public class CallTrack {
 	}
 
 	public Set<String> getEdgesSet() {
-		return ClassVisitor.edges;
+		return ClassVisitor.edgesMethods;
 	}
 
 	public static void main(String[] args) {

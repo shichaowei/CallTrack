@@ -49,7 +49,8 @@ public class ClassVisitor extends EmptyVisitor {
     private ConstantPoolGen constants;
     private String classReferenceFormat;
     private String pattern;
-    public static Set<String> edges = new HashSet<String>();
+    public static Set<String> edgesMethods = new HashSet<String>();
+    public static Set<String> edgesClass = new HashSet<String>();
     
     public ClassVisitor(JavaClass jc,String pattern) {
         clazz = jc;
@@ -79,7 +80,9 @@ public class ClassVisitor extends EmptyVisitor {
                 	String output = String.format(classReferenceFormat,
                 			referencedClass).replaceAll("[$\\d]+", "");
                 	output = output.replaceAll("\\[L", "");
-                	ClassVisitor.edges.add(output);
+                	output = output.replaceAll("<init>", "").replaceAll("<cinit>", "");
+                	System.out.println(output);
+                	ClassVisitor.edgesClass.add(output);
                 	
                 }
             }

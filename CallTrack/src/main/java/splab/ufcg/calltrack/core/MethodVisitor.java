@@ -98,7 +98,7 @@ public class MethodVisitor extends EmptyVisitor {
     public void visitINVOKEVIRTUAL(INVOKEVIRTUAL i) {
     	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
-    		ClassVisitor.edges.add(output);
+    		ClassVisitor.edgesMethods.add(output);
     	}
     }
 
@@ -107,7 +107,7 @@ public class MethodVisitor extends EmptyVisitor {
     	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
     		
-    		ClassVisitor.edges.add(output);
+    		ClassVisitor.edgesMethods.add(output);
     	}
     }
 
@@ -115,7 +115,7 @@ public class MethodVisitor extends EmptyVisitor {
     public void visitINVOKESPECIAL(INVOKESPECIAL i) {
     	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){ 		
-    		ClassVisitor.edges.add(output);
+    		ClassVisitor.edgesMethods.add(output);
     	}
     }
 
@@ -123,7 +123,7 @@ public class MethodVisitor extends EmptyVisitor {
     public void visitINVOKESTATIC(INVOKESTATIC i) {
     	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
-    		ClassVisitor.edges.add(output);
+    		ClassVisitor.edgesMethods.add(output);
     	}
     }
     

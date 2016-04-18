@@ -54,10 +54,11 @@ public class Node{
 	public void visit(){
 		if(!this.visited){
 			this.visited = true;
-			for(Node n : edges){
-				n.visit();
-			}
 		}
+	}
+	
+	public boolean isVisited(){
+		return this.visited;
 	}
 	
 }

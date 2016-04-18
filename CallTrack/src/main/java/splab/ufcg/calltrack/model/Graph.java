@@ -31,7 +31,7 @@ public class Graph {
 		
 		Node fromNode = nodes.get(fromNodeId);
 		Node toNode = nodes.get(toNodeId);
-		
+		toNode.visit();
 		fromNode.putEdge(toNode);
 		
 		
@@ -41,6 +41,10 @@ public class Graph {
 		GraphDTO transactionDataGraph = new GraphDTO();
 		
 		for(Node n : this.nodes.values()){
+			
+			if(!n.isVisited() && n.getEdges().size() < 1)
+				continue;
+			
 			NodeDTOData nodeData = new NodeDTOData(n.hashCode() + "", n.getLabel());
 			NodeDTO node = new NodeDTO(nodeData);
 			transactionDataGraph.putNode(node);
