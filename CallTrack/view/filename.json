@@ -1,0 +1,6640 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "extractor.communication.Client:\u003cinit\u003e",
+        "label": "Client:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.communication.Client:doLogin",
+        "label": "Client:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.communication.Client:generateJson",
+        "label": "Client:generateJson"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.communication.Client:poll",
+        "label": "Client:poll"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.communication.Client:sendExtraction",
+        "label": "Client:sendExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.communication.Client:submitJsonToURL",
+        "label": "Client:submitJsonToURL"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.communication.SecurityManager:\u003cinit\u003e",
+        "label": "SecurityManager:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.communication.SecurityManager:getHTTPSConnection",
+        "label": "SecurityManager:getHTTPSConnection"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.communication.SecurityManager:trustAllHosts",
+        "label": "SecurityManager:trustAllHosts"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.communication.TestTypeSerializer:\u003cinit\u003e",
+        "label": "TestTypeSerializer:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.communication.TestTypeSerializer:serialize",
+        "label": "TestTypeSerializer:serialize"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.CommunicationController:\u003cinit\u003e",
+        "label": "CommunicationController:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.CommunicationController:login",
+        "label": "CommunicationController:login"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.CommunicationController:logout",
+        "label": "CommunicationController:logout"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.CommunicationController:ping",
+        "label": "CommunicationController:ping"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.CommunicationController:sendExtraction",
+        "label": "CommunicationController:sendExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ConsumerListener:allExtractionsSent",
+        "label": "ConsumerListener:allExtractionsSent"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ConsumerListener:incrementNumberOfSuccesfulSents",
+        "label": "ConsumerListener:incrementNumberOfSuccesfulSents"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ConsumerListener:startConsuming",
+        "label": "ConsumerListener:startConsuming"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ConsumerListener:updateNumberOfAvailableSents",
+        "label": "ConsumerListener:updateNumberOfAvailableSents"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:\u003cinit\u003e",
+        "label": "ExtractionController:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:addConsumerListener",
+        "label": "ExtractionController:addConsumerListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:addProducerListener",
+        "label": "ExtractionController:addProducerListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:extractByAutoCollect",
+        "label": "ExtractionController:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:extractByLLT",
+        "label": "ExtractionController:extractByLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:extractByPath",
+        "label": "ExtractionController:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:getInstance",
+        "label": "ExtractionController:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:getOfflineService",
+        "label": "ExtractionController:getOfflineService"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:isExtractingByAutoCollect",
+        "label": "ExtractionController:isExtractingByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:isMultiplePathExtractorProducerRunning",
+        "label": "ExtractionController:isMultiplePathExtractorProducerRunning"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:reset",
+        "label": "ExtractionController:reset"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:sendOfflineFiles",
+        "label": "ExtractionController:sendOfflineFiles"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:stopExtractByAutoCollect",
+        "label": "ExtractionController:stopExtractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ExtractionController:stopExtractByPath",
+        "label": "ExtractionController:stopExtractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.OfflineExtractionSender:\u003cinit\u003e",
+        "label": "OfflineExtractionSender:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.OfflineExtractionSender:run",
+        "label": "OfflineExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.OfflineExtractionSender:setConsumerListener",
+        "label": "OfflineExtractionSender:setConsumerListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.OfflineExtractionSender:stopExecution",
+        "label": "OfflineExtractionSender:stopExecution"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.OfflineService:\u003cinit\u003e",
+        "label": "OfflineService:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.OfflineService:countOfflineExtractions",
+        "label": "OfflineService:countOfflineExtractions"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.OfflineService:saveExtractionOffline",
+        "label": "OfflineService:saveExtractionOffline"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.OfflineService:sendOfflineExtractions",
+        "label": "OfflineService:sendOfflineExtractions"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.OfflineService:stopOfflineExtraction",
+        "label": "OfflineService:stopOfflineExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ProducerListener:allExtractionsDone",
+        "label": "ProducerListener:allExtractionsDone"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ProducerListener:startProducing",
+        "label": "ProducerListener:startProducing"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ProducerListener:updateNumberOfAvailableExtractions",
+        "label": "ProducerListener:updateNumberOfAvailableExtractions"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.controller.ProducerListener:updateNumberOfExtractionsDone",
+        "label": "ProducerListener:updateNumberOfExtractionsDone"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ApplicationsHashGenerator:\u003cinit\u003e",
+        "label": "ApplicationsHashGenerator:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ApplicationsHashGenerator:generateHashForRunningLST",
+        "label": "ApplicationsHashGenerator:generateHashForRunningLST"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ApplicationsHashGenerator:generateMDHash",
+        "label": "ApplicationsHashGenerator:generateMDHash"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ApplicationsHashGenerator:getAllListedApps",
+        "label": "ApplicationsHashGenerator:getAllListedApps"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ApplicationsHashGenerator:joinCollection",
+        "label": "ApplicationsHashGenerator:joinCollection"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ApplicationsHashGenerator:selectFileToExtract",
+        "label": "ApplicationsHashGenerator:selectFileToExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.AutoCollectExtractor:\u003cinit\u003e",
+        "label": "AutoCollectExtractor:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.AutoCollectExtractor:isRunning",
+        "label": "AutoCollectExtractor:isRunning"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.AutoCollectExtractor:run",
+        "label": "AutoCollectExtractor:run"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.AutoCollectExtractor:stopAutoCollect",
+        "label": "AutoCollectExtractor:stopAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ExtractionQueue:\u003cinit\u003e",
+        "label": "ExtractionQueue:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ExtractionQueue:addExtraction",
+        "label": "ExtractionQueue:addExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ExtractionQueue:isEmpty",
+        "label": "ExtractionQueue:isEmpty"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ExtractionQueue:pollExtraction",
+        "label": "ExtractionQueue:pollExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ExtractionQueue:resetQueue",
+        "label": "ExtractionQueue:resetQueue"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ExtractionQueue:size",
+        "label": "ExtractionQueue:size"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ExtractionQueueResourceAccessible:values",
+        "label": "ExtractionQueueResourceAccessible:values"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.ExtractionQueueResourceAccessible[]:clone",
+        "label": "ExtractionQueueResourceAccessible[]:clone"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.Extractor:\u003cinit\u003e",
+        "label": "Extractor:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.Extractor:decryptBoosterIfExists",
+        "label": "Extractor:decryptBoosterIfExists"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.Extractor:decryptLifecounterIfExists",
+        "label": "Extractor:decryptLifecounterIfExists"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.Extractor:extract",
+        "label": "Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.Extractor:generateModel",
+        "label": "Extractor:generateModel"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.Extractor:getNote",
+        "label": "Extractor:getNote"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.Extractor:selectFileToExtract",
+        "label": "Extractor:selectFileToExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.Extractor:setNote",
+        "label": "Extractor:setNote"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.Extractor:specificExtraction",
+        "label": "Extractor:specificExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.KeysHashGenerator:\u003cinit\u003e",
+        "label": "KeysHashGenerator:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.KeysHashGenerator:checkKeyLoadingIsOK",
+        "label": "KeysHashGenerator:checkKeyLoadingIsOK"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey",
+        "label": "KeysHashGenerator:generateHashForSSALoadKey"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.KeysHashGenerator:generateMDHash",
+        "label": "KeysHashGenerator:generateMDHash"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.KeysHashGenerator:getAllKeys",
+        "label": "KeysHashGenerator:getAllKeys"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.KeysHashGenerator:joinCollection",
+        "label": "KeysHashGenerator:joinCollection"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.KeysHashGenerator:selectFileToExtract",
+        "label": "KeysHashGenerator:selectFileToExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.LLTExtractor:\u003cinit\u003e",
+        "label": "LLTExtractor:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.LLTExtractor:buildRuntimeManagerInstance",
+        "label": "LLTExtractor:buildRuntimeManagerInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.LLTExtractor:createBackup",
+        "label": "LLTExtractor:createBackup"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.LLTExtractor:selectMxxTestTypeFile",
+        "label": "LLTExtractor:selectMxxTestTypeFile"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.LLTExtractor:specificExtraction",
+        "label": "LLTExtractor:specificExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultipleExtractionSender:\u003cinit\u003e",
+        "label": "MultipleExtractionSender:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultipleExtractionSender:addConsumerListener",
+        "label": "MultipleExtractionSender:addConsumerListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultipleExtractionSender:addProducerThread",
+        "label": "MultipleExtractionSender:addProducerThread"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultipleExtractionSender:resetCounters",
+        "label": "MultipleExtractionSender:resetCounters"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultipleExtractionSender:run",
+        "label": "MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultipleExtractionSender:stopExecution",
+        "label": "MultipleExtractionSender:stopExecution"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:\u003cinit\u003e",
+        "label": "MultiplePathExtractor:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:addProducerListener",
+        "label": "MultiplePathExtractor:addProducerListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:deleteDirectory",
+        "label": "MultiplePathExtractor:deleteDirectory"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:deleteFileWithNameInDirectory",
+        "label": "MultiplePathExtractor:deleteFileWithNameInDirectory"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:existsFileWithName",
+        "label": "MultiplePathExtractor:existsFileWithName"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:extractAll",
+        "label": "MultiplePathExtractor:extractAll"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:extractPath",
+        "label": "MultiplePathExtractor:extractPath"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:isFolderUpToExtract",
+        "label": "MultiplePathExtractor:isFolderUpToExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:isReadCollectDir",
+        "label": "MultiplePathExtractor:isReadCollectDir"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:isRunning",
+        "label": "MultiplePathExtractor:isRunning"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:listAvailableFolders",
+        "label": "MultiplePathExtractor:listAvailableFolders"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:moveFilesFromTo",
+        "label": "MultiplePathExtractor:moveFilesFromTo"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:resetCounters",
+        "label": "MultiplePathExtractor:resetCounters"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:run",
+        "label": "MultiplePathExtractor:run"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.MultiplePathExtractor:stopExtractions",
+        "label": "MultiplePathExtractor:stopExtractions"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.OfflineExtractionProducer:\u003cinit\u003e",
+        "label": "OfflineExtractionProducer:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.OfflineExtractionProducer:countOfflineExtractions",
+        "label": "OfflineExtractionProducer:countOfflineExtractions"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.OfflineExtractionProducer:generateExtractionFromJson",
+        "label": "OfflineExtractionProducer:generateExtractionFromJson"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.OfflineExtractionProducer:getOfflineExtractionsSize",
+        "label": "OfflineExtractionProducer:getOfflineExtractionsSize"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.OfflineExtractionProducer:isRunning",
+        "label": "OfflineExtractionProducer:isRunning"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.OfflineExtractionProducer:run",
+        "label": "OfflineExtractionProducer:run"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.OfflineExtractionProducer:stopExecution",
+        "label": "OfflineExtractionProducer:stopExecution"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.PathExtractor:\u003cinit\u003e",
+        "label": "PathExtractor:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.PathExtractor:specificExtraction",
+        "label": "PathExtractor:specificExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.RuntimeManager:\u003cinit\u003e",
+        "label": "RuntimeManager:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.RuntimeManager:exec",
+        "label": "RuntimeManager:exec"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.RuntimeManager:getScriptOutput",
+        "label": "RuntimeManager:getScriptOutput"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.core.RuntimeManager:verifyExecution",
+        "label": "RuntimeManager:verifyExecution"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.exceptions.BlockedUserException:\u003cinit\u003e",
+        "label": "BlockedUserException:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.exceptions.BlockedUserException:getMessage",
+        "label": "BlockedUserException:getMessage"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.exceptions.BlockedUserException:printStackTrace",
+        "label": "BlockedUserException:printStackTrace"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.exceptions.ConnectionErrorException:\u003cinit\u003e",
+        "label": "ConnectionErrorException:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.exceptions.ConnectionErrorException:getMessage",
+        "label": "ConnectionErrorException:getMessage"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "label": "InternalException:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.exceptions.InternalException:getMessage",
+        "label": "InternalException:getMessage"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.exceptions.ParameterException:\u003cinit\u003e",
+        "label": "ParameterException:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.exceptions.WrongPasswordException:\u003cinit\u003e",
+        "label": "WrongPasswordException:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.exceptions.WrongPasswordException:getMessage",
+        "label": "WrongPasswordException:getMessage"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.exceptions.WrongPasswordException:printStackTrace",
+        "label": "WrongPasswordException:printStackTrace"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.filedecryptor.DecryptorManager:doBoosterDecrypt",
+        "label": "DecryptorManager:doBoosterDecrypt"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.filedecryptor.DecryptorManager:doLifecounterDecrypt",
+        "label": "DecryptorManager:doLifecounterDecrypt"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.in.Messages:assigment",
+        "label": "Messages:assigment"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.in.Messages:init",
+        "label": "Messages:init"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.in.Messages:readMessagesFile",
+        "label": "Messages:readMessagesFile"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Extraction:\u003cinit\u003e",
+        "label": "Extraction:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Extraction:addProperties",
+        "label": "Extraction:addProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Extraction:getNote",
+        "label": "Extraction:getNote"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Extraction:getProductNumber",
+        "label": "Extraction:getProductNumber"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Extraction:getProperties",
+        "label": "Extraction:getProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Extraction:getSerialNumber",
+        "label": "Extraction:getSerialNumber"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Extraction:getTestType",
+        "label": "Extraction:getTestType"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Extraction:setDisableLLT",
+        "label": "Extraction:setDisableLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Extraction:setNote",
+        "label": "Extraction:setNote"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Extraction:setProductNumber",
+        "label": "Extraction:setProductNumber"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Extraction:setSerialNumber",
+        "label": "Extraction:setSerialNumber"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Extraction:setTestType",
+        "label": "Extraction:setTestType"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Extraction:validateProductNumberAndSerialNumber",
+        "label": "Extraction:validateProductNumberAndSerialNumber"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.OfflineExtraction:\u003cinit\u003e",
+        "label": "OfflineExtraction:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.OfflineExtraction:getExtraction",
+        "label": "OfflineExtraction:getExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.OfflineExtraction:getFile",
+        "label": "OfflineExtraction:getFile"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Property:\u003cinit\u003e",
+        "label": "Property:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Property:setName",
+        "label": "Property:setName"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Property:setOrder",
+        "label": "Property:setOrder"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Property:setType",
+        "label": "Property:setType"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Property:setValue",
+        "label": "Property:setValue"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Session:\u003cinit\u003e",
+        "label": "Session:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Session:getInstance",
+        "label": "Session:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Session:getSessionToken",
+        "label": "Session:getSessionToken"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Session:getType",
+        "label": "Session:getType"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Session:initialize",
+        "label": "Session:initialize"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Session:reset",
+        "label": "Session:reset"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.model.Session:setSessionToken",
+        "label": "Session:setSessionToken"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PatternReadable:extract",
+        "label": "PatternReadable:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PositionReader:extract",
+        "label": "PositionReader:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PositionReader:getValuesOfPattern",
+        "label": "PositionReader:getValuesOfPattern"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PropertySpecification:\u003cinit\u003e",
+        "label": "PropertySpecification:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PropertySpecification:getFileNameToExtract",
+        "label": "PropertySpecification:getFileNameToExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PropertySpecification:getPattern",
+        "label": "PropertySpecification:getPattern"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PropertySpecification:getPropertyName",
+        "label": "PropertySpecification:getPropertyName"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PropertySpecification:getTypeOfPattern",
+        "label": "PropertySpecification:getTypeOfPattern"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PropertySpecification:getTypeOfProperty",
+        "label": "PropertySpecification:getTypeOfProperty"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PropertySpecification:setFileNameToExtract",
+        "label": "PropertySpecification:setFileNameToExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PropertySpecification:setPattern",
+        "label": "PropertySpecification:setPattern"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PropertySpecification:setPropertyName",
+        "label": "PropertySpecification:setPropertyName"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PropertySpecification:setTypeOfPattern",
+        "label": "PropertySpecification:setTypeOfPattern"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.PropertySpecification:setTypeOfProperty",
+        "label": "PropertySpecification:setTypeOfProperty"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.RegexReader:extract",
+        "label": "RegexReader:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.RegexReader:extractFromPattern",
+        "label": "RegexReader:extractFromPattern"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.RegexReader:extractValues",
+        "label": "RegexReader:extractValues"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.RegexReader:getWords",
+        "label": "RegexReader:getWords"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.RegexReader:setToCalendar",
+        "label": "RegexReader:setToCalendar"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.SingleLinePositionReader:extract",
+        "label": "SingleLinePositionReader:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.specification.SingleLinePositionReader:formatDate",
+        "label": "SingleLinePositionReader:formatDate"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.BrowserManager:openWebpage",
+        "label": "BrowserManager:openWebpage"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.CalendarUtils:realYear",
+        "label": "CalendarUtils:realYear"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Constants:createNewTempFolder",
+        "label": "Constants:createNewTempFolder"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Constants:createTempFolder",
+        "label": "Constants:createTempFolder"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Constants:defaultTestType",
+        "label": "Constants:defaultTestType"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Constants:getPropertiesValue",
+        "label": "Constants:getPropertiesValue"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Constants:init",
+        "label": "Constants:init"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Constants:parseListOfTestsVisible",
+        "label": "Constants:parseListOfTestsVisible"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Constants:readApplicationProperties",
+        "label": "Constants:readApplicationProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Constants:readConfigurationFile",
+        "label": "Constants:readConfigurationFile"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Constants:secondsToMilliseconds",
+        "label": "Constants:secondsToMilliseconds"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Constants:testTypes",
+        "label": "Constants:testTypes"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Constants:updateConfig",
+        "label": "Constants:updateConfig"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.FileIO:convertFileToStringList",
+        "label": "FileIO:convertFileToStringList"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.FileIO:getAllLines",
+        "label": "FileIO:getAllLines"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.FileIO:getCSVFile",
+        "label": "FileIO:getCSVFile"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.FileIO:getFileToExtract",
+        "label": "FileIO:getFileToExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.FileIO:getSpecifications",
+        "label": "FileIO:getSpecifications"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.FileIO:getValuesOfCSVLine",
+        "label": "FileIO:getValuesOfCSVLine"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.GrammarGenerator:\u003cinit\u003e",
+        "label": "GrammarGenerator:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.GrammarGenerator:generateGrammar",
+        "label": "GrammarGenerator:generateGrammar"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.GrammarGenerator:getInstance",
+        "label": "GrammarGenerator:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.GrammarGenerator:getValidProductNumbers",
+        "label": "GrammarGenerator:getValidProductNumbers"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.GrammarGenerator:getValidSerialNumbers",
+        "label": "GrammarGenerator:getValidSerialNumbers"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.GrammarGenerator:readPatternsFile",
+        "label": "GrammarGenerator:readPatternsFile"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.ImageFactory:\u003cinit\u003e",
+        "label": "ImageFactory:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.ImageFactory:getInstance",
+        "label": "ImageFactory:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Logflex:\u003cinit\u003e",
+        "label": "Logflex:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Logflex:getInstance",
+        "label": "Logflex:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Logflex:info",
+        "label": "Logflex:info"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Logflex:logProperties",
+        "label": "Logflex:logProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Logflex:newPreQALog",
+        "label": "Logflex:newPreQALog"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Logflex:newPreTestLog",
+        "label": "Logflex:newPreTestLog"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.Logflex:newTestLog",
+        "label": "Logflex:newTestLog"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.ServerPoll:\u003cinit\u003e",
+        "label": "ServerPoll:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.ServerPoll:run",
+        "label": "ServerPoll:run"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.TestType:equals",
+        "label": "TestType:equals"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.TestType:getName",
+        "label": "TestType:getName"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.TestType:getValueByName",
+        "label": "TestType:getValueByName"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.TestType:isAValidName",
+        "label": "TestType:isAValidName"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.TestType:valueOf",
+        "label": "TestType:valueOf"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.TestType:values",
+        "label": "TestType:values"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.utils.TestType[]:clone",
+        "label": "TestType[]:clone"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:URLValidation",
+        "label": "ConfigValidator:URLValidation"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:checkFilePermissions",
+        "label": "ConfigValidator:checkFilePermissions"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:directoryValidation",
+        "label": "ConfigValidator:directoryValidation"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:fileValidation",
+        "label": "ConfigValidator:fileValidation"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:getInvalidConfigurations",
+        "label": "ConfigValidator:getInvalidConfigurations"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:isDirValid",
+        "label": "ConfigValidator:isDirValid"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:portNumberValidation",
+        "label": "ConfigValidator:portNumberValidation"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:validateCurrentConfigurations",
+        "label": "ConfigValidator:validateCurrentConfigurations"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:validateLLTLogsFolder",
+        "label": "ConfigValidator:validateLLTLogsFolder"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:validateLLTPort",
+        "label": "ConfigValidator:validateLLTPort"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:validatePathLLT",
+        "label": "ConfigValidator:validatePathLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:validateResultsFolder",
+        "label": "ConfigValidator:validateResultsFolder"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:validateResumeFolder",
+        "label": "ConfigValidator:validateResumeFolder"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ConfigValidator:validateServerLocation",
+        "label": "ConfigValidator:validateServerLocation"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ProductAndSerialValidator:\u003cinit\u003e",
+        "label": "ProductAndSerialValidator:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ProductAndSerialValidator:getInstance",
+        "label": "ProductAndSerialValidator:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ProductAndSerialValidator:matchesProductNumber",
+        "label": "ProductAndSerialValidator:matchesProductNumber"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ProductAndSerialValidator:matchesSerialNumber",
+        "label": "ProductAndSerialValidator:matchesSerialNumber"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ProductAndSerialValidator:matchesSerialNumberAndProductNumbersFamily",
+        "label": "ProductAndSerialValidator:matchesSerialNumberAndProductNumbersFamily"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.validation.ProductAndSerialValidator:populateFamilyAndSerialNumberVerifier",
+        "label": "ProductAndSerialValidator:populateFamilyAndSerialNumberVerifier"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:\u003cinit\u003e",
+        "label": "Config:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:access",
+        "label": "Config:access"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:actionPerformed",
+        "label": "Config:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:addListenersToCheckVisibleTestTypeBoxes",
+        "label": "Config:addListenersToCheckVisibleTestTypeBoxes"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:addListenersToRadioButtonsDefaultTestType",
+        "label": "Config:addListenersToRadioButtonsDefaultTestType"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:addWindowListener",
+        "label": "Config:addWindowListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:createInexistingFolders",
+        "label": "Config:createInexistingFolders"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:dispose",
+        "label": "Config:dispose"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:getContentPane",
+        "label": "Config:getContentPane"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:getHeight",
+        "label": "Config:getHeight"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:getInstance",
+        "label": "Config:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:getJCheckBox",
+        "label": "Config:getJCheckBox"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:getJRadioButton",
+        "label": "Config:getJRadioButton"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:groupRadioButtons",
+        "label": "Config:groupRadioButtons"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:initGUI",
+        "label": "Config:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:itemStateChanged",
+        "label": "Config:itemStateChanged"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:parseCheckBoxesVisibleTestType",
+        "label": "Config:parseCheckBoxesVisibleTestType"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:saveConfigs",
+        "label": "Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:setAndLogIfChanged",
+        "label": "Config:setAndLogIfChanged"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:setJTExtOpenPathActionListener",
+        "label": "Config:setJTExtOpenPathActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:setLocation",
+        "label": "Config:setLocation"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:setLocationByPlatform",
+        "label": "Config:setLocationByPlatform"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:setResizable",
+        "label": "Config:setResizable"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:setSize",
+        "label": "Config:setSize"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:setTitle",
+        "label": "Config:setTitle"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:setVisible",
+        "label": "Config:setVisible"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:shouldYieldFocus",
+        "label": "Config:shouldYieldFocus"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:validateConfigValues",
+        "label": "Config:validateConfigValues"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:verify",
+        "label": "Config:verify"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:windowClosed",
+        "label": "Config:windowClosed"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Config:windowOpened",
+        "label": "Config:windowOpened"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:\u003cinit\u003e",
+        "label": "Main:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:access",
+        "label": "Main:access"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:actionPerformed",
+        "label": "Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:addWindowListener",
+        "label": "Main:addWindowListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:allExtractionsDone",
+        "label": "Main:allExtractionsDone"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:allExtractionsSent",
+        "label": "Main:allExtractionsSent"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:changeOfflineMode",
+        "label": "Main:changeOfflineMode"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:changeToExtractPanel",
+        "label": "Main:changeToExtractPanel"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:clearMessageLabel",
+        "label": "Main:clearMessageLabel"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:createErrorPopUp",
+        "label": "Main:createErrorPopUp"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:createYesNoPopUp",
+        "label": "Main:createYesNoPopUp"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:doExtract",
+        "label": "Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:doLogin",
+        "label": "Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:doLogout",
+        "label": "Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:extractByAutoCollect",
+        "label": "Main:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:extractByPath",
+        "label": "Main:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:focusGained",
+        "label": "Main:focusGained"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:focusLost",
+        "label": "Main:focusLost"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:getComponents",
+        "label": "Main:getComponents"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:getContentPane",
+        "label": "Main:getContentPane"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:getGraphics",
+        "label": "Main:getGraphics"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:getHeight",
+        "label": "Main:getHeight"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:getNote",
+        "label": "Main:getNote"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:getX",
+        "label": "Main:getX"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:getY",
+        "label": "Main:getY"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:groupRadioButtons",
+        "label": "Main:groupRadioButtons"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:incrementNumberOfSuccesfulSents",
+        "label": "Main:incrementNumberOfSuccesfulSents"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:initActions",
+        "label": "Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:initGUI",
+        "label": "Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:isNoteEmpty",
+        "label": "Main:isNoteEmpty"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:isNoteRequired",
+        "label": "Main:isNoteRequired"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:itemStateChanged",
+        "label": "Main:itemStateChanged"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:jButtonConfigMouseClicked",
+        "label": "Main:jButtonConfigMouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:jButtonLogoutNavbarMouseClicked",
+        "label": "Main:jButtonLogoutNavbarMouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:jLabelNavbarMousePressed",
+        "label": "Main:jLabelNavbarMousePressed"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:keyPressed",
+        "label": "Main:keyPressed"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:main",
+        "label": "Main:main"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:mouseClicked",
+        "label": "Main:mouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:pack",
+        "label": "Main:pack"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:refresh",
+        "label": "Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:remove",
+        "label": "Main:remove"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:run",
+        "label": "Main:run"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setAutoRequestFocus",
+        "label": "Main:setAutoRequestFocus"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setButtonExtractActionListener",
+        "label": "Main:setButtonExtractActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setButtonOpenPathActionListener",
+        "label": "Main:setButtonOpenPathActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setDefaultCloseOperation",
+        "label": "Main:setDefaultCloseOperation"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setDefaultTestType",
+        "label": "Main:setDefaultTestType"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setEnableWatcherModeComponents",
+        "label": "Main:setEnableWatcherModeComponents"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setEnabled",
+        "label": "Main:setEnabled"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setFocusableWindowState",
+        "label": "Main:setFocusableWindowState"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setIconImage",
+        "label": "Main:setIconImage"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setLocationRelativeTo",
+        "label": "Main:setLocationRelativeTo"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setNoteInputActionListener",
+        "label": "Main:setNoteInputActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setNoteInputFocusListner",
+        "label": "Main:setNoteInputFocusListner"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setNoteKeyListener",
+        "label": "Main:setNoteKeyListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setPNandSNKeyListener",
+        "label": "Main:setPNandSNKeyListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setPasswordInputACtionListener",
+        "label": "Main:setPasswordInputACtionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setPasswordInputFocusListener",
+        "label": "Main:setPasswordInputFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setProcuctNumberInputActionListener",
+        "label": "Main:setProcuctNumberInputActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setProductNumberInputFocusListener",
+        "label": "Main:setProductNumberInputFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setResizable",
+        "label": "Main:setResizable"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setSerialNumberInputActionListener",
+        "label": "Main:setSerialNumberInputActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setSerialNumberInputFocusListener",
+        "label": "Main:setSerialNumberInputFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setSize",
+        "label": "Main:setSize"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setTitle",
+        "label": "Main:setTitle"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setUserInputFocusListener",
+        "label": "Main:setUserInputFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setVisible",
+        "label": "Main:setVisible"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:setVisibleTestTypes",
+        "label": "Main:setVisibleTestTypes"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:startConsuming",
+        "label": "Main:startConsuming"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:startProducing",
+        "label": "Main:startProducing"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:startWatcherMode",
+        "label": "Main:startWatcherMode"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:switchButtonsEnabling",
+        "label": "Main:switchButtonsEnabling"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:update",
+        "label": "Main:update"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:updateCounterMessage",
+        "label": "Main:updateCounterMessage"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:updateNumberOfAvailableExtractions",
+        "label": "Main:updateNumberOfAvailableExtractions"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:updateNumberOfAvailableSents",
+        "label": "Main:updateNumberOfAvailableSents"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:updateNumberOfExtractionsDone",
+        "label": "Main:updateNumberOfExtractionsDone"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:validatePath",
+        "label": "Main:validatePath"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.Main:windowClosing",
+        "label": "Main:windowClosing"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderPasswordField:\u003cinit\u003e",
+        "label": "PlaceholderPasswordField:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderPasswordField:addActionListener",
+        "label": "PlaceholderPasswordField:addActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderPasswordField:addFocusListener",
+        "label": "PlaceholderPasswordField:addFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderPasswordField:getDisabledTextColor",
+        "label": "PlaceholderPasswordField:getDisabledTextColor"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderPasswordField:getInsets",
+        "label": "PlaceholderPasswordField:getInsets"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderPasswordField:getPassword",
+        "label": "PlaceholderPasswordField:getPassword"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderPasswordField:paintComponent",
+        "label": "PlaceholderPasswordField:paintComponent"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderPasswordField:setBorder",
+        "label": "PlaceholderPasswordField:setBorder"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderPasswordField:setBounds",
+        "label": "PlaceholderPasswordField:setBounds"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderPasswordField:setForeground",
+        "label": "PlaceholderPasswordField:setForeground"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderPasswordField:setPlaceholder",
+        "label": "PlaceholderPasswordField:setPlaceholder"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderPasswordField:setText",
+        "label": "PlaceholderPasswordField:setText"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:\u003cinit\u003e",
+        "label": "PlaceholderTextField:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:addActionListener",
+        "label": "PlaceholderTextField:addActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:addFocusListener",
+        "label": "PlaceholderTextField:addFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:addKeyListener",
+        "label": "PlaceholderTextField:addKeyListener"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:getDisabledTextColor",
+        "label": "PlaceholderTextField:getDisabledTextColor"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:getInsets",
+        "label": "PlaceholderTextField:getInsets"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:getText",
+        "label": "PlaceholderTextField:getText"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:paintComponent",
+        "label": "PlaceholderTextField:paintComponent"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:requestFocus",
+        "label": "PlaceholderTextField:requestFocus"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:setAutoscrolls",
+        "label": "PlaceholderTextField:setAutoscrolls"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:setBackground",
+        "label": "PlaceholderTextField:setBackground"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:setBorder",
+        "label": "PlaceholderTextField:setBorder"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:setBounds",
+        "label": "PlaceholderTextField:setBounds"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:setEnabled",
+        "label": "PlaceholderTextField:setEnabled"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:setForeground",
+        "label": "PlaceholderTextField:setForeground"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:setPlaceholder",
+        "label": "PlaceholderTextField:setPlaceholder"
+      }
+    },
+    {
+      "data": {
+        "id": "extractor.view.PlaceholderTextField:setText",
+        "label": "PlaceholderTextField:setText"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "104716441-872306601",
+        "source": "extractor.communication.Client:\u003cinit\u003e",
+        "to": "extractor.controller.OfflineService:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "104716441-504336483",
+        "source": "extractor.communication.Client:\u003cinit\u003e",
+        "to": "extractor.controller.CommunicationController:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "267814113-1979787155",
+        "source": "extractor.communication.Client:doLogin",
+        "to": "extractor.controller.CommunicationController:login"
+      }
+    },
+    {
+      "data": {
+        "id": "1877062907-1327234595",
+        "source": "extractor.communication.Client:generateJson",
+        "to": "extractor.controller.OfflineService:saveExtractionOffline"
+      }
+    },
+    {
+      "data": {
+        "id": "1877062907-624795507",
+        "source": "extractor.communication.Client:generateJson",
+        "to": "extractor.communication.Client:sendExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "1458621573-801569151",
+        "source": "extractor.communication.Client:poll",
+        "to": "extractor.controller.CommunicationController:ping"
+      }
+    },
+    {
+      "data": {
+        "id": "624795507-1404932042",
+        "source": "extractor.communication.Client:sendExtraction",
+        "to": "extractor.controller.CommunicationController:sendExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "87060781-267814113",
+        "source": "extractor.communication.Client:submitJsonToURL",
+        "to": "extractor.communication.Client:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "87060781-624795507",
+        "source": "extractor.communication.Client:submitJsonToURL",
+        "to": "extractor.communication.Client:sendExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "1506951181-90045638",
+        "source": "extractor.communication.SecurityManager:\u003cinit\u003e",
+        "to": "extractor.communication.SecurityManager:trustAllHosts"
+      }
+    },
+    {
+      "data": {
+        "id": "1976401987-1458621573",
+        "source": "extractor.communication.SecurityManager:getHTTPSConnection",
+        "to": "extractor.communication.Client:poll"
+      }
+    },
+    {
+      "data": {
+        "id": "1976401987-87060781",
+        "source": "extractor.communication.SecurityManager:getHTTPSConnection",
+        "to": "extractor.communication.Client:submitJsonToURL"
+      }
+    },
+    {
+      "data": {
+        "id": "90045638-1458621573",
+        "source": "extractor.communication.SecurityManager:trustAllHosts",
+        "to": "extractor.communication.Client:poll"
+      }
+    },
+    {
+      "data": {
+        "id": "90045638-87060781",
+        "source": "extractor.communication.SecurityManager:trustAllHosts",
+        "to": "extractor.communication.Client:submitJsonToURL"
+      }
+    },
+    {
+      "data": {
+        "id": "867288517-1877062907",
+        "source": "extractor.communication.TestTypeSerializer:\u003cinit\u003e",
+        "to": "extractor.communication.Client:generateJson"
+      }
+    },
+    {
+      "data": {
+        "id": "504336483-2048537720",
+        "source": "extractor.controller.CommunicationController:\u003cinit\u003e",
+        "to": "extractor.utils.ServerPoll:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "504336483-1429351083",
+        "source": "extractor.controller.CommunicationController:\u003cinit\u003e",
+        "to": "extractor.view.Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "504336483-1832669781",
+        "source": "extractor.controller.CommunicationController:\u003cinit\u003e",
+        "to": "extractor.view.Main:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "504336483-1301987508",
+        "source": "extractor.controller.CommunicationController:\u003cinit\u003e",
+        "to": "extractor.controller.ExtractionController:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1979787155-1077873186",
+        "source": "extractor.controller.CommunicationController:login",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "1648232591-5395829",
+        "source": "extractor.controller.CommunicationController:logout",
+        "to": "extractor.view.Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "801569151-1195942137",
+        "source": "extractor.controller.CommunicationController:ping",
+        "to": "extractor.utils.ServerPoll:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1404932042-1988644427",
+        "source": "extractor.controller.CommunicationController:sendExtraction",
+        "to": "extractor.controller.OfflineExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1404932042-1215946669",
+        "source": "extractor.controller.CommunicationController:sendExtraction",
+        "to": "extractor.controller.ExtractionController:extractByLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "1404932042-692743054",
+        "source": "extractor.controller.CommunicationController:sendExtraction",
+        "to": "extractor.core.MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1528834618-692743054",
+        "source": "extractor.controller.ConsumerListener:allExtractionsSent",
+        "to": "extractor.core.MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "280615803-1988644427",
+        "source": "extractor.controller.ConsumerListener:incrementNumberOfSuccesfulSents",
+        "to": "extractor.controller.OfflineExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "280615803-692743054",
+        "source": "extractor.controller.ConsumerListener:incrementNumberOfSuccesfulSents",
+        "to": "extractor.core.MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "166694583-1988644427",
+        "source": "extractor.controller.ConsumerListener:startConsuming",
+        "to": "extractor.controller.OfflineExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "166694583-692743054",
+        "source": "extractor.controller.ConsumerListener:startConsuming",
+        "to": "extractor.core.MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "885910946-692743054",
+        "source": "extractor.controller.ConsumerListener:updateNumberOfAvailableSents",
+        "to": "extractor.core.MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1301987508-709133385",
+        "source": "extractor.controller.ExtractionController:\u003cinit\u003e",
+        "to": "extractor.controller.ExtractionController:reset"
+      }
+    },
+    {
+      "data": {
+        "id": "1301987508-154988899",
+        "source": "extractor.controller.ExtractionController:\u003cinit\u003e",
+        "to": "extractor.controller.ExtractionController:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "1860591867-1406919011",
+        "source": "extractor.controller.ExtractionController:addConsumerListener",
+        "to": "extractor.view.Main:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "1860591867-1361393151",
+        "source": "extractor.controller.ExtractionController:addConsumerListener",
+        "to": "extractor.view.Main:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "811207775-1406919011",
+        "source": "extractor.controller.ExtractionController:addProducerListener",
+        "to": "extractor.view.Main:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "811207775-1361393151",
+        "source": "extractor.controller.ExtractionController:addProducerListener",
+        "to": "extractor.view.Main:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "323823279-1361393151",
+        "source": "extractor.controller.ExtractionController:extractByAutoCollect",
+        "to": "extractor.view.Main:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "1215946669-854733477",
+        "source": "extractor.controller.ExtractionController:extractByLLT",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "1290272762-1406919011",
+        "source": "extractor.controller.ExtractionController:extractByPath",
+        "to": "extractor.view.Main:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "154988899-692743054",
+        "source": "extractor.controller.ExtractionController:getInstance",
+        "to": "extractor.core.MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "154988899-2016949136",
+        "source": "extractor.controller.ExtractionController:getInstance",
+        "to": "extractor.core.AutoCollectExtractor:run"
+      }
+    },
+    {
+      "data": {
+        "id": "154988899-1832669781",
+        "source": "extractor.controller.ExtractionController:getInstance",
+        "to": "extractor.view.Main:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1161148117-692743054",
+        "source": "extractor.controller.ExtractionController:getOfflineService",
+        "to": "extractor.core.MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1161148117-1215946669",
+        "source": "extractor.controller.ExtractionController:getOfflineService",
+        "to": "extractor.controller.ExtractionController:extractByLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "1161148117-5395829",
+        "source": "extractor.controller.ExtractionController:getOfflineService",
+        "to": "extractor.view.Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "1161148117-1077873186",
+        "source": "extractor.controller.ExtractionController:getOfflineService",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "295304806-1895143699",
+        "source": "extractor.controller.ExtractionController:isExtractingByAutoCollect",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "295304806-5395829",
+        "source": "extractor.controller.ExtractionController:isExtractingByAutoCollect",
+        "to": "extractor.view.Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "709133385-1429351083",
+        "source": "extractor.controller.ExtractionController:reset",
+        "to": "extractor.view.Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "709133385-1077873186",
+        "source": "extractor.controller.ExtractionController:reset",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "151442075-2016949136",
+        "source": "extractor.controller.ExtractionController:sendOfflineFiles",
+        "to": "extractor.core.AutoCollectExtractor:run"
+      }
+    },
+    {
+      "data": {
+        "id": "151442075-1077873186",
+        "source": "extractor.controller.ExtractionController:sendOfflineFiles",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "1346799731-1895143699",
+        "source": "extractor.controller.ExtractionController:stopExtractByAutoCollect",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "1346799731-5395829",
+        "source": "extractor.controller.ExtractionController:stopExtractByAutoCollect",
+        "to": "extractor.view.Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "1901238627-5395829",
+        "source": "extractor.controller.ExtractionController:stopExtractByPath",
+        "to": "extractor.view.Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "516875052-872306601",
+        "source": "extractor.controller.OfflineExtractionSender:\u003cinit\u003e",
+        "to": "extractor.controller.OfflineService:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1131592118-1033917063",
+        "source": "extractor.controller.OfflineExtractionSender:setConsumerListener",
+        "to": "extractor.controller.OfflineService:sendOfflineExtractions"
+      }
+    },
+    {
+      "data": {
+        "id": "589987187-1238616099",
+        "source": "extractor.controller.OfflineExtractionSender:stopExecution",
+        "to": "extractor.controller.OfflineService:stopOfflineExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "872306601-1301987508",
+        "source": "extractor.controller.OfflineService:\u003cinit\u003e",
+        "to": "extractor.controller.ExtractionController:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1262609629-1077873186",
+        "source": "extractor.controller.OfflineService:countOfflineExtractions",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "1327234595-692743054",
+        "source": "extractor.controller.OfflineService:saveExtractionOffline",
+        "to": "extractor.core.MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1327234595-1215946669",
+        "source": "extractor.controller.OfflineService:saveExtractionOffline",
+        "to": "extractor.controller.ExtractionController:extractByLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "1033917063-151442075",
+        "source": "extractor.controller.OfflineService:sendOfflineExtractions",
+        "to": "extractor.controller.ExtractionController:sendOfflineFiles"
+      }
+    },
+    {
+      "data": {
+        "id": "1238616099-5395829",
+        "source": "extractor.controller.OfflineService:stopOfflineExtraction",
+        "to": "extractor.view.Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "587180314-608519258",
+        "source": "extractor.controller.ProducerListener:allExtractionsDone",
+        "to": "extractor.core.MultiplePathExtractor:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1955990522-608519258",
+        "source": "extractor.controller.ProducerListener:startProducing",
+        "to": "extractor.core.MultiplePathExtractor:run"
+      }
+    },
+    {
+      "data": {
+        "id": "69673470-843710487",
+        "source": "extractor.controller.ProducerListener:updateNumberOfAvailableExtractions",
+        "to": "extractor.core.MultiplePathExtractor:extractAll"
+      }
+    },
+    {
+      "data": {
+        "id": "1082411691-843710487",
+        "source": "extractor.controller.ProducerListener:updateNumberOfExtractionsDone",
+        "to": "extractor.core.MultiplePathExtractor:extractAll"
+      }
+    },
+    {
+      "data": {
+        "id": "527211736-1855261647",
+        "source": "extractor.core.ApplicationsHashGenerator:\u003cinit\u003e",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "15024899-1855261647",
+        "source": "extractor.core.ApplicationsHashGenerator:generateHashForRunningLST",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1533123860-15024899",
+        "source": "extractor.core.ApplicationsHashGenerator:generateMDHash",
+        "to": "extractor.core.ApplicationsHashGenerator:generateHashForRunningLST"
+      }
+    },
+    {
+      "data": {
+        "id": "1718906711-15024899",
+        "source": "extractor.core.ApplicationsHashGenerator:getAllListedApps",
+        "to": "extractor.core.ApplicationsHashGenerator:generateHashForRunningLST"
+      }
+    },
+    {
+      "data": {
+        "id": "71802912-15024899",
+        "source": "extractor.core.ApplicationsHashGenerator:joinCollection",
+        "to": "extractor.core.ApplicationsHashGenerator:generateHashForRunningLST"
+      }
+    },
+    {
+      "data": {
+        "id": "2134271532-15024899",
+        "source": "extractor.core.ApplicationsHashGenerator:selectFileToExtract",
+        "to": "extractor.core.ApplicationsHashGenerator:generateHashForRunningLST"
+      }
+    },
+    {
+      "data": {
+        "id": "686349795-323823279",
+        "source": "extractor.core.AutoCollectExtractor:\u003cinit\u003e",
+        "to": "extractor.controller.ExtractionController:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "1831010686-295304806",
+        "source": "extractor.core.AutoCollectExtractor:isRunning",
+        "to": "extractor.controller.ExtractionController:isExtractingByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "1423768154-1346799731",
+        "source": "extractor.core.AutoCollectExtractor:stopAutoCollect",
+        "to": "extractor.controller.ExtractionController:stopExtractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "404222443-872306601",
+        "source": "extractor.core.ExtractionQueue:\u003cinit\u003e",
+        "to": "extractor.controller.OfflineService:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "404222443-1301987508",
+        "source": "extractor.core.ExtractionQueue:\u003cinit\u003e",
+        "to": "extractor.controller.ExtractionController:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1987977423-148635643",
+        "source": "extractor.core.ExtractionQueue:addExtraction",
+        "to": "extractor.core.OfflineExtractionProducer:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1987977423-843710487",
+        "source": "extractor.core.ExtractionQueue:addExtraction",
+        "to": "extractor.core.MultiplePathExtractor:extractAll"
+      }
+    },
+    {
+      "data": {
+        "id": "61073295-692743054",
+        "source": "extractor.core.ExtractionQueue:isEmpty",
+        "to": "extractor.core.MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "807322507-1988644427",
+        "source": "extractor.core.ExtractionQueue:pollExtraction",
+        "to": "extractor.controller.OfflineExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "807322507-692743054",
+        "source": "extractor.core.ExtractionQueue:pollExtraction",
+        "to": "extractor.core.MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "396485834-1901238627",
+        "source": "extractor.core.ExtractionQueue:resetQueue",
+        "to": "extractor.controller.ExtractionController:stopExtractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "283039401-692743054",
+        "source": "extractor.core.ExtractionQueue:size",
+        "to": "extractor.core.MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "207471778-1336777650",
+        "source": "extractor.core.ExtractionQueueResourceAccessible[]:clone",
+        "to": "extractor.core.ExtractionQueueResourceAccessible:values"
+      }
+    },
+    {
+      "data": {
+        "id": "1243171897-896072146",
+        "source": "extractor.core.Extractor:\u003cinit\u003e",
+        "to": "extractor.core.PathExtractor:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1243171897-1912850431",
+        "source": "extractor.core.Extractor:\u003cinit\u003e",
+        "to": "extractor.core.LLTExtractor:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1450500594-1855261647",
+        "source": "extractor.core.Extractor:decryptBoosterIfExists",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1594791957-1855261647",
+        "source": "extractor.core.Extractor:decryptLifecounterIfExists",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1855261647-711197015",
+        "source": "extractor.core.Extractor:extract",
+        "to": "extractor.core.MultiplePathExtractor:extractPath"
+      }
+    },
+    {
+      "data": {
+        "id": "1855261647-1215946669",
+        "source": "extractor.core.Extractor:extract",
+        "to": "extractor.controller.ExtractionController:extractByLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "765826899-1855261647",
+        "source": "extractor.core.Extractor:generateModel",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1376151044-1855261647",
+        "source": "extractor.core.Extractor:getNote",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "873175411-1450500594",
+        "source": "extractor.core.Extractor:selectFileToExtract",
+        "to": "extractor.core.Extractor:decryptBoosterIfExists"
+      }
+    },
+    {
+      "data": {
+        "id": "873175411-1855261647",
+        "source": "extractor.core.Extractor:selectFileToExtract",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "873175411-1594791957",
+        "source": "extractor.core.Extractor:selectFileToExtract",
+        "to": "extractor.core.Extractor:decryptLifecounterIfExists"
+      }
+    },
+    {
+      "data": {
+        "id": "1443967876-1912850431",
+        "source": "extractor.core.Extractor:setNote",
+        "to": "extractor.core.LLTExtractor:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1449772539-1855261647",
+        "source": "extractor.core.Extractor:specificExtraction",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "926859124-1855261647",
+        "source": "extractor.core.KeysHashGenerator:\u003cinit\u003e",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1603696865-1771421544",
+        "source": "extractor.core.KeysHashGenerator:checkKeyLoadingIsOK",
+        "to": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey"
+      }
+    },
+    {
+      "data": {
+        "id": "1771421544-1855261647",
+        "source": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "12905860-1771421544",
+        "source": "extractor.core.KeysHashGenerator:generateMDHash",
+        "to": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey"
+      }
+    },
+    {
+      "data": {
+        "id": "412788346-1771421544",
+        "source": "extractor.core.KeysHashGenerator:getAllKeys",
+        "to": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey"
+      }
+    },
+    {
+      "data": {
+        "id": "1520267010-1771421544",
+        "source": "extractor.core.KeysHashGenerator:joinCollection",
+        "to": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey"
+      }
+    },
+    {
+      "data": {
+        "id": "908084672-1771421544",
+        "source": "extractor.core.KeysHashGenerator:selectFileToExtract",
+        "to": "extractor.core.KeysHashGenerator:generateHashForSSALoadKey"
+      }
+    },
+    {
+      "data": {
+        "id": "1912850431-1215946669",
+        "source": "extractor.core.LLTExtractor:\u003cinit\u003e",
+        "to": "extractor.controller.ExtractionController:extractByLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "1998949977-1912850431",
+        "source": "extractor.core.LLTExtractor:buildRuntimeManagerInstance",
+        "to": "extractor.core.LLTExtractor:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "288306765-345887595",
+        "source": "extractor.core.LLTExtractor:createBackup",
+        "to": "extractor.core.LLTExtractor:specificExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "1593224710-1998949977",
+        "source": "extractor.core.LLTExtractor:selectMxxTestTypeFile",
+        "to": "extractor.core.LLTExtractor:buildRuntimeManagerInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "1556867940-323823279",
+        "source": "extractor.core.MultipleExtractionSender:\u003cinit\u003e",
+        "to": "extractor.controller.ExtractionController:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "1556867940-1290272762",
+        "source": "extractor.core.MultipleExtractionSender:\u003cinit\u003e",
+        "to": "extractor.controller.ExtractionController:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "1839168128-323823279",
+        "source": "extractor.core.MultipleExtractionSender:addConsumerListener",
+        "to": "extractor.controller.ExtractionController:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "1839168128-1290272762",
+        "source": "extractor.core.MultipleExtractionSender:addConsumerListener",
+        "to": "extractor.controller.ExtractionController:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "1495608502-2016949136",
+        "source": "extractor.core.MultipleExtractionSender:addProducerThread",
+        "to": "extractor.core.AutoCollectExtractor:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1495608502-1290272762",
+        "source": "extractor.core.MultipleExtractionSender:addProducerThread",
+        "to": "extractor.controller.ExtractionController:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "835773569-2016949136",
+        "source": "extractor.core.MultipleExtractionSender:resetCounters",
+        "to": "extractor.core.AutoCollectExtractor:run"
+      }
+    },
+    {
+      "data": {
+        "id": "843299092-1901238627",
+        "source": "extractor.core.MultipleExtractionSender:stopExecution",
+        "to": "extractor.controller.ExtractionController:stopExtractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "843299092-2016949136",
+        "source": "extractor.core.MultipleExtractionSender:stopExecution",
+        "to": "extractor.core.AutoCollectExtractor:run"
+      }
+    },
+    {
+      "data": {
+        "id": "605982374-323823279",
+        "source": "extractor.core.MultiplePathExtractor:\u003cinit\u003e",
+        "to": "extractor.controller.ExtractionController:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "605982374-1290272762",
+        "source": "extractor.core.MultiplePathExtractor:\u003cinit\u003e",
+        "to": "extractor.controller.ExtractionController:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "1412322831-323823279",
+        "source": "extractor.core.MultiplePathExtractor:addProducerListener",
+        "to": "extractor.controller.ExtractionController:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "1412322831-1290272762",
+        "source": "extractor.core.MultiplePathExtractor:addProducerListener",
+        "to": "extractor.controller.ExtractionController:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "1651262695-843710487",
+        "source": "extractor.core.MultiplePathExtractor:deleteDirectory",
+        "to": "extractor.core.MultiplePathExtractor:extractAll"
+      }
+    },
+    {
+      "data": {
+        "id": "1305004711-1689730682",
+        "source": "extractor.core.MultiplePathExtractor:deleteFileWithNameInDirectory",
+        "to": "extractor.core.MultiplePathExtractor:moveFilesFromTo"
+      }
+    },
+    {
+      "data": {
+        "id": "494077446-1689730682",
+        "source": "extractor.core.MultiplePathExtractor:existsFileWithName",
+        "to": "extractor.core.MultiplePathExtractor:moveFilesFromTo"
+      }
+    },
+    {
+      "data": {
+        "id": "843710487-608519258",
+        "source": "extractor.core.MultiplePathExtractor:extractAll",
+        "to": "extractor.core.MultiplePathExtractor:run"
+      }
+    },
+    {
+      "data": {
+        "id": "711197015-843710487",
+        "source": "extractor.core.MultiplePathExtractor:extractPath",
+        "to": "extractor.core.MultiplePathExtractor:extractAll"
+      }
+    },
+    {
+      "data": {
+        "id": "1003206025-308889081",
+        "source": "extractor.core.MultiplePathExtractor:isFolderUpToExtract",
+        "to": "extractor.core.MultiplePathExtractor:listAvailableFolders"
+      }
+    },
+    {
+      "data": {
+        "id": "989889899-308889081",
+        "source": "extractor.core.MultiplePathExtractor:isReadCollectDir",
+        "to": "extractor.core.MultiplePathExtractor:listAvailableFolders"
+      }
+    },
+    {
+      "data": {
+        "id": "806813022-366803687",
+        "source": "extractor.core.MultiplePathExtractor:isRunning",
+        "to": "extractor.controller.ExtractionController:isMultiplePathExtractorProducerRunning"
+      }
+    },
+    {
+      "data": {
+        "id": "806813022-843710487",
+        "source": "extractor.core.MultiplePathExtractor:isRunning",
+        "to": "extractor.core.MultiplePathExtractor:extractAll"
+      }
+    },
+    {
+      "data": {
+        "id": "308889081-843710487",
+        "source": "extractor.core.MultiplePathExtractor:listAvailableFolders",
+        "to": "extractor.core.MultiplePathExtractor:extractAll"
+      }
+    },
+    {
+      "data": {
+        "id": "1689730682-843710487",
+        "source": "extractor.core.MultiplePathExtractor:moveFilesFromTo",
+        "to": "extractor.core.MultiplePathExtractor:extractAll"
+      }
+    },
+    {
+      "data": {
+        "id": "902860396-2016949136",
+        "source": "extractor.core.MultiplePathExtractor:resetCounters",
+        "to": "extractor.core.AutoCollectExtractor:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1406206626-1901238627",
+        "source": "extractor.core.MultiplePathExtractor:stopExtractions",
+        "to": "extractor.controller.ExtractionController:stopExtractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "1406206626-2016949136",
+        "source": "extractor.core.MultiplePathExtractor:stopExtractions",
+        "to": "extractor.core.AutoCollectExtractor:run"
+      }
+    },
+    {
+      "data": {
+        "id": "761750706-872306601",
+        "source": "extractor.core.OfflineExtractionProducer:\u003cinit\u003e",
+        "to": "extractor.controller.OfflineService:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1816522350-761750706",
+        "source": "extractor.core.OfflineExtractionProducer:countOfflineExtractions",
+        "to": "extractor.core.OfflineExtractionProducer:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1799230133-148635643",
+        "source": "extractor.core.OfflineExtractionProducer:generateExtractionFromJson",
+        "to": "extractor.core.OfflineExtractionProducer:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1521238608-1033917063",
+        "source": "extractor.core.OfflineExtractionProducer:getOfflineExtractionsSize",
+        "to": "extractor.controller.OfflineService:sendOfflineExtractions"
+      }
+    },
+    {
+      "data": {
+        "id": "20156341-1988644427",
+        "source": "extractor.core.OfflineExtractionProducer:isRunning",
+        "to": "extractor.controller.OfflineExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1111897955-1238616099",
+        "source": "extractor.core.OfflineExtractionProducer:stopExecution",
+        "to": "extractor.controller.OfflineService:stopOfflineExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "896072146-711197015",
+        "source": "extractor.core.PathExtractor:\u003cinit\u003e",
+        "to": "extractor.core.MultiplePathExtractor:extractPath"
+      }
+    },
+    {
+      "data": {
+        "id": "1509309988-1109113497",
+        "source": "extractor.core.RuntimeManager:\u003cinit\u003e",
+        "to": "extractor.filedecryptor.DecryptorManager:doBoosterDecrypt"
+      }
+    },
+    {
+      "data": {
+        "id": "1509309988-891461509",
+        "source": "extractor.core.RuntimeManager:\u003cinit\u003e",
+        "to": "extractor.filedecryptor.DecryptorManager:doLifecounterDecrypt"
+      }
+    },
+    {
+      "data": {
+        "id": "1509309988-1998949977",
+        "source": "extractor.core.RuntimeManager:\u003cinit\u003e",
+        "to": "extractor.core.LLTExtractor:buildRuntimeManagerInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "70695990-1109113497",
+        "source": "extractor.core.RuntimeManager:exec",
+        "to": "extractor.filedecryptor.DecryptorManager:doBoosterDecrypt"
+      }
+    },
+    {
+      "data": {
+        "id": "70695990-345887595",
+        "source": "extractor.core.RuntimeManager:exec",
+        "to": "extractor.core.LLTExtractor:specificExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "70695990-891461509",
+        "source": "extractor.core.RuntimeManager:exec",
+        "to": "extractor.filedecryptor.DecryptorManager:doLifecounterDecrypt"
+      }
+    },
+    {
+      "data": {
+        "id": "1643141512-345887595",
+        "source": "extractor.core.RuntimeManager:getScriptOutput",
+        "to": "extractor.core.LLTExtractor:specificExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "2091072548-345887595",
+        "source": "extractor.core.RuntimeManager:verifyExecution",
+        "to": "extractor.core.LLTExtractor:specificExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "263053820-267814113",
+        "source": "extractor.exceptions.BlockedUserException:\u003cinit\u003e",
+        "to": "extractor.communication.Client:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "263053820-87060781",
+        "source": "extractor.exceptions.BlockedUserException:\u003cinit\u003e",
+        "to": "extractor.communication.Client:submitJsonToURL"
+      }
+    },
+    {
+      "data": {
+        "id": "1740826931-1077873186",
+        "source": "extractor.exceptions.BlockedUserException:getMessage",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "69062746-854733477",
+        "source": "extractor.exceptions.BlockedUserException:printStackTrace",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "1631227617-87060781",
+        "source": "extractor.exceptions.ConnectionErrorException:\u003cinit\u003e",
+        "to": "extractor.communication.Client:submitJsonToURL"
+      }
+    },
+    {
+      "data": {
+        "id": "24650043-1077873186",
+        "source": "extractor.exceptions.ConnectionErrorException:getMessage",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-70695990",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.core.RuntimeManager:exec"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1307950260",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.specification.PositionReader:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-686560878",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.model.Session:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-333034015",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.utils.GrammarGenerator:readPatternsFile"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1670993182",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.core.PathExtractor:specificExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1528741718",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.utils.FileIO:getSpecifications"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1763260873",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.utils.Constants:createNewTempFolder"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-40191541",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.utils.FileIO:getValuesOfCSVLine"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1804441305",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.model.Session:initialize"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1936502650",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.utils.Constants:updateConfig"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1026483832",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.model.Extraction:setTestType"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-23880693",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.model.Property:setName"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1855261647",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-726408598",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.specification.SingleLinePositionReader:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-883455411",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.specification.RegexReader:extractValues"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1668910247",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.utils.Constants:testTypes"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-473053293",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.utils.Constants:createTempFolder"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-894024873",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.in.Messages:readMessagesFile"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1569435561",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.model.Property:setValue"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-816944408",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.model.Extraction:validateProductNumberAndSerialNumber"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1651667865",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.utils.Constants:defaultTestType"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-573136580",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.utils.Constants:readConfigurationFile"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1593224710",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.core.LLTExtractor:selectMxxTestTypeFile"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-90346768",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.specification.RegexReader:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-345887595",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.core.LLTExtractor:specificExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1573751930",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.utils.Constants:readApplicationProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1327234595",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.controller.OfflineService:saveExtractionOffline"
+      }
+    },
+    {
+      "data": {
+        "id": "1896074070-1916904573",
+        "source": "extractor.exceptions.InternalException:\u003cinit\u003e",
+        "to": "extractor.model.Property:setType"
+      }
+    },
+    {
+      "data": {
+        "id": "460741164-1844334363",
+        "source": "extractor.exceptions.InternalException:getMessage",
+        "to": "extractor.view.Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "460741164-854733477",
+        "source": "extractor.exceptions.InternalException:getMessage",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "460741164-1406919011",
+        "source": "extractor.exceptions.InternalException:getMessage",
+        "to": "extractor.view.Main:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "460741164-1429351083",
+        "source": "extractor.exceptions.InternalException:getMessage",
+        "to": "extractor.view.Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "460741164-1832669781",
+        "source": "extractor.exceptions.InternalException:getMessage",
+        "to": "extractor.view.Main:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "460741164-1361393151",
+        "source": "extractor.exceptions.InternalException:getMessage",
+        "to": "extractor.view.Main:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "460741164-579294521",
+        "source": "extractor.exceptions.InternalException:getMessage",
+        "to": "extractor.view.Main:windowClosing"
+      }
+    },
+    {
+      "data": {
+        "id": "781091365-1481594086",
+        "source": "extractor.exceptions.ParameterException:\u003cinit\u003e",
+        "to": "extractor.utils.FileIO:getAllLines"
+      }
+    },
+    {
+      "data": {
+        "id": "1858015030-87060781",
+        "source": "extractor.exceptions.WrongPasswordException:\u003cinit\u003e",
+        "to": "extractor.communication.Client:submitJsonToURL"
+      }
+    },
+    {
+      "data": {
+        "id": "25764044-1077873186",
+        "source": "extractor.exceptions.WrongPasswordException:getMessage",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "671596011-854733477",
+        "source": "extractor.exceptions.WrongPasswordException:printStackTrace",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "1109113497-1450500594",
+        "source": "extractor.filedecryptor.DecryptorManager:doBoosterDecrypt",
+        "to": "extractor.core.Extractor:decryptBoosterIfExists"
+      }
+    },
+    {
+      "data": {
+        "id": "891461509-1594791957",
+        "source": "extractor.filedecryptor.DecryptorManager:doLifecounterDecrypt",
+        "to": "extractor.core.Extractor:decryptLifecounterIfExists"
+      }
+    },
+    {
+      "data": {
+        "id": "891461509-101874302",
+        "source": "extractor.filedecryptor.DecryptorManager:doLifecounterDecrypt",
+        "to": "extractor.utils.FileIO:getFileToExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "1925352804-236567414",
+        "source": "extractor.in.Messages:assigment",
+        "to": "extractor.in.Messages:init"
+      }
+    },
+    {
+      "data": {
+        "id": "236567414-1429351083",
+        "source": "extractor.in.Messages:init",
+        "to": "extractor.view.Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "236567414-1832669781",
+        "source": "extractor.in.Messages:init",
+        "to": "extractor.view.Main:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "894024873-236567414",
+        "source": "extractor.in.Messages:readMessagesFile",
+        "to": "extractor.in.Messages:init"
+      }
+    },
+    {
+      "data": {
+        "id": "1059524106-1215946669",
+        "source": "extractor.model.Extraction:\u003cinit\u003e",
+        "to": "extractor.controller.ExtractionController:extractByLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "1059524106-1855261647",
+        "source": "extractor.model.Extraction:\u003cinit\u003e",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "771105389-1855261647",
+        "source": "extractor.model.Extraction:addProperties",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1687354037-582666172",
+        "source": "extractor.model.Extraction:getNote",
+        "to": "extractor.utils.Logflex:logProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "743778731-692743054",
+        "source": "extractor.model.Extraction:getProductNumber",
+        "to": "extractor.core.MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "743778731-582666172",
+        "source": "extractor.model.Extraction:getProductNumber",
+        "to": "extractor.utils.Logflex:logProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "967323951-1855261647",
+        "source": "extractor.model.Extraction:getProperties",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1600594643-692743054",
+        "source": "extractor.model.Extraction:getSerialNumber",
+        "to": "extractor.core.MultipleExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1600594643-582666172",
+        "source": "extractor.model.Extraction:getSerialNumber",
+        "to": "extractor.utils.Logflex:logProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "1600594643-1327234595",
+        "source": "extractor.model.Extraction:getSerialNumber",
+        "to": "extractor.controller.OfflineService:saveExtractionOffline"
+      }
+    },
+    {
+      "data": {
+        "id": "743648472-582666172",
+        "source": "extractor.model.Extraction:getTestType",
+        "to": "extractor.utils.Logflex:logProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "692998280-1215946669",
+        "source": "extractor.model.Extraction:setDisableLLT",
+        "to": "extractor.controller.ExtractionController:extractByLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "1368862151-1215946669",
+        "source": "extractor.model.Extraction:setNote",
+        "to": "extractor.controller.ExtractionController:extractByLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "1368862151-1855261647",
+        "source": "extractor.model.Extraction:setNote",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1368862151-843710487",
+        "source": "extractor.model.Extraction:setNote",
+        "to": "extractor.core.MultiplePathExtractor:extractAll"
+      }
+    },
+    {
+      "data": {
+        "id": "922807452-1059524106",
+        "source": "extractor.model.Extraction:setProductNumber",
+        "to": "extractor.model.Extraction:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "33563464-1059524106",
+        "source": "extractor.model.Extraction:setSerialNumber",
+        "to": "extractor.model.Extraction:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1026483832-1059524106",
+        "source": "extractor.model.Extraction:setTestType",
+        "to": "extractor.model.Extraction:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "816944408-1059524106",
+        "source": "extractor.model.Extraction:validateProductNumberAndSerialNumber",
+        "to": "extractor.model.Extraction:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1494346128-148635643",
+        "source": "extractor.model.OfflineExtraction:\u003cinit\u003e",
+        "to": "extractor.core.OfflineExtractionProducer:run"
+      }
+    },
+    {
+      "data": {
+        "id": "822087264-1988644427",
+        "source": "extractor.model.OfflineExtraction:getExtraction",
+        "to": "extractor.controller.OfflineExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "30699728-148635643",
+        "source": "extractor.model.OfflineExtraction:getFile",
+        "to": "extractor.core.OfflineExtractionProducer:run"
+      }
+    },
+    {
+      "data": {
+        "id": "30699728-1988644427",
+        "source": "extractor.model.OfflineExtraction:getFile",
+        "to": "extractor.controller.OfflineExtractionSender:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1517328406-771105389",
+        "source": "extractor.model.Property:\u003cinit\u003e",
+        "to": "extractor.model.Extraction:addProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "23880693-1517328406",
+        "source": "extractor.model.Property:setName",
+        "to": "extractor.model.Property:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "38603201-1517328406",
+        "source": "extractor.model.Property:setOrder",
+        "to": "extractor.model.Property:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1916904573-1517328406",
+        "source": "extractor.model.Property:setType",
+        "to": "extractor.model.Property:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1569435561-1517328406",
+        "source": "extractor.model.Property:setValue",
+        "to": "extractor.model.Property:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1940055334-1804441305",
+        "source": "extractor.model.Session:\u003cinit\u003e",
+        "to": "extractor.model.Session:initialize"
+      }
+    },
+    {
+      "data": {
+        "id": "686560878-1979787155",
+        "source": "extractor.model.Session:getInstance",
+        "to": "extractor.controller.CommunicationController:login"
+      }
+    },
+    {
+      "data": {
+        "id": "686560878-1429351083",
+        "source": "extractor.model.Session:getInstance",
+        "to": "extractor.view.Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "686560878-1077873186",
+        "source": "extractor.model.Session:getInstance",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "686560878-624795507",
+        "source": "extractor.model.Session:getInstance",
+        "to": "extractor.communication.Client:sendExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "1422273905-686560878",
+        "source": "extractor.model.Session:getSessionToken",
+        "to": "extractor.model.Session:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "1422273905-624795507",
+        "source": "extractor.model.Session:getSessionToken",
+        "to": "extractor.communication.Client:sendExtraction"
+      }
+    },
+    {
+      "data": {
+        "id": "1694784135-1429351083",
+        "source": "extractor.model.Session:getType",
+        "to": "extractor.view.Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "1694784135-1077873186",
+        "source": "extractor.model.Session:getType",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "1804441305-1979787155",
+        "source": "extractor.model.Session:initialize",
+        "to": "extractor.controller.CommunicationController:login"
+      }
+    },
+    {
+      "data": {
+        "id": "1207231495-1648232591",
+        "source": "extractor.model.Session:reset",
+        "to": "extractor.controller.CommunicationController:logout"
+      }
+    },
+    {
+      "data": {
+        "id": "1207231495-1844334363",
+        "source": "extractor.model.Session:reset",
+        "to": "extractor.view.Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "756936249-1940055334",
+        "source": "extractor.model.Session:setSessionToken",
+        "to": "extractor.model.Session:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1221981006-1855261647",
+        "source": "extractor.specification.PatternReadable:extract",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "264394929-1307950260",
+        "source": "extractor.specification.PositionReader:getValuesOfPattern",
+        "to": "extractor.specification.PositionReader:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1524305331-1528741718",
+        "source": "extractor.specification.PropertySpecification:\u003cinit\u003e",
+        "to": "extractor.utils.FileIO:getSpecifications"
+      }
+    },
+    {
+      "data": {
+        "id": "1878413714-1450500594",
+        "source": "extractor.specification.PropertySpecification:getFileNameToExtract",
+        "to": "extractor.core.Extractor:decryptBoosterIfExists"
+      }
+    },
+    {
+      "data": {
+        "id": "1878413714-1855261647",
+        "source": "extractor.specification.PropertySpecification:getFileNameToExtract",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1878413714-1594791957",
+        "source": "extractor.specification.PropertySpecification:getFileNameToExtract",
+        "to": "extractor.core.Extractor:decryptLifecounterIfExists"
+      }
+    },
+    {
+      "data": {
+        "id": "769132147-1855261647",
+        "source": "extractor.specification.PropertySpecification:getPattern",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1257299717-1855261647",
+        "source": "extractor.specification.PropertySpecification:getPropertyName",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1474957626-1855261647",
+        "source": "extractor.specification.PropertySpecification:getTypeOfPattern",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "181252244-1855261647",
+        "source": "extractor.specification.PropertySpecification:getTypeOfProperty",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1733022752-1524305331",
+        "source": "extractor.specification.PropertySpecification:setFileNameToExtract",
+        "to": "extractor.specification.PropertySpecification:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "722417467-1524305331",
+        "source": "extractor.specification.PropertySpecification:setPattern",
+        "to": "extractor.specification.PropertySpecification:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "753631393-1524305331",
+        "source": "extractor.specification.PropertySpecification:setPropertyName",
+        "to": "extractor.specification.PropertySpecification:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1262869688-1524305331",
+        "source": "extractor.specification.PropertySpecification:setTypeOfPattern",
+        "to": "extractor.specification.PropertySpecification:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1914108708-1524305331",
+        "source": "extractor.specification.PropertySpecification:setTypeOfProperty",
+        "to": "extractor.specification.PropertySpecification:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "544386226-1528741718",
+        "source": "extractor.specification.RegexReader:extractFromPattern",
+        "to": "extractor.utils.FileIO:getSpecifications"
+      }
+    },
+    {
+      "data": {
+        "id": "544386226-883455411",
+        "source": "extractor.specification.RegexReader:extractFromPattern",
+        "to": "extractor.specification.RegexReader:extractValues"
+      }
+    },
+    {
+      "data": {
+        "id": "883455411-90346768",
+        "source": "extractor.specification.RegexReader:extractValues",
+        "to": "extractor.specification.RegexReader:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1357700757-90346768",
+        "source": "extractor.specification.RegexReader:getWords",
+        "to": "extractor.specification.RegexReader:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "900298796-883455411",
+        "source": "extractor.specification.RegexReader:setToCalendar",
+        "to": "extractor.specification.RegexReader:extractValues"
+      }
+    },
+    {
+      "data": {
+        "id": "1889757798-726408598",
+        "source": "extractor.specification.SingleLinePositionReader:formatDate",
+        "to": "extractor.specification.SingleLinePositionReader:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1166106620-854733477",
+        "source": "extractor.utils.BrowserManager:openWebpage",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "1932470703-883455411",
+        "source": "extractor.utils.CalendarUtils:realYear",
+        "to": "extractor.specification.RegexReader:extractValues"
+      }
+    },
+    {
+      "data": {
+        "id": "1763260873-1215946669",
+        "source": "extractor.utils.Constants:createNewTempFolder",
+        "to": "extractor.controller.ExtractionController:extractByLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "1763260873-1290272762",
+        "source": "extractor.utils.Constants:createNewTempFolder",
+        "to": "extractor.controller.ExtractionController:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "473053293-1280429864",
+        "source": "extractor.utils.Constants:createTempFolder",
+        "to": "extractor.utils.Constants:init"
+      }
+    },
+    {
+      "data": {
+        "id": "1651667865-1140338296",
+        "source": "extractor.utils.Constants:defaultTestType",
+        "to": "extractor.utils.Constants:getPropertiesValue"
+      }
+    },
+    {
+      "data": {
+        "id": "1140338296-1936502650",
+        "source": "extractor.utils.Constants:getPropertiesValue",
+        "to": "extractor.utils.Constants:updateConfig"
+      }
+    },
+    {
+      "data": {
+        "id": "1140338296-1280429864",
+        "source": "extractor.utils.Constants:getPropertiesValue",
+        "to": "extractor.utils.Constants:init"
+      }
+    },
+    {
+      "data": {
+        "id": "1280429864-713656449",
+        "source": "extractor.utils.Constants:init",
+        "to": "extractor.view.Main:main"
+      }
+    },
+    {
+      "data": {
+        "id": "1280429864-1832669781",
+        "source": "extractor.utils.Constants:init",
+        "to": "extractor.view.Main:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1280429864-1429351083",
+        "source": "extractor.utils.Constants:init",
+        "to": "extractor.view.Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "1470868839-1936502650",
+        "source": "extractor.utils.Constants:parseListOfTestsVisible",
+        "to": "extractor.utils.Constants:updateConfig"
+      }
+    },
+    {
+      "data": {
+        "id": "1573751930-1280429864",
+        "source": "extractor.utils.Constants:readApplicationProperties",
+        "to": "extractor.utils.Constants:init"
+      }
+    },
+    {
+      "data": {
+        "id": "573136580-1280429864",
+        "source": "extractor.utils.Constants:readConfigurationFile",
+        "to": "extractor.utils.Constants:init"
+      }
+    },
+    {
+      "data": {
+        "id": "221861886-1140338296",
+        "source": "extractor.utils.Constants:secondsToMilliseconds",
+        "to": "extractor.utils.Constants:getPropertiesValue"
+      }
+    },
+    {
+      "data": {
+        "id": "1668910247-1140338296",
+        "source": "extractor.utils.Constants:testTypes",
+        "to": "extractor.utils.Constants:getPropertiesValue"
+      }
+    },
+    {
+      "data": {
+        "id": "1936502650-1844334363",
+        "source": "extractor.utils.Constants:updateConfig",
+        "to": "extractor.view.Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "1936502650-579294521",
+        "source": "extractor.utils.Constants:updateConfig",
+        "to": "extractor.view.Main:windowClosing"
+      }
+    },
+    {
+      "data": {
+        "id": "1713568869-1307950260",
+        "source": "extractor.utils.FileIO:convertFileToStringList",
+        "to": "extractor.specification.PositionReader:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1481594086-90346768",
+        "source": "extractor.utils.FileIO:getAllLines",
+        "to": "extractor.specification.RegexReader:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1481594086-333034015",
+        "source": "extractor.utils.FileIO:getAllLines",
+        "to": "extractor.utils.GrammarGenerator:readPatternsFile"
+      }
+    },
+    {
+      "data": {
+        "id": "1481594086-1528741718",
+        "source": "extractor.utils.FileIO:getAllLines",
+        "to": "extractor.utils.FileIO:getSpecifications"
+      }
+    },
+    {
+      "data": {
+        "id": "1481594086-726408598",
+        "source": "extractor.utils.FileIO:getAllLines",
+        "to": "extractor.specification.SingleLinePositionReader:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "697508322-1528741718",
+        "source": "extractor.utils.FileIO:getCSVFile",
+        "to": "extractor.utils.FileIO:getSpecifications"
+      }
+    },
+    {
+      "data": {
+        "id": "1528741718-765826899",
+        "source": "extractor.utils.FileIO:getSpecifications",
+        "to": "extractor.core.Extractor:generateModel"
+      }
+    },
+    {
+      "data": {
+        "id": "40191541-1528741718",
+        "source": "extractor.utils.FileIO:getValuesOfCSVLine",
+        "to": "extractor.utils.FileIO:getSpecifications"
+      }
+    },
+    {
+      "data": {
+        "id": "1789110533-247113419",
+        "source": "extractor.utils.GrammarGenerator:\u003cinit\u003e",
+        "to": "extractor.utils.GrammarGenerator:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "603658030-1789110533",
+        "source": "extractor.utils.GrammarGenerator:generateGrammar",
+        "to": "extractor.utils.GrammarGenerator:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "247113419-2103763750",
+        "source": "extractor.utils.GrammarGenerator:getInstance",
+        "to": "extractor.validation.ProductAndSerialValidator:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1689924104-1238080693",
+        "source": "extractor.utils.GrammarGenerator:getValidProductNumbers",
+        "to": "extractor.validation.ProductAndSerialValidator:matchesProductNumber"
+      }
+    },
+    {
+      "data": {
+        "id": "1689924104-335107734",
+        "source": "extractor.utils.GrammarGenerator:getValidProductNumbers",
+        "to": "extractor.validation.ProductAndSerialValidator:populateFamilyAndSerialNumberVerifier"
+      }
+    },
+    {
+      "data": {
+        "id": "361380654-598357562",
+        "source": "extractor.utils.GrammarGenerator:getValidSerialNumbers",
+        "to": "extractor.validation.ProductAndSerialValidator:matchesSerialNumber"
+      }
+    },
+    {
+      "data": {
+        "id": "361380654-335107734",
+        "source": "extractor.utils.GrammarGenerator:getValidSerialNumbers",
+        "to": "extractor.validation.ProductAndSerialValidator:populateFamilyAndSerialNumberVerifier"
+      }
+    },
+    {
+      "data": {
+        "id": "333034015-1789110533",
+        "source": "extractor.utils.GrammarGenerator:readPatternsFile",
+        "to": "extractor.utils.GrammarGenerator:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "631673932-460570271",
+        "source": "extractor.utils.ImageFactory:\u003cinit\u003e",
+        "to": "extractor.utils.ImageFactory:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "460570271-1832669781",
+        "source": "extractor.utils.ImageFactory:getInstance",
+        "to": "extractor.view.Main:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1579132337-315072539",
+        "source": "extractor.utils.Logflex:\u003cinit\u003e",
+        "to": "extractor.utils.Logflex:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "315072539-1215946669",
+        "source": "extractor.utils.Logflex:getInstance",
+        "to": "extractor.controller.ExtractionController:extractByLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "1795225096-1175631958",
+        "source": "extractor.utils.Logflex:info",
+        "to": "extractor.utils.Logflex:newTestLog"
+      }
+    },
+    {
+      "data": {
+        "id": "1795225096-1440738283",
+        "source": "extractor.utils.Logflex:info",
+        "to": "extractor.utils.Logflex:newPreQALog"
+      }
+    },
+    {
+      "data": {
+        "id": "1795225096-1677207406",
+        "source": "extractor.utils.Logflex:info",
+        "to": "extractor.utils.Logflex:newPreTestLog"
+      }
+    },
+    {
+      "data": {
+        "id": "1795225096-582666172",
+        "source": "extractor.utils.Logflex:info",
+        "to": "extractor.utils.Logflex:logProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "582666172-1215946669",
+        "source": "extractor.utils.Logflex:logProperties",
+        "to": "extractor.controller.ExtractionController:extractByLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "582666172-1855261647",
+        "source": "extractor.utils.Logflex:logProperties",
+        "to": "extractor.core.Extractor:extract"
+      }
+    },
+    {
+      "data": {
+        "id": "1440738283-582666172",
+        "source": "extractor.utils.Logflex:newPreQALog",
+        "to": "extractor.utils.Logflex:logProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "1677207406-582666172",
+        "source": "extractor.utils.Logflex:newPreTestLog",
+        "to": "extractor.utils.Logflex:logProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "1175631958-582666172",
+        "source": "extractor.utils.Logflex:newTestLog",
+        "to": "extractor.utils.Logflex:logProperties"
+      }
+    },
+    {
+      "data": {
+        "id": "790094605-1757317128",
+        "source": "extractor.utils.TestType:equals",
+        "to": "extractor.view.Main:setDefaultTestType"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-905080434",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.view.Config:getJCheckBox"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-1959239586",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.view.Config:groupRadioButtons"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-1895143699",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-1470868839",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.utils.Constants:parseListOfTestsVisible"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-584561912",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.view.Main:itemStateChanged"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-392904516",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.view.Config:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-126234454",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.view.Main:focusGained"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-1593224710",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.core.LLTExtractor:selectMxxTestTypeFile"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-1636291061",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.view.Main:groupRadioButtons"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-1844334363",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.view.Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-2008106788",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.utils.TestType:isAValidName"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-1936502650",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.utils.Constants:updateConfig"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-857394605",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.utils.TestType:getValueByName"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-854733477",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-1048434276",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.view.Main:isNoteRequired"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-1635378213",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.communication.TestTypeSerializer:serialize"
+      }
+    },
+    {
+      "data": {
+        "id": "1048712791-423733503",
+        "source": "extractor.utils.TestType:getName",
+        "to": "extractor.view.Main:keyPressed"
+      }
+    },
+    {
+      "data": {
+        "id": "857394605-126234454",
+        "source": "extractor.utils.TestType:getValueByName",
+        "to": "extractor.view.Main:focusGained"
+      }
+    },
+    {
+      "data": {
+        "id": "857394605-1895143699",
+        "source": "extractor.utils.TestType:getValueByName",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "857394605-854733477",
+        "source": "extractor.utils.TestType:getValueByName",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "857394605-1406919011",
+        "source": "extractor.utils.TestType:getValueByName",
+        "to": "extractor.view.Main:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "857394605-1048434276",
+        "source": "extractor.utils.TestType:getValueByName",
+        "to": "extractor.view.Main:isNoteRequired"
+      }
+    },
+    {
+      "data": {
+        "id": "857394605-1361393151",
+        "source": "extractor.utils.TestType:getValueByName",
+        "to": "extractor.view.Main:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "857394605-1651667865",
+        "source": "extractor.utils.TestType:getValueByName",
+        "to": "extractor.utils.Constants:defaultTestType"
+      }
+    },
+    {
+      "data": {
+        "id": "857394605-423733503",
+        "source": "extractor.utils.TestType:getValueByName",
+        "to": "extractor.view.Main:keyPressed"
+      }
+    },
+    {
+      "data": {
+        "id": "857394605-1668910247",
+        "source": "extractor.utils.TestType:getValueByName",
+        "to": "extractor.utils.Constants:testTypes"
+      }
+    },
+    {
+      "data": {
+        "id": "487792155-1844334363",
+        "source": "extractor.utils.TestType:valueOf",
+        "to": "extractor.view.Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "764826684-2008106788",
+        "source": "extractor.utils.TestType:values",
+        "to": "extractor.utils.TestType:isAValidName"
+      }
+    },
+    {
+      "data": {
+        "id": "764826684-857394605",
+        "source": "extractor.utils.TestType:values",
+        "to": "extractor.utils.TestType:getValueByName"
+      }
+    },
+    {
+      "data": {
+        "id": "1909398279-764826684",
+        "source": "extractor.utils.TestType[]:clone",
+        "to": "extractor.utils.TestType:values"
+      }
+    },
+    {
+      "data": {
+        "id": "1632670136-912966811",
+        "source": "extractor.validation.ConfigValidator:URLValidation",
+        "to": "extractor.validation.ConfigValidator:validateServerLocation"
+      }
+    },
+    {
+      "data": {
+        "id": "1338905451-484199463",
+        "source": "extractor.validation.ConfigValidator:checkFilePermissions",
+        "to": "extractor.validation.ConfigValidator:directoryValidation"
+      }
+    },
+    {
+      "data": {
+        "id": "1338905451-768216420",
+        "source": "extractor.validation.ConfigValidator:checkFilePermissions",
+        "to": "extractor.validation.ConfigValidator:fileValidation"
+      }
+    },
+    {
+      "data": {
+        "id": "484199463-1053967012",
+        "source": "extractor.validation.ConfigValidator:directoryValidation",
+        "to": "extractor.validation.ConfigValidator:validateResultsFolder"
+      }
+    },
+    {
+      "data": {
+        "id": "484199463-1152606315",
+        "source": "extractor.validation.ConfigValidator:directoryValidation",
+        "to": "extractor.validation.ConfigValidator:validateResumeFolder"
+      }
+    },
+    {
+      "data": {
+        "id": "484199463-260084831",
+        "source": "extractor.validation.ConfigValidator:directoryValidation",
+        "to": "extractor.validation.ConfigValidator:validateLLTLogsFolder"
+      }
+    },
+    {
+      "data": {
+        "id": "768216420-1184124073",
+        "source": "extractor.validation.ConfigValidator:fileValidation",
+        "to": "extractor.validation.ConfigValidator:validatePathLLT"
+      }
+    },
+    {
+      "data": {
+        "id": "413218476-774895395",
+        "source": "extractor.validation.ConfigValidator:getInvalidConfigurations",
+        "to": "extractor.view.Main:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1252540239-1558079303",
+        "source": "extractor.validation.ConfigValidator:isDirValid",
+        "to": "extractor.view.Main:validatePath"
+      }
+    },
+    {
+      "data": {
+        "id": "1136005694-490391704",
+        "source": "extractor.validation.ConfigValidator:portNumberValidation",
+        "to": "extractor.validation.ConfigValidator:validateLLTPort"
+      }
+    },
+    {
+      "data": {
+        "id": "1196982797-1429351083",
+        "source": "extractor.validation.ConfigValidator:validateCurrentConfigurations",
+        "to": "extractor.view.Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "260084831-1233308726",
+        "source": "extractor.validation.ConfigValidator:validateLLTLogsFolder",
+        "to": "extractor.view.Config:verify"
+      }
+    },
+    {
+      "data": {
+        "id": "260084831-1196982797",
+        "source": "extractor.validation.ConfigValidator:validateLLTLogsFolder",
+        "to": "extractor.validation.ConfigValidator:validateCurrentConfigurations"
+      }
+    },
+    {
+      "data": {
+        "id": "260084831-413218476",
+        "source": "extractor.validation.ConfigValidator:validateLLTLogsFolder",
+        "to": "extractor.validation.ConfigValidator:getInvalidConfigurations"
+      }
+    },
+    {
+      "data": {
+        "id": "490391704-1233308726",
+        "source": "extractor.validation.ConfigValidator:validateLLTPort",
+        "to": "extractor.view.Config:verify"
+      }
+    },
+    {
+      "data": {
+        "id": "490391704-1196982797",
+        "source": "extractor.validation.ConfigValidator:validateLLTPort",
+        "to": "extractor.validation.ConfigValidator:validateCurrentConfigurations"
+      }
+    },
+    {
+      "data": {
+        "id": "490391704-1832669781",
+        "source": "extractor.validation.ConfigValidator:validateLLTPort",
+        "to": "extractor.view.Main:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "490391704-413218476",
+        "source": "extractor.validation.ConfigValidator:validateLLTPort",
+        "to": "extractor.validation.ConfigValidator:getInvalidConfigurations"
+      }
+    },
+    {
+      "data": {
+        "id": "1184124073-1233308726",
+        "source": "extractor.validation.ConfigValidator:validatePathLLT",
+        "to": "extractor.view.Config:verify"
+      }
+    },
+    {
+      "data": {
+        "id": "1184124073-1196982797",
+        "source": "extractor.validation.ConfigValidator:validatePathLLT",
+        "to": "extractor.validation.ConfigValidator:validateCurrentConfigurations"
+      }
+    },
+    {
+      "data": {
+        "id": "1184124073-413218476",
+        "source": "extractor.validation.ConfigValidator:validatePathLLT",
+        "to": "extractor.validation.ConfigValidator:getInvalidConfigurations"
+      }
+    },
+    {
+      "data": {
+        "id": "1053967012-1233308726",
+        "source": "extractor.validation.ConfigValidator:validateResultsFolder",
+        "to": "extractor.view.Config:verify"
+      }
+    },
+    {
+      "data": {
+        "id": "1053967012-1196982797",
+        "source": "extractor.validation.ConfigValidator:validateResultsFolder",
+        "to": "extractor.validation.ConfigValidator:validateCurrentConfigurations"
+      }
+    },
+    {
+      "data": {
+        "id": "1053967012-413218476",
+        "source": "extractor.validation.ConfigValidator:validateResultsFolder",
+        "to": "extractor.validation.ConfigValidator:getInvalidConfigurations"
+      }
+    },
+    {
+      "data": {
+        "id": "1152606315-1233308726",
+        "source": "extractor.validation.ConfigValidator:validateResumeFolder",
+        "to": "extractor.view.Config:verify"
+      }
+    },
+    {
+      "data": {
+        "id": "1152606315-413218476",
+        "source": "extractor.validation.ConfigValidator:validateResumeFolder",
+        "to": "extractor.validation.ConfigValidator:getInvalidConfigurations"
+      }
+    },
+    {
+      "data": {
+        "id": "912966811-1233308726",
+        "source": "extractor.validation.ConfigValidator:validateServerLocation",
+        "to": "extractor.view.Config:verify"
+      }
+    },
+    {
+      "data": {
+        "id": "912966811-1196982797",
+        "source": "extractor.validation.ConfigValidator:validateServerLocation",
+        "to": "extractor.validation.ConfigValidator:validateCurrentConfigurations"
+      }
+    },
+    {
+      "data": {
+        "id": "912966811-1832669781",
+        "source": "extractor.validation.ConfigValidator:validateServerLocation",
+        "to": "extractor.view.Main:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "912966811-413218476",
+        "source": "extractor.validation.ConfigValidator:validateServerLocation",
+        "to": "extractor.validation.ConfigValidator:getInvalidConfigurations"
+      }
+    },
+    {
+      "data": {
+        "id": "2103763750-1176932104",
+        "source": "extractor.validation.ProductAndSerialValidator:\u003cinit\u003e",
+        "to": "extractor.validation.ProductAndSerialValidator:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "1176932104-308889081",
+        "source": "extractor.validation.ProductAndSerialValidator:getInstance",
+        "to": "extractor.core.MultiplePathExtractor:listAvailableFolders"
+      }
+    },
+    {
+      "data": {
+        "id": "1176932104-1832669781",
+        "source": "extractor.validation.ProductAndSerialValidator:getInstance",
+        "to": "extractor.view.Main:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1238080693-308889081",
+        "source": "extractor.validation.ProductAndSerialValidator:matchesProductNumber",
+        "to": "extractor.core.MultiplePathExtractor:listAvailableFolders"
+      }
+    },
+    {
+      "data": {
+        "id": "1238080693-2043106095",
+        "source": "extractor.validation.ProductAndSerialValidator:matchesProductNumber",
+        "to": "extractor.view.Main:focusLost"
+      }
+    },
+    {
+      "data": {
+        "id": "598357562-2043106095",
+        "source": "extractor.validation.ProductAndSerialValidator:matchesSerialNumber",
+        "to": "extractor.view.Main:focusLost"
+      }
+    },
+    {
+      "data": {
+        "id": "638486177-308889081",
+        "source": "extractor.validation.ProductAndSerialValidator:matchesSerialNumberAndProductNumbersFamily",
+        "to": "extractor.core.MultiplePathExtractor:listAvailableFolders"
+      }
+    },
+    {
+      "data": {
+        "id": "638486177-1895143699",
+        "source": "extractor.validation.ProductAndSerialValidator:matchesSerialNumberAndProductNumbersFamily",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "335107734-2103763750",
+        "source": "extractor.validation.ProductAndSerialValidator:populateFamilyAndSerialNumberVerifier",
+        "to": "extractor.validation.ProductAndSerialValidator:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1961595039-229995302",
+        "source": "extractor.view.Config:\u003cinit\u003e",
+        "to": "extractor.view.Config:getInstance"
+      }
+    },
+    {
+      "data": {
+        "id": "1961595039-573487274",
+        "source": "extractor.view.Config:\u003cinit\u003e",
+        "to": "extractor.view.Config:setJTExtOpenPathActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1961595039-1265012928",
+        "source": "extractor.view.Config:\u003cinit\u003e",
+        "to": "extractor.view.Config:addListenersToCheckVisibleTestTypeBoxes"
+      }
+    },
+    {
+      "data": {
+        "id": "1961595039-1232373427",
+        "source": "extractor.view.Config:\u003cinit\u003e",
+        "to": "extractor.view.Config:addListenersToRadioButtonsDefaultTestType"
+      }
+    },
+    {
+      "data": {
+        "id": "1961595039-20804602",
+        "source": "extractor.view.Config:\u003cinit\u003e",
+        "to": "extractor.view.Config:getJRadioButton"
+      }
+    },
+    {
+      "data": {
+        "id": "1961595039-392904516",
+        "source": "extractor.view.Config:\u003cinit\u003e",
+        "to": "extractor.view.Config:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1671590089-575715826",
+        "source": "extractor.view.Config:access",
+        "to": "extractor.view.Config:windowOpened"
+      }
+    },
+    {
+      "data": {
+        "id": "1671590089-1770437551",
+        "source": "extractor.view.Config:access",
+        "to": "extractor.view.Config:windowClosed"
+      }
+    },
+    {
+      "data": {
+        "id": "1671590089-1466917878",
+        "source": "extractor.view.Config:access",
+        "to": "extractor.view.Config:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "1671590089-712410124",
+        "source": "extractor.view.Config:access",
+        "to": "extractor.view.Config:itemStateChanged"
+      }
+    },
+    {
+      "data": {
+        "id": "1671590089-1792227359",
+        "source": "extractor.view.Config:access",
+        "to": "extractor.view.Config:shouldYieldFocus"
+      }
+    },
+    {
+      "data": {
+        "id": "1265012928-392904516",
+        "source": "extractor.view.Config:addListenersToCheckVisibleTestTypeBoxes",
+        "to": "extractor.view.Config:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1232373427-1959239586",
+        "source": "extractor.view.Config:addListenersToRadioButtonsDefaultTestType",
+        "to": "extractor.view.Config:groupRadioButtons"
+      }
+    },
+    {
+      "data": {
+        "id": "426019904-392904516",
+        "source": "extractor.view.Config:addWindowListener",
+        "to": "extractor.view.Config:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "314411620-1961595039",
+        "source": "extractor.view.Config:createInexistingFolders",
+        "to": "extractor.view.Config:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1642679791-1844334363",
+        "source": "extractor.view.Config:dispose",
+        "to": "extractor.view.Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "1642679791-1466917878",
+        "source": "extractor.view.Config:dispose",
+        "to": "extractor.view.Config:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "855700733-392904516",
+        "source": "extractor.view.Config:getContentPane",
+        "to": "extractor.view.Config:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "247162961-948115224",
+        "source": "extractor.view.Config:getHeight",
+        "to": "extractor.view.Main:jButtonConfigMouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "229995302-948115224",
+        "source": "extractor.view.Config:getInstance",
+        "to": "extractor.view.Main:jButtonConfigMouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "905080434-392904516",
+        "source": "extractor.view.Config:getJCheckBox",
+        "to": "extractor.view.Config:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "20804602-392904516",
+        "source": "extractor.view.Config:getJRadioButton",
+        "to": "extractor.view.Config:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1959239586-392904516",
+        "source": "extractor.view.Config:groupRadioButtons",
+        "to": "extractor.view.Config:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "392904516-1961595039",
+        "source": "extractor.view.Config:initGUI",
+        "to": "extractor.view.Config:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1890266440-1844334363",
+        "source": "extractor.view.Config:parseCheckBoxesVisibleTestType",
+        "to": "extractor.view.Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "1844334363-1671590089",
+        "source": "extractor.view.Config:saveConfigs",
+        "to": "extractor.view.Config:access"
+      }
+    },
+    {
+      "data": {
+        "id": "1527152775-1844334363",
+        "source": "extractor.view.Config:setAndLogIfChanged",
+        "to": "extractor.view.Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "573487274-392904516",
+        "source": "extractor.view.Config:setJTExtOpenPathActionListener",
+        "to": "extractor.view.Config:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1863655430-1961595039",
+        "source": "extractor.view.Config:setLocation",
+        "to": "extractor.view.Config:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1863655430-948115224",
+        "source": "extractor.view.Config:setLocation",
+        "to": "extractor.view.Main:jButtonConfigMouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "976827477-1961595039",
+        "source": "extractor.view.Config:setLocationByPlatform",
+        "to": "extractor.view.Config:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "324112183-1961595039",
+        "source": "extractor.view.Config:setResizable",
+        "to": "extractor.view.Config:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "2092709730-392904516",
+        "source": "extractor.view.Config:setSize",
+        "to": "extractor.view.Config:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "980364771-392904516",
+        "source": "extractor.view.Config:setTitle",
+        "to": "extractor.view.Config:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1233595751-948115224",
+        "source": "extractor.view.Config:setVisible",
+        "to": "extractor.view.Main:jButtonConfigMouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "972865270-1844334363",
+        "source": "extractor.view.Config:validateConfigValues",
+        "to": "extractor.view.Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "1233308726-1792227359",
+        "source": "extractor.view.Config:verify",
+        "to": "extractor.view.Config:shouldYieldFocus"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-42102625",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:setPasswordInputACtionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-186061555",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:setPasswordInputFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-787361897",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:setButtonOpenPathActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-713656449",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:main"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-1632497828",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:setNoteInputActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-774895395",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-1722570594",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:setSerialNumberInputFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-337799666",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:setPNandSNKeyListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-1830745997",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-1216198248",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:setProcuctNumberInputActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-739333799",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:setNoteInputFocusListner"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-1406919011",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-1361393151",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-2117173674",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:setSerialNumberInputActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-768185844",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:setNoteKeyListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-1874028013",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:setButtonExtractActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-249177573",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:setUserInputFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1832669781-319670866",
+        "source": "extractor.view.Main:\u003cinit\u003e",
+        "to": "extractor.view.Main:setProductNumberInputFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-509832867",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:updateNumberOfAvailableExtractions"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-1231006815",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:updateCounterMessage"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-1615617512",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:updateNumberOfAvailableSents"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-1895143699",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-107994825",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:startProducing"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-2043106095",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:focusLost"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-2044282225",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:updateNumberOfExtractionsDone"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-1237762639",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:allExtractionsDone"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-343345308",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:startConsuming"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-1566511282",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:allExtractionsSent"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-584561912",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:itemStateChanged"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-1367165453",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:incrementNumberOfSuccesfulSents"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-126234454",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:focusGained"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-1658980982",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:mouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-1048434276",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:isNoteRequired"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-923341586",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:isNoteEmpty"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-579294521",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:windowClosing"
+      }
+    },
+    {
+      "data": {
+        "id": "1260217713-423733503",
+        "source": "extractor.view.Main:access",
+        "to": "extractor.view.Main:keyPressed"
+      }
+    },
+    {
+      "data": {
+        "id": "1446001495-774895395",
+        "source": "extractor.view.Main:addWindowListener",
+        "to": "extractor.view.Main:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1261044180-1844334363",
+        "source": "extractor.view.Main:changeOfflineMode",
+        "to": "extractor.view.Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "2072313080-854733477",
+        "source": "extractor.view.Main:changeToExtractPanel",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "2072313080-1429351083",
+        "source": "extractor.view.Main:changeToExtractPanel",
+        "to": "extractor.view.Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "2072313080-1077873186",
+        "source": "extractor.view.Main:changeToExtractPanel",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "141110631-126234454",
+        "source": "extractor.view.Main:clearMessageLabel",
+        "to": "extractor.view.Main:focusGained"
+      }
+    },
+    {
+      "data": {
+        "id": "141110631-46941357",
+        "source": "extractor.view.Main:clearMessageLabel",
+        "to": "extractor.view.Main:jLabelNavbarMousePressed"
+      }
+    },
+    {
+      "data": {
+        "id": "141110631-840083671",
+        "source": "extractor.view.Main:clearMessageLabel",
+        "to": "extractor.view.Main:startWatcherMode"
+      }
+    },
+    {
+      "data": {
+        "id": "141110631-5395829",
+        "source": "extractor.view.Main:clearMessageLabel",
+        "to": "extractor.view.Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "141110631-948115224",
+        "source": "extractor.view.Main:clearMessageLabel",
+        "to": "extractor.view.Main:jButtonConfigMouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "2029372696-840083671",
+        "source": "extractor.view.Main:createErrorPopUp",
+        "to": "extractor.view.Main:startWatcherMode"
+      }
+    },
+    {
+      "data": {
+        "id": "2029372696-1844334363",
+        "source": "extractor.view.Main:createErrorPopUp",
+        "to": "extractor.view.Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "2029372696-1895143699",
+        "source": "extractor.view.Main:createErrorPopUp",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "2029372696-854733477",
+        "source": "extractor.view.Main:createErrorPopUp",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "2029372696-1406919011",
+        "source": "extractor.view.Main:createErrorPopUp",
+        "to": "extractor.view.Main:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "2029372696-1361393151",
+        "source": "extractor.view.Main:createErrorPopUp",
+        "to": "extractor.view.Main:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "2029372696-972865270",
+        "source": "extractor.view.Main:createErrorPopUp",
+        "to": "extractor.view.Config:validateConfigValues"
+      }
+    },
+    {
+      "data": {
+        "id": "2029372696-774895395",
+        "source": "extractor.view.Main:createErrorPopUp",
+        "to": "extractor.view.Main:run"
+      }
+    },
+    {
+      "data": {
+        "id": "2029372696-1077873186",
+        "source": "extractor.view.Main:createErrorPopUp",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "2029372696-423733503",
+        "source": "extractor.view.Main:createErrorPopUp",
+        "to": "extractor.view.Main:keyPressed"
+      }
+    },
+    {
+      "data": {
+        "id": "793293778-854733477",
+        "source": "extractor.view.Main:createYesNoPopUp",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "793293778-1260217713",
+        "source": "extractor.view.Main:createYesNoPopUp",
+        "to": "extractor.view.Main:access"
+      }
+    },
+    {
+      "data": {
+        "id": "793293778-1077873186",
+        "source": "extractor.view.Main:createYesNoPopUp",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "854733477-1895143699",
+        "source": "extractor.view.Main:doExtract",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "854733477-423733503",
+        "source": "extractor.view.Main:doExtract",
+        "to": "extractor.view.Main:keyPressed"
+      }
+    },
+    {
+      "data": {
+        "id": "1077873186-1260217713",
+        "source": "extractor.view.Main:doLogin",
+        "to": "extractor.view.Main:access"
+      }
+    },
+    {
+      "data": {
+        "id": "5395829-254896875",
+        "source": "extractor.view.Main:doLogout",
+        "to": "extractor.view.Main:jButtonLogoutNavbarMouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "1361393151-1260217713",
+        "source": "extractor.view.Main:extractByAutoCollect",
+        "to": "extractor.view.Main:access"
+      }
+    },
+    {
+      "data": {
+        "id": "1406919011-1260217713",
+        "source": "extractor.view.Main:extractByPath",
+        "to": "extractor.view.Main:access"
+      }
+    },
+    {
+      "data": {
+        "id": "888611662-948115224",
+        "source": "extractor.view.Main:getComponents",
+        "to": "extractor.view.Main:jButtonConfigMouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "1966355106-1830745997",
+        "source": "extractor.view.Main:getContentPane",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "599782425-1429351083",
+        "source": "extractor.view.Main:getGraphics",
+        "to": "extractor.view.Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "1233327519-948115224",
+        "source": "extractor.view.Main:getHeight",
+        "to": "extractor.view.Main:jButtonConfigMouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "1155769010-1406919011",
+        "source": "extractor.view.Main:getNote",
+        "to": "extractor.view.Main:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "1155769010-1361393151",
+        "source": "extractor.view.Main:getNote",
+        "to": "extractor.view.Main:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "1155769010-1260217713",
+        "source": "extractor.view.Main:getNote",
+        "to": "extractor.view.Main:access"
+      }
+    },
+    {
+      "data": {
+        "id": "269892014-1961595039",
+        "source": "extractor.view.Main:getX",
+        "to": "extractor.view.Config:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "269892014-948115224",
+        "source": "extractor.view.Main:getX",
+        "to": "extractor.view.Main:jButtonConfigMouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "1280641161-1961595039",
+        "source": "extractor.view.Main:getY",
+        "to": "extractor.view.Config:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1280641161-948115224",
+        "source": "extractor.view.Main:getY",
+        "to": "extractor.view.Main:jButtonConfigMouseClicked"
+      }
+    },
+    {
+      "data": {
+        "id": "1636291061-1363396194",
+        "source": "extractor.view.Main:groupRadioButtons",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "1363396194-1830745997",
+        "source": "extractor.view.Main:initActions",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1830745997-1429351083",
+        "source": "extractor.view.Main:initGUI",
+        "to": "extractor.view.Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "1830745997-1832669781",
+        "source": "extractor.view.Main:initGUI",
+        "to": "extractor.view.Main:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "923341586-1895143699",
+        "source": "extractor.view.Main:isNoteEmpty",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "1048434276-1895143699",
+        "source": "extractor.view.Main:isNoteRequired",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "948115224-1260217713",
+        "source": "extractor.view.Main:jButtonConfigMouseClicked",
+        "to": "extractor.view.Main:access"
+      }
+    },
+    {
+      "data": {
+        "id": "254896875-1260217713",
+        "source": "extractor.view.Main:jButtonLogoutNavbarMouseClicked",
+        "to": "extractor.view.Main:access"
+      }
+    },
+    {
+      "data": {
+        "id": "46941357-1260217713",
+        "source": "extractor.view.Main:jLabelNavbarMousePressed",
+        "to": "extractor.view.Main:access"
+      }
+    },
+    {
+      "data": {
+        "id": "489411441-1830745997",
+        "source": "extractor.view.Main:pack",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1429351083-1844334363",
+        "source": "extractor.view.Main:refresh",
+        "to": "extractor.view.Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "1141113940-1429351083",
+        "source": "extractor.view.Main:remove",
+        "to": "extractor.view.Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "1711185459-1830745997",
+        "source": "extractor.view.Main:setAutoRequestFocus",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1874028013-1363396194",
+        "source": "extractor.view.Main:setButtonExtractActionListener",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "787361897-1363396194",
+        "source": "extractor.view.Main:setButtonOpenPathActionListener",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "25936709-1830745997",
+        "source": "extractor.view.Main:setDefaultCloseOperation",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1757317128-1363396194",
+        "source": "extractor.view.Main:setDefaultTestType",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "909132503-1361393151",
+        "source": "extractor.view.Main:setEnableWatcherModeComponents",
+        "to": "extractor.view.Main:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "909132503-1260217713",
+        "source": "extractor.view.Main:setEnableWatcherModeComponents",
+        "to": "extractor.view.Main:access"
+      }
+    },
+    {
+      "data": {
+        "id": "1123559518-1961595039",
+        "source": "extractor.view.Main:setEnabled",
+        "to": "extractor.view.Config:\u003cinit\u003e"
+      }
+    },
+    {
+      "data": {
+        "id": "1123559518-1770437551",
+        "source": "extractor.view.Main:setEnabled",
+        "to": "extractor.view.Config:windowClosed"
+      }
+    },
+    {
+      "data": {
+        "id": "649769713-1844334363",
+        "source": "extractor.view.Main:setFocusableWindowState",
+        "to": "extractor.view.Config:saveConfigs"
+      }
+    },
+    {
+      "data": {
+        "id": "925150995-774895395",
+        "source": "extractor.view.Main:setIconImage",
+        "to": "extractor.view.Main:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1760219993-774895395",
+        "source": "extractor.view.Main:setLocationRelativeTo",
+        "to": "extractor.view.Main:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1632497828-1363396194",
+        "source": "extractor.view.Main:setNoteInputActionListener",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "739333799-1363396194",
+        "source": "extractor.view.Main:setNoteInputFocusListner",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "768185844-1363396194",
+        "source": "extractor.view.Main:setNoteKeyListener",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "337799666-1363396194",
+        "source": "extractor.view.Main:setPNandSNKeyListener",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "42102625-1363396194",
+        "source": "extractor.view.Main:setPasswordInputACtionListener",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "186061555-1363396194",
+        "source": "extractor.view.Main:setPasswordInputFocusListener",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "1216198248-1363396194",
+        "source": "extractor.view.Main:setProcuctNumberInputActionListener",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "319670866-1363396194",
+        "source": "extractor.view.Main:setProductNumberInputFocusListener",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "1800649922-1830745997",
+        "source": "extractor.view.Main:setResizable",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "2117173674-1363396194",
+        "source": "extractor.view.Main:setSerialNumberInputActionListener",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "1722570594-1363396194",
+        "source": "extractor.view.Main:setSerialNumberInputFocusListener",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "403547747-1830745997",
+        "source": "extractor.view.Main:setSize",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "172215878-1830745997",
+        "source": "extractor.view.Main:setTitle",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "249177573-1363396194",
+        "source": "extractor.view.Main:setUserInputFocusListener",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "873309260-774895395",
+        "source": "extractor.view.Main:setVisible",
+        "to": "extractor.view.Main:run"
+      }
+    },
+    {
+      "data": {
+        "id": "1112456099-1363396194",
+        "source": "extractor.view.Main:setVisibleTestTypes",
+        "to": "extractor.view.Main:initActions"
+      }
+    },
+    {
+      "data": {
+        "id": "840083671-1077873186",
+        "source": "extractor.view.Main:startWatcherMode",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "1849015357-1406919011",
+        "source": "extractor.view.Main:switchButtonsEnabling",
+        "to": "extractor.view.Main:extractByPath"
+      }
+    },
+    {
+      "data": {
+        "id": "1849015357-1361393151",
+        "source": "extractor.view.Main:switchButtonsEnabling",
+        "to": "extractor.view.Main:extractByAutoCollect"
+      }
+    },
+    {
+      "data": {
+        "id": "923083575-1429351083",
+        "source": "extractor.view.Main:update",
+        "to": "extractor.view.Main:refresh"
+      }
+    },
+    {
+      "data": {
+        "id": "1231006815-509832867",
+        "source": "extractor.view.Main:updateCounterMessage",
+        "to": "extractor.view.Main:updateNumberOfAvailableExtractions"
+      }
+    },
+    {
+      "data": {
+        "id": "1231006815-1367165453",
+        "source": "extractor.view.Main:updateCounterMessage",
+        "to": "extractor.view.Main:incrementNumberOfSuccesfulSents"
+      }
+    },
+    {
+      "data": {
+        "id": "1231006815-1615617512",
+        "source": "extractor.view.Main:updateCounterMessage",
+        "to": "extractor.view.Main:updateNumberOfAvailableSents"
+      }
+    },
+    {
+      "data": {
+        "id": "1231006815-2044282225",
+        "source": "extractor.view.Main:updateCounterMessage",
+        "to": "extractor.view.Main:updateNumberOfExtractionsDone"
+      }
+    },
+    {
+      "data": {
+        "id": "1231006815-1566511282",
+        "source": "extractor.view.Main:updateCounterMessage",
+        "to": "extractor.view.Main:allExtractionsSent"
+      }
+    },
+    {
+      "data": {
+        "id": "1558079303-1895143699",
+        "source": "extractor.view.Main:validatePath",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "589363823-1830745997",
+        "source": "extractor.view.PlaceholderPasswordField:\u003cinit\u003e",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "2052457859-42102625",
+        "source": "extractor.view.PlaceholderPasswordField:addActionListener",
+        "to": "extractor.view.Main:setPasswordInputACtionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1299327689-186061555",
+        "source": "extractor.view.PlaceholderPasswordField:addFocusListener",
+        "to": "extractor.view.Main:setPasswordInputFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1408279755-1958402562",
+        "source": "extractor.view.PlaceholderPasswordField:getDisabledTextColor",
+        "to": "extractor.view.PlaceholderPasswordField:paintComponent"
+      }
+    },
+    {
+      "data": {
+        "id": "2007486296-1958402562",
+        "source": "extractor.view.PlaceholderPasswordField:getInsets",
+        "to": "extractor.view.PlaceholderPasswordField:paintComponent"
+      }
+    },
+    {
+      "data": {
+        "id": "1033348658-1077873186",
+        "source": "extractor.view.PlaceholderPasswordField:getPassword",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "1634723627-1830745997",
+        "source": "extractor.view.PlaceholderPasswordField:setBorder",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1634723627-5395829",
+        "source": "extractor.view.PlaceholderPasswordField:setBorder",
+        "to": "extractor.view.Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "938463537-1830745997",
+        "source": "extractor.view.PlaceholderPasswordField:setBounds",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "2121995675-126234454",
+        "source": "extractor.view.PlaceholderPasswordField:setForeground",
+        "to": "extractor.view.Main:focusGained"
+      }
+    },
+    {
+      "data": {
+        "id": "2121995675-1830745997",
+        "source": "extractor.view.PlaceholderPasswordField:setForeground",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "2121995675-5395829",
+        "source": "extractor.view.PlaceholderPasswordField:setForeground",
+        "to": "extractor.view.Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "2120063568-1830745997",
+        "source": "extractor.view.PlaceholderPasswordField:setPlaceholder",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1620409359-126234454",
+        "source": "extractor.view.PlaceholderPasswordField:setText",
+        "to": "extractor.view.Main:focusGained"
+      }
+    },
+    {
+      "data": {
+        "id": "1620409359-5395829",
+        "source": "extractor.view.PlaceholderPasswordField:setText",
+        "to": "extractor.view.Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "691691381-1830745997",
+        "source": "extractor.view.PlaceholderTextField:\u003cinit\u003e",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "264978436-1216198248",
+        "source": "extractor.view.PlaceholderTextField:addActionListener",
+        "to": "extractor.view.Main:setProcuctNumberInputActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "264978436-1632497828",
+        "source": "extractor.view.PlaceholderTextField:addActionListener",
+        "to": "extractor.view.Main:setNoteInputActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "264978436-2117173674",
+        "source": "extractor.view.PlaceholderTextField:addActionListener",
+        "to": "extractor.view.Main:setSerialNumberInputActionListener"
+      }
+    },
+    {
+      "data": {
+        "id": "500618423-739333799",
+        "source": "extractor.view.PlaceholderTextField:addFocusListener",
+        "to": "extractor.view.Main:setNoteInputFocusListner"
+      }
+    },
+    {
+      "data": {
+        "id": "500618423-1722570594",
+        "source": "extractor.view.PlaceholderTextField:addFocusListener",
+        "to": "extractor.view.Main:setSerialNumberInputFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "500618423-319670866",
+        "source": "extractor.view.PlaceholderTextField:addFocusListener",
+        "to": "extractor.view.Main:setProductNumberInputFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "500618423-249177573",
+        "source": "extractor.view.PlaceholderTextField:addFocusListener",
+        "to": "extractor.view.Main:setUserInputFocusListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1458091526-337799666",
+        "source": "extractor.view.PlaceholderTextField:addKeyListener",
+        "to": "extractor.view.Main:setPNandSNKeyListener"
+      }
+    },
+    {
+      "data": {
+        "id": "1458091526-768185844",
+        "source": "extractor.view.PlaceholderTextField:addKeyListener",
+        "to": "extractor.view.Main:setNoteKeyListener"
+      }
+    },
+    {
+      "data": {
+        "id": "768776793-2096539129",
+        "source": "extractor.view.PlaceholderTextField:getDisabledTextColor",
+        "to": "extractor.view.PlaceholderTextField:paintComponent"
+      }
+    },
+    {
+      "data": {
+        "id": "2018260103-2096539129",
+        "source": "extractor.view.PlaceholderTextField:getInsets",
+        "to": "extractor.view.PlaceholderTextField:paintComponent"
+      }
+    },
+    {
+      "data": {
+        "id": "1393828949-126234454",
+        "source": "extractor.view.PlaceholderTextField:getText",
+        "to": "extractor.view.Main:focusGained"
+      }
+    },
+    {
+      "data": {
+        "id": "1393828949-1895143699",
+        "source": "extractor.view.PlaceholderTextField:getText",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "1393828949-854733477",
+        "source": "extractor.view.PlaceholderTextField:getText",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "1393828949-2043106095",
+        "source": "extractor.view.PlaceholderTextField:getText",
+        "to": "extractor.view.Main:focusLost"
+      }
+    },
+    {
+      "data": {
+        "id": "1393828949-923341586",
+        "source": "extractor.view.PlaceholderTextField:getText",
+        "to": "extractor.view.Main:isNoteEmpty"
+      }
+    },
+    {
+      "data": {
+        "id": "1393828949-1077873186",
+        "source": "extractor.view.PlaceholderTextField:getText",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "1393828949-423733503",
+        "source": "extractor.view.PlaceholderTextField:getText",
+        "to": "extractor.view.Main:keyPressed"
+      }
+    },
+    {
+      "data": {
+        "id": "1393828949-2096539129",
+        "source": "extractor.view.PlaceholderTextField:getText",
+        "to": "extractor.view.PlaceholderTextField:paintComponent"
+      }
+    },
+    {
+      "data": {
+        "id": "1088417975-1895143699",
+        "source": "extractor.view.PlaceholderTextField:requestFocus",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "1088417975-854733477",
+        "source": "extractor.view.PlaceholderTextField:requestFocus",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "2036775591-1830745997",
+        "source": "extractor.view.PlaceholderTextField:setAutoscrolls",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1620529408-1830745997",
+        "source": "extractor.view.PlaceholderTextField:setBackground",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "307488715-126234454",
+        "source": "extractor.view.PlaceholderTextField:setBorder",
+        "to": "extractor.view.Main:focusGained"
+      }
+    },
+    {
+      "data": {
+        "id": "307488715-1830745997",
+        "source": "extractor.view.PlaceholderTextField:setBorder",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "307488715-1895143699",
+        "source": "extractor.view.PlaceholderTextField:setBorder",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "307488715-5395829",
+        "source": "extractor.view.PlaceholderTextField:setBorder",
+        "to": "extractor.view.Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "307488715-2043106095",
+        "source": "extractor.view.PlaceholderTextField:setBorder",
+        "to": "extractor.view.Main:focusLost"
+      }
+    },
+    {
+      "data": {
+        "id": "307488715-1077873186",
+        "source": "extractor.view.PlaceholderTextField:setBorder",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "758572926-1830745997",
+        "source": "extractor.view.PlaceholderTextField:setBounds",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "758572926-840083671",
+        "source": "extractor.view.PlaceholderTextField:setBounds",
+        "to": "extractor.view.Main:startWatcherMode"
+      }
+    },
+    {
+      "data": {
+        "id": "758572926-2072313080",
+        "source": "extractor.view.PlaceholderTextField:setBounds",
+        "to": "extractor.view.Main:changeToExtractPanel"
+      }
+    },
+    {
+      "data": {
+        "id": "1640612861-1830745997",
+        "source": "extractor.view.PlaceholderTextField:setEnabled",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "1640612861-909132503",
+        "source": "extractor.view.PlaceholderTextField:setEnabled",
+        "to": "extractor.view.Main:setEnableWatcherModeComponents"
+      }
+    },
+    {
+      "data": {
+        "id": "1640612861-1849015357",
+        "source": "extractor.view.PlaceholderTextField:setEnabled",
+        "to": "extractor.view.Main:switchButtonsEnabling"
+      }
+    },
+    {
+      "data": {
+        "id": "1640612861-1566511282",
+        "source": "extractor.view.PlaceholderTextField:setEnabled",
+        "to": "extractor.view.Main:allExtractionsSent"
+      }
+    },
+    {
+      "data": {
+        "id": "1640612861-584561912",
+        "source": "extractor.view.PlaceholderTextField:setEnabled",
+        "to": "extractor.view.Main:itemStateChanged"
+      }
+    },
+    {
+      "data": {
+        "id": "990679445-126234454",
+        "source": "extractor.view.PlaceholderTextField:setForeground",
+        "to": "extractor.view.Main:focusGained"
+      }
+    },
+    {
+      "data": {
+        "id": "990679445-1830745997",
+        "source": "extractor.view.PlaceholderTextField:setForeground",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "990679445-854733477",
+        "source": "extractor.view.PlaceholderTextField:setForeground",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "990679445-5395829",
+        "source": "extractor.view.PlaceholderTextField:setForeground",
+        "to": "extractor.view.Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "990679445-2043106095",
+        "source": "extractor.view.PlaceholderTextField:setForeground",
+        "to": "extractor.view.Main:focusLost"
+      }
+    },
+    {
+      "data": {
+        "id": "990679445-1077873186",
+        "source": "extractor.view.PlaceholderTextField:setForeground",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "913065088-1830745997",
+        "source": "extractor.view.PlaceholderTextField:setPlaceholder",
+        "to": "extractor.view.Main:initGUI"
+      }
+    },
+    {
+      "data": {
+        "id": "746280996-126234454",
+        "source": "extractor.view.PlaceholderTextField:setText",
+        "to": "extractor.view.Main:focusGained"
+      }
+    },
+    {
+      "data": {
+        "id": "746280996-840083671",
+        "source": "extractor.view.PlaceholderTextField:setText",
+        "to": "extractor.view.Main:startWatcherMode"
+      }
+    },
+    {
+      "data": {
+        "id": "746280996-1895143699",
+        "source": "extractor.view.PlaceholderTextField:setText",
+        "to": "extractor.view.Main:actionPerformed"
+      }
+    },
+    {
+      "data": {
+        "id": "746280996-5395829",
+        "source": "extractor.view.PlaceholderTextField:setText",
+        "to": "extractor.view.Main:doLogout"
+      }
+    },
+    {
+      "data": {
+        "id": "746280996-854733477",
+        "source": "extractor.view.PlaceholderTextField:setText",
+        "to": "extractor.view.Main:doExtract"
+      }
+    },
+    {
+      "data": {
+        "id": "746280996-1077873186",
+        "source": "extractor.view.PlaceholderTextField:setText",
+        "to": "extractor.view.Main:doLogin"
+      }
+    },
+    {
+      "data": {
+        "id": "746280996-423733503",
+        "source": "extractor.view.PlaceholderTextField:setText",
+        "to": "extractor.view.Main:keyPressed"
+      }
+    },
+    {
+      "data": {
+        "id": "746280996-584561912",
+        "source": "extractor.view.PlaceholderTextField:setText",
+        "to": "extractor.view.Main:itemStateChanged"
+      }
+    }
+  ]
+}

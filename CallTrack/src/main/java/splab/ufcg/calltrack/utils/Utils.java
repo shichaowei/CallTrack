@@ -12,6 +12,7 @@ import com.google.gson.GsonBuilder;
 
 import splab.ufcg.calltrack.model.EdgeBruteLine;
 import splab.ufcg.calltrack.model.Graph;
+import splab.ufcg.calltrack.model.GraphDTO;
 
 public class Utils {
 
@@ -44,12 +45,13 @@ public class Utils {
 		}
 	}
 	
-	public void writeJSONFile(String fileName, Graph graph){
+	public void writeJSONFile(String fileName, GraphDTO graph){
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(graph);
+		
+		json = "data = " + json.replaceAll("\"@", "").replaceAll("@\"", "").replace("\"", "'");
 		System.out.println(json);
 		
-		json = "data = " + json;
 		
 		try {
 			FileWriter fw = new FileWriter(fileName, true);

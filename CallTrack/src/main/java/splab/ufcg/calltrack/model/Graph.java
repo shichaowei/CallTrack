@@ -37,4 +37,23 @@ public class Graph {
 		
 	}
 	
+	public GraphDTO getGraphDTO(){
+		GraphDTO transactionDataGraph = new GraphDTO();
+		
+		for(Node n : this.nodes.values()){
+			NodeDTOData nodeData = new NodeDTOData(n.hashCode() + "", n.getLabel());
+			NodeDTO node = new NodeDTO(nodeData);
+			transactionDataGraph.putNode(node);
+			
+			for(Node e : n.getEdges()){
+				EdgeDTOData edgeData = new EdgeDTOData(n.hashCode()+ "-" + e.hashCode(), n.hashCode() + "", e.hashCode() + "");
+				EdgeDTO edge = new EdgeDTO(edgeData);
+				transactionDataGraph.putEdge(edge);
+			}
+			
+		}
+		
+		return transactionDataGraph;
+	}
+	
 }

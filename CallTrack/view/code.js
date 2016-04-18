@@ -25,6 +25,10 @@ var defaultStyle = cytoscape.stylesheet()
 
         });
 
+var json  =  eval(data);
+
+console.log(json.edges[0]);
+
 var cy = cytoscape({
   container: document.getElementById('cy'),
 
@@ -34,33 +38,24 @@ var cy = cytoscape({
   style: defaultStyle,
   
   elements: {
-      nodes: [
-        { data: { id: 'a' , label: 'label de a'} },
-        { data: { id: 'b' , label: 'label de b'} },
-        { data: { id: 'c' , label: 'label de c'} },
-        { data: { id: 'd' , label: 'label de d'} },
-        { data: { id: 'e' , label: 'label de e'} }
-      ], 
+      nodes: json.nodes, 
       
-      edges: [
-        { data: { id: 'a"e',  source: 'a', target: 'e' } },
-        { data: { id: 'ab',  source: 'a', target: 'b' } },
-        { data: { id: 'be',  source: 'b', target: 'e' } },
-        { data: { id: 'bc',  source: 'b', target: 'c' } },
-        { data: { id: 'ce',  source: 'c', target: 'e' } },
-        { data: { id: 'cd',  source: 'c', target: 'd' } },
-        { data: { id: 'de',  source: 'd', target: 'e' } }
-      ]
+      edges: json.edges
     },
   
   layout: {
-    name: 'breadthfirst',
+    name: 'cose', //'cose' is the best the best until now
+    fit: true,
     directed: true,
-    roots: '#a',
-    padding: 10
+    roots: '#' + json.nodes[0].data.id,
+     padding: 10,
+     avoidOverlap: true,
+     animate: false,
+     maximalAdjustments: 100 
   }
 });
 
+console.log("Starting with " + json.nodes[0].data.id);
 
 
 

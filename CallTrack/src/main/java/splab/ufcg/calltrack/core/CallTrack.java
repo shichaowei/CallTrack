@@ -155,6 +155,10 @@ public class CallTrack {
 			count++;
 		}
 
+		Utils util = new Utils();
+		util.deleteFiles("view/data.json");
+		util.writeJSONFile("view/data.json", graphOfMethods.getGraphDTO());
+		
 		// TODO Create all Artifacts Nodes from method-mapping.artifacs and
 		// classes-mapping.artifacts and after put in Graph and link with
 		// referenced node.

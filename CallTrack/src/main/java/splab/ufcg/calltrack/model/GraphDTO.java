@@ -1,22 +1,28 @@
 package splab.ufcg.calltrack.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
+
 public class GraphDTO {
+	@SerializedName("@nodes@")
 	private List<NodeDTO> nodes;
+	@SerializedName("@edges@")
 	private List<EdgeDTO> edges;
 
+	
+	public GraphDTO() {
+		nodes = new ArrayList<NodeDTO>();
+		edges = new ArrayList<EdgeDTO>();
+	}
+	
+	
 	public List<NodeDTO> getNodes() {
 		return nodes;
 	}
-	public void setNodes(List<NodeDTO> nodes) {
-		this.nodes = nodes;
-	}
 	public List<EdgeDTO> getEdges() {
 		return edges;
-	}
-	public void setEdges(List<EdgeDTO> edges) {
-		this.edges = edges;
 	}
 	
 	public boolean containsNode(Node node){
