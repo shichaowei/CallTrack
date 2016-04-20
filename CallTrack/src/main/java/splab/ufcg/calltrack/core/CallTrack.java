@@ -119,17 +119,15 @@ public class CallTrack {
 				String fromNodeId = nodesDeVided[1];
 				String[] nodeIdSplited = fromNodeId.split("\\.");
 				String label = nodeIdSplited[nodeIdSplited.length - 1];
-				// Node fromNode = new Node(fromNodeId, label);
 				graphOfMethods.putNode(fromNodeId, label, TypeNode.NORMAL);
 
 				// Generating Label and creating "to Node"
 				String toNodeId = nodesDeVided[0];
 				nodeIdSplited = toNodeId.split("\\.");
 				label = nodeIdSplited[nodeIdSplited.length - 1];
-				// Node toNode = new Node(toNodeId, label);
 				graphOfMethods.putNode(toNodeId, label, TypeNode.NORMAL);
+
 				// Generating Edge
-				// Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
 				if(!fromNodeId.equals(toNodeId))
 					graphOfMethods.putEdge(fromNodeId, toNodeId);
 
@@ -152,11 +150,9 @@ public class CallTrack {
 			String toNodeId = nodesDeVided[0];
 			nodeIdSplited = toNodeId.split("\\.");
 			label = nodeIdSplited[nodeIdSplited.length - 1];
-			// Node toNode = new Node(toNodeId, label);
 			graphOfClass.putNode(toNodeId, label, TypeNode.NORMAL);
 
 			// Generating Edge
-			// Edge edge = new Edge(""+ count, fromNodeId, toNodeId);
 			if(!fromNodeId.equals(toNodeId))
 				graphOfClass.putEdge(fromNodeId, toNodeId);
 		}
