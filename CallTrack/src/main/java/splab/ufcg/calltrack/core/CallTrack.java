@@ -159,7 +159,7 @@ public class CallTrack {
 
 		Utils util = new Utils();
 		util.deleteFiles("view/data.json");
-		util.writeJSONFile("view/data.json", graphOfMethods.getGraphDTO());
+		util.writeJSONFile("view/data.json", graphOfClass.getGraphDTO());
 		
 		File f = new File("view/index.html");
 		

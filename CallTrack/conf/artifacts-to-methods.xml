@@ -1,0 +1,68 @@
+<artifacts>
+	<artifact openUrlOnClick="true" type="USeCase" id="US1">
+		<name>Offline extraction</name>
+		<toMethods></toMethods>
+		<OnClickURL>https://drive.google.com/open?id=0B-vzMNuALPEhODJFeWc5cG03V2s</OnClickURL>
+	</artifact>
+	
+	<artifact openUrlOnClick="true" type="USeCase" id="US2">
+		<name>Admin Login</name>
+		<toMethods>
+			<method></method>
+			<method></method>
+			<method></method>
+			<method></method>
+		</toMethods>
+		<OnClickURL>https://drive.google.com/open?id=0B-vzMNuALPEhRmdac1R5ZE53ZUU</OnClickURL>
+	</artifact>
+	
+	<artifact openUrlOnClick="true" type="USeCase" id="US3">
+		<name>Auto Collect</name>
+		<toMethods>
+			<method></method>
+			<method></method>
+			<method></method>
+			<method></method>
+			<method></method>
+		</toMethods>
+		<OnClickURL>https://drive.google.com/open?id=0B-vzMNuALPEhU0Y3cVZ0ZlhxSWs</OnClickURL>
+	</artifact>
+	
+	
+	<artifact openUrlOnClick="true" type="USeCase" id="US4">
+		<name>Extrações por diretorio</name>
+		<toMethods>
+			<method></method>
+			<method></method>
+			<method></method>
+			<method></method>
+			<method></method>
+		</toMethods>
+		<OnClickURL>https://drive.google.com/open?id=0B-vzMNuALPEhMGx6ZVRpOE1JZ0E</OnClickURL>
+	</artifact>
+	
+	<artifact openUrlOnClick="true" type="USeCase" id="US5">
+		<name>Extrações por LLT</name>
+		<toMethods>
+			<method></method>
+			<method></method>
+			<method></method>
+			<method></method>
+			<method></method>
+		</toMethods>
+		<OnClickURL>https://drive.google.com/open?id=0B-vzMNuALPEhcDFSLXUxQ1FWSUk</OnClickURL>
+	</artifact>
+
+<!--  	<artifact openUrlOnClick="true" type="USeCase" id="US">
+		<name></name>
+		<toMethods>
+			<method></method>
+			<method></method>
+			<method></method>
+			<method></method>
+			<method></method>
+		</toMethods>
+		<OnClickURL></OnClickURL>
+	</artifact>-->
+
+</artifacts>
