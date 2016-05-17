@@ -96,7 +96,7 @@ public class MethodVisitor extends EmptyVisitor {
 
     @Override
     public void visitINVOKEVIRTUAL(INVOKEVIRTUAL i) {
-    	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
+    	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp));
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
     		ClassVisitor.edgesMethods.add(output);
     	}
@@ -104,7 +104,7 @@ public class MethodVisitor extends EmptyVisitor {
 
     @Override
     public void visitINVOKEINTERFACE(INVOKEINTERFACE i) {
-    	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
+    	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp));
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
     		
     		ClassVisitor.edgesMethods.add(output);
@@ -113,7 +113,7 @@ public class MethodVisitor extends EmptyVisitor {
 
     @Override
     public void visitINVOKESPECIAL(INVOKESPECIAL i) {
-    	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
+    	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp));
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){ 		
     		ClassVisitor.edgesMethods.add(output);
     	}
@@ -121,7 +121,7 @@ public class MethodVisitor extends EmptyVisitor {
 
     @Override
     public void visitINVOKESTATIC(INVOKESTATIC i) {
-    	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp)).replaceAll("[$\\d]+", "");;
+    	String output = String.format(format,i.getReferenceType(cp),i.getMethodName(cp));
     	if(i.getReferenceType(cp).toString().contains(this.pattern) ){
     		ClassVisitor.edgesMethods.add(output);
     	}

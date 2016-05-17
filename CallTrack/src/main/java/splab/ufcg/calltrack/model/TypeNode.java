@@ -1,5 +1,5 @@
 package splab.ufcg.calltrack.model;
 
 public enum TypeNode {
-	NORMAL, CHANGEBLE, ARTEFACT;
+	NORMAL, ARTIFACT_US, ARTIFACT_TC;
 }

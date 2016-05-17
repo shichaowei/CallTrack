@@ -32,7 +32,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
-
+import java.util.List;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -43,6 +43,7 @@ import org.apache.bcel.classfile.ClassParser;
 import splab.ufcg.calltrack.exceptions.NodeNotFoundException;
 import splab.ufcg.calltrack.model.Graph;
 import splab.ufcg.calltrack.model.TypeNode;
+import splab.ufcg.calltrack.model.XMLRepresentation;
 import splab.ufcg.calltrack.utils.Utils;
 
 public class CallTrack {
@@ -158,13 +159,68 @@ public class CallTrack {
 		}
 
 		Utils util = new Utils();
-		util.deleteFiles("view/data.json");
-		util.writeJSONFile("view/data.json", graphOfClass.getGraphDTO());
+		util.deleteFiles("view/data-class.json");
+		util.deleteFiles("view/data-method.json");
 		
-		File f = new File("view/index.html");
 		
+		List<XMLRepresentation> classArtifactsRepresentation = util.getArtifactsRepresentation("conf\\artifacts-to-class.xml");
+		
+		for(XMLRepresentation representation : classArtifactsRepresentation){
+			TypeNode type;
+			if("UseCase".equals(representation.getType())){
+				type = TypeNode.ARTIFACT_US;
+			}else if("TestCase".equals(representation.getType())){
+				type = TypeNode.ARTIFACT_TC;
+			}else{
+				type = TypeNode.NORMAL;
+			}
+			
+			
+			
+			graphOfClass.putNode(representation.getId(), representation.getName(), type);
+			
+			for(String toId : representation.getToIDs()){
+				if(!representation.getId().equals(toId))
+					graphOfClass.putEdge(toId, representation.getId());
+			}
+			
+			
+			
+		}
+		util.writeJSONFile("view/data-class.json", graphOfClass.getGraphDTO());
+		
+		
+//		List<XMLRepresentation> methodArtifactsRepresentation = util.getArtifactsRepresentation("conf\\artifacts-to-methods.xml");
+//		
+//		for(XMLRepresentation representation : methodArtifactsRepresentation){
+//			TypeNode type;
+//			if("UseCase".equals(representation.getType())){
+//				type = TypeNode.ARTIFACT_US;
+//			}else if("TestCase".equals(representation.getType())){
+//				type = TypeNode.ARTIFACT_TC;
+//			}else{
+//				type = TypeNode.NORMAL;
+//			}
+//			
+//			graphOfMethods.putNode(representation.getId(), representation.getName(), type);
+//			
+//			for(String toId : representation.getToIDs()){
+//				if(!representation.getId().equals(toId))
+//					graphOfMethods.putEdge(toId, representation.getId());
+//			}
+//			
+//			
+//			
+//		}
+		util.writeJSONFile("view/data-method.json", graphOfMethods.getGraphDTO());
+		
+		
+		
+		File fClass = new File("view/index-class.html");
+		File fMethod = new File("view/index-method.html");
 		try {
-			Desktop.getDesktop().browse(f.toURI());
+			Desktop.getDesktop().browse(fClass.toURI());
+			Desktop.getDesktop().browse(fMethod.toURI());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

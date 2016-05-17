@@ -1,68 +1,45 @@
 <artifacts>
-	<artifact openUrlOnClick="true" type="USeCase" id="US1">
-		<name>Offline extraction</name>
-		<toClasses></toClasses>
-		<OnClickURL>https://drive.google.com/open?id=0B-vzMNuALPEhODJFeWc5cG03V2s</OnClickURL>
+	<artifact openUrlOnClick="true" type="UseCase" id="US1">
+		<name>Use Case 1</name>
+		<to>
+			<id>internship.sample.A</id>
+			<id>internship.sample.C</id>
+		</to>
+		<OnClickURL>http://localhost/US1</OnClickURL>
 	</artifact>
 	
-	<artifact openUrlOnClick="true" type="USeCase" id="US2">
-		<name>Admin Login</name>
-		<toClasses>
-			<class></class>
-			<class></class>
-			<class></class>
-			<class></class>
-		</toClasses>
-		<OnClickURL>https://drive.google.com/open?id=0B-vzMNuALPEhRmdac1R5ZE53ZUU</OnClickURL>
+	<artifact openUrlOnClick="true" type="UseCase" id="US2">
+		<name>Use Case 2</name>
+		<to>
+			<id>internship.sample.B</id>
+		</to>
+		<OnClickURL>http://localhost/US2</OnClickURL>
 	</artifact>
 	
-	<artifact openUrlOnClick="true" type="USeCase" id="US3">
-		<name>Auto Collect</name>
-		<toClasses>
-			<class></class>
-			<class></class>
-			<class></class>
-			<class></class>
-			<class></class>
-		</toClasses>
-		<OnClickURL>https://drive.google.com/open?id=0B-vzMNuALPEhU0Y3cVZ0ZlhxSWs</OnClickURL>
+	<artifact openUrlOnClick="true" type="TestCase" id="TC1">
+		<name>Test Case 1</name>
+		<to>
+			<id>internship.sample.C</id>
+		</to>
+		<OnClickURL>http://localhost/TC1</OnClickURL>
 	</artifact>
 	
 	
-	<artifact openUrlOnClick="true" type="USeCase" id="US4">
-		<name>Extrações por diretorio</name>
-		<toClasses>
-			<class></class>
-			<class></class>
-			<class></class>
-			<class></class>
-			<class></class>
-		</toClasses>
-		<OnClickURL>https://drive.google.com/open?id=0B-vzMNuALPEhMGx6ZVRpOE1JZ0E</OnClickURL>
+	<artifact openUrlOnClick="true" type="TestCase" id="TC2">
+		<name>Test Case 2</name>
+		<to>
+			<id>internship.sample.A</id>
+		</to>
 	</artifact>
 	
-	<artifact openUrlOnClick="true" type="USeCase" id="US5">
-		<name>Extrações por LLT</name>
-		<toClasses>
-			<class></class>
-			<class></class>
-			<class></class>
-			<class></class>
-			<class></class>
-		</toClasses>
-		<OnClickURL>https://drive.google.com/open?id=0B-vzMNuALPEhcDFSLXUxQ1FWSUk</OnClickURL>
+	<artifact openUrlOnClick="true" type="TestCase" id="TC3">
+		<name>Test Case 3</name>
+		<to>
+			<id>internship.sample.A</id>
+		</to>
+		<OnClickURL>http://localhost/TC3</OnClickURL>
 	</artifact>
 
-<!--  	<artifact openUrlOnClick="true" type="USeCase" id="US">
-		<name></name>
-		<toClasses>
-			<class></class>
-			<class></class>
-			<class></class>
-			<class></class>
-			<class></class>
-		</toClasses>
-		<OnClickURL></OnClickURL>
-	</artifact>-->
+
 
 </artifacts>

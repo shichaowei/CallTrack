@@ -13,6 +13,8 @@ public class Graph {
 	
 	public void putNode(String nodeId, String label, TypeNode type){
 		if(!nodes.containsKey(nodeId)){
+			if(type == TypeNode.ARTIFACT_US)
+				System.out.println("Adding " + nodeId);
 			nodes.put(nodeId, new Node(nodeId, label, type));
 		}
 	}
