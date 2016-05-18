@@ -47,7 +47,7 @@ public class Graph {
 			if(!n.isVisited() && n.getEdges().size() < 1)
 				continue;
 			
-			NodeDTOData nodeData = new NodeDTOData(n.hashCode() + "", n.getLabel());
+			NodeDTOData nodeData = new NodeDTOData(n.hashCode() + "", n.getLabel(), n.getType());
 			NodeDTO node = new NodeDTO(nodeData);
 			transactionDataGraph.putNode(node);
 			

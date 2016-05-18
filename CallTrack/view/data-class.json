@@ -3,49 +3,81 @@ data = {
     {
       data: {
         id: '33524623',
-        label: 'Test Case 1'
+        label: 'Test Case 1',
+        type: 'TestCase',
+        shape: 'triangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
       }
     },
     {
       data: {
         id: '947679291',
-        label: 'Test Case 2'
+        label: 'Test Case 2',
+        type: 'TestCase',
+        shape: 'triangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
       }
     },
     {
       data: {
         id: '575335780',
-        label: 'Test Case 3'
+        label: 'Test Case 3',
+        type: 'TestCase',
+        shape: 'triangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
       }
     },
     {
       data: {
         id: '1654589030',
-        label: 'Use Case 1'
+        label: 'Use Case 1',
+        type: 'UseCase',
+        shape: 'rectangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
       }
     },
     {
       data: {
         id: '466002798',
-        label: 'Use Case 2'
+        label: 'Use Case 2',
+        type: 'UseCase',
+        shape: 'rectangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
       }
     },
     {
       data: {
         id: '761960786',
-        label: 'A'
+        label: 'A',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
       }
     },
     {
       data: {
         id: '985934102',
-        label: 'B'
+        label: 'B',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
       }
     },
     {
       data: {
         id: '1205044462',
-        label: 'C'
+        label: 'C',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
       }
     }
   ],

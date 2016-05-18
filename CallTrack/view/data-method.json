@@ -2,59 +2,148 @@ data = {
   nodes: [
     {
       data: {
-        id: '1508395126',
-        label: 'A:\u003cinit\u003e'
-      }
-    },
-    {
-      data: {
-        id: '225493257',
-        label: 'A:m1'
-      }
-    },
-    {
-      data: {
-        id: '1348949648',
-        label: 'A:m2'
-      }
-    },
-    {
-      data: {
-        id: '1638172114',
-        label: 'B:\u003cinit\u003e'
-      }
-    },
-    {
-      data: {
-        id: '834133664',
-        label: 'B:m1'
-      }
-    },
-    {
-      data: {
         id: '972765878',
-        label: 'C:\u003cinit\u003e'
+        label: 'Test Case 1',
+        type: 'TestCase',
+        shape: 'triangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
       }
     },
     {
       data: {
         id: '1651945012',
-        label: 'C:m2'
+        label: 'Test Case 2',
+        type: 'TestCase',
+        shape: 'triangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
+      }
+    },
+    {
+      data: {
+        id: '2034688500',
+        label: 'Test Case 3',
+        type: 'TestCase',
+        shape: 'triangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
+      }
+    },
+    {
+      data: {
+        id: '1508395126',
+        label: 'Use Case 1',
+        type: 'UseCase',
+        shape: 'rectangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
+      }
+    },
+    {
+      data: {
+        id: '1638172114',
+        label: 'Use Case 2',
+        type: 'UseCase',
+        shape: 'rectangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
+      }
+    },
+    {
+      data: {
+        id: '1007251739',
+        label: 'A:\u003cinit\u003e',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    },
+    {
+      data: {
+        id: '225493257',
+        label: 'A:m1',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    },
+    {
+      data: {
+        id: '1348949648',
+        label: 'A:m2',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    },
+    {
+      data: {
+        id: '1556595366',
+        label: 'B:\u003cinit\u003e',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    },
+    {
+      data: {
+        id: '834133664',
+        label: 'B:m1',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    },
+    {
+      data: {
+        id: '194494468',
+        label: 'C:\u003cinit\u003e',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    },
+    {
+      data: {
+        id: '1167116739',
+        label: 'C:m2',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
       }
     },
     {
       data: {
         id: '401424608',
-        label: 'C:m3'
+        label: 'C:m3',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
       }
     }
   ],
   edges: [
     {
       data: {
-        id: '1508395126-401424608',
-        source: '1508395126',
+        id: '1007251739-401424608',
+        source: '1007251739',
         target: '401424608'
+      }
+    },
+    {
+      data: {
+        id: '225493257-2034688500',
+        source: '225493257',
+        target: '2034688500'
       }
     },
     {
@@ -66,6 +155,20 @@ data = {
     },
     {
       data: {
+        id: '225493257-1508395126',
+        source: '225493257',
+        target: '1508395126'
+      }
+    },
+    {
+      data: {
+        id: '1348949648-1651945012',
+        source: '1348949648',
+        target: '1651945012'
+      }
+    },
+    {
+      data: {
         id: '1348949648-225493257',
         source: '1348949648',
         target: '225493257'
@@ -73,9 +176,16 @@ data = {
     },
     {
       data: {
-        id: '1638172114-1348949648',
-        source: '1638172114',
+        id: '1556595366-1348949648',
+        source: '1556595366',
         target: '1348949648'
+      }
+    },
+    {
+      data: {
+        id: '834133664-1638172114',
+        source: '834133664',
+        target: '1638172114'
       }
     },
     {
@@ -87,30 +197,44 @@ data = {
     },
     {
       data: {
-        id: '972765878-834133664',
-        source: '972765878',
+        id: '194494468-834133664',
+        source: '194494468',
         target: '834133664'
       }
     },
     {
       data: {
-        id: '972765878-225493257',
-        source: '972765878',
+        id: '194494468-225493257',
+        source: '194494468',
         target: '225493257'
       }
     },
     {
       data: {
-        id: '1651945012-834133664',
-        source: '1651945012',
+        id: '1167116739-834133664',
+        source: '1167116739',
         target: '834133664'
       }
     },
     {
       data: {
-        id: '1651945012-225493257',
-        source: '1651945012',
+        id: '1167116739-225493257',
+        source: '1167116739',
         target: '225493257'
+      }
+    },
+    {
+      data: {
+        id: '1167116739-972765878',
+        source: '1167116739',
+        target: '972765878'
+      }
+    },
+    {
+      data: {
+        id: '401424608-1508395126',
+        source: '401424608',
+        target: '1508395126'
       }
     }
   ]

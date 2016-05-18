@@ -14,6 +14,7 @@ public class Node{
 		super();
 		setId(id);
 		setLabel(label);
+		setType(type);
 	}
 	public String getId() {
 		return id;

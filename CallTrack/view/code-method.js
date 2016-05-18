@@ -4,6 +4,8 @@ var defaultStyle = cytoscape.stylesheet()
     .selector('node')
       .css({
         'content': 'data(label)',
+        'shape' : 'data(shape)',
+        'background-color' : 'data(color)'
       })
     .selector('edge')
       .css({
@@ -14,7 +16,7 @@ var defaultStyle = cytoscape.stylesheet()
       })
     .selector('.highlighted')
       .css({
-        'background-color': '#61bffc',
+        'background-color': 'data(colorHighlight)',
         'line-color': '#61bffc',
         'target-arrow-color': '#61bffc',
         'transition-property': 'background-color, line-color, target-arrow-color',
@@ -23,7 +25,11 @@ var defaultStyle = cytoscape.stylesheet()
         .css({
           'background-color': '#00FF00'
 
-        });
+        }).selector('.artifactNode')
+	        .css({
+	            'background-color': '#FF0000'
+	
+          });
 
 var json  =  eval(data);
 
@@ -64,24 +70,37 @@ console.log("Starting with " + json.nodes[0].data.id);
 //console.log(eval("{ data: { id: 'a' , label: 'label de a'} }"));
 cy.on('tap','node', function(evt){
 
-
+	
+	
     
-      cy.elements().each(function(i, ele){
-        ele.removeClass('highlighted');
-        ele.removeClass('startNode');
-      });
+      
     
 
 
-  //console.log(evt.data.foo);
-  var i = 0;
+  
+  
    var node = evt.cyTarget;
+  
+   //Verify the tipe of node.
+   if(node.data().type != "Normal"){
+	   return;
+   }
+   
+   var i = 0;
+   cy.elements().each(function(i, ele){
+       ele.removeClass('highlighted');
+       ele.removeClass('startNode');
+     });
+   
+   
+   
    console.log( 'tapped ' + node.id() );
    var bfs = cy.elements().bfs('#' + node.id(), function(){}, true);
    // kick off first highlight
    cy.getElementById(node.id()).addClass('startNode');
    var highlightNextEle = function(){
   if( i < bfs.path.length ){
+	console.log(bfs.path[i].data());
     bfs.path[i].addClass('highlighted');
     var element = cy.getElementById(bfs.path[i].id());
 

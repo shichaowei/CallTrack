@@ -190,28 +190,28 @@ public class CallTrack {
 		util.writeJSONFile("view/data-class.json", graphOfClass.getGraphDTO());
 		
 		
-//		List<XMLRepresentation> methodArtifactsRepresentation = util.getArtifactsRepresentation("conf\\artifacts-to-methods.xml");
-//		
-//		for(XMLRepresentation representation : methodArtifactsRepresentation){
-//			TypeNode type;
-//			if("UseCase".equals(representation.getType())){
-//				type = TypeNode.ARTIFACT_US;
-//			}else if("TestCase".equals(representation.getType())){
-//				type = TypeNode.ARTIFACT_TC;
-//			}else{
-//				type = TypeNode.NORMAL;
-//			}
-//			
-//			graphOfMethods.putNode(representation.getId(), representation.getName(), type);
-//			
-//			for(String toId : representation.getToIDs()){
-//				if(!representation.getId().equals(toId))
-//					graphOfMethods.putEdge(toId, representation.getId());
-//			}
-//			
-//			
-//			
-//		}
+		List<XMLRepresentation> methodArtifactsRepresentation = util.getArtifactsRepresentation("conf\\artifacts-to-methods.xml");
+		
+		for(XMLRepresentation representation : methodArtifactsRepresentation){
+			TypeNode type;
+			if("UseCase".equals(representation.getType())){
+				type = TypeNode.ARTIFACT_US;
+			}else if("TestCase".equals(representation.getType())){
+				type = TypeNode.ARTIFACT_TC;
+			}else{
+				type = TypeNode.NORMAL;
+			}
+			
+			graphOfMethods.putNode(representation.getId(), representation.getName(), type);
+			
+			for(String toId : representation.getToIDs()){
+				if(!representation.getId().equals(toId))
+					graphOfMethods.putEdge(toId, representation.getId());
+			}
+			
+			
+			
+		}
 		util.writeJSONFile("view/data-method.json", graphOfMethods.getGraphDTO());
 		
 		
