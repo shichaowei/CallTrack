@@ -61,7 +61,6 @@ var cy = cytoscape({
   }
 });
 
-console.log("Starting with " + json.nodes[0].data.id);
 
 
 
@@ -100,7 +99,6 @@ cy.on('tap','node', function(evt){
    cy.getElementById(node.id()).addClass('startNode');
    var highlightNextEle = function(){
   if( i < bfs.path.length ){
-	console.log(bfs.path[i].data());
     bfs.path[i].addClass('highlighted');
     var element = cy.getElementById(bfs.path[i].id());
 

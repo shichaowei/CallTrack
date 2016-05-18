@@ -2,7 +2,7 @@ data = {
   nodes: [
     {
       data: {
-        id: '972765878',
+        id: '24433162',
         label: 'Test Case 1',
         type: 'TestCase',
         shape: 'triangle',
@@ -12,7 +12,7 @@ data = {
     },
     {
       data: {
-        id: '1651945012',
+        id: '1725097945',
         label: 'Test Case 2',
         type: 'TestCase',
         shape: 'triangle',
@@ -22,7 +22,7 @@ data = {
     },
     {
       data: {
-        id: '2034688500',
+        id: '519821334',
         label: 'Test Case 3',
         type: 'TestCase',
         shape: 'triangle',
@@ -32,7 +32,7 @@ data = {
     },
     {
       data: {
-        id: '1508395126',
+        id: '1778535015',
         label: 'Use Case 1',
         type: 'UseCase',
         shape: 'rectangle',
@@ -42,7 +42,7 @@ data = {
     },
     {
       data: {
-        id: '1638172114',
+        id: '2032251042',
         label: 'Use Case 2',
         type: 'UseCase',
         shape: 'rectangle',
@@ -52,7 +52,7 @@ data = {
     },
     {
       data: {
-        id: '1007251739',
+        id: '1781256139',
         label: 'A:\u003cinit\u003e',
         type: 'Normal',
         shape: 'ellipse',
@@ -62,7 +62,7 @@ data = {
     },
     {
       data: {
-        id: '225493257',
+        id: '947679291',
         label: 'A:m1',
         type: 'Normal',
         shape: 'ellipse',
@@ -72,7 +72,7 @@ data = {
     },
     {
       data: {
-        id: '1348949648',
+        id: '575335780',
         label: 'A:m2',
         type: 'Normal',
         shape: 'ellipse',
@@ -82,7 +82,7 @@ data = {
     },
     {
       data: {
-        id: '1556595366',
+        id: '1307096070',
         label: 'B:\u003cinit\u003e',
         type: 'Normal',
         shape: 'ellipse',
@@ -92,7 +92,7 @@ data = {
     },
     {
       data: {
-        id: '834133664',
+        id: '1911006827',
         label: 'B:m1',
         type: 'Normal',
         shape: 'ellipse',
@@ -102,7 +102,7 @@ data = {
     },
     {
       data: {
-        id: '194494468',
+        id: '1014328909',
         label: 'C:\u003cinit\u003e',
         type: 'Normal',
         shape: 'ellipse',
@@ -112,7 +112,7 @@ data = {
     },
     {
       data: {
-        id: '1167116739',
+        id: '2081303229',
         label: 'C:m2',
         type: 'Normal',
         shape: 'ellipse',
@@ -122,8 +122,38 @@ data = {
     },
     {
       data: {
-        id: '401424608',
+        id: '33524623',
         label: 'C:m3',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    },
+    {
+      data: {
+        id: '1595212853',
+        label: 'D:\u003cinit\u003e',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    },
+    {
+      data: {
+        id: '717356484',
+        label: 'E:\u003cinit\u003e',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    },
+    {
+      data: {
+        id: '205125520',
+        label: 'E:m3',
         type: 'Normal',
         shape: 'ellipse',
         color: '#A0A0A0',
@@ -134,107 +164,135 @@ data = {
   edges: [
     {
       data: {
-        id: '1007251739-401424608',
-        source: '1007251739',
-        target: '401424608'
+        id: '1781256139-33524623',
+        source: '1781256139',
+        target: '33524623'
       }
     },
     {
       data: {
-        id: '225493257-2034688500',
-        source: '225493257',
-        target: '2034688500'
+        id: '947679291-33524623',
+        source: '947679291',
+        target: '33524623'
       }
     },
     {
       data: {
-        id: '225493257-401424608',
-        source: '225493257',
-        target: '401424608'
+        id: '947679291-1778535015',
+        source: '947679291',
+        target: '1778535015'
       }
     },
     {
       data: {
-        id: '225493257-1508395126',
-        source: '225493257',
-        target: '1508395126'
+        id: '947679291-519821334',
+        source: '947679291',
+        target: '519821334'
       }
     },
     {
       data: {
-        id: '1348949648-1651945012',
-        source: '1348949648',
-        target: '1651945012'
+        id: '575335780-947679291',
+        source: '575335780',
+        target: '947679291'
       }
     },
     {
       data: {
-        id: '1348949648-225493257',
-        source: '1348949648',
-        target: '225493257'
+        id: '575335780-1725097945',
+        source: '575335780',
+        target: '1725097945'
       }
     },
     {
       data: {
-        id: '1556595366-1348949648',
-        source: '1556595366',
-        target: '1348949648'
+        id: '1307096070-1595212853',
+        source: '1307096070',
+        target: '1595212853'
       }
     },
     {
       data: {
-        id: '834133664-1638172114',
-        source: '834133664',
-        target: '1638172114'
+        id: '1307096070-575335780',
+        source: '1307096070',
+        target: '575335780'
       }
     },
     {
       data: {
-        id: '834133664-1348949648',
-        source: '834133664',
-        target: '1348949648'
+        id: '1911006827-2032251042',
+        source: '1911006827',
+        target: '2032251042'
       }
     },
     {
       data: {
-        id: '194494468-834133664',
-        source: '194494468',
-        target: '834133664'
+        id: '1911006827-575335780',
+        source: '1911006827',
+        target: '575335780'
       }
     },
     {
       data: {
-        id: '194494468-225493257',
-        source: '194494468',
-        target: '225493257'
+        id: '1014328909-947679291',
+        source: '1014328909',
+        target: '947679291'
       }
     },
     {
       data: {
-        id: '1167116739-834133664',
-        source: '1167116739',
-        target: '834133664'
+        id: '1014328909-205125520',
+        source: '1014328909',
+        target: '205125520'
       }
     },
     {
       data: {
-        id: '1167116739-225493257',
-        source: '1167116739',
-        target: '225493257'
+        id: '1014328909-1911006827',
+        source: '1014328909',
+        target: '1911006827'
       }
     },
     {
       data: {
-        id: '1167116739-972765878',
-        source: '1167116739',
-        target: '972765878'
+        id: '2081303229-947679291',
+        source: '2081303229',
+        target: '947679291'
       }
     },
     {
       data: {
-        id: '401424608-1508395126',
-        source: '401424608',
-        target: '1508395126'
+        id: '2081303229-1911006827',
+        source: '2081303229',
+        target: '1911006827'
+      }
+    },
+    {
+      data: {
+        id: '2081303229-24433162',
+        source: '2081303229',
+        target: '24433162'
+      }
+    },
+    {
+      data: {
+        id: '33524623-1778535015',
+        source: '33524623',
+        target: '1778535015'
+      }
+    },
+    {
+      data: {
+        id: '33524623-205125520',
+        source: '33524623',
+        target: '205125520'
+      }
+    },
+    {
+      data: {
+        id: '1595212853-717356484',
+        source: '1595212853',
+        target: '717356484'
       }
     }
   ]

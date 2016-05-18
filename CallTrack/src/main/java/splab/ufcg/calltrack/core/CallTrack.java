@@ -54,7 +54,6 @@ public class CallTrack {
 	private ClassVisitor visitor;
 	private Graph graphOfClass = new Graph();
 	private Graph graphOfMethods = new Graph();
-	private Utils util = new Utils();
 
 	public CallTrack(String jarName, String pattern) {
 		this.jarName = jarName;
@@ -108,8 +107,6 @@ public class CallTrack {
 	}
 
 	public void processInput() throws NodeNotFoundException {
-		int count = 0;
-		System.out.println(ClassVisitor.edgesMethods.size());
 		for (String line : ClassVisitor.edgesMethods) {
 			String[] nodesDeVided = line.split(" ");
 
@@ -133,10 +130,8 @@ public class CallTrack {
 					graphOfMethods.putEdge(fromNodeId, toNodeId);
 
 			} 
-			count++;
 		}
 		
-		count = 0;
 		
 		for(String line : ClassVisitor.edgesClass){
 			String[] nodesDeVided = line.split(" ");

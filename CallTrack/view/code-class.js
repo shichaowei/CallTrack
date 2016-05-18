@@ -1,9 +1,11 @@
 $(function(){ // on dom ready
 
-var defaultStyle = cytoscape.stylesheet()
+	var defaultStyle = cytoscape.stylesheet()
     .selector('node')
       .css({
         'content': 'data(label)',
+        'shape' : 'data(shape)',
+        'background-color' : 'data(color)'
       })
     .selector('edge')
       .css({
@@ -14,7 +16,7 @@ var defaultStyle = cytoscape.stylesheet()
       })
     .selector('.highlighted')
       .css({
-        'background-color': '#61bffc',
+        'background-color': 'data(colorHighlight)',
         'line-color': '#61bffc',
         'target-arrow-color': '#61bffc',
         'transition-property': 'background-color, line-color, target-arrow-color',
@@ -23,7 +25,11 @@ var defaultStyle = cytoscape.stylesheet()
         .css({
           'background-color': '#00FF00'
 
-        });
+        }).selector('.artifactNode')
+	        .css({
+	            'background-color': '#FF0000'
+	
+          });
 
 var json  =  eval(data);
 
@@ -54,7 +60,6 @@ var cy = cytoscape({
      maximalAdjustments: 100 
   }
 });
-
 console.log("Starting with " + json.nodes[0].data.id);
 
 
