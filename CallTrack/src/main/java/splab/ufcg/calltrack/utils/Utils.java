@@ -19,8 +19,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import splab.ufcg.calltrack.model.EdgeBruteLine;
-import splab.ufcg.calltrack.model.GraphDTO;
 import splab.ufcg.calltrack.model.XMLRepresentation;
+import splab.ufcg.calltrack.model.dto.GraphDTO;
 
 public class Utils {
 

@@ -1,4 +1,4 @@
-package splab.ufcg.calltrack.model;
+package splab.ufcg.calltrack.model.dto;
 
 import com.google.gson.annotations.SerializedName;
 

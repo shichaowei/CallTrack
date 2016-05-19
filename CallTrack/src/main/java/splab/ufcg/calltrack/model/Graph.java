@@ -5,6 +5,11 @@ import java.util.TreeMap;
 
 import splab.ufcg.calltrack.exceptions.NodeNotFoundException;
 import splab.ufcg.calltrack.model.Node;
+import splab.ufcg.calltrack.model.dto.EdgeDTO;
+import splab.ufcg.calltrack.model.dto.EdgeDTOData;
+import splab.ufcg.calltrack.model.dto.GraphDTO;
+import splab.ufcg.calltrack.model.dto.NodeDTO;
+import splab.ufcg.calltrack.model.dto.NodeDTOData;
 
 public class Graph {
 	

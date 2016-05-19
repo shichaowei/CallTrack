@@ -1,8 +1,10 @@
-package splab.ufcg.calltrack.model;
+package splab.ufcg.calltrack.model.dto;
 
 import java.awt.Window.Type;
 
 import com.google.gson.annotations.SerializedName;
+
+import splab.ufcg.calltrack.model.TypeNode;
 
 public class NodeDTOData {
 	@SerializedName("@id@")

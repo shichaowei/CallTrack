@@ -1,31 +1,3 @@
-/*
- * Copyright (c) 2011 - Georgios Gousios <gousiosg@gmail.com>
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are
- * met:
- *
- *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
- *
- *     * Redistributions in binary form must reproduce the above
- *       copyright notice, this list of conditions and the following
- *       disclaimer in the documentation and/or other materials provided
- *       with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
 package splab.ufcg.calltrack.core;
 
 import java.util.HashSet;
@@ -45,24 +17,23 @@ import org.apache.bcel.generic.MethodGen;
  */
 public class ClassVisitor extends EmptyVisitor {
 
-    private JavaClass clazz;
+    private JavaClass javaClass;
     private ConstantPoolGen constants;
     private String classReferenceFormat;
     private String pattern;
     public static Set<String> edgesMethods = new HashSet<String>();
     public static Set<String> edgesClass = new HashSet<String>();
     
-    public ClassVisitor(JavaClass jc,String pattern) {
-        clazz = jc;
-        constants = new ConstantPoolGen(clazz.getConstantPool());
-        //clazz.getClassName call %s
-        classReferenceFormat = clazz.getClassName() + " %s";
+    public ClassVisitor(JavaClass jClass,String pattern) {
+        javaClass = jClass;
+        constants = new ConstantPoolGen(javaClass.getConstantPool());
+        classReferenceFormat = javaClass.getClassName() + " %s";
         this.pattern = pattern;
     }
 
-    public void visitJavaClass(JavaClass jc) {
-        jc.getConstantPool().accept(this);
-        Method[] methods = jc.getMethods();
+    public void visitJavaClass(JavaClass jClass) {
+        jClass.getConstantPool().accept(this);
+        Method[] methods = jClass.getMethods();
         for (int i = 0; i < methods.length; i++)
             methods[i].accept(this);
     }
@@ -81,7 +52,6 @@ public class ClassVisitor extends EmptyVisitor {
                 			referencedClass).replaceAll("[$\\d]+", "");
                 	output = output.replaceAll("\\[L", "");
                 	output = output.replaceAll("<init>", "").replaceAll("<cinit>", "");
-                	System.out.println(output);
                 	ClassVisitor.edgesClass.add(output);
                 	
                 }
@@ -90,12 +60,12 @@ public class ClassVisitor extends EmptyVisitor {
     }
 
     public void visitMethod(Method method) {
-        MethodGen mg = new MethodGen(method, clazz.getClassName(), constants);
-        MethodVisitor visitor = new MethodVisitor(mg, clazz, this.pattern);
+        MethodGen mg = new MethodGen(method, javaClass.getClassName(), constants);
+        MethodVisitor visitor = new MethodVisitor(mg, javaClass, this.pattern);
         visitor.start(); 
     }
 
     public void start() {
-        visitJavaClass(clazz);
+        visitJavaClass(javaClass);
     }
 }
