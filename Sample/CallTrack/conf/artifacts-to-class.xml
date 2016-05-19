@@ -1,0 +1,53 @@
+<artifacts>
+	<artifact openUrlOnClick="true" type="UseCase" id="US1">
+		<name>Use Case 1</name>
+		<to>
+			<id>internship.sample.A</id>
+			<id>internship.sample.C</id>
+		</to>
+		<OnClickURL>http://localhost/US1</OnClickURL>
+	</artifact>
+	
+	<artifact openUrlOnClick="true" type="UseCase" id="US2">
+		<name>Use Case 2</name>
+		<to>
+			<id>internship.sample.B</id>
+		</to>
+		<OnClickURL>http://localhost/US2</OnClickURL>
+	</artifact>
+	
+	<artifact openUrlOnClick="true" type="UseCase" id="US3">
+		<name>Use Case 3</name>
+		<to>
+			<id>internship.sample.E</id>
+		</to>
+		<OnClickURL>http://localhost/US3</OnClickURL>
+	</artifact>
+	
+	<artifact openUrlOnClick="true" type="TestCase" id="TC1">
+		<name>Test Case 1</name>
+		<to>
+			<id>internship.sample.C</id>
+		</to>
+		<OnClickURL>http://localhost/TC1</OnClickURL>
+	</artifact>
+	
+	
+	<artifact openUrlOnClick="true" type="TestCase" id="TC2">
+		<name>Test Case 2</name>
+		<to>
+			<id>internship.sample.A</id>
+		</to>
+	</artifact>
+	
+	<artifact openUrlOnClick="true" type="TestCase" id="TC3">
+		<name>Test Case 3</name>
+		<to>
+			<id>internship.sample.A</id>
+		</to>
+		<OnClickURL>http://localhost/TC3</OnClickURL>
+	</artifact>
+
+
+
+</artifacts>

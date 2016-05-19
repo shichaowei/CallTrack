@@ -1,0 +1,214 @@
+data = {
+  nodes: [
+    {
+      data: {
+        id: '1129670968',
+        label: 'Test Case 1',
+        type: 'TestCase',
+        shape: 'triangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
+      }
+    },
+    {
+      data: {
+        id: '1023714065',
+        label: 'Test Case 2',
+        type: 'TestCase',
+        shape: 'triangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
+      }
+    },
+    {
+      data: {
+        id: '2051450519',
+        label: 'Test Case 3',
+        type: 'TestCase',
+        shape: 'triangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
+      }
+    },
+    {
+      data: {
+        id: '1254526270',
+        label: 'Use Case 1',
+        type: 'UseCase',
+        shape: 'rectangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
+      }
+    },
+    {
+      data: {
+        id: '662441761',
+        label: 'Use Case 2',
+        type: 'UseCase',
+        shape: 'rectangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
+      }
+    },
+    {
+      data: {
+        id: '1618212626',
+        label: 'Use Case 3',
+        type: 'UseCase',
+        shape: 'rectangle',
+        color: '#FF9900',
+        colorHighlight: '#FF0000'
+      }
+    },
+    {
+      data: {
+        id: '274064559',
+        label: 'A',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    },
+    {
+      data: {
+        id: '325333723',
+        label: 'B',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    },
+    {
+      data: {
+        id: '1937962514',
+        label: 'C',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    },
+    {
+      data: {
+        id: '242131142',
+        label: 'D',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    },
+    {
+      data: {
+        id: '1018081122',
+        label: 'E',
+        type: 'Normal',
+        shape: 'ellipse',
+        color: '#A0A0A0',
+        colorHighlight: '#61bffc'
+      }
+    }
+  ],
+  edges: [
+    {
+      data: {
+        id: '274064559-1937962514',
+        source: '274064559',
+        target: '1937962514'
+      }
+    },
+    {
+      data: {
+        id: '274064559-2051450519',
+        source: '274064559',
+        target: '2051450519'
+      }
+    },
+    {
+      data: {
+        id: '274064559-1023714065',
+        source: '274064559',
+        target: '1023714065'
+      }
+    },
+    {
+      data: {
+        id: '274064559-1254526270',
+        source: '274064559',
+        target: '1254526270'
+      }
+    },
+    {
+      data: {
+        id: '325333723-242131142',
+        source: '325333723',
+        target: '242131142'
+      }
+    },
+    {
+      data: {
+        id: '325333723-274064559',
+        source: '325333723',
+        target: '274064559'
+      }
+    },
+    {
+      data: {
+        id: '325333723-662441761',
+        source: '325333723',
+        target: '662441761'
+      }
+    },
+    {
+      data: {
+        id: '1937962514-1254526270',
+        source: '1937962514',
+        target: '1254526270'
+      }
+    },
+    {
+      data: {
+        id: '1937962514-274064559',
+        source: '1937962514',
+        target: '274064559'
+      }
+    },
+    {
+      data: {
+        id: '1937962514-1018081122',
+        source: '1937962514',
+        target: '1018081122'
+      }
+    },
+    {
+      data: {
+        id: '1937962514-1129670968',
+        source: '1937962514',
+        target: '1129670968'
+      }
+    },
+    {
+      data: {
+        id: '1937962514-325333723',
+        source: '1937962514',
+        target: '325333723'
+      }
+    },
+    {
+      data: {
+        id: '242131142-1018081122',
+        source: '242131142',
+        target: '1018081122'
+      }
+    },
+    {
+      data: {
+        id: '1018081122-1618212626',
+        source: '1018081122',
+        target: '1618212626'
+      }
+    }
+  ]
+}
