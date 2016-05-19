@@ -14,6 +14,7 @@
       <unpack>true</unpack>
       <includes>
         <include>org.apache.bcel:bcel</include>
+        <include>com.google.code.gson:gson</include>
       </includes>
       <scope>provided</scope>
     </dependencySet>
@@ -21,7 +22,11 @@
   <fileSets>
     <fileSet>
       <includes>
-        <include>gr/gousiosg/javacg/stat/*.class</include>
+        <include>splab/ufcg/calltrack/core/*.class</include>
+        <include>splab/ufcg/calltrack/exceptions/*.class</include>
+        <include>splab/ufcg/calltrack/model/*.class</include>
+        <include>splab/ufcg/calltrack/model/dto/*.class</include>
+        <include>splab/ufcg/calltrack/utils/*.class</include>
       </includes>
       <directory>target/classes</directory>
       <outputDirectory>/</outputDirectory>
